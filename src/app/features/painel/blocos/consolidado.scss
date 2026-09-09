@@ -23,12 +23,18 @@
   gap: var(--espaco-2);
 
   select {
-    padding: var(--espaco-1) var(--espaco-2);
+    padding: var(--espaco-2) var(--espaco-3);
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio);
-    background: var(--cor-superficie);
+    background: var(--cor-superficie-alta);
     color: var(--cor-texto);
     font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--cor-texto-fraco);
+    }
   }
 }
 
@@ -37,22 +43,44 @@
   font-size: var(--texto-pequeno);
 }
 
-.numeros {
+.indicadores {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--espaco-5);
+  gap: var(--espaco-4);
   margin: var(--espaco-5) 0 0;
+  padding: 0;
+  list-style: none;
+}
 
-  dt {
-    color: var(--cor-texto-fraco);
-    font-size: var(--texto-pequeno);
-  }
+.indicador {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+  padding: var(--espaco-4);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie-alta);
+}
 
-  dd {
-    margin: var(--espaco-1) 0 0;
-    font-family: var(--fonte-numero);
-    font-size: var(--texto-grande);
-  }
+.indicador-rotulo {
+  margin: 0;
+  color: var(--cor-texto-fraco);
+  font-size: var(--texto-pequeno);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.indicador-valor {
+  margin: 0;
+  font-family: var(--fonte-numero);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.indicador-selo {
+  align-self: flex-start;
 }
 
 .cambio {
