@@ -1,6 +1,9 @@
+import { readFileSync } from 'node:fs';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BarraDeMercado } from '../painel.model';
 import { BarraMercado } from './barra-mercado';
+
+const ESTILO = readFileSync('src/app/features/painel/blocos/barra-mercado.scss', 'utf8');
 
 describe('Barra de mercado', () => {
   let fixture: ComponentFixture<BarraMercado>;
@@ -59,5 +62,76 @@ describe('Barra de mercado', () => {
 
     expect(elemento.querySelector('[data-barra-mercado]')).toBeNull();
     expect(elemento.querySelector('[data-nivel="erro"]')).toBeNull();
+  });
+
+  it('@spec:AC-233 os chips deslizam para a esquerda em loop, com a lista duplicada e animação só de transform', async () => {
+    const elemento = await montar(cheia);
+
+    const clone = elemento.querySelector('[data-grupo-clone]') as HTMLElement;
+    expect(elemento.querySelectorAll('[data-grupo-clone]')).toHaveLength(1);
+    expect(clone.getAttribute('aria-hidden')).toBe('true');
+    expect(clone.textContent).toContain('PETR4');
+    expect(clone.textContent).toContain('VALE3');
+
+    // a cópia é decorativa: não repete os marcadores de item
+    expect(elemento.querySelectorAll('[data-item]')).toHaveLength(2);
+
+    const keyframes = ESTILO.match(/@keyframes\s+rolar-barra-mercado\s*{[\s\S]*?\n}/)?.[0] ?? '';
+    expect(keyframes).toMatch(/transform:\s*translateX\(-50%\)/);
+    expect(keyframes).not.toMatch(/(?:width|height|left|right|top|bottom|margin|padding):/);
+
+    const trecho = ESTILO.replace(/\s+/g, ' ');
+    expect(trecho).toMatch(/\.marquee\s*{[^}]*animation:[^;]*linear[^;]*infinite/);
+  });
+
+  it('@spec:AC-234 a rolagem pausa quando o ponteiro entra na barra ou um chip recebe foco', () => {
+    const trecho = ESTILO.replace(/\s+/g, ' ');
+
+    expect(trecho).toMatch(
+      /\.barra-mercado:hover\s+\.marquee[^{]*{[^}]*animation-play-state: paused/,
+    );
+    expect(trecho).toMatch(
+      /:focus-within\s+\.marquee[^{]*{[^}]*animation-play-state: paused/,
+    );
+  });
+
+  it('@spec:AC-235 movimento reduzido desliga a rolagem e devolve rolagem manual', () => {
+    const indice = ESTILO.indexOf('prefers-reduced-motion: reduce');
+    expect(indice).toBeGreaterThan(-1);
+
+    const bloco = ESTILO.slice(indice);
+    expect(bloco).toMatch(/animation:\s*none/);
+    expect(bloco).toMatch(/overflow-x:\s*auto/);
+  });
+
+  it('@spec:AC-236 o horário de atualização fica fora da área que rola e legível sempre', async () => {
+    const elemento = await montar(cheia);
+
+    const trilha = elemento.querySelector('[data-marquee]') as HTMLElement;
+    const horario = elemento.querySelector('[data-atualizado-em]') as HTMLElement;
+
+    expect(trilha).not.toBeNull();
+    expect(horario).not.toBeNull();
+    expect(trilha.contains(horario)).toBe(false);
+    expect(horario.textContent).toContain('13:05');
+  });
+
+  it('@spec:AC-237 cada cotação é um chip com símbolo, preço e variação com sinal/seta, em superfície escura própria', async () => {
+    const elemento = await montar(cheia);
+
+    for (const simbolo of ['PETR4', 'VALE3']) {
+      const chip = elemento.querySelector(`[data-item="${simbolo}"]`) as HTMLElement;
+      expect(chip).not.toBeNull();
+      expect(chip.querySelector('[data-simbolo]')?.textContent).toContain(simbolo);
+      expect(chip.querySelector('[data-preco]')?.textContent?.trim().length).toBeGreaterThan(0);
+
+      const sinal = chip.querySelector('[data-variacao] [data-sinal]')?.textContent?.trim() ?? '';
+      expect(['▲', '▼', '–']).toContain(sinal);
+    }
+
+    const trecho = ESTILO.replace(/\s+/g, ' ');
+    // superfície escura própria, a mesma nos dois temas (tokens --cor-barra-mercado-*)
+    expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*background:[^;]*--cor-barra-mercado-fundo/);
+    expect(trecho).toMatch(/\.chip\s*{[^}]*background:[^;]*--cor-barra-mercado/);
   });
 });

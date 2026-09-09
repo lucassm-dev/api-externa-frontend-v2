@@ -4,37 +4,70 @@
   justify-content: space-between;
   gap: var(--espaco-4);
   padding: var(--espaco-3) var(--espaco-4);
-  border: 1px solid var(--cor-borda);
+  border: 1px solid var(--cor-barra-mercado-borda);
   border-radius: var(--raio);
-  background: var(--cor-superficie);
-  overflow-x: auto;
+  background: var(--cor-barra-mercado-fundo);
+  color: var(--cor-barra-mercado-texto);
+  overflow: hidden;
 }
 
-.itens {
+.viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.marquee {
   display: flex;
+  width: max-content;
+  animation: rolar-barra-mercado var(--barra-mercado-duracao, 30s) linear infinite;
+}
+
+.barra-mercado:hover .marquee,
+.barra-mercado:focus-within .marquee {
+  animation-play-state: paused;
+}
+
+.grupo {
+  display: flex;
+  flex-shrink: 0;
   gap: var(--espaco-5);
+  padding-right: var(--espaco-5);
   margin: 0;
-  padding: 0;
   list-style: none;
 }
 
-.item {
+.chip {
   display: flex;
   align-items: baseline;
   gap: var(--espaco-2);
+  padding: var(--espaco-2) var(--espaco-3);
+  border: 1px solid var(--cor-barra-mercado-borda);
+  border-radius: var(--raio);
+  background: color-mix(in srgb, var(--cor-barra-mercado-borda) 38%, var(--cor-barra-mercado-fundo));
   white-space: nowrap;
 }
 
 .simbolo {
   font-weight: 700;
+  color: var(--cor-barra-mercado-texto);
 }
 
 .preco {
   font-family: var(--fonte-numero);
+  color: var(--cor-barra-mercado-texto);
+}
+
+.selo-variacao {
+  align-self: center;
+  padding: 2px var(--espaco-2);
+  border-radius: var(--raio);
+  background: color-mix(in srgb, var(--cor-barra-mercado-texto) 12%, transparent);
 }
 
 .horario {
-  color: var(--cor-texto-fraco);
+  flex-shrink: 0;
+  color: var(--cor-barra-mercado-fraco);
   font-size: var(--texto-pequeno);
   white-space: nowrap;
 }
@@ -42,4 +75,29 @@
 .aviso-barra {
   margin-top: var(--espaco-2);
   font-size: var(--texto-pequeno);
+}
+
+@keyframes rolar-barra-mercado {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+    transform: none;
+  }
+
+  .viewport {
+    overflow-x: auto;
+  }
+
+  [data-grupo-clone] {
+    display: none;
+  }
 }

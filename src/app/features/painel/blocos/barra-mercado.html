@@ -1,14 +1,36 @@
 @if (barra(); as conteudo) {
   <section class="barra-mercado" data-barra-mercado aria-label="Mercado">
-    <ul class="itens">
-      @for (item of itens(); track item.simbolo) {
-        <li class="item" [attr.data-item]="item.simbolo">
-          <span class="simbolo" data-simbolo>{{ item.simbolo }}</span>
-          <span class="preco" data-preco>{{ preco(item.preco) }}</span>
-          <app-variacao [valor]="item.variacaoPercentual" [percentual]="true" />
-        </li>
-      }
-    </ul>
+    <div class="viewport">
+      <div class="marquee" data-marquee [style.--barra-mercado-duracao]="duracaoAnimacao()">
+        <ul class="grupo">
+          @for (item of itens(); track item.simbolo) {
+            <li class="chip" [attr.data-item]="item.simbolo">
+              <span class="simbolo" data-simbolo>{{ item.simbolo }}</span>
+              <span class="preco" data-preco>{{ preco(item.preco) }}</span>
+              <app-variacao
+                class="selo-variacao"
+                [valor]="item.variacaoPercentual"
+                [percentual]="true"
+              />
+            </li>
+          }
+        </ul>
+
+        <ul class="grupo" data-grupo-clone aria-hidden="true">
+          @for (item of itens(); track item.simbolo) {
+            <li class="chip">
+              <span class="simbolo">{{ item.simbolo }}</span>
+              <span class="preco">{{ preco(item.preco) }}</span>
+              <app-variacao
+                class="selo-variacao"
+                [valor]="item.variacaoPercentual"
+                [percentual]="true"
+              />
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
 
     <span class="horario" data-atualizado-em>Atualizado às {{ atualizadoEm() }}</span>
   </section>
