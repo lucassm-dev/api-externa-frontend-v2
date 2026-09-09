@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -197,5 +198,72 @@ describe('Lista de corretoras', () => {
     expect(elemento.querySelectorAll('[data-selo]').length).toBe(0);
     expect(elemento.querySelector('[nivel="erro"], .erro')).toBeNull();
     expect(elemento.textContent).not.toMatch(/erro/i);
+  });
+
+  it('o selo de uso passa a ser renderizado pela primitiva de selo, com texto e sinal', async () => {
+    await responder(CATALOGO, [{ corretoraId: 1 }, { corretoraId: 1 }]);
+
+    const selo = elemento.querySelector('[data-corretora="1"] app-selo [data-selo]') as HTMLElement;
+    expect(selo).not.toBeNull();
+    expect(selo.textContent).toContain('2 carteiras suas');
+    // O selo carrega um sinal além da cor, não é um texto solto colorido.
+    expect(selo.querySelector('[data-icone]')).not.toBeNull();
+  });
+
+  it('@spec:AC-245 a linha se destaca sob o ponteiro, e o destaque não é a única pista', async () => {
+    await responder(CATALOGO, []);
+
+    const estilo = readFileSync('src/app/features/corretoras/lista/lista-corretoras.scss', 'utf8');
+
+    const hover = estilo.match(/\.linha:hover\s*\{[^}]*\}/)?.[0] ?? '';
+    expect(hover).not.toBe('');
+    expect(hover).toMatch(/(background|outline):/);
+    expect(estilo).toMatch(/\.linha\s*\{[^}]*border:[^;]+;/);
+  });
+
+  it('@spec:AC-249 o paginador informa página, total e faixa, desabilitando as pontas', async () => {
+    await responder(CATALOGO, [], { number: 0, totalPages: 3 });
+
+    const paginador = elemento.querySelector('app-paginador') as HTMLElement;
+    expect(paginador).not.toBeNull();
+    expect(paginador.querySelector('[data-pagina]')?.textContent).toMatch(/Página 1 de 3/);
+    expect(paginador.querySelector('[data-faixa]')?.textContent).toMatch(/de 3/);
+    expect(paginador.querySelector('[data-anterior]')?.hasAttribute('disabled')).toBe(true);
+    expect(paginador.querySelector('[data-proxima]')?.hasAttribute('disabled')).toBe(false);
+
+    componente.irPara(2);
+    await fixture.whenStable();
+    controle.expectOne((r) => r.url === '/corretoras' && r.method === 'GET').flush({
+      content: CATALOGO,
+      totalElements: 3,
+      totalPages: 3,
+      number: 2,
+      size: 20,
+    });
+    controle.expectOne((r) => r.url === '/carteiras').flush({
+      content: [],
+      totalElements: 0,
+      totalPages: 1,
+      number: 0,
+      size: 200,
+    });
+    await fixture.whenStable();
+
+    const rodape = elemento.querySelector('app-paginador') as HTMLElement;
+    expect(rodape.querySelector('[data-pagina]')?.textContent).toMatch(/Página 3 de 3/);
+    expect(rodape.querySelector('[data-proxima]')?.hasAttribute('disabled')).toBe(true);
+    expect(rodape.querySelector('[data-anterior]')?.hasAttribute('disabled')).toBe(false);
+  });
+
+  it('@spec:AC-250 carregando mostra esqueleto; catálogo vazio mostra estado vazio com próximo passo', async () => {
+    expect(elemento.querySelector('[data-esqueleto]')).not.toBeNull();
+    expect(elemento.querySelector('app-estado-vazio')).toBeNull();
+
+    await responder([], []);
+
+    expect(elemento.querySelector('[data-esqueleto]')).toBeNull();
+    const vazio = elemento.querySelector('app-estado-vazio') as HTMLElement;
+    expect(vazio).not.toBeNull();
+    expect(vazio.querySelector('[data-proximo-passo]')?.textContent).toMatch(/cadastrar/i);
   });
 });

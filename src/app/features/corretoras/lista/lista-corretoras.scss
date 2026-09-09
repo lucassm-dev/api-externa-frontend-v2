@@ -59,6 +59,13 @@ header {
   background: var(--cor-superficie);
 }
 
+// Destaque da linha sob o ponteiro. A borda e a superfície próprias de cada
+// linha já a separam da vizinha sem depender do ponteiro (AC-245).
+.linha:hover {
+  border-color: var(--cor-acento);
+  background: color-mix(in srgb, var(--cor-acento) 10%, var(--cor-superficie));
+}
+
 .nome {
   font-weight: 700;
   color: var(--cor-texto);
@@ -71,31 +78,7 @@ header {
   font-size: var(--texto-pequeno);
 }
 
-.selo {
-  padding: var(--espaco-1) var(--espaco-2);
-  border: 1px solid var(--cor-info-borda);
-  border-radius: var(--raio);
-  background: var(--cor-info-fundo);
-  color: var(--cor-info-texto);
-  font-size: var(--texto-pequeno);
-}
-
-.paginacao {
-  display: flex;
-  align-items: center;
-  gap: var(--espaco-3);
+app-paginador {
+  display: block;
   margin-top: var(--espaco-4);
-  color: var(--cor-texto-fraco);
-}
-
-.esqueleto {
-  display: flex;
-  flex-direction: column;
-  gap: var(--espaco-2);
-
-  span {
-    height: 48px;
-    border-radius: var(--raio);
-    background: var(--cor-superficie-alta);
-  }
 }

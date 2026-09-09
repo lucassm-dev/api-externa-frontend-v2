@@ -41,10 +41,15 @@
   }
 
   @if (carregando()) {
-    <div class="esqueleto" aria-hidden="true"><span></span><span></span><span></span></div>
+    <app-esqueleto formato="tabela" />
   } @else if (pagina(); as pagina) {
     @if (pagina.content.length === 0) {
-      <p class="apoio">Nenhuma corretora cadastrada ainda.</p>
+      <app-estado-vazio
+        titulo="Nenhuma corretora no catálogo"
+        descricao="O catálogo ainda não tem nenhuma corretora. Cadastre a primeira para usar nas suas carteiras."
+        rotuloAcao="Cadastrar corretora"
+        (acao)="cadastrarCorretora()"
+      />
     } @else {
       <ul class="catalogo">
         @for (corretora of pagina.content; track corretora.id) {
@@ -58,32 +63,20 @@
               {{ corretora.validadaNaCvm ? 'Validada na CVM' : 'Sem validação na CVM' }}
             </span>
             @if (selo(corretora.id); as rotulo) {
-              <span class="selo" data-selo>{{ rotulo }}</span>
+              <app-selo variante="estavel" [texto]="rotulo" />
             }
           </li>
         }
       </ul>
 
       @if (pagina.totalPages > 1) {
-        <nav class="paginacao" aria-label="Páginas do catálogo">
-          <button
-            mat-button
-            type="button"
-            [disabled]="pagina.number === 0"
-            (click)="irPara(pagina.number - 1)"
-          >
-            Anterior
-          </button>
-          <span>Página {{ pagina.number + 1 }} de {{ pagina.totalPages }}</span>
-          <button
-            mat-button
-            type="button"
-            [disabled]="pagina.number + 1 >= pagina.totalPages"
-            (click)="irPara(pagina.number + 1)"
-          >
-            Próxima
-          </button>
-        </nav>
+        <app-paginador
+          [pagina]="pagina.number + 1"
+          [totalPaginas]="pagina.totalPages"
+          [totalItens]="pagina.totalElements"
+          [itensPorPagina]="pagina.size"
+          (paginaMudou)="irPara($event - 1)"
+        />
       }
     }
   }

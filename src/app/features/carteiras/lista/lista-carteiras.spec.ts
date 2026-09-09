@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -194,5 +195,113 @@ describe('Lista de carteiras', () => {
     const dialogo = elemento.querySelector('app-dialogo-confirmacao') as HTMLElement;
     expect(dialogo.textContent).toMatch(/não há como desfazer/i);
     controle.expectNone('/carteiras/9');
+  });
+
+  it('@spec:AC-245 o cartão se destaca sob o ponteiro, e o destaque não é a única pista', () => {
+    const estilo = readFileSync('src/app/features/carteiras/lista/lista-carteiras.scss', 'utf8');
+
+    const hover = estilo.match(/\.carteira:hover\s*\{[^}]*\}/)?.[0] ?? '';
+    expect(hover).not.toBe('');
+    expect(hover).toMatch(/(background|outline):/);
+
+    // Fora do hover, cada cartão tem borda e superfície próprias.
+    expect(estilo).toMatch(/\.carteira\s*\{[^}]*border:[^;]+;/);
+  });
+
+  it('@spec:AC-248 as ações da linha viram botões de ícone com nome acessível da ação e do item', async () => {
+    await responderLista([DIVIDENDOS]);
+    await responderNumeros(9);
+
+    const linha = elemento.querySelector('[data-carteira="9"]') as HTMLElement;
+
+    const abrir = linha.querySelector('[data-abrir]') as HTMLElement;
+    const renomear = linha.querySelector('[data-renomear] button') as HTMLElement;
+    const excluir = linha.querySelector('[data-excluir] button') as HTMLElement;
+
+    expect(abrir.getAttribute('aria-label')).toBe('Abrir carteira Dividendos');
+    expect(renomear.getAttribute('aria-label')).toBe('Renomear carteira Dividendos');
+    expect(excluir.getAttribute('aria-label')).toBe('Excluir carteira Dividendos');
+
+    // O ícone é escondido de tecnologia assistiva; o nome fica no controle.
+    expect(abrir.querySelector('svg')?.getAttribute('aria-hidden')).toBe('true');
+    expect(linha.querySelector('[data-renomear] [data-icone]')?.getAttribute('aria-hidden')).toBe(
+      'true',
+    );
+    expect(linha.querySelector('[data-excluir] [data-icone]')?.getAttribute('aria-hidden')).toBe(
+      'true',
+    );
+
+    // Sem rótulo de texto ocupando a linha.
+    expect(renomear.textContent?.trim()).toBe('');
+    expect(excluir.textContent?.trim()).toBe('');
+
+    // Área acionável de pelo menos 24×24: os botões vêm da primitiva (garantida
+    // por AC-217); o link "Abrir" garante o mínimo na própria folha.
+    const estilo = readFileSync('src/app/features/carteiras/lista/lista-carteiras.scss', 'utf8');
+    const abrirRule = estilo.match(/\.acao-abrir\s*\{[\s\S]*?\n\}/)?.[0] ?? '';
+    expect(abrirRule).toMatch(/min-width:\s*(?:2[4-9]|[3-9]\d)px/);
+    expect(abrirRule).toMatch(/min-height:\s*(?:2[4-9]|[3-9]\d)px/);
+  });
+
+  it('@spec:AC-248 os botões de ícone acionam renomear e excluir', async () => {
+    await responderLista([DIVIDENDOS]);
+    await responderNumeros(9);
+
+    const linha = elemento.querySelector('[data-carteira="9"]') as HTMLElement;
+    (linha.querySelector('[data-renomear] button') as HTMLButtonElement).click();
+    await fixture.whenStable();
+    expect(linha.querySelector('[data-campo-nome]')).not.toBeNull();
+
+    (linha.querySelector('[data-excluir] button') as HTMLButtonElement).click();
+    await fixture.whenStable();
+    expect(elemento.querySelector('app-dialogo-confirmacao')).not.toBeNull();
+  });
+
+  it('@spec:AC-249 o paginador informa página, total e faixa, desabilitando as pontas', async () => {
+    controle.expectOne((r) => r.url === '/carteiras').flush({
+      content: [DIVIDENDOS],
+      totalElements: 50,
+      totalPages: 3,
+      number: 0,
+      size: 20,
+    });
+    await fixture.whenStable();
+    await responderNumeros(9);
+
+    const paginador = elemento.querySelector('app-paginador') as HTMLElement;
+    expect(paginador).not.toBeNull();
+    expect(paginador.querySelector('[data-pagina]')?.textContent).toMatch(/Página 1 de 3/);
+    expect(paginador.querySelector('[data-faixa]')?.textContent).toMatch(/1.*20.*50/);
+    expect(paginador.querySelector('[data-anterior]')?.hasAttribute('disabled')).toBe(true);
+    expect(paginador.querySelector('[data-proxima]')?.hasAttribute('disabled')).toBe(false);
+
+    componente.irPara(2);
+    await fixture.whenStable();
+    controle.expectOne((r) => r.url === '/carteiras').flush({
+      content: [DIVIDENDOS],
+      totalElements: 50,
+      totalPages: 3,
+      number: 2,
+      size: 20,
+    });
+    await fixture.whenStable();
+    await responderNumeros(9);
+
+    const rodape = elemento.querySelector('app-paginador') as HTMLElement;
+    expect(rodape.querySelector('[data-pagina]')?.textContent).toMatch(/Página 3 de 3/);
+    expect(rodape.querySelector('[data-proxima]')?.hasAttribute('disabled')).toBe(true);
+    expect(rodape.querySelector('[data-anterior]')?.hasAttribute('disabled')).toBe(false);
+  });
+
+  it('@spec:AC-250 carregando mostra esqueleto; sem carteiras mostra estado vazio com próximo passo', async () => {
+    expect(elemento.querySelector('[data-esqueleto]')).not.toBeNull();
+    expect(elemento.querySelector('app-estado-vazio')).toBeNull();
+
+    await responderLista([]);
+
+    expect(elemento.querySelector('[data-esqueleto]')).toBeNull();
+    const vazio = elemento.querySelector('app-estado-vazio') as HTMLElement;
+    expect(vazio).not.toBeNull();
+    expect(vazio.querySelector('[data-proximo-passo]')?.textContent).toMatch(/criar carteira/i);
   });
 });

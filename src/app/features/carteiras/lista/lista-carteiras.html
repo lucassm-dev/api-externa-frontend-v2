@@ -12,12 +12,16 @@
   }
 
   @if (carregando()) {
-    <div class="esqueleto" aria-hidden="true"><span></span><span></span><span></span></div>
+    <app-esqueleto formato="tabela" />
   } @else if (pagina(); as pagina) {
     @if (pagina.content.length === 0) {
-      <p class="vazio" data-vazio>
-        Você ainda não tem carteira nenhuma. Crie a primeira para começar a registrar operações.
-      </p>
+      <app-estado-vazio
+        data-vazio
+        titulo="Nenhuma carteira ainda"
+        descricao="Crie a primeira carteira para começar a registrar operações e acompanhar resultados."
+        rotuloAcao="Criar carteira"
+        (acao)="criarCarteira()"
+      />
     } @else {
       <ul class="carteiras">
         @for (carteira of pagina.content; track carteira.id) {
@@ -74,40 +78,42 @@
             </dl>
 
             <div class="acoes">
-              <a mat-stroked-button data-abrir [routerLink]="['/carteiras', carteira.id]">Abrir</a>
-              <button mat-button type="button" data-renomear (click)="pedirRenomeacao(carteira)">
-                Renomear
-              </button>
-              <button mat-button type="button" data-excluir (click)="pedirExclusao(carteira)">
-                Excluir
-              </button>
+              <a
+                class="acao-abrir"
+                data-abrir
+                [routerLink]="['/carteiras', carteira.id]"
+                [attr.aria-label]="'Abrir carteira ' + carteira.nome"
+                [attr.title]="'Abrir carteira ' + carteira.nome"
+              >
+                <svg lucideArrowUpRight aria-hidden="true" focusable="false"></svg>
+              </a>
+              <app-botao-icone
+                data-renomear
+                [rotulo]="'Renomear carteira ' + carteira.nome"
+                (pressionado)="pedirRenomeacao(carteira)"
+              >
+                <svg lucidePencil aria-hidden="true" focusable="false"></svg>
+              </app-botao-icone>
+              <app-botao-icone
+                data-excluir
+                [rotulo]="'Excluir carteira ' + carteira.nome"
+                (pressionado)="pedirExclusao(carteira)"
+              >
+                <svg lucideTrash2 aria-hidden="true" focusable="false"></svg>
+              </app-botao-icone>
             </div>
           </li>
         }
       </ul>
 
       @if (pagina.totalPages > 1) {
-        <nav class="paginacao">
-          <button
-            mat-stroked-button
-            type="button"
-            data-anterior
-            [disabled]="pagina.number === 0"
-            (click)="irPara(pagina.number - 1)"
-          >
-            Anterior
-          </button>
-          <span>Página {{ pagina.number + 1 }} de {{ pagina.totalPages }}</span>
-          <button
-            mat-stroked-button
-            type="button"
-            data-proxima
-            [disabled]="pagina.number + 1 >= pagina.totalPages"
-            (click)="irPara(pagina.number + 1)"
-          >
-            Próxima
-          </button>
-        </nav>
+        <app-paginador
+          [pagina]="pagina.number + 1"
+          [totalPaginas]="pagina.totalPages"
+          [totalItens]="pagina.totalElements"
+          [itensPorPagina]="pagina.size"
+          (paginaMudou)="irPara($event - 1)"
+        />
       }
     }
   }

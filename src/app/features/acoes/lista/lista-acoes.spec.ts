@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -178,5 +179,64 @@ describe('Lista de ações', () => {
 
     controle.expectNone((r) => r.url.includes('atualizar-cotacao'));
     controle.verify();
+  });
+
+  it('@spec:AC-247 cada linha traz o monograma do ativo junto ao ticker', async () => {
+    await carregar();
+
+    const primeira = elemento.querySelector('[data-acao]') as HTMLElement;
+    const monograma = primeira.querySelector('[data-monograma]');
+    expect(monograma).not.toBeNull();
+    expect(monograma?.getAttribute('aria-label')).toContain('PETR4');
+    expect(primeira.querySelector('[data-ticker]')?.textContent).toContain('PETR4');
+  });
+
+  it('@spec:AC-245 a linha se destaca sob o ponteiro, e o destaque não é a única pista', () => {
+    const estilo = readFileSync('src/app/features/acoes/lista/lista-acoes.scss', 'utf8');
+
+    const hover = estilo.match(/\.linha:hover\s*\{[^}]*\}/)?.[0] ?? '';
+    expect(hover).not.toBe('');
+    expect(hover).toMatch(/(background|outline):/);
+
+    // Fora do hover, cada linha tem borda e superfície próprias.
+    expect(estilo).toMatch(/\.linha\s*\{[^}]*border:[^;]+;/);
+  });
+
+  it('@spec:AC-249 o paginador informa página, total e faixa, desabilitando as pontas', async () => {
+    await carregar(pagina([PETR4, AAPL], { number: 0, totalPages: 3, totalElements: 50, size: 20 }));
+
+    const paginador = elemento.querySelector('app-paginador') as HTMLElement;
+    expect(paginador).not.toBeNull();
+    expect(paginador.querySelector('[data-pagina]')?.textContent).toMatch(/Página 1 de 3/);
+    expect(paginador.querySelector('[data-faixa]')?.textContent).toMatch(/1.*20.*50/);
+    expect(paginador.querySelector('[data-anterior]')?.hasAttribute('disabled')).toBe(true);
+    expect(paginador.querySelector('[data-proxima]')?.hasAttribute('disabled')).toBe(false);
+
+    componente.irPara(2);
+    await fixture.whenStable();
+    controle
+      .expectOne((r) => r.url === '/acoes')
+      .flush(pagina([AAPL, PETR4], { number: 2, totalPages: 3, totalElements: 50, size: 20 }));
+    await fixture.whenStable();
+
+    const rodape = elemento.querySelector('app-paginador') as HTMLElement;
+    expect(rodape.querySelector('[data-pagina]')?.textContent).toMatch(/Página 3 de 3/);
+    expect(rodape.querySelector('[data-proxima]')?.hasAttribute('disabled')).toBe(true);
+    expect(rodape.querySelector('[data-anterior]')?.hasAttribute('disabled')).toBe(false);
+  });
+
+  it('@spec:AC-250 carregando mostra esqueleto; catálogo vazio mostra estado vazio com próximo passo', async () => {
+    await fixture.whenStable();
+
+    expect(elemento.querySelector('[data-esqueleto]')).not.toBeNull();
+    expect(elemento.querySelector('app-estado-vazio')).toBeNull();
+
+    controle.expectOne((r) => r.url === '/acoes').flush(pagina([]));
+    await fixture.whenStable();
+
+    expect(elemento.querySelector('[data-esqueleto]')).toBeNull();
+    const vazio = elemento.querySelector('app-estado-vazio') as HTMLElement;
+    expect(vazio).not.toBeNull();
+    expect(vazio.querySelector('[data-proximo-passo]')?.textContent).toMatch(/cadastrar/i);
   });
 });
