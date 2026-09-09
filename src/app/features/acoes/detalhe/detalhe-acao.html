@@ -1,0 +1,92 @@
+<section class="tela">
+  <a class="voltar" routerLink="/acoes">Voltar às ações</a>
+
+  @if (textoDoErro(); as mensagem) {
+    <app-mensagem-feedback
+      [nivel]="nivelDoErro()"
+      [mensagem]="mensagem"
+      [codigo]="codigoDoErro()"
+    />
+  }
+
+  @if (carregando()) {
+    <div class="esqueleto" aria-hidden="true"><span></span><span></span></div>
+  } @else if (acao(); as acao) {
+    <header>
+      <div>
+        <h1 data-ticker>{{ acao.ticker }}</h1>
+        <p class="empresa" data-empresa>{{ acao.nomeEmpresa }}</p>
+      </div>
+      <button mat-stroked-button type="button" data-remover (click)="pedirRemocao()">
+        Remover do catálogo
+      </button>
+    </header>
+
+    <dl class="dados">
+      <div><dt>Mercado</dt><dd data-mercado>{{ rotuloDoMercado(acao.mercado) }}</dd></div>
+      <div><dt>Moeda</dt><dd data-moeda>{{ acao.moeda }}</dd></div>
+    </dl>
+
+    <div class="cotacao">
+      <h2>Cotação</h2>
+      <app-valor-com-horario
+        [valor]="acao.cotacaoAtual"
+        [moeda]="acao.moeda"
+        [obtidoEm]="acao.dataHoraCotacao"
+      />
+      <button
+        mat-flat-button
+        type="button"
+        data-atualizar
+        [disabled]="atualizando()"
+        (click)="atualizarCotacao()"
+      >
+        {{ atualizando() ? 'Consultando…' : 'Atualizar cotação' }}
+      </button>
+      <p class="apoio">
+        O preço não se atualiza sozinho: a fonte é compartilhada por todos os investidores
+        e a consulta acontece só quando você pede.
+      </p>
+    </div>
+
+    @if (resultadoDaAtualizacao(); as resultado) {
+      <p
+        class="resultado"
+        data-resultado-atualizacao
+        role="status"
+        [attr.data-desfecho]="desfecho()"
+      >
+        {{ resultado }}
+      </p>
+    }
+
+    @if (desfecho() === 'continua-atual') {
+      <div class="forcar">
+        <p class="apoio" data-aviso-cota>
+          Precisa de um preço mais novo agora? Buscar na fonte antes dos 15 minutos consome
+          a cota de consultas que todos os investidores dividem.
+        </p>
+        <button
+          mat-stroked-button
+          type="button"
+          data-forcar
+          [disabled]="atualizando()"
+          (click)="forcarAtualizacao()"
+        >
+          Buscar preço novo mesmo assim
+        </button>
+      </div>
+    }
+
+    @if (confirmandoRemocao()) {
+      <app-dialogo-confirmacao
+        titulo="Remover esta ação?"
+        consequencia="Ela sai do catálogo para todos os investidores e não aparece mais nas listas nem nos formulários de compra. Não há como desfazer."
+        rotuloConfirmar="Remover"
+        [ocupado]="removendo()"
+        (confirmar)="confirmarRemocao()"
+        (cancelar)="cancelarRemocao()"
+      />
+    }
+  }
+</section>

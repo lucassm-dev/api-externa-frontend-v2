@@ -1,0 +1,85 @@
+<section class="tela">
+  <header>
+    <h1>Ações</h1>
+    <a mat-flat-button routerLink="/acoes/nova">Cadastrar ação</a>
+  </header>
+
+  <p class="apoio" data-catalogo-compartilhado>
+    Este catálogo é compartilhado entre todos os investidores: cada ticker existe uma vez
+    só no sistema, e uma ação cadastrada por qualquer um serve a todos.
+  </p>
+
+  <form class="busca" (ngSubmit)="buscar(termo())">
+    <mat-form-field appearance="outline">
+      <mat-label>Buscar por ticker</mat-label>
+      <input
+        matInput
+        name="termo"
+        autocomplete="off"
+        autocapitalize="characters"
+        aria-label="Buscar por ticker"
+        [ngModel]="termo()"
+        (ngModelChange)="termo.set($event)"
+      />
+    </mat-form-field>
+    <button mat-button type="submit" [disabled]="buscando()">Buscar</button>
+  </form>
+
+  @if (tickerSemResultado(); as ticker) {
+    <div class="vazio" data-busca-vazia>
+      <p>Nenhuma ação com o ticker {{ ticker }} está no catálogo.</p>
+      <a mat-flat-button data-cadastrar-buscado routerLink="/acoes/nova" [queryParams]="{ ticker }">
+        Cadastrar este ticker
+      </a>
+      <button mat-button type="button" (click)="limparBusca()">Limpar busca</button>
+    </div>
+  }
+
+  @if (carregando()) {
+    <div class="esqueleto" aria-hidden="true"><span></span><span></span><span></span></div>
+  } @else if (pagina(); as pagina) {
+    @if (pagina.content.length === 0) {
+      <p class="apoio">Nenhuma ação cadastrada ainda.</p>
+    } @else {
+      <ul class="catalogo">
+        @for (acao of pagina.content; track acao.id) {
+          <li class="linha" data-acao [attr.data-acao-id]="acao.id">
+            <a class="ticker" data-ticker [routerLink]="['/acoes', acao.ticker]">
+              {{ acao.ticker }}
+            </a>
+            <span class="empresa" data-empresa>{{ acao.nomeEmpresa }}</span>
+            <span class="mercado" data-mercado>{{ rotuloDoMercado(acao.mercado) }}</span>
+            <span class="moeda" data-moeda>{{ acao.moeda }}</span>
+            <app-valor-com-horario
+              [valor]="acao.cotacaoAtual"
+              [moeda]="acao.moeda"
+              [obtidoEm]="acao.dataHoraCotacao"
+            />
+          </li>
+        }
+      </ul>
+
+      @if (pagina.totalPages > 1) {
+        <nav class="paginacao" aria-label="Páginas do catálogo">
+          <button
+            mat-button
+            type="button"
+            [disabled]="pagina.number === 0"
+            (click)="irPara(pagina.number - 1)"
+          >
+            Anterior
+          </button>
+          <span>Página {{ pagina.number + 1 }} de {{ pagina.totalPages }}</span>
+          <button
+            mat-button
+            type="button"
+            [disabled]="pagina.number + 1 >= pagina.totalPages"
+            (click)="irPara(pagina.number + 1)"
+          >
+            Próxima
+          </button>
+        </nav>
+      }
+    }
+  }
+</section>

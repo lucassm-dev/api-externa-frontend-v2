@@ -1,0 +1,82 @@
+<section class="tela">
+  <h1>Cadastrar ação</h1>
+  <p class="apoio">
+    Informe o ticker e o mercado. O nome da empresa, a moeda e a cotação vêm da fonte
+    daquele mercado — a ação entra no catálogo compartilhado, disponível para todos os
+    investidores.
+  </p>
+
+  @if (textoDoErro(); as mensagem) {
+    <app-mensagem-feedback nivel="erro" [mensagem]="mensagem" [codigo]="codigoDoErro()" />
+  }
+
+  @if (acaoExistente(); as existente) {
+    <article class="existente" data-existente>
+      <h2>{{ existente.ticker }}</h2>
+      <p class="empresa">{{ existente.nomeEmpresa }}</p>
+      <a mat-flat-button data-abrir [routerLink]="['/acoes', existente.ticker]">
+        Ver esta ação
+      </a>
+    </article>
+  }
+
+  @if (verificandoCarteira()) {
+    <div class="esqueleto" aria-hidden="true"><span></span><span></span></div>
+  } @else if (bloqueado() || faltaCarteira()) {
+    <div class="pre-requisito" data-sem-carteira>
+      <h2>Antes, uma carteira</h2>
+      <p>
+        Crie uma carteira antes de cadastrar ações. É nela que as compras e vendas desta
+        ação serão registradas, e o sistema exige ao menos uma carteira ativa para aceitar
+        o cadastro.
+      </p>
+      <a
+        mat-flat-button
+        data-criar-carteira
+        routerLink="/carteiras/nova"
+        [queryParams]="{ voltarPara: '/acoes/nova' }"
+      >
+        Criar carteira
+      </a>
+    </div>
+  } @else {
+    <form [formGroup]="formulario" (ngSubmit)="enviar()" novalidate>
+      <mat-form-field appearance="outline">
+        <mat-label>Ticker</mat-label>
+        <input
+          matInput
+          data-campo-ticker
+          formControlName="ticker"
+          autocomplete="off"
+          autocapitalize="characters"
+          aria-label="Ticker"
+        />
+        <mat-hint>O código do papel na bolsa, como PETR4 ou AAPL.</mat-hint>
+        @if (formulario.controls.ticker.touched && formulario.controls.ticker.invalid) {
+          <mat-error>
+            {{ formulario.controls.ticker.errors?.['servidor'] ?? 'Informe o ticker da ação.' }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <label class="campo">
+        <span class="rotulo">Mercado</span>
+        <select data-campo-mercado formControlName="mercado">
+          @for (opcao of mercados; track opcao.valor) {
+            <option [value]="opcao.valor">{{ opcao.rotulo }}</option>
+          }
+        </select>
+      </label>
+
+      <button mat-flat-button type="submit" data-enviar [disabled]="consultando()">
+        {{ consultando() ? 'Consultando…' : 'Cadastrar ação' }}
+      </button>
+    </form>
+
+    @if (consultando()) {
+      <p class="consultando" data-consultando role="status">
+        Consultando a fonte de cotação do mercado escolhido. Isso leva alguns segundos.
+      </p>
+    }
+  }
+</section>

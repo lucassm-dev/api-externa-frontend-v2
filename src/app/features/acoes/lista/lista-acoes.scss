@@ -1,0 +1,95 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-4);
+
+  h1 {
+    margin: 0;
+  }
+}
+
+.apoio {
+  margin: var(--espaco-2) 0 var(--espaco-5);
+  max-width: 70ch;
+  color: var(--cor-texto-fraco);
+}
+
+.busca {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-2);
+  margin-bottom: var(--espaco-4);
+}
+
+.vazio {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espaco-3);
+  margin-bottom: var(--espaco-4);
+  padding: var(--espaco-4);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+
+  p {
+    margin: 0;
+    flex: 1 1 100%;
+  }
+}
+
+.catalogo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.linha {
+  display: grid;
+  grid-template-columns: 5rem minmax(180px, 2fr) 1fr 4rem auto;
+  align-items: center;
+  gap: var(--espaco-3);
+  padding: var(--espaco-3) var(--espaco-4);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+}
+
+.ticker {
+  font-weight: 700;
+  color: var(--cor-texto);
+}
+
+.empresa {
+  color: var(--cor-texto);
+}
+
+.mercado,
+.moeda {
+  color: var(--cor-texto-fraco);
+  font-size: var(--texto-pequeno);
+}
+
+.paginacao {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-3);
+  margin-top: var(--espaco-4);
+  color: var(--cor-texto-fraco);
+}
+
+.esqueleto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+
+  span {
+    height: 48px;
+    border-radius: var(--raio);
+    background: var(--cor-superficie-alta);
+  }
+}
