@@ -1,0 +1,36 @@
+@use '@angular/material' as mat;
+@use 'styles/tokens';
+@use 'styles/tema';
+
+html {
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+  color-scheme: light dark;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.mat-mdc-snack-bar-container.notificacao-feedback {
+  --mat-snack-bar-container-color: transparent;
+  --mat-snack-bar-supporting-text-color: var(--cor-texto);
+  --mat-snack-bar-button-color: var(--cor-acento);
+}
+
+body {
+  min-width: var(--largura-minima-app);
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font: var(--texto-base) / 1.5 var(--fonte);
+}
