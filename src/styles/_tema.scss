@@ -1,0 +1,26 @@
+// Escalas e medidas do produto. Desktop apenas no v1 (PRD-001): sem breakpoints
+// de celular, sem menu para tela pequena.
+
+:root {
+  --espaco-1: 4px;
+  --espaco-2: 8px;
+  --espaco-3: 12px;
+  --espaco-4: 16px;
+  --espaco-5: 24px;
+  --espaco-6: 32px;
+
+  --raio: 6px;
+  --raio-grande: 10px;
+  --largura-minima-app: 1024px;
+
+  --sombra-baixa: 0 1px 2px var(--cor-sombra);
+  --sombra-media: 0 8px 24px var(--cor-sombra);
+  --sombra-alta: 0 16px 40px var(--cor-sombra);
+
+  --fonte: 'Roboto', 'Segoe UI', system-ui, sans-serif;
+  --fonte-numero: 'Roboto Mono', ui-monospace, 'SF Mono', monospace;
+
+  --texto-pequeno: 12px;
+  --texto-base: 14px;
+  --texto-grande: 18px;
+}

@@ -1,0 +1,131 @@
+// Único lugar do produto onde cor é escrita. Nenhuma tela define cor própria (P-003).
+// Claro e escuro são obrigatórios (PRD-001), e nada é comunicado só por cor:
+// ganho e perda também têm sinal, dado defasado também tem marcação além da cor.
+
+:root,
+:root[data-tema='claro'] {
+  --cor-fundo: #f6f7f9;
+  --cor-superficie: #ffffff;
+  --cor-superficie-alta: #eef0f4;
+  --cor-borda: #d3d8e0;
+  --cor-texto: #14181f;
+  --cor-texto-fraco: #5b6472;
+
+  --cor-acento: #1c5dd1;
+  --cor-acento-contraste: #ffffff;
+
+  // Destaque de marca: somente preenchimento com texto escuro por cima.
+  --cor-destaque: #eaef1b;
+  --cor-destaque-texto: #14181f;
+
+  --cor-alta: #0f6f47;
+  --cor-baixa: #b3261e;
+  --cor-estavel: #5b6472;
+
+  --cor-info-borda: #7f93b3;
+  --cor-info-fundo: #eaf0fa;
+  --cor-info-texto: #1b3a66;
+
+  --cor-aviso-borda: #b8770a;
+  --cor-aviso-fundo: #fdf3e0;
+  --cor-aviso-texto: #6b4304;
+
+  --cor-erro-borda: #b3261e;
+  --cor-erro-fundo: #fdecea;
+  --cor-erro-texto: #7d1911;
+
+  --cor-sucesso-borda: #3a8f6b;
+  --cor-sucesso-fundo: #e6f7ef;
+  --cor-sucesso-texto: #0f5f3f;
+
+  // Superfície própria da barra de mercado, escura nos dois temas.
+  --cor-barra-mercado-fundo: #0b1017;
+  --cor-barra-mercado-texto: #f5f7fa;
+  --cor-barra-mercado-borda: #303a4a;
+  --cor-barra-mercado-fraco: #adb8c8;
+
+  --cor-sombra: #14181f24;
+
+  --cor-defasado-fundo: #fdf3e0;
+  --cor-defasado-texto: #6b4304;
+
+  // Séries dos gráficos de desempenho. Ordem fixa: a fatia de um ativo nunca
+  // muda de cor porque outro entrou ou saiu. Validada para daltonismo nas duas
+  // superfícies — e mesmo assim nenhum gráfico depende só dela: toda fatia tem
+  // rótulo próprio com ticker, valor e percentual.
+  --cor-serie-1: #2a78d6;
+  --cor-serie-2: #eb6834;
+  --cor-serie-3: #1baf7a;
+  --cor-serie-4: #eda100;
+  --cor-serie-5: #e87ba4;
+  --cor-serie-6: #008300;
+  --cor-serie-7: #4a3aa7;
+  --cor-serie-8: #e34948;
+  --cor-serie-resto: #5b6472;
+
+  --cor-grafico-eixo: #c3c2b7;
+  --cor-grafico-grade: #e1e0d9;
+
+  // Véu do diálogo de confirmação. Escurece o que está atrás sem esconder.
+  --cor-sombra-modal: #14181fa6;
+}
+
+:root[data-tema='escuro'] {
+  --cor-fundo: #10141a;
+  --cor-superficie: #171d26;
+  --cor-superficie-alta: #202836;
+  --cor-borda: #303a4a;
+  --cor-texto: #e8ecf2;
+  --cor-texto-fraco: #9aa5b4;
+
+  --cor-acento: #7aa8f5;
+  --cor-acento-contraste: #0b1017;
+
+  --cor-destaque: #eaef1b;
+  --cor-destaque-texto: #14181f;
+
+  --cor-alta: #5fd39b;
+  --cor-baixa: #ff8a80;
+  --cor-estavel: #9aa5b4;
+
+  --cor-info-borda: #5b7fb8;
+  --cor-info-fundo: #16233a;
+  --cor-info-texto: #b9cdec;
+
+  --cor-aviso-borda: #d8a33c;
+  --cor-aviso-fundo: #33270f;
+  --cor-aviso-texto: #f2d69a;
+
+  --cor-erro-borda: #ff8a80;
+  --cor-erro-fundo: #371714;
+  --cor-erro-texto: #ffc4bd;
+
+  --cor-sucesso-borda: #4ea77e;
+  --cor-sucesso-fundo: #123326;
+  --cor-sucesso-texto: #b9f2d5;
+
+  --cor-barra-mercado-fundo: #080c12;
+  --cor-barra-mercado-texto: #f5f7fa;
+  --cor-barra-mercado-borda: #303a4a;
+  --cor-barra-mercado-fraco: #adb8c8;
+
+  --cor-sombra: #05080c66;
+
+  --cor-defasado-fundo: #33270f;
+  --cor-defasado-texto: #f2d69a;
+
+  --cor-serie-1: #3987e5;
+  --cor-serie-2: #d95926;
+  --cor-serie-3: #199e70;
+  --cor-serie-4: #c98500;
+  --cor-serie-5: #d55181;
+  --cor-serie-6: #008300;
+  --cor-serie-7: #9085e9;
+  --cor-serie-8: #e66767;
+  --cor-serie-resto: #9aa5b4;
+
+  --cor-grafico-eixo: #383835;
+  --cor-grafico-grade: #2c2c2a;
+
+  --cor-sombra-modal: #05080cc4;
+}

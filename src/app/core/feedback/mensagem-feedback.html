@@ -1,0 +1,25 @@
+<div class="mensagem" [attr.data-nivel]="nivel()" [attr.role]="apresentacao().papel">
+  <span class="simbolo" data-simbolo aria-hidden="true">
+    @switch (nivel()) {
+      @case ('informacao') {
+        <svg lucideInfo data-icone="informacao" aria-hidden="true" focusable="false"></svg>
+      }
+      @case ('aviso') {
+        <svg lucideTriangleAlert data-icone="aviso" aria-hidden="true" focusable="false"></svg>
+      }
+      @case ('erro') {
+        <svg lucideCircleX data-icone="erro" aria-hidden="true" focusable="false"></svg>
+      }
+      @case ('sucesso') {
+        <svg lucideCircleCheck data-icone="sucesso" aria-hidden="true" focusable="false"></svg>
+      }
+    }
+  </span>
+  <div class="corpo">
+    <span class="rotulo" data-rotulo>{{ apresentacao().rotulo }}</span>
+    <p class="texto" data-mensagem>{{ mensagem() }}</p>
+    @if (codigo()) {
+      <span class="codigo" data-codigo>Código {{ codigo() }}</span>
+    }
+  </div>
+</div>
