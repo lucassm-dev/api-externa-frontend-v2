@@ -1,0 +1,41 @@
+<dl class="numeros" data-numeros-desempenho>
+  <div class="numero">
+    <dt>Valor investido</dt>
+    <dd data-valor-investido>{{ investido() }}</dd>
+  </div>
+
+  <div class="numero">
+    <dt>Valor de mercado</dt>
+    <dd data-valor-de-mercado>{{ mercado() }}</dd>
+  </div>
+
+  <div class="numero">
+    <dt>Resultado não realizado</dt>
+    <dd data-nao-realizado>
+      <app-variacao [valor]="resultados().naoRealizado" moeda="BRL" />
+      @if (resultados().naoRealizadoPercentual; as percentual) {
+        <span class="percentual" data-nao-realizado-percentual>
+          <app-variacao [valor]="percentual" [percentual]="true" />
+        </span>
+      }
+    </dd>
+    <p class="nota">Ainda em aberto nas posições. Muda a cada cotação.</p>
+  </div>
+
+  <div class="numero">
+    <dt>Resultado realizado</dt>
+    @if (resultados().realizado === null) {
+      <dd data-realizado-indisponivel>Não foi possível ler o resultado apurado.</dd>
+    } @else {
+      <dd data-realizado>
+        <app-variacao [valor]="resultados().realizado ?? 0" moeda="BRL" />
+        @if (resultados().realizadoPercentual; as percentual) {
+          <span class="percentual" data-realizado-percentual>
+            <app-variacao [valor]="percentual" [percentual]="true" />
+          </span>
+        }
+      </dd>
+      <p class="nota">Já apurado nas vendas. Não muda com a cotação.</p>
+    }
+  </div>
+</dl>

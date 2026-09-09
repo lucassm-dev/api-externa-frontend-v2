@@ -1,0 +1,42 @@
+<section class="grafico" data-grafico-composicao>
+  <header>
+    <h2>Composição da carteira</h2>
+    <p class="apoio">
+      Como o valor de mercado de hoje está distribuído entre os ativos. Retrato do agora, não
+      uma linha do tempo.
+    </p>
+  </header>
+
+  @if (ressalva(); as ressalva) {
+    <div class="ressalva" data-ressalva-composicao>
+      <app-mensagem-feedback nivel="aviso" [mensagem]="ressalva" />
+    </div>
+  }
+
+  @if (fatias().length === 0) {
+    <p class="vazio" data-sem-composicao>Nenhuma posição aberta para compor.</p>
+  } @else {
+    <ol class="fatias">
+      @for (fatia of fatias(); track fatia.ticker) {
+        <li class="fatia" [attr.data-fatia]="fatia.ticker">
+          <span class="ticker" data-fatia-ticker>{{ fatia.ticker }}</span>
+          <svg class="barra" height="10" aria-hidden="true">
+            <rect
+              data-fatia-barra
+              x="0"
+              y="0"
+              height="10"
+              rx="4"
+              [attr.width]="fatia.participacao + '%'"
+              [attr.fill]="fatia.cor"
+            />
+          </svg>
+          <span class="participacao" data-fatia-participacao>{{ fatia.participacaoFormatada }}</span>
+          <span class="valor" data-fatia-valor>{{ fatia.valorFormatado }}</span>
+        </li>
+      }
+    </ol>
+
+    <p class="soma" data-soma-composicao>Soma das fatias: {{ soma() }}</p>
+  }
+</section>

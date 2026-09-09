@@ -1,0 +1,49 @@
+<section class="grafico" data-grafico-realizado>
+  <header>
+    <h2>Resultado realizado por ativo</h2>
+    <p class="apoio">
+      O que cada ativo já rendeu em vendas apuradas. Número fechado: não muda com a cotação.
+    </p>
+  </header>
+
+  @if (desenhadas().length === 0) {
+    <p class="vazio" data-sem-realizado>
+      Você ainda não vendeu nada nesta carteira. O resultado realizado aparece aqui depois da
+      primeira venda.
+    </p>
+  } @else {
+    <ol class="barras">
+      @for (barra of desenhadas(); track barra.ticker) {
+        <li class="linha" [attr.data-realizado]="barra.ticker" [attr.data-direcao]="barra.ganho ? 'alta' : 'baixa'">
+          <span class="ticker" data-realizado-ticker>{{ barra.ticker }}</span>
+          <svg class="barra" height="10" aria-hidden="true">
+            <rect
+              data-realizado-barra
+              y="0"
+              height="10"
+              rx="4"
+              [attr.x]="barra.inicio + '%'"
+              [attr.width]="barra.largura + '%'"
+              [attr.fill]="barra.ganho ? 'var(--cor-alta)' : 'var(--cor-baixa)'"
+            />
+            <line
+              class="zero"
+              data-linha-zero
+              x1="50%"
+              x2="50%"
+              y1="0"
+              y2="10"
+              stroke="var(--cor-grafico-eixo)"
+              stroke-width="2"
+            />
+          </svg>
+          <span class="valor" data-realizado-valor>
+            <app-variacao [valor]="barra.valor" moeda="BRL" />
+          </span>
+        </li>
+      }
+    </ol>
+
+    <p class="total" data-total-realizado>Total apurado pelo servidor: {{ totalFormatado() }}</p>
+  }
+</section>

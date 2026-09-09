@@ -1,0 +1,45 @@
+<section class="grafico" data-grafico-contribuicao>
+  <header>
+    <h2>Contribuição por ativo</h2>
+    <p class="apoio">
+      Quanto cada posição está puxando o resultado não realizado, agora. Ganho à direita da
+      linha, perda à esquerda.
+    </p>
+  </header>
+
+  @if (desenhadas().length === 0) {
+    <p class="vazio" data-sem-contribuicao>Nenhuma posição aberta para contribuir.</p>
+  } @else {
+    <ol class="barras">
+      @for (barra of desenhadas(); track barra.ticker) {
+        <li class="linha" [attr.data-contribuicao]="barra.ticker" [attr.data-direcao]="barra.ganho ? 'alta' : 'baixa'">
+          <span class="ticker" data-contribuicao-ticker>{{ barra.ticker }}</span>
+          <svg class="barra" height="10" aria-hidden="true">
+            <rect
+              data-contribuicao-barra
+              y="0"
+              height="10"
+              rx="4"
+              [attr.x]="barra.inicio + '%'"
+              [attr.width]="barra.largura + '%'"
+              [attr.fill]="barra.ganho ? 'var(--cor-alta)' : 'var(--cor-baixa)'"
+            />
+            <line
+              class="zero"
+              data-linha-zero
+              x1="50%"
+              x2="50%"
+              y1="0"
+              y2="10"
+              stroke="var(--cor-grafico-eixo)"
+              stroke-width="2"
+            />
+          </svg>
+          <span class="valor" data-contribuicao-valor>
+            <app-variacao [valor]="barra.valor" moeda="BRL" />
+          </span>
+        </li>
+      }
+    </ol>
+  }
+</section>

@@ -1,0 +1,33 @@
+.confissoes {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  background: var(--cor-superficie-alta);
+}
+
+.confissao {
+  margin: 0;
+  font-size: 0.8125rem;
+}
+
+[data-aviso-snapshot][data-defasado='true'] {
+  padding: 0.5rem;
+  border-radius: 6px;
+  background: var(--cor-defasado-fundo);
+  color: var(--cor-defasado-texto);
+}
+
+.cambio {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 0.8125rem;
+}
+
+.rotulo {
+  color: var(--cor-texto-fraco);
+}

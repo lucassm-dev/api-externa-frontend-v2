@@ -1,0 +1,98 @@
+.tela {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.apoio {
+  margin: 0.25rem 0 0;
+  color: var(--cor-texto-fraco);
+  font-size: 0.875rem;
+}
+
+.seletor {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.rotulo {
+  color: var(--cor-texto-fraco);
+  font-size: 0.8125rem;
+}
+
+select {
+  padding: 0.5rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  font: inherit;
+}
+
+.graficos {
+  display: grid;
+  gap: 1rem;
+}
+
+.convite {
+  display: grid;
+  justify-items: start;
+  gap: 0.5rem;
+  padding: 2rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  background: var(--cor-superficie);
+}
+
+.convite h2 {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.convite p {
+  margin: 0;
+  color: var(--cor-texto-fraco);
+}
+
+.convite a {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: var(--cor-acento);
+  color: var(--cor-acento-contraste);
+  text-decoration: none;
+}
+
+.indisponivel {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  background: var(--cor-superficie);
+  color: var(--cor-texto-fraco);
+  font-size: 0.875rem;
+}
+
+.esqueleto {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.esqueleto span {
+  display: block;
+  height: 4rem;
+  border-radius: 8px;
+  background: var(--cor-superficie-alta);
+}

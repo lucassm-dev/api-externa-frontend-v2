@@ -1,0 +1,43 @@
+<section class="confissoes" data-confissoes>
+  <p class="confissao" data-aviso-dividendos>
+    <strong>A rentabilidade não inclui dividendos nem JCP.</strong>
+    O produto não guarda esse dado: um ativo que distribuiu dinheiro aparece aqui com resultado
+    menor do que o real.
+  </p>
+
+  <p class="confissao" data-aviso-snapshot [attr.data-defasado]="maisAntigaDefasada()">
+    <strong>Os preços são snapshots, com idades diferentes entre si.</strong>
+    @if (horarioMaisAntigo(); as horario) {
+      A cotação mais antiga desta carteira é de <span data-horario-mais-antigo>{{ horario }}</span>,
+      e é ela que qualifica a tela.
+    } @else {
+      Não há cotação nesta carteira para datar.
+    }
+  </p>
+
+  @if (defasados().length > 0) {
+    <div class="confissao" data-aviso-defasagem>
+      <app-mensagem-feedback
+        nivel="aviso"
+        [mensagem]="
+          'Preço defasado em ' +
+          defasados().join(', ') +
+          '. Atualize a cotação no catálogo de ações antes de decidir com estes números.'
+        "
+      />
+    </div>
+  }
+
+  @if (taxaCambio() !== null && dataHoraTaxaCambio() !== null) {
+    <p class="cambio" data-taxa-cambio>
+      <span class="rotulo">Dólar usado na conversão</span>
+      <app-valor-com-horario [valor]="taxaCambio() ?? 0" [obtidoEm]="dataHoraTaxaCambio() ?? ''" />
+    </p>
+  }
+
+  @for (aviso of avisosDoConsolidado(); track aviso) {
+    <div class="confissao" data-aviso-consolidado>
+      <app-mensagem-feedback nivel="aviso" [mensagem]="aviso" />
+    </div>
+  }
+</section>

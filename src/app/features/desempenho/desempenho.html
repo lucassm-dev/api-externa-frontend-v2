@@ -1,0 +1,86 @@
+<section class="tela">
+  <header class="cabecalho">
+    <div class="titulo">
+      <h1>Desempenho</h1>
+      <p class="apoio">
+        O retrato de uma carteira agora — quanto você investiu, quanto vale hoje e quem está
+        puxando o resultado.
+      </p>
+    </div>
+
+    @if (carteiras(); as carteiras) {
+      @if (carteiras.length > 0) {
+        <label class="seletor">
+          <span class="rotulo">Carteira</span>
+          <select
+            data-seletor-carteira
+            [value]="carteiraSelecionada()"
+            (change)="escolher($any($event.target).value)"
+          >
+            @for (carteira of carteiras; track carteira.id) {
+              <option [value]="carteira.id" [selected]="carteira.id === carteiraSelecionada()">
+                {{ carteira.nome }}
+              </option>
+            }
+          </select>
+        </label>
+      }
+    }
+  </header>
+
+  @if (carregandoCarteiras() || carregandoDados()) {
+    <div class="esqueleto" data-esqueleto-desempenho aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+  } @else if (semCarteira()) {
+    <div class="convite" data-convite-carteira>
+      <h2>Crie sua primeira carteira</h2>
+      <p>O desempenho começa a existir quando há uma carteira com operações registradas.</p>
+      <a routerLink="/carteiras/nova">Criar carteira</a>
+    </div>
+  } @else if (semOperacao()) {
+    <div class="convite" data-convite-primeira-compra>
+      <h2>Registre sua primeira compra</h2>
+      <p>
+        Esta carteira ainda não tem posição nem venda apurada. Assim que houver uma compra
+        registrada, os números e os gráficos aparecem aqui.
+      </p>
+      <a
+        routerLink="/operacoes"
+        [queryParams]="{ carteira: carteiraSelecionada(), tipo: 'COMPRA' }"
+        >Registrar compra</a
+      >
+    </div>
+  } @else if (dados(); as dados) {
+    @if (resultados(); as resultados) {
+      <app-numeros-desempenho [resultados]="resultados" />
+    } @else {
+      <p class="indisponivel" data-consolidado-indisponivel>
+        Não foi possível ler os totais desta carteira agora.
+      </p>
+    }
+
+    <app-confissoes-desempenho
+      [idade]="idade()"
+      [avisosDoConsolidado]="consolidado()?.avisos ?? []"
+      [taxaCambio]="consolidado()?.taxaCambioAtual ?? null"
+      [dataHoraTaxaCambio]="consolidado()?.dataHoraTaxaCambio ?? null"
+    />
+
+    <div class="graficos">
+      @if (composicao(); as composicao) {
+        <app-grafico-composicao [composicao]="composicao" />
+      }
+      @if (contribuicao(); as contribuicao) {
+        <app-grafico-contribuicao [barras]="contribuicao" />
+      }
+      @if (realizado(); as realizado) {
+        <app-grafico-realizado [barras]="realizado" [total]="dados.lucroRealizado?.total ?? 0" />
+      } @else {
+        <p class="indisponivel" data-realizado-indisponivel>
+          Não foi possível ler o resultado já apurado nas vendas.
+        </p>
+      }
+    </div>
+  }
+</section>
