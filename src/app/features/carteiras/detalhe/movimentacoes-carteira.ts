@@ -7,6 +7,9 @@ import {
   formatarMoeda,
   formatarNumero,
 } from '../../../core/formatacao/formatacao';
+import { Esqueleto } from '../../../shared/esqueleto/esqueleto';
+import { Monograma } from '../../../shared/monograma/monograma';
+import { Selo, VarianteSelo } from '../../../shared/selo/selo';
 import { ExtratoBuscado, MovimentacaoDoExtrato } from '../carteiras.model';
 import { recortarPorCarteira } from '../movimentacoes-da-carteira';
 
@@ -26,7 +29,7 @@ export const AVISO_DE_RECALCULO_NA_CARTEIRA =
 @Component({
   selector: 'app-movimentacoes-carteira',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, MatButtonModule, DialogoConfirmacao],
+  imports: [RouterLink, MatButtonModule, DialogoConfirmacao, Esqueleto, Monograma, Selo],
   templateUrl: './movimentacoes-carteira.html',
   styleUrl: './movimentacoes-carteira.scss',
 })
@@ -34,6 +37,7 @@ export class MovimentacoesCarteira {
   readonly extrato = input.required<ExtratoBuscado>();
   readonly carteiraId = input.required<number>();
   readonly excluindo = input(false);
+  readonly carregando = input(false);
 
   readonly editar = output<MovimentacaoDoExtrato>();
   readonly excluir = output<MovimentacaoDoExtrato>();
@@ -64,6 +68,12 @@ export class MovimentacoesCarteira {
 
   protected quando(movimentacao: MovimentacaoDoExtrato): string {
     return formatarDataHora(movimentacao.dataHora);
+  }
+
+  protected varianteDoTipo(movimentacao: MovimentacaoDoExtrato): VarianteSelo {
+    if (movimentacao.tipo === 'COMPRA') return 'alta';
+    if (movimentacao.tipo === 'VENDA') return 'baixa';
+    return 'estavel';
   }
 
   protected quantidade(movimentacao: MovimentacaoDoExtrato): string | null {

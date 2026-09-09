@@ -1,7 +1,7 @@
 <section class="movimentacoes">
   <h2>Movimentações desta carteira</h2>
 
-  @if (recorte().parcial) {
+  @if (!carregando() && recorte().parcial) {
     <p class="recorte" data-recorte-parcial>
       Seu extrato tem mais operações do que cabe aqui: estas são as
       {{ recorte().buscadas }} mais recentes de todas as suas carteiras, já filtradas para esta.
@@ -9,34 +9,71 @@
     </p>
   }
 
-  @if (recorte().movimentacoes.length === 0) {
-    <p class="vazio" data-sem-movimentacao>Nenhuma movimentação registrada nesta carteira.</p>
+  @if (carregando()) {
+    <app-esqueleto formato="tabela" data-carregando-movimentacoes />
+  } @else if (recorte().movimentacoes.length === 0) {
+    <div class="vazio" data-sem-movimentacao>
+      <p>Nenhuma movimentação registrada nesta carteira.</p>
+      <a routerLink="/operacoes" data-proximo-passo>Registrar uma operação</a>
+    </div>
   } @else {
-    <ul class="linhas">
-      @for (movimentacao of recorte().movimentacoes; track movimentacao.id) {
-        <li class="linha" [attr.data-movimentacao]="movimentacao.id">
-          <span class="tipo" [attr.data-tipo]="movimentacao.tipo">{{ movimentacao.tipo }}</span>
-          @if (movimentacao.ticker) {
-            <strong>{{ movimentacao.ticker }}</strong>
-          }
-          @if (quantidade(movimentacao); as quantidade) {
-            <span class="quantidade">{{ quantidade }}</span>
-          }
-          @if (total(movimentacao); as total) {
-            <span class="total">{{ total }}</span>
-          }
-          <span class="quando">{{ quando(movimentacao) }}</span>
-          <span class="acoes">
-            <button mat-button type="button" data-editar (click)="editar.emit(movimentacao)">
-              Editar
-            </button>
-            <button mat-button type="button" data-excluir (click)="pedirExclusao(movimentacao)">
-              Excluir
-            </button>
-          </span>
-        </li>
-      }
-    </ul>
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th scope="col">Tipo</th>
+          <th scope="col">Ativo</th>
+          <th scope="col" data-numero>Quantidade</th>
+          <th scope="col" data-numero>Total</th>
+          <th scope="col">Quando</th>
+          <th scope="col"><span class="oculto">Ações</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (movimentacao of recorte().movimentacoes; track movimentacao.id) {
+          <tr [attr.data-movimentacao]="movimentacao.id">
+            <td>
+              <app-selo
+                [attr.data-tipo]="movimentacao.tipo"
+                [variante]="varianteDoTipo(movimentacao)"
+                [texto]="movimentacao.tipo"
+              />
+            </td>
+            <td>
+              @if (movimentacao.ticker; as ticker) {
+                <span class="ativo">
+                  <app-monograma [ticker]="ticker" />
+                  <strong>{{ ticker }}</strong>
+                </span>
+              }
+            </td>
+            <td data-numero>
+              @if (quantidade(movimentacao); as quantidade) {
+                {{ quantidade }}
+              }
+            </td>
+            <td data-numero>
+              @if (total(movimentacao); as total) {
+                {{ total }}
+              }
+            </td>
+            <td class="quando">{{ quando(movimentacao) }}</td>
+            <td class="acoes">
+              <button mat-button type="button" data-editar (click)="editar.emit(movimentacao)">
+                Editar
+              </button>
+              <button
+                mat-button
+                type="button"
+                data-excluir
+                (click)="pedirExclusao(movimentacao)"
+              >
+                Excluir
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
   }
 </section>
 

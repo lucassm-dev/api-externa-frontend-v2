@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { formatarNumero, formatarReal } from '../../../core/formatacao/formatacao';
+import { Esqueleto } from '../../../shared/esqueleto/esqueleto';
+import { Monograma } from '../../../shared/monograma/monograma';
+import { Selo, VarianteSelo } from '../../../shared/selo/selo';
 import { ValorComHorario } from '../../../shared/valor-com-horario/valor-com-horario';
 import { Variacao } from '../../../shared/variacao/variacao';
 import { Posicao } from '../carteiras.model';
@@ -15,13 +19,14 @@ import { percentualNaoRealizado } from '../rentabilidade';
 @Component({
   selector: 'app-posicoes-carteira',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ValorComHorario, Variacao],
+  imports: [RouterLink, Esqueleto, Monograma, Selo, ValorComHorario, Variacao],
   templateUrl: './posicoes-carteira.html',
   styleUrl: './posicoes-carteira.scss',
 })
 export class PosicoesCarteira {
   readonly posicoes = input.required<Posicao[]>();
   readonly lucroPorTicker = input<Record<string, number>>({});
+  readonly carregando = input(false);
 
   protected readonly formatarReal = formatarReal;
 
@@ -35,5 +40,11 @@ export class PosicoesCarteira {
 
   protected percentual(posicao: Posicao): number | null {
     return percentualNaoRealizado(posicao);
+  }
+
+  protected varianteDoResultado(valor: number): VarianteSelo {
+    if (valor > 0) return 'alta';
+    if (valor < 0) return 'baixa';
+    return 'estavel';
   }
 }

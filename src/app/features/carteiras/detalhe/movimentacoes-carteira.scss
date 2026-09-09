@@ -18,49 +18,82 @@ h2 {
   }
 }
 
-.linhas {
-  display: flex;
-  flex-direction: column;
-  gap: var(--espaco-2);
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--texto-base);
+  color: var(--cor-texto);
 }
 
-.linha {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--espaco-3);
-  align-items: baseline;
-  padding: var(--espaco-3) var(--espaco-4);
-  border: 1px solid var(--cor-borda);
-  border-radius: var(--raio);
-  background: var(--cor-superficie);
+.tabela th,
+.tabela td {
+  padding: var(--espaco-2) var(--espaco-3);
+  border-bottom: 1px solid var(--cor-borda);
+  text-align: start;
+  vertical-align: middle;
 }
 
-.tipo {
-  font-size: var(--texto-pequeno);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+.tabela thead th {
+  background: var(--cor-superficie-alta);
   color: var(--cor-texto-fraco);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+// Colunas de valor, quantidade ou percentual: alinhadas à direita, em fonte de
+// largura fixa e com dígitos de mesma largura entre linhas (AC-244).
+.tabela th[data-numero],
+.tabela td[data-numero] {
+  font-family: var(--fonte-numero);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+  text-align: right;
+}
+
+.ativo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espaco-2);
 }
 
 .quando {
-  margin-left: auto;
   color: var(--cor-texto-fraco);
   font-size: var(--texto-pequeno);
-}
-
-.vazio {
-  margin: 0;
-  padding: var(--espaco-4);
-  border: 1px dashed var(--cor-borda);
-  border-radius: var(--raio);
-  color: var(--cor-texto-fraco);
+  white-space: nowrap;
 }
 
 .acoes {
   display: flex;
   gap: var(--espaco-1);
-  margin-left: auto;
+  justify-content: flex-end;
+}
+
+.oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.vazio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+  align-items: flex-start;
+  margin: 0;
+  padding: var(--espaco-4);
+  border: 1px dashed var(--cor-borda);
+  border-radius: var(--raio);
+  color: var(--cor-texto-fraco);
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: var(--cor-acento);
+    font-weight: 600;
+  }
 }

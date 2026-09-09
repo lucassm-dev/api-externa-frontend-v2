@@ -1,55 +1,61 @@
 <section class="posicoes">
   <h2>Posições abertas</h2>
 
-  @if (posicoes().length === 0) {
-    <p class="vazio" data-sem-posicao>
-      Nenhuma posição aberta nesta carteira. Registre uma compra para começar.
-    </p>
+  @if (carregando()) {
+    <app-esqueleto formato="tabela" data-carregando-posicoes />
+  } @else if (posicoes().length === 0) {
+    <div class="vazio" data-sem-posicao>
+      <p>Nenhuma posição aberta nesta carteira.</p>
+      <a routerLink="/operacoes" [queryParams]="{ tipo: 'COMPRA' }" data-proximo-passo>
+        Registrar uma compra
+      </a>
+    </div>
   } @else {
-    <ul class="linhas">
-      @for (posicao of posicoes(); track posicao.id) {
-        <li class="linha" [attr.data-posicao]="posicao.ticker">
-          <div class="ativo">
-            <strong>{{ posicao.ticker }}</strong>
-            <span class="empresa">{{ posicao.nomeEmpresa }}</span>
-          </div>
-
-          <dl class="dados">
-            <div>
-              <dt>Quantidade</dt>
-              <dd data-quantidade>{{ quantidade(posicao) }}</dd>
-            </div>
-            <div>
-              <dt>Preço médio</dt>
-              <dd data-preco-medio>{{ formatarReal(posicao.precoMedio) }}</dd>
-            </div>
-            <div>
-              <dt>Cotação atual</dt>
-              <dd data-cotacao>
-                <app-valor-com-horario
-                  [valor]="posicao.cotacaoAtual"
-                  [obtidoEm]="posicao.dataHoraCotacao"
-                />
-              </dd>
-            </div>
-            <div>
-              <dt>Não realizado</dt>
-              <dd data-rentabilidade-valor>
-                <app-variacao [valor]="posicao.rentabilidadeNaoRealizada" moeda="BRL" />
-              </dd>
-            </div>
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th scope="col">Ativo</th>
+          <th scope="col" data-numero>Quantidade</th>
+          <th scope="col" data-numero>Preço médio</th>
+          <th scope="col" data-numero>Cotação atual</th>
+          <th scope="col" data-numero>Não realizado</th>
+          <th scope="col" data-numero>Não realizado (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (posicao of posicoes(); track posicao.id) {
+          <tr [attr.data-posicao]="posicao.ticker">
+            <td>
+              <span class="ativo">
+                <app-monograma [ticker]="posicao.ticker" />
+                <span class="identificacao">
+                  <strong>{{ posicao.ticker }}</strong>
+                  <span class="empresa">{{ posicao.nomeEmpresa }}</span>
+                </span>
+              </span>
+            </td>
+            <td data-numero data-quantidade>{{ quantidade(posicao) }}</td>
+            <td data-numero data-preco-medio>{{ formatarReal(posicao.precoMedio) }}</td>
+            <td data-numero data-cotacao>
+              <app-valor-com-horario
+                [valor]="posicao.cotacaoAtual"
+                [obtidoEm]="posicao.dataHoraCotacao"
+              />
+            </td>
+            <td data-numero data-rentabilidade-valor>
+              <app-variacao [valor]="posicao.rentabilidadeNaoRealizada" moeda="BRL" />
+            </td>
             @if (percentual(posicao); as percentual) {
-              <div>
-                <dt>Não realizado (%)</dt>
-                <dd data-rentabilidade-percentual>
-                  <app-variacao [valor]="percentual" [percentual]="true" />
-                </dd>
-              </div>
+              <td data-numero data-rentabilidade-percentual>
+                <app-variacao [valor]="percentual" [percentual]="true" />
+              </td>
+            } @else {
+              <td data-numero data-sem-percentual>—</td>
             }
-          </dl>
-        </li>
-      }
-    </ul>
+          </tr>
+        }
+      </tbody>
+    </table>
   }
 </section>
 
@@ -59,15 +65,31 @@
     <p class="apoio">
       Ativos que você zerou nesta carteira. A posição não existe mais — o resultado, sim.
     </p>
-    <ul class="linhas">
-      @for (encerrada of encerradas(); track encerrada.ticker) {
-        <li class="linha" [attr.data-encerrada]="encerrada.ticker">
-          <strong>{{ encerrada.ticker }}</strong>
-          <span data-resultado-realizado>
-            <app-variacao [valor]="encerrada.resultadoRealizado" moeda="BRL" />
-          </span>
-        </li>
-      }
-    </ul>
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th scope="col">Ativo</th>
+          <th scope="col" data-numero>Resultado realizado</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (encerrada of encerradas(); track encerrada.ticker) {
+          <tr [attr.data-encerrada]="encerrada.ticker">
+            <td>
+              <span class="ativo">
+                <app-monograma [ticker]="encerrada.ticker" />
+                <strong>{{ encerrada.ticker }}</strong>
+              </span>
+            </td>
+            <td data-numero data-resultado-realizado>
+              <app-selo
+                [variante]="varianteDoResultado(encerrada.resultadoRealizado)"
+                [texto]="formatarReal(encerrada.resultadoRealizado)"
+              />
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
   </section>
 }
