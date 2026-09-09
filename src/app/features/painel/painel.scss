@@ -1,7 +1,7 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  gap: var(--espaco-5);
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: var(--espaco-6);
   min-width: var(--largura-minima-app);
 }
 
