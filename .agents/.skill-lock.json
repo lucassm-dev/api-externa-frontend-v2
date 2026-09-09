@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "skills": {
+    "create-rfc": {
+      "name": "create-rfc",
+      "source": "local",
+      "contentHash": "3f391b6c4397bb1590bbad511eca95c297dd0467e65385fa28b3724851c42ea8",
+      "installedAt": "2026-09-09T11:10:59.527Z",
+      "updatedAt": "2026-09-09T11:10:59.537Z",
+      "agents": [
+        "cursor",
+        "claude-code",
+        "windsurf"
+      ],
+      "method": "copy",
+      "global": false
+    }
+  }
+}

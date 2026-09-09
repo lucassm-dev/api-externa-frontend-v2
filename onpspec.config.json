@@ -1,0 +1,12 @@
+{
+  "testCommand": "npx ng test",
+  "reporter": "tap",
+  "testGlobs": [
+    "src/**/*.spec.ts"
+  ],
+  "srcGlobs": [
+    "src/**",
+    "proxy.conf.json",
+    "angular.json"
+  ]
+}
