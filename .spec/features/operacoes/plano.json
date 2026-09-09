@@ -1,0 +1,296 @@
+{
+  "runId": "api-externa-frontend-v2-operacoes-mttlyga4",
+  "feature": "operacoes",
+  "agent": "claude",
+  "modo": "paralelo",
+  "paralelizar": null,
+  "modeloForcado": null,
+  "esforcoForcado": null,
+  "geradoEm": "2026-09-09 04:38",
+  "branchTrabalho": "spec/operacoes",
+  "baseDir": ".spec/features/operacoes",
+  "specDir": ".spec",
+  "repoName": "api-externa-frontend-v2",
+  "logsDir": "../onp-worktrees/api-externa-frontend-v2-operacoes-logs",
+  "ondas": [
+    [
+      "faixa-1",
+      "faixa-2",
+      "faixa-3"
+    ],
+    [
+      "faixa-4",
+      "faixa-5",
+      "faixa-6"
+    ],
+    [
+      "faixa-7",
+      "faixa-8",
+      "faixa-9"
+    ],
+    [
+      "faixa-10"
+    ]
+  ],
+  "faixas": [
+    {
+      "id": "faixa-1",
+      "branch": "spec/operacoes-faixa-1",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-operacoes-faixa-1",
+      "tarefas": [
+        {
+          "id": "T-055",
+          "titulo": "Contratos e serviço de operações",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/operacoes/operacoes.model.ts",
+            "src/app/features/operacoes/operacoes.service.ts",
+            "src/app/features/operacoes/operacoes.service.spec.ts"
+          ],
+          "refs": [
+            "AC-154",
+            "AC-163",
+            "AC-169",
+            "AC-171",
+            "AC-172",
+            "AC-176"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-2",
+      "branch": "spec/operacoes-faixa-2",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-operacoes-faixa-2",
+      "tarefas": [
+        {
+          "id": "T-056",
+          "titulo": "Preço da operação: estimativa e casas decimais",
+          "modelo": "claude-sonnet-5",
+          "esforco": "low",
+          "arquivos": [
+            "src/app/features/operacoes/preco-da-operacao.ts",
+            "src/app/features/operacoes/preco-da-operacao.spec.ts"
+          ],
+          "refs": [
+            "AC-164",
+            "AC-165"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-3",
+      "branch": "spec/operacoes-faixa-3",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-operacoes-faixa-3",
+      "tarefas": [
+        {
+          "id": "T-057",
+          "titulo": "Disponível para venda: derivação pura",
+          "modelo": "claude-sonnet-5",
+          "esforco": "low",
+          "arquivos": [
+            "src/app/features/operacoes/disponivel-para-venda.ts",
+            "src/app/features/operacoes/disponivel-para-venda.spec.ts"
+          ],
+          "refs": [
+            "AC-157",
+            "AC-158"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-4",
+      "branch": "spec/operacoes-faixa-4",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-operacoes-faixa-4",
+      "tarefas": [
+        {
+          "id": "T-058",
+          "titulo": "Formulário de compra e venda",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "src/app/features/operacoes/formulario/formulario-operacao.ts",
+            "src/app/features/operacoes/formulario/formulario-operacao.html",
+            "src/app/features/operacoes/formulario/formulario-operacao.scss",
+            "src/app/features/operacoes/formulario/formulario-operacao.spec.ts"
+          ],
+          "refs": [
+            "AC-150",
+            "AC-151",
+            "AC-152",
+            "AC-153",
+            "AC-154",
+            "AC-156",
+            "AC-157",
+            "AC-158",
+            "AC-159",
+            "AC-161",
+            "AC-162",
+            "AC-163",
+            "AC-164",
+            "AC-165"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-5",
+      "branch": "spec/operacoes-faixa-5",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-operacoes-faixa-5",
+      "tarefas": [
+        {
+          "id": "T-059",
+          "titulo": "Resultado da operação: registrada, com avisos que não são erro",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/operacoes/resultado/resultado-operacao.ts",
+            "src/app/features/operacoes/resultado/resultado-operacao.html",
+            "src/app/features/operacoes/resultado/resultado-operacao.scss",
+            "src/app/features/operacoes/resultado/resultado-operacao.spec.ts"
+          ],
+          "refs": [
+            "AC-155",
+            "AC-160",
+            "AC-166",
+            "AC-167",
+            "AC-168"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-6",
+      "branch": "spec/operacoes-faixa-6",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-operacoes-faixa-6",
+      "tarefas": [
+        {
+          "id": "T-060",
+          "titulo": "Extrato paginado, sem filtro nenhum",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "src/app/features/operacoes/extrato/extrato-operacoes.ts",
+            "src/app/features/operacoes/extrato/extrato-operacoes.html",
+            "src/app/features/operacoes/extrato/extrato-operacoes.scss",
+            "src/app/features/operacoes/extrato/extrato-operacoes.spec.ts"
+          ],
+          "refs": [
+            "AC-169",
+            "AC-170",
+            "AC-171",
+            "AC-172",
+            "AC-179",
+            "AC-180",
+            "AC-182"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-7",
+      "branch": "spec/operacoes-faixa-7",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-operacoes-faixa-7",
+      "tarefas": [
+        {
+          "id": "T-061",
+          "titulo": "Edição de quantidade e preço",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/operacoes/edicao/editar-operacao.ts",
+            "src/app/features/operacoes/edicao/editar-operacao.html",
+            "src/app/features/operacoes/edicao/editar-operacao.scss",
+            "src/app/features/operacoes/edicao/editar-operacao.spec.ts"
+          ],
+          "refs": [
+            "AC-174",
+            "AC-175",
+            "AC-176",
+            "AC-177",
+            "AC-182"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-8",
+      "branch": "spec/operacoes-faixa-8",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-operacoes-faixa-8",
+      "tarefas": [
+        {
+          "id": "T-062",
+          "titulo": "Tela de operações: formulário no topo, extrato abaixo",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "src/app/features/operacoes/operacoes.ts",
+            "src/app/features/operacoes/operacoes.html",
+            "src/app/features/operacoes/operacoes.scss",
+            "src/app/features/operacoes/operacoes.spec.ts"
+          ],
+          "refs": [
+            "AC-153",
+            "AC-156",
+            "AC-173",
+            "AC-177",
+            "AC-180"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-9",
+      "branch": "spec/operacoes-faixa-9",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-operacoes-faixa-9",
+      "tarefas": [
+        {
+          "id": "T-063",
+          "titulo": "Editar e excluir a partir da carteira, com os números recalculados",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/carteiras/detalhe/movimentacoes-carteira.ts",
+            "src/app/features/carteiras/detalhe/movimentacoes-carteira.html",
+            "src/app/features/carteiras/detalhe/movimentacoes-carteira.spec.ts",
+            "src/app/features/carteiras/detalhe/detalhe-carteira.ts",
+            "src/app/features/carteiras/detalhe/detalhe-carteira.html",
+            "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts"
+          ],
+          "refs": [
+            "AC-178",
+            "AC-181"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-10",
+      "branch": "spec/operacoes-faixa-10",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-operacoes-faixa-10",
+      "tarefas": [
+        {
+          "id": "T-064",
+          "titulo": "Rotas da área de operações",
+          "modelo": "claude-sonnet-5",
+          "esforco": "low",
+          "arquivos": [
+            "src/app/features/operacoes/operacoes.routes.ts",
+            "src/app/features/operacoes/operacoes.routes.spec.ts",
+            "src/app/app.routes.ts"
+          ],
+          "refs": [
+            "AC-150",
+            "AC-172"
+          ]
+        }
+      ]
+    }
+  ],
+  "sequenciais": [],
+  "concluidas": [],
+  "avisos": []
+}

@@ -1,0 +1,137 @@
+{
+  "runId": "api-externa-frontend-v2-repaginacao-acesso-mtuecpx9",
+  "feature": "repaginacao-acesso",
+  "agent": "claude",
+  "modo": "paralelo",
+  "paralelizar": null,
+  "modeloForcado": null,
+  "esforcoForcado": null,
+  "geradoEm": "2026-09-09 17:53",
+  "branchTrabalho": "spec/repaginacao-acesso",
+  "baseDir": ".spec/features/repaginacao-acesso",
+  "specDir": ".spec",
+  "repoName": "api-externa-frontend-v2",
+  "logsDir": "../onp-worktrees/api-externa-frontend-v2-repaginacao-acesso-logs",
+  "ondas": [
+    [
+      "faixa-1",
+      "faixa-2",
+      "faixa-3"
+    ],
+    [
+      "faixa-4"
+    ]
+  ],
+  "faixas": [
+    {
+      "id": "faixa-1",
+      "branch": "spec/repaginacao-acesso-faixa-1",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-acesso-faixa-1",
+      "tarefas": [
+        {
+          "id": "T-103",
+          "titulo": "Moldura da tela de acesso",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "src/app/features/acesso/moldura-acesso.ts",
+            "src/app/features/acesso/moldura-acesso.html",
+            "src/app/features/acesso/moldura-acesso.scss",
+            "src/app/features/acesso/moldura-acesso.spec.ts"
+          ],
+          "refs": [
+            "US-069",
+            "AC-251",
+            "AC-252",
+            "AC-253"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-2",
+      "branch": "spec/repaginacao-acesso-faixa-2",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-acesso-faixa-2",
+      "tarefas": [
+        {
+          "id": "T-104",
+          "titulo": "Medidor de força de senha",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/acesso/forca-da-senha.ts",
+            "src/app/features/acesso/forca-da-senha.html",
+            "src/app/features/acesso/forca-da-senha.scss",
+            "src/app/features/acesso/forca-da-senha.spec.ts"
+          ],
+          "refs": [
+            "US-070",
+            "AC-255"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-3",
+      "branch": "spec/repaginacao-acesso-faixa-3",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-acesso-faixa-3",
+      "tarefas": [
+        {
+          "id": "T-105",
+          "titulo": "Tela de login",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "src/app/features/acesso/login/login.ts",
+            "src/app/features/acesso/login/login.html",
+            "src/app/features/acesso/login/login.scss",
+            "src/app/features/acesso/login/login.spec.ts"
+          ],
+          "refs": [
+            "US-069",
+            "US-070",
+            "US-071",
+            "AC-251",
+            "AC-254",
+            "AC-256",
+            "AC-257",
+            "AC-258"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-4",
+      "branch": "spec/repaginacao-acesso-faixa-4",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-acesso-faixa-4",
+      "tarefas": [
+        {
+          "id": "T-106",
+          "titulo": "Tela de cadastro",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "src/app/features/acesso/cadastro/cadastro.ts",
+            "src/app/features/acesso/cadastro/cadastro.html",
+            "src/app/features/acesso/cadastro/cadastro.scss",
+            "src/app/features/acesso/cadastro/cadastro.spec.ts"
+          ],
+          "refs": [
+            "US-069",
+            "US-070",
+            "US-071",
+            "AC-251",
+            "AC-254",
+            "AC-255",
+            "AC-256",
+            "AC-257",
+            "AC-258"
+          ]
+        }
+      ]
+    }
+  ],
+  "sequenciais": [],
+  "concluidas": [],
+  "avisos": []
+}

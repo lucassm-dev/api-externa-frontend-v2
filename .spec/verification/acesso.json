@@ -1,0 +1,132 @@
+{
+  "feature": "acesso",
+  "timestamp": "2026-09-09T11:33:37.795Z",
+  "gitRev": null,
+  "command": "npx ng test",
+  "reporter": "tap",
+  "exitCode": 1,
+  "testsParsed": 420,
+  "results": {
+    "AC-025": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/acesso.service.spec.ts > Acesso ao sistema > @spec:AC-025 o cadastro envia os quatro campos para a rota pública de cadastro # time=1.14ms",
+      "method": "tap"
+    },
+    "AC-026": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/acesso.service.spec.ts > Acesso ao sistema > @spec:AC-026 cadastrar não cria sessão nem guarda a senha em lugar nenhum # time=0.56ms",
+      "method": "tap"
+    },
+    "AC-027": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/validadores.spec.ts > Validação antes do envio > @spec:AC-027 CPF precisa ter exatamente 11 dígitos numéricos # time=0.35ms",
+      "method": "tap"
+    },
+    "AC-148": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-148 o campo mostra o CPF pontuado enquanto o investidor digita # time=73.16ms",
+      "method": "tap"
+    },
+    "AC-149": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-149 o servidor recebe os 11 dígitos, sem a máscara # time=56.88ms",
+      "method": "tap"
+    },
+    "AC-028": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/validadores.spec.ts > Validação antes do envio > @spec:AC-028 senha precisa de 8 caracteres, com ao menos uma letra e um número # time=0.19ms",
+      "method": "tap"
+    },
+    "AC-029": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-029 e-mail fora de formato barra o envio antes de chamar o backend # time=47.03ms",
+      "method": "tap"
+    },
+    "AC-030": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-030 e-mail duplicado preserva o que foi digitado e destaca só o campo do e-mail # time=29.17ms",
+      "method": "tap"
+    },
+    "AC-031": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-031 CPF duplicado destaca só o CPF, sem limpar o formulário # time=35.50ms",
+      "method": "tap"
+    },
+    "AC-032": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-032 senha recusada pelo servidor destaca a senha # time=29.17ms",
+      "method": "tap"
+    },
+    "AC-033": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-033 erro de validação do servidor se distribui pelos campos, sem balão de topo # time=20.86ms",
+      "method": "tap"
+    },
+    "AC-034": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/validadores.spec.ts > Validação antes do envio > @spec:AC-034 as regras que o investidor precisa ler estão escritas, não só codificadas # time=0.11ms",
+      "method": "tap"
+    },
+    "AC-035": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/acesso.service.spec.ts > Acesso ao sistema > @spec:AC-035 entrar guarda a sessão devolvida pelo login # time=0.71ms",
+      "method": "tap"
+    },
+    "AC-036": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/login/login.spec.ts > Tela de login > @spec:AC-036 credencial incorreta não revela qual campo errou nem se a conta existe # time=56.50ms",
+      "method": "tap"
+    },
+    "AC-037": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/login/login.spec.ts > Tela de login > @spec:AC-037 o botão fica indisponível durante o envio e nenhuma segunda requisição sai # time=20.85ms",
+      "method": "tap"
+    },
+    "AC-038": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/login/login.spec.ts > Tela de login > @spec:AC-038 a tela de login não oferece recuperação de senha # time=18.58ms",
+      "method": "tap"
+    },
+    "AC-039": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/acesso.routes.spec.ts > Rotas de acesso e da área interna > @spec:AC-039 quem já tem sessão não fica na tela de login # time=37.57ms",
+      "method": "tap"
+    },
+    "AC-040": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/acesso.routes.spec.ts > Rotas de acesso e da área interna > @spec:AC-040 login e cadastro têm endereço próprio e público # time=60.25ms",
+      "method": "tap"
+    },
+    "AC-041": {
+      "status": "pass",
+      "testName": "src/app/layout/casca.spec.ts > Casca da área interna > @spec:AC-041 sair limpa a sessão e leva ao login # time=18.31ms",
+      "method": "tap"
+    },
+    "AC-042": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/acesso.routes.spec.ts > Rotas de acesso e da área interna > @spec:AC-042 sem sessão, um endereço interno não renderiza e para no login # time=484.98ms",
+      "method": "tap"
+    },
+    "AC-043": {
+      "status": "pass",
+      "testName": "src/app/layout/casca.spec.ts > Casca da área interna > @spec:AC-043 o aviso aparece a menos de 5 minutos do fim, sem nenhuma chamada ao servidor # time=29.83ms",
+      "method": "tap"
+    },
+    "AC-044": {
+      "status": "pass",
+      "testName": "src/app/layout/casca.spec.ts > Casca da área interna > @spec:AC-044 o aviso é comunicado como aviso, não bloqueia e oferece entrar novamente # time=20.75ms",
+      "method": "tap"
+    },
+    "AC-045": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/login/login.spec.ts > Tela de login > @spec:AC-045 quem chega por sessão expirada lê o motivo # time=26.72ms",
+      "method": "tap"
+    },
+    "AC-046": {
+      "status": "pass",
+      "testName": "src/app/core/sessao/sessao.service.spec.ts > Sessão > @spec:AC-046 a sessão nasce de token, tipo e expiraEm, mais o e-mail digitado — e nada além # time=0.37ms",
+      "method": "tap"
+    }
+  },
+  "principles": {}
+}

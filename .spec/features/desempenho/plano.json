@@ -1,0 +1,292 @@
+{
+  "runId": "api-externa-frontend-v2-desempenho-mtu0cnzx",
+  "feature": "desempenho",
+  "agent": "claude",
+  "modo": "paralelo",
+  "paralelizar": [
+    "T-066",
+    "T-069",
+    "T-070"
+  ],
+  "modeloForcado": null,
+  "esforcoForcado": null,
+  "geradoEm": "2026-09-09 11:21",
+  "branchTrabalho": "spec/desempenho",
+  "baseDir": ".spec/features/desempenho",
+  "specDir": ".spec",
+  "repoName": "api-externa-frontend-v2",
+  "logsDir": "../onp-worktrees/api-externa-frontend-v2-desempenho-logs",
+  "ondas": [
+    [
+      "faixa-1",
+      "faixa-2",
+      "faixa-3"
+    ]
+  ],
+  "faixas": [
+    {
+      "id": "faixa-1",
+      "branch": "spec/desempenho-faixa-1",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-desempenho-faixa-1",
+      "tarefas": [
+        {
+          "id": "T-066",
+          "titulo": "Os quatro números e os percentuais sobre o investido",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/desempenho/resultados.ts",
+            "src/app/features/desempenho/resultados.spec.ts"
+          ],
+          "refs": [
+            "AC-183",
+            "AC-184",
+            "AC-185",
+            "AC-186"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-2",
+      "branch": "spec/desempenho-faixa-2",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-desempenho-faixa-2",
+      "tarefas": [
+        {
+          "id": "T-069",
+          "titulo": "Lucro realizado por ticker",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/desempenho/realizado-por-ticker.ts",
+            "src/app/features/desempenho/realizado-por-ticker.spec.ts"
+          ],
+          "refs": [
+            "AC-202",
+            "AC-203"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-3",
+      "branch": "spec/desempenho-faixa-3",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-desempenho-faixa-3",
+      "tarefas": [
+        {
+          "id": "T-070",
+          "titulo": "Idade das cotações da carteira",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/desempenho/idade-das-cotacoes.ts",
+            "src/app/features/desempenho/idade-das-cotacoes.spec.ts"
+          ],
+          "refs": [
+            "AC-206",
+            "AC-207"
+          ]
+        }
+      ]
+    }
+  ],
+  "sequenciais": [
+    {
+      "id": "T-065",
+      "titulo": "Moeda de cada posição e conversão para real",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/desempenho/moeda-das-posicoes.ts",
+        "src/app/features/desempenho/moeda-das-posicoes.spec.ts"
+      ],
+      "refs": [
+        "AC-193",
+        "AC-199"
+      ]
+    },
+    {
+      "id": "T-067",
+      "titulo": "Composição do valor de mercado e conferência com o consolidado",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/desempenho/composicao.ts",
+        "src/app/features/desempenho/composicao.spec.ts"
+      ],
+      "refs": [
+        "AC-192",
+        "AC-194",
+        "AC-195",
+        "AC-196"
+      ]
+    },
+    {
+      "id": "T-068",
+      "titulo": "Contribuição por ativo",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/desempenho/contribuicao.ts",
+        "src/app/features/desempenho/contribuicao.spec.ts"
+      ],
+      "refs": [
+        "AC-198",
+        "AC-199"
+      ]
+    },
+    {
+      "id": "T-071",
+      "titulo": "Contratos e serviço da tela",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/desempenho/desempenho.model.ts",
+        "src/app/features/desempenho/desempenho.service.ts",
+        "src/app/features/desempenho/desempenho.service.spec.ts"
+      ],
+      "refs": [
+        "AC-189",
+        "AC-211"
+      ]
+    },
+    {
+      "id": "T-072",
+      "titulo": "Tokens de cor das séries dos gráficos",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/styles/_tokens.scss"
+      ],
+      "refs": [
+        "AC-187",
+        "AC-200"
+      ]
+    },
+    {
+      "id": "T-073",
+      "titulo": "Gráfico de composição em SVG",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/desempenho/blocos/grafico-composicao.ts",
+        "src/app/features/desempenho/blocos/grafico-composicao.html",
+        "src/app/features/desempenho/blocos/grafico-composicao.scss",
+        "src/app/features/desempenho/blocos/grafico-composicao.spec.ts"
+      ],
+      "refs": [
+        "AC-192",
+        "AC-195",
+        "AC-197"
+      ]
+    },
+    {
+      "id": "T-074",
+      "titulo": "Gráfico de contribuição em SVG",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/desempenho/blocos/grafico-contribuicao.ts",
+        "src/app/features/desempenho/blocos/grafico-contribuicao.html",
+        "src/app/features/desempenho/blocos/grafico-contribuicao.scss",
+        "src/app/features/desempenho/blocos/grafico-contribuicao.spec.ts"
+      ],
+      "refs": [
+        "AC-198",
+        "AC-200",
+        "AC-201"
+      ]
+    },
+    {
+      "id": "T-075",
+      "titulo": "Gráfico de lucro realizado em SVG",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/desempenho/blocos/grafico-realizado.ts",
+        "src/app/features/desempenho/blocos/grafico-realizado.html",
+        "src/app/features/desempenho/blocos/grafico-realizado.scss",
+        "src/app/features/desempenho/blocos/grafico-realizado.spec.ts"
+      ],
+      "refs": [
+        "AC-202",
+        "AC-204"
+      ]
+    },
+    {
+      "id": "T-076",
+      "titulo": "Bloco dos quatro números",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/desempenho/blocos/numeros-desempenho.ts",
+        "src/app/features/desempenho/blocos/numeros-desempenho.html",
+        "src/app/features/desempenho/blocos/numeros-desempenho.scss",
+        "src/app/features/desempenho/blocos/numeros-desempenho.spec.ts"
+      ],
+      "refs": [
+        "AC-183",
+        "AC-184",
+        "AC-185",
+        "AC-186",
+        "AC-187",
+        "AC-188"
+      ]
+    },
+    {
+      "id": "T-077",
+      "titulo": "Confissões permanentes e idade dos preços",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/desempenho/blocos/confissoes-desempenho.ts",
+        "src/app/features/desempenho/blocos/confissoes-desempenho.html",
+        "src/app/features/desempenho/blocos/confissoes-desempenho.scss",
+        "src/app/features/desempenho/blocos/confissoes-desempenho.spec.ts"
+      ],
+      "refs": [
+        "AC-205",
+        "AC-206",
+        "AC-207",
+        "AC-208"
+      ]
+    },
+    {
+      "id": "T-078",
+      "titulo": "Tela de desempenho: seletor, orquestração e estados vazios",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/desempenho/desempenho.ts",
+        "src/app/features/desempenho/desempenho.html",
+        "src/app/features/desempenho/desempenho.scss",
+        "src/app/features/desempenho/desempenho.spec.ts"
+      ],
+      "refs": [
+        "AC-189",
+        "AC-190",
+        "AC-191",
+        "AC-209",
+        "AC-210",
+        "AC-211"
+      ]
+    },
+    {
+      "id": "T-079",
+      "titulo": "Rota de desempenho no lugar da área em construção",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/desempenho/desempenho.routes.ts",
+        "src/app/features/desempenho/desempenho.routes.spec.ts",
+        "src/app/app.routes.ts"
+      ],
+      "refs": [
+        "AC-209",
+        "AC-210"
+      ]
+    }
+  ],
+  "concluidas": [],
+  "avisos": []
+}

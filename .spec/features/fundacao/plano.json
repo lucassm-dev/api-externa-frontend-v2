@@ -1,0 +1,323 @@
+{
+  "runId": "api-externa-frontend-v2-fundacao-mttcfk37",
+  "feature": "fundacao",
+  "agent": "claude",
+  "modo": "paralelo",
+  "paralelizar": null,
+  "modeloForcado": null,
+  "esforcoForcado": null,
+  "geradoEm": "2026-09-09 00:11",
+  "branchTrabalho": "spec/fundacao",
+  "baseDir": ".spec/features/fundacao",
+  "specDir": ".spec",
+  "repoName": "api-externa-frontend-v2",
+  "logsDir": "../onp-worktrees/api-externa-frontend-v2-fundacao-logs",
+  "ondas": [
+    [
+      "faixa-1",
+      "faixa-2",
+      "faixa-3"
+    ],
+    [
+      "faixa-4",
+      "faixa-5",
+      "faixa-6"
+    ],
+    [
+      "faixa-7",
+      "faixa-8",
+      "faixa-9"
+    ],
+    [
+      "faixa-10",
+      "faixa-11",
+      "faixa-12"
+    ]
+  ],
+  "faixas": [
+    {
+      "id": "faixa-1",
+      "branch": "spec/fundacao-faixa-1",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-fundacao-faixa-1",
+      "tarefas": [
+        {
+          "id": "T-001",
+          "titulo": "Projeto Angular, Material, Vitest, proxy e estrutura de pastas",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "angular.json",
+            "package.json",
+            "tsconfig.json",
+            "tsconfig.app.json",
+            "tsconfig.spec.json",
+            "proxy.conf.json",
+            "onpspec.config.json",
+            ".gitignore",
+            "src/main.ts",
+            "src/index.html",
+            "src/app/app.ts",
+            "src/app/app.html",
+            "src/app/app.config.ts",
+            "src/app/app.routes.ts",
+            "src/app/features/LEIA-ME.md"
+          ],
+          "refs": [
+            "AC-024",
+            "US-010"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-2",
+      "branch": "spec/fundacao-faixa-2",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-fundacao-faixa-2",
+      "tarefas": [
+        {
+          "id": "T-002",
+          "titulo": "Locale pt-BR, moeda e data",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/core/formatacao/formatacao.ts",
+            "src/app/core/formatacao/formatacao.spec.ts"
+          ],
+          "refs": [
+            "AC-019",
+            "AC-020"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-3",
+      "branch": "spec/fundacao-faixa-3",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-fundacao-faixa-3",
+      "tarefas": [
+        {
+          "id": "T-003",
+          "titulo": "Tokens de cor e alternância de tema",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/styles.scss",
+            "src/styles/_tokens.scss",
+            "src/styles/_tema.scss",
+            "src/app/core/tema/tema.service.ts",
+            "src/app/core/tema/tema.service.spec.ts"
+          ],
+          "refs": [
+            "AC-022"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-4",
+      "branch": "spec/fundacao-faixa-4",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-fundacao-faixa-4",
+      "tarefas": [
+        {
+          "id": "T-004",
+          "titulo": "Tipos do contrato da API",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/core/api/pagina.ts",
+            "src/app/core/api/erro-padrao.ts",
+            "src/app/core/api/api.spec.ts"
+          ],
+          "refs": [
+            "AC-023"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-5",
+      "branch": "spec/fundacao-faixa-5",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-fundacao-faixa-5",
+      "tarefas": [
+        {
+          "id": "T-005",
+          "titulo": "Sessão: modelo, armazenamento e estado",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/core/sessao/sessao.model.ts",
+            "src/app/core/sessao/sessao.service.ts",
+            "src/app/core/sessao/sessao.service.spec.ts"
+          ],
+          "refs": [
+            "AC-011",
+            "AC-012",
+            "AC-013",
+            "AC-014"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-6",
+      "branch": "spec/fundacao-faixa-6",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-fundacao-faixa-6",
+      "tarefas": [
+        {
+          "id": "T-006",
+          "titulo": "Interceptor que envia o token",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/core/sessao/autenticacao.interceptor.ts",
+            "src/app/core/sessao/autenticacao.interceptor.spec.ts"
+          ],
+          "refs": [
+            "AC-017",
+            "AC-018"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-7",
+      "branch": "spec/fundacao-faixa-7",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-fundacao-faixa-7",
+      "tarefas": [
+        {
+          "id": "T-007",
+          "titulo": "Guarda de rota das telas internas",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/core/sessao/sessao.guard.ts",
+            "src/app/core/sessao/sessao.guard.spec.ts"
+          ],
+          "refs": [
+            "AC-015",
+            "AC-016"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-8",
+      "branch": "spec/fundacao-faixa-8",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-fundacao-faixa-8",
+      "tarefas": [
+        {
+          "id": "T-008",
+          "titulo": "Catálogo de erros e tradutor por código",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/core/erros/catalogo-erros.ts",
+            "src/app/core/erros/tradutor-erro.ts",
+            "src/app/core/erros/tradutor-erro.spec.ts"
+          ],
+          "refs": [
+            "AC-001",
+            "AC-002",
+            "AC-003",
+            "AC-004"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-9",
+      "branch": "spec/fundacao-faixa-9",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-fundacao-faixa-9",
+      "tarefas": [
+        {
+          "id": "T-009",
+          "titulo": "Interceptor de erro que encerra a sessão",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/core/erros/erro.interceptor.ts",
+            "src/app/core/erros/erro.interceptor.spec.ts"
+          ],
+          "refs": [
+            "AC-005"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-10",
+      "branch": "spec/fundacao-faixa-10",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-fundacao-faixa-10",
+      "tarefas": [
+        {
+          "id": "T-010",
+          "titulo": "Componentes de feedback dos três níveis",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/core/feedback/feedback.model.ts",
+            "src/app/core/feedback/feedback.service.ts",
+            "src/app/core/feedback/mensagem-feedback.ts",
+            "src/app/core/feedback/mensagem-feedback.html",
+            "src/app/core/feedback/mensagem-feedback.scss",
+            "src/app/core/feedback/feedback.spec.ts"
+          ],
+          "refs": [
+            "AC-006",
+            "AC-007"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-11",
+      "branch": "spec/fundacao-faixa-11",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-fundacao-faixa-11",
+      "tarefas": [
+        {
+          "id": "T-011",
+          "titulo": "Valor com horário e marcação de dado defasado",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/core/dados/idade-dado.ts",
+            "src/app/shared/valor-com-horario/valor-com-horario.ts",
+            "src/app/shared/valor-com-horario/valor-com-horario.html",
+            "src/app/shared/valor-com-horario/valor-com-horario.scss",
+            "src/app/shared/valor-com-horario/valor-com-horario.spec.ts"
+          ],
+          "refs": [
+            "AC-008",
+            "AC-009",
+            "AC-010"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-12",
+      "branch": "spec/fundacao-faixa-12",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-fundacao-faixa-12",
+      "tarefas": [
+        {
+          "id": "T-012",
+          "titulo": "Variação com sinal, sem depender de cor",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/shared/variacao/variacao.ts",
+            "src/app/shared/variacao/variacao.html",
+            "src/app/shared/variacao/variacao.scss",
+            "src/app/shared/variacao/variacao.spec.ts"
+          ],
+          "refs": [
+            "AC-021"
+          ]
+        }
+      ]
+    }
+  ],
+  "sequenciais": [],
+  "concluidas": [],
+  "avisos": []
+}

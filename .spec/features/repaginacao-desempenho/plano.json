@@ -1,0 +1,150 @@
+{
+  "runId": "api-externa-frontend-v2-repaginacao-desempenho-mtuecpyp",
+  "feature": "repaginacao-desempenho",
+  "agent": "claude",
+  "modo": "paralelo",
+  "paralelizar": null,
+  "modeloForcado": null,
+  "esforcoForcado": null,
+  "geradoEm": "2026-09-09 17:53",
+  "branchTrabalho": "spec/repaginacao-desempenho",
+  "baseDir": ".spec/features/repaginacao-desempenho",
+  "specDir": ".spec",
+  "repoName": "api-externa-frontend-v2",
+  "logsDir": "../onp-worktrees/api-externa-frontend-v2-repaginacao-desempenho-logs",
+  "ondas": [
+    [
+      "faixa-1",
+      "faixa-2",
+      "faixa-3"
+    ],
+    [
+      "faixa-4",
+      "faixa-5"
+    ]
+  ],
+  "faixas": [
+    {
+      "id": "faixa-1",
+      "branch": "spec/repaginacao-desempenho-faixa-1",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-desempenho-faixa-1",
+      "tarefas": [
+        {
+          "id": "T-107",
+          "titulo": "Geometria da rosca",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/desempenho/blocos/setores-da-rosca.ts",
+            "src/app/features/desempenho/blocos/setores-da-rosca.spec.ts"
+          ],
+          "refs": [
+            "US-072",
+            "AC-259"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-2",
+      "branch": "spec/repaginacao-desempenho-faixa-2",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-desempenho-faixa-2",
+      "tarefas": [
+        {
+          "id": "T-108",
+          "titulo": "Composição em rosca",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "src/app/features/desempenho/blocos/grafico-composicao.ts",
+            "src/app/features/desempenho/blocos/grafico-composicao.html",
+            "src/app/features/desempenho/blocos/grafico-composicao.scss",
+            "src/app/features/desempenho/blocos/grafico-composicao.spec.ts"
+          ],
+          "refs": [
+            "US-072",
+            "AC-259",
+            "AC-260",
+            "AC-261",
+            "AC-262"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-3",
+      "branch": "spec/repaginacao-desempenho-faixa-3",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-desempenho-faixa-3",
+      "tarefas": [
+        {
+          "id": "T-109",
+          "titulo": "Contribuição com linha de zero",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/desempenho/blocos/grafico-contribuicao.ts",
+            "src/app/features/desempenho/blocos/grafico-contribuicao.html",
+            "src/app/features/desempenho/blocos/grafico-contribuicao.scss",
+            "src/app/features/desempenho/blocos/grafico-contribuicao.spec.ts"
+          ],
+          "refs": [
+            "US-073",
+            "AC-263"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-4",
+      "branch": "spec/repaginacao-desempenho-faixa-4",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-desempenho-faixa-4",
+      "tarefas": [
+        {
+          "id": "T-110",
+          "titulo": "Realizado por ticker",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/desempenho/blocos/grafico-realizado.ts",
+            "src/app/features/desempenho/blocos/grafico-realizado.html",
+            "src/app/features/desempenho/blocos/grafico-realizado.scss",
+            "src/app/features/desempenho/blocos/grafico-realizado.spec.ts"
+          ],
+          "refs": [
+            "US-073",
+            "AC-263"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-5",
+      "branch": "spec/repaginacao-desempenho-faixa-5",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-desempenho-faixa-5",
+      "tarefas": [
+        {
+          "id": "T-111",
+          "titulo": "Números do desempenho e composição da tela",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/desempenho/blocos/numeros-desempenho.ts",
+            "src/app/features/desempenho/blocos/numeros-desempenho.html",
+            "src/app/features/desempenho/blocos/numeros-desempenho.scss",
+            "src/app/features/desempenho/desempenho.html",
+            "src/app/features/desempenho/desempenho.scss",
+            "src/app/features/desempenho/blocos/numeros-desempenho.spec.ts"
+          ],
+          "refs": [
+            "US-074",
+            "AC-264",
+            "AC-265"
+          ]
+        }
+      ]
+    }
+  ],
+  "sequenciais": [],
+  "concluidas": [],
+  "avisos": []
+}

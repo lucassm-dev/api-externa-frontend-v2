@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "proximoId": 2,
+  "licoes": [
+    {
+      "id": "L-001",
+      "texto": "Toda feature que corrige algo em core/ (formatação, erros, feedback) invalida a prova das features já prontas: rode verify em todas elas antes do audit final, não só na feature atual.",
+      "chave": "VERIFY_OBSOLETO::toda feature que corrige algo em core formatacao erros feedback invalida a prova das features ja prontas rode verify em todas elas antes do audit final nao so na feature atual",
+      "sinal": "VERIFY_OBSOLETO",
+      "escopo": null,
+      "status": "candidata",
+      "recorrencia": 1,
+      "features": [
+        "painel"
+      ],
+      "evidencias": [
+        {
+          "fonte": "—",
+          "feature": "painel",
+          "quando": "2026-09-09T03:38:10.422Z",
+          "gitRev": null
+        }
+      ],
+      "penalidades": 0,
+      "criadaEm": "2026-09-09T03:38:10.422Z",
+      "ultimaVez": "2026-09-09T03:38:10.422Z"
+    }
+  ]
+}

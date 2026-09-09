@@ -1,0 +1,229 @@
+{
+  "runId": "api-externa-frontend-v2-fundacao-visual-mtu66srx",
+  "feature": "fundacao-visual",
+  "agent": "claude",
+  "modo": "sequencial",
+  "paralelizar": null,
+  "modeloForcado": null,
+  "esforcoForcado": null,
+  "geradoEm": "2026-09-09 14:04",
+  "branchTrabalho": "spec/fundacao-visual",
+  "baseDir": ".spec/features/fundacao-visual",
+  "specDir": ".spec",
+  "repoName": "api-externa-frontend-v2",
+  "logsDir": "../onp-worktrees/api-externa-frontend-v2-fundacao-visual-logs",
+  "ondas": [],
+  "faixas": [],
+  "sequenciais": [
+    {
+      "id": "T-080",
+      "titulo": "Dependências da repaginação",
+      "modelo": "claude-sonnet-5",
+      "esforco": "low",
+      "arquivos": [
+        "package.json",
+        "package-lock.json"
+      ],
+      "refs": [
+        "US-057",
+        "US-058",
+        "AC-215",
+        "AC-218"
+      ]
+    },
+    {
+      "id": "T-081",
+      "titulo": "Tokens de sucesso, barra de mercado e sombra",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/styles/_tokens.scss",
+        "src/styles/_tema.scss",
+        "src/styles/tokens.spec.ts"
+      ],
+      "refs": [
+        "US-060",
+        "AC-226",
+        "AC-227",
+        "AC-232"
+      ]
+    },
+    {
+      "id": "T-082",
+      "titulo": "Nível sucesso e ícones no feedback",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/core/feedback/feedback.model.ts",
+        "src/app/core/feedback/mensagem-feedback.ts",
+        "src/app/core/feedback/mensagem-feedback.html",
+        "src/app/core/feedback/mensagem-feedback.scss",
+        "src/app/core/feedback/feedback.spec.ts"
+      ],
+      "refs": [
+        "US-056",
+        "US-057",
+        "AC-212",
+        "AC-214",
+        "AC-215"
+      ]
+    },
+    {
+      "id": "T-083",
+      "titulo": "Primitiva: cartão",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/shared/cartao/cartao.ts",
+        "src/app/shared/cartao/cartao.html",
+        "src/app/shared/cartao/cartao.scss",
+        "src/app/shared/cartao/cartao.spec.ts"
+      ],
+      "refs": [
+        "US-059",
+        "AC-225"
+      ]
+    },
+    {
+      "id": "T-084",
+      "titulo": "Primitiva: selo de situação",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/shared/selo/selo.ts",
+        "src/app/shared/selo/selo.html",
+        "src/app/shared/selo/selo.scss",
+        "src/app/shared/selo/selo.spec.ts"
+      ],
+      "refs": [
+        "US-059",
+        "AC-222"
+      ]
+    },
+    {
+      "id": "T-085",
+      "titulo": "Primitiva: esqueleto de carregamento",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/shared/esqueleto/esqueleto.ts",
+        "src/app/shared/esqueleto/esqueleto.html",
+        "src/app/shared/esqueleto/esqueleto.scss",
+        "src/app/shared/esqueleto/esqueleto.spec.ts"
+      ],
+      "refs": [
+        "US-059",
+        "US-061",
+        "AC-221",
+        "AC-229",
+        "AC-230"
+      ]
+    },
+    {
+      "id": "T-086",
+      "titulo": "Primitiva: estado vazio",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/shared/estado-vazio/estado-vazio.ts",
+        "src/app/shared/estado-vazio/estado-vazio.html",
+        "src/app/shared/estado-vazio/estado-vazio.scss",
+        "src/app/shared/estado-vazio/estado-vazio.spec.ts"
+      ],
+      "refs": [
+        "US-059",
+        "AC-223"
+      ]
+    },
+    {
+      "id": "T-087",
+      "titulo": "Primitiva: paginador",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/shared/paginador/paginador.ts",
+        "src/app/shared/paginador/paginador.html",
+        "src/app/shared/paginador/paginador.scss",
+        "src/app/shared/paginador/paginador.spec.ts"
+      ],
+      "refs": [
+        "US-059",
+        "AC-224"
+      ]
+    },
+    {
+      "id": "T-088",
+      "titulo": "Primitiva: botão de ícone",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/shared/botao-icone/botao-icone.ts",
+        "src/app/shared/botao-icone/botao-icone.html",
+        "src/app/shared/botao-icone/botao-icone.scss",
+        "src/app/shared/botao-icone/botao-icone.spec.ts"
+      ],
+      "refs": [
+        "US-057",
+        "US-060",
+        "AC-216",
+        "AC-217",
+        "AC-228"
+      ]
+    },
+    {
+      "id": "T-089",
+      "titulo": "Monograma do ativo",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/shared/monograma/monograma.ts",
+        "src/app/shared/monograma/monograma.html",
+        "src/app/shared/monograma/monograma.scss",
+        "src/app/shared/monograma/monograma.spec.ts"
+      ],
+      "refs": [
+        "US-058",
+        "AC-218",
+        "AC-219",
+        "AC-220"
+      ]
+    },
+    {
+      "id": "T-090",
+      "titulo": "Notificação temporária de ação concluída",
+      "modelo": "claude-sonnet-5",
+      "esforco": "high",
+      "arquivos": [
+        "src/app/core/feedback/notificacao.service.ts",
+        "src/app/core/feedback/notificacao.service.spec.ts"
+      ],
+      "refs": [
+        "US-056",
+        "AC-213",
+        "AC-214"
+      ]
+    },
+    {
+      "id": "T-091",
+      "titulo": "Rótulo acessível verificável nos campos de formulário",
+      "modelo": "claude-sonnet-5",
+      "esforco": "low",
+      "arquivos": [
+        "src/app/features/acesso/cadastro/cadastro.html",
+        "src/app/features/acesso/login/login.html",
+        "src/app/features/acoes/cadastro/cadastro-acao.html",
+        "src/app/features/acoes/lista/lista-acoes.html",
+        "src/app/features/carteiras/criacao/criar-carteira.html",
+        "src/app/features/corretoras/cadastro/cadastro-corretora.html",
+        "src/app/features/corretoras/lista/lista-corretoras.html",
+        "src/app/shared/nome-acessivel.spec.ts"
+      ],
+      "refs": [
+        "US-062",
+        "AC-231"
+      ]
+    }
+  ],
+  "concluidas": [],
+  "avisos": []
+}

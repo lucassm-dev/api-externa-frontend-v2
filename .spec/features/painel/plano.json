@@ -1,0 +1,189 @@
+{
+  "runId": "api-externa-frontend-v2-painel-mttenwfa",
+  "feature": "painel",
+  "agent": "claude",
+  "modo": "sequencial",
+  "paralelizar": null,
+  "modeloForcado": null,
+  "esforcoForcado": null,
+  "geradoEm": "2026-09-09 01:14",
+  "branchTrabalho": "spec/painel",
+  "baseDir": ".spec/features/painel",
+  "specDir": ".spec",
+  "repoName": "api-externa-frontend-v2",
+  "logsDir": "../onp-worktrees/api-externa-frontend-v2-painel-logs",
+  "ondas": [],
+  "faixas": [],
+  "sequenciais": [
+    {
+      "id": "T-020",
+      "titulo": "Contratos e serviço do painel",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/painel/painel.model.ts",
+        "src/app/features/painel/painel.service.ts",
+        "src/app/features/painel/painel.service.spec.ts"
+      ],
+      "refs": [
+        "AC-050",
+        "AC-051",
+        "AC-053",
+        "AC-057",
+        "AC-059"
+      ]
+    },
+    {
+      "id": "T-021",
+      "titulo": "Regra do próximo passo único",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/painel/proximo-passo.ts",
+        "src/app/features/painel/proximo-passo.spec.ts"
+      ],
+      "refs": [
+        "AC-060",
+        "AC-061",
+        "AC-062",
+        "AC-063"
+      ]
+    },
+    {
+      "id": "T-022",
+      "titulo": "Lembrar a carteira escolhida no consolidado",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/painel/carteira-preferida.ts",
+        "src/app/features/painel/carteira-preferida.spec.ts"
+      ],
+      "refs": [
+        "AC-054"
+      ]
+    },
+    {
+      "id": "T-023",
+      "titulo": "Shell: navegação das áreas, tema e sair",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/layout/casca.ts",
+        "src/app/layout/casca.html",
+        "src/app/layout/casca.scss",
+        "src/app/layout/casca.spec.ts",
+        "src/app/layout/area-em-construcao.ts",
+        "src/app/app.routes.ts"
+      ],
+      "refs": [
+        "AC-047",
+        "AC-048",
+        "AC-049"
+      ]
+    },
+    {
+      "id": "T-024",
+      "titulo": "Bloco 1: barra de mercado",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/painel/blocos/barra-mercado.ts",
+        "src/app/features/painel/blocos/barra-mercado.html",
+        "src/app/features/painel/blocos/barra-mercado.scss",
+        "src/app/features/painel/blocos/barra-mercado.spec.ts"
+      ],
+      "refs": [
+        "AC-050",
+        "AC-052"
+      ]
+    },
+    {
+      "id": "T-025",
+      "titulo": "Bloco 2: consolidado de uma carteira",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/painel/blocos/consolidado.ts",
+        "src/app/features/painel/blocos/consolidado.html",
+        "src/app/features/painel/blocos/consolidado.scss",
+        "src/app/features/painel/blocos/consolidado.spec.ts"
+      ],
+      "refs": [
+        "AC-053",
+        "AC-054",
+        "AC-055",
+        "AC-056"
+      ]
+    },
+    {
+      "id": "T-026",
+      "titulo": "Bloco 3: cartões das carteiras",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/painel/blocos/carteiras-do-investidor.ts",
+        "src/app/features/painel/blocos/carteiras-do-investidor.html",
+        "src/app/features/painel/blocos/carteiras-do-investidor.scss",
+        "src/app/features/painel/blocos/carteiras-do-investidor.spec.ts"
+      ],
+      "refs": [
+        "AC-057",
+        "AC-058"
+      ]
+    },
+    {
+      "id": "T-027",
+      "titulo": "Bloco 4: últimas movimentações",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/painel/blocos/ultimas-movimentacoes.ts",
+        "src/app/features/painel/blocos/ultimas-movimentacoes.html",
+        "src/app/features/painel/blocos/ultimas-movimentacoes.scss",
+        "src/app/features/painel/blocos/ultimas-movimentacoes.spec.ts"
+      ],
+      "refs": [
+        "AC-059"
+      ]
+    },
+    {
+      "id": "T-028",
+      "titulo": "Convite do próximo passo",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/painel/blocos/convite-proximo-passo.ts",
+        "src/app/features/painel/blocos/convite-proximo-passo.html",
+        "src/app/features/painel/blocos/convite-proximo-passo.scss",
+        "src/app/features/painel/blocos/convite-proximo-passo.spec.ts"
+      ],
+      "refs": [
+        "AC-060",
+        "AC-061",
+        "AC-062",
+        "AC-064"
+      ]
+    },
+    {
+      "id": "T-029",
+      "titulo": "Tela do painel: orquestração, esqueletos e degradação",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/painel/painel.ts",
+        "src/app/features/painel/painel.html",
+        "src/app/features/painel/painel.scss",
+        "src/app/features/painel/painel.spec.ts",
+        "src/app/features/painel/painel-provisorio.ts"
+      ],
+      "refs": [
+        "AC-051",
+        "AC-063",
+        "AC-064",
+        "AC-065"
+      ]
+    }
+  ],
+  "concluidas": [],
+  "avisos": []
+}

@@ -1,0 +1,142 @@
+{
+  "runId": "api-externa-frontend-v2-acoes-mttkwvv0",
+  "feature": "acoes",
+  "agent": "claude",
+  "modo": "sequencial",
+  "paralelizar": null,
+  "modeloForcado": null,
+  "esforcoForcado": null,
+  "geradoEm": "2026-09-09 04:09",
+  "branchTrabalho": "spec/acoes",
+  "baseDir": ".spec/features/acoes",
+  "specDir": ".spec",
+  "repoName": "api-externa-frontend-v2",
+  "logsDir": "../onp-worktrees/api-externa-frontend-v2-acoes-logs",
+  "ondas": [],
+  "faixas": [],
+  "sequenciais": [
+    {
+      "id": "T-048",
+      "titulo": "Contratos e serviço do catálogo de ações",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/acoes/acoes.model.ts",
+        "src/app/features/acoes/acoes.service.ts",
+        "src/app/features/acoes/acoes.service.spec.ts"
+      ],
+      "refs": [
+        "AC-122",
+        "AC-126",
+        "AC-127",
+        "AC-132",
+        "AC-133",
+        "AC-142",
+        "AC-144",
+        "AC-147"
+      ]
+    },
+    {
+      "id": "T-049",
+      "titulo": "Desfecho da atualização de cotação",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/acoes/desfecho-cotacao.ts",
+        "src/app/features/acoes/desfecho-cotacao.spec.ts"
+      ],
+      "refs": [
+        "AC-137",
+        "AC-138"
+      ]
+    },
+    {
+      "id": "T-050",
+      "titulo": "Tela de cadastro com bloqueio antecipado do pré-requisito",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/acoes/cadastro/cadastro-acao.ts",
+        "src/app/features/acoes/cadastro/cadastro-acao.html",
+        "src/app/features/acoes/cadastro/cadastro-acao.scss",
+        "src/app/features/acoes/cadastro/cadastro-acao.spec.ts"
+      ],
+      "refs": [
+        "AC-121",
+        "AC-122",
+        "AC-123",
+        "AC-124",
+        "AC-125",
+        "AC-126",
+        "AC-127",
+        "AC-128",
+        "AC-129"
+      ]
+    },
+    {
+      "id": "T-051",
+      "titulo": "Lista do catálogo com busca por ticker e paginação",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/acoes/lista/lista-acoes.ts",
+        "src/app/features/acoes/lista/lista-acoes.html",
+        "src/app/features/acoes/lista/lista-acoes.scss",
+        "src/app/features/acoes/lista/lista-acoes.spec.ts"
+      ],
+      "refs": [
+        "AC-130",
+        "AC-131",
+        "AC-132",
+        "AC-133",
+        "AC-134",
+        "AC-135",
+        "AC-136"
+      ]
+    },
+    {
+      "id": "T-052",
+      "titulo": "Detalhe da ação: cotação, atualização e remoção",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/acoes/detalhe/detalhe-acao.ts",
+        "src/app/features/acoes/detalhe/detalhe-acao.html",
+        "src/app/features/acoes/detalhe/detalhe-acao.scss",
+        "src/app/features/acoes/detalhe/detalhe-acao.spec.ts"
+      ],
+      "refs": [
+        "AC-135",
+        "AC-136",
+        "AC-137",
+        "AC-138",
+        "AC-139",
+        "AC-140",
+        "AC-141",
+        "AC-142",
+        "AC-143",
+        "AC-144",
+        "AC-145",
+        "AC-146",
+        "AC-147"
+      ]
+    },
+    {
+      "id": "T-053",
+      "titulo": "Rotas da área de ações",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/acoes/acoes.routes.ts",
+        "src/app/features/acoes/acoes.routes.spec.ts",
+        "src/app/app.routes.ts"
+      ],
+      "refs": [
+        "AC-133",
+        "AC-147"
+      ]
+    }
+  ],
+  "concluidas": [],
+  "avisos": []
+}

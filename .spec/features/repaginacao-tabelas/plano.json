@@ -1,0 +1,197 @@
+{
+  "runId": "api-externa-frontend-v2-repaginacao-tabelas-mtuecpvl",
+  "feature": "repaginacao-tabelas",
+  "agent": "claude",
+  "modo": "paralelo",
+  "paralelizar": null,
+  "modeloForcado": null,
+  "esforcoForcado": null,
+  "geradoEm": "2026-09-09 17:53",
+  "branchTrabalho": "spec/repaginacao-tabelas",
+  "baseDir": ".spec/features/repaginacao-tabelas",
+  "specDir": ".spec",
+  "repoName": "api-externa-frontend-v2",
+  "logsDir": "../onp-worktrees/api-externa-frontend-v2-repaginacao-tabelas-logs",
+  "ondas": [
+    [
+      "faixa-1",
+      "faixa-2",
+      "faixa-3"
+    ],
+    [
+      "faixa-4",
+      "faixa-5",
+      "faixa-6"
+    ]
+  ],
+  "faixas": [
+    {
+      "id": "faixa-1",
+      "branch": "spec/repaginacao-tabelas-faixa-1",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-tabelas-faixa-1",
+      "tarefas": [
+        {
+          "id": "T-097",
+          "titulo": "Dependência de tabela e ordenação compartilhada",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "package.json",
+            "package-lock.json",
+            "src/app/shared/tabela/ordenacao.ts",
+            "src/app/shared/tabela/ordenacao.spec.ts"
+          ],
+          "refs": [
+            "US-066",
+            "AC-242",
+            "AC-243"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-2",
+      "branch": "spec/repaginacao-tabelas-faixa-2",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-tabelas-faixa-2",
+      "tarefas": [
+        {
+          "id": "T-098",
+          "titulo": "Cabeçalho ordenável",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/shared/tabela/cabecalho-ordenavel.ts",
+            "src/app/shared/tabela/cabecalho-ordenavel.html",
+            "src/app/shared/tabela/cabecalho-ordenavel.scss",
+            "src/app/shared/tabela/cabecalho-ordenavel.spec.ts"
+          ],
+          "refs": [
+            "US-066",
+            "AC-242"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-3",
+      "branch": "spec/repaginacao-tabelas-faixa-3",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-tabelas-faixa-3",
+      "tarefas": [
+        {
+          "id": "T-099",
+          "titulo": "Estilo base de tabela",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/shared/tabela/tabela.scss"
+          ],
+          "refs": [
+            "US-067",
+            "AC-244",
+            "AC-245"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-4",
+      "branch": "spec/repaginacao-tabelas-faixa-4",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-tabelas-faixa-4",
+      "tarefas": [
+        {
+          "id": "T-100",
+          "titulo": "Extrato de operações",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "src/app/features/operacoes/extrato/extrato-operacoes.ts",
+            "src/app/features/operacoes/extrato/extrato-operacoes.html",
+            "src/app/features/operacoes/extrato/extrato-operacoes.scss",
+            "src/app/features/operacoes/extrato/extrato-operacoes.spec.ts"
+          ],
+          "refs": [
+            "US-066",
+            "US-067",
+            "US-068",
+            "AC-244",
+            "AC-246",
+            "AC-247",
+            "AC-248",
+            "AC-249",
+            "AC-250"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-5",
+      "branch": "spec/repaginacao-tabelas-faixa-5",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-tabelas-faixa-5",
+      "tarefas": [
+        {
+          "id": "T-101",
+          "titulo": "Posições e movimentações da carteira",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "src/app/features/carteiras/detalhe/posicoes-carteira.ts",
+            "src/app/features/carteiras/detalhe/posicoes-carteira.html",
+            "src/app/features/carteiras/detalhe/posicoes-carteira.scss",
+            "src/app/features/carteiras/detalhe/movimentacoes-carteira.ts",
+            "src/app/features/carteiras/detalhe/movimentacoes-carteira.html",
+            "src/app/features/carteiras/detalhe/movimentacoes-carteira.scss",
+            "src/app/features/carteiras/detalhe/posicoes-carteira.spec.ts",
+            "src/app/features/carteiras/detalhe/movimentacoes-carteira.spec.ts"
+          ],
+          "refs": [
+            "US-066",
+            "US-067",
+            "AC-244",
+            "AC-246",
+            "AC-247",
+            "AC-250"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-6",
+      "branch": "spec/repaginacao-tabelas-faixa-6",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-tabelas-faixa-6",
+      "tarefas": [
+        {
+          "id": "T-102",
+          "titulo": "Listas de ações, corretoras e carteiras",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "src/app/features/acoes/lista/lista-acoes.ts",
+            "src/app/features/acoes/lista/lista-acoes.html",
+            "src/app/features/acoes/lista/lista-acoes.scss",
+            "src/app/features/corretoras/lista/lista-corretoras.ts",
+            "src/app/features/corretoras/lista/lista-corretoras.html",
+            "src/app/features/corretoras/lista/lista-corretoras.scss",
+            "src/app/features/carteiras/lista/lista-carteiras.ts",
+            "src/app/features/carteiras/lista/lista-carteiras.html",
+            "src/app/features/carteiras/lista/lista-carteiras.scss",
+            "src/app/features/acoes/lista/lista-acoes.spec.ts",
+            "src/app/features/corretoras/lista/lista-corretoras.spec.ts",
+            "src/app/features/carteiras/lista/lista-carteiras.spec.ts"
+          ],
+          "refs": [
+            "US-067",
+            "US-068",
+            "AC-245",
+            "AC-247",
+            "AC-248",
+            "AC-249",
+            "AC-250"
+          ]
+        }
+      ]
+    }
+  ],
+  "sequenciais": [],
+  "concluidas": [],
+  "avisos": []
+}

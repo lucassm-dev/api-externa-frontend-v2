@@ -1,0 +1,152 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plano de execução — acesso</title>
+<style>
+  :root { --bg:#fafafa; --fg:#1a1a1a; --card:#fff; --borda:#e2e2e2; --sub:#666;
+          --acc:#0a7c42; --acc-fg:#fff; --aviso:#8a6d00; --aviso-bg:#fff8e1; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#141414; --fg:#eaeaea; --card:#1e1e1e; --borda:#333; --sub:#9a9a9a;
+            --acc:#17a35c; --aviso:#e0c36a; --aviso-bg:#2a2410; }
+  }
+  * { box-sizing:border-box }
+  body { margin:0; padding:2rem 1rem; background:var(--bg); color:var(--fg);
+         font:15px/1.55 system-ui,-apple-system,sans-serif }
+  main { max-width:64rem; margin:0 auto }
+  h1 { font-size:1.5rem; margin:0 0 .25rem } h3 { margin:1.5rem 0 .5rem }
+  h4 { margin:0 0 .5rem } small { color:var(--sub); font-weight:400 }
+  .sub { color:var(--sub); margin:0 0 1.25rem }
+  code { font:.85em ui-monospace,monospace; background:var(--card);
+         border:1px solid var(--borda); border-radius:4px; padding:.05em .35em; overflow-wrap:anywhere }
+  .resumo { display:flex; gap:.75rem; flex-wrap:wrap; margin:0 0 1rem }
+  .resumo div { background:var(--card); border:1px solid var(--borda); border-radius:8px;
+                padding:.5rem .9rem } .resumo b { font-size:1.2rem }
+  .executor { background:var(--card); border:1px solid var(--borda); border-radius:10px;
+              padding:1rem; margin:0 0 .5rem }
+  .executor h2 { margin:0 0 .5rem; font-size:1.05rem }
+  .nota { color:var(--sub); font-size:.85rem; margin:.5rem 0 0 }
+  #cmd { display:inline-block; margin-top:.6rem }
+  .grade { display:grid; grid-template-columns:repeat(auto-fit,minmax(17rem,1fr)); gap:.75rem }
+  .faixa { background:var(--card); border:1px solid var(--borda); border-radius:10px; padding: .9rem }
+  .tarefa { display:flex; flex-direction:column; gap:.15rem; padding:.6rem 0;
+            border-top:1px dashed var(--borda) }
+  .tarefa:first-of-type { border-top:0 }
+  .tid { font:700 .85rem ui-monospace,monospace; color:var(--acc) }
+  .meta,.arquivos { font-size:.85rem; color:var(--sub) }
+  .avisos { background:var(--aviso-bg); color:var(--aviso); border-radius:8px;
+            padding:.6rem .9rem; margin:0 0 1rem; font-size:.9rem }
+  ol li { margin:.25rem 0 }
+</style>
+<main>
+  <h1>Plano de execução — acesso</h1>
+  <p class="sub">gerado por <code>onp-spec plano</code> em 2026-09-09 00:40 · regenere após mudar tasks.md</p>
+  <div class="resumo">
+    <div><b>7</b> tarefa(s) em paralelo</div>
+    <div><b>7</b> faixa(s) · <b>3</b> onda(s)</div>
+    <div><b>0</b> sequencial(is)</div>
+    <div>branch <code>spec/acesso</code></div>
+  </div>
+  
+  <div class="executor">
+    <h2>Como executar — via agente</h2>
+    <p>Peça ao agente (Claude Code) para executar o plano. Ele roda:</p>
+    <div><code id="cmd">bash .spec/features/acesso/executar-tarefas.sh</code></div>
+    <p class="nota">Este arquivo é só visualização. Cada faixa roda <code>claude -p</code> num worktree próprio, com contexto limpo, modelo e esforço já definidos.
+    O gate final (verify + audit) roda sozinho; a execução fica em background e, a cada
+    1 minuto, o agente posta no chat a <b>tabela de andamento</b>
+    (<code>onp-spec resumo acesso --tabela</code>) e o
+    <b>resumo geral de andamento</b> (<code>onp-spec resumo acesso</code>).</p>
+  </div>
+  
+    <section class="onda">
+      <h3>Onda 1 <small>faixa-1 ∥ faixa-2 ∥ faixa-3 — em paralelo, janelas limpas</small></h3>
+      <div class="grade">
+      <div class="faixa">
+        <h4>faixa-1 <small>branch <code>spec/acesso-faixa-1</code> · worktree <code>../onp-worktrees/api-externa-frontend-v2-acesso-faixa-1</code></small></h4>
+        
+        <div class="tarefa">
+          <span class="tid">T-013</span>
+          <span class="ttitulo">Corrigir o contrato da sessão para o que o backend devolve</span>
+          <span class="meta"><code>claude-sonnet-5</code> · esforço <b>medium</b></span>
+          <span class="arquivos"><code>src/app/core/sessao/sessao.model.ts</code> <code>src/app/core/sessao/sessao.service.ts</code> <code>src/app/core/sessao/sessao.service.spec.ts</code> <code>src/app/core/sessao/sessao.guard.spec.ts</code> <code>src/app/core/sessao/autenticacao.interceptor.spec.ts</code> <code>src/app/core/erros/erro.interceptor.spec.ts</code></span>
+        </div>
+      </div>
+      <div class="faixa">
+        <h4>faixa-2 <small>branch <code>spec/acesso-faixa-2</code> · worktree <code>../onp-worktrees/api-externa-frontend-v2-acesso-faixa-2</code></small></h4>
+        
+        <div class="tarefa">
+          <span class="tid">T-014</span>
+          <span class="ttitulo">Serviço de acesso: cadastrar e entrar</span>
+          <span class="meta"><code>claude-sonnet-5</code> · esforço <b>medium</b></span>
+          <span class="arquivos"><code>src/app/features/acesso/acesso.model.ts</code> <code>src/app/features/acesso/acesso.service.ts</code> <code>src/app/features/acesso/acesso.service.spec.ts</code></span>
+        </div>
+      </div>
+      <div class="faixa">
+        <h4>faixa-3 <small>branch <code>spec/acesso-faixa-3</code> · worktree <code>../onp-worktrees/api-externa-frontend-v2-acesso-faixa-3</code></small></h4>
+        
+        <div class="tarefa">
+          <span class="tid">T-015</span>
+          <span class="ttitulo">Validação no cliente: CPF, senha e e-mail</span>
+          <span class="meta"><code>claude-sonnet-5</code> · esforço <b>medium</b></span>
+          <span class="arquivos"><code>src/app/features/acesso/validadores.ts</code> <code>src/app/features/acesso/validadores.spec.ts</code></span>
+        </div>
+      </div></div>
+    </section>
+    <section class="onda">
+      <h3>Onda 2 <small>faixa-4 ∥ faixa-5 ∥ faixa-6 — em paralelo, janelas limpas</small></h3>
+      <div class="grade">
+      <div class="faixa">
+        <h4>faixa-4 <small>branch <code>spec/acesso-faixa-4</code> · worktree <code>../onp-worktrees/api-externa-frontend-v2-acesso-faixa-4</code></small></h4>
+        
+        <div class="tarefa">
+          <span class="tid">T-016</span>
+          <span class="ttitulo">Tela de cadastro</span>
+          <span class="meta"><code>claude-sonnet-5</code> · esforço <b>medium</b></span>
+          <span class="arquivos"><code>src/app/features/acesso/cadastro/cadastro.ts</code> <code>src/app/features/acesso/cadastro/cadastro.html</code> <code>src/app/features/acesso/cadastro/cadastro.scss</code> <code>src/app/features/acesso/cadastro/cadastro.spec.ts</code></span>
+        </div>
+      </div>
+      <div class="faixa">
+        <h4>faixa-5 <small>branch <code>spec/acesso-faixa-5</code> · worktree <code>../onp-worktrees/api-externa-frontend-v2-acesso-faixa-5</code></small></h4>
+        
+        <div class="tarefa">
+          <span class="tid">T-017</span>
+          <span class="ttitulo">Tela de login</span>
+          <span class="meta"><code>claude-sonnet-5</code> · esforço <b>medium</b></span>
+          <span class="arquivos"><code>src/app/features/acesso/login/login.ts</code> <code>src/app/features/acesso/login/login.html</code> <code>src/app/features/acesso/login/login.scss</code> <code>src/app/features/acesso/login/login.spec.ts</code></span>
+        </div>
+      </div>
+      <div class="faixa">
+        <h4>faixa-6 <small>branch <code>spec/acesso-faixa-6</code> · worktree <code>../onp-worktrees/api-externa-frontend-v2-acesso-faixa-6</code></small></h4>
+        
+        <div class="tarefa">
+          <span class="tid">T-018</span>
+          <span class="ttitulo">Casca da área interna: sair e aviso de sessão acabando</span>
+          <span class="meta"><code>claude-sonnet-5</code> · esforço <b>medium</b></span>
+          <span class="arquivos"><code>src/app/layout/casca.ts</code> <code>src/app/layout/casca.html</code> <code>src/app/layout/casca.scss</code> <code>src/app/layout/casca.spec.ts</code></span>
+        </div>
+      </div></div>
+    </section>
+    <section class="onda">
+      <h3>Onda 3 <small>faixa-7 — em paralelo, janelas limpas</small></h3>
+      <div class="grade">
+      <div class="faixa">
+        <h4>faixa-7 <small>branch <code>spec/acesso-faixa-7</code> · worktree <code>../onp-worktrees/api-externa-frontend-v2-acesso-faixa-7</code></small></h4>
+        
+        <div class="tarefa">
+          <span class="tid">T-019</span>
+          <span class="ttitulo">Rotas de acesso e destino mínimo da área interna</span>
+          <span class="meta"><code>claude-sonnet-5</code> · esforço <b>medium</b></span>
+          <span class="arquivos"><code>src/app/app.routes.ts</code> <code>src/app/features/acesso/acesso.routes.ts</code> <code>src/app/features/painel/painel-provisorio.ts</code> <code>src/app/features/acesso/acesso.routes.spec.ts</code></span>
+        </div>
+      </div></div>
+    </section>
+  
+  <section class="onda">
+    <h3>Branches e commits</h3>
+    <ol>
+      <li>tudo parte da branch de trabalho <code>spec/acesso</code></li>
+      <li>1 faixa = 1 branch + 1 worktree; 1 tarefa = 1 commit <code>T-xxx acesso: título</code></li>
+      <li>merge <code>--no-ff</code> por faixa, na ordem; conflito interrompe e pede você</li>
+      <li>gate final: <code>onp-spec verify acesso</code> + <code>onp-spec audit --ci</code> — exit 0 ou não está pronto</li>
+    </ol>
+  </section>
+</main>

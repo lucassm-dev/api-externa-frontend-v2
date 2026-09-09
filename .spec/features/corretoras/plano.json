@@ -1,0 +1,161 @@
+{
+  "runId": "api-externa-frontend-v2-corretoras-mttjgf34",
+  "feature": "corretoras",
+  "agent": "claude",
+  "modo": "sequencial",
+  "paralelizar": null,
+  "modeloForcado": null,
+  "esforcoForcado": null,
+  "geradoEm": "2026-09-09 03:28",
+  "branchTrabalho": "spec/corretoras",
+  "baseDir": ".spec/features/corretoras",
+  "specDir": ".spec",
+  "repoName": "api-externa-frontend-v2",
+  "logsDir": "../onp-worktrees/api-externa-frontend-v2-corretoras-logs",
+  "ondas": [],
+  "faixas": [],
+  "sequenciais": [
+    {
+      "id": "T-030",
+      "titulo": "CNPJ: normalizar, mascarar e validar antes do envio",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/corretoras/cnpj.ts",
+        "src/app/features/corretoras/cnpj.spec.ts"
+      ],
+      "refs": [
+        "AC-067"
+      ]
+    },
+    {
+      "id": "T-031",
+      "titulo": "Contratos e serviço das corretoras",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/corretoras/corretoras.model.ts",
+        "src/app/features/corretoras/corretoras.service.ts",
+        "src/app/features/corretoras/corretoras.service.spec.ts"
+      ],
+      "refs": [
+        "AC-078",
+        "AC-079",
+        "AC-081",
+        "AC-083",
+        "AC-074"
+      ]
+    },
+    {
+      "id": "T-032",
+      "titulo": "Selo de uso: contagem e rótulo",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/corretoras/selo-de-uso.ts",
+        "src/app/features/corretoras/selo-de-uso.spec.ts"
+      ],
+      "refs": [
+        "AC-081",
+        "AC-082"
+      ]
+    },
+    {
+      "id": "T-033",
+      "titulo": "Diálogo de confirmação simples (compartilhado)",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/shared/confirmacao/dialogo-confirmacao.ts",
+        "src/app/shared/confirmacao/dialogo-confirmacao.html",
+        "src/app/shared/confirmacao/dialogo-confirmacao.scss",
+        "src/app/shared/confirmacao/dialogo-confirmacao.spec.ts"
+      ],
+      "refs": [
+        "AC-087"
+      ]
+    },
+    {
+      "id": "T-034",
+      "titulo": "Tela de cadastro pelo CNPJ",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/corretoras/cadastro/cadastro-corretora.ts",
+        "src/app/features/corretoras/cadastro/cadastro-corretora.html",
+        "src/app/features/corretoras/cadastro/cadastro-corretora.scss",
+        "src/app/features/corretoras/cadastro/cadastro-corretora.spec.ts"
+      ],
+      "refs": [
+        "AC-066",
+        "AC-067",
+        "AC-068",
+        "AC-069",
+        "AC-070",
+        "AC-071",
+        "AC-072",
+        "AC-073",
+        "AC-074",
+        "AC-075"
+      ]
+    },
+    {
+      "id": "T-035",
+      "titulo": "Lista do catálogo com busca, paginação e selo",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/corretoras/lista/lista-corretoras.ts",
+        "src/app/features/corretoras/lista/lista-corretoras.html",
+        "src/app/features/corretoras/lista/lista-corretoras.scss",
+        "src/app/features/corretoras/lista/lista-corretoras.spec.ts"
+      ],
+      "refs": [
+        "AC-076",
+        "AC-077",
+        "AC-078",
+        "AC-080",
+        "AC-081",
+        "AC-082",
+        "AC-083"
+      ]
+    },
+    {
+      "id": "T-036",
+      "titulo": "Detalhe da corretora e remoção",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/corretoras/detalhe/detalhe-corretora.ts",
+        "src/app/features/corretoras/detalhe/detalhe-corretora.html",
+        "src/app/features/corretoras/detalhe/detalhe-corretora.scss",
+        "src/app/features/corretoras/detalhe/detalhe-corretora.spec.ts"
+      ],
+      "refs": [
+        "AC-084",
+        "AC-085",
+        "AC-086",
+        "AC-088",
+        "AC-089",
+        "AC-090"
+      ]
+    },
+    {
+      "id": "T-037",
+      "titulo": "Rotas da área de corretoras",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/corretoras/corretoras.routes.ts",
+        "src/app/features/corretoras/corretoras.routes.spec.ts",
+        "src/app/app.routes.ts"
+      ],
+      "refs": [
+        "AC-079",
+        "AC-086"
+      ]
+    }
+  ],
+  "concluidas": [],
+  "avisos": []
+}

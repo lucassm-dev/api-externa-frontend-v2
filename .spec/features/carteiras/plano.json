@@ -1,0 +1,200 @@
+{
+  "runId": "api-externa-frontend-v2-carteiras-mttk5tt2",
+  "feature": "carteiras",
+  "agent": "claude",
+  "modo": "sequencial",
+  "paralelizar": null,
+  "modeloForcado": null,
+  "esforcoForcado": null,
+  "geradoEm": "2026-09-09 03:48",
+  "branchTrabalho": "spec/carteiras",
+  "baseDir": ".spec/features/carteiras",
+  "specDir": ".spec",
+  "repoName": "api-externa-frontend-v2",
+  "logsDir": "../onp-worktrees/api-externa-frontend-v2-carteiras-logs",
+  "ondas": [],
+  "faixas": [],
+  "sequenciais": [
+    {
+      "id": "T-038",
+      "titulo": "Contratos e serviço das carteiras",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/carteiras/carteiras.model.ts",
+        "src/app/features/carteiras/carteiras.service.ts",
+        "src/app/features/carteiras/carteiras.service.spec.ts"
+      ],
+      "refs": [
+        "AC-093",
+        "AC-094",
+        "AC-097",
+        "AC-100",
+        "AC-112",
+        "AC-113"
+      ]
+    },
+    {
+      "id": "T-039",
+      "titulo": "Posições encerradas: derivação pura",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/carteiras/posicoes-encerradas.ts",
+        "src/app/features/carteiras/posicoes-encerradas.spec.ts"
+      ],
+      "refs": [
+        "AC-109",
+        "AC-110",
+        "AC-111"
+      ]
+    },
+    {
+      "id": "T-040",
+      "titulo": "Recorte do extrato por carteira: derivação pura",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/carteiras/movimentacoes-da-carteira.ts",
+        "src/app/features/carteiras/movimentacoes-da-carteira.spec.ts"
+      ],
+      "refs": [
+        "AC-112",
+        "AC-113",
+        "AC-114"
+      ]
+    },
+    {
+      "id": "T-041",
+      "titulo": "Rentabilidade percentual da posição",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/carteiras/rentabilidade.ts",
+        "src/app/features/carteiras/rentabilidade.spec.ts"
+      ],
+      "refs": [
+        "AC-107"
+      ]
+    },
+    {
+      "id": "T-042",
+      "titulo": "Tela de criação de carteira",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/carteiras/criacao/criar-carteira.ts",
+        "src/app/features/carteiras/criacao/criar-carteira.html",
+        "src/app/features/carteiras/criacao/criar-carteira.scss",
+        "src/app/features/carteiras/criacao/criar-carteira.spec.ts"
+      ],
+      "refs": [
+        "AC-091",
+        "AC-092",
+        "AC-093",
+        "AC-094",
+        "AC-095"
+      ]
+    },
+    {
+      "id": "T-043",
+      "titulo": "Lista de carteiras com números e ações rápidas",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/carteiras/lista/lista-carteiras.ts",
+        "src/app/features/carteiras/lista/lista-carteiras.html",
+        "src/app/features/carteiras/lista/lista-carteiras.scss",
+        "src/app/features/carteiras/lista/lista-carteiras.spec.ts"
+      ],
+      "refs": [
+        "AC-096",
+        "AC-097",
+        "AC-098",
+        "AC-099",
+        "AC-100",
+        "AC-119"
+      ]
+    },
+    {
+      "id": "T-044",
+      "titulo": "Seção de posições abertas e encerradas",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/carteiras/detalhe/posicoes-carteira.ts",
+        "src/app/features/carteiras/detalhe/posicoes-carteira.html",
+        "src/app/features/carteiras/detalhe/posicoes-carteira.scss",
+        "src/app/features/carteiras/detalhe/posicoes-carteira.spec.ts"
+      ],
+      "refs": [
+        "AC-106",
+        "AC-107",
+        "AC-108",
+        "AC-109",
+        "AC-110",
+        "AC-111"
+      ]
+    },
+    {
+      "id": "T-045",
+      "titulo": "Seção de movimentações da carteira",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/carteiras/detalhe/movimentacoes-carteira.ts",
+        "src/app/features/carteiras/detalhe/movimentacoes-carteira.html",
+        "src/app/features/carteiras/detalhe/movimentacoes-carteira.scss",
+        "src/app/features/carteiras/detalhe/movimentacoes-carteira.spec.ts"
+      ],
+      "refs": [
+        "AC-112",
+        "AC-113",
+        "AC-114"
+      ]
+    },
+    {
+      "id": "T-046",
+      "titulo": "Detalhe da carteira: cabeçalho, renomear e excluir",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/carteiras/detalhe/detalhe-carteira.ts",
+        "src/app/features/carteiras/detalhe/detalhe-carteira.html",
+        "src/app/features/carteiras/detalhe/detalhe-carteira.scss",
+        "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts"
+      ],
+      "refs": [
+        "AC-101",
+        "AC-102",
+        "AC-103",
+        "AC-104",
+        "AC-105",
+        "AC-115",
+        "AC-116",
+        "AC-117",
+        "AC-118",
+        "AC-119",
+        "AC-120"
+      ]
+    },
+    {
+      "id": "T-047",
+      "titulo": "Rotas da área de carteiras",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/carteiras/carteiras.routes.ts",
+        "src/app/features/carteiras/carteiras.routes.spec.ts",
+        "src/app/app.routes.ts"
+      ],
+      "refs": [
+        "AC-094",
+        "AC-098",
+        "AC-120"
+      ]
+    }
+  ],
+  "concluidas": [],
+  "avisos": []
+}

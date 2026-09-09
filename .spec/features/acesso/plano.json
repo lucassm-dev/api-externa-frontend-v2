@@ -1,0 +1,208 @@
+{
+  "runId": "api-externa-frontend-v2-acesso-mttdg1f9",
+  "feature": "acesso",
+  "agent": "claude",
+  "modo": "paralelo",
+  "paralelizar": null,
+  "modeloForcado": null,
+  "esforcoForcado": null,
+  "geradoEm": "2026-09-09 00:40",
+  "branchTrabalho": "spec/acesso",
+  "baseDir": ".spec/features/acesso",
+  "specDir": ".spec",
+  "repoName": "api-externa-frontend-v2",
+  "logsDir": "../onp-worktrees/api-externa-frontend-v2-acesso-logs",
+  "ondas": [
+    [
+      "faixa-1",
+      "faixa-2",
+      "faixa-3"
+    ],
+    [
+      "faixa-4",
+      "faixa-5",
+      "faixa-6"
+    ],
+    [
+      "faixa-7"
+    ]
+  ],
+  "faixas": [
+    {
+      "id": "faixa-1",
+      "branch": "spec/acesso-faixa-1",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-acesso-faixa-1",
+      "tarefas": [
+        {
+          "id": "T-013",
+          "titulo": "Corrigir o contrato da sessão para o que o backend devolve",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/core/sessao/sessao.model.ts",
+            "src/app/core/sessao/sessao.service.ts",
+            "src/app/core/sessao/sessao.service.spec.ts",
+            "src/app/core/sessao/sessao.guard.spec.ts",
+            "src/app/core/sessao/autenticacao.interceptor.spec.ts",
+            "src/app/core/erros/erro.interceptor.spec.ts"
+          ],
+          "refs": [
+            "AC-046"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-2",
+      "branch": "spec/acesso-faixa-2",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-acesso-faixa-2",
+      "tarefas": [
+        {
+          "id": "T-014",
+          "titulo": "Serviço de acesso: cadastrar e entrar",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/acesso/acesso.model.ts",
+            "src/app/features/acesso/acesso.service.ts",
+            "src/app/features/acesso/acesso.service.spec.ts"
+          ],
+          "refs": [
+            "AC-025",
+            "AC-026",
+            "AC-035",
+            "AC-046"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-3",
+      "branch": "spec/acesso-faixa-3",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-acesso-faixa-3",
+      "tarefas": [
+        {
+          "id": "T-015",
+          "titulo": "Validação no cliente: CPF, senha e e-mail",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/acesso/validadores.ts",
+            "src/app/features/acesso/validadores.spec.ts"
+          ],
+          "refs": [
+            "AC-027",
+            "AC-028",
+            "AC-029"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-4",
+      "branch": "spec/acesso-faixa-4",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-acesso-faixa-4",
+      "tarefas": [
+        {
+          "id": "T-016",
+          "titulo": "Tela de cadastro",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/acesso/cadastro/cadastro.ts",
+            "src/app/features/acesso/cadastro/cadastro.html",
+            "src/app/features/acesso/cadastro/cadastro.scss",
+            "src/app/features/acesso/cadastro/cadastro.spec.ts"
+          ],
+          "refs": [
+            "AC-025",
+            "AC-026",
+            "AC-030",
+            "AC-031",
+            "AC-032",
+            "AC-033",
+            "AC-034"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-5",
+      "branch": "spec/acesso-faixa-5",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-acesso-faixa-5",
+      "tarefas": [
+        {
+          "id": "T-017",
+          "titulo": "Tela de login",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/acesso/login/login.ts",
+            "src/app/features/acesso/login/login.html",
+            "src/app/features/acesso/login/login.scss",
+            "src/app/features/acesso/login/login.spec.ts"
+          ],
+          "refs": [
+            "AC-035",
+            "AC-036",
+            "AC-037",
+            "AC-038",
+            "AC-039",
+            "AC-045"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-6",
+      "branch": "spec/acesso-faixa-6",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-acesso-faixa-6",
+      "tarefas": [
+        {
+          "id": "T-018",
+          "titulo": "Casca da área interna: sair e aviso de sessão acabando",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/layout/casca.ts",
+            "src/app/layout/casca.html",
+            "src/app/layout/casca.scss",
+            "src/app/layout/casca.spec.ts"
+          ],
+          "refs": [
+            "AC-041",
+            "AC-043",
+            "AC-044"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-7",
+      "branch": "spec/acesso-faixa-7",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-acesso-faixa-7",
+      "tarefas": [
+        {
+          "id": "T-019",
+          "titulo": "Rotas de acesso e destino mínimo da área interna",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/app.routes.ts",
+            "src/app/features/acesso/acesso.routes.ts",
+            "src/app/features/painel/painel-provisorio.ts",
+            "src/app/features/acesso/acesso.routes.spec.ts"
+          ],
+          "refs": [
+            "AC-039",
+            "AC-040",
+            "AC-042"
+          ]
+        }
+      ]
+    }
+  ],
+  "sequenciais": [],
+  "concluidas": [],
+  "avisos": []
+}
