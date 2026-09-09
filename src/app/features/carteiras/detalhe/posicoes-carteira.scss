@@ -9,51 +9,52 @@ h2 {
   font-size: var(--texto-pequeno);
 }
 
-.linhas {
-  display: flex;
-  flex-direction: column;
-  gap: var(--espaco-2);
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--texto-base);
+  color: var(--cor-texto);
 }
 
-.linha {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--espaco-4);
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--espaco-3) var(--espaco-4);
-  border: 1px solid var(--cor-borda);
-  border-radius: var(--raio);
-  background: var(--cor-superficie);
+.tabela th,
+.tabela td {
+  padding: var(--espaco-2) var(--espaco-3);
+  border-bottom: 1px solid var(--cor-borda);
+  text-align: start;
+  vertical-align: top;
+}
+
+.tabela thead th {
+  background: var(--cor-superficie-alta);
+  color: var(--cor-texto-fraco);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+// Colunas de valor, quantidade ou percentual: alinhadas à direita, em fonte de
+// largura fixa e com dígitos de mesma largura entre linhas (AC-244).
+.tabela th[data-numero],
+.tabela td[data-numero] {
+  font-family: var(--fonte-numero);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+  text-align: right;
 }
 
 .ativo {
-  display: flex;
-  flex-direction: column;
-
-  .empresa {
-    color: var(--cor-texto-fraco);
-    font-size: var(--texto-pequeno);
-  }
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espaco-2);
 }
 
-.dados {
+.identificacao {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--espaco-4);
-  margin: 0;
+  flex-direction: column;
+}
 
-  dt {
-    color: var(--cor-texto-fraco);
-    font-size: var(--texto-pequeno);
-  }
-
-  dd {
-    margin: var(--espaco-1) 0 0;
-  }
+.empresa {
+  color: var(--cor-texto-fraco);
+  font-size: var(--texto-pequeno);
 }
 
 .encerradas {
@@ -61,9 +62,22 @@ h2 {
 }
 
 .vazio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+  align-items: flex-start;
   margin: 0;
   padding: var(--espaco-4);
   border: 1px dashed var(--cor-borda);
   border-radius: var(--raio);
   color: var(--cor-texto-fraco);
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: var(--cor-acento);
+    font-weight: 600;
+  }
 }
