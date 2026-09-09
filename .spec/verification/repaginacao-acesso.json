@@ -1,11 +1,52 @@
 {
   "feature": "repaginacao-acesso",
-  "timestamp": "2026-09-09T18:57:40.782Z",
-  "gitRev": "f36c78a",
+  "timestamp": "2026-09-09T23:38:38.737Z",
+  "gitRev": "af1a825",
   "command": "npx ng test",
   "reporter": "tap",
-  "exitCode": 1,
-  "testsParsed": 499,
-  "results": {},
+  "exitCode": 0,
+  "testsParsed": 526,
+  "results": {
+    "AC-251": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/moldura-acesso.spec.ts > Moldura das telas de acesso > @spec:AC-251 separa o formulário da região de marca e limita a largura de leitura # time=2.65ms",
+      "method": "tap"
+    },
+    "AC-252": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/moldura-acesso.spec.ts > Moldura das telas de acesso > @spec:AC-252 mantém a marca fora da tabulação e deixa os controles no formulário # time=2.23ms",
+      "method": "tap"
+    },
+    "AC-253": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/moldura-acesso.spec.ts > Moldura das telas de acesso > @spec:AC-253 desliga o movimento opcional e anima somente transformação e opacidade # time=0.11ms",
+      "method": "tap"
+    },
+    "AC-254": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-254 só mostra a orientação do nome obrigatório depois que o campo perde foco # time=11.21ms",
+      "method": "tap"
+    },
+    "AC-255": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/forca-da-senha.spec.ts > Medidor da força da senha > @spec:AC-255 concorda com o validador real para senhas aceitas e recusadas # time=10.47ms",
+      "method": "tap"
+    },
+    "AC-256": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-256 deixa o primeiro campo pronto para digitar quando a tela abre # time=11.04ms",
+      "method": "tap"
+    },
+    "AC-257": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-257 mantém o rótulo Criar conta ao lado do indicador durante o envio # time=15.59ms",
+      "method": "tap"
+    },
+    "AC-258": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-258 exibe nível e código definidos pelo catálogo, ignorando o texto cru # time=16.28ms",
+      "method": "tap"
+    }
+  },
   "principles": {}
 }
