@@ -1,0 +1,39 @@
+.tela {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: var(--espaco-6);
+}
+
+.cartao {
+  width: 420px;
+  padding: var(--espaco-6);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+}
+
+h1 {
+  margin: 0 0 var(--espaco-1);
+  font-size: 24px;
+}
+
+.apoio {
+  margin: 0 0 var(--espaco-5);
+  color: var(--cor-texto-fraco);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+}
+
+button {
+  margin-top: var(--espaco-3);
+}
+
+.rodape {
+  margin: var(--espaco-5) 0 0;
+  color: var(--cor-texto-fraco);
+}

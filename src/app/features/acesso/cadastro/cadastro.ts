@@ -1,0 +1,92 @@
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { Router, RouterLink } from '@angular/router';
+import { aplicarErroNoFormulario } from '../../../core/erros/erro-em-formulario';
+import { MensagemFeedback } from '../../../core/feedback/mensagem-feedback';
+import { ErroTraduzido } from '../../../core/erros/tradutor-erro';
+import { ROTA_LOGIN } from '../../../core/sessao/sessao.model';
+import { AcessoService } from '../acesso.service';
+import {
+  REGRA_CPF,
+  REGRA_EMAIL,
+  REGRA_SENHA,
+  cpfValidator,
+  digitosDoCpf,
+  formatarCpf,
+  senhaValidator,
+} from '../validadores';
+
+@Component({
+  selector: 'app-cadastro',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ReactiveFormsModule,
+    RouterLink,
+    MensagemFeedback,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
+  templateUrl: './cadastro.html',
+  styleUrl: './cadastro.scss',
+})
+export class Cadastro {
+  private readonly acesso = inject(AcessoService);
+  private readonly router = inject(Router);
+
+  protected readonly regraCpf = REGRA_CPF;
+  protected readonly regraSenha = REGRA_SENHA;
+  protected readonly regraEmail = REGRA_EMAIL;
+  protected readonly rotaLogin = ROTA_LOGIN;
+
+  readonly enviando = signal(false);
+  readonly mensagemGeral = signal<string | null>(null);
+
+  readonly formulario = inject(FormBuilder).nonNullable.group({
+    nome: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    cpf: ['', [Validators.required, cpfValidator]],
+    senha: ['', [Validators.required, senhaValidator]],
+  });
+
+  /** A máscara acompanha a digitação; o que não é dígito não entra no campo. */
+  aoDigitarCpf(evento: Event): void {
+    const campo = evento.target as HTMLInputElement;
+    const formatado = formatarCpf(campo.value);
+    campo.value = formatado;
+    this.formulario.controls.cpf.setValue(formatado);
+  }
+
+  enviar(): void {
+    if (this.enviando()) {
+      return;
+    }
+    this.mensagemGeral.set(null);
+    // O que dá para validar antes do envio é validado antes (PRD-009).
+    if (this.formulario.invalid) {
+      this.formulario.markAllAsTouched();
+      return;
+    }
+
+    this.enviando.set(true);
+    const dados = this.formulario.getRawValue();
+
+    // O backend valida 11 dígitos: a pontuação fica na tela, não no envio.
+    this.acesso.cadastrar({ ...dados, cpf: digitosDoCpf(dados.cpf) }).subscribe({
+      next: (conta) => {
+        this.enviando.set(false);
+        // Cadastro não entra no sistema: o backend não devolve token (ADR-001).
+        this.router.navigate([ROTA_LOGIN], {
+          queryParams: { email: conta.email, contaCriada: '1' },
+        });
+      },
+      error: (erro: ErroTraduzido) => {
+        this.enviando.set(false);
+        this.mensagemGeral.set(aplicarErroNoFormulario(erro, this.formulario));
+      },
+    });
+  }
+}
