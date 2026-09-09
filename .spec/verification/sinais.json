@@ -1121,19 +1121,19 @@
       "codigo": "VERIFY_OBSOLETO",
       "feature": "acesso",
       "ref": "—",
-      "ocorrencias": 12,
+      "ocorrencias": 13,
       "primeiraVez": "2026-09-09T01:21:39.504Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.470Z",
+      "gitRev": "1659033"
     },
     "VERIFY_OBSOLETO::fundacao::—": {
       "codigo": "VERIFY_OBSOLETO",
       "feature": "fundacao",
       "ref": "—",
-      "ocorrencias": 12,
+      "ocorrencias": 13,
       "primeiraVez": "2026-09-09T01:21:39.504Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "ARQUIVO_INEXISTENTE::corretoras::T-001": {
       "codigo": "ARQUIVO_INEXISTENTE",
@@ -1625,10 +1625,10 @@
       "codigo": "VERIFY_OBSOLETO",
       "feature": "painel",
       "ref": "—",
-      "ocorrencias": 11,
+      "ocorrencias": 12,
       "primeiraVez": "2026-09-09T03:36:45.669Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "ARQUIVO_INEXISTENTE::carteiras::T-038": {
       "codigo": "ARQUIVO_INEXISTENTE",
@@ -1994,10 +1994,10 @@
       "codigo": "VERIFY_OBSOLETO",
       "feature": "corretoras",
       "ref": "—",
-      "ocorrencias": 10,
+      "ocorrencias": 11,
       "primeiraVez": "2026-09-09T03:47:24.854Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "ARQUIVO_INEXISTENTE::acoes::T-048": {
       "codigo": "ARQUIVO_INEXISTENTE",
@@ -2300,10 +2300,10 @@
       "codigo": "VERIFY_OBSOLETO",
       "feature": "carteiras",
       "ref": "—",
-      "ocorrencias": 9,
+      "ocorrencias": 10,
       "primeiraVez": "2026-09-09T04:18:31.485Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "ARQUIVO_INEXISTENTE::operacoes::T-001": {
       "codigo": "ARQUIVO_INEXISTENTE",
@@ -2930,10 +2930,10 @@
       "codigo": "VERIFY_OBSOLETO",
       "feature": "acoes",
       "ref": "—",
-      "ocorrencias": 8,
+      "ocorrencias": 9,
       "primeiraVez": "2026-09-09T11:07:08.509Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "ARQUIVO_INEXISTENTE::desempenho::T-065": {
       "codigo": "ARQUIVO_INEXISTENTE",
@@ -3623,91 +3623,91 @@
       "codigo": "ARQUIVO_INEXISTENTE",
       "feature": "repaginacao-acesso",
       "ref": "T-103",
-      "ocorrencias": 44,
+      "ocorrencias": 48,
       "primeiraVez": "2026-09-09T13:58:47.788Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "ARQUIVO_INEXISTENTE::repaginacao-acesso::T-104": {
       "codigo": "ARQUIVO_INEXISTENTE",
       "feature": "repaginacao-acesso",
       "ref": "T-104",
-      "ocorrencias": 44,
+      "ocorrencias": 48,
       "primeiraVez": "2026-09-09T13:58:47.788Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "AC_SEM_TESTE::repaginacao-acesso::AC-251": {
       "codigo": "AC_SEM_TESTE",
       "feature": "repaginacao-acesso",
       "ref": "AC-251",
-      "ocorrencias": 11,
+      "ocorrencias": 12,
       "primeiraVez": "2026-09-09T13:58:47.788Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "AC_SEM_TESTE::repaginacao-acesso::AC-252": {
       "codigo": "AC_SEM_TESTE",
       "feature": "repaginacao-acesso",
       "ref": "AC-252",
-      "ocorrencias": 11,
+      "ocorrencias": 12,
       "primeiraVez": "2026-09-09T13:58:47.788Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "AC_SEM_TESTE::repaginacao-acesso::AC-253": {
       "codigo": "AC_SEM_TESTE",
       "feature": "repaginacao-acesso",
       "ref": "AC-253",
-      "ocorrencias": 11,
+      "ocorrencias": 12,
       "primeiraVez": "2026-09-09T13:58:47.788Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "AC_SEM_TESTE::repaginacao-acesso::AC-254": {
       "codigo": "AC_SEM_TESTE",
       "feature": "repaginacao-acesso",
       "ref": "AC-254",
-      "ocorrencias": 11,
+      "ocorrencias": 12,
       "primeiraVez": "2026-09-09T13:58:47.788Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "AC_SEM_TESTE::repaginacao-acesso::AC-255": {
       "codigo": "AC_SEM_TESTE",
       "feature": "repaginacao-acesso",
       "ref": "AC-255",
-      "ocorrencias": 11,
+      "ocorrencias": 12,
       "primeiraVez": "2026-09-09T13:58:47.788Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "AC_SEM_TESTE::repaginacao-acesso::AC-256": {
       "codigo": "AC_SEM_TESTE",
       "feature": "repaginacao-acesso",
       "ref": "AC-256",
-      "ocorrencias": 11,
+      "ocorrencias": 12,
       "primeiraVez": "2026-09-09T13:58:47.788Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "AC_SEM_TESTE::repaginacao-acesso::AC-257": {
       "codigo": "AC_SEM_TESTE",
       "feature": "repaginacao-acesso",
       "ref": "AC-257",
-      "ocorrencias": 11,
+      "ocorrencias": 12,
       "primeiraVez": "2026-09-09T13:58:47.788Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "AC_SEM_TESTE::repaginacao-acesso::AC-258": {
       "codigo": "AC_SEM_TESTE",
       "feature": "repaginacao-acesso",
       "ref": "AC-258",
-      "ocorrencias": 11,
+      "ocorrencias": 12,
       "primeiraVez": "2026-09-09T13:58:47.788Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "ARQUIVO_INEXISTENTE::repaginacao-desempenho::T-107": {
       "codigo": "ARQUIVO_INEXISTENTE",
@@ -3974,28 +3974,28 @@
       "codigo": "VERIFY_OBSOLETO",
       "feature": "desempenho",
       "ref": "—",
-      "ocorrencias": 7,
+      "ocorrencias": 8,
       "primeiraVez": "2026-09-09T18:28:03.339Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "VERIFY_OBSOLETO::fundacao-visual::—": {
       "codigo": "VERIFY_OBSOLETO",
       "feature": "fundacao-visual",
       "ref": "—",
-      "ocorrencias": 7,
+      "ocorrencias": 8,
       "primeiraVez": "2026-09-09T18:28:03.339Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "VERIFY_OBSOLETO::operacoes::—": {
       "codigo": "VERIFY_OBSOLETO",
       "feature": "operacoes",
       "ref": "—",
-      "ocorrencias": 7,
+      "ocorrencias": 8,
       "primeiraVez": "2026-09-09T18:28:03.339Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "VERIFY_FALHOU::repaginacao-tabelas::AC-242": {
       "codigo": "VERIFY_FALHOU",
@@ -4010,37 +4010,55 @@
       "codigo": "VERIFY_OBSOLETO",
       "feature": "repaginacao-painel",
       "ref": "—",
-      "ocorrencias": 3,
+      "ocorrencias": 4,
       "primeiraVez": "2026-09-09T18:54:59.922Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "TASK_CONCLUIDA_SEM_PROVA::repaginacao-tabelas::T-097": {
       "codigo": "TASK_CONCLUIDA_SEM_PROVA",
       "feature": "repaginacao-tabelas",
       "ref": "T-097",
-      "ocorrencias": 3,
+      "ocorrencias": 4,
       "primeiraVez": "2026-09-09T18:54:59.922Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "TASK_CONCLUIDA_SEM_PROVA::repaginacao-tabelas::T-098": {
       "codigo": "TASK_CONCLUIDA_SEM_PROVA",
       "feature": "repaginacao-tabelas",
       "ref": "T-098",
-      "ocorrencias": 3,
+      "ocorrencias": 4,
       "primeiraVez": "2026-09-09T18:54:59.922Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     },
     "AC_SEM_PROVA::repaginacao-tabelas::AC-242": {
       "codigo": "AC_SEM_PROVA",
       "feature": "repaginacao-tabelas",
       "ref": "AC-242",
-      "ocorrencias": 3,
+      "ocorrencias": 4,
       "primeiraVez": "2026-09-09T18:54:59.922Z",
-      "ultimaVez": "2026-09-09T18:58:03.779Z",
-      "gitRev": "82949c0"
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
+    },
+    "VERIFY_OBSOLETO::repaginacao-acesso::—": {
+      "codigo": "VERIFY_OBSOLETO",
+      "feature": "repaginacao-acesso",
+      "ref": "—",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-09T23:14:09.471Z",
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
+    },
+    "VERIFY_OBSOLETO::repaginacao-tabelas::—": {
+      "codigo": "VERIFY_OBSOLETO",
+      "feature": "repaginacao-tabelas",
+      "ref": "—",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-09T23:14:09.471Z",
+      "ultimaVez": "2026-09-09T23:14:09.471Z",
+      "gitRev": "1659033"
     }
   }
 }
