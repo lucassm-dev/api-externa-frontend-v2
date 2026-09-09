@@ -8,31 +8,55 @@
 table {
   width: 100%;
   border-collapse: collapse;
+  font-size: var(--texto-base);
+}
 
-  th,
-  td {
-    padding: var(--espaco-2) var(--espaco-3);
-    border-bottom: 1px solid var(--cor-borda);
-    text-align: left;
-    white-space: nowrap;
-  }
+th,
+td {
+  padding: var(--espaco-2) var(--espaco-3);
+  border-bottom: 1px solid var(--cor-borda);
+  text-align: start;
+  white-space: nowrap;
+}
 
-  th {
-    font-size: var(--texto-pequeno);
-    color: var(--cor-texto-fraco);
-    font-weight: 500;
-  }
+thead th {
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+  color: var(--cor-texto-fraco);
+}
 
-  td[data-preco],
-  td[data-total],
-  td[data-quantidade] {
-    font-family: var(--fonte-numero);
-  }
+// Colunas de valor e quantidade: alinhadas à direita, em fonte de largura fixa,
+// com dígitos de mesma largura entre linhas (AC-244).
+th[data-numero],
+td[data-numero] {
+  font-family: var(--fonte-numero);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+  text-align: right;
+}
 
-  .acoes {
-    display: flex;
-    gap: var(--espaco-1);
-  }
+// Zebra sutil e destaque sob o ponteiro, para o hover não ser a única pista
+// que separa uma linha da outra.
+tbody tr:nth-child(even) {
+  background: var(--cor-superficie-alta);
+}
+
+tbody tr:hover {
+  background: var(--cor-superficie-alta);
+  outline: 2px solid var(--cor-acento);
+  outline-offset: -2px;
+}
+
+.ticker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espaco-2);
+}
+
+.acoes {
+  display: flex;
+  gap: var(--espaco-1);
+  justify-content: flex-end;
 }
 
 .oculto {
@@ -41,27 +65,4 @@ table {
   height: 1px;
   overflow: hidden;
   clip-path: inset(50%);
-}
-
-.vazio {
-  color: var(--cor-texto-fraco);
-}
-
-.paginacao {
-  display: flex;
-  align-items: center;
-  gap: var(--espaco-3);
-  margin-top: var(--espaco-4);
-}
-
-.esqueleto {
-  display: flex;
-  flex-direction: column;
-  gap: var(--espaco-2);
-
-  span {
-    height: var(--espaco-5);
-    border-radius: var(--raio);
-    background: var(--cor-superficie-alta);
-  }
 }
