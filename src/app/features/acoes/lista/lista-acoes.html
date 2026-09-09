@@ -36,17 +36,25 @@
   }
 
   @if (carregando()) {
-    <div class="esqueleto" aria-hidden="true"><span></span><span></span><span></span></div>
+    <app-esqueleto formato="tabela" />
   } @else if (pagina(); as pagina) {
     @if (pagina.content.length === 0) {
-      <p class="apoio">Nenhuma ação cadastrada ainda.</p>
+      <app-estado-vazio
+        titulo="Nenhuma ação no catálogo"
+        descricao="O catálogo ainda não tem nenhum ticker. Cadastre a primeira ação para começar."
+        rotuloAcao="Cadastrar ação"
+        (acao)="cadastrarAcao()"
+      />
     } @else {
       <ul class="catalogo">
         @for (acao of pagina.content; track acao.id) {
           <li class="linha" data-acao [attr.data-acao-id]="acao.id">
-            <a class="ticker" data-ticker [routerLink]="['/acoes', acao.ticker]">
-              {{ acao.ticker }}
-            </a>
+            <span class="ativo">
+              <app-monograma [ticker]="acao.ticker" />
+              <a class="ticker" data-ticker [routerLink]="['/acoes', acao.ticker]">
+                {{ acao.ticker }}
+              </a>
+            </span>
             <span class="empresa" data-empresa>{{ acao.nomeEmpresa }}</span>
             <span class="mercado" data-mercado>{{ rotuloDoMercado(acao.mercado) }}</span>
             <span class="moeda" data-moeda>{{ acao.moeda }}</span>
@@ -60,25 +68,13 @@
       </ul>
 
       @if (pagina.totalPages > 1) {
-        <nav class="paginacao" aria-label="Páginas do catálogo">
-          <button
-            mat-button
-            type="button"
-            [disabled]="pagina.number === 0"
-            (click)="irPara(pagina.number - 1)"
-          >
-            Anterior
-          </button>
-          <span>Página {{ pagina.number + 1 }} de {{ pagina.totalPages }}</span>
-          <button
-            mat-button
-            type="button"
-            [disabled]="pagina.number + 1 >= pagina.totalPages"
-            (click)="irPara(pagina.number + 1)"
-          >
-            Próxima
-          </button>
-        </nav>
+        <app-paginador
+          [pagina]="pagina.number + 1"
+          [totalPaginas]="pagina.totalPages"
+          [totalItens]="pagina.totalElements"
+          [itensPorPagina]="pagina.size"
+          (paginaMudou)="irPara($event - 1)"
+        />
       }
     }
   }

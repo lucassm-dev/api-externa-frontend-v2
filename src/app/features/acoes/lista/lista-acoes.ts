@@ -5,6 +5,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
 import { Pagina } from '../../../core/api/pagina';
+import { Esqueleto } from '../../../shared/esqueleto/esqueleto';
+import { EstadoVazio } from '../../../shared/estado-vazio/estado-vazio';
+import { Monograma } from '../../../shared/monograma/monograma';
+import { Paginador } from '../../../shared/paginador/paginador';
 import { ValorComHorario } from '../../../shared/valor-com-horario/valor-com-horario';
 import { rotuloDoMercado } from '../../carteiras/carteiras.model';
 import { Acao, normalizarTicker } from '../acoes.model';
@@ -30,6 +34,10 @@ import { AcoesService } from '../acoes.service';
     FormsModule,
     RouterLink,
     ValorComHorario,
+    Monograma,
+    Paginador,
+    EstadoVazio,
+    Esqueleto,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
@@ -93,5 +101,9 @@ export class ListaAcoes {
   limparBusca(): void {
     this.termo.set('');
     this.tickerSemResultado.set(null);
+  }
+
+  cadastrarAcao(): void {
+    this.router.navigate(['/acoes/nova']);
   }
 }

@@ -1,12 +1,17 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { LucideArrowUpRight, LucidePencil, LucideTrash2 } from '@lucide/angular';
 import { Pagina } from '../../../core/api/pagina';
 import { ErroTraduzido } from '../../../core/erros/tradutor-erro';
 import { MensagemFeedback } from '../../../core/feedback/mensagem-feedback';
 import { formatarReal } from '../../../core/formatacao/formatacao';
+import { BotaoIcone } from '../../../shared/botao-icone/botao-icone';
 import { DialogoConfirmacao } from '../../../shared/confirmacao/dialogo-confirmacao';
+import { Esqueleto } from '../../../shared/esqueleto/esqueleto';
+import { EstadoVazio } from '../../../shared/estado-vazio/estado-vazio';
+import { Paginador } from '../../../shared/paginador/paginador';
 import { Variacao } from '../../../shared/variacao/variacao';
 import { Carteira, rotuloDoMercado } from '../carteiras.model';
 import { CarteirasService, NumerosDaCarteira } from '../carteiras.service';
@@ -30,12 +35,20 @@ import { CarteirasService, NumerosDaCarteira } from '../carteiras.service';
     MensagemFeedback,
     DialogoConfirmacao,
     Variacao,
+    BotaoIcone,
+    Paginador,
+    EstadoVazio,
+    Esqueleto,
+    LucideArrowUpRight,
+    LucidePencil,
+    LucideTrash2,
   ],
   templateUrl: './lista-carteiras.html',
   styleUrl: './lista-carteiras.scss',
 })
 export class ListaCarteiras {
   private readonly carteiras = inject(CarteirasService);
+  private readonly router = inject(Router);
 
   protected readonly formatarReal = formatarReal;
   protected readonly rotuloDoMercado = rotuloDoMercado;
@@ -70,6 +83,10 @@ export class ListaCarteiras {
       },
       error: () => this.carregando.set(false),
     });
+  }
+
+  criarCarteira(): void {
+    this.router.navigate(['/carteiras/nova']);
   }
 
   pedirRenomeacao(carteira: Carteira): void {

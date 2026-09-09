@@ -40,6 +40,13 @@
   }
 }
 
+// Destaque do cartão sob o ponteiro. A borda e a superfície próprias de cada
+// cartão o separam do vizinho sem depender do ponteiro (AC-245).
+.carteira:hover {
+  border-color: var(--cor-acento);
+  background: color-mix(in srgb, var(--cor-acento) 8%, var(--cor-superficie));
+}
+
 .origem {
   margin: var(--espaco-1) 0 0;
   color: var(--cor-texto-fraco);
@@ -84,31 +91,34 @@
   align-items: center;
 }
 
-.paginacao {
-  display: flex;
-  gap: var(--espaco-3);
-  align-items: center;
-  justify-content: center;
-  margin-top: var(--espaco-5);
-  color: var(--cor-texto-fraco);
-}
-
-.vazio {
-  padding: var(--espaco-5);
-  border: 1px dashed var(--cor-borda);
+// A ação "Abrir" é um link, então não vem da primitiva de botão de ícone: a
+// área acionável mínima é garantida aqui (AC-248).
+.acao-abrir {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  border: 1px solid var(--cor-borda);
   border-radius: var(--raio);
-  color: var(--cor-texto-fraco);
-  text-align: center;
-}
+  color: var(--cor-texto);
 
-.esqueleto {
-  display: flex;
-  flex-direction: column;
-  gap: var(--espaco-3);
-
-  span {
-    height: var(--espaco-7);
-    border-radius: var(--raio);
+  &:hover {
     background: var(--cor-superficie-alta);
   }
+
+  &:focus-visible {
+    outline: 2px solid var(--cor-acento);
+    outline-offset: 2px;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+app-paginador {
+  display: block;
+  margin-top: var(--espaco-5);
 }

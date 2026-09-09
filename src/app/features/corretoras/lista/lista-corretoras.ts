@@ -5,6 +5,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
 import { Pagina } from '../../../core/api/pagina';
+import { Esqueleto } from '../../../shared/esqueleto/esqueleto';
+import { EstadoVazio } from '../../../shared/estado-vazio/estado-vazio';
+import { Paginador } from '../../../shared/paginador/paginador';
+import { Selo } from '../../../shared/selo/selo';
 import { formatarCnpj, somenteDigitos } from '../cnpj';
 import { Corretora, cidadeComUf, nomeExibido } from '../corretoras.model';
 import { CorretorasService } from '../corretoras.service';
@@ -18,7 +22,17 @@ import { rotuloDoSelo } from '../selo-de-uso';
 @Component({
   selector: 'app-lista-corretoras',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, RouterLink, MatButtonModule, MatFormFieldModule, MatInputModule],
+  imports: [
+    FormsModule,
+    RouterLink,
+    Selo,
+    Paginador,
+    EstadoVazio,
+    Esqueleto,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+  ],
   templateUrl: './lista-corretoras.html',
   styleUrl: './lista-corretoras.scss',
 })
@@ -82,6 +96,10 @@ export class ListaCorretoras {
   limparBusca(): void {
     this.termo.set('');
     this.cnpjSemResultado.set(null);
+  }
+
+  cadastrarCorretora(): void {
+    this.router.navigate(['/corretoras/nova']);
   }
 
   protected selo(corretoraId: number): string | null {

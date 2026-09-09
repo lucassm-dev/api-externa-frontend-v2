@@ -50,13 +50,27 @@ header {
 
 .linha {
   display: grid;
-  grid-template-columns: 5rem minmax(180px, 2fr) 1fr 4rem auto;
+  grid-template-columns: minmax(8rem, 1fr) minmax(180px, 2fr) 1fr 4rem auto;
   align-items: center;
   gap: var(--espaco-3);
   padding: var(--espaco-3) var(--espaco-4);
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio);
   background: var(--cor-superficie);
+}
+
+// Destaque da linha sob o ponteiro. A borda e a superfície própria de cada
+// linha continuam separando uma da outra sem depender do ponteiro (AC-245).
+.linha:hover {
+  border-color: var(--cor-acento);
+  background: color-mix(in srgb, var(--cor-acento) 10%, var(--cor-superficie));
+}
+
+.ativo {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-2);
+  min-width: 0;
 }
 
 .ticker {
@@ -74,22 +88,7 @@ header {
   font-size: var(--texto-pequeno);
 }
 
-.paginacao {
-  display: flex;
-  align-items: center;
-  gap: var(--espaco-3);
+app-paginador {
+  display: block;
   margin-top: var(--espaco-4);
-  color: var(--cor-texto-fraco);
-}
-
-.esqueleto {
-  display: flex;
-  flex-direction: column;
-  gap: var(--espaco-2);
-
-  span {
-    height: 48px;
-    border-radius: var(--raio);
-    background: var(--cor-superficie-alta);
-  }
 }
