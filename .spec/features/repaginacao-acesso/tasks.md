@@ -2,8 +2,7 @@
 
 > feature: repaginacao-acesso
 
-## T-103 — Moldura da tela de acesso [pendente]
-
+## T-103 — Moldura da tela de acesso [concluida]
 - Refs: US-069, AC-251, AC-252, AC-253
 - Arquivos: src/app/features/acesso/moldura-acesso.ts, src/app/features/acesso/moldura-acesso.html, src/app/features/acesso/moldura-acesso.scss, src/app/features/acesso/moldura-acesso.spec.ts
 - Modelo: claude-sonnet-5

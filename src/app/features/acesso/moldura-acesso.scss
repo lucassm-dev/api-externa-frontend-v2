@@ -1,0 +1,128 @@
+:host {
+  display: block;
+  min-width: var(--largura-minima-app);
+}
+
+.moldura {
+  display: grid;
+  grid-template-columns: minmax(480px, 5fr) minmax(480px, 7fr);
+  min-height: 100vh;
+  background: var(--cor-fundo);
+}
+
+.regiao-formulario {
+  display: grid;
+  place-items: center;
+  padding: calc(var(--espaco-6) * 2);
+}
+
+.conteudo-formulario {
+  width: min(100%, 440px);
+}
+
+.regiao-marca {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  padding: calc(var(--espaco-6) * 2);
+  color: var(--cor-barra-mercado-texto);
+  background: var(--cor-barra-mercado-fundo);
+}
+
+.regiao-marca::before {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  content: '';
+  background: radial-gradient(circle at 70% 30%, var(--cor-destaque), transparent 28%);
+  opacity: 0.18;
+  animation: respirar-marca 12s ease-in-out infinite alternate;
+}
+
+.halo {
+  position: absolute;
+  z-index: -1;
+  border: 1px solid var(--cor-barra-mercado-borda);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: orbitar-marca 18s linear infinite;
+}
+
+.halo-maior {
+  width: 520px;
+  height: 520px;
+}
+
+.halo-menor {
+  width: 340px;
+  height: 340px;
+  border-color: var(--cor-destaque);
+  opacity: 0.22;
+  animation-direction: reverse;
+  animation-duration: 24s;
+}
+
+.marca-conteudo {
+  max-width: 480px;
+}
+
+.marca-sinal {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--espaco-6);
+  border-radius: var(--raio-grande);
+  color: var(--cor-destaque-texto);
+  background: var(--cor-destaque);
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.marca-nome {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+}
+
+.marca-frase {
+  max-width: 400px;
+  margin: var(--espaco-4) 0 0;
+  color: var(--cor-barra-mercado-fraco);
+  font-size: var(--texto-grande);
+  line-height: 1.55;
+}
+
+@keyframes respirar-marca {
+  from {
+    transform: scale(0.92) translate3d(-2%, 2%, 0);
+    opacity: 0.12;
+  }
+
+  to {
+    transform: scale(1.08) translate3d(2%, -2%, 0);
+    opacity: 0.24;
+  }
+}
+
+@keyframes orbitar-marca {
+  from {
+    transform: rotate(0deg) scale(0.96);
+    opacity: 0.4;
+  }
+
+  to {
+    transform: rotate(360deg) scale(1.04);
+    opacity: 0.75;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .regiao-marca::before,
+  .halo {
+    animation: none;
+  }
+}
