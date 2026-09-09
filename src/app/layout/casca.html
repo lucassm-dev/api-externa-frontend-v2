@@ -1,0 +1,49 @@
+<header class="barra">
+  <span class="marca">Carteira</span>
+
+  <nav class="areas" data-areas aria-label="Áreas do produto">
+    @for (area of areas; track area.rota) {
+      <a
+        class="area"
+        [routerLink]="area.rota"
+        routerLinkActive="ativa"
+        #ativa="routerLinkActive"
+        [attr.aria-current]="ativa.isActive ? 'page' : null"
+        [attr.data-area]="area.rota"
+        >{{ area.rotulo }}</a
+      >
+    }
+  </nav>
+
+  <div class="identidade">
+    <span class="email">{{ email() }}</span>
+    <button
+      mat-stroked-button
+      type="button"
+      data-alternar-tema
+      [attr.data-tema-atual]="tema()"
+      (click)="alternarTema()"
+    >
+      {{ tema() === 'claro' ? 'Tema escuro' : 'Tema claro' }}
+    </button>
+    <button mat-stroked-button type="button" data-sair (click)="sair()">Sair</button>
+  </div>
+</header>
+
+@if (sessaoAcabando()) {
+  <div class="aviso" data-aviso-sessao>
+    <app-mensagem-feedback
+      nivel="aviso"
+      [mensagem]="
+        'Sua sessão acaba em menos de ' + minutosDeAviso + ' minutos. Entre novamente para não perder o que estiver fazendo.'
+      "
+    />
+    <button mat-flat-button type="button" data-entrar-novamente (click)="entrarNovamente()">
+      Entrar novamente
+    </button>
+  </div>
+}
+
+<main class="conteudo">
+  <router-outlet />
+</main>

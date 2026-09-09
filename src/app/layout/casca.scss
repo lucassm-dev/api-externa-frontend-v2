@@ -1,0 +1,61 @@
+.barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 var(--espaco-5);
+  border-bottom: 1px solid var(--cor-borda);
+  background: var(--cor-superficie);
+}
+
+.marca {
+  font-size: var(--texto-grande);
+  font-weight: 700;
+}
+
+.identidade {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-4);
+}
+
+.email {
+  color: var(--cor-texto-fraco);
+}
+
+.aviso {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-4);
+  padding: var(--espaco-3) var(--espaco-5);
+}
+
+.conteudo {
+  padding: var(--espaco-5);
+}
+
+.areas {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-2);
+  margin-right: auto;
+  margin-left: var(--espaco-5);
+}
+
+.area {
+  padding: var(--espaco-2) var(--espaco-3);
+  border-radius: var(--raio);
+  color: var(--cor-texto-fraco);
+  text-decoration: none;
+
+  &:hover {
+    background: var(--cor-superficie-alta);
+    color: var(--cor-texto);
+  }
+
+  &.ativa {
+    color: var(--cor-texto);
+    font-weight: 700;
+    box-shadow: inset 0 -2px 0 0 var(--cor-acento);
+  }
+}
