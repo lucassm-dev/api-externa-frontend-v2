@@ -1,5 +1,9 @@
 <section class="convite" data-proximo-passo [attr.data-passo]="passo().id">
+  <svg class="icone" data-icone lucideInbox aria-hidden="true" focusable="false"></svg>
   <h2 data-titulo>{{ passo().titulo }}</h2>
   <p data-explicacao>{{ passo().explicacao }}</p>
-  <a class="acao" data-acao [routerLink]="passo().rota">{{ passo().acao }}</a>
+  <a class="acao" data-acao [routerLink]="passo().rota">
+    <span>{{ passo().acao }}</span>
+    <svg lucideArrowRight aria-hidden="true" focusable="false"></svg>
+  </a>
 </section>
