@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { formatarDataHora, formatarMoeda, formatarNumero } from '../../../core/formatacao/formatacao';
+import { Monograma } from '../../../shared/monograma/monograma';
+import { Selo, VarianteSelo } from '../../../shared/selo/selo';
 import { MOVIMENTACOES_NO_PAINEL, Movimentacao } from '../painel.model';
 
 /**
@@ -11,7 +13,7 @@ import { MOVIMENTACOES_NO_PAINEL, Movimentacao } from '../painel.model';
 @Component({
   selector: 'app-ultimas-movimentacoes',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink],
+  imports: [RouterLink, Monograma, Selo],
   templateUrl: './ultimas-movimentacoes.html',
   styleUrl: './ultimas-movimentacoes.scss',
 })
@@ -22,6 +24,16 @@ export class UltimasMovimentacoes {
 
   protected quando(movimentacao: Movimentacao): string {
     return formatarDataHora(movimentacao.dataHora);
+  }
+
+  protected varianteDoTipo(movimentacao: Movimentacao): VarianteSelo {
+    if (movimentacao.tipo === 'COMPRA') {
+      return 'alta';
+    }
+    if (movimentacao.tipo === 'VENDA') {
+      return 'baixa';
+    }
+    return 'estavel';
   }
 
   protected quantidade(movimentacao: Movimentacao): string | null {

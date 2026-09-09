@@ -30,8 +30,8 @@
 
 .linha {
   display: grid;
-  grid-template-columns: 150px 90px 90px 1fr auto;
-  align-items: baseline;
+  grid-template-columns: 150px auto 1fr auto auto;
+  align-items: center;
   gap: var(--espaco-3);
   padding: var(--espaco-2) 0;
   border-bottom: 1px solid var(--cor-borda);
@@ -44,6 +44,17 @@
 .quando {
   color: var(--cor-texto-fraco);
   font-size: var(--texto-pequeno);
+}
+
+.ativo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espaco-2);
+  min-width: 0;
+}
+
+.ticker {
+  font-weight: 700;
 }
 
 .quantidade,
