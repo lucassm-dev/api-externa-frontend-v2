@@ -2,46 +2,139 @@
   <h2>Extrato de movimentações</h2>
 
   @if (carregando()) {
-    <div class="esqueleto" aria-hidden="true"><span></span><span></span><span></span></div>
+    <app-esqueleto formato="tabela" data-extrato-carregando />
   } @else if (operacoes().length === 0) {
-    <p class="vazio" data-extrato-vazio>Você ainda não registrou nenhuma operação.</p>
+    <app-estado-vazio
+      data-extrato-vazio
+      titulo="Nenhuma operação registrada"
+      descricao="Quando você registrar uma compra ou venda, ela aparece aqui no extrato."
+      rotuloAcao="Registrar primeira operação"
+      (acao)="registrarPrimeira.emit()"
+    />
   } @else {
     <table>
       <thead>
         <tr>
-          <th scope="col">Data e hora</th>
-          <th scope="col">Carteira</th>
-          <th scope="col">Tipo</th>
-          <th scope="col">Ação</th>
-          <th scope="col">Quantidade</th>
-          <th scope="col">Preço unitário</th>
-          <th scope="col">Valor total</th>
-          <th scope="col">Resultado</th>
+          <th
+            app-cabecalho-ordenavel
+            rotulo="Data e hora"
+            [sentido]="sentido('quando')"
+            (ordenar)="ordenarPor('quando')"
+          ></th>
+          <th
+            app-cabecalho-ordenavel
+            rotulo="Carteira"
+            [sentido]="sentido('carteira')"
+            (ordenar)="ordenarPor('carteira')"
+          ></th>
+          <th
+            app-cabecalho-ordenavel
+            rotulo="Tipo"
+            [sentido]="sentido('tipo')"
+            (ordenar)="ordenarPor('tipo')"
+          ></th>
+          <th
+            app-cabecalho-ordenavel
+            rotulo="Ação"
+            [sentido]="sentido('ticker')"
+            (ordenar)="ordenarPor('ticker')"
+          ></th>
+          <th
+            app-cabecalho-ordenavel
+            data-numero
+            rotulo="Quantidade"
+            [sentido]="sentido('quantidade')"
+            (ordenar)="ordenarPor('quantidade')"
+          ></th>
+          <th
+            app-cabecalho-ordenavel
+            data-numero
+            rotulo="Preço unitário"
+            [sentido]="sentido('preco')"
+            (ordenar)="ordenarPor('preco')"
+          ></th>
+          <th
+            app-cabecalho-ordenavel
+            data-numero
+            rotulo="Valor total"
+            [sentido]="sentido('total')"
+            (ordenar)="ordenarPor('total')"
+          ></th>
+          <th
+            app-cabecalho-ordenavel
+            rotulo="Resultado"
+            [sentido]="sentido('resultado')"
+            (ordenar)="ordenarPor('resultado')"
+          ></th>
           <th scope="col"><span class="oculto">Ações</span></th>
         </tr>
       </thead>
       <tbody>
-        @for (operacao of operacoes(); track operacao.id) {
+        @for (operacao of linhas(); track operacao.id) {
           <tr [attr.data-operacao]="operacao.id">
             <td data-quando>{{ quando(operacao) }}</td>
             <td data-carteira>{{ carteira(operacao) }}</td>
-            <td data-tipo>{{ operacao.tipo }}</td>
-            <td data-ticker>{{ operacao.ticker }}</td>
-            <td data-quantidade>{{ quantidade(operacao) }}</td>
-            <td data-preco>{{ preco(operacao) }}</td>
-            <td data-total>{{ total(operacao) }}</td>
-            <td>
+            <td data-tipo>
+              <app-selo [variante]="tipoVariante(operacao)" [texto]="operacao.tipo" />
+            </td>
+            <td data-ticker>
+              <span class="ticker">
+                <app-monograma [ticker]="operacao.ticker" />
+                <span class="rotulo-ticker">{{ operacao.ticker }}</span>
+              </span>
+            </td>
+            <td data-quantidade data-numero>{{ quantidade(operacao) }}</td>
+            <td data-preco data-numero>{{ preco(operacao) }}</td>
+            <td data-total data-numero>{{ total(operacao) }}</td>
+            <td data-numero>
               @if (resultado(operacao); as realizado) {
-                <span data-resultado-realizado>{{ realizado }}</span>
+                <app-selo
+                  data-resultado-realizado
+                  [variante]="resultadoVariante(operacao)"
+                  [texto]="realizado"
+                />
               }
             </td>
             <td class="acoes">
-              <button mat-button type="button" data-editar (click)="editar.emit(operacao)">
-                Editar
-              </button>
-              <button mat-button type="button" data-excluir (click)="pedirExclusao(operacao)">
-                Excluir
-              </button>
+              <app-botao-icone
+                data-editar
+                [rotulo]="rotuloEditar(operacao)"
+                (pressionado)="editar.emit(operacao)"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 20h9" />
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z" />
+                </svg>
+              </app-botao-icone>
+              <app-botao-icone
+                data-excluir
+                [rotulo]="rotuloExcluir(operacao)"
+                (pressionado)="pedirExclusao(operacao)"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M3 6h18" />
+                  <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                  <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                </svg>
+              </app-botao-icone>
             </td>
           </tr>
         }
@@ -49,27 +142,14 @@
     </table>
 
     @if (totalDePaginas() > 1) {
-      <nav class="paginacao" data-paginacao>
-        <button
-          mat-stroked-button
-          type="button"
-          data-pagina-anterior
-          [disabled]="!temAnterior()"
-          (click)="irPara(pagina() - 1)"
-        >
-          Anterior
-        </button>
-        <span data-pagina-atual>Página {{ pagina() + 1 }} de {{ totalDePaginas() }}</span>
-        <button
-          mat-stroked-button
-          type="button"
-          data-proxima-pagina
-          [disabled]="!temProxima()"
-          (click)="irPara(pagina() + 1)"
-        >
-          Próxima
-        </button>
-      </nav>
+      <app-paginador
+        data-paginacao
+        [pagina]="pagina() + 1"
+        [totalPaginas]="totalDePaginas()"
+        [totalItens]="totalDeItens()"
+        [itensPorPagina]="itensPorPagina"
+        (paginaMudou)="irPara($event - 1)"
+      />
     }
   }
 </section>

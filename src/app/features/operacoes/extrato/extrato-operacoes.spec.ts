@@ -1,8 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { readFileSync } from 'node:fs';
 import { Carteira } from '../../carteiras/carteiras.model';
 import { OperacaoDoExtrato } from '../operacoes.model';
 import { ExtratoOperacoes } from './extrato-operacoes';
+
+const ESTILO = 'src/app/features/operacoes/extrato/extrato-operacoes.scss';
 
 const CARTEIRAS: Carteira[] = [
   {
@@ -105,21 +108,21 @@ describe('Extrato de operações', () => {
     const pedidas: number[] = [];
     componente.mudarPagina.subscribe((pagina) => pedidas.push(pagina));
 
-    expect(elemento.querySelector('[data-pagina-atual]')!.textContent).toContain('Página 2 de 3');
-    elemento.querySelector<HTMLButtonElement>('[data-proxima-pagina]')!.click();
-    elemento.querySelector<HTMLButtonElement>('[data-pagina-anterior]')!.click();
+    expect(elemento.querySelector('[data-paginacao] [data-pagina]')!.textContent).toContain(
+      'Página 2 de 3',
+    );
+    elemento.querySelector<HTMLButtonElement>('[data-proxima]')!.click();
+    elemento.querySelector<HTMLButtonElement>('[data-anterior]')!.click();
 
     expect(pedidas).toEqual([2, 0]);
   });
 
   it('@spec:AC-171 na primeira página não há anterior, e na última não há próxima', () => {
     montar([COMPRA], { pagina: 0, totalDePaginas: 2 });
-    expect(elemento.querySelector<HTMLButtonElement>('[data-pagina-anterior]')!.disabled).toBe(
-      true,
-    );
+    expect(elemento.querySelector<HTMLButtonElement>('[data-anterior]')!.disabled).toBe(true);
 
     montar([COMPRA], { pagina: 1, totalDePaginas: 2 });
-    expect(elemento.querySelector<HTMLButtonElement>('[data-proxima-pagina]')!.disabled).toBe(true);
+    expect(elemento.querySelector<HTMLButtonElement>('[data-proxima]')!.disabled).toBe(true);
   });
 
   it('@spec:AC-172 não existe nenhum controle de filtro ou busca no extrato', () => {
@@ -137,7 +140,7 @@ describe('Extrato de operações', () => {
     const excluidas: OperacaoDoExtrato[] = [];
     componente.excluir.subscribe((operacao) => excluidas.push(operacao));
 
-    elemento.querySelector<HTMLButtonElement>('[data-excluir]')!.click();
+    elemento.querySelector<HTMLButtonElement>('[data-excluir] button')!.click();
     fixture.detectChanges();
 
     const dialogo = elemento.querySelector('[data-confirmar-exclusao]')!;
@@ -168,9 +171,106 @@ describe('Extrato de operações', () => {
     const editadas: OperacaoDoExtrato[] = [];
     componente.editar.subscribe((operacao) => editadas.push(operacao));
 
-    elemento.querySelector<HTMLButtonElement>('[data-editar]')!.click();
+    elemento.querySelector<HTMLButtonElement>('[data-editar] button')!.click();
 
     expect(editadas).toEqual([COMPRA]);
+  });
+
+  it('@spec:AC-244 números de valor e quantidade saem alinhados à direita, em fonte de largura fixa e dígitos de mesma largura', () => {
+    montar([COMPRA]);
+
+    const linha = elemento.querySelector('[data-operacao="1"]')!;
+    for (const seletor of ['[data-quantidade]', '[data-preco]', '[data-total]']) {
+      expect(linha.querySelector(seletor)!.hasAttribute('data-numero')).toBe(true);
+    }
+
+    const estilo = readFileSync(ESTILO, 'utf8');
+    expect(estilo).toMatch(/\[data-numero\][\s\S]*text-align:\s*right/);
+    expect(estilo).toMatch(/\[data-numero\][\s\S]*var\(--fonte-numero\)/);
+    expect(estilo).toMatch(/tabular-nums/);
+  });
+
+  it('@spec:AC-246 tipo e resultado aparecem como selo com texto e sinal, nunca só cor', () => {
+    montar([VENDA]);
+    const linha = elemento.querySelector('[data-operacao="2"]')!;
+
+    const seloTipo = linha.querySelector('[data-tipo] [data-selo]')!;
+    expect(seloTipo).toBeTruthy();
+    expect(seloTipo.textContent).toContain('VENDA');
+    expect(seloTipo.getAttribute('data-variante')).toBeTruthy();
+    expect(seloTipo.querySelector('svg')).toBeTruthy();
+
+    const seloResultado = linha.querySelector('[data-resultado-realizado] [data-selo]')!;
+    expect(seloResultado).toBeTruthy();
+    expect(seloResultado.textContent).toContain('500,00');
+    expect(seloResultado.getAttribute('data-variante')).toBeTruthy();
+    expect(seloResultado.querySelector('svg')).toBeTruthy();
+  });
+
+  it('@spec:AC-247 a linha do ativo mostra o monograma junto do ticker', () => {
+    montar([COMPRA]);
+
+    const celula = elemento.querySelector('[data-operacao="1"] [data-ticker]')!;
+    expect(celula.textContent).toContain('PETR4');
+    expect(celula.querySelector('app-monograma')).toBeTruthy();
+    expect(celula.querySelector('[data-monograma], img')).toBeTruthy();
+  });
+
+  it('@spec:AC-248 as ações da linha são botões de ícone com nome acessível da ação e do item', () => {
+    montar([COMPRA]);
+    const editadas: OperacaoDoExtrato[] = [];
+    componente.editar.subscribe((operacao) => editadas.push(operacao));
+
+    const editar = elemento.querySelector<HTMLButtonElement>('[data-editar] button')!;
+    const excluir = elemento.querySelector<HTMLButtonElement>('[data-excluir] button')!;
+
+    expect(editar.tagName).toBe('BUTTON');
+    expect(editar.getAttribute('aria-label')).toContain('Editar operação de PETR4 em');
+    expect(editar.getAttribute('aria-label')).toContain('09/09/2026');
+    expect(excluir.getAttribute('aria-label')).toContain('Excluir operação de PETR4 em');
+
+    // ícone nomeado: nenhum rótulo de texto visível na ação
+    expect(editar.textContent?.trim()).toBe('');
+    expect(editar.querySelector('svg')).toBeTruthy();
+    expect(excluir.querySelector('svg')).toBeTruthy();
+
+    editar.click();
+    expect(editadas).toEqual([COMPRA]);
+  });
+
+  it('@spec:AC-249 o rodapé informa página, total de páginas e a faixa de itens, travando as pontas', () => {
+    montar([COMPRA, VENDA], { pagina: 1, totalDePaginas: 3 });
+    const rodape = elemento.querySelector('[data-paginacao]')!;
+
+    expect(rodape.querySelector('[data-pagina]')!.textContent).toContain('Página 2 de 3');
+    expect(rodape.querySelector('[data-faixa]')!.textContent).toMatch(
+      /\d+\s*[–-]\s*\d+\s*de\s*\d+/,
+    );
+
+    montar([COMPRA], { pagina: 0, totalDePaginas: 2 });
+    expect(elemento.querySelector<HTMLButtonElement>('[data-anterior]')!.disabled).toBe(true);
+
+    montar([COMPRA], { pagina: 1, totalDePaginas: 2 });
+    expect(elemento.querySelector<HTMLButtonElement>('[data-proxima]')!.disabled).toBe(true);
+  });
+
+  it('@spec:AC-250 carregando mostra o esqueleto com a silhueta das linhas, não uma área em branco', () => {
+    montar([], { carregando: true });
+
+    const esqueleto = elemento.querySelector('[data-esqueleto]')!;
+    expect(esqueleto).toBeTruthy();
+    expect(esqueleto.querySelectorAll('[data-linha]').length).toBeGreaterThan(1);
+    expect(elemento.querySelector('table')).toBeNull();
+  });
+
+  it('@spec:AC-250 sem resultados mostra o estado vazio com próximo passo, não uma área em branco', () => {
+    montar([]);
+
+    const vazio = elemento.querySelector('[data-extrato-vazio]')!;
+    expect(vazio).toBeTruthy();
+    expect(vazio.textContent!.trim().length).toBeGreaterThan(0);
+    expect(vazio.querySelector('[data-proximo-passo]')).toBeTruthy();
+    expect(elemento.querySelector('table')).toBeNull();
   });
 
   it('extrato vazio não vira erro, e sim estado vazio', () => {
