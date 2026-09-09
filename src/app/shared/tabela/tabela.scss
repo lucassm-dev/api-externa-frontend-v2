@@ -1,0 +1,57 @@
+// Folha compartilhada por todas as tabelas do produto (extrato, posições,
+// movimentações, catálogos). A tabela continua semântica; aqui mora só a
+// apresentação: densidade, zebra, destaque de linha, cabeçalho fixo e
+// alinhamento numérico. Nenhuma cor literal — só tokens (P-003).
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--texto-base);
+  color: var(--cor-texto);
+}
+
+.tabela caption {
+  padding-block: var(--espaco-2);
+  color: var(--cor-texto-fraco);
+  text-align: start;
+}
+
+.tabela th,
+.tabela td {
+  padding: var(--espaco-2) var(--espaco-3);
+  border-bottom: 1px solid var(--cor-borda);
+  text-align: start;
+}
+
+.tabela thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--cor-superficie-alta);
+  color: var(--cor-texto-fraco);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+// Zebra sutil: distingue uma linha da outra sem depender do ponteiro, para que o
+// realce de hover não seja a única pista de separação (AC-245).
+.tabela tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--cor-superficie-alta) 55%, var(--cor-superficie));
+}
+
+// Destaque da linha sob o ponteiro (AC-245).
+.tabela tbody tr:hover {
+  background: color-mix(in srgb, var(--cor-acento) 12%, var(--cor-superficie));
+  outline: 2px solid var(--cor-acento);
+  outline-offset: -2px;
+}
+
+// Colunas de valor, quantidade ou percentual: alinhadas à direita, em fonte de
+// largura fixa e com dígitos de mesma largura entre linhas (AC-244).
+.tabela th[data-numero],
+.tabela td[data-numero] {
+  font-family: var(--fonte-numero);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+  text-align: right;
+}
