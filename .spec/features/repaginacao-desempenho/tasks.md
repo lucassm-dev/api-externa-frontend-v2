@@ -43,8 +43,7 @@
 - Notas: mesmo tratamento da contribuição, com selo de resultado por ticker.
   Ordenação do maior ganho à maior perda, mantendo o sinal explícito.
 
-## T-111 — Números do desempenho e composição da tela [pendente]
-
+## T-111 — Números do desempenho e composição da tela [concluida]
 - Refs: US-074, AC-264, AC-265
 - Arquivos: src/app/features/desempenho/blocos/numeros-desempenho.ts, src/app/features/desempenho/blocos/numeros-desempenho.html, src/app/features/desempenho/blocos/numeros-desempenho.scss, src/app/features/desempenho/desempenho.html, src/app/features/desempenho/desempenho.scss, src/app/features/desempenho/blocos/numeros-desempenho.spec.ts
 - Modelo: claude-sonnet-5

@@ -49,7 +49,9 @@ describe('Os quatro números no topo do desempenho', () => {
   it('@spec:AC-185 cada resultado traz o percentual sobre o investido', async () => {
     const elemento = await montar(resultados);
 
-    expect(elemento.querySelector('[data-nao-realizado-percentual]')?.textContent).toContain('20,00%');
+    expect(elemento.querySelector('[data-nao-realizado-percentual]')?.textContent).toContain(
+      '20,00%',
+    );
     expect(elemento.querySelector('[data-realizado-percentual]')?.textContent).toContain('5,00%');
   });
 
@@ -69,7 +71,11 @@ describe('Os quatro números no topo do desempenho', () => {
   });
 
   it('@spec:AC-187 ganho e perda trazem seta e palavra, não só cor', async () => {
-    const elemento = await montar({ ...resultados, naoRealizado: -2000, naoRealizadoPercentual: -20 });
+    const elemento = await montar({
+      ...resultados,
+      naoRealizado: -2000,
+      naoRealizadoPercentual: -20,
+    });
 
     const naoRealizado = elemento.querySelector('[data-nao-realizado]');
     expect(naoRealizado?.querySelector('[data-sinal]')?.textContent).toBe('▼');
@@ -93,5 +99,32 @@ describe('Os quatro números no topo do desempenho', () => {
     expect(elemento.querySelector('[data-realizado-indisponivel]')?.textContent).toContain(
       'Não foi possível ler',
     );
+  });
+
+  it('@spec:AC-264 cada indicador tem rótulo pequeno, valor destacado e selo nos resultados', async () => {
+    const elemento = await montar(resultados);
+    const indicadores = [...elemento.querySelectorAll('[data-indicador]')];
+
+    expect(indicadores).toHaveLength(4);
+    for (const indicador of indicadores) {
+      expect(indicador.querySelector('[data-indicador-rotulo]')).not.toBeNull();
+      expect(indicador.querySelector('[data-indicador-valor]')).not.toBeNull();
+    }
+    expect(
+      elemento.querySelector('[data-nao-realizado-percentual] [data-selo]')?.textContent,
+    ).toContain('Alta 20,00%');
+    expect(
+      elemento.querySelector('[data-realizado-percentual] [data-selo]')?.textContent,
+    ).toContain('Alta 5,00%');
+  });
+
+  it('@spec:AC-265 não sugere eixo de tempo, tendência nem comparação com período anterior', async () => {
+    const elemento = await montar(resultados);
+
+    expect(elemento.textContent ?? '').not.toMatch(
+      /m[eê]s anterior|per[íi]odo anterior|evolu[çc][aã]o|tend[eê]ncia|hist[óo]rico/i,
+    );
+    expect(elemento.querySelector('[data-sparkline]')).toBeNull();
+    expect(elemento.querySelector('[data-eixo-tempo]')).toBeNull();
   });
 });

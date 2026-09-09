@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
-import { formatarReal } from '../../../core/formatacao/formatacao';
+import { formatarNumero, formatarReal } from '../../../core/formatacao/formatacao';
+import { Selo, VarianteSelo } from '../../../shared/selo/selo';
 import { Variacao } from '../../../shared/variacao/variacao';
 import { ResultadosDaCarteira } from '../resultados';
 
@@ -16,7 +17,7 @@ import { ResultadosDaCarteira } from '../resultados';
 @Component({
   selector: 'app-numeros-desempenho',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Variacao],
+  imports: [Selo, Variacao],
   templateUrl: './numeros-desempenho.html',
   styleUrl: './numeros-desempenho.scss',
 })
@@ -25,4 +26,25 @@ export class NumerosDesempenho {
 
   protected readonly investido = computed(() => formatarReal(this.resultados().valorInvestido));
   protected readonly mercado = computed(() => formatarReal(this.resultados().valorDeMercado));
+  protected readonly seloNaoRealizado = computed(() =>
+    this.seloDoPercentual(this.resultados().naoRealizadoPercentual),
+  );
+  protected readonly seloRealizado = computed(() =>
+    this.seloDoPercentual(this.resultados().realizadoPercentual),
+  );
+
+  private seloDoPercentual(
+    percentual: number | null,
+  ): { variante: VarianteSelo; texto: string } | null {
+    if (percentual === null) {
+      return null;
+    }
+    if (percentual > 0) {
+      return { variante: 'alta', texto: `Alta ${formatarNumero(percentual)}%` };
+    }
+    if (percentual < 0) {
+      return { variante: 'baixa', texto: `Baixa ${formatarNumero(Math.abs(percentual))}%` };
+    }
+    return { variante: 'estavel', texto: 'Estável 0,00%' };
+  }
 }
