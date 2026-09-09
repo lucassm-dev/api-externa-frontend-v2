@@ -1,0 +1,57 @@
+{
+  "feature": "repaginacao-tabelas",
+  "timestamp": "2026-09-09T18:54:59.636Z",
+  "gitRev": "3f9e735",
+  "command": "npx ng test",
+  "reporter": "tap",
+  "exitCode": 1,
+  "testsParsed": 499,
+  "results": {
+    "AC-242": {
+      "status": "fail",
+      "testName": "src/app/shared/tabela/cabecalho-ordenavel.spec.ts > Cabeçalho ordenável > @spec:AC-242 anuncia o sentido atual em aria-sort e o alterna conforme o estado recebido # time=41.59ms",
+      "method": "tap"
+    },
+    "AC-243": {
+      "status": "pass",
+      "testName": "src/app/shared/tabela/ordenacao.spec.ts > OrdenacaoTabela > @spec:AC-243 ordena sobre os itens já carregados sem mutar o array da página # time=0.61ms",
+      "method": "tap"
+    },
+    "AC-244": {
+      "status": "pass",
+      "testName": "src/app/shared/tabela/tabela.spec.ts > Estilo base de tabela > @spec:AC-244 alinha as colunas numéricas à direita, em fonte de largura fixa e com dígitos de mesma largura # time=0.35ms",
+      "method": "tap"
+    },
+    "AC-245": {
+      "status": "pass",
+      "testName": "src/app/shared/tabela/tabela.spec.ts > Estilo base de tabela > @spec:AC-245 destaca a linha sob o ponteiro sem que o destaque seja a única forma de distingui-la # time=0.14ms",
+      "method": "tap"
+    },
+    "AC-246": {
+      "status": "pass",
+      "testName": "src/app/features/carteiras/detalhe/movimentacoes-carteira.spec.ts > Movimentações da carteira na tela > @spec:AC-246 o tipo da operação vira selo com texto e símbolo, nunca só cor # time=11.14ms",
+      "method": "tap"
+    },
+    "AC-247": {
+      "status": "pass",
+      "testName": "src/app/features/acoes/lista/lista-acoes.spec.ts > Lista de ações > @spec:AC-247 cada linha traz o monograma do ativo junto ao ticker # time=23.27ms",
+      "method": "tap"
+    },
+    "AC-248": {
+      "status": "pass",
+      "testName": "src/app/features/carteiras/lista/lista-carteiras.spec.ts > Lista de carteiras > @spec:AC-248 as ações da linha viram botões de ícone com nome acessível da ação e do item # time=25.05ms",
+      "method": "tap"
+    },
+    "AC-249": {
+      "status": "pass",
+      "testName": "src/app/features/acoes/lista/lista-acoes.spec.ts > Lista de ações > @spec:AC-249 o paginador informa página, total e faixa, desabilitando as pontas # time=35.46ms",
+      "method": "tap"
+    },
+    "AC-250": {
+      "status": "pass",
+      "testName": "src/app/features/acoes/lista/lista-acoes.spec.ts > Lista de ações > @spec:AC-250 carregando mostra esqueleto; catálogo vazio mostra estado vazio com próximo passo # time=29.88ms",
+      "method": "tap"
+    }
+  },
+  "principles": {}
+}
