@@ -2,8 +2,8 @@
   <header>
     <h2>Composição da carteira</h2>
     <p class="apoio">
-      Como o valor de mercado de hoje está distribuído entre os ativos. Retrato do agora, não
-      uma linha do tempo.
+      Como o valor de mercado de hoje está distribuído entre os ativos. Retrato do agora, não uma
+      linha do tempo.
     </p>
   </header>
 
@@ -16,26 +16,58 @@
   @if (fatias().length === 0) {
     <p class="vazio" data-sem-composicao>Nenhuma posição aberta para compor.</p>
   } @else {
-    <ol class="fatias">
-      @for (fatia of fatias(); track fatia.ticker) {
-        <li class="fatia" [attr.data-fatia]="fatia.ticker">
-          <span class="ticker" data-fatia-ticker>{{ fatia.ticker }}</span>
-          <svg class="barra" height="10" aria-hidden="true">
-            <rect
-              data-fatia-barra
-              x="0"
-              y="0"
-              height="10"
-              rx="4"
-              [attr.width]="fatia.participacao + '%'"
+    <div class="composicao">
+      <div class="rosca">
+        <svg
+          data-rosca-composicao
+          viewBox="0 0 120 120"
+          role="img"
+          [attr.aria-label]="descricaoRosca()"
+        >
+          <title>{{ descricaoRosca() }}</title>
+          @for (fatia of fatias(); track fatia.ticker) {
+            <path
+              data-fatia-setor
+              [attr.data-setor]="fatia.ticker"
+              [attr.d]="fatia.caminho"
               [attr.fill]="fatia.cor"
+              [class.ativa]="fatiaAtiva() === fatia.ticker"
+              [class.atenuada]="fatiaAtiva() !== null && fatiaAtiva() !== fatia.ticker"
+              aria-hidden="true"
+              (mouseenter)="destacar(fatia.ticker)"
+              (mouseleave)="limparDestaque(fatia.ticker)"
             />
-          </svg>
-          <span class="participacao" data-fatia-participacao>{{ fatia.participacaoFormatada }}</span>
-          <span class="valor" data-fatia-valor>{{ fatia.valorFormatado }}</span>
-        </li>
-      }
-    </ol>
+          }
+          <g class="centro" aria-hidden="true">
+            <text x="60" y="56" text-anchor="middle">Valor de mercado</text>
+            <text class="centro-valor" x="60" y="68" text-anchor="middle">
+              {{ valorDeMercado() }}
+            </text>
+          </g>
+        </svg>
+      </div>
+
+      <ol class="fatias" aria-label="Legenda da composição">
+        @for (fatia of fatias(); track fatia.ticker) {
+          <li
+            class="fatia"
+            [attr.data-fatia]="fatia.ticker"
+            [attr.title]="fatia.nomeEmpresa"
+            [class.ativa]="fatiaAtiva() === fatia.ticker"
+            [class.atenuada]="fatiaAtiva() !== null && fatiaAtiva() !== fatia.ticker"
+            (mouseenter)="destacar(fatia.ticker)"
+            (mouseleave)="limparDestaque(fatia.ticker)"
+          >
+            <span class="amostra" [style.background]="fatia.cor" aria-hidden="true"></span>
+            <span class="ticker" data-fatia-ticker>{{ fatia.ticker }}</span>
+            <span class="participacao" data-fatia-participacao>{{
+              fatia.participacaoFormatada
+            }}</span>
+            <span class="valor" data-fatia-valor>{{ fatia.valorFormatado }}</span>
+          </li>
+        }
+      </ol>
+    </div>
 
     <p class="soma" data-soma-composicao>Soma das fatias: {{ soma() }}</p>
   }

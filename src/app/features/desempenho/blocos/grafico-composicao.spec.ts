@@ -48,18 +48,60 @@ describe('Gráfico de composição da carteira', () => {
       no.textContent?.trim(),
     );
     expect(tickers).toEqual(['PETR4', 'AAPL']);
-    expect(elemento.querySelector('[data-fatia="PETR4"] [data-fatia-participacao]')?.textContent)
-      .toContain('75,0%');
-    expect(elemento.querySelector('[data-fatia="AAPL"] [data-fatia-valor]')?.textContent)
-      .toContain('1.000,00');
+    expect(
+      elemento.querySelector('[data-fatia="PETR4"] [data-fatia-participacao]')?.textContent,
+    ).toContain('75,0%');
+    expect(elemento.querySelector('[data-fatia="AAPL"] [data-fatia-valor]')?.textContent).toContain(
+      '1.000,00',
+    );
   });
 
-  it('@spec:AC-192 a fatia é legível sem enxergar a barra: o número está em texto', async () => {
+  it('@spec:AC-192 a fatia é legível sem enxergar o setor: o número está em texto', async () => {
     const elemento = await montar(composicao());
 
-    const barra = elemento.querySelector('[data-fatia="PETR4"] [data-fatia-barra]');
-    expect(barra?.getAttribute('width')).toBe('75%');
-    expect(barra?.closest('svg')?.getAttribute('aria-hidden')).toBe('true');
+    const setor = elemento.querySelector('[data-setor="PETR4"]');
+    expect(setor?.getAttribute('d')).toMatch(/^M .* A .* L .* A .* Z$/);
+    expect(setor?.getAttribute('aria-hidden')).toBe('true');
+    expect(
+      elemento.querySelector('[data-fatia="PETR4"] [data-fatia-participacao]')?.textContent,
+    ).toContain('75,0%');
+  });
+
+  it('@spec:AC-259 apresenta setores de rosca e o valor de mercado no centro', async () => {
+    const elemento = await montar(composicao());
+
+    expect(elemento.querySelectorAll('[data-fatia-setor]')).toHaveLength(2);
+    expect(elemento.querySelectorAll('[data-fatia-barra]')).toHaveLength(0);
+    expect(elemento.querySelector('[data-rosca-composicao]')?.textContent).toContain('4.000,00');
+  });
+
+  it('@spec:AC-260 ticker, valor e participação ficam disponíveis em texto na legenda', async () => {
+    const elemento = await montar(composicao());
+    const legenda = elemento.querySelector('[data-fatia="AAPL"]');
+
+    expect(legenda?.querySelector('[data-fatia-ticker]')?.textContent).toContain('AAPL');
+    expect(legenda?.querySelector('[data-fatia-valor]')?.textContent).toContain('1.000,00');
+    expect(legenda?.querySelector('[data-fatia-participacao]')?.textContent).toContain('25,0%');
+  });
+
+  it('@spec:AC-261 entrar no setor ou na legenda destaca os dois juntos e sair limpa o destaque', async () => {
+    const elemento = await montar(composicao());
+    const setor = elemento.querySelector('[data-setor="PETR4"]') as SVGPathElement;
+    const legenda = elemento.querySelector('[data-fatia="PETR4"]') as HTMLElement;
+
+    setor.dispatchEvent(new Event('mouseenter'));
+    fixture.detectChanges();
+    expect(setor.classList.contains('ativa')).toBe(true);
+    expect(legenda.classList.contains('ativa')).toBe(true);
+
+    setor.dispatchEvent(new Event('mouseleave'));
+    fixture.detectChanges();
+    expect(setor.classList.contains('ativa')).toBe(false);
+
+    legenda.dispatchEvent(new Event('mouseenter'));
+    fixture.detectChanges();
+    expect(setor.classList.contains('ativa')).toBe(true);
+    expect(legenda.classList.contains('ativa')).toBe(true);
   });
 
   it('@spec:AC-195 composição que não fecha confessa junto do gráfico, e o gráfico continua visível', async () => {
@@ -86,6 +128,28 @@ describe('Gráfico de composição da carteira', () => {
     expect(ressalva?.textContent).toContain('não fecha com o valor de mercado');
     expect(ressalva?.textContent).toContain('XPTO3');
     expect(elemento.querySelectorAll('[data-fatia]').length).toBe(1);
+  });
+
+  it('@spec:AC-262 a ressalva de soma divergente permanece junto da rosca visível', async () => {
+    const elemento = await montar(composicao({ fecha: false, diferenca: -250 }));
+
+    expect(elemento.querySelector('[data-ressalva-composicao]')).not.toBeNull();
+    expect(elemento.querySelector('[data-rosca-composicao]')).not.toBeNull();
+  });
+
+  it('@spec:AC-259 agrupa do nono ativo em diante como demais', async () => {
+    const fatias = Array.from({ length: 10 }, (_, indice) => ({
+      ticker: `ATV${indice + 1}`,
+      nomeEmpresa: `Ativo ${indice + 1}`,
+      valor: 100,
+      participacao: 10,
+      moedaOriginal: 'BRL' as const,
+      convertido: true,
+    }));
+    const elemento = await montar(composicao({ fatias, soma: 1000, valorDeMercado: 1000 }));
+
+    expect(elemento.querySelectorAll('[data-fatia]')).toHaveLength(9);
+    expect(elemento.querySelector('[data-fatia="DEMAIS"]')?.textContent).toContain('20,0%');
   });
 
   it('@spec:AC-195 composição que fecha não inventa ressalva', async () => {

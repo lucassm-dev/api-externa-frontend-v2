@@ -13,8 +13,7 @@
   quebram desenho de rosca: fatia única de 100%, fatias muito pequenas e soma que
   não fecha. Testável sozinha, sem renderizar componente.
 
-## T-108 — Composição em rosca [pendente]
-
+## T-108 — Composição em rosca [concluida]
 - Refs: US-072, AC-259, AC-260, AC-261, AC-262
 - Arquivos: src/app/features/desempenho/blocos/grafico-composicao.ts, src/app/features/desempenho/blocos/grafico-composicao.html, src/app/features/desempenho/blocos/grafico-composicao.scss, src/app/features/desempenho/blocos/grafico-composicao.spec.ts
 - Modelo: claude-sonnet-5
