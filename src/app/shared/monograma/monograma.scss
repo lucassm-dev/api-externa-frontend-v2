@@ -1,0 +1,28 @@
+:host {
+  display: inline-flex;
+}
+
+.marca {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border-radius: var(--raio);
+}
+
+img.marca {
+  object-fit: contain;
+  background: var(--cor-superficie);
+}
+
+.monograma {
+  display: inline-grid;
+  place-items: center;
+  box-sizing: border-box;
+  border: 2px solid var(--cor-monograma);
+  background: color-mix(in srgb, var(--cor-monograma) 16%, var(--cor-superficie));
+  color: var(--cor-texto);
+  font-family: var(--fonte-numero);
+  font-size: var(--texto-pequeno);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}

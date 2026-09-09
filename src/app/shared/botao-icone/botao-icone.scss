@@ -1,0 +1,42 @@
+:host {
+  display: inline-flex;
+}
+
+button {
+  display: inline-grid;
+  width: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: var(--cor-superficie-alta);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--cor-acento);
+  outline-offset: 2px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+[data-icone] {
+  display: grid;
+  place-items: center;
+  line-height: 0;
+}
+
+::ng-deep [data-icone] svg {
+  width: 16px;
+  height: 16px;
+}

@@ -1,0 +1,9 @@
+<span class="valor" data-valor-com-horario [attr.data-defasado]="defasado()">
+  <span class="numero" data-numero>{{ numero() }}</span>
+  <span class="horario" data-horario>obtido às {{ horario() }}</span>
+  @if (defasado()) {
+    <span class="defasado" data-marcacao-defasado
+      >⏱ de {{ idade() }} min atrás</span
+    >
+  }
+</span>

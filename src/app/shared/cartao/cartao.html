@@ -1,0 +1,19 @@
+<article class="cartao">
+  <header class="cabecalho">
+    <div>
+      <h2 [id]="tituloId" data-cartao-titulo>{{ titulo() }}</h2>
+      @if (apoio()) {
+        <p class="apoio" data-cartao-apoio>{{ apoio() }}</p>
+      }
+    </div>
+    <div class="apoio-projetado"><ng-content select="[cartao-apoio]" /></div>
+  </header>
+
+  <section class="conteudo" role="region" [attr.aria-labelledby]="tituloId" data-cartao-conteudo>
+    <ng-content />
+  </section>
+
+  <footer class="acoes" data-cartao-acoes>
+    <ng-content select="[cartao-acoes]" />
+  </footer>
+</article>

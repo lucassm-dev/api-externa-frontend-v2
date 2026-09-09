@@ -1,0 +1,17 @@
+@if (exibirLogo()) {
+  <img
+    class="marca"
+    [src]="logoUrl()"
+    [alt]="'Logo do ativo ' + tickerNormalizado()"
+    (error)="logoFalhou.set(true)"
+  />
+} @else {
+  <span
+    class="marca monograma"
+    data-monograma
+    role="img"
+    [attr.aria-label]="'Ativo ' + tickerNormalizado()"
+    [attr.data-serie]="serie()"
+    [style.--cor-monograma]="cor()"
+  >{{ tickerNormalizado() | initials: 2 }}</span>
+}

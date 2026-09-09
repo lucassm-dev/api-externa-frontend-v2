@@ -1,0 +1,17 @@
+<nav class="paginador" aria-label="Paginação dos resultados">
+  <div class="posicao" aria-live="polite">
+    <strong data-pagina>Página {{ pagina() }} de {{ totalPaginas() }}</strong>
+    <span data-faixa>{{ inicio() }}–{{ fim() }} de {{ totalItens() }}</span>
+  </div>
+
+  <div class="controles">
+    <button type="button" data-anterior [disabled]="naPrimeira()" (click)="irPara(pagina() - 1)">
+      <svg lucideChevronLeft aria-hidden="true" focusable="false"></svg>
+      <span>Anterior</span>
+    </button>
+    <button type="button" data-proxima [disabled]="naUltima()" (click)="irPara(pagina() + 1)">
+      <span>Próxima</span>
+      <svg lucideChevronRight aria-hidden="true" focusable="false"></svg>
+    </button>
+  </div>
+</nav>

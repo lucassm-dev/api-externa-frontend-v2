@@ -1,0 +1,53 @@
+:host {
+  display: inline-flex;
+}
+
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espaco-1);
+  min-height: 24px;
+  padding: 0 var(--espaco-2);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: var(--texto-pequeno);
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+}
+
+.selo[data-variante='alta'] {
+  color: var(--cor-alta);
+  background: color-mix(in srgb, var(--cor-alta) 12%, var(--cor-superficie));
+}
+
+.selo[data-variante='baixa'] {
+  color: var(--cor-baixa);
+  background: color-mix(in srgb, var(--cor-baixa) 12%, var(--cor-superficie));
+}
+
+.selo[data-variante='estavel'] {
+  color: var(--cor-estavel);
+  background: color-mix(in srgb, var(--cor-estavel) 12%, var(--cor-superficie));
+}
+
+.selo[data-variante='sucesso'] {
+  color: var(--cor-sucesso-texto);
+  background: var(--cor-sucesso-fundo);
+}
+
+.selo[data-variante='aviso'] {
+  color: var(--cor-aviso-texto);
+  background: var(--cor-aviso-fundo);
+}
+
+.selo[data-variante='erro'] {
+  color: var(--cor-erro-texto);
+  background: var(--cor-erro-fundo);
+}

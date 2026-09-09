@@ -1,0 +1,25 @@
+.valor {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--espaco-2);
+}
+
+.numero {
+  font-family: var(--fonte-numero);
+  font-variant-numeric: tabular-nums;
+}
+
+.horario {
+  font-size: var(--texto-pequeno);
+  color: var(--cor-texto-fraco);
+}
+
+.defasado {
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+  padding: 0 var(--espaco-2);
+  border: 1px solid var(--cor-aviso-borda);
+  border-radius: var(--raio);
+  background: var(--cor-defasado-fundo);
+  color: var(--cor-defasado-texto);
+}

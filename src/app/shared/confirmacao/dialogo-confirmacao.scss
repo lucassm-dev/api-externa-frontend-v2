@@ -1,0 +1,39 @@
+:host {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+}
+
+.fundo {
+  position: absolute;
+  inset: 0;
+  background: var(--cor-sombra-modal);
+}
+
+.dialogo {
+  position: relative;
+  width: min(420px, calc(100vw - var(--espaco-6)));
+  padding: var(--espaco-5);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+
+  h2 {
+    margin: 0 0 var(--espaco-2);
+    font-size: var(--texto-grande);
+  }
+
+  p {
+    margin: 0;
+    color: var(--cor-texto-fraco);
+  }
+}
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--espaco-2);
+  margin-top: var(--espaco-5);
+}

@@ -1,0 +1,48 @@
+:host {
+  display: block;
+}
+
+.cartao {
+  overflow: hidden;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-grande);
+  background: var(--cor-superficie);
+  box-shadow: var(--sombra-baixa);
+}
+
+.cabecalho,
+.conteudo,
+.acoes {
+  padding: var(--espaco-4) var(--espaco-5);
+}
+
+.cabecalho {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--espaco-4);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+h2,
+.apoio {
+  margin: 0;
+}
+
+h2 {
+  font-size: var(--texto-grande);
+  line-height: 1.35;
+}
+
+.apoio {
+  margin-top: var(--espaco-1);
+  color: var(--cor-texto-fraco);
+  font-size: var(--texto-pequeno);
+}
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--espaco-2);
+  border-top: 1px solid var(--cor-borda);
+}

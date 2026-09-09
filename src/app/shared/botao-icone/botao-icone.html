@@ -1,0 +1,9 @@
+<button
+  [type]="tipo()"
+  [attr.aria-label]="rotulo()"
+  [attr.title]="rotulo()"
+  [disabled]="desabilitado()"
+  (click)="pressionado.emit()"
+>
+  <span data-icone aria-hidden="true"><ng-content /></span>
+</button>

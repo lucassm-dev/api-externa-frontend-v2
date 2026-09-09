@@ -1,0 +1,28 @@
+.variacao {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--espaco-1);
+  font-family: var(--fonte-numero);
+  font-variant-numeric: tabular-nums;
+}
+
+.descricao {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.variacao[data-direcao='alta'] {
+  color: var(--cor-alta);
+}
+
+.variacao[data-direcao='baixa'] {
+  color: var(--cor-baixa);
+}
+
+.variacao[data-direcao='estavel'] {
+  color: var(--cor-estavel);
+}

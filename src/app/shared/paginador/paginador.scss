@@ -1,0 +1,64 @@
+:host {
+  display: block;
+}
+
+.paginador,
+.controles,
+button {
+  display: flex;
+  align-items: center;
+}
+
+.paginador {
+  justify-content: space-between;
+  gap: var(--espaco-4);
+  padding: var(--espaco-3) 0;
+}
+
+.posicao {
+  display: flex;
+  gap: var(--espaco-3);
+  align-items: baseline;
+}
+
+.posicao span {
+  color: var(--cor-texto-fraco);
+  font-family: var(--fonte-numero);
+  font-size: var(--texto-pequeno);
+}
+
+.controles {
+  gap: var(--espaco-2);
+}
+
+button {
+  gap: var(--espaco-1);
+  min-height: 36px;
+  padding: 0 var(--espaco-3);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--cor-acento);
+  color: var(--cor-acento);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--cor-acento);
+  outline-offset: 2px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+button svg {
+  width: 16px;
+  height: 16px;
+}

@@ -1,0 +1,5 @@
+<div class="esqueleto" data-esqueleto [attr.data-formato]="formato()" aria-hidden="true">
+  @for (_ of linhas(); track $index) {
+    <span class="linha" data-linha></span>
+  }
+</div>

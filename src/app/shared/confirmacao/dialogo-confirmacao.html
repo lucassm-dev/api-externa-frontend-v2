@@ -1,0 +1,21 @@
+<div class="fundo" (click)="cancelar.emit()"></div>
+
+<div class="dialogo" role="alertdialog" aria-modal="true" aria-labelledby="dialogo-titulo">
+  <h2 id="dialogo-titulo" data-titulo>{{ titulo() }}</h2>
+  <p data-consequencia>{{ consequencia() }}</p>
+
+  <div class="acoes">
+    <button mat-button type="button" data-cancelar [disabled]="ocupado()" (click)="cancelar.emit()">
+      {{ rotuloCancelar() }}
+    </button>
+    <button
+      mat-flat-button
+      type="button"
+      data-confirmar
+      [disabled]="ocupado()"
+      (click)="confirmar.emit()"
+    >
+      {{ rotuloConfirmar() }}
+    </button>
+  </div>
+</div>

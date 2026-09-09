@@ -1,0 +1,55 @@
+:host {
+  display: block;
+}
+
+.esqueleto {
+  display: grid;
+  gap: var(--espaco-2);
+}
+
+.linha {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  min-height: 16px;
+  border-radius: var(--raio);
+  background: color-mix(in srgb, var(--cor-borda) 64%, var(--cor-superficie));
+}
+
+.linha::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: linear-gradient(90deg, transparent, var(--cor-superficie), transparent);
+  animation: brilho-esqueleto 1.4s ease-in-out 3;
+}
+
+.esqueleto[data-formato='bloco'] .linha {
+  min-height: 120px;
+}
+
+.esqueleto[data-formato='tabela'] .linha {
+  min-height: 40px;
+}
+
+@keyframes brilho-esqueleto {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.72;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .linha::after {
+    animation: none;
+    transform: none;
+    opacity: 0.24;
+  }
+}

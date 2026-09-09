@@ -1,0 +1,11 @@
+<span class="selo" data-selo [attr.data-variante]="variante()">
+  @switch (variante()) {
+    @case ('alta') { <svg lucideTrendingUp data-icone="alta" aria-hidden="true" focusable="false"></svg> }
+    @case ('baixa') { <svg lucideTrendingDown data-icone="baixa" aria-hidden="true" focusable="false"></svg> }
+    @case ('estavel') { <svg lucideMinus data-icone="estavel" aria-hidden="true" focusable="false"></svg> }
+    @case ('sucesso') { <svg lucideCircleCheck data-icone="sucesso" aria-hidden="true" focusable="false"></svg> }
+    @case ('aviso') { <svg lucideTriangleAlert data-icone="aviso" aria-hidden="true" focusable="false"></svg> }
+    @case ('erro') { <svg lucideCircleX data-icone="erro" aria-hidden="true" focusable="false"></svg> }
+  }
+  <span>{{ texto() }}</span>
+</span>
