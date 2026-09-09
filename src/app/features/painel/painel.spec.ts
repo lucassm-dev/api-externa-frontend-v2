@@ -152,6 +152,33 @@ describe('Painel inicial', () => {
     expect(elemento.querySelector('[data-nivel="erro"]')).toBeNull();
   });
 
+  it('@spec:AC-238 na composição da tela, o consolidado entra com o rótulo pequeno acima e o valor em destaque, com selo de variação no resultado', async () => {
+    const elemento = abrir();
+    await responder({ carteiras: [carteira(9, 'Longo prazo')], operacoes: 3 });
+
+    const indicadores = Array.from(
+      elemento.querySelectorAll('[data-consolidado] [data-indicador]'),
+    );
+    expect(indicadores).toHaveLength(3);
+
+    for (const indicador of indicadores) {
+      const rotulo = indicador.querySelector('[data-indicador-rotulo]');
+      const valor = indicador.querySelector('[data-indicador-valor]');
+      expect(rotulo).not.toBeNull();
+      expect(valor).not.toBeNull();
+      const rotuloAntesDoValor =
+        rotulo!.compareDocumentPosition(valor!) & Node.DOCUMENT_POSITION_FOLLOWING;
+      expect(rotuloAntesDoValor).toBeTruthy();
+    }
+
+    const resultado = elemento.querySelector('[data-consolidado] [data-lucro-nao-realizado]');
+    expect(resultado!.matches('[data-indicador-valor]')).toBe(true);
+    expect(resultado!.querySelector('[data-variacao]')).not.toBeNull();
+    expect(
+      elemento.querySelector('[data-consolidado] [data-selo-resultado] [data-selo]'),
+    ).not.toBeNull();
+  });
+
   it('@spec:AC-053 o consolidado é pedido só da carteira escolhida, uma por vez, sem somar nada', async () => {
     abrir();
     await responder({ carteiras: [carteira(9, 'Longo prazo'), carteira(4, 'Dividendos')], operacoes: 1 });
