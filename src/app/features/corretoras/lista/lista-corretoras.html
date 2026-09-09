@@ -1,0 +1,90 @@
+<section class="tela">
+  <header>
+    <h1>Corretoras</h1>
+    <a mat-flat-button routerLink="/corretoras/nova">Cadastrar corretora</a>
+  </header>
+
+  <p class="apoio" data-catalogo-compartilhado>
+    Este catálogo é compartilhado entre todos os investidores: você vê as corretoras que
+    qualquer um cadastrou e pode usar qualquer uma nas suas carteiras.
+  </p>
+
+  <form class="busca" (ngSubmit)="buscar(termo())">
+    <mat-form-field appearance="outline">
+      <mat-label>Buscar por CNPJ</mat-label>
+      <input
+        matInput
+        name="termo"
+        inputmode="numeric"
+        autocomplete="off"
+        aria-label="Buscar por CNPJ"
+        [ngModel]="termo()"
+        (ngModelChange)="termo.set($event)"
+      />
+    </mat-form-field>
+    <button mat-button type="submit" [disabled]="buscando()">Buscar</button>
+  </form>
+
+  @if (cnpjSemResultado(); as cnpj) {
+    <div class="vazio" data-busca-vazia>
+      <p>Nenhuma corretora com o CNPJ {{ formatarCnpj(cnpj) }} está no catálogo.</p>
+      <a
+        mat-flat-button
+        data-cadastrar-buscado
+        routerLink="/corretoras/nova"
+        [queryParams]="{ cnpj }"
+      >
+        Cadastrar este CNPJ
+      </a>
+      <button mat-button type="button" (click)="limparBusca()">Limpar busca</button>
+    </div>
+  }
+
+  @if (carregando()) {
+    <div class="esqueleto" aria-hidden="true"><span></span><span></span><span></span></div>
+  } @else if (pagina(); as pagina) {
+    @if (pagina.content.length === 0) {
+      <p class="apoio">Nenhuma corretora cadastrada ainda.</p>
+    } @else {
+      <ul class="catalogo">
+        @for (corretora of pagina.content; track corretora.id) {
+          <li class="linha" [attr.data-corretora]="corretora.id">
+            <a class="nome" data-nome [routerLink]="['/corretoras', corretora.id]">
+              {{ nomeExibido(corretora) }}
+            </a>
+            <span class="cnpj" data-cnpj>{{ formatarCnpj(corretora.cnpj) }}</span>
+            <span class="lugar" data-lugar>{{ cidadeComUf(corretora) ?? '' }}</span>
+            <span class="validacao" data-validacao>
+              {{ corretora.validadaNaCvm ? 'Validada na CVM' : 'Sem validação na CVM' }}
+            </span>
+            @if (selo(corretora.id); as rotulo) {
+              <span class="selo" data-selo>{{ rotulo }}</span>
+            }
+          </li>
+        }
+      </ul>
+
+      @if (pagina.totalPages > 1) {
+        <nav class="paginacao" aria-label="Páginas do catálogo">
+          <button
+            mat-button
+            type="button"
+            [disabled]="pagina.number === 0"
+            (click)="irPara(pagina.number - 1)"
+          >
+            Anterior
+          </button>
+          <span>Página {{ pagina.number + 1 }} de {{ pagina.totalPages }}</span>
+          <button
+            mat-button
+            type="button"
+            [disabled]="pagina.number + 1 >= pagina.totalPages"
+            (click)="irPara(pagina.number + 1)"
+          >
+            Próxima
+          </button>
+        </nav>
+      }
+    }
+  }
+</section>

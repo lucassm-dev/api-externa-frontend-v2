@@ -1,0 +1,80 @@
+<section class="tela">
+  <a class="voltar" routerLink="/corretoras">Voltar às corretoras</a>
+
+  @if (textoDoErro(); as mensagem) {
+    <app-mensagem-feedback nivel="erro" [mensagem]="mensagem" [codigo]="codigoDoErro()" />
+  }
+
+  @if (carregando()) {
+    <div class="esqueleto" aria-hidden="true"><span></span><span></span></div>
+  } @else if (corretora(); as corretora) {
+    <header>
+      <div>
+        <h1>{{ nomeExibido(corretora) }}</h1>
+        <p class="cnpj">{{ formatarCnpj(corretora.cnpj) }}</p>
+      </div>
+      <button mat-stroked-button type="button" data-remover (click)="pedirRemocao()">
+        Remover do catálogo
+      </button>
+    </header>
+
+    <p class="validacao" data-validacao>
+      {{ corretora.validadaNaCvm ? 'Validada na CVM' : 'Sem validação na CVM' }}
+      @if (corretora.dataBaseCvm; as base) {
+        <span class="base" data-base-cvm>
+          Base oficial de {{ formatarData(base) }} — ela reflete o último dia útil, então uma
+          autorização recente pode ainda não constar.
+        </span>
+      }
+    </p>
+
+    <dl class="dados">
+      <div><dt>Razão social</dt><dd>{{ corretora.razaoSocial }}</dd></div>
+      @if (corretora.nomeFantasia) {
+        <div><dt>Nome fantasia</dt><dd>{{ corretora.nomeFantasia }}</dd></div>
+      }
+      @if (corretora.situacaoCadastral) {
+        <div><dt>Situação cadastral</dt><dd>{{ corretora.situacaoCadastral }}</dd></div>
+      }
+      @if (corretora.email) {
+        <div><dt>E-mail</dt><dd>{{ corretora.email }}</dd></div>
+      }
+      @if (corretora.telefone) {
+        <div><dt>Telefone</dt><dd>{{ corretora.telefone }}</dd></div>
+      }
+      @if (corretora.cep) {
+        <div><dt>CEP</dt><dd>{{ corretora.cep }}</dd></div>
+      }
+      @if (corretora.logradouro) {
+        <div>
+          <dt>Logradouro</dt>
+          <dd>{{ corretora.logradouro }}{{ corretora.numero ? ', ' + corretora.numero : '' }}</dd>
+        </div>
+      }
+      @if (corretora.complemento) {
+        <div><dt>Complemento</dt><dd>{{ corretora.complemento }}</dd></div>
+      }
+      @if (corretora.bairro) {
+        <div><dt>Bairro</dt><dd>{{ corretora.bairro }}</dd></div>
+      }
+      @if (corretora.cidade || corretora.uf) {
+        <div>
+          <dt>Cidade</dt>
+          <dd>{{ corretora.cidade }}{{ corretora.uf ? '/' + corretora.uf : '' }}</dd>
+        </div>
+      }
+      <div><dt>No catálogo desde</dt><dd>{{ formatarData(corretora.dataCadastro) }}</dd></div>
+    </dl>
+
+    @if (confirmandoRemocao()) {
+      <app-dialogo-confirmacao
+        titulo="Remover esta corretora?"
+        consequencia="Ela sai do catálogo para todos os investidores e não aparece mais nas listas. Não há como desfazer."
+        rotuloConfirmar="Remover"
+        [ocupado]="removendo()"
+        (confirmar)="confirmarRemocao()"
+        (cancelar)="cancelarRemocao()"
+      />
+    }
+  }
+</section>

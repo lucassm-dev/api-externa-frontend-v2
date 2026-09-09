@@ -1,0 +1,58 @@
+.tela {
+  max-width: 520px;
+
+  h1 {
+    margin: 0 0 var(--espaco-2);
+  }
+}
+
+.apoio {
+  margin: 0 0 var(--espaco-5);
+  color: var(--cor-texto-fraco);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-3);
+  align-items: flex-start;
+  margin-top: var(--espaco-4);
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.existente {
+  margin-top: var(--espaco-4);
+  padding: var(--espaco-4);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+
+  h2 {
+    margin: 0 0 var(--espaco-1);
+    font-size: var(--texto-grande);
+  }
+
+  p {
+    margin: 0 0 var(--espaco-1);
+    color: var(--cor-texto-fraco);
+    font-size: var(--texto-pequeno);
+  }
+
+  a {
+    margin-top: var(--espaco-3);
+  }
+}
+
+.consultando {
+  display: flex;
+  gap: var(--espaco-2);
+  margin-top: var(--espaco-4);
+  padding: var(--espaco-3);
+  border: 1px solid var(--cor-info-borda);
+  border-radius: var(--raio);
+  background: var(--cor-info-fundo);
+  color: var(--cor-info-texto);
+}

@@ -1,0 +1,46 @@
+<section class="tela">
+  <h1>Cadastrar corretora</h1>
+  <p class="apoio">
+    Informe o CNPJ. O resto vem das fontes públicas — a corretora entra no catálogo
+    compartilhado, disponível para todos os investidores.
+  </p>
+
+  @if (textoDoErro(); as mensagem) {
+    <app-mensagem-feedback nivel="erro" [mensagem]="mensagem" [codigo]="codigoDoErro()" />
+  }
+
+  @if (corretoraExistente(); as existente) {
+    <article class="existente" data-existente>
+      <h2>{{ nomeExibido(existente) }}</h2>
+      <p class="cnpj">{{ formatarCnpj(existente.cnpj) }}</p>
+      @if (cidadeComUf(existente); as lugar) {
+        <p class="lugar">{{ lugar }}</p>
+      }
+      <a mat-flat-button data-abrir [routerLink]="['/corretoras', existente.id]">
+        Ver esta corretora
+      </a>
+    </article>
+  }
+
+  <form [formGroup]="formulario" (ngSubmit)="enviar()" novalidate>
+    <mat-form-field appearance="outline">
+      <mat-label>CNPJ</mat-label>
+      <input matInput formControlName="cnpj" inputmode="numeric" autocomplete="off" aria-label="CNPJ" />
+      <mat-hint>{{ regraCnpj }}</mat-hint>
+      @if (formulario.controls.cnpj.touched && formulario.controls.cnpj.invalid) {
+        <mat-error>{{ formulario.controls.cnpj.errors?.['servidor'] ?? regraCnpj }}</mat-error>
+      }
+    </mat-form-field>
+
+    <button mat-flat-button type="submit" data-enviar [disabled]="consultando()">
+      {{ consultando() ? 'Consultando…' : 'Cadastrar corretora' }}
+    </button>
+  </form>
+
+  @if (consultando()) {
+    <p class="consultando" data-consultando role="status">
+      Consultando as fontes externas: Receita Federal, endereço e a base da CVM. Isso
+      leva alguns segundos.
+    </p>
+  }
+</section>
