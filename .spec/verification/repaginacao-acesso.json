@@ -1,0 +1,11 @@
+{
+  "feature": "repaginacao-acesso",
+  "timestamp": "2026-09-09T18:57:40.782Z",
+  "gitRev": "f36c78a",
+  "command": "npx ng test",
+  "reporter": "tap",
+  "exitCode": 1,
+  "testsParsed": 499,
+  "results": {},
+  "principles": {}
+}
