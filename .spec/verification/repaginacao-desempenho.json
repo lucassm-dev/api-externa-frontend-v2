@@ -1,0 +1,11 @@
+{
+  "feature": "repaginacao-desempenho",
+  "timestamp": "2026-09-09T18:58:03.486Z",
+  "gitRev": "82949c0",
+  "command": "npx ng test",
+  "reporter": "tap",
+  "exitCode": 1,
+  "testsParsed": 499,
+  "results": {},
+  "principles": {}
+}
