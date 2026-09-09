@@ -1,0 +1,67 @@
+.extrato {
+  h2 {
+    margin: 0 0 var(--espaco-3);
+    font-size: var(--texto-grande);
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: var(--espaco-2) var(--espaco-3);
+    border-bottom: 1px solid var(--cor-borda);
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  th {
+    font-size: var(--texto-pequeno);
+    color: var(--cor-texto-fraco);
+    font-weight: 500;
+  }
+
+  td[data-preco],
+  td[data-total],
+  td[data-quantidade] {
+    font-family: var(--fonte-numero);
+  }
+
+  .acoes {
+    display: flex;
+    gap: var(--espaco-1);
+  }
+}
+
+.oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.vazio {
+  color: var(--cor-texto-fraco);
+}
+
+.paginacao {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-3);
+  margin-top: var(--espaco-4);
+}
+
+.esqueleto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+
+  span {
+    height: var(--espaco-5);
+    border-radius: var(--raio);
+    background: var(--cor-superficie-alta);
+  }
+}

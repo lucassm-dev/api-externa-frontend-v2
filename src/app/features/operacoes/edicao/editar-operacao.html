@@ -1,0 +1,99 @@
+<section class="edicao" data-edicao>
+  <h2>Corrigir operação</h2>
+
+  <dl class="fixos" data-nao-editaveis>
+    <div>
+      <dt>Tipo</dt>
+      <dd data-fixo-tipo>{{ operacao().tipo }}</dd>
+    </div>
+    <div>
+      <dt>Ação</dt>
+      <dd data-fixo-ticker>{{ operacao().ticker }}</dd>
+    </div>
+    <div>
+      <dt>Carteira</dt>
+      <dd data-fixo-carteira>{{ operacao().carteiraId }}</dd>
+    </div>
+    <div>
+      <dt>Data e hora</dt>
+      <dd data-fixo-data>{{ quando() }}</dd>
+    </div>
+  </dl>
+
+  <label class="campo">
+    <span class="rotulo">Quantidade</span>
+    <input
+      type="number"
+      min="1"
+      step="1"
+      data-campo-quantidade
+      [value]="quantidade() ?? ''"
+      (input)="quantidade.set($any($event.target).value ? +$any($event.target).value : null)"
+    />
+  </label>
+
+  <div class="preco">
+    <label class="opt-in">
+      <input
+        type="checkbox"
+        data-preco-manual
+        [checked]="precoManualAtivo()"
+        (change)="alternarPrecoManual($any($event.target).checked)"
+      />
+      <span>Informar um preço novo</span>
+    </label>
+
+    @if (precoManualAtivo()) {
+      <label class="campo">
+        <span class="rotulo">Preço unitário</span>
+        <input
+          type="number"
+          step="0.01"
+          min="0"
+          data-campo-preco
+          [value]="precoUnitario() ?? ''"
+          (input)="precoUnitario.set($any($event.target).value ? +$any($event.target).value : null)"
+        />
+        @if (precoComCasasDemais()) {
+          <span class="erro-campo" data-preco-casas>
+            O preço pode ter no máximo 2 casas decimais.
+          </span>
+        }
+      </label>
+    } @else {
+      <p class="ajuda" data-sem-preco-novo>
+        Sem preço novo, o sistema reutiliza a última cotação conhecida desta ação, sem buscar preço
+        novo.
+      </p>
+    }
+  </div>
+
+  <p class="aviso-recalculo" data-aviso-recalculo>{{ avisoDeRecalculo }}</p>
+
+  <div class="botoes">
+    <button
+      mat-flat-button
+      type="button"
+      data-salvar
+      [disabled]="!podeSalvar() || salvando()"
+      (click)="pedirConfirmacao()"
+    >
+      {{ salvando() ? 'Salvando…' : 'Salvar correção' }}
+    </button>
+    <button mat-stroked-button type="button" data-cancelar-edicao (click)="fechar()">
+      Cancelar
+    </button>
+  </div>
+</section>
+
+@if (confirmando()) {
+  <app-dialogo-confirmacao
+    data-confirmar-edicao
+    titulo="Salvar esta correção?"
+    [consequencia]="avisoDeRecalculo"
+    rotuloConfirmar="Salvar correção"
+    [ocupado]="salvando()"
+    (confirmar)="confirmar()"
+    (cancelar)="cancelarConfirmacao()"
+  />
+}

@@ -1,0 +1,119 @@
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-4);
+  align-items: flex-start;
+  max-width: 560px;
+}
+
+.tipos {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  legend {
+    padding: 0 0 var(--espaco-2);
+    font-size: var(--texto-pequeno);
+    color: var(--cor-texto-fraco);
+  }
+
+  .opcoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--espaco-2);
+  }
+
+  .opcao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-2);
+    padding: var(--espaco-3);
+    border: 2px solid var(--cor-borda);
+    border-radius: var(--raio);
+    background: var(--cor-superficie);
+    cursor: pointer;
+    font-size: var(--texto-grande);
+
+    &.marcada {
+      border-color: var(--cor-acento);
+      background: var(--cor-superficie-alta);
+      font-weight: 600;
+    }
+  }
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-1);
+  width: 100%;
+
+  .rotulo {
+    font-size: var(--texto-pequeno);
+    color: var(--cor-texto-fraco);
+  }
+
+  select,
+  input {
+    padding: var(--espaco-2) var(--espaco-3);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    background: var(--cor-superficie);
+    color: var(--cor-texto);
+    font: inherit;
+  }
+}
+
+.ajuda {
+  font-size: var(--texto-pequeno);
+  color: var(--cor-texto-fraco);
+}
+
+.erro-campo {
+  font-size: var(--texto-pequeno);
+  color: var(--cor-erro-texto);
+}
+
+.preco {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+  width: 100%;
+
+  .opt-in {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-2);
+    cursor: pointer;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.estimativa {
+  width: 100%;
+  padding: var(--espaco-3);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie-alta);
+
+  h3 {
+    margin: 0 0 var(--espaco-2);
+    font-size: var(--texto-base);
+  }
+
+  .total {
+    margin: var(--espaco-2) 0 0;
+    font-family: var(--fonte-numero);
+  }
+
+  .ressalva {
+    margin: var(--espaco-2) 0 0;
+    font-size: var(--texto-pequeno);
+    color: var(--cor-texto-fraco);
+  }
+}

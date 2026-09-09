@@ -1,0 +1,87 @@
+<section class="extrato" data-extrato>
+  <h2>Extrato de movimentações</h2>
+
+  @if (carregando()) {
+    <div class="esqueleto" aria-hidden="true"><span></span><span></span><span></span></div>
+  } @else if (operacoes().length === 0) {
+    <p class="vazio" data-extrato-vazio>Você ainda não registrou nenhuma operação.</p>
+  } @else {
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Data e hora</th>
+          <th scope="col">Carteira</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Ação</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Preço unitário</th>
+          <th scope="col">Valor total</th>
+          <th scope="col">Resultado</th>
+          <th scope="col"><span class="oculto">Ações</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (operacao of operacoes(); track operacao.id) {
+          <tr [attr.data-operacao]="operacao.id">
+            <td data-quando>{{ quando(operacao) }}</td>
+            <td data-carteira>{{ carteira(operacao) }}</td>
+            <td data-tipo>{{ operacao.tipo }}</td>
+            <td data-ticker>{{ operacao.ticker }}</td>
+            <td data-quantidade>{{ quantidade(operacao) }}</td>
+            <td data-preco>{{ preco(operacao) }}</td>
+            <td data-total>{{ total(operacao) }}</td>
+            <td>
+              @if (resultado(operacao); as realizado) {
+                <span data-resultado-realizado>{{ realizado }}</span>
+              }
+            </td>
+            <td class="acoes">
+              <button mat-button type="button" data-editar (click)="editar.emit(operacao)">
+                Editar
+              </button>
+              <button mat-button type="button" data-excluir (click)="pedirExclusao(operacao)">
+                Excluir
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    @if (totalDePaginas() > 1) {
+      <nav class="paginacao" data-paginacao>
+        <button
+          mat-stroked-button
+          type="button"
+          data-pagina-anterior
+          [disabled]="!temAnterior()"
+          (click)="irPara(pagina() - 1)"
+        >
+          Anterior
+        </button>
+        <span data-pagina-atual>Página {{ pagina() + 1 }} de {{ totalDePaginas() }}</span>
+        <button
+          mat-stroked-button
+          type="button"
+          data-proxima-pagina
+          [disabled]="!temProxima()"
+          (click)="irPara(pagina() + 1)"
+        >
+          Próxima
+        </button>
+      </nav>
+    }
+  }
+</section>
+
+@if (emExclusao(); as operacao) {
+  <app-dialogo-confirmacao
+    data-confirmar-exclusao
+    titulo="Excluir esta operação?"
+    [consequencia]="avisoDeRecalculo"
+    rotuloConfirmar="Excluir operação"
+    [ocupado]="excluindo()"
+    (confirmar)="confirmarExclusao()"
+    (cancelar)="cancelarExclusao()"
+  />
+}

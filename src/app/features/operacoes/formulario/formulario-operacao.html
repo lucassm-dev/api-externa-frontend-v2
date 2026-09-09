@@ -1,0 +1,158 @@
+<form class="formulario" (ngSubmit)="enviar()" novalidate>
+  <fieldset class="tipos" data-seletor-tipo>
+    <legend>O que você vai registrar</legend>
+    <div class="opcoes">
+      @for (opcao of tipos; track opcao.valor) {
+        <label
+          class="opcao"
+          [class.marcada]="tipo() === opcao.valor"
+          [attr.data-tipo]="opcao.valor"
+          [attr.data-marcada]="tipo() === opcao.valor ? 'sim' : null"
+        >
+          <input
+            type="radio"
+            name="tipo"
+            [value]="opcao.valor"
+            [checked]="tipo() === opcao.valor"
+            (change)="escolherTipo(opcao.valor)"
+          />
+          <span>{{ opcao.rotulo }}</span>
+        </label>
+      }
+    </div>
+  </fieldset>
+
+  <label class="campo">
+    <span class="rotulo">Carteira</span>
+    <select
+      data-campo-carteira
+      [value]="carteiraId() ?? ''"
+      (change)="escolherCarteira($any($event.target).value ? +$any($event.target).value : null)"
+    >
+      <option value="">Escolha a carteira</option>
+      @for (carteira of carteiras(); track carteira.id) {
+        <option [value]="carteira.id">{{ carteira.nome }} · {{ carteira.nomeCorretora }}</option>
+      }
+    </select>
+  </label>
+
+  <label class="campo">
+    <span class="rotulo">Ação</span>
+    <select
+      data-campo-acao
+      [value]="ticker() ?? ''"
+      (change)="ticker.set($any($event.target).value || null)"
+    >
+      <option value="">Escolha a ação</option>
+      @for (acao of acoesOferecidas(); track acao.ticker) {
+        <option [value]="acao.ticker">{{ acao.ticker }} · {{ acao.nomeEmpresa }}</option>
+      }
+    </select>
+    @if (
+      ehVenda() && carteiraId() !== null && !carregandoPosicoes() && acoesOferecidas().length === 0
+    ) {
+      <span class="ajuda" data-sem-posicao>
+        Esta carteira não tem nenhuma posição aberta para vender.
+      </span>
+    }
+  </label>
+
+  <label class="campo">
+    <span class="rotulo">Quantidade</span>
+    <input
+      type="number"
+      min="1"
+      step="1"
+      data-campo-quantidade
+      [value]="quantidade() ?? ''"
+      (input)="quantidade.set($any($event.target).value ? +$any($event.target).value : null)"
+    />
+    @if (disponivel() !== null) {
+      <span class="ajuda" data-disponivel>
+        Disponível para venda: {{ formatarNumero(disponivel()!, 0) }} unidades.
+      </span>
+    }
+    @if (excedePosicao()) {
+      <span class="erro-campo" data-excede-posicao>
+        Você tem apenas {{ formatarNumero(disponivel()!, 0) }} unidades desta ação.
+      </span>
+    }
+    @if (erroDeCampo()?.campo === 'quantidade') {
+      <span class="erro-campo" data-erro-quantidade>{{ erroDeCampo()!.mensagem }}</span>
+    }
+  </label>
+
+  <div class="preco">
+    <label class="opt-in">
+      <input
+        type="checkbox"
+        data-preco-manual
+        [checked]="precoManualAtivo()"
+        (change)="alternarPrecoManual($any($event.target).checked)"
+      />
+      <span>Informar preço manualmente</span>
+    </label>
+
+    @if (precoManualAtivo()) {
+      <label class="campo">
+        <span class="rotulo">Preço unitário</span>
+        <input
+          type="number"
+          step="0.01"
+          min="0"
+          data-campo-preco
+          [value]="precoManual() ?? ''"
+          (input)="precoManual.set($any($event.target).value ? +$any($event.target).value : null)"
+        />
+        @if (precoComCasasDemais()) {
+          <span class="erro-campo" data-preco-casas>
+            O preço pode ter no máximo 2 casas decimais.
+          </span>
+        }
+        @if (erroDeCampo()?.campo === 'precoUnitario') {
+          <span class="erro-campo" data-erro-preco>{{ erroDeCampo()!.mensagem }}</span>
+        }
+      </label>
+    } @else {
+      <p class="ajuda">
+        Sem preço informado, a operação usa o preço de mercado no momento do registro.
+      </p>
+    }
+  </div>
+
+  @if (estimativa(); as prevista) {
+    <div class="estimativa" data-estimativa>
+      <h3>Estimativa desta operação</h3>
+      @if (prevista.obtidoEm) {
+        <app-valor-com-horario
+          [valor]="prevista.precoUnitario"
+          [moeda]="moedaDaAcao()"
+          [obtidoEm]="prevista.obtidoEm"
+        />
+      } @else {
+        <span class="preco-informado" data-preco-informado>Preço que você informou</span>
+      }
+      <p class="total">
+        Total estimado: <strong data-total-estimado>{{ totalEstimado() }}</strong>
+      </p>
+      @if (!prevista.obtidoEm) {
+        <p class="ressalva" data-ressalva-estimativa>O total usa o preço que você informou.</p>
+      } @else {
+        <p class="ressalva" data-ressalva-estimativa>
+          Este é o preço da última cotação conhecida — uma estimativa. O preço efetivamente
+          registrado pode ser outro, e ele aparece na confirmação.
+        </p>
+      }
+    </div>
+  }
+
+  @if (erroDeCampo(); as erro) {
+    @if (erro.campo !== 'quantidade' && erro.campo !== 'precoUnitario') {
+      <p class="erro-campo" data-erro-geral>{{ erro.mensagem }}</p>
+    }
+  }
+
+  <button mat-flat-button type="submit" data-confirmar [disabled]="!podeEnviar() || enviando()">
+    {{ enviando() ? 'Registrando…' : rotuloDoBotao() }}
+  </button>
+</form>

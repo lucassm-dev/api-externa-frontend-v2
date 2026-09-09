@@ -1,0 +1,42 @@
+<section class="tela">
+  <header class="cabecalho">
+    <h1>Operações</h1>
+    <a data-voltar-carteiras routerLink="/carteiras">Voltar às carteiras</a>
+  </header>
+
+  @if (textoDoErro(); as mensagem) {
+    <app-mensagem-feedback nivel="erro" [mensagem]="mensagem" [codigo]="codigoDoErro()" />
+  }
+
+  @if (emEdicao(); as operacao) {
+    <app-editar-operacao
+      [operacao]="operacao"
+      [salvando]="salvandoEdicao()"
+      (salvar)="salvarEdicao($event)"
+      (cancelar)="fecharEdicao()"
+    />
+  } @else {
+    <app-formulario-operacao
+      [carteiraInicial]="carteiraInicial()"
+      [tipoInicial]="tipoInicial()"
+      [enviando]="registrando()"
+      (registrar)="registrar($event)"
+    />
+
+    @if (ultimaOperacao(); as operacao) {
+      <app-resultado-operacao [operacao]="operacao" />
+    }
+  }
+
+  <app-extrato-operacoes
+    [operacoes]="extrato()"
+    [carteiras]="carteiras()"
+    [pagina]="pagina()"
+    [totalDePaginas]="totalDePaginas()"
+    [carregando]="carregandoExtrato()"
+    [excluindo]="excluindo()"
+    (mudarPagina)="mudarPagina($event)"
+    (editar)="abrirEdicao($event)"
+    (excluir)="excluir($event)"
+  />
+</section>

@@ -1,0 +1,45 @@
+<section class="resultado" data-resultado>
+  <header>
+    <h2 data-confirmacao>{{ rotuloDoTipo() }} registrada</h2>
+    <span class="quando" data-quando>{{ quando() }}</span>
+  </header>
+
+  <dl class="numeros">
+    <div>
+      <dt>Ação</dt>
+      <dd data-ticker>{{ operacao().ticker }}</dd>
+    </div>
+    <div>
+      <dt>Quantidade</dt>
+      <dd data-quantidade>{{ quantidade() }}</dd>
+    </div>
+    <div>
+      <dt>Preço unitário efetivo</dt>
+      <dd data-preco-efetivo>{{ precoEfetivo() }}</dd>
+    </div>
+    <div>
+      <dt>Valor total</dt>
+      <dd data-total>{{ total() }}</dd>
+    </div>
+    @if (ehVenda() && lucroRealizado(); as lucro) {
+      <div class="destaque">
+        <dt>Resultado realizado desta venda</dt>
+        <dd data-lucro-realizado>{{ lucro }}</dd>
+      </div>
+    }
+    @if (ehVenda() && precoMedioNoMomento(); as medio) {
+      <div>
+        <dt>Preço médio de compra vigente</dt>
+        <dd data-preco-medio>{{ medio }}</dd>
+      </div>
+    }
+  </dl>
+
+  @if (avisos().length) {
+    <div class="avisos" data-avisos>
+      @for (aviso of avisos(); track aviso) {
+        <app-mensagem-feedback nivel="aviso" [mensagem]="aviso" />
+      }
+    </div>
+  }
+</section>
