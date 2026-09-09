@@ -1,0 +1,45 @@
+.barra-mercado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-4);
+  padding: var(--espaco-3) var(--espaco-4);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+  overflow-x: auto;
+}
+
+.itens {
+  display: flex;
+  gap: var(--espaco-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--espaco-2);
+  white-space: nowrap;
+}
+
+.simbolo {
+  font-weight: 700;
+}
+
+.preco {
+  font-family: var(--fonte-numero);
+}
+
+.horario {
+  color: var(--cor-texto-fraco);
+  font-size: var(--texto-pequeno);
+  white-space: nowrap;
+}
+
+.aviso-barra {
+  margin-top: var(--espaco-2);
+  font-size: var(--texto-pequeno);
+}

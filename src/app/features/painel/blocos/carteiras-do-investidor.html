@@ -1,0 +1,13 @@
+<section class="bloco" data-carteiras>
+  <h2>Carteiras</h2>
+
+  <ul class="cartoes">
+    @for (carteira of carteiras(); track carteira.id) {
+      <li class="cartao" [attr.data-carteira]="carteira.id">
+        <span class="nome" data-nome>{{ carteira.nome }}</span>
+        <span class="corretora" data-corretora>{{ carteira.nomeCorretora }}</span>
+        <a class="abrir" data-abrir [routerLink]="['/carteiras', carteira.id]">Abrir carteira</a>
+      </li>
+    }
+  </ul>
+</section>

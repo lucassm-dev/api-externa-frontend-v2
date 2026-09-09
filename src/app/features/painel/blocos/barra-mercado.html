@@ -1,0 +1,21 @@
+@if (barra(); as conteudo) {
+  <section class="barra-mercado" data-barra-mercado aria-label="Mercado">
+    <ul class="itens">
+      @for (item of itens(); track item.simbolo) {
+        <li class="item" [attr.data-item]="item.simbolo">
+          <span class="simbolo" data-simbolo>{{ item.simbolo }}</span>
+          <span class="preco" data-preco>{{ preco(item.preco) }}</span>
+          <app-variacao [valor]="item.variacaoPercentual" [percentual]="true" />
+        </li>
+      }
+    </ul>
+
+    <span class="horario" data-atualizado-em>Atualizado às {{ atualizadoEm() }}</span>
+  </section>
+
+  @for (aviso of avisos(); track aviso) {
+    <div class="aviso-barra" data-aviso-mercado>
+      <app-mensagem-feedback nivel="aviso" [mensagem]="aviso" />
+    </div>
+  }
+}

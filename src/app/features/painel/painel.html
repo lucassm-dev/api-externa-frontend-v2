@@ -1,0 +1,31 @@
+<app-barra-mercado [barra]="barra()" />
+
+@if (mostrarBlocosDoInvestidor()) {
+  @if (carteiras(); as carteiras) {
+    @if (carteiras.length > 0) {
+      <app-consolidado
+        [carteiras]="carteiras"
+        [carteiraSelecionada]="carteiraSelecionada()"
+        [consolidado]="consolidado()"
+        [carregando]="carregandoConsolidado()"
+        (selecionar)="trocarCarteira($event)"
+      />
+
+      <app-carteiras-do-investidor [carteiras]="carteiras" />
+    }
+  } @else if (carregandoEstado()) {
+    <div class="esqueleto" data-esqueleto-carteiras aria-hidden="true">
+      <span></span><span></span>
+    </div>
+  }
+
+  @if (movimentacoes(); as movimentacoes) {
+    <app-ultimas-movimentacoes [movimentacoes]="movimentacoes" />
+  } @else if (carregandoEstado()) {
+    <div class="esqueleto" data-esqueleto-movimentacoes aria-hidden="true">
+      <span></span><span></span>
+    </div>
+  }
+} @else if (proximoPasso(); as passo) {
+  <app-convite-proximo-passo [passo]="passo" />
+}

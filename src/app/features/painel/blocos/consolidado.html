@@ -1,0 +1,54 @@
+<section class="bloco" data-consolidado>
+  <header class="cabecalho">
+    <h2>Consolidado da carteira</h2>
+
+    <label class="seletor">
+      <span class="rotulo">Carteira</span>
+      <select
+        data-seletor-carteira
+        [value]="carteiraSelecionada()"
+        (change)="escolher($any($event.target).value)"
+      >
+        @for (carteira of carteiras(); track carteira.id) {
+          <option [value]="carteira.id" [selected]="carteira.id === carteiraSelecionada()">
+            {{ carteira.nome }}
+          </option>
+        }
+      </select>
+    </label>
+  </header>
+
+  @if (carregando()) {
+    <div class="esqueleto" data-esqueleto-consolidado aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+  } @else if (valores(); as valores) {
+    <dl class="numeros">
+      <div class="numero">
+        <dt>Valor investido</dt>
+        <dd data-valor-investido>{{ valores.investido }}</dd>
+      </div>
+      <div class="numero">
+        <dt>Valor de mercado</dt>
+        <dd data-valor-de-mercado>{{ valores.mercado }}</dd>
+      </div>
+      <div class="numero">
+        <dt>Resultado não realizado</dt>
+        <dd data-lucro-nao-realizado>
+          <app-variacao [valor]="valores.resultado" moeda="BRL" />
+        </dd>
+      </div>
+    </dl>
+
+    <p class="cambio" data-taxa-cambio>
+      <span class="rotulo">Dólar usado na conversão</span>
+      <app-valor-com-horario [valor]="valores.taxa" [obtidoEm]="valores.taxaObtidaEm" />
+    </p>
+
+    @for (aviso of avisos(); track aviso) {
+      <div class="aviso" data-aviso-consolidado>
+        <app-mensagem-feedback nivel="aviso" [mensagem]="aviso" />
+      </div>
+    }
+  }
+</section>

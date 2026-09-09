@@ -1,0 +1,5 @@
+<section class="convite" data-proximo-passo [attr.data-passo]="passo().id">
+  <h2 data-titulo>{{ passo().titulo }}</h2>
+  <p data-explicacao>{{ passo().explicacao }}</p>
+  <a class="acao" data-acao [routerLink]="passo().rota">{{ passo().acao }}</a>
+</section>

@@ -1,0 +1,24 @@
+<section class="bloco" data-movimentacoes>
+  <header class="cabecalho">
+    <h2>Últimas movimentações</h2>
+    <a data-ver-extrato routerLink="/operacoes">Ver extrato completo</a>
+  </header>
+
+  <ul class="linhas">
+    @for (movimentacao of movimentacoes().slice(0, limite); track movimentacao.id) {
+      <li class="linha" [attr.data-movimentacao]="movimentacao.id">
+        <span class="quando" data-quando>{{ quando(movimentacao) }}</span>
+        <span class="tipo" [attr.data-tipo]="movimentacao.tipo">{{ movimentacao.tipo }}</span>
+        @if (movimentacao.ticker) {
+          <span class="ticker" data-ticker>{{ movimentacao.ticker }}</span>
+        }
+        @if (quantidade(movimentacao); as quantidade) {
+          <span class="quantidade" data-quantidade>{{ quantidade }}</span>
+        }
+        @if (total(movimentacao); as total) {
+          <span class="total" data-total>{{ total }}</span>
+        }
+      </li>
+    }
+  </ul>
+</section>
