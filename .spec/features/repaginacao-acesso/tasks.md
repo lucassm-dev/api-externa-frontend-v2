@@ -14,8 +14,7 @@
   É o único lugar do produto onde efeito visual é bem-vindo — telas de dado
   financeiro não recebem nenhum. Conteúdo da região depende de Q-032.
 
-## T-104 — Medidor de força de senha [pendente]
-
+## T-104 — Medidor de força de senha [concluida]
 - Refs: US-070, AC-255
 - Arquivos: src/app/features/acesso/forca-da-senha.ts, src/app/features/acesso/forca-da-senha.html, src/app/features/acesso/forca-da-senha.scss, src/app/features/acesso/forca-da-senha.spec.ts
 - Modelo: claude-sonnet-5

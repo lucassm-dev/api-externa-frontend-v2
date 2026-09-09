@@ -1,0 +1,28 @@
+<section
+  class="forca-senha"
+  data-forca-senha
+  [attr.data-aceitavel]="aceitavel()"
+  role="status"
+  aria-live="polite"
+>
+  <div class="trilho" aria-hidden="true">
+    <span
+      class="preenchimento"
+      [class.aceitavel]="aceitavel()"
+      [style.width.%]="progresso()"
+    ></span>
+  </div>
+
+  <p class="resumo">
+    {{ aceitavel() ? 'Senha atende à política' : 'Complete os requisitos da senha' }}
+  </p>
+
+  <ul>
+    @for (requisito of requisitos(); track requisito.id) {
+      <li [class.atendido]="requisito.atendido" [attr.data-requisito]="requisito.id">
+        <span aria-hidden="true">{{ requisito.atendido ? '✓' : '○' }}</span>
+        {{ requisito.rotulo }} — {{ requisito.atendido ? 'atendido' : 'falta' }}
+      </li>
+    }
+  </ul>
+</section>
