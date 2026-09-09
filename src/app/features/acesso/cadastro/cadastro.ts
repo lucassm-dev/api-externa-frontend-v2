@@ -1,14 +1,25 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import {
+  afterNextRender,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
 import { aplicarErroNoFormulario } from '../../../core/erros/erro-em-formulario';
+import { NivelFeedback } from '../../../core/feedback/feedback.model';
 import { MensagemFeedback } from '../../../core/feedback/mensagem-feedback';
 import { ErroTraduzido } from '../../../core/erros/tradutor-erro';
 import { ROTA_LOGIN } from '../../../core/sessao/sessao.model';
 import { AcessoService } from '../acesso.service';
+import { ForcaDaSenha } from '../forca-da-senha';
+import { MolduraAcesso } from '../moldura-acesso';
 import {
   REGRA_CPF,
   REGRA_EMAIL,
@@ -25,6 +36,8 @@ import {
   imports: [
     ReactiveFormsModule,
     RouterLink,
+    MolduraAcesso,
+    ForcaDaSenha,
     MensagemFeedback,
     MatFormFieldModule,
     MatInputModule,
@@ -44,6 +57,8 @@ export class Cadastro {
 
   readonly enviando = signal(false);
   readonly mensagemGeral = signal<string | null>(null);
+  protected readonly nivelMensagem = signal<NivelFeedback>('erro');
+  protected readonly codigoMensagem = signal<string | null>(null);
 
   readonly formulario = inject(FormBuilder).nonNullable.group({
     nome: ['', [Validators.required]],
@@ -51,6 +66,12 @@ export class Cadastro {
     cpf: ['', [Validators.required, cpfValidator]],
     senha: ['', [Validators.required, senhaValidator]],
   });
+
+  private readonly primeiroCampo = viewChild<ElementRef<HTMLInputElement>>('primeiroCampo');
+
+  constructor() {
+    afterNextRender(() => this.primeiroCampo()?.nativeElement.focus());
+  }
 
   /** A máscara acompanha a digitação; o que não é dígito não entra no campo. */
   aoDigitarCpf(evento: Event): void {
@@ -65,6 +86,7 @@ export class Cadastro {
       return;
     }
     this.mensagemGeral.set(null);
+    this.codigoMensagem.set(null);
     // O que dá para validar antes do envio é validado antes (PRD-009).
     if (this.formulario.invalid) {
       this.formulario.markAllAsTouched();
@@ -85,7 +107,12 @@ export class Cadastro {
       },
       error: (erro: ErroTraduzido) => {
         this.enviando.set(false);
-        this.mensagemGeral.set(aplicarErroNoFormulario(erro, this.formulario));
+        const mensagem = aplicarErroNoFormulario(erro, this.formulario);
+        this.mensagemGeral.set(mensagem);
+        if (mensagem) {
+          this.nivelMensagem.set(erro.nivel);
+          this.codigoMensagem.set(erro.exibirCodigo ? erro.codigo : null);
+        }
       },
     });
   }

@@ -1,16 +1,27 @@
-<main class="tela">
+<app-moldura-acesso>
   <section class="cartao">
     <h1>Criar conta</h1>
     <p class="apoio">Monte carteiras hipotéticas e acompanhe o desempenho delas.</p>
 
     @if (mensagemGeral(); as mensagem) {
-      <app-mensagem-feedback nivel="erro" [mensagem]="mensagem" />
+      <app-mensagem-feedback
+        [nivel]="nivelMensagem()"
+        [mensagem]="mensagem"
+        [codigo]="codigoMensagem()"
+      />
     }
 
     <form [formGroup]="formulario" (ngSubmit)="enviar()" novalidate>
       <mat-form-field appearance="outline">
         <mat-label>Nome</mat-label>
-        <input matInput formControlName="nome" autocomplete="name" aria-label="Nome" />
+        <input
+          #primeiroCampo
+          matInput
+          formControlName="nome"
+          autocomplete="name"
+          aria-label="Nome"
+          autofocus
+        />
         @if (formulario.controls.nome.touched && formulario.controls.nome.invalid) {
           <mat-error>{{ formulario.controls.nome.errors?.['servidor'] ?? 'Informe seu nome' }}</mat-error>
         }
@@ -51,11 +62,21 @@
         }
       </mat-form-field>
 
-      <button mat-flat-button type="submit" [disabled]="enviando()">
-        {{ enviando() ? 'Criando conta…' : 'Criar conta' }}
+      <app-forca-da-senha [senha]="formulario.controls.senha.value" />
+
+      <button
+        mat-flat-button
+        type="submit"
+        [disabled]="enviando()"
+        [attr.aria-busy]="enviando()"
+      >
+        @if (enviando()) {
+          <span class="indicador-envio" data-indicador-envio aria-hidden="true"></span>
+        }
+        <span>Criar conta</span>
       </button>
     </form>
 
     <p class="rodape">Já tem conta? <a [routerLink]="rotaLogin">Entrar</a></p>
   </section>
-</main>
+</app-moldura-acesso>

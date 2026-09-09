@@ -36,8 +36,7 @@
   primeiro campo. **Preservar o `aria-label` acrescentado pela T-091**: esta
   tarefa reescreve o mesmo arquivo e não pode perder o rótulo acessível.
 
-## T-106 — Tela de cadastro [pendente]
-
+## T-106 — Tela de cadastro [concluida]
 - Refs: US-069, US-070, US-071, AC-251, AC-254, AC-255, AC-256, AC-257, AC-258
 - Arquivos: src/app/features/acesso/cadastro/cadastro.ts, src/app/features/acesso/cadastro/cadastro.html, src/app/features/acesso/cadastro/cadastro.scss, src/app/features/acesso/cadastro/cadastro.spec.ts
 - Modelo: claude-sonnet-5

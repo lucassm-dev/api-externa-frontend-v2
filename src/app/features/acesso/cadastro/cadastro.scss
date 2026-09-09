@@ -1,12 +1,8 @@
-.tela {
-  display: grid;
-  place-items: center;
-  min-height: 100vh;
-  padding: var(--espaco-6);
+:host {
+  display: block;
 }
 
 .cartao {
-  width: 420px;
   padding: var(--espaco-6);
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio);
@@ -30,10 +26,35 @@ form {
 }
 
 button {
+  display: inline-flex;
+  gap: var(--espaco-2);
+  align-items: center;
+  justify-content: center;
   margin-top: var(--espaco-3);
+}
+
+.indicador-envio {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: girar-indicador 700ms linear infinite;
 }
 
 .rodape {
   margin: var(--espaco-5) 0 0;
   color: var(--cor-texto-fraco);
+}
+
+@keyframes girar-indicador {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indicador-envio {
+    animation: none;
+  }
 }

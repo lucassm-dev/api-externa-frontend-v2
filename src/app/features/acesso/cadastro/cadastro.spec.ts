@@ -224,4 +224,64 @@ describe('Tela de cadastro', () => {
     const link = (fixture.nativeElement as HTMLElement).querySelector('a[href="/entrar"]');
     expect(link).not.toBeNull();
   });
+
+  it('@spec:AC-254 só mostra a orientação do nome obrigatório depois que o campo perde foco', async () => {
+    const raiz = fixture.nativeElement as HTMLElement;
+    const nome = raiz.querySelector('input[formcontrolname="nome"]') as HTMLInputElement;
+
+    expect(raiz.querySelector('mat-error')).toBeNull();
+    nome.dispatchEvent(new Event('blur'));
+    await fixture.whenStable();
+
+    expect(raiz.querySelector('mat-error')?.textContent).toMatch(/informe seu nome/i);
+  });
+
+  it('@spec:AC-255 liga o campo de senha ao medidor da política vigente', async () => {
+    const senha = (fixture.nativeElement as HTMLElement).querySelector(
+      'input[formcontrolname="senha"]',
+    ) as HTMLInputElement;
+    senha.value = 'segura123';
+    senha.dispatchEvent(new Event('input'));
+    await fixture.whenStable();
+
+    expect(
+      (fixture.nativeElement as HTMLElement)
+        .querySelector('[data-forca-senha]')
+        ?.getAttribute('data-aceitavel'),
+    ).toBe('true');
+  });
+
+  it('@spec:AC-256 deixa o primeiro campo pronto para digitar quando a tela abre', () => {
+    const raiz = fixture.nativeElement as HTMLElement;
+    const nome = raiz.querySelector('input[formcontrolname="nome"]') as HTMLInputElement;
+
+    expect(nome.hasAttribute('autofocus')).toBe(true);
+    expect(nome).toBe(raiz.querySelector('form input'));
+  });
+
+  it('@spec:AC-257 mantém o rótulo Criar conta ao lado do indicador durante o envio', async () => {
+    preencher();
+    await enviar();
+    const botao = (fixture.nativeElement as HTMLElement).querySelector('button[type="submit"]') as HTMLButtonElement;
+
+    expect(botao.disabled).toBe(true);
+    expect(botao.getAttribute('aria-busy')).toBe('true');
+    expect(botao.querySelector('[data-indicador-envio]')).not.toBeNull();
+    expect(botao.textContent?.trim()).toBe('Criar conta');
+
+    controle.expectOne('/auth/cadastro').flush({ id: 7, nome: VALIDO.nome, email: VALIDO.email });
+  });
+
+  it('@spec:AC-258 exibe nível e código definidos pelo catálogo, ignorando o texto cru', async () => {
+    preencher();
+    await enviar();
+    const { corpo, opcoes } = erroDoServidor('SYS-001', 500);
+    controle.expectOne('/auth/cadastro').flush(corpo, opcoes);
+    await fixture.whenStable();
+    const raiz = fixture.nativeElement as HTMLElement;
+
+    expect(raiz.querySelector('[data-nivel="erro"]')).not.toBeNull();
+    expect(raiz.querySelector('[data-codigo]')?.textContent).toContain('SYS-001');
+    expect(raiz.textContent).not.toContain('mensagem crua do servidor');
+  });
 });
