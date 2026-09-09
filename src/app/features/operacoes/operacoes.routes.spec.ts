@@ -29,9 +29,13 @@ describe('Rotas das operações', () => {
   function responderTudo() {
     controle
       .match(() => true)
-      .forEach((r) =>
-        r.flush({ content: [], totalElements: 0, totalPages: 0, number: 0, size: 20 }),
-      );
+      .forEach((r) => {
+        if (r.request.url.endsWith('/posicoes')) {
+          r.flush([]);
+          return;
+        }
+        r.flush({ content: [], totalElements: 0, totalPages: 0, number: 0, size: 20 });
+      });
   }
 
   it('@spec:AC-150 /operacoes abre a tela real, com o seletor de tipo à vista', async () => {

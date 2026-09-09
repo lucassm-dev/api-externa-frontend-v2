@@ -1,17 +1,40 @@
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { readFileSync } from 'node:fs';
 import { CabecalhoOrdenavel, SentidoOrdenacao } from './cabecalho-ordenavel';
 
+@Component({
+  imports: [CabecalhoOrdenavel],
+  template: `
+    <table>
+      <thead>
+        <tr>
+          <th
+            app-cabecalho-ordenavel
+            rotulo="Data"
+            [sentido]="sentido"
+            (ordenar)="pedidos = pedidos + 1"
+          ></th>
+        </tr>
+      </thead>
+    </table>
+  `,
+})
+class HospedeiroCabecalhoOrdenavel {
+  sentido: SentidoOrdenacao = 'nenhum';
+  pedidos = 0;
+}
+
 describe('Cabeçalho ordenável', () => {
-  let fixture: ComponentFixture<CabecalhoOrdenavel>;
+  let fixture: ComponentFixture<HospedeiroCabecalhoOrdenavel>;
 
   async function montar(sentido: SentidoOrdenacao): Promise<HTMLTableCellElement> {
     TestBed.resetTestingModule();
-    fixture = TestBed.createComponent(CabecalhoOrdenavel);
-    fixture.componentRef.setInput('rotulo', 'Data');
-    fixture.componentRef.setInput('sentido', sentido);
+    fixture = TestBed.createComponent(HospedeiroCabecalhoOrdenavel);
+    fixture.componentInstance.sentido = sentido;
+    fixture.detectChanges();
     await fixture.whenStable();
-    return fixture.nativeElement as HTMLTableCellElement;
+    return fixture.nativeElement.querySelector('th') as HTMLTableCellElement;
   }
 
   it('@spec:AC-242 anuncia o sentido atual em aria-sort e o alterna conforme o estado recebido', async () => {
@@ -28,13 +51,11 @@ describe('Cabeçalho ordenável', () => {
 
   it('@spec:AC-242 responde ao acionamento do cabeçalho emitindo o pedido de ordenação', async () => {
     const th = await montar('nenhum');
-    let pedidos = 0;
-    fixture.componentInstance.ordenar.subscribe(() => (pedidos += 1));
 
     (th.querySelector('button') as HTMLButtonElement).click();
     (th.querySelector('button') as HTMLButtonElement).click();
 
-    expect(pedidos).toBe(2);
+    expect(fixture.componentInstance.pedidos).toBe(2);
   });
 
   it('@spec:AC-242 mantém o glifo decorativo, deixando aria-sort e o nome do botão anunciarem', async () => {
