@@ -1,0 +1,43 @@
+:host {
+  padding: 0;
+}
+
+button {
+  display: inline-flex;
+  gap: var(--espaco-1);
+  align-items: center;
+  width: 100%;
+  padding: var(--espaco-2) var(--espaco-3);
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  color: var(--cor-acento);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--cor-acento);
+  outline-offset: -2px;
+}
+
+.glifo {
+  flex: none;
+  width: 8px;
+  height: 12px;
+}
+
+.glifo path {
+  fill: currentColor;
+  opacity: 0.3;
+}
+
+:host([data-sentido='crescente']) .para-cima,
+:host([data-sentido='decrescente']) .para-baixo {
+  opacity: 1;
+}
