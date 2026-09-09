@@ -96,6 +96,59 @@ describe('Consolidado de uma carteira', () => {
     expect(elemento.querySelector('[data-valor-de-mercado]')?.textContent).toContain('11.500,50');
   });
 
+  it('@spec:AC-238 cada indicador põe o rótulo pequeno acima e o valor em destaque, com selo de variação no resultado', async () => {
+    const elemento = await montar(numeros);
+
+    const indicadores = Array.from(elemento.querySelectorAll('[data-indicador]'));
+    expect(indicadores.length).toBe(3);
+
+    for (const indicador of indicadores) {
+      const rotulo = indicador.querySelector('[data-indicador-rotulo]');
+      const valor = indicador.querySelector('[data-indicador-valor]');
+      expect(rotulo).not.toBeNull();
+      expect(valor).not.toBeNull();
+      const rotuloAntesDoValor =
+        rotulo!.compareDocumentPosition(valor!) & Node.DOCUMENT_POSITION_FOLLOWING;
+      expect(rotuloAntesDoValor).toBeTruthy();
+    }
+
+    const valorInvestido = elemento.querySelector('[data-valor-investido]');
+    expect(valorInvestido!.closest('[data-indicador-valor]')).not.toBeNull();
+
+    const resultado = elemento.querySelector('[data-lucro-nao-realizado]');
+    expect(resultado!.matches('[data-indicador-valor]')).toBe(true);
+    expect(resultado!.querySelector('[data-variacao]')).not.toBeNull();
+
+    const selo = elemento.querySelector('[data-selo-resultado] [data-selo]');
+    expect(selo!.getAttribute('data-variante')).toBe('alta');
+    expect(selo!.textContent).toContain('Alta');
+  });
+
+  it('@spec:AC-238 o selo de variação do resultado acompanha o sinal do número', async () => {
+    const prejuizo = await montar({ ...numeros, lucroNaoRealizado: -800 });
+    expect(
+      prejuizo.querySelector('[data-selo-resultado] [data-selo]')?.getAttribute('data-variante'),
+    ).toBe('baixa');
+
+    const zerado = await montar({ ...numeros, lucroNaoRealizado: 0 });
+    expect(
+      zerado.querySelector('[data-selo-resultado] [data-selo]')?.getAttribute('data-variante'),
+    ).toBe('estavel');
+  });
+
+  it('@spec:AC-239 nenhum indicador mostra comparação com período anterior ou miniatura de evolução', async () => {
+    const elemento = await montar(numeros);
+
+    expect(
+      elemento.querySelector(
+        '[data-comparacao], [data-vs-periodo], [data-periodo-anterior], [data-evolucao], [data-sparkline], [data-minigrafico], canvas, svg[data-grafico]',
+      ),
+    ).toBeNull();
+
+    const texto = elemento.textContent ?? '';
+    expect(texto).not.toMatch(/m[êe]s anterior|per[íi]odo anterior|últimos?\s+\d+\s+dias|no ano|desde o in[íi]cio/i);
+  });
+
   it('@spec:AC-056 taxa com mais de quinze minutos ganha a marcação de dado defasado', async () => {
     const recente = await montar(numeros);
     expect(

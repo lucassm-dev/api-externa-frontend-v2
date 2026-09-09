@@ -23,22 +23,32 @@
       <span></span><span></span><span></span>
     </div>
   } @else if (valores(); as valores) {
-    <dl class="numeros">
-      <div class="numero">
-        <dt>Valor investido</dt>
-        <dd data-valor-investido>{{ valores.investido }}</dd>
-      </div>
-      <div class="numero">
-        <dt>Valor de mercado</dt>
-        <dd data-valor-de-mercado>{{ valores.mercado }}</dd>
-      </div>
-      <div class="numero">
-        <dt>Resultado não realizado</dt>
-        <dd data-lucro-nao-realizado>
+    <ul class="indicadores">
+      <li class="indicador" data-indicador>
+        <p class="indicador-rotulo" data-indicador-rotulo>Valor investido</p>
+        <p class="indicador-valor" data-indicador-valor>
+          <span data-valor-investido>{{ valores.investido }}</span>
+        </p>
+      </li>
+      <li class="indicador" data-indicador>
+        <p class="indicador-rotulo" data-indicador-rotulo>Valor de mercado</p>
+        <p class="indicador-valor" data-indicador-valor>
+          <span data-valor-de-mercado>{{ valores.mercado }}</span>
+        </p>
+      </li>
+      <li class="indicador indicador--resultado" data-indicador>
+        <p class="indicador-rotulo" data-indicador-rotulo>Resultado não realizado</p>
+        <p class="indicador-valor" data-indicador-valor data-lucro-nao-realizado>
           <app-variacao [valor]="valores.resultado" moeda="BRL" />
-        </dd>
-      </div>
-    </dl>
+        </p>
+        <app-selo
+          class="indicador-selo"
+          data-selo-resultado
+          [variante]="seloResultado().variante"
+          [texto]="seloResultado().texto"
+        />
+      </li>
+    </ul>
 
     <p class="cambio" data-taxa-cambio>
       <span class="rotulo">Dólar usado na conversão</span>

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 import { MensagemFeedback } from '../../../core/feedback/mensagem-feedback';
 import { formatarReal } from '../../../core/formatacao/formatacao';
+import { Selo, VarianteSelo } from '../../../shared/selo/selo';
 import { ValorComHorario } from '../../../shared/valor-com-horario/valor-com-horario';
 import { Variacao } from '../../../shared/variacao/variacao';
 import { CarteiraResumida, ConsolidadoDaCarteira } from '../painel.model';
@@ -13,7 +14,7 @@ import { CarteiraResumida, ConsolidadoDaCarteira } from '../painel.model';
 @Component({
   selector: 'app-consolidado',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MensagemFeedback, ValorComHorario, Variacao],
+  imports: [MensagemFeedback, Selo, ValorComHorario, Variacao],
   templateUrl: './consolidado.html',
   styleUrl: './consolidado.scss',
 })
@@ -39,6 +40,13 @@ export class Consolidado {
       taxa: consolidado.taxaCambioAtual,
       taxaObtidaEm: consolidado.dataHoraTaxaCambio,
     };
+  });
+
+  protected readonly seloResultado = computed<{ variante: VarianteSelo; texto: string }>(() => {
+    const resultado = this.consolidado()?.lucroNaoRealizado ?? 0;
+    if (resultado > 0) return { variante: 'alta', texto: 'Alta' };
+    if (resultado < 0) return { variante: 'baixa', texto: 'Baixa' };
+    return { variante: 'estavel', texto: 'Estável' };
   });
 
   protected escolher(valor: string): void {
