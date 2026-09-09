@@ -25,8 +25,7 @@
   que impede um gráfico "bonito e mentiroso" (AC-262). Cauda agrupada depende de
   Q-033; total no centro depende de Q-034. As cores de série não mudam.
 
-## T-109 — Contribuição com linha de zero [pendente]
-
+## T-109 — Contribuição com linha de zero [concluida]
 - Refs: US-073, AC-263
 - Arquivos: src/app/features/desempenho/blocos/grafico-contribuicao.ts, src/app/features/desempenho/blocos/grafico-contribuicao.html, src/app/features/desempenho/blocos/grafico-contribuicao.scss, src/app/features/desempenho/blocos/grafico-contribuicao.spec.ts
 - Modelo: claude-sonnet-5
