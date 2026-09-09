@@ -1,4 +1,4 @@
-<main class="tela">
+<app-moldura-acesso>
   <section class="cartao">
     <h1>Entrar</h1>
     <p class="apoio">Acompanhe suas carteiras hipotéticas.</p>
@@ -10,13 +10,25 @@
       <app-mensagem-feedback nivel="aviso" [mensagem]="motivo" />
     }
     @if (mensagemGeral(); as mensagem) {
-      <app-mensagem-feedback nivel="erro" [mensagem]="mensagem" />
+      <app-mensagem-feedback
+        [nivel]="nivelMensagem()"
+        [mensagem]="mensagem"
+        [codigo]="codigoMensagem()"
+      />
     }
 
     <form [formGroup]="formulario" (ngSubmit)="enviar()" novalidate>
       <mat-form-field appearance="outline">
         <mat-label>E-mail</mat-label>
-        <input matInput formControlName="email" type="email" autocomplete="email" aria-label="E-mail" />
+        <input
+          #primeiroCampo
+          matInput
+          formControlName="email"
+          type="email"
+          autocomplete="email"
+          aria-label="E-mail"
+          autofocus
+        />
         @if (formulario.controls.email.touched && formulario.controls.email.invalid) {
           <mat-error>Informe um e-mail válido</mat-error>
         }
@@ -30,11 +42,19 @@
         }
       </mat-form-field>
 
-      <button mat-flat-button type="submit" [disabled]="enviando()">
-        {{ enviando() ? 'Entrando…' : 'Entrar' }}
+      <button
+        mat-flat-button
+        type="submit"
+        [disabled]="enviando()"
+        [attr.aria-busy]="enviando()"
+      >
+        @if (enviando()) {
+          <span class="indicador-envio" data-indicador-envio aria-hidden="true"></span>
+        }
+        <span>Entrar</span>
       </button>
     </form>
 
     <p class="rodape">Não tem conta? <a [routerLink]="rotaCadastro">Criar conta</a></p>
   </section>
-</main>
+</app-moldura-acesso>

@@ -133,4 +133,61 @@ describe('Tela de login', () => {
 
     expect(link).not.toBeNull();
   });
+
+  it('@spec:AC-254 só mostra a orientação do e-mail inválido depois que o campo perde foco', async () => {
+    await montar();
+    const raiz = fixture.nativeElement as HTMLElement;
+    const email = raiz.querySelector('input[formcontrolname="email"]') as HTMLInputElement;
+
+    expect(raiz.querySelector('mat-error')).toBeNull();
+    email.value = 'email-invalido';
+    email.dispatchEvent(new Event('input'));
+    email.dispatchEvent(new Event('blur'));
+    await fixture.whenStable();
+
+    expect(raiz.querySelector('mat-error')?.textContent).toMatch(/informe um e-mail válido/i);
+  });
+
+  it('@spec:AC-256 deixa o primeiro campo pronto para digitar quando a tela abre', async () => {
+    await montar();
+    const email = (fixture.nativeElement as HTMLElement).querySelector(
+      'input[formcontrolname="email"]',
+    ) as HTMLInputElement;
+
+    expect(email.hasAttribute('autofocus')).toBe(true);
+    expect(email).toBe((fixture.nativeElement as HTMLElement).querySelector('form input'));
+  });
+
+  it('@spec:AC-257 mantém o rótulo Entrar ao lado do indicador durante o envio', async () => {
+    await montar();
+    componente.formulario.setValue({ email: 'lucas@exemplo.com', senha: 'segura123' });
+    componente.enviar();
+    await fixture.whenStable();
+    const botao = (fixture.nativeElement as HTMLElement).querySelector('button[type="submit"]') as HTMLButtonElement;
+
+    expect(botao.disabled).toBe(true);
+    expect(botao.getAttribute('aria-busy')).toBe('true');
+    expect(botao.querySelector('[data-indicador-envio]')).not.toBeNull();
+    expect(botao.textContent?.trim()).toBe('Entrar');
+
+    controle.expectOne('/auth/login').flush({
+      token: 'jwt-abc',
+      tipo: 'Bearer',
+      expiraEm: new Date(Date.now() + 86_400_000).toISOString(),
+    });
+  });
+
+  it('@spec:AC-258 exibe nível e código definidos pelo catálogo, ignorando o texto cru', async () => {
+    await montar();
+    componente.formulario.setValue({ email: 'lucas@exemplo.com', senha: 'errada123' });
+    componente.enviar();
+    await fixture.whenStable();
+    recusar('AUT-004', 401);
+    await fixture.whenStable();
+    const raiz = fixture.nativeElement as HTMLElement;
+
+    expect(raiz.querySelector('[data-nivel="erro"]')).not.toBeNull();
+    expect(raiz.querySelector('[data-codigo]')?.textContent).toContain('AUT-004');
+    expect(raiz.textContent).not.toContain('Credenciais inválidas para o e-mail');
+  });
 });

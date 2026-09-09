@@ -26,8 +26,7 @@
   vira uma promessa que o formulário desmente. Comunica por texto e por
   preenchimento, nunca só por cor.
 
-## T-105 — Tela de login [pendente]
-
+## T-105 — Tela de login [concluida]
 - Refs: US-069, US-070, US-071, AC-251, AC-254, AC-256, AC-257, AC-258
 - Arquivos: src/app/features/acesso/login/login.ts, src/app/features/acesso/login/login.html, src/app/features/acesso/login/login.scss, src/app/features/acesso/login/login.spec.ts
 - Modelo: claude-sonnet-5
