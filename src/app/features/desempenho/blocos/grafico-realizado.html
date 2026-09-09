@@ -12,14 +12,23 @@
       primeira venda.
     </p>
   } @else {
-    <ol class="barras">
+    <div class="eixo" aria-hidden="true">
+      <span>Perda</span>
+      <span class="marco-zero">0</span>
+      <span>Ganho</span>
+    </div>
+    <ol class="barras" aria-label="Resultado realizado por ativo">
       @for (barra of desenhadas(); track barra.ticker) {
-        <li class="linha" [attr.data-realizado]="barra.ticker" [attr.data-direcao]="barra.ganho ? 'alta' : 'baixa'">
+        <li
+          class="linha"
+          [attr.data-realizado]="barra.ticker"
+          [attr.data-direcao]="barra.ganho ? 'alta' : 'baixa'"
+        >
           <span class="ticker" data-realizado-ticker>{{ barra.ticker }}</span>
-          <svg class="barra" height="10" aria-hidden="true">
+          <svg class="barra" height="18" aria-hidden="true">
             <rect
               data-realizado-barra
-              y="0"
+              y="4"
               height="10"
               rx="4"
               [attr.x]="barra.inicio + '%'"
@@ -32,7 +41,7 @@
               x1="50%"
               x2="50%"
               y1="0"
-              y2="10"
+              y2="18"
               stroke="var(--cor-grafico-eixo)"
               stroke-width="2"
             />
@@ -40,6 +49,12 @@
           <span class="valor" data-realizado-valor>
             <app-variacao [valor]="barra.valor" moeda="BRL" />
           </span>
+          <app-selo
+            class="selo"
+            data-selo-realizado
+            [variante]="barra.selo.variante"
+            [texto]="barra.selo.texto"
+          />
         </li>
       }
     </ol>

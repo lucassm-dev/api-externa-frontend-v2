@@ -35,8 +35,7 @@
   forma: o bloco "Consolidação de aportes" do Investidor10 em `docs/references/`,
   que usa compras acima e vendas abaixo do zero.
 
-## T-110 — Realizado por ticker [pendente]
-
+## T-110 — Realizado por ticker [concluida]
 - Refs: US-073, AC-263
 - Arquivos: src/app/features/desempenho/blocos/grafico-realizado.ts, src/app/features/desempenho/blocos/grafico-realizado.html, src/app/features/desempenho/blocos/grafico-realizado.scss, src/app/features/desempenho/blocos/grafico-realizado.spec.ts
 - Modelo: claude-sonnet-5
