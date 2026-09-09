@@ -2,8 +2,7 @@
 
 > feature: repaginacao-desempenho
 
-## T-107 — Geometria da rosca [pendente]
-
+## T-107 — Geometria da rosca [concluida]
 - Refs: US-072, AC-259
 - Arquivos: src/app/features/desempenho/blocos/setores-da-rosca.ts, src/app/features/desempenho/blocos/setores-da-rosca.spec.ts
 - Modelo: claude-sonnet-5
