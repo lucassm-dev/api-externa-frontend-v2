@@ -1,0 +1,128 @@
+<section class="tela">
+  <header class="topo">
+    <div>
+      <h1>Minhas carteiras</h1>
+      <p class="apoio">Cada carteira reúne suas posições, seus resultados e suas movimentações.</p>
+    </div>
+    <a mat-flat-button data-nova routerLink="/carteiras/nova">Criar carteira</a>
+  </header>
+
+  @if (textoDoErro(); as mensagem) {
+    <app-mensagem-feedback nivel="erro" [mensagem]="mensagem" [codigo]="codigoDoErro()" />
+  }
+
+  @if (carregando()) {
+    <div class="esqueleto" aria-hidden="true"><span></span><span></span><span></span></div>
+  } @else if (pagina(); as pagina) {
+    @if (pagina.content.length === 0) {
+      <p class="vazio" data-vazio>
+        Você ainda não tem carteira nenhuma. Crie a primeira para começar a registrar operações.
+      </p>
+    } @else {
+      <ul class="carteiras">
+        @for (carteira of pagina.content; track carteira.id) {
+          <li class="carteira" [attr.data-carteira]="carteira.id">
+            <div class="identificacao">
+              @if (renomeando()?.id === carteira.id) {
+                <div class="renomeando">
+                  <input
+                    data-campo-nome
+                    [ngModel]="nomeEditado()"
+                    (ngModelChange)="nomeEditado.set($event)"
+                    aria-label="Novo nome da carteira"
+                  />
+                  <button
+                    mat-flat-button
+                    type="button"
+                    data-salvar-nome
+                    [disabled]="salvandoNome()"
+                    (click)="confirmarRenomeacao()"
+                  >
+                    Salvar
+                  </button>
+                  <button mat-button type="button" data-cancelar-nome (click)="cancelarRenomeacao()">
+                    Cancelar
+                  </button>
+                </div>
+              } @else {
+                <h2>{{ carteira.nome }}</h2>
+              }
+              <p class="origem">
+                {{ carteira.nomeCorretora }} · {{ rotuloDoMercado(carteira.mercado) }}
+              </p>
+            </div>
+
+            <dl class="numeros">
+              @if (numerosDe(carteira.id)?.consolidado; as consolidado) {
+                <div>
+                  <dt>Valor de mercado</dt>
+                  <dd data-valor-de-mercado>{{ formatarReal(consolidado.valorDeMercado) }}</dd>
+                </div>
+                <div>
+                  <dt>Não realizado</dt>
+                  <dd data-nao-realizado>
+                    <app-variacao [valor]="consolidado.lucroNaoRealizado" moeda="BRL" />
+                  </dd>
+                </div>
+              }
+              @if (numerosDe(carteira.id)?.lucroRealizado; as realizado) {
+                <div>
+                  <dt>Realizado</dt>
+                  <dd data-realizado><app-variacao [valor]="realizado.total" moeda="BRL" /></dd>
+                </div>
+              }
+            </dl>
+
+            <div class="acoes">
+              <a mat-stroked-button data-abrir [routerLink]="['/carteiras', carteira.id]">Abrir</a>
+              <button mat-button type="button" data-renomear (click)="pedirRenomeacao(carteira)">
+                Renomear
+              </button>
+              <button mat-button type="button" data-excluir (click)="pedirExclusao(carteira)">
+                Excluir
+              </button>
+            </div>
+          </li>
+        }
+      </ul>
+
+      @if (pagina.totalPages > 1) {
+        <nav class="paginacao">
+          <button
+            mat-stroked-button
+            type="button"
+            data-anterior
+            [disabled]="pagina.number === 0"
+            (click)="irPara(pagina.number - 1)"
+          >
+            Anterior
+          </button>
+          <span>Página {{ pagina.number + 1 }} de {{ pagina.totalPages }}</span>
+          <button
+            mat-stroked-button
+            type="button"
+            data-proxima
+            [disabled]="pagina.number + 1 >= pagina.totalPages"
+            (click)="irPara(pagina.number + 1)"
+          >
+            Próxima
+          </button>
+        </nav>
+      }
+    }
+  }
+
+  @if (excluindo(); as carteira) {
+    <app-dialogo-confirmacao
+      titulo="Excluir esta carteira?"
+      [consequencia]="
+        carteira.nome +
+        ' sai da sua lista com as movimentações e os resultados dela. Não há como desfazer.'
+      "
+      rotuloConfirmar="Excluir"
+      [ocupado]="removendo()"
+      (confirmar)="confirmarExclusao()"
+      (cancelar)="cancelarExclusao()"
+    />
+  }
+</section>

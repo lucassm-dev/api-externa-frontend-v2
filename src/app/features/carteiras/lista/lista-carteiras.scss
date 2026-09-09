@@ -1,0 +1,114 @@
+.topo {
+  display: flex;
+  gap: var(--espaco-4);
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--espaco-5);
+
+  h1 {
+    margin: 0 0 var(--espaco-2);
+  }
+}
+
+.apoio {
+  margin: 0;
+  color: var(--cor-texto-fraco);
+}
+
+.carteiras {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.carteira {
+  display: grid;
+  grid-template-columns: minmax(12rem, 1fr) minmax(0, 2fr) auto;
+  gap: var(--espaco-4);
+  align-items: center;
+  padding: var(--espaco-4);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+
+  h2 {
+    margin: 0;
+    font-size: var(--texto-grande);
+  }
+}
+
+.origem {
+  margin: var(--espaco-1) 0 0;
+  color: var(--cor-texto-fraco);
+  font-size: var(--texto-pequeno);
+}
+
+.renomeando {
+  display: flex;
+  gap: var(--espaco-2);
+  align-items: center;
+
+  input {
+    flex: 1;
+    padding: var(--espaco-1) var(--espaco-2);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    font: inherit;
+  }
+}
+
+.numeros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-4);
+  margin: 0;
+
+  dt {
+    color: var(--cor-texto-fraco);
+    font-size: var(--texto-pequeno);
+  }
+
+  dd {
+    margin: var(--espaco-1) 0 0;
+  }
+}
+
+.acoes {
+  display: flex;
+  gap: var(--espaco-2);
+  align-items: center;
+}
+
+.paginacao {
+  display: flex;
+  gap: var(--espaco-3);
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--espaco-5);
+  color: var(--cor-texto-fraco);
+}
+
+.vazio {
+  padding: var(--espaco-5);
+  border: 1px dashed var(--cor-borda);
+  border-radius: var(--raio);
+  color: var(--cor-texto-fraco);
+  text-align: center;
+}
+
+.esqueleto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-3);
+
+  span {
+    height: var(--espaco-7);
+    border-radius: var(--raio);
+    background: var(--cor-superficie-alta);
+  }
+}

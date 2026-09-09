@@ -1,0 +1,73 @@
+<section class="posicoes">
+  <h2>Posições abertas</h2>
+
+  @if (posicoes().length === 0) {
+    <p class="vazio" data-sem-posicao>
+      Nenhuma posição aberta nesta carteira. Registre uma compra para começar.
+    </p>
+  } @else {
+    <ul class="linhas">
+      @for (posicao of posicoes(); track posicao.id) {
+        <li class="linha" [attr.data-posicao]="posicao.ticker">
+          <div class="ativo">
+            <strong>{{ posicao.ticker }}</strong>
+            <span class="empresa">{{ posicao.nomeEmpresa }}</span>
+          </div>
+
+          <dl class="dados">
+            <div>
+              <dt>Quantidade</dt>
+              <dd data-quantidade>{{ quantidade(posicao) }}</dd>
+            </div>
+            <div>
+              <dt>Preço médio</dt>
+              <dd data-preco-medio>{{ formatarReal(posicao.precoMedio) }}</dd>
+            </div>
+            <div>
+              <dt>Cotação atual</dt>
+              <dd data-cotacao>
+                <app-valor-com-horario
+                  [valor]="posicao.cotacaoAtual"
+                  [obtidoEm]="posicao.dataHoraCotacao"
+                />
+              </dd>
+            </div>
+            <div>
+              <dt>Não realizado</dt>
+              <dd data-rentabilidade-valor>
+                <app-variacao [valor]="posicao.rentabilidadeNaoRealizada" moeda="BRL" />
+              </dd>
+            </div>
+            @if (percentual(posicao); as percentual) {
+              <div>
+                <dt>Não realizado (%)</dt>
+                <dd data-rentabilidade-percentual>
+                  <app-variacao [valor]="percentual" [percentual]="true" />
+                </dd>
+              </div>
+            }
+          </dl>
+        </li>
+      }
+    </ul>
+  }
+</section>
+
+@if (encerradas().length > 0) {
+  <section class="encerradas" data-encerradas>
+    <h2>Encerradas</h2>
+    <p class="apoio">
+      Ativos que você zerou nesta carteira. A posição não existe mais — o resultado, sim.
+    </p>
+    <ul class="linhas">
+      @for (encerrada of encerradas(); track encerrada.ticker) {
+        <li class="linha" [attr.data-encerrada]="encerrada.ticker">
+          <strong>{{ encerrada.ticker }}</strong>
+          <span data-resultado-realizado>
+            <app-variacao [valor]="encerrada.resultadoRealizado" moeda="BRL" />
+          </span>
+        </li>
+      }
+    </ul>
+  </section>
+}

@@ -1,0 +1,143 @@
+<section class="tela">
+  <a class="voltar" routerLink="/carteiras">Voltar às carteiras</a>
+
+  @if (textoDoErro(); as mensagem) {
+    <span data-erro>
+      <app-mensagem-feedback nivel="erro" [mensagem]="mensagem" [codigo]="codigoDoErro()" />
+    </span>
+  }
+
+  @if (carregando()) {
+    <div class="esqueleto" aria-hidden="true"><span></span><span></span></div>
+  } @else if (carteira(); as carteira) {
+    <header class="cabecalho" data-cabecalho>
+      <div class="identificacao">
+        @if (renomeando()) {
+          <div class="edicao" data-edicao-nome>
+            <input
+              data-campo-nome
+              [ngModel]="nomeEditado()"
+              (ngModelChange)="nomeEditado.set($event)"
+              aria-label="Novo nome da carteira"
+            />
+            <button
+              mat-flat-button
+              type="button"
+              data-salvar-nome
+              [disabled]="salvandoNome()"
+              (click)="confirmarRenomeacao()"
+            >
+              Salvar
+            </button>
+            <button mat-button type="button" data-cancelar-nome (click)="cancelarRenomeacao()">
+              Cancelar
+            </button>
+          </div>
+        } @else {
+          <h1>{{ carteira.nome }}</h1>
+        }
+        <p class="origem">{{ carteira.nomeCorretora }} · {{ rotuloDoMercado(carteira.mercado) }}</p>
+      </div>
+
+      <div class="acoes">
+        <a
+          mat-flat-button
+          data-registrar-compra
+          routerLink="/operacoes"
+          [queryParams]="{ carteira: carteira.id, tipo: 'COMPRA' }"
+        >
+          Registrar compra
+        </a>
+        <a
+          mat-stroked-button
+          data-registrar-venda
+          routerLink="/operacoes"
+          [queryParams]="{ carteira: carteira.id, tipo: 'VENDA' }"
+        >
+          Registrar venda
+        </a>
+        <button mat-button type="button" data-renomear (click)="pedirRenomeacao()">Renomear</button>
+        <button mat-button type="button" data-excluir (click)="pedirExclusao()">Excluir</button>
+      </div>
+
+      <dl class="totais">
+        @if (consolidado(); as consolidado) {
+          <div>
+            <dt>Investido</dt>
+            <dd data-investido>{{ formatarReal(consolidado.valorInvestido) }}</dd>
+          </div>
+          <div>
+            <dt>Valor de mercado</dt>
+            <dd data-valor-de-mercado>{{ formatarReal(consolidado.valorDeMercado) }}</dd>
+          </div>
+          <div>
+            <dt>Resultado não realizado</dt>
+            <dd data-nao-realizado>
+              <app-variacao [valor]="consolidado.lucroNaoRealizado" moeda="BRL" />
+            </dd>
+          </div>
+        }
+        @if (lucroRealizado(); as realizado) {
+          <div>
+            <dt>Resultado realizado</dt>
+            <dd data-realizado><app-variacao [valor]="realizado.total" moeda="BRL" /></dd>
+          </div>
+        }
+      </dl>
+
+      @if (consolidado(); as consolidado) {
+        <p class="cambio" data-taxa-cambio>
+          <span class="rotulo">Totais em real, convertidos pela taxa</span>
+          <app-valor-com-horario
+            [valor]="consolidado.taxaCambioAtual"
+            [obtidoEm]="consolidado.dataHoraTaxaCambio"
+          />
+        </p>
+
+        @for (aviso of consolidado.avisos; track aviso) {
+          <span data-aviso-consolidado>
+            <app-mensagem-feedback nivel="aviso" [mensagem]="aviso" />
+          </span>
+        }
+      }
+    </header>
+
+    <app-posicoes-carteira
+      [posicoes]="posicoes()"
+      [lucroPorTicker]="lucroRealizado()?.porTicker ?? {}"
+    />
+
+    @if (operacaoEmEdicao(); as operacao) {
+      <app-editar-operacao
+        [operacao]="operacao"
+        [salvando]="salvandoOperacao()"
+        (salvar)="salvarEdicaoDeOperacao($event)"
+        (cancelar)="fecharEdicaoDeOperacao()"
+      />
+    }
+
+    @if (extrato(); as extrato) {
+      <app-movimentacoes-carteira
+        [extrato]="extrato"
+        [carteiraId]="carteira.id"
+        [excluindo]="excluindoOperacao()"
+        (editar)="abrirEdicaoDeOperacao($event)"
+        (excluir)="excluirOperacao($event)"
+      />
+    }
+
+    @if (confirmandoExclusao()) {
+      <app-dialogo-confirmacao
+        titulo="Excluir esta carteira?"
+        [consequencia]="
+          carteira.nome +
+          ' sai da sua lista com as movimentações e os resultados dela. Não há como desfazer.'
+        "
+        rotuloConfirmar="Excluir"
+        [ocupado]="removendo()"
+        (confirmar)="confirmarExclusao()"
+        (cancelar)="cancelarExclusao()"
+      />
+    }
+  }
+</section>
