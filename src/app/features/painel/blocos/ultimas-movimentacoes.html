@@ -8,9 +8,17 @@
     @for (movimentacao of movimentacoes().slice(0, limite); track movimentacao.id) {
       <li class="linha" [attr.data-movimentacao]="movimentacao.id">
         <span class="quando" data-quando>{{ quando(movimentacao) }}</span>
-        <span class="tipo" [attr.data-tipo]="movimentacao.tipo">{{ movimentacao.tipo }}</span>
-        @if (movimentacao.ticker) {
-          <span class="ticker" data-ticker>{{ movimentacao.ticker }}</span>
+        <app-selo
+          class="tipo"
+          [attr.data-tipo]="movimentacao.tipo"
+          [variante]="varianteDoTipo(movimentacao)"
+          [texto]="movimentacao.tipo"
+        />
+        @if (movimentacao.ticker; as ticker) {
+          <span class="ativo">
+            <app-monograma [ticker]="ticker" />
+            <span class="ticker" data-ticker>{{ ticker }}</span>
+          </span>
         }
         @if (quantidade(movimentacao); as quantidade) {
           <span class="quantidade" data-quantidade>{{ quantidade }}</span>
