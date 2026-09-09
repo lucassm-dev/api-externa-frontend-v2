@@ -59,6 +59,23 @@ describe('Convite do próximo passo', () => {
     expect(elemento.querySelector('[data-acao]')?.getAttribute('href')).toBe('/operacoes');
   });
 
+  it('@spec:AC-241 painel sem carteira mostra o estado vazio: ícone, explicação e a ação seguinte', async () => {
+    const elemento = await montar({
+      catalogoTemCorretora: true,
+      temCarteira: false,
+      temOperacao: false,
+    });
+
+    const convite = elemento.querySelector('[data-proximo-passo]') as HTMLElement;
+    expect(convite).not.toBeNull();
+    expect(convite.querySelector('[data-icone]')?.getAttribute('aria-hidden')).toBe('true');
+    expect(convite.querySelector('[data-explicacao]')?.textContent?.trim().length).toBeGreaterThan(0);
+
+    const acao = convite.querySelector('[data-acao]') as HTMLAnchorElement;
+    expect(acao.textContent).toContain('Criar carteira');
+    expect(acao.getAttribute('href')).toBe('/carteiras');
+  });
+
   it('@spec:AC-064 o convite é um só, nunca uma lista de pendências', async () => {
     const elemento = await montar({
       catalogoTemCorretora: false,
