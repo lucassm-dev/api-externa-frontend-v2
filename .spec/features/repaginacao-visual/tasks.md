@@ -70,7 +70,7 @@
 
 ## T-117 — Barra de cotações contida [concluida]
 - Refs: US-077, AC-274, AC-275
-- Arquivos: src/app/features/painel/blocos/barra-mercado.html, src/app/features/painel/blocos/barra-mercado.scss, src/app/features/painel/blocos/barra-mercado.spec.ts
+- Arquivos: src/app/features/painel/blocos/barra-mercado.html, src/app/features/painel/blocos/barra-mercado.scss, src/app/features/painel/blocos/barra-mercado.spec.ts, src/app/layout/casca.scss, src/app/features/painel/painel.scss
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: o que incomoda é a ESPESSURA, não o comprimento — a faixa deve atravessar
@@ -80,6 +80,9 @@
   horário da última atualização continua visível (é verdade de produto, não
   enfeite). A 360px ocupa a largura disponível sem estourar, e
   `prefers-reduced-motion` continua parando o movimento.
+  O comprimento não é da faixa: é da COLUNA DE CONTEÚDO da casca, com teto em
+  `--largura-conteudo` e centrada depois dele. Sem esse teto, em monitor largo a
+  faixa (e todo o resto) estica de borda a borda da janela.
 
 ## T-118 — Mapa de blocos das posições [concluida]
 - Refs: US-078, AC-276, AC-280, AC-281

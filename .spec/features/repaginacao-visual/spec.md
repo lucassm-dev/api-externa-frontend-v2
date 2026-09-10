@@ -98,13 +98,14 @@ carteira fora da mesa de trabalho.
 Como investidor, quero que a faixa de cotações seja fina, para que o topo do
 painel continue sendo sobre a minha carteira.
 
-#### AC-274 — A faixa é fina, e atravessa o painel inteiro
+#### AC-274 — A faixa é fina e acompanha a coluna de conteúdo
 
-- **Dado** o painel em tela larga
+- **Dado** o painel em qualquer largura de tela
 - **Quando** a barra de cotações é exibida
-- **Então** ela acompanha a largura do painel, sem teto próprio, e sua espessura
-  vem de um token menor que o alvo de toque — mais fina que qualquer cartão de
-  conteúdo —, mantendo visível o horário da última atualização
+- **Então** ela acompanha a coluna de conteúdo do produto — fluida enquanto a
+  tela é menor que o teto declarado em token, centrada quando passa dele, nunca
+  colada nas bordas da janela — e sua espessura vem de um token menor que o alvo
+  de toque, mantendo visível o horário da última atualização
 
 #### AC-275 — A faixa continua inteira na tela estreita
 

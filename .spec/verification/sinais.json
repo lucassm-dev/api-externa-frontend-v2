@@ -4455,6 +4455,42 @@
       "primeiraVez": "2026-09-10T00:44:23.565Z",
       "ultimaVez": "2026-09-10T00:44:23.565Z",
       "gitRev": "28305f0"
+    },
+    "ID_DUPLICADO::fundacao::ASM-001": {
+      "codigo": "ID_DUPLICADO",
+      "feature": "fundacao",
+      "ref": "ASM-001",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T03:28:19.351Z",
+      "ultimaVez": "2026-09-10T03:28:19.352Z",
+      "gitRev": "becce41"
+    },
+    "ID_DUPLICADO::fundacao::Q-001": {
+      "codigo": "ID_DUPLICADO",
+      "feature": "fundacao",
+      "ref": "Q-001",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T03:28:19.352Z",
+      "ultimaVez": "2026-09-10T03:28:19.352Z",
+      "gitRev": "becce41"
+    },
+    "ARQUIVO_INEXISTENTE::cabecalho-identidade-acoes::T-001": {
+      "codigo": "ARQUIVO_INEXISTENTE",
+      "feature": "cabecalho-identidade-acoes",
+      "ref": "T-001",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T03:28:19.352Z",
+      "ultimaVez": "2026-09-10T03:28:19.352Z",
+      "gitRev": "becce41"
+    },
+    "AC_SEM_TESTE::cabecalho-identidade-acoes::AC-285": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "cabecalho-identidade-acoes",
+      "ref": "AC-285",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T03:28:19.352Z",
+      "ultimaVez": "2026-09-10T03:28:19.352Z",
+      "gitRev": "becce41"
     }
   }
 }

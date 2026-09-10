@@ -135,7 +135,23 @@ describe('Barra de mercado', () => {
     expect(trecho).toMatch(/\.chip\s*{[^}]*background:[^;]*--cor-barra-mercado/);
   });
 
-  it('@spec:AC-274 a faixa é fina, atravessa o painel inteiro e mantém o horário visível', async () => {
+  it('@spec:AC-274 a faixa acompanha a coluna de conteúdo, que tem teto em token', () => {
+    const casca = readFileSync('src/app/layout/casca.scss', 'utf8').replace(/\s+/g, ' ');
+
+    // a coluna de conteúdo é fluida até o teto e centrada depois dele
+    expect(casca).toMatch(/max\(\s*var\(--espaco-5\)\s*,\s*calc\(\(100% - var\(--largura-conteudo\)\) \/ 2\)\s*\)/);
+    // e é a coluna que dá o recuo do conteúdo — inclusive o da faixa
+    expect(casca).toMatch(/\.conteudo\s*{[^}]*padding:[^;]*\$coluna/);
+    expect(casca).toMatch(/\.barra\s*{[^}]*padding:[^;]*\$coluna/);
+
+    // e o teto é largura de CONTEÚDO, não piso de janela: nada fixa min-width
+    const escalas = readFileSync('src/styles/_tema.scss', 'utf8');
+    expect(escalas).toMatch(/--largura-conteudo:\s*\d+px/);
+    expect(escalas).not.toMatch(/--largura-minima-app/);
+    expect(readFileSync('src/app/features/painel/painel.scss', 'utf8')).not.toMatch(/min-width/);
+  });
+
+  it('@spec:AC-274 a faixa é fina e mantém o horário visível', async () => {
     const elemento = await montar(cheia);
 
     // o horário da última atualização continua visível
@@ -143,9 +159,9 @@ describe('Barra de mercado', () => {
 
     const trecho = ESTILO.replace(/\s+/g, ' ');
 
-    // sem teto próprio: o comprimento é o do painel, e não o que a faixa decidir
+    // sem teto próprio: quem contém a faixa é a coluna de conteúdo da casca,
+    // e não uma largura que a faixa escolha para si
     expect(trecho).not.toMatch(/\.barra-mercado\s*{[^}]*max-width:/);
-    expect(trecho).not.toMatch(/\.barra-mercado\s*{[^}]*margin-inline:\s*auto/);
 
     // a espessura vem de token, e sem padding vertical somando altura
     expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*min-height:\s*var\(--altura-cotacoes\)/);

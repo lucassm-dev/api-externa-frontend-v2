@@ -1,9 +1,15 @@
+// Coluna de conteúdo do produto: fluida enquanto a tela é menor que o teto,
+// centrada quando passa dele. O `max()` põe a coluna no lugar sem embrulhar
+// tudo num elemento a mais — e a borda da barra continua atravessando a tela,
+// que é o que separa o topo do conteúdo.
+$coluna: max(var(--espaco-5), calc((100% - var(--largura-conteudo)) / 2));
+
 .barra {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 56px;
-  padding: 0 var(--espaco-5);
+  padding: 0 #{$coluna};
   border-bottom: 1px solid var(--cor-borda);
   background: var(--cor-superficie);
 }
@@ -27,11 +33,12 @@
   display: flex;
   align-items: center;
   gap: var(--espaco-4);
-  padding: var(--espaco-3) var(--espaco-5);
+  padding: var(--espaco-3) #{$coluna};
 }
 
 .conteudo {
-  padding: var(--espaco-5);
+  display: block;
+  padding: var(--espaco-5) #{$coluna};
 }
 
 .areas {
@@ -96,5 +103,14 @@
   .identidade {
     flex-basis: 100%;
     justify-content: flex-end;
+  }
+
+  .conteudo {
+    padding: var(--espaco-4) var(--espaco-3);
+  }
+
+  .aviso {
+    flex-wrap: wrap;
+    padding: var(--espaco-3);
   }
 }
