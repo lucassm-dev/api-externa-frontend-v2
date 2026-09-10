@@ -1,0 +1,136 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaco-2);
+  box-sizing: border-box;
+  min-height: var(--alvo-toque);
+  padding: 0 var(--espaco-5);
+  border: 1px solid transparent;
+  border-radius: var(--raio-pilula);
+  font: var(--peso-forte) var(--texto-base) / var(--altura-apertada) var(--fonte);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  appearance: none;
+  transition:
+    background-color var(--duracao-rapida) var(--entrada),
+    border-color var(--duracao-rapida) var(--entrada),
+    color var(--duracao-rapida) var(--entrada),
+    transform var(--duracao-rapida) var(--saida);
+}
+
+:host([data-tamanho='compacto']) {
+  min-height: var(--alvo-minimo);
+  padding: 0 var(--espaco-3);
+  font-size: var(--texto-rotulo);
+}
+
+// Dedo não tem a precisão do ponteiro: onde há toque, nenhum botão fica
+// abaixo do alvo do WCAG, nem mesmo o compacto (AC-269).
+@media (pointer: coarse) {
+  :host([data-tamanho='compacto']) {
+    min-height: var(--alvo-toque);
+    padding: 0 var(--espaco-4);
+  }
+}
+
+:host(:active:not(.bloqueado)) {
+  transform: translateY(1px);
+}
+
+:host(:focus-visible) {
+  outline: none;
+  box-shadow: var(--anel-foco);
+}
+
+:host(.bloqueado) {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+  pointer-events: none;
+}
+
+.rotulo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espaco-2);
+}
+
+// Primária: o amarelo da marca preenchendo, com texto escuro por cima. É a
+// única ação amarela de uma tela — duas primárias significam nenhuma.
+:host([data-intencao='primaria']) {
+  background: var(--cor-destaque);
+  color: var(--cor-destaque-texto);
+  box-shadow: var(--sombra-baixa);
+}
+
+:host([data-intencao='primaria']:hover:not(.bloqueado)) {
+  background: var(--cor-destaque-forte);
+}
+
+:host([data-intencao='secundaria']) {
+  border-color: var(--cor-borda);
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+}
+
+:host([data-intencao='secundaria']:hover:not(.bloqueado)) {
+  border-color: var(--cor-acento);
+  background: var(--cor-superficie-alta);
+  color: var(--cor-acento);
+}
+
+:host([data-intencao='sutil']) {
+  background: transparent;
+  color: var(--cor-acento);
+}
+
+:host([data-intencao='sutil']:hover:not(.bloqueado)) {
+  background: var(--cor-acento-suave);
+}
+
+:host([data-intencao='destrutiva']) {
+  background: var(--cor-perigo);
+  color: var(--cor-perigo-contraste);
+}
+
+:host([data-intencao='destrutiva']:hover:not(.bloqueado)) {
+  background: color-mix(in srgb, var(--cor-perigo) 82%, var(--cor-texto));
+}
+
+// Ocupado mantém o rótulo e acrescenta o giro. Botão que troca o texto por um
+// spinner apaga a informação de que ação está em curso.
+:host([data-ocupado])::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  flex: none;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: var(--raio-pilula);
+  animation: girar-botao var(--duracao-lenta) linear infinite;
+}
+
+@keyframes girar-botao {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host {
+    transition: none;
+  }
+
+  :host(:active:not(.bloqueado)) {
+    transform: none;
+  }
+
+  :host([data-ocupado])::before {
+    animation: none;
+    border-top-color: currentColor;
+    opacity: 0.5;
+  }
+}

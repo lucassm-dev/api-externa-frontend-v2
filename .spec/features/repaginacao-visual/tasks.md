@@ -16,7 +16,7 @@
   de cor. Fim do `--largura-minima-app`: o token vira largura de conteúdo, não
   piso de janela.
 
-## T-113 — Botão único do produto [pendente]
+## T-113 — Botão único do produto [concluida]
 - Refs: US-075, AC-267, AC-268, AC-269
 - Arquivos: src/app/shared/botao/botao.ts, src/app/shared/botao/botao.html, src/app/shared/botao/botao.scss, src/app/shared/botao/botao.spec.ts
 - Modelo: claude-sonnet-5
@@ -33,11 +33,20 @@
 - Arquivos: src/app/layout/casca.html, src/app/shared/paginador/paginador.html, src/app/shared/confirmacao/dialogo-confirmacao.html, src/app/shared/estado-vazio/estado-vazio.html, src/app/shared/tabela/cabecalho-ordenavel.html, src/app/features/acesso/login/login.html, src/app/features/acesso/cadastro/cadastro.html, src/app/features/carteiras/lista/lista-carteiras.html, src/app/features/carteiras/criacao/criar-carteira.html, src/app/features/carteiras/detalhe/detalhe-carteira.html, src/app/features/carteiras/detalhe/movimentacoes-carteira.html, src/app/features/corretoras/lista/lista-corretoras.html, src/app/features/corretoras/cadastro/cadastro-corretora.html, src/app/features/corretoras/detalhe/detalhe-corretora.html, src/app/features/acoes/lista/lista-acoes.html, src/app/features/acoes/cadastro/cadastro-acao.html, src/app/features/acoes/detalhe/detalhe-acao.html, src/app/features/operacoes/formulario/formulario-operacao.html, src/app/features/operacoes/edicao/editar-operacao.html, src/app/shared/botao/padrao-unico.spec.ts
 - Modelo: claude-sonnet-5
 - Esforço: alto
-- Notas: depende da T-113. Troca `mat-flat-button`/`mat-stroked-button`/`mat-button`
-  e os `<button>` crus pelo botão do produto, preservando cada `data-*` que os
-  testes existentes usam para achar o botão — quebrar esses seletores derruba
-  specs de outras features. A prova do AC-266 é um teste que varre os templates:
-  nenhuma diretiva de botão do Material sobrou.
+- Notas: a T-113 JÁ ESTÁ PRONTA em `src/app/shared/botao/botao.ts`. É um componente
+  de seletor de atributo, `button[appBotao], a[appBotao]`: importe `Botao` no
+  componente e troque `mat-flat-button` por `appBotao intencao="primaria"`,
+  `mat-stroked-button` por `appBotao intencao="secundaria"`, `mat-button` por
+  `appBotao intencao="sutil"` e as ações de remover/excluir por
+  `intencao="destrutiva"`. Os `<button>` crus (paginador, cabeçalho ordenável,
+  estado vazio) também passam a usá-lo, com `tamanho="compacto"` onde a linha é
+  densa. `[disabled]="x"` vira `[desabilitado]="x"`, e onde a espera é de rede
+  use `[ocupado]="enviando()"` — ele já desabilita, anuncia `aria-busy` e mantém
+  o rótulo. **Preserve cada `data-*`**: são os seletores que os testes das outras
+  features usam para achar o botão, e quebrá-los derruba specs alheias. Rode a
+  suíte inteira, não só a sua. A prova do AC-266 é um teste em
+  `src/app/shared/botao/padrao-unico.spec.ts` que varre os templates: nenhuma
+  diretiva de botão do Material sobrou, e todo `<button>` de tela tem `appBotao`.
 
 ## T-115 — Casca responsiva com menu compacto [pendente]
 - Refs: US-076, AC-270, AC-271
