@@ -1,0 +1,163 @@
+.grafico {
+  display: grid;
+  gap: var(--espaco-4);
+  padding: var(--espaco-5);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-grande);
+  background: var(--cor-superficie);
+}
+
+h2 {
+  margin: 0;
+  font-size: var(--texto-grande);
+}
+
+.apoio {
+  margin: var(--espaco-1) 0 0;
+  color: var(--cor-texto-fraco);
+  font-size: var(--texto-pequeno);
+}
+
+.quadrante {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 1;
+  overflow: visible;
+}
+
+.eixo {
+  stroke: var(--cor-grafico-eixo);
+  stroke-width: 0.4;
+}
+
+.linha-zero {
+  stroke: var(--cor-texto-fraco);
+  stroke-width: 0.6;
+  stroke-dasharray: 2 1.5;
+}
+
+.tick {
+  fill: var(--cor-texto-fraco);
+  font-family: var(--fonte-numero);
+  font-size: 3px;
+  font-variant-numeric: tabular-nums;
+}
+
+.rotulo-eixo {
+  fill: var(--cor-texto-fraco);
+  font-family: var(--fonte);
+  font-size: 3.4px;
+  letter-spacing: var(--entrelinha-rotulo);
+}
+
+.bolha {
+  outline: none;
+  cursor: default;
+}
+
+.bolha circle {
+  stroke: var(--cor-superficie);
+  stroke-width: 0.6;
+  fill-opacity: 0.85;
+}
+
+.bolha.ativo circle,
+.bolha:focus-visible circle {
+  stroke: var(--cor-foco);
+  stroke-width: 1.4;
+  fill-opacity: 1;
+}
+
+.bolha.atenuado circle {
+  opacity: 0.35;
+}
+
+.rotulo-bolha {
+  pointer-events: none;
+  text-anchor: middle;
+  fill: var(--cor-texto);
+  font-family: var(--fonte);
+  font-size: 3px;
+  font-weight: var(--peso-forte);
+}
+
+.detalhe {
+  margin: 0;
+  min-height: var(--espaco-5);
+  color: var(--cor-texto);
+  font-size: var(--texto-apoio);
+}
+
+.tabela {
+  display: grid;
+  gap: var(--espaco-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.linha {
+  display: grid;
+  grid-template-columns: 12px minmax(4.5rem, 1fr) 6rem auto 8rem;
+  align-items: center;
+  gap: var(--espaco-2);
+  min-height: var(--alvo-minimo);
+  padding: var(--espaco-1) var(--espaco-2);
+  border-radius: var(--raio);
+}
+
+.linha.ativo {
+  background: var(--cor-superficie-alta);
+}
+
+.linha.atenuado {
+  opacity: 0.4;
+}
+
+.amostra {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.ticker {
+  font-weight: var(--peso-medio);
+}
+
+.rotulo {
+  margin-right: var(--espaco-1);
+  color: var(--cor-texto-fraco);
+  font-size: var(--texto-rotulo);
+  letter-spacing: var(--entrelinha-rotulo);
+}
+
+.participacao,
+.rentabilidade,
+.valor {
+  font-family: var(--fonte-numero);
+  font-variant-numeric: tabular-nums;
+}
+
+.valor {
+  text-align: right;
+  color: var(--cor-texto-fraco);
+}
+
+.vazio {
+  margin: 0;
+  color: var(--cor-texto-fraco);
+  font-size: var(--texto-pequeno);
+}
+
+@media (max-width: 40rem) {
+  .linha {
+    grid-template-columns: 12px minmax(3.5rem, 1fr) auto;
+    row-gap: var(--espaco-1);
+  }
+
+  .valor {
+    grid-column: 2 / -1;
+    text-align: left;
+  }
+}

@@ -1,0 +1,158 @@
+<section class="grafico" data-grafico-quadrante>
+  <header>
+    <h2>Quadrante participação × rentabilidade</h2>
+    <p class="apoio">
+      Onde cada ativo pesa na carteira e como está rendendo. Bolha grande e à direita da linha
+      zero, mas abaixo dela, é peso que não está pagando.
+    </p>
+  </header>
+
+  @if (bolhas().length === 0) {
+    <p class="vazio" data-sem-quadrante>Nenhuma posição aberta para posicionar.</p>
+  } @else {
+    <svg
+      class="quadrante"
+      data-quadrante
+      viewBox="0 0 100 100"
+      role="group"
+      [attr.aria-label]="descricao()"
+      (keydown.escape)="aoEscapar($event)"
+    >
+      <line
+        class="eixo"
+        aria-hidden="true"
+        [attr.x1]="moldura.x0"
+        [attr.y1]="moldura.yTopo + moldura.altura"
+        [attr.x2]="moldura.x0 + moldura.largura"
+        [attr.y2]="moldura.yTopo + moldura.altura"
+      />
+      <line
+        class="eixo"
+        aria-hidden="true"
+        [attr.x1]="moldura.x0"
+        [attr.y1]="moldura.yTopo"
+        [attr.x2]="moldura.x0"
+        [attr.y2]="moldura.yTopo + moldura.altura"
+      />
+
+      <line
+        class="linha-zero"
+        data-linha-zero
+        aria-hidden="true"
+        [attr.x1]="moldura.x0"
+        [attr.y1]="yZero"
+        [attr.x2]="moldura.x0 + moldura.largura"
+        [attr.y2]="yZero"
+      />
+      <text class="tick" aria-hidden="true" [attr.x]="moldura.x0 - 2" [attr.y]="yZero + 1.5">0%</text>
+
+      <text
+        class="tick"
+        aria-hidden="true"
+        text-anchor="end"
+        [attr.x]="moldura.x0 - 2"
+        [attr.y]="moldura.yTopo + 2"
+      >
+        +{{ escalaRentabilidade() }}
+      </text>
+      <text
+        class="tick"
+        aria-hidden="true"
+        text-anchor="end"
+        [attr.x]="moldura.x0 - 2"
+        [attr.y]="moldura.yTopo + moldura.altura"
+      >
+        −{{ escalaRentabilidade() }}
+      </text>
+      <text
+        class="tick"
+        aria-hidden="true"
+        text-anchor="end"
+        [attr.x]="moldura.x0 + moldura.largura"
+        [attr.y]="moldura.yTopo + moldura.altura + 5"
+      >
+        {{ escalaParticipacao() }}
+      </text>
+
+      <text
+        class="rotulo-eixo"
+        data-eixo-x
+        text-anchor="middle"
+        [attr.x]="moldura.x0 + moldura.largura / 2"
+        y="98"
+      >
+        Participação na carteira
+      </text>
+      <text
+        class="rotulo-eixo"
+        data-eixo-y
+        text-anchor="middle"
+        [attr.transform]="'rotate(-90 4 ' + yZero + ')'"
+        x="4"
+        [attr.y]="yZero"
+      >
+        Rentabilidade
+      </text>
+
+      @for (bolha of bolhas(); track bolha.ticker) {
+        <g
+          class="bolha"
+          data-bolha
+          [attr.data-bolha-ticker]="bolha.ticker"
+          [attr.data-sinal]="bolha.sinal"
+          tabindex="0"
+          role="img"
+          [attr.aria-label]="bolha.detalhe"
+          [class.ativo]="bolhaAtiva() === bolha.ticker"
+          [class.atenuado]="bolhaAtiva() !== null && bolhaAtiva() !== bolha.ticker"
+          (mouseenter)="ativar(bolha.ticker)"
+          (mouseleave)="repousar()"
+          (focus)="ativar(bolha.ticker)"
+          (blur)="repousar()"
+        >
+          <circle
+            data-bolha-area
+            [attr.cx]="bolha.cx"
+            [attr.cy]="bolha.cy"
+            [attr.r]="bolha.r"
+            [attr.fill]="bolha.cor"
+          />
+          @if (bolha.rotuloVisivel) {
+            <text class="rotulo-bolha" aria-hidden="true" [attr.x]="bolha.cx" [attr.y]="bolha.cy + 1">
+              {{ bolha.ticker }}
+            </text>
+          }
+        </g>
+      }
+    </svg>
+
+    <p class="detalhe" data-detalhe-quadrante aria-live="polite">{{ detalhe() }}</p>
+
+    <ol class="tabela" data-quadrante-texto aria-label="Participação e rentabilidade por ativo">
+      @for (bolha of bolhas(); track bolha.ticker) {
+        <li
+          class="linha"
+          [attr.data-quadrante-item]="bolha.ticker"
+          [attr.data-sinal]="bolha.sinal"
+          [attr.title]="bolha.nomeEmpresa"
+          [class.ativo]="bolhaAtiva() === bolha.ticker"
+          [class.atenuado]="bolhaAtiva() !== null && bolhaAtiva() !== bolha.ticker"
+          (mouseenter)="ativar(bolha.ticker)"
+          (mouseleave)="repousar()"
+        >
+          <span class="amostra" [style.background]="bolha.cor" aria-hidden="true"></span>
+          <span class="ticker" data-quadrante-ticker>{{ bolha.ticker }}</span>
+          <span class="participacao" data-quadrante-participacao>
+            <span class="rotulo" aria-hidden="true">peso</span>
+            {{ bolha.participacaoFormatada }}
+          </span>
+          <span class="rentabilidade" data-quadrante-rentabilidade>
+            <span class="rotulo" aria-hidden="true">rende</span>
+            <app-variacao [valor]="bolha.rentabilidade" [percentual]="true" />
+          </span>
+          <span class="valor" data-quadrante-valor>{{ bolha.valorFormatado }}</span>
+        </li>
+      }
+    </ol>
+  }
+</section>
