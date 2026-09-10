@@ -1,7 +1,30 @@
 <header class="barra">
   <span class="marca">Carteira</span>
 
-  <nav class="areas" data-areas aria-label="Áreas do produto">
+  @if (compacto()) {
+    <button
+      appBotao
+      intencao="sutil"
+      tamanho="compacto"
+      type="button"
+      class="menu-alternar"
+      data-menu
+      aria-controls="areas-do-produto"
+      [attr.aria-expanded]="menuAberto()"
+      (click)="alternarMenu()"
+    >
+      Menu
+    </button>
+  }
+
+  <nav
+    id="areas-do-produto"
+    class="areas"
+    [class.areas-compacta]="compacto()"
+    [hidden]="compacto() && !menuAberto()"
+    data-areas
+    aria-label="Áreas do produto"
+  >
     @for (area of areas; track area.rota) {
       <a
         class="area"
@@ -10,6 +33,7 @@
         #ativa="routerLinkActive"
         [attr.aria-current]="ativa.isActive ? 'page' : null"
         [attr.data-area]="area.rota"
+        (click)="fecharMenu()"
         >{{ area.rotulo }}</a
       >
     }
