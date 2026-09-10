@@ -1,0 +1,77 @@
+<section class="grafico" data-grafico-investido-mercado>
+  <header>
+    <h2>Investido × valor de mercado</h2>
+    <p class="apoio">
+      Quanto você colocou em cada ativo e quanto ele vale hoje, lado a lado no mesmo eixo. A
+      diferença é o ganho ou a perda ainda não realizado.
+    </p>
+  </header>
+
+  @if (desenhadas().length === 0) {
+    <p class="vazio" data-sem-investido-mercado>Nenhuma posição aberta para comparar.</p>
+  } @else {
+    <div class="eixo" aria-hidden="true">
+      <span>0</span>
+      <span>{{ escalaFormatada() }}</span>
+    </div>
+    <ol class="barras" aria-label="Investido e valor de mercado por ativo">
+      @for (barra of desenhadas(); track barra.ticker) {
+        <li
+          class="linha"
+          tabindex="0"
+          [attr.data-investido-mercado]="barra.ticker"
+          [attr.data-direcao]="barra.direcao"
+          [attr.title]="barra.nomeEmpresa"
+          [class.ativa]="ativo() === barra.ticker"
+          (focus)="destacar(barra.ticker)"
+          (blur)="limpar(barra.ticker)"
+          (mouseenter)="destacar(barra.ticker)"
+          (mouseleave)="limpar(barra.ticker)"
+          (keydown.escape)="repousar()"
+        >
+          <span class="ticker" data-investido-mercado-ticker>{{ barra.ticker }}</span>
+
+          <div class="par">
+            <span class="rotulo" aria-hidden="true">Investido</span>
+            <svg class="barra" height="14" aria-hidden="true">
+              <rect
+                data-barra-investido
+                x="0"
+                y="3"
+                height="8"
+                rx="4"
+                [attr.width]="barra.larguraInvestido + '%'"
+                fill="var(--cor-serie-1)"
+              />
+            </svg>
+            <span class="valor" data-investido-valor>{{ barra.investidoFormatado }}</span>
+
+            <span class="rotulo" aria-hidden="true">Valor de hoje</span>
+            <svg class="barra" height="14" aria-hidden="true">
+              <rect
+                data-barra-mercado
+                x="0"
+                y="3"
+                height="8"
+                rx="4"
+                [attr.width]="barra.larguraMercado + '%'"
+                fill="var(--cor-serie-3)"
+              />
+            </svg>
+            <span class="valor" data-mercado-valor>{{ barra.mercadoFormatado }}</span>
+          </div>
+
+          <p class="diferenca" data-investido-mercado-diferenca>
+            <span>Diferença</span>
+            <app-variacao [valor]="barra.diferenca" moeda="BRL" />
+          </p>
+
+          <p class="detalhe" data-investido-mercado-detalhe [hidden]="ativo() !== barra.ticker">
+            {{ barra.ticker }}: investido {{ barra.investidoFormatado }}, valor de hoje
+            {{ barra.mercadoFormatado }}, diferença {{ barra.diferencaFormatada }}.
+          </p>
+        </li>
+      }
+    </ol>
+  }
+</section>
