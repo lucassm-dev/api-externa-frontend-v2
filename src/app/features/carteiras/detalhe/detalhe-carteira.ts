@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CATALOGO_ERROS } from '../../../core/erros/catalogo-erros';
 import { ErroTraduzido } from '../../../core/erros/tradutor-erro';
 import { FeedbackService } from '../../../core/feedback/feedback.service';
 import { MensagemFeedback } from '../../../core/feedback/mensagem-feedback';
 import { formatarReal } from '../../../core/formatacao/formatacao';
+import { Botao } from '../../../shared/botao/botao';
 import { DialogoConfirmacao } from '../../../shared/confirmacao/dialogo-confirmacao';
 import { ValorComHorario } from '../../../shared/valor-com-horario/valor-com-horario';
 import { Variacao } from '../../../shared/variacao/variacao';
@@ -42,7 +42,7 @@ import { PosicoesCarteira } from './posicoes-carteira';
   imports: [
     FormsModule,
     RouterLink,
-    MatButtonModule,
+    Botao,
     MensagemFeedback,
     DialogoConfirmacao,
     ValorComHorario,

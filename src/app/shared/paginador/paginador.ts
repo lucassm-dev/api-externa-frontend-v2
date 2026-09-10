@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 import { LucideChevronLeft, LucideChevronRight } from '@lucide/angular';
+import { Botao } from '../botao/botao';
 
 @Component({
   selector: 'app-paginador',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LucideChevronLeft, LucideChevronRight],
+  imports: [LucideChevronLeft, LucideChevronRight, Botao],
   templateUrl: './paginador.html',
   styleUrl: './paginador.scss',
 })

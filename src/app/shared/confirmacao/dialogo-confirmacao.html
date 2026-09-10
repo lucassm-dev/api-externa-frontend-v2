@@ -5,14 +5,22 @@
   <p data-consequencia>{{ consequencia() }}</p>
 
   <div class="acoes">
-    <button mat-button type="button" data-cancelar [disabled]="ocupado()" (click)="cancelar.emit()">
+    <button
+      appBotao
+      intencao="sutil"
+      type="button"
+      data-cancelar
+      [desabilitado]="ocupado()"
+      (click)="cancelar.emit()"
+    >
       {{ rotuloCancelar() }}
     </button>
     <button
-      mat-flat-button
+      appBotao
+      intencao="primaria"
       type="button"
       data-confirmar
-      [disabled]="ocupado()"
+      [ocupado]="ocupado()"
       (click)="confirmar.emit()"
     >
       {{ rotuloConfirmar() }}

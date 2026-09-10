@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Botao } from '../../../shared/botao/botao';
 import { CATALOGO_ERROS } from '../../../core/erros/catalogo-erros';
 import { ErroTraduzido, traduzirErro } from '../../../core/erros/tradutor-erro';
 import { FeedbackService } from '../../../core/feedback/feedback.service';
@@ -28,7 +28,7 @@ import { Desfecho, classificarAtualizacao } from '../desfecho-cotacao';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     RouterLink,
-    MatButtonModule,
+    Botao,
     MensagemFeedback,
     DialogoConfirmacao,
     ValorComHorario,

@@ -14,7 +14,7 @@
     <article class="existente" data-existente>
       <h2>{{ existente.ticker }}</h2>
       <p class="empresa">{{ existente.nomeEmpresa }}</p>
-      <a mat-flat-button data-abrir [routerLink]="['/acoes', existente.ticker]">
+      <a appBotao intencao="primaria" data-abrir [routerLink]="['/acoes', existente.ticker]">
         Ver esta ação
       </a>
     </article>
@@ -31,7 +31,8 @@
         o cadastro.
       </p>
       <a
-        mat-flat-button
+        appBotao
+        intencao="primaria"
         data-criar-carteira
         routerLink="/carteiras/nova"
         [queryParams]="{ voltarPara: '/acoes/nova' }"
@@ -68,7 +69,7 @@
         </select>
       </label>
 
-      <button mat-flat-button type="submit" data-enviar [disabled]="consultando()">
+      <button appBotao intencao="primaria" type="submit" data-enviar [ocupado]="consultando()">
         {{ consultando() ? 'Consultando…' : 'Cadastrar ação' }}
       </button>
     </form>

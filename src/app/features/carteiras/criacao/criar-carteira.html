@@ -19,7 +19,8 @@
         corretora onde você investe e você volta direto para cá.
       </p>
       <a
-        mat-flat-button
+        appBotao
+        intencao="primaria"
         data-cadastrar-corretora
         routerLink="/corretoras/nova"
         [queryParams]="{ voltarPara: '/carteiras/nova' }"
@@ -66,7 +67,7 @@
         }
       </label>
 
-      <button mat-flat-button type="submit" data-criar [disabled]="criando()">
+      <button appBotao intencao="primaria" type="submit" data-criar [ocupado]="criando()">
         {{ criando() ? 'Criando…' : 'Criar carteira' }}
       </button>
     </form>

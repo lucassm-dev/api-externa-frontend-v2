@@ -17,7 +17,7 @@
         <h1 data-ticker>{{ acao.ticker }}</h1>
         <p class="empresa" data-empresa>{{ acao.nomeEmpresa }}</p>
       </div>
-      <button mat-stroked-button type="button" data-remover (click)="pedirRemocao()">
+      <button appBotao intencao="destrutiva" type="button" data-remover (click)="pedirRemocao()">
         Remover do catálogo
       </button>
     </header>
@@ -35,10 +35,11 @@
         [obtidoEm]="acao.dataHoraCotacao"
       />
       <button
-        mat-flat-button
+        appBotao
+        intencao="primaria"
         type="button"
         data-atualizar
-        [disabled]="atualizando()"
+        [ocupado]="atualizando()"
         (click)="atualizarCotacao()"
       >
         {{ atualizando() ? 'Consultando…' : 'Atualizar cotação' }}
@@ -67,10 +68,11 @@
           a cota de consultas que todos os investidores dividem.
         </p>
         <button
-          mat-stroked-button
+          appBotao
+          intencao="secundaria"
           type="button"
           data-forcar
-          [disabled]="atualizando()"
+          [ocupado]="atualizando()"
           (click)="forcarAtualizacao()"
         >
           Buscar preço novo mesmo assim

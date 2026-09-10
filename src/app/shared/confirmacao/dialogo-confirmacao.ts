@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
+import { Botao } from '../botao/botao';
 
 /**
  * A confirmação simples do PRD-009: título, consequência em texto e dois
@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-dialogo-confirmacao',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule],
+  imports: [Botao],
   templateUrl: './dialogo-confirmacao.html',
   styleUrl: './dialogo-confirmacao.scss',
 })

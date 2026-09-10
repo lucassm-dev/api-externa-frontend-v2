@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Botao } from '../../../shared/botao/botao';
 import { ErroTraduzido } from '../../../core/erros/tradutor-erro';
 import { FeedbackService } from '../../../core/feedback/feedback.service';
 import { MensagemFeedback } from '../../../core/feedback/mensagem-feedback';
@@ -21,7 +21,7 @@ import { CorretorasService } from '../corretoras.service';
 @Component({
   selector: 'app-detalhe-corretora',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, MatButtonModule, MensagemFeedback, DialogoConfirmacao],
+  imports: [RouterLink, Botao, MensagemFeedback, DialogoConfirmacao],
   templateUrl: './detalhe-corretora.html',
   styleUrl: './detalhe-corretora.scss',
 })

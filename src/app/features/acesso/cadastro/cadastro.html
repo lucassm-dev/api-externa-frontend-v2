@@ -64,12 +64,7 @@
 
       <app-forca-da-senha [senha]="formulario.controls.senha.value" />
 
-      <button
-        mat-flat-button
-        type="submit"
-        [disabled]="enviando()"
-        [attr.aria-busy]="enviando()"
-      >
+      <button appBotao intencao="primaria" type="submit" [ocupado]="enviando()">
         @if (enviando()) {
           <span class="indicador-envio" data-indicador-envio aria-hidden="true"></span>
         }

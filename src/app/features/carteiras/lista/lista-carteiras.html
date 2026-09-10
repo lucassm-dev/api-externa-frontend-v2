@@ -4,7 +4,7 @@
       <h1>Minhas carteiras</h1>
       <p class="apoio">Cada carteira reúne suas posições, seus resultados e suas movimentações.</p>
     </div>
-    <a mat-flat-button data-nova routerLink="/carteiras/nova">Criar carteira</a>
+    <a appBotao intencao="primaria" data-nova routerLink="/carteiras/nova">Criar carteira</a>
   </header>
 
   @if (textoDoErro(); as mensagem) {
@@ -36,15 +36,24 @@
                     aria-label="Novo nome da carteira"
                   />
                   <button
-                    mat-flat-button
+                    appBotao
+                    intencao="primaria"
+                    tamanho="compacto"
                     type="button"
                     data-salvar-nome
-                    [disabled]="salvandoNome()"
+                    [ocupado]="salvandoNome()"
                     (click)="confirmarRenomeacao()"
                   >
                     Salvar
                   </button>
-                  <button mat-button type="button" data-cancelar-nome (click)="cancelarRenomeacao()">
+                  <button
+                    appBotao
+                    intencao="sutil"
+                    tamanho="compacto"
+                    type="button"
+                    data-cancelar-nome
+                    (click)="cancelarRenomeacao()"
+                  >
                     Cancelar
                   </button>
                 </div>

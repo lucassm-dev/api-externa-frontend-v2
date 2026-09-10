@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, input, output, signal } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { formatarDataHora } from '../../../core/formatacao/formatacao';
+import { Botao } from '../../../shared/botao/botao';
 import { DialogoConfirmacao } from '../../../shared/confirmacao/dialogo-confirmacao';
 import { AlteracaoDeOperacao, OperacaoEditavel } from '../operacoes.model';
 import { precoManualTemCasasDemais } from '../preco-da-operacao';
@@ -20,7 +20,7 @@ export const AVISO_DE_RECALCULO_NA_EDICAO =
 @Component({
   selector: 'app-editar-operacao',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, DialogoConfirmacao],
+  imports: [Botao, DialogoConfirmacao],
   templateUrl: './editar-operacao.html',
   styleUrl: './editar-operacao.scss',
 })

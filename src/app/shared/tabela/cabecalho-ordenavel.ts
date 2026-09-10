@@ -1,10 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
+import { Botao } from '../botao/botao';
 
 export type SentidoOrdenacao = 'crescente' | 'decrescente' | 'nenhum';
 
 @Component({
   selector: 'th[app-cabecalho-ordenavel]',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [Botao],
   templateUrl: './cabecalho-ordenavel.html',
   styleUrl: './cabecalho-ordenavel.scss',
   host: {

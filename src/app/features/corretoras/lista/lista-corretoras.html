@@ -1,7 +1,7 @@
 <section class="tela">
   <header>
     <h1>Corretoras</h1>
-    <a mat-flat-button routerLink="/corretoras/nova">Cadastrar corretora</a>
+    <a appBotao intencao="primaria" routerLink="/corretoras/nova">Cadastrar corretora</a>
   </header>
 
   <p class="apoio" data-catalogo-compartilhado>
@@ -22,21 +22,22 @@
         (ngModelChange)="termo.set($event)"
       />
     </mat-form-field>
-    <button mat-button type="submit" [disabled]="buscando()">Buscar</button>
+    <button appBotao intencao="sutil" type="submit" [ocupado]="buscando()">Buscar</button>
   </form>
 
   @if (cnpjSemResultado(); as cnpj) {
     <div class="vazio" data-busca-vazia>
       <p>Nenhuma corretora com o CNPJ {{ formatarCnpj(cnpj) }} está no catálogo.</p>
       <a
-        mat-flat-button
+        appBotao
+        intencao="primaria"
         data-cadastrar-buscado
         routerLink="/corretoras/nova"
         [queryParams]="{ cnpj }"
       >
         Cadastrar este CNPJ
       </a>
-      <button mat-button type="button" (click)="limparBusca()">Limpar busca</button>
+      <button appBotao intencao="sutil" type="button" (click)="limparBusca()">Limpar busca</button>
     </div>
   }
 

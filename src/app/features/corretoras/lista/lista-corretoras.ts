@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
 import { Pagina } from '../../../core/api/pagina';
+import { Botao } from '../../../shared/botao/botao';
 import { Esqueleto } from '../../../shared/esqueleto/esqueleto';
 import { EstadoVazio } from '../../../shared/estado-vazio/estado-vazio';
 import { Paginador } from '../../../shared/paginador/paginador';
@@ -29,7 +29,7 @@ import { rotuloDoSelo } from '../selo-de-uso';
     Paginador,
     EstadoVazio,
     Esqueleto,
-    MatButtonModule,
+    Botao,
     MatFormFieldModule,
     MatInputModule,
   ],

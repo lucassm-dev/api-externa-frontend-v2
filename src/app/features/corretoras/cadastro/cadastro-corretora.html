@@ -16,7 +16,7 @@
       @if (cidadeComUf(existente); as lugar) {
         <p class="lugar">{{ lugar }}</p>
       }
-      <a mat-flat-button data-abrir [routerLink]="['/corretoras', existente.id]">
+      <a appBotao intencao="primaria" data-abrir [routerLink]="['/corretoras', existente.id]">
         Ver esta corretora
       </a>
     </article>
@@ -32,7 +32,7 @@
       }
     </mat-form-field>
 
-    <button mat-flat-button type="submit" data-enviar [disabled]="consultando()">
+    <button appBotao intencao="primaria" type="submit" data-enviar [ocupado]="consultando()">
       {{ consultando() ? 'Consultando…' : 'Cadastrar corretora' }}
     </button>
   </form>

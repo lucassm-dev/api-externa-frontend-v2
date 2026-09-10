@@ -5,11 +5,27 @@
   </div>
 
   <div class="controles">
-    <button type="button" data-anterior [disabled]="naPrimeira()" (click)="irPara(pagina() - 1)">
+    <button
+      appBotao
+      intencao="secundaria"
+      tamanho="compacto"
+      type="button"
+      data-anterior
+      [desabilitado]="naPrimeira()"
+      (click)="irPara(pagina() - 1)"
+    >
       <svg lucideChevronLeft aria-hidden="true" focusable="false"></svg>
       <span>Anterior</span>
     </button>
-    <button type="button" data-proxima [disabled]="naUltima()" (click)="irPara(pagina() + 1)">
+    <button
+      appBotao
+      intencao="secundaria"
+      tamanho="compacto"
+      type="button"
+      data-proxima
+      [desabilitado]="naUltima()"
+      (click)="irPara(pagina() + 1)"
+    >
       <span>Próxima</span>
       <svg lucideChevronRight aria-hidden="true" focusable="false"></svg>
     </button>

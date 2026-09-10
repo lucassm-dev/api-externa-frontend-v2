@@ -152,7 +152,14 @@
     }
   }
 
-  <button mat-flat-button type="submit" data-confirmar [disabled]="!podeEnviar() || enviando()">
+  <button
+    appBotao
+    intencao="primaria"
+    type="submit"
+    data-confirmar
+    [desabilitado]="!podeEnviar()"
+    [ocupado]="enviando()"
+  >
     {{ enviando() ? 'Registrando…' : rotuloDoBotao() }}
   </button>
 </form>

@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MatButtonModule } from '@angular/material/button';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MensagemFeedback } from '../core/feedback/mensagem-feedback';
 import { AcessoService } from '../features/acesso/acesso.service';
@@ -27,7 +26,7 @@ const CONSULTA_TELA_ESTREITA = '(max-width: 47.99em)';
 @Component({
   selector: 'app-casca',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, MensagemFeedback, MatButtonModule, Botao],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, MensagemFeedback, Botao],
   templateUrl: './casca.html',
   styleUrl: './casca.scss',
   host: {

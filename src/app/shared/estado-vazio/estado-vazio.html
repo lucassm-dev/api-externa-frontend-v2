@@ -2,7 +2,7 @@
   <svg class="icone" lucideInbox aria-hidden="true" focusable="false"></svg>
   <h2 [id]="tituloId" data-titulo>{{ titulo() }}</h2>
   <p data-descricao>{{ descricao() }}</p>
-  <button type="button" data-proximo-passo (click)="acao.emit()">
+  <button appBotao intencao="primaria" type="button" data-proximo-passo (click)="acao.emit()">
     <span>{{ rotuloAcao() }}</span>
     <svg lucideArrowRight aria-hidden="true" focusable="false"></svg>
   </button>

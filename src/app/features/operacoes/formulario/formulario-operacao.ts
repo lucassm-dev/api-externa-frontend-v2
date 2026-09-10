@@ -9,10 +9,10 @@ import {
   signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { CATALOGO_ERROS } from '../../../core/erros/catalogo-erros';
 import { ErroTraduzido } from '../../../core/erros/tradutor-erro';
 import { formatarMoeda, formatarNumero } from '../../../core/formatacao/formatacao';
+import { Botao } from '../../../shared/botao/botao';
 import { ValorComHorario } from '../../../shared/valor-com-horario/valor-com-horario';
 import { Acao } from '../../acoes/acoes.model';
 import { AcoesService } from '../../acoes/acoes.service';
@@ -45,7 +45,7 @@ import { estimarOperacao, precoManualTemCasasDemais } from '../preco-da-operacao
 @Component({
   selector: 'app-formulario-operacao',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, MatButtonModule, ValorComHorario],
+  imports: [FormsModule, Botao, ValorComHorario],
   templateUrl: './formulario-operacao.html',
   styleUrl: './formulario-operacao.scss',
 })

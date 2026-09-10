@@ -42,7 +42,8 @@
   <div class="identidade">
     <span class="email">{{ email() }}</span>
     <button
-      mat-stroked-button
+      appBotao
+      intencao="secundaria"
       type="button"
       data-alternar-tema
       [attr.data-tema-atual]="tema()"
@@ -50,7 +51,7 @@
     >
       {{ tema() === 'claro' ? 'Tema escuro' : 'Tema claro' }}
     </button>
-    <button mat-stroked-button type="button" data-sair (click)="sair()">Sair</button>
+    <button appBotao intencao="secundaria" type="button" data-sair (click)="sair()">Sair</button>
   </div>
 </header>
 
@@ -62,7 +63,7 @@
         'Sua sessão acaba em menos de ' + minutosDeAviso + ' minutos. Entre novamente para não perder o que estiver fazendo.'
       "
     />
-    <button mat-flat-button type="button" data-entrar-novamente (click)="entrarNovamente()">
+    <button appBotao intencao="primaria" type="button" data-entrar-novamente (click)="entrarNovamente()">
       Entrar novamente
     </button>
   </div>
