@@ -1,12 +1,22 @@
 {
-  "runId": "api-externa-frontend-v2-repaginacao-visual-mtut1s0d",
+  "runId": "api-externa-frontend-v2-repaginacao-visual-mtut9sqr",
   "feature": "repaginacao-visual",
   "agent": "claude",
   "modo": "paralelo",
-  "paralelizar": null,
+  "paralelizar": [
+    "T-114",
+    "T-115",
+    "T-116",
+    "T-117",
+    "T-118",
+    "T-119",
+    "T-120",
+    "T-121",
+    "T-123"
+  ],
   "modeloForcado": null,
   "esforcoForcado": null,
-  "geradoEm": "2026-09-10 00:44",
+  "geradoEm": "2026-09-10 00:50",
   "branchTrabalho": "spec/repaginacao-visual",
   "baseDir": ".spec/features/repaginacao-visual",
   "specDir": ".spec",
@@ -27,11 +37,6 @@
       "faixa-7",
       "faixa-8",
       "faixa-9"
-    ],
-    [
-      "faixa-10",
-      "faixa-11",
-      "faixa-12"
     ]
   ],
   "faixas": [
@@ -39,54 +44,6 @@
       "id": "faixa-1",
       "branch": "spec/repaginacao-visual-faixa-1",
       "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-1",
-      "tarefas": [
-        {
-          "id": "T-112",
-          "titulo": "Tokens da direção visual",
-          "modelo": "claude-sonnet-5",
-          "esforco": "high",
-          "arquivos": [
-            "src/styles/_tokens.scss",
-            "src/styles/_tema.scss",
-            "src/styles/tokens.spec.ts"
-          ],
-          "refs": [
-            "US-079",
-            "AC-282",
-            "AC-283"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "faixa-2",
-      "branch": "spec/repaginacao-visual-faixa-2",
-      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-2",
-      "tarefas": [
-        {
-          "id": "T-113",
-          "titulo": "Botão único do produto",
-          "modelo": "claude-sonnet-5",
-          "esforco": "high",
-          "arquivos": [
-            "src/app/shared/botao/botao.ts",
-            "src/app/shared/botao/botao.html",
-            "src/app/shared/botao/botao.scss",
-            "src/app/shared/botao/botao.spec.ts"
-          ],
-          "refs": [
-            "US-075",
-            "AC-267",
-            "AC-268",
-            "AC-269"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "faixa-3",
-      "branch": "spec/repaginacao-visual-faixa-3",
-      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-3",
       "tarefas": [
         {
           "id": "T-114",
@@ -123,9 +80,9 @@
       ]
     },
     {
-      "id": "faixa-4",
-      "branch": "spec/repaginacao-visual-faixa-4",
-      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-4",
+      "id": "faixa-2",
+      "branch": "spec/repaginacao-visual-faixa-2",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-2",
       "tarefas": [
         {
           "id": "T-115",
@@ -147,9 +104,9 @@
       ]
     },
     {
-      "id": "faixa-5",
-      "branch": "spec/repaginacao-visual-faixa-5",
-      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-5",
+      "id": "faixa-3",
+      "branch": "spec/repaginacao-visual-faixa-3",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-3",
       "tarefas": [
         {
           "id": "T-116",
@@ -169,9 +126,9 @@
       ]
     },
     {
-      "id": "faixa-6",
-      "branch": "spec/repaginacao-visual-faixa-6",
-      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-6",
+      "id": "faixa-4",
+      "branch": "spec/repaginacao-visual-faixa-4",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-4",
       "tarefas": [
         {
           "id": "T-117",
@@ -192,9 +149,9 @@
       ]
     },
     {
-      "id": "faixa-7",
-      "branch": "spec/repaginacao-visual-faixa-7",
-      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-7",
+      "id": "faixa-5",
+      "branch": "spec/repaginacao-visual-faixa-5",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-5",
       "tarefas": [
         {
           "id": "T-118",
@@ -219,9 +176,9 @@
       ]
     },
     {
-      "id": "faixa-8",
-      "branch": "spec/repaginacao-visual-faixa-8",
-      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-8",
+      "id": "faixa-6",
+      "branch": "spec/repaginacao-visual-faixa-6",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-6",
       "tarefas": [
         {
           "id": "T-119",
@@ -244,9 +201,9 @@
       ]
     },
     {
-      "id": "faixa-9",
-      "branch": "spec/repaginacao-visual-faixa-9",
-      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-9",
+      "id": "faixa-7",
+      "branch": "spec/repaginacao-visual-faixa-7",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-7",
       "tarefas": [
         {
           "id": "T-120",
@@ -269,9 +226,9 @@
       ]
     },
     {
-      "id": "faixa-10",
-      "branch": "spec/repaginacao-visual-faixa-10",
-      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-10",
+      "id": "faixa-8",
+      "branch": "spec/repaginacao-visual-faixa-8",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-8",
       "tarefas": [
         {
           "id": "T-121",
@@ -295,32 +252,9 @@
       ]
     },
     {
-      "id": "faixa-11",
-      "branch": "spec/repaginacao-visual-faixa-11",
-      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-11",
-      "tarefas": [
-        {
-          "id": "T-122",
-          "titulo": "Grade responsiva do desempenho",
-          "modelo": "claude-sonnet-5",
-          "esforco": "medium",
-          "arquivos": [
-            "src/app/features/desempenho/desempenho.html",
-            "src/app/features/desempenho/desempenho.scss",
-            "src/app/features/desempenho/desempenho.spec.ts"
-          ],
-          "refs": [
-            "US-076",
-            "US-078",
-            "AC-273"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "faixa-12",
-      "branch": "spec/repaginacao-visual-faixa-12",
-      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-12",
+      "id": "faixa-9",
+      "branch": "spec/repaginacao-visual-faixa-9",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-9",
       "tarefas": [
         {
           "id": "T-123",
@@ -339,7 +273,27 @@
       ]
     }
   ],
-  "sequenciais": [],
-  "concluidas": [],
+  "sequenciais": [
+    {
+      "id": "T-122",
+      "titulo": "Grade responsiva do desempenho",
+      "modelo": "claude-sonnet-5",
+      "esforco": "medium",
+      "arquivos": [
+        "src/app/features/desempenho/desempenho.html",
+        "src/app/features/desempenho/desempenho.scss",
+        "src/app/features/desempenho/desempenho.spec.ts"
+      ],
+      "refs": [
+        "US-076",
+        "US-078",
+        "AC-273"
+      ]
+    }
+  ],
+  "concluidas": [
+    "T-112",
+    "T-113"
+  ],
   "avisos": []
 }

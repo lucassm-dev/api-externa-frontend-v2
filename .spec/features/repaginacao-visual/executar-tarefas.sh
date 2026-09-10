@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# executar-tarefas.sh — gerado por `onp-spec plano repaginacao-visual` em 2026-09-10 00:44
+# executar-tarefas.sh — gerado por `onp-spec plano repaginacao-visual` em 2026-09-10 00:50
 # NÃO edite à mão: mudou tasks.md ou a config, regenere o plano.
 #
 # uso:
@@ -14,7 +14,7 @@
 set -u
 set -o pipefail
 
-RUN_ID='api-externa-frontend-v2-repaginacao-visual-mtut1s0d'
+RUN_ID='api-externa-frontend-v2-repaginacao-visual-mtut9sqr'
 FEATURE='repaginacao-visual'
 BASE_BRANCH='spec/repaginacao-visual'
 ENGINE='.claude/skills/onp-spec-driven/scripts/onp-spec.mjs'
@@ -166,7 +166,7 @@ iniciar_resumos() {
   trap 'parar_resumos; node "$ENGINE" resumo "$FEATURE" --gravar >/dev/null 2>&1 || true' EXIT
 }
 
-# ── faixa-1: T-112 ──
+# ── faixa-1: T-114 ──
 executar_faixa_1() {
   local WT="$WT_BASE-faixa-1"
   preparar_worktree 'faixa-1' 'spec/repaginacao-visual-faixa-1' "$WT" || return 1
@@ -174,67 +174,7 @@ executar_faixa_1() {
   : > "$LOG_DIR/faixa-1.log"
   (
     cd "$WT" || exit 9
-    rodar_tarefa 'faixa-1' 'T-112' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
-Leia primeiro: .spec/features/repaginacao-visual/spec.md, .spec/features/repaginacao-visual/tasks.md e .spec/constituicao.md.
-
-Sua tarefa (somente ela):
-T-112 — "Tokens da direção visual"
-  critérios/refs: AC-282 (O acento de marca entra com contraste aprovado), AC-283 (A hierarquia tipográfica é declarada, não improvisada)
-  arquivos permitidos (e seus testes): src/styles/_tokens.scss, src/styles/_tema.scss, src/styles/tokens.spec.ts
-  mensagem de commit: "T-112 repaginacao-visual: Tokens da direção visual"
-
-Regras inegociáveis:
-- Todo critério de aceite referenciado vira teste com @spec:AC-xxx no título.
-- NUNCA enfraqueça, pule (skip/todo) ou apague um teste para passar — teste pulado não é prova e o audit acusa.
-- Rode os testes localmente com `npx ng test` até passarem.
-- NÃO edite tasks.md, NÃO rode onp-spec verify/audit e NÃO toque em outras tarefas — o orquestrador cuida disso.
-- Ao final de CADA tarefa: `git add` só no que você tocou e um commit próprio.' 'claude-sonnet-5' high
-  ) >> "$LOG_DIR/faixa-1.log" 2>&1
-  local st=$?
-  mesclar_faixa 'faixa-1' 'spec/repaginacao-visual-faixa-1' "$WT" "$st" || return 1
-  marcar_concluidas T-112
-  return 0
-}
-
-# ── faixa-2: T-113 ──
-executar_faixa_2() {
-  local WT="$WT_BASE-faixa-2"
-  preparar_worktree 'faixa-2' 'spec/repaginacao-visual-faixa-2' "$WT" || return 1
-  evento --tipo faixa --faixa 'faixa-2' --estado executando --tentativa "$(tentativa 'faixa-2')"
-  : > "$LOG_DIR/faixa-2.log"
-  (
-    cd "$WT" || exit 9
-    rodar_tarefa 'faixa-2' 'T-113' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
-Leia primeiro: .spec/features/repaginacao-visual/spec.md, .spec/features/repaginacao-visual/tasks.md e .spec/constituicao.md.
-
-Sua tarefa (somente ela):
-T-113 — "Botão único do produto"
-  critérios/refs: AC-267 (Quatro intenções nomeadas, e só quatro), AC-268 (O botão mostra que está ocupado sem sumir), AC-269 (O botão é alcançável por teclado e por dedo)
-  arquivos permitidos (e seus testes): src/app/shared/botao/botao.ts, src/app/shared/botao/botao.html, src/app/shared/botao/botao.scss, src/app/shared/botao/botao.spec.ts
-  mensagem de commit: "T-113 repaginacao-visual: Botão único do produto"
-
-Regras inegociáveis:
-- Todo critério de aceite referenciado vira teste com @spec:AC-xxx no título.
-- NUNCA enfraqueça, pule (skip/todo) ou apague um teste para passar — teste pulado não é prova e o audit acusa.
-- Rode os testes localmente com `npx ng test` até passarem.
-- NÃO edite tasks.md, NÃO rode onp-spec verify/audit e NÃO toque em outras tarefas — o orquestrador cuida disso.
-- Ao final de CADA tarefa: `git add` só no que você tocou e um commit próprio.' 'claude-sonnet-5' high
-  ) >> "$LOG_DIR/faixa-2.log" 2>&1
-  local st=$?
-  mesclar_faixa 'faixa-2' 'spec/repaginacao-visual-faixa-2' "$WT" "$st" || return 1
-  marcar_concluidas T-113
-  return 0
-}
-
-# ── faixa-3: T-114 ──
-executar_faixa_3() {
-  local WT="$WT_BASE-faixa-3"
-  preparar_worktree 'faixa-3' 'spec/repaginacao-visual-faixa-3' "$WT" || return 1
-  evento --tipo faixa --faixa 'faixa-3' --estado executando --tentativa "$(tentativa 'faixa-3')"
-  : > "$LOG_DIR/faixa-3.log"
-  (
-    cd "$WT" || exit 9
-    rodar_tarefa 'faixa-3' 'T-114' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
+    rodar_tarefa 'faixa-1' 'T-114' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
 Leia primeiro: .spec/features/repaginacao-visual/spec.md, .spec/features/repaginacao-visual/tasks.md e .spec/constituicao.md.
 
 Sua tarefa (somente ela):
@@ -249,22 +189,22 @@ Regras inegociáveis:
 - Rode os testes localmente com `npx ng test` até passarem.
 - NÃO edite tasks.md, NÃO rode onp-spec verify/audit e NÃO toque em outras tarefas — o orquestrador cuida disso.
 - Ao final de CADA tarefa: `git add` só no que você tocou e um commit próprio.' 'claude-sonnet-5' high
-  ) >> "$LOG_DIR/faixa-3.log" 2>&1
+  ) >> "$LOG_DIR/faixa-1.log" 2>&1
   local st=$?
-  mesclar_faixa 'faixa-3' 'spec/repaginacao-visual-faixa-3' "$WT" "$st" || return 1
+  mesclar_faixa 'faixa-1' 'spec/repaginacao-visual-faixa-1' "$WT" "$st" || return 1
   marcar_concluidas T-114
   return 0
 }
 
-# ── faixa-4: T-115 ──
-executar_faixa_4() {
-  local WT="$WT_BASE-faixa-4"
-  preparar_worktree 'faixa-4' 'spec/repaginacao-visual-faixa-4' "$WT" || return 1
-  evento --tipo faixa --faixa 'faixa-4' --estado executando --tentativa "$(tentativa 'faixa-4')"
-  : > "$LOG_DIR/faixa-4.log"
+# ── faixa-2: T-115 ──
+executar_faixa_2() {
+  local WT="$WT_BASE-faixa-2"
+  preparar_worktree 'faixa-2' 'spec/repaginacao-visual-faixa-2' "$WT" || return 1
+  evento --tipo faixa --faixa 'faixa-2' --estado executando --tentativa "$(tentativa 'faixa-2')"
+  : > "$LOG_DIR/faixa-2.log"
   (
     cd "$WT" || exit 9
-    rodar_tarefa 'faixa-4' 'T-115' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
+    rodar_tarefa 'faixa-2' 'T-115' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
 Leia primeiro: .spec/features/repaginacao-visual/spec.md, .spec/features/repaginacao-visual/tasks.md e .spec/constituicao.md.
 
 Sua tarefa (somente ela):
@@ -279,22 +219,22 @@ Regras inegociáveis:
 - Rode os testes localmente com `npx ng test` até passarem.
 - NÃO edite tasks.md, NÃO rode onp-spec verify/audit e NÃO toque em outras tarefas — o orquestrador cuida disso.
 - Ao final de CADA tarefa: `git add` só no que você tocou e um commit próprio.' 'claude-sonnet-5' high
-  ) >> "$LOG_DIR/faixa-4.log" 2>&1
+  ) >> "$LOG_DIR/faixa-2.log" 2>&1
   local st=$?
-  mesclar_faixa 'faixa-4' 'spec/repaginacao-visual-faixa-4' "$WT" "$st" || return 1
+  mesclar_faixa 'faixa-2' 'spec/repaginacao-visual-faixa-2' "$WT" "$st" || return 1
   marcar_concluidas T-115
   return 0
 }
 
-# ── faixa-5: T-116 ──
-executar_faixa_5() {
-  local WT="$WT_BASE-faixa-5"
-  preparar_worktree 'faixa-5' 'spec/repaginacao-visual-faixa-5' "$WT" || return 1
-  evento --tipo faixa --faixa 'faixa-5' --estado executando --tentativa "$(tentativa 'faixa-5')"
-  : > "$LOG_DIR/faixa-5.log"
+# ── faixa-3: T-116 ──
+executar_faixa_3() {
+  local WT="$WT_BASE-faixa-3"
+  preparar_worktree 'faixa-3' 'spec/repaginacao-visual-faixa-3' "$WT" || return 1
+  evento --tipo faixa --faixa 'faixa-3' --estado executando --tentativa "$(tentativa 'faixa-3')"
+  : > "$LOG_DIR/faixa-3.log"
   (
     cd "$WT" || exit 9
-    rodar_tarefa 'faixa-5' 'T-116' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
+    rodar_tarefa 'faixa-3' 'T-116' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
 Leia primeiro: .spec/features/repaginacao-visual/spec.md, .spec/features/repaginacao-visual/tasks.md e .spec/constituicao.md.
 
 Sua tarefa (somente ela):
@@ -309,22 +249,22 @@ Regras inegociáveis:
 - Rode os testes localmente com `npx ng test` até passarem.
 - NÃO edite tasks.md, NÃO rode onp-spec verify/audit e NÃO toque em outras tarefas — o orquestrador cuida disso.
 - Ao final de CADA tarefa: `git add` só no que você tocou e um commit próprio.' 'claude-sonnet-5' medium
-  ) >> "$LOG_DIR/faixa-5.log" 2>&1
+  ) >> "$LOG_DIR/faixa-3.log" 2>&1
   local st=$?
-  mesclar_faixa 'faixa-5' 'spec/repaginacao-visual-faixa-5' "$WT" "$st" || return 1
+  mesclar_faixa 'faixa-3' 'spec/repaginacao-visual-faixa-3' "$WT" "$st" || return 1
   marcar_concluidas T-116
   return 0
 }
 
-# ── faixa-6: T-117 ──
-executar_faixa_6() {
-  local WT="$WT_BASE-faixa-6"
-  preparar_worktree 'faixa-6' 'spec/repaginacao-visual-faixa-6' "$WT" || return 1
-  evento --tipo faixa --faixa 'faixa-6' --estado executando --tentativa "$(tentativa 'faixa-6')"
-  : > "$LOG_DIR/faixa-6.log"
+# ── faixa-4: T-117 ──
+executar_faixa_4() {
+  local WT="$WT_BASE-faixa-4"
+  preparar_worktree 'faixa-4' 'spec/repaginacao-visual-faixa-4' "$WT" || return 1
+  evento --tipo faixa --faixa 'faixa-4' --estado executando --tentativa "$(tentativa 'faixa-4')"
+  : > "$LOG_DIR/faixa-4.log"
   (
     cd "$WT" || exit 9
-    rodar_tarefa 'faixa-6' 'T-117' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
+    rodar_tarefa 'faixa-4' 'T-117' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
 Leia primeiro: .spec/features/repaginacao-visual/spec.md, .spec/features/repaginacao-visual/tasks.md e .spec/constituicao.md.
 
 Sua tarefa (somente ela):
@@ -339,22 +279,22 @@ Regras inegociáveis:
 - Rode os testes localmente com `npx ng test` até passarem.
 - NÃO edite tasks.md, NÃO rode onp-spec verify/audit e NÃO toque em outras tarefas — o orquestrador cuida disso.
 - Ao final de CADA tarefa: `git add` só no que você tocou e um commit próprio.' 'claude-sonnet-5' medium
-  ) >> "$LOG_DIR/faixa-6.log" 2>&1
+  ) >> "$LOG_DIR/faixa-4.log" 2>&1
   local st=$?
-  mesclar_faixa 'faixa-6' 'spec/repaginacao-visual-faixa-6' "$WT" "$st" || return 1
+  mesclar_faixa 'faixa-4' 'spec/repaginacao-visual-faixa-4' "$WT" "$st" || return 1
   marcar_concluidas T-117
   return 0
 }
 
-# ── faixa-7: T-118 ──
-executar_faixa_7() {
-  local WT="$WT_BASE-faixa-7"
-  preparar_worktree 'faixa-7' 'spec/repaginacao-visual-faixa-7' "$WT" || return 1
-  evento --tipo faixa --faixa 'faixa-7' --estado executando --tentativa "$(tentativa 'faixa-7')"
-  : > "$LOG_DIR/faixa-7.log"
+# ── faixa-5: T-118 ──
+executar_faixa_5() {
+  local WT="$WT_BASE-faixa-5"
+  preparar_worktree 'faixa-5' 'spec/repaginacao-visual-faixa-5' "$WT" || return 1
+  evento --tipo faixa --faixa 'faixa-5' --estado executando --tentativa "$(tentativa 'faixa-5')"
+  : > "$LOG_DIR/faixa-5.log"
   (
     cd "$WT" || exit 9
-    rodar_tarefa 'faixa-7' 'T-118' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
+    rodar_tarefa 'faixa-5' 'T-118' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
 Leia primeiro: .spec/features/repaginacao-visual/spec.md, .spec/features/repaginacao-visual/tasks.md e .spec/constituicao.md.
 
 Sua tarefa (somente ela):
@@ -369,22 +309,22 @@ Regras inegociáveis:
 - Rode os testes localmente com `npx ng test` até passarem.
 - NÃO edite tasks.md, NÃO rode onp-spec verify/audit e NÃO toque em outras tarefas — o orquestrador cuida disso.
 - Ao final de CADA tarefa: `git add` só no que você tocou e um commit próprio.' 'claude-sonnet-5' high
-  ) >> "$LOG_DIR/faixa-7.log" 2>&1
+  ) >> "$LOG_DIR/faixa-5.log" 2>&1
   local st=$?
-  mesclar_faixa 'faixa-7' 'spec/repaginacao-visual-faixa-7' "$WT" "$st" || return 1
+  mesclar_faixa 'faixa-5' 'spec/repaginacao-visual-faixa-5' "$WT" "$st" || return 1
   marcar_concluidas T-118
   return 0
 }
 
-# ── faixa-8: T-119 ──
-executar_faixa_8() {
-  local WT="$WT_BASE-faixa-8"
-  preparar_worktree 'faixa-8' 'spec/repaginacao-visual-faixa-8' "$WT" || return 1
-  evento --tipo faixa --faixa 'faixa-8' --estado executando --tentativa "$(tentativa 'faixa-8')"
-  : > "$LOG_DIR/faixa-8.log"
+# ── faixa-6: T-119 ──
+executar_faixa_6() {
+  local WT="$WT_BASE-faixa-6"
+  preparar_worktree 'faixa-6' 'spec/repaginacao-visual-faixa-6' "$WT" || return 1
+  evento --tipo faixa --faixa 'faixa-6' --estado executando --tentativa "$(tentativa 'faixa-6')"
+  : > "$LOG_DIR/faixa-6.log"
   (
     cd "$WT" || exit 9
-    rodar_tarefa 'faixa-8' 'T-119' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
+    rodar_tarefa 'faixa-6' 'T-119' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
 Leia primeiro: .spec/features/repaginacao-visual/spec.md, .spec/features/repaginacao-visual/tasks.md e .spec/constituicao.md.
 
 Sua tarefa (somente ela):
@@ -399,22 +339,22 @@ Regras inegociáveis:
 - Rode os testes localmente com `npx ng test` até passarem.
 - NÃO edite tasks.md, NÃO rode onp-spec verify/audit e NÃO toque em outras tarefas — o orquestrador cuida disso.
 - Ao final de CADA tarefa: `git add` só no que você tocou e um commit próprio.' 'claude-sonnet-5' medium
-  ) >> "$LOG_DIR/faixa-8.log" 2>&1
+  ) >> "$LOG_DIR/faixa-6.log" 2>&1
   local st=$?
-  mesclar_faixa 'faixa-8' 'spec/repaginacao-visual-faixa-8' "$WT" "$st" || return 1
+  mesclar_faixa 'faixa-6' 'spec/repaginacao-visual-faixa-6' "$WT" "$st" || return 1
   marcar_concluidas T-119
   return 0
 }
 
-# ── faixa-9: T-120 ──
-executar_faixa_9() {
-  local WT="$WT_BASE-faixa-9"
-  preparar_worktree 'faixa-9' 'spec/repaginacao-visual-faixa-9' "$WT" || return 1
-  evento --tipo faixa --faixa 'faixa-9' --estado executando --tentativa "$(tentativa 'faixa-9')"
-  : > "$LOG_DIR/faixa-9.log"
+# ── faixa-7: T-120 ──
+executar_faixa_7() {
+  local WT="$WT_BASE-faixa-7"
+  preparar_worktree 'faixa-7' 'spec/repaginacao-visual-faixa-7' "$WT" || return 1
+  evento --tipo faixa --faixa 'faixa-7' --estado executando --tentativa "$(tentativa 'faixa-7')"
+  : > "$LOG_DIR/faixa-7.log"
   (
     cd "$WT" || exit 9
-    rodar_tarefa 'faixa-9' 'T-120' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
+    rodar_tarefa 'faixa-7' 'T-120' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
 Leia primeiro: .spec/features/repaginacao-visual/spec.md, .spec/features/repaginacao-visual/tasks.md e .spec/constituicao.md.
 
 Sua tarefa (somente ela):
@@ -429,22 +369,22 @@ Regras inegociáveis:
 - Rode os testes localmente com `npx ng test` até passarem.
 - NÃO edite tasks.md, NÃO rode onp-spec verify/audit e NÃO toque em outras tarefas — o orquestrador cuida disso.
 - Ao final de CADA tarefa: `git add` só no que você tocou e um commit próprio.' 'claude-sonnet-5' high
-  ) >> "$LOG_DIR/faixa-9.log" 2>&1
+  ) >> "$LOG_DIR/faixa-7.log" 2>&1
   local st=$?
-  mesclar_faixa 'faixa-9' 'spec/repaginacao-visual-faixa-9' "$WT" "$st" || return 1
+  mesclar_faixa 'faixa-7' 'spec/repaginacao-visual-faixa-7' "$WT" "$st" || return 1
   marcar_concluidas T-120
   return 0
 }
 
-# ── faixa-10: T-121 ──
-executar_faixa_10() {
-  local WT="$WT_BASE-faixa-10"
-  preparar_worktree 'faixa-10' 'spec/repaginacao-visual-faixa-10' "$WT" || return 1
-  evento --tipo faixa --faixa 'faixa-10' --estado executando --tentativa "$(tentativa 'faixa-10')"
-  : > "$LOG_DIR/faixa-10.log"
+# ── faixa-8: T-121 ──
+executar_faixa_8() {
+  local WT="$WT_BASE-faixa-8"
+  preparar_worktree 'faixa-8' 'spec/repaginacao-visual-faixa-8' "$WT" || return 1
+  evento --tipo faixa --faixa 'faixa-8' --estado executando --tentativa "$(tentativa 'faixa-8')"
+  : > "$LOG_DIR/faixa-8.log"
   (
     cd "$WT" || exit 9
-    rodar_tarefa 'faixa-10' 'T-121' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
+    rodar_tarefa 'faixa-8' 'T-121' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
 Leia primeiro: .spec/features/repaginacao-visual/spec.md, .spec/features/repaginacao-visual/tasks.md e .spec/constituicao.md.
 
 Sua tarefa (somente ela):
@@ -459,52 +399,22 @@ Regras inegociáveis:
 - Rode os testes localmente com `npx ng test` até passarem.
 - NÃO edite tasks.md, NÃO rode onp-spec verify/audit e NÃO toque em outras tarefas — o orquestrador cuida disso.
 - Ao final de CADA tarefa: `git add` só no que você tocou e um commit próprio.' 'claude-sonnet-5' medium
-  ) >> "$LOG_DIR/faixa-10.log" 2>&1
+  ) >> "$LOG_DIR/faixa-8.log" 2>&1
   local st=$?
-  mesclar_faixa 'faixa-10' 'spec/repaginacao-visual-faixa-10' "$WT" "$st" || return 1
+  mesclar_faixa 'faixa-8' 'spec/repaginacao-visual-faixa-8' "$WT" "$st" || return 1
   marcar_concluidas T-121
   return 0
 }
 
-# ── faixa-11: T-122 ──
-executar_faixa_11() {
-  local WT="$WT_BASE-faixa-11"
-  preparar_worktree 'faixa-11' 'spec/repaginacao-visual-faixa-11' "$WT" || return 1
-  evento --tipo faixa --faixa 'faixa-11' --estado executando --tentativa "$(tentativa 'faixa-11')"
-  : > "$LOG_DIR/faixa-11.log"
+# ── faixa-9: T-123 ──
+executar_faixa_9() {
+  local WT="$WT_BASE-faixa-9"
+  preparar_worktree 'faixa-9' 'spec/repaginacao-visual-faixa-9' "$WT" || return 1
+  evento --tipo faixa --faixa 'faixa-9' --estado executando --tentativa "$(tentativa 'faixa-9')"
+  : > "$LOG_DIR/faixa-9.log"
   (
     cd "$WT" || exit 9
-    rodar_tarefa 'faixa-11' 'T-122' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
-Leia primeiro: .spec/features/repaginacao-visual/spec.md, .spec/features/repaginacao-visual/tasks.md e .spec/constituicao.md.
-
-Sua tarefa (somente ela):
-T-122 — "Grade responsiva do desempenho"
-  critérios/refs: AC-273 (Os gráficos empilham sem perder a legenda)
-  arquivos permitidos (e seus testes): src/app/features/desempenho/desempenho.html, src/app/features/desempenho/desempenho.scss, src/app/features/desempenho/desempenho.spec.ts
-  mensagem de commit: "T-122 repaginacao-visual: Grade responsiva do desempenho"
-
-Regras inegociáveis:
-- Todo critério de aceite referenciado vira teste com @spec:AC-xxx no título.
-- NUNCA enfraqueça, pule (skip/todo) ou apague um teste para passar — teste pulado não é prova e o audit acusa.
-- Rode os testes localmente com `npx ng test` até passarem.
-- NÃO edite tasks.md, NÃO rode onp-spec verify/audit e NÃO toque em outras tarefas — o orquestrador cuida disso.
-- Ao final de CADA tarefa: `git add` só no que você tocou e um commit próprio.' 'claude-sonnet-5' medium
-  ) >> "$LOG_DIR/faixa-11.log" 2>&1
-  local st=$?
-  mesclar_faixa 'faixa-11' 'spec/repaginacao-visual-faixa-11' "$WT" "$st" || return 1
-  marcar_concluidas T-122
-  return 0
-}
-
-# ── faixa-12: T-123 ──
-executar_faixa_12() {
-  local WT="$WT_BASE-faixa-12"
-  preparar_worktree 'faixa-12' 'spec/repaginacao-visual-faixa-12' "$WT" || return 1
-  evento --tipo faixa --faixa 'faixa-12' --estado executando --tentativa "$(tentativa 'faixa-12')"
-  : > "$LOG_DIR/faixa-12.log"
-  (
-    cd "$WT" || exit 9
-    rodar_tarefa 'faixa-12' 'T-123' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
+    rodar_tarefa 'faixa-9' 'T-123' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
 Leia primeiro: .spec/features/repaginacao-visual/spec.md, .spec/features/repaginacao-visual/tasks.md e .spec/constituicao.md.
 
 Sua tarefa (somente ela):
@@ -519,11 +429,43 @@ Regras inegociáveis:
 - Rode os testes localmente com `npx ng test` até passarem.
 - NÃO edite tasks.md, NÃO rode onp-spec verify/audit e NÃO toque em outras tarefas — o orquestrador cuida disso.
 - Ao final de CADA tarefa: `git add` só no que você tocou e um commit próprio.' 'claude-sonnet-5' low
-  ) >> "$LOG_DIR/faixa-12.log" 2>&1
+  ) >> "$LOG_DIR/faixa-9.log" 2>&1
   local st=$?
-  mesclar_faixa 'faixa-12' 'spec/repaginacao-visual-faixa-12' "$WT" "$st" || return 1
+  mesclar_faixa 'faixa-9' 'spec/repaginacao-visual-faixa-9' "$WT" "$st" || return 1
   marcar_concluidas T-123
   return 0
+}
+
+# ── sequencial T-122 (fora da seleção do usuário) ──
+executar_seq_T_122() {
+  info 'sequencial T-122 — Grade responsiva do desempenho'
+  if rodar_tarefa seq 'T-122' 'Você executa UMA tarefa da feature "repaginacao-visual" (fluxo onp-spec, spec-anchored).
+Leia primeiro: .spec/features/repaginacao-visual/spec.md, .spec/features/repaginacao-visual/tasks.md e .spec/constituicao.md.
+
+Sua tarefa (somente ela):
+T-122 — "Grade responsiva do desempenho"
+  critérios/refs: AC-273 (Os gráficos empilham sem perder a legenda)
+  arquivos permitidos (e seus testes): src/app/features/desempenho/desempenho.html, src/app/features/desempenho/desempenho.scss, src/app/features/desempenho/desempenho.spec.ts
+  mensagem de commit: "T-122 repaginacao-visual: Grade responsiva do desempenho"
+
+Regras inegociáveis:
+- Todo critério de aceite referenciado vira teste com @spec:AC-xxx no título.
+- NUNCA enfraqueça, pule (skip/todo) ou apague um teste para passar — teste pulado não é prova e o audit acusa.
+- Rode os testes localmente com `npx ng test` até passarem.
+- NÃO edite tasks.md, NÃO rode onp-spec verify/audit e NÃO toque em outras tarefas — o orquestrador cuida disso.
+- Ao final de CADA tarefa: `git add` só no que você tocou e um commit próprio.' 'claude-sonnet-5' medium >> "$LOG_DIR/seq.log" 2>&1; then
+    # commit de segurança se o agente esqueceu (rastreabilidade > perfeição)
+    if [ -n "$(git status --porcelain)" ]; then
+      git add -A && git commit -q -m 'T-122 repaginacao-visual: Grade responsiva do desempenho (auto-commit do plano)'
+    fi
+    marcar_concluidas T-122
+    verde "✔ T-122 concluída"
+    return 0
+  fi
+  vermelho "✘ T-122 falhou (log: $LOG_DIR/seq.log)"
+  amarelo "  reexecute só ela: bash .spec/features/repaginacao-visual/executar-tarefas.sh --seq T-122"
+  FALHAS="$FALHAS T-122"
+  return 1
 }
 
 # ── gate: quem decide é a máquina ────────────────────────────────────
@@ -603,31 +545,22 @@ executar_tudo() {
   wait "$PID_FAIXA_7" || true
   wait "$PID_FAIXA_8" || true
   wait "$PID_FAIXA_9" || true
-  # onda 4: faixa-10 ∥ faixa-11 ∥ faixa-12
-  info "onda 4: faixa-10 ∥ faixa-11 ∥ faixa-12 — janelas limpas em paralelo"
-  executar_faixa_10 & PID_FAIXA_10=$!
-  executar_faixa_11 & PID_FAIXA_11=$!
-  executar_faixa_12 & PID_FAIXA_12=$!
-  wait "$PID_FAIXA_10" || true
-  wait "$PID_FAIXA_11" || true
-  wait "$PID_FAIXA_12" || true
+  executar_seq_T_122 || true
   encerrar tudo
 }
 
 listar() {
   echo "execução: $RUN_ID (feature $FEATURE, branch $BASE_BRANCH)"
-  echo "  faixa-1  onda 1  T-112"
-  echo "  faixa-2  onda 1  T-113"
-  echo "  faixa-3  onda 1  T-114"
-  echo "  faixa-4  onda 2  T-115"
-  echo "  faixa-5  onda 2  T-116"
-  echo "  faixa-6  onda 2  T-117"
-  echo "  faixa-7  onda 3  T-118"
-  echo "  faixa-8  onda 3  T-119"
-  echo "  faixa-9  onda 3  T-120"
-  echo "  faixa-10  onda 4  T-121"
-  echo "  faixa-11  onda 4  T-122"
-  echo "  faixa-12  onda 4  T-123"
+  echo "  faixa-1  onda 1  T-114"
+  echo "  faixa-2  onda 1  T-115"
+  echo "  faixa-3  onda 1  T-116"
+  echo "  faixa-4  onda 2  T-117"
+  echo "  faixa-5  onda 2  T-118"
+  echo "  faixa-6  onda 2  T-119"
+  echo "  faixa-7  onda 3  T-120"
+  echo "  faixa-8  onda 3  T-121"
+  echo "  faixa-9  onda 3  T-123"
+  echo "  seq       T-122 (sequencial)"
   echo
   echo "reexecutar uma faixa:    --faixa <id>"
   echo "reexecutar sequencial:   --seq <T-xxx>"
@@ -667,13 +600,11 @@ case "$MODO" in
       faixa-7) evento --tipo inicio --escopo "faixa:faixa-7"; iniciar_resumos; executar_faixa_7 || true; encerrar "faixa:faixa-7" ;;
       faixa-8) evento --tipo inicio --escopo "faixa:faixa-8"; iniciar_resumos; executar_faixa_8 || true; encerrar "faixa:faixa-8" ;;
       faixa-9) evento --tipo inicio --escopo "faixa:faixa-9"; iniciar_resumos; executar_faixa_9 || true; encerrar "faixa:faixa-9" ;;
-      faixa-10) evento --tipo inicio --escopo "faixa:faixa-10"; iniciar_resumos; executar_faixa_10 || true; encerrar "faixa:faixa-10" ;;
-      faixa-11) evento --tipo inicio --escopo "faixa:faixa-11"; iniciar_resumos; executar_faixa_11 || true; encerrar "faixa:faixa-11" ;;
-      faixa-12) evento --tipo inicio --escopo "faixa:faixa-12"; iniciar_resumos; executar_faixa_12 || true; encerrar "faixa:faixa-12" ;;
       *) falhar "faixa desconhecida: '$ALVO' — veja as disponíveis com --listar" ;;
     esac ;;
   seq)
     case "$ALVO" in
+      T-122) evento --tipo inicio --escopo "seq:T-122"; iniciar_resumos; executar_seq_T_122 || true; encerrar "seq:T-122" ;;
       *) falhar "tarefa sequencial desconhecida: '$ALVO' — veja as disponíveis com --listar" ;;
     esac ;;
 esac
