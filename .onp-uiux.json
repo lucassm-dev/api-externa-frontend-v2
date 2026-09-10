@@ -1,0 +1,23 @@
+{
+  "ignore": [
+    "**/shared/botao-icone/botao-icone.html",
+    "**/shared/monograma/monograma.html"
+  ],
+  "max_colors": 32,
+  "excecoes": [
+    {
+      "suposicao": "ASM-070",
+      "arquivo": "src/app/shared/botao-icone/botao-icone.html",
+      "regra": "A03",
+      "severidade": "erro",
+      "motivo": "O nome acessível existe: o <button> recebe [attr.aria-label]=\"rotulo()\" e [attr.title]=\"rotulo()\". O motor faz análise estática e não resolve binding de atributo do Angular ([attr.aria-label]), então acusa botão sem nome acessível. É falso-positivo: o atributo é emitido em runtime. Exceção declarada, não correção de código."
+    },
+    {
+      "suposicao": "ASM-070",
+      "arquivo": "src/app/shared/monograma/monograma.html",
+      "regra": "A01",
+      "severidade": "erro",
+      "motivo": "A <img> tem [alt]=\"'Logo do ativo ' + tickerNormalizado()\". O motor reconhece :alt (Vue) e alt={x} (JSX) como alt presente, mas não a forma [alt] do Angular, e acusa img sem alt. É falso-positivo: o alt é emitido em runtime. Exceção declarada, não correção de código."
+    }
+  ]
+}
