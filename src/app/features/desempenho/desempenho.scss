@@ -50,6 +50,13 @@ select {
   gap: var(--espaco-5);
 }
 
+// Cada gráfico tem conteúdo intrínseco largo (SVG, tabela de legenda). Sem um
+// piso zero na coluna e no próprio item, esse conteúdo empurra a largura e o
+// gráfico estoura a horizontal a 360px em vez de encolher.
+.graficos > * {
+  min-width: 0;
+}
+
 .graficos app-grafico-composicao {
   grid-column: 1 / -1;
 }

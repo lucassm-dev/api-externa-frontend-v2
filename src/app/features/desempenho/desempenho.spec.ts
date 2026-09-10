@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -23,6 +24,8 @@ function carteira(id: number, nome: string): Carteira {
     ativa: true,
   };
 }
+
+const ESTILO = readFileSync('src/app/features/desempenho/desempenho.scss', 'utf8');
 
 const AGORA = new Date().toISOString();
 
@@ -249,6 +252,60 @@ describe('Tela de desempenho', () => {
       no.textContent?.trim(),
     );
     expect(contribuicoes).toEqual(['PETR4', 'AAPL']);
+    controle.verify();
+  });
+
+  it('@spec:AC-273 a grade dos gráficos vira coluna única na tela estreita', () => {
+    const media = ESTILO.match(/@media\s*\(max-width:\s*([\d.]+)rem\)\s*{([\s\S]*)}/);
+    expect(media).not.toBeNull();
+
+    const [, largura, corpo] = media!;
+    // o ponto de virada precisa alcançar o piso de tela de 360px (US-076)
+    expect(parseFloat(largura) * 16).toBeGreaterThanOrEqual(360);
+    expect(corpo).toMatch(/\.graficos\s*{[^}]*grid-template-columns:\s*1fr/);
+    // a composição, que ocupa a linha inteira na tela larga, volta a uma coluna
+    expect(corpo).toMatch(/app-grafico-composicao\s*{[^}]*grid-column:\s*auto/);
+  });
+
+  it('@spec:AC-273 nenhum gráfico estoura ou é cortado na horizontal', () => {
+    // colunas com piso zero: o conteúdo intrínseco (SVG, legenda) não empurra a largura
+    expect(ESTILO).toMatch(
+      /\.graficos\s*{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/,
+    );
+    // cada gráfico pode encolher abaixo do próprio conteúdo
+    expect(ESTILO).toMatch(/\.graficos\s*>\s*\*\s*{[^}]*min-width:\s*0/);
+    // nada na grade recorta a legenda
+    expect(ESTILO).not.toMatch(/\.graficos[^{]*{[^}]*overflow:\s*hidden/);
+  });
+
+  it('@spec:AC-273 em repouso cada gráfico fica na mesma grade, com legenda e valores em texto legível', async () => {
+    abrir();
+    fixture.detectChanges();
+    responderCarteiras([carteira(9, 'Longo prazo')]);
+    responderDados(9, { lucro: { total: 150, porTicker: { PETR4: 150 } } });
+
+    const tela = await elemento();
+    const grade = tela.querySelector('.graficos') as HTMLElement;
+    expect(grade).not.toBeNull();
+
+    for (const seletor of [
+      'app-grafico-composicao',
+      'app-grafico-contribuicao',
+      'app-grafico-realizado',
+    ]) {
+      expect(grade.querySelector(seletor)?.parentElement).toBe(grade);
+    }
+
+    const fatia = grade.querySelector('[data-fatia="PETR4"]') as HTMLElement;
+    expect(fatia.querySelector('[data-fatia-ticker]')?.textContent).toContain('PETR4');
+    expect(fatia.querySelector('[data-fatia-valor]')?.textContent).toMatch(/\d/);
+    expect(fatia.querySelector('[data-fatia-participacao]')?.textContent).toMatch(/\d/);
+
+    expect(grade.querySelector('[data-contribuicao-ticker]')?.textContent?.trim()).toBeTruthy();
+    expect(grade.querySelector('[data-contribuicao-valor]')?.textContent).toMatch(/\d/);
+
+    expect(grade.querySelector('[data-realizado-ticker]')?.textContent).toContain('PETR4');
+    expect(grade.querySelector('[data-realizado-valor]')?.textContent).toMatch(/\d/);
     controle.verify();
   });
 
