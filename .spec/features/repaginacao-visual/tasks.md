@@ -121,7 +121,7 @@
   faixa significa fica escrito: o produto não recomenda investimento, então o
   medidor descreve concentração, não aprova nem reprova a carteira.
 
-## T-122 — Grade responsiva do desempenho [pendente]
+## T-122 — Grade responsiva do desempenho [concluida]
 - Refs: US-076, US-078, AC-273
 - Arquivos: src/app/features/desempenho/desempenho.html, src/app/features/desempenho/desempenho.scss, src/app/features/desempenho/desempenho.spec.ts
 - Modelo: claude-sonnet-5
