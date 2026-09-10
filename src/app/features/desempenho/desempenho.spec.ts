@@ -267,6 +267,28 @@ describe('Tela de desempenho', () => {
     expect(corpo).toMatch(/app-grafico-composicao\s*{[^}]*grid-column:\s*auto/);
   });
 
+  it('@spec:AC-273 os quatro blocos novos chegam à tela, e não só ao repositório', async () => {
+    abrir();
+    fixture.detectChanges();
+    responderCarteiras([carteira(9, 'Longo prazo')]);
+    responderDados(9, { lucro: { total: 150, porTicker: { PETR4: 150 } } });
+
+    const tela = await elemento();
+
+    // Componente que existe no código e nunca é renderizado não é gráfico: é
+    // arquivo. Cada um dos quatro precisa estar na árvore da tela.
+    for (const seletor of [
+      'app-grafico-mapa-posicoes',
+      'app-grafico-concentracao',
+      'app-grafico-investido-mercado',
+      'app-grafico-quadrante',
+    ]) {
+      expect(tela.querySelector(seletor), seletor).not.toBeNull();
+    }
+
+    controle.verify();
+  });
+
   it('@spec:AC-273 nenhum gráfico estoura ou é cortado na horizontal', () => {
     // colunas com piso zero: o conteúdo intrínseco (SVG, legenda) não empurra a largura
     expect(ESTILO).toMatch(

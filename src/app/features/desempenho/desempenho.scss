@@ -15,7 +15,9 @@
 
 h1 {
   margin: 0;
-  font-size: 28px;
+  font-size: var(--texto-titulo);
+  letter-spacing: var(--entrelinha-titulo);
+  line-height: var(--altura-apertada);
 }
 
 .apoio {
@@ -35,13 +37,26 @@ h1 {
 }
 
 select {
-  min-height: 40px;
+  min-height: var(--alvo-toque);
   padding: var(--espaco-2) var(--espaco-3);
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio);
   background: var(--cor-superficie-alta);
   color: var(--cor-texto);
   font: inherit;
+}
+
+// O retrato abre a tela: o mapa mostra a carteira inteira de uma vez, e o
+// medidor ao lado responde "concentrado demais?" sem exigir contagem de fatia.
+.retrato {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: var(--espaco-5);
+  align-items: start;
+}
+
+.retrato > * {
+  min-width: 0;
 }
 
 .graficos {
@@ -81,15 +96,6 @@ select {
   color: var(--cor-texto-fraco);
 }
 
-.convite a {
-  min-height: 24px;
-  padding: var(--espaco-2) var(--espaco-4);
-  border-radius: var(--raio);
-  background: var(--cor-acento);
-  color: var(--cor-acento-contraste);
-  text-decoration: none;
-}
-
 .indisponivel {
   margin: 0;
   padding: var(--espaco-4);
@@ -119,5 +125,15 @@ select {
 
   .graficos app-grafico-composicao {
     grid-column: auto;
+  }
+
+  .retrato {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 48rem) {
+  .tela {
+    padding: var(--espaco-4) var(--espaco-3);
   }
 }

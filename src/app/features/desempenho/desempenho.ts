@@ -3,11 +3,17 @@ import { RouterLink } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { Carteira } from '../carteiras/carteiras.model';
 import { CarteiraPreferida } from '../painel/carteira-preferida';
+import { Botao } from '../../shared/botao/botao';
 import { ConfissoesDesempenho } from './blocos/confissoes-desempenho';
 import { GraficoComposicao } from './blocos/grafico-composicao';
+import { GraficoConcentracao } from './blocos/grafico-concentracao';
 import { GraficoContribuicao } from './blocos/grafico-contribuicao';
+import { GraficoInvestidoMercado } from './blocos/grafico-investido-mercado';
+import { GraficoMapaPosicoes } from './blocos/grafico-mapa-posicoes';
+import { GraficoQuadrante } from './blocos/grafico-quadrante';
 import { GraficoRealizado } from './blocos/grafico-realizado';
 import { NumerosDesempenho } from './blocos/numeros-desempenho';
+import { moedaDe, paraReal } from './moeda-das-posicoes';
 import { composicaoDaCarteira } from './composicao';
 import { contribuicaoPorAtivo } from './contribuicao';
 import { DadosDaCarteira } from './desempenho.model';
@@ -32,11 +38,16 @@ import { resultadosDaCarteira } from './resultados';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     RouterLink,
+    Botao,
     NumerosDesempenho,
     ConfissoesDesempenho,
     GraficoComposicao,
     GraficoContribuicao,
     GraficoRealizado,
+    GraficoMapaPosicoes,
+    GraficoInvestidoMercado,
+    GraficoQuadrante,
+    GraficoConcentracao,
   ],
   templateUrl: './desempenho.html',
   styleUrl: './desempenho.scss',
@@ -93,6 +104,42 @@ export class Desempenho {
   protected readonly realizado = computed(() => {
     const lucro = this.dados()?.lucroRealizado;
     return lucro ? realizadoPorTicker(lucro) : null;
+  });
+
+  /**
+   * Cada posição em real, com custo, valor de hoje e resultado lado a lado. É a
+   * base dos quatro blocos novos, e a conversão vem ANTES de qualquer
+   * comparação: custo em real ao lado de valor em dólar produz diferença
+   * inventada, e o erro é silencioso.
+   */
+  protected readonly posicoesEmReal = computed(() => {
+    const dados = this.dados();
+    const taxa = dados?.consolidado?.taxaCambioAtual;
+    if (!dados || dados.posicoes === null || taxa === undefined) {
+      return [];
+    }
+
+    return dados.posicoes
+      .map((posicao) => {
+        const moeda = moedaDe(posicao.ticker, dados.moedas);
+        const valorDeMercado = paraReal(posicao.quantidade * posicao.cotacaoAtual, moeda, taxa).valor;
+        const investido = paraReal(posicao.quantidade * posicao.precoMedio, moeda, taxa).valor;
+        const resultado = paraReal(posicao.rentabilidadeNaoRealizada, moeda, taxa).valor;
+
+        return {
+          ticker: posicao.ticker,
+          nomeEmpresa: posicao.nomeEmpresa,
+          valorDeMercado,
+          investido,
+          valorMercado: valorDeMercado,
+          resultado,
+          // Sobre o custo, não sobre o valor de hoje: é o custo que o investidor
+          // arriscou, e é dele que a rentabilidade fala.
+          rentabilidade: investido > 0 ? (resultado / investido) * 100 : 0,
+        };
+      })
+      .filter((posicao) => posicao.valorDeMercado > 0)
+      .sort((uma, outra) => outra.valorDeMercado - uma.valorDeMercado);
   });
 
   protected readonly idade = computed(() => idadeDasCotacoes(this.dados()?.posicoes ?? []));

@@ -36,7 +36,7 @@
     <div class="convite" data-convite-carteira>
       <h2>Crie sua primeira carteira</h2>
       <p>O desempenho começa a existir quando há uma carteira com operações registradas.</p>
-      <a routerLink="/carteiras/nova">Criar carteira</a>
+      <a appBotao intencao="primaria" routerLink="/carteiras/nova">Criar carteira</a>
     </div>
   } @else if (semOperacao()) {
     <div class="convite" data-convite-primeira-compra>
@@ -46,6 +46,8 @@
         registrada, os números e os gráficos aparecem aqui.
       </p>
       <a
+        appBotao
+        intencao="primaria"
         routerLink="/operacoes"
         [queryParams]="{ carteira: carteiraSelecionada(), tipo: 'COMPRA' }"
         >Registrar compra</a
@@ -67,9 +69,20 @@
       [dataHoraTaxaCambio]="consolidado()?.dataHoraTaxaCambio ?? null"
     />
 
+    @if (posicoesEmReal().length > 0) {
+      <div class="retrato">
+        <app-grafico-mapa-posicoes [posicoes]="posicoesEmReal()" />
+        <app-grafico-concentracao [posicoes]="posicoesEmReal()" />
+      </div>
+    }
+
     <div class="graficos">
       @if (composicao(); as composicao) {
         <app-grafico-composicao [composicao]="composicao" />
+      }
+      @if (posicoesEmReal().length > 0) {
+        <app-grafico-investido-mercado [posicoes]="posicoesEmReal()" />
+        <app-grafico-quadrante [posicoes]="posicoesEmReal()" />
       }
       @if (contribuicao(); as contribuicao) {
         <app-grafico-contribuicao [barras]="contribuicao" />
