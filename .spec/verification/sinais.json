@@ -4487,10 +4487,37 @@
       "codigo": "AC_SEM_TESTE",
       "feature": "cabecalho-identidade-acoes",
       "ref": "AC-285",
-      "ocorrencias": 1,
+      "ocorrencias": 2,
       "primeiraVez": "2026-09-10T03:28:19.352Z",
-      "ultimaVez": "2026-09-10T03:28:19.352Z",
-      "gitRev": "becce41"
+      "ultimaVez": "2026-09-10T03:30:37.517Z",
+      "gitRev": "5792f4e"
+    },
+    "AC_SEM_TESTE::cabecalho-identidade-acoes::AC-286": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "cabecalho-identidade-acoes",
+      "ref": "AC-286",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T03:30:37.518Z",
+      "ultimaVez": "2026-09-10T03:30:37.518Z",
+      "gitRev": "5792f4e"
+    },
+    "AC_SEM_TESTE::cabecalho-identidade-acoes::AC-287": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "cabecalho-identidade-acoes",
+      "ref": "AC-287",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T03:30:37.518Z",
+      "ultimaVez": "2026-09-10T03:30:37.518Z",
+      "gitRev": "5792f4e"
+    },
+    "AC_SEM_TESTE::cabecalho-identidade-acoes::AC-288": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "cabecalho-identidade-acoes",
+      "ref": "AC-288",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T03:30:37.518Z",
+      "ultimaVez": "2026-09-10T03:30:37.518Z",
+      "gitRev": "5792f4e"
     }
   }
 }
