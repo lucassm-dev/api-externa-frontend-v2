@@ -134,4 +134,42 @@ describe('Barra de mercado', () => {
     expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*background:[^;]*--cor-barra-mercado-fundo/);
     expect(trecho).toMatch(/\.chip\s*{[^}]*background:[^;]*--cor-barra-mercado/);
   });
+
+  it('@spec:AC-274 a faixa respeita a largura máxima em token, fica centralizada e mais baixa que os cartões, com o horário visível', async () => {
+    const elemento = await montar(cheia);
+
+    // o horário da última atualização continua visível
+    expect(elemento.querySelector('[data-atualizado-em]')?.textContent).toContain('13:05');
+
+    const trecho = ESTILO.replace(/\s+/g, ' ');
+
+    // largura máxima definida em token, não na tela
+    expect(trecho).toMatch(
+      /\.barra-mercado\s*{[^}]*max-width:\s*var\(--largura-cotacoes\)/,
+    );
+    // centralizada no topo
+    expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*margin-inline:\s*auto/);
+
+    // mais baixa que os cartões de conteúdo: padding vertical no menor degrau
+    expect(trecho).toMatch(
+      /\.barra-mercado\s*{[^}]*padding:\s*var\(--espaco-2\)\s+var\(--espaco-4\)/,
+    );
+    expect(trecho).toMatch(/\.chip\s*{[^}]*padding:\s*var\(--espaco-1\)\s+var\(--espaco-3\)/);
+  });
+
+  it('@spec:AC-275 a faixa cresce só até o teto, nunca força largura maior que a tela, e o movimento respeita prefers-reduced-motion', () => {
+    const trecho = ESTILO.replace(/\s+/g, ' ');
+
+    // fluida: ocupa a largura disponível até o teto do token
+    expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*width:\s*100%/);
+    // nunca impõe largura mínima maior que a tela estreita
+    expect(trecho).not.toMatch(/\.barra-mercado\s*{[^}]*min-width:/);
+    // e não estoura a horizontal
+    expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*overflow:\s*hidden/);
+
+    // prefers-reduced-motion continua parando a rolagem
+    const indice = ESTILO.indexOf('prefers-reduced-motion: reduce');
+    expect(indice).toBeGreaterThan(-1);
+    expect(ESTILO.slice(indice)).toMatch(/animation:\s*none/);
+  });
 });
