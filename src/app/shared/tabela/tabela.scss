@@ -3,11 +3,27 @@
 // apresentação: densidade, zebra, destaque de linha, cabeçalho fixo e
 // alinhamento numérico. Nenhuma cor literal — só tokens (P-003).
 
+// `display: block` faz da própria <table> a região rolável: numa tela mais
+// estreita que a tabela, a rolagem horizontal fica contida no bloco e a página
+// nunca rola de lado (AC-272). Sendo a <table> o scroll container, ela herda o
+// nome acessível da <caption> e entra na ordem de tabulação nativamente;
+// `overscroll-behavior-x: contain` corta o encadeamento da rolagem para o
+// documento.
 .tabela {
+  display: block;
   width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
   border-collapse: collapse;
   font-size: var(--texto-base);
   color: var(--cor-texto);
+}
+
+// Contorno próprio quando o foco de teclado chega à região rolável (AC-272).
+.tabela:focus-visible {
+  outline: 2px solid var(--cor-foco);
+  outline-offset: -2px;
 }
 
 .tabela caption {
