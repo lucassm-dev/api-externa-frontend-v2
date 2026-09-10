@@ -1,6 +1,7 @@
-import { readFileSync } from 'node:fs';
+import { globSync, readFileSync } from 'node:fs';
 
 const folha = readFileSync('src/styles/_tokens.scss', 'utf8');
+const escalas = readFileSync('src/styles/_tema.scss', 'utf8');
 
 function blocoDoTema(tema: 'claro' | 'escuro'): string {
   const inicio = tema === 'claro' ? folha.indexOf(":root[data-tema='claro']") : folha.indexOf(":root[data-tema='escuro']");
@@ -65,5 +66,72 @@ describe('Tokens da fundação visual', () => {
       expect(luminancia(cor(bloco, '--cor-destaque-texto'))).toBeLessThan(0.02);
       expect(contraste(cor(bloco, '--cor-destaque-texto'), cor(bloco, '--cor-destaque'))).toBeGreaterThanOrEqual(4.5);
     }
+  });
+
+  it('@spec:AC-282 o acento de marca entra com contraste aprovado nos dois temas', () => {
+    for (const tema of ['claro', 'escuro'] as const) {
+      const bloco = blocoDoTema(tema);
+      const pares = [
+        ['--cor-acento-contraste', '--cor-acento'],
+        ['--cor-destaque-texto', '--cor-destaque'],
+        ['--cor-destaque-texto', '--cor-destaque-forte'],
+        ['--cor-perigo-contraste', '--cor-perigo'],
+        ['--cor-texto', '--cor-superficie'],
+        ['--cor-texto-fraco', '--cor-superficie'],
+        ['--cor-texto', '--cor-fundo'],
+      ];
+
+      for (const [texto, fundo] of pares) {
+        expect(contraste(cor(bloco, texto), cor(bloco, fundo)), `${tema}: ${texto}/${fundo}`).toBeGreaterThanOrEqual(4.5);
+      }
+
+      // O anel de foco não é texto: 3:1 contra a superfície onde ele aparece basta,
+      // e o halo é o que o mantém visível também sobre preenchimento saturado.
+      expect(contraste(cor(bloco, '--cor-foco'), cor(bloco, '--cor-superficie')), `${tema}: foco`).toBeGreaterThanOrEqual(3);
+      expect(contraste(cor(bloco, '--cor-foco'), cor(bloco, '--cor-foco-halo')), `${tema}: foco/halo`).toBeGreaterThanOrEqual(3);
+    }
+  });
+
+  it('@spec:AC-282 nenhuma cor literal vive fora dos tokens', () => {
+    const estilosDeTela = globSync('src/app/**/*.scss');
+    expect(estilosDeTela.length).toBeGreaterThan(0);
+
+    for (const arquivo of estilosDeTela) {
+      const conteudo = readFileSync(arquivo, 'utf8');
+      expect(conteudo, arquivo).not.toMatch(/#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\(/);
+    }
+  });
+
+  it('@spec:AC-283 a escala de tipos é declarada em degraus nomeados', () => {
+    const degraus = [
+      '--texto-rotulo',
+      '--texto-apoio',
+      '--texto-base',
+      '--texto-medio',
+      '--texto-grande',
+      '--texto-titulo',
+      '--texto-display',
+    ];
+
+    const tamanhos = degraus.map((degrau) => {
+      const valor = escalas.match(new RegExp(`${degrau}:\\s*(\\d+)px`))?.[1];
+      if (!valor) throw new Error(`Degrau ${degrau} não encontrado em _tema.scss`);
+      return Number(valor);
+    });
+
+    // Escala estritamente crescente, e nenhum degrau abaixo do piso de leitura.
+    expect(Math.min(...tamanhos)).toBeGreaterThanOrEqual(12);
+    expect([...tamanhos].sort((a, b) => a - b)).toEqual(tamanhos);
+
+    expect(escalas).toMatch(/--peso-normal:|--peso-medio:|--peso-forte:/);
+    expect(escalas).toMatch(/--fonte-numero:\s*'Roboto Mono'/);
+  });
+
+  it('@spec:AC-283 o produto não passa de duas famílias tipográficas', () => {
+    const familias = [...escalas.matchAll(/--fonte[a-z-]*:\s*([^;]+);/g)].map(([, valor]) =>
+      valor.split(',')[0].trim(),
+    );
+
+    expect(new Set(familias).size).toBeLessThanOrEqual(2);
   });
 });

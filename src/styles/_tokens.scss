@@ -18,6 +18,20 @@
   --cor-destaque: #eaef1b;
   --cor-destaque-texto: #14181f;
 
+  --cor-acento-suave: #e7effc;
+  --cor-acento-forte: #16499f;
+
+  --cor-destaque-forte: #d2d70f;
+  --cor-destaque-suave: #f6f8c0;
+
+  --cor-perigo: #b3261e;
+  --cor-perigo-contraste: #ffffff;
+  --cor-perigo-suave: #fdecea;
+
+  // Anel de foco em duas camadas: o halo separa o anel do preenchimento.
+  --cor-foco: #12161d;
+  --cor-foco-halo: #ffffff;
+
   --cor-alta: #0f6f47;
   --cor-baixa: #b3261e;
   --cor-estavel: #5b6472;
@@ -71,10 +85,10 @@
 }
 
 :root[data-tema='escuro'] {
-  --cor-fundo: #10141a;
-  --cor-superficie: #171d26;
-  --cor-superficie-alta: #202836;
-  --cor-borda: #303a4a;
+  --cor-fundo: #0b0e13;
+  --cor-superficie: #141a23;
+  --cor-superficie-alta: #1e2734;
+  --cor-borda: #2c3646;
   --cor-texto: #e8ecf2;
   --cor-texto-fraco: #9aa5b4;
 
@@ -83,6 +97,19 @@
 
   --cor-destaque: #eaef1b;
   --cor-destaque-texto: #14181f;
+
+  --cor-acento-suave: #17243a;
+  --cor-acento-forte: #a6c5f9;
+
+  --cor-destaque-forte: #f2f65e;
+  --cor-destaque-suave: #2f3208;
+
+  --cor-perigo: #ff8a80;
+  --cor-perigo-contraste: #3a0f0b;
+  --cor-perigo-suave: #351613;
+
+  --cor-foco: #eaef1b;
+  --cor-foco-halo: #0b0e13;
 
   --cor-alta: #5fd39b;
   --cor-baixa: #ff8a80;
@@ -104,7 +131,7 @@
   --cor-sucesso-fundo: #123326;
   --cor-sucesso-texto: #b9f2d5;
 
-  --cor-barra-mercado-fundo: #080c12;
+  --cor-barra-mercado-fundo: #060a0f;
   --cor-barra-mercado-texto: #f5f7fa;
   --cor-barra-mercado-borda: #303a4a;
   --cor-barra-mercado-fraco: #adb8c8;

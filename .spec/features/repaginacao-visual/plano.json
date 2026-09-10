@@ -1,0 +1,345 @@
+{
+  "runId": "api-externa-frontend-v2-repaginacao-visual-mtut1s0d",
+  "feature": "repaginacao-visual",
+  "agent": "claude",
+  "modo": "paralelo",
+  "paralelizar": null,
+  "modeloForcado": null,
+  "esforcoForcado": null,
+  "geradoEm": "2026-09-10 00:44",
+  "branchTrabalho": "spec/repaginacao-visual",
+  "baseDir": ".spec/features/repaginacao-visual",
+  "specDir": ".spec",
+  "repoName": "api-externa-frontend-v2",
+  "logsDir": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-logs",
+  "ondas": [
+    [
+      "faixa-1",
+      "faixa-2",
+      "faixa-3"
+    ],
+    [
+      "faixa-4",
+      "faixa-5",
+      "faixa-6"
+    ],
+    [
+      "faixa-7",
+      "faixa-8",
+      "faixa-9"
+    ],
+    [
+      "faixa-10",
+      "faixa-11",
+      "faixa-12"
+    ]
+  ],
+  "faixas": [
+    {
+      "id": "faixa-1",
+      "branch": "spec/repaginacao-visual-faixa-1",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-1",
+      "tarefas": [
+        {
+          "id": "T-112",
+          "titulo": "Tokens da direção visual",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "src/styles/_tokens.scss",
+            "src/styles/_tema.scss",
+            "src/styles/tokens.spec.ts"
+          ],
+          "refs": [
+            "US-079",
+            "AC-282",
+            "AC-283"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-2",
+      "branch": "spec/repaginacao-visual-faixa-2",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-2",
+      "tarefas": [
+        {
+          "id": "T-113",
+          "titulo": "Botão único do produto",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "src/app/shared/botao/botao.ts",
+            "src/app/shared/botao/botao.html",
+            "src/app/shared/botao/botao.scss",
+            "src/app/shared/botao/botao.spec.ts"
+          ],
+          "refs": [
+            "US-075",
+            "AC-267",
+            "AC-268",
+            "AC-269"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-3",
+      "branch": "spec/repaginacao-visual-faixa-3",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-3",
+      "tarefas": [
+        {
+          "id": "T-114",
+          "titulo": "Migrar todo template para o botão único",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "src/app/layout/casca.html",
+            "src/app/shared/paginador/paginador.html",
+            "src/app/shared/confirmacao/dialogo-confirmacao.html",
+            "src/app/shared/estado-vazio/estado-vazio.html",
+            "src/app/shared/tabela/cabecalho-ordenavel.html",
+            "src/app/features/acesso/login/login.html",
+            "src/app/features/acesso/cadastro/cadastro.html",
+            "src/app/features/carteiras/lista/lista-carteiras.html",
+            "src/app/features/carteiras/criacao/criar-carteira.html",
+            "src/app/features/carteiras/detalhe/detalhe-carteira.html",
+            "src/app/features/carteiras/detalhe/movimentacoes-carteira.html",
+            "src/app/features/corretoras/lista/lista-corretoras.html",
+            "src/app/features/corretoras/cadastro/cadastro-corretora.html",
+            "src/app/features/corretoras/detalhe/detalhe-corretora.html",
+            "src/app/features/acoes/lista/lista-acoes.html",
+            "src/app/features/acoes/cadastro/cadastro-acao.html",
+            "src/app/features/acoes/detalhe/detalhe-acao.html",
+            "src/app/features/operacoes/formulario/formulario-operacao.html",
+            "src/app/features/operacoes/edicao/editar-operacao.html",
+            "src/app/shared/botao/padrao-unico.spec.ts"
+          ],
+          "refs": [
+            "US-075",
+            "AC-266"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-4",
+      "branch": "spec/repaginacao-visual-faixa-4",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-4",
+      "tarefas": [
+        {
+          "id": "T-115",
+          "titulo": "Casca responsiva com menu compacto",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "src/styles.scss",
+            "src/app/layout/casca.ts",
+            "src/app/layout/casca.scss",
+            "src/app/layout/casca.spec.ts"
+          ],
+          "refs": [
+            "US-076",
+            "AC-270",
+            "AC-271"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-5",
+      "branch": "spec/repaginacao-visual-faixa-5",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-5",
+      "tarefas": [
+        {
+          "id": "T-116",
+          "titulo": "Tabela com rolagem contida",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/shared/tabela/tabela.scss",
+            "src/app/shared/tabela/tabela.spec.ts",
+            "src/app/shared/tabela/rolagem-contida.spec.ts"
+          ],
+          "refs": [
+            "US-076",
+            "AC-272"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-6",
+      "branch": "spec/repaginacao-visual-faixa-6",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-6",
+      "tarefas": [
+        {
+          "id": "T-117",
+          "titulo": "Barra de cotações contida",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/painel/blocos/barra-mercado.html",
+            "src/app/features/painel/blocos/barra-mercado.scss",
+            "src/app/features/painel/blocos/barra-mercado.spec.ts"
+          ],
+          "refs": [
+            "US-077",
+            "AC-274",
+            "AC-275"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-7",
+      "branch": "spec/repaginacao-visual-faixa-7",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-7",
+      "tarefas": [
+        {
+          "id": "T-118",
+          "titulo": "Mapa de blocos das posições",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "src/app/features/desempenho/blocos/blocos-do-mapa.ts",
+            "src/app/features/desempenho/blocos/blocos-do-mapa.spec.ts",
+            "src/app/features/desempenho/blocos/grafico-mapa-posicoes.ts",
+            "src/app/features/desempenho/blocos/grafico-mapa-posicoes.html",
+            "src/app/features/desempenho/blocos/grafico-mapa-posicoes.scss",
+            "src/app/features/desempenho/blocos/grafico-mapa-posicoes.spec.ts"
+          ],
+          "refs": [
+            "US-078",
+            "AC-276",
+            "AC-280",
+            "AC-281"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-8",
+      "branch": "spec/repaginacao-visual-faixa-8",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-8",
+      "tarefas": [
+        {
+          "id": "T-119",
+          "titulo": "Investido × valor de mercado",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/desempenho/blocos/grafico-investido-mercado.ts",
+            "src/app/features/desempenho/blocos/grafico-investido-mercado.html",
+            "src/app/features/desempenho/blocos/grafico-investido-mercado.scss",
+            "src/app/features/desempenho/blocos/grafico-investido-mercado.spec.ts"
+          ],
+          "refs": [
+            "US-078",
+            "AC-277",
+            "AC-280",
+            "AC-281"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-9",
+      "branch": "spec/repaginacao-visual-faixa-9",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-9",
+      "tarefas": [
+        {
+          "id": "T-120",
+          "titulo": "Quadrante participação × rentabilidade",
+          "modelo": "claude-sonnet-5",
+          "esforco": "high",
+          "arquivos": [
+            "src/app/features/desempenho/blocos/grafico-quadrante.ts",
+            "src/app/features/desempenho/blocos/grafico-quadrante.html",
+            "src/app/features/desempenho/blocos/grafico-quadrante.scss",
+            "src/app/features/desempenho/blocos/grafico-quadrante.spec.ts"
+          ],
+          "refs": [
+            "US-078",
+            "AC-278",
+            "AC-280",
+            "AC-281"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-10",
+      "branch": "spec/repaginacao-visual-faixa-10",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-10",
+      "tarefas": [
+        {
+          "id": "T-121",
+          "titulo": "Medidor de concentração",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/desempenho/blocos/concentracao-da-carteira.ts",
+            "src/app/features/desempenho/blocos/concentracao-da-carteira.spec.ts",
+            "src/app/features/desempenho/blocos/grafico-concentracao.ts",
+            "src/app/features/desempenho/blocos/grafico-concentracao.html",
+            "src/app/features/desempenho/blocos/grafico-concentracao.scss",
+            "src/app/features/desempenho/blocos/grafico-concentracao.spec.ts"
+          ],
+          "refs": [
+            "US-078",
+            "AC-279",
+            "AC-281"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-11",
+      "branch": "spec/repaginacao-visual-faixa-11",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-11",
+      "tarefas": [
+        {
+          "id": "T-122",
+          "titulo": "Grade responsiva do desempenho",
+          "modelo": "claude-sonnet-5",
+          "esforco": "medium",
+          "arquivos": [
+            "src/app/features/desempenho/desempenho.html",
+            "src/app/features/desempenho/desempenho.scss",
+            "src/app/features/desempenho/desempenho.spec.ts"
+          ],
+          "refs": [
+            "US-076",
+            "US-078",
+            "AC-273"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faixa-12",
+      "branch": "spec/repaginacao-visual-faixa-12",
+      "worktree": "../onp-worktrees/api-externa-frontend-v2-repaginacao-visual-faixa-12",
+      "tarefas": [
+        {
+          "id": "T-123",
+          "titulo": "Movimento com freio",
+          "modelo": "claude-sonnet-5",
+          "esforco": "low",
+          "arquivos": [
+            "src/styles/movimento.spec.ts",
+            ".onp-uiux.json"
+          ],
+          "refs": [
+            "US-079",
+            "AC-284"
+          ]
+        }
+      ]
+    }
+  ],
+  "sequenciais": [],
+  "concluidas": [],
+  "avisos": []
+}

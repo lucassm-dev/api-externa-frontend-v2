@@ -1,5 +1,5 @@
-// Escalas e medidas do produto. Desktop apenas no v1 (PRD-001): sem breakpoints
-// de celular, sem menu para tela pequena.
+// Escalas e medidas do produto. O piso de tela é 360px (Q-035): nada aqui é
+// largura de janela, tudo é largura de conteúdo.
 
 :root {
   --espaco-1: 4px;
@@ -8,19 +8,64 @@
   --espaco-4: 16px;
   --espaco-5: 24px;
   --espaco-6: 32px;
+  --espaco-7: 48px;
+  --espaco-8: 64px;
 
-  --raio: 6px;
-  --raio-grande: 10px;
-  --largura-minima-app: 1024px;
+  --raio-pequeno: 6px;
+  --raio: 10px;
+  --raio-grande: 16px;
+  --raio-pilula: 999px;
 
+  // Larguras de CONTEÚDO, nunca de janela. A faixa de cotações é a mais
+  // estreita de propósito: ela informa o mercado, não a carteira (AC-274).
+  --largura-conteudo: 1360px;
+  --largura-cotacoes: 760px;
+  --largura-formulario: 460px;
+  --largura-leitura: 68ch;
+
+  // Profundidade com deslocamento e desfoque: halo sem offset é enfeite.
   --sombra-baixa: 0 1px 2px var(--cor-sombra);
+  --sombra-cartao: 0 2px 6px var(--cor-sombra);
   --sombra-media: 0 8px 24px var(--cor-sombra);
   --sombra-alta: 0 16px 40px var(--cor-sombra);
 
+  // Duas famílias, e não mais que duas. A monoespaçada existe por medição —
+  // número que precisa alinhar em coluna —, não como fantasia de "técnico".
   --fonte: 'Roboto', 'Segoe UI', system-ui, sans-serif;
   --fonte-numero: 'Roboto Mono', ui-monospace, 'SF Mono', monospace;
 
-  --texto-pequeno: 12px;
+  // Degraus nomeados da escala de tipos (AC-283). Uma tela escolhe um degrau,
+  // não um número solto.
+  --texto-rotulo: 12px;
+  --texto-apoio: 13px;
   --texto-base: 14px;
-  --texto-grande: 18px;
+  --texto-medio: 16px;
+  --texto-grande: 20px;
+  --texto-titulo: 28px;
+  --texto-display: 40px;
+  --texto-pequeno: var(--texto-rotulo);
+
+  --altura-apertada: 1.2;
+  --altura-base: 1.5;
+
+  --peso-normal: 400;
+  --peso-medio: 500;
+  --peso-forte: 700;
+
+  --entrelinha-titulo: -0.02em;
+  --entrelinha-rotulo: 0.04em;
+
+  // Alvo de toque do WCAG para dedo, que é o piso desta repaginação (AC-269).
+  --alvo-toque: 44px;
+  --alvo-minimo: 32px;
+
+  --duracao-rapida: 120ms;
+  --duracao: 220ms;
+  --duracao-lenta: 420ms;
+  --saida: cubic-bezier(0.16, 1, 0.3, 1);
+  --entrada: cubic-bezier(0.4, 0, 0.2, 1);
+
+  // Anel de foco de duas camadas: o halo garante que o anel apareça também
+  // sobre preenchimento saturado (amarelo, azul, vermelho).
+  --anel-foco: 0 0 0 2px var(--cor-foco-halo), 0 0 0 4px var(--cor-foco);
 }
