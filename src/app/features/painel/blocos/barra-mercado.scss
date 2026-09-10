@@ -4,9 +4,8 @@
   justify-content: space-between;
   gap: var(--espaco-4);
   width: 100%;
-  max-width: var(--largura-cotacoes);
-  margin-inline: auto;
-  padding: var(--espaco-2) var(--espaco-4);
+  min-height: var(--altura-cotacoes);
+  padding: 0 var(--espaco-4);
   border: 1px solid var(--cor-barra-mercado-borda);
   border-radius: var(--raio);
   background: var(--cor-barra-mercado-fundo);
@@ -34,8 +33,8 @@
 .grupo {
   display: flex;
   flex-shrink: 0;
-  gap: var(--espaco-5);
-  padding-right: var(--espaco-5);
+  gap: var(--espaco-6);
+  padding-right: var(--espaco-6);
   margin: 0;
   list-style: none;
 }
@@ -44,10 +43,12 @@
   display: flex;
   align-items: baseline;
   gap: var(--espaco-2);
-  padding: var(--espaco-1) var(--espaco-3);
-  border: 1px solid var(--cor-barra-mercado-borda);
-  border-radius: var(--raio);
-  background: color-mix(in srgb, var(--cor-barra-mercado-borda) 38%, var(--cor-barra-mercado-fundo));
+  // Sem preenchimento vertical: a espessura da faixa é o token, e não a soma
+  // do que cada chip resolve acrescentar.
+  padding: 0 var(--espaco-2);
+  border-radius: var(--raio-pequeno);
+  background: color-mix(in srgb, var(--cor-barra-mercado-borda) 30%, var(--cor-barra-mercado-fundo));
+  font-size: var(--texto-rotulo);
   white-space: nowrap;
 }
 
@@ -63,9 +64,9 @@
 
 .selo-variacao {
   align-self: center;
-  padding: 2px var(--espaco-2);
-  border-radius: var(--raio);
+  border-radius: var(--raio-pilula);
   background: color-mix(in srgb, var(--cor-barra-mercado-texto) 12%, transparent);
+  font-size: var(--texto-rotulo);
 }
 
 .horario {

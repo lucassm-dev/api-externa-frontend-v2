@@ -135,7 +135,7 @@ describe('Barra de mercado', () => {
     expect(trecho).toMatch(/\.chip\s*{[^}]*background:[^;]*--cor-barra-mercado/);
   });
 
-  it('@spec:AC-274 a faixa respeita a largura máxima em token, fica centralizada e mais baixa que os cartões, com o horário visível', async () => {
+  it('@spec:AC-274 a faixa é fina, atravessa o painel inteiro e mantém o horário visível', async () => {
     const elemento = await montar(cheia);
 
     // o horário da última atualização continua visível
@@ -143,24 +143,31 @@ describe('Barra de mercado', () => {
 
     const trecho = ESTILO.replace(/\s+/g, ' ');
 
-    // largura máxima definida em token, não na tela
-    expect(trecho).toMatch(
-      /\.barra-mercado\s*{[^}]*max-width:\s*var\(--largura-cotacoes\)/,
-    );
-    // centralizada no topo
-    expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*margin-inline:\s*auto/);
+    // sem teto próprio: o comprimento é o do painel, e não o que a faixa decidir
+    expect(trecho).not.toMatch(/\.barra-mercado\s*{[^}]*max-width:/);
+    expect(trecho).not.toMatch(/\.barra-mercado\s*{[^}]*margin-inline:\s*auto/);
 
-    // mais baixa que os cartões de conteúdo: padding vertical no menor degrau
-    expect(trecho).toMatch(
-      /\.barra-mercado\s*{[^}]*padding:\s*var\(--espaco-2\)\s+var\(--espaco-4\)/,
-    );
-    expect(trecho).toMatch(/\.chip\s*{[^}]*padding:\s*var\(--espaco-1\)\s+var\(--espaco-3\)/);
+    // a espessura vem de token, e sem padding vertical somando altura
+    expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*min-height:\s*var\(--altura-cotacoes\)/);
+    expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*padding:\s*0\s+var\(--espaco-4\)/);
+
+    // e é mais fina que o alvo de toque — ou seja, mais fina que qualquer cartão
+    const escalas = readFileSync('src/styles/_tema.scss', 'utf8');
+    const altura = Number(escalas.match(/--altura-cotacoes:\s*(\d+)px/)?.[1]);
+    const alvo = Number(escalas.match(/--alvo-toque:\s*(\d+)px/)?.[1]);
+    expect(altura).toBeGreaterThan(0);
+    expect(altura).toBeLessThan(alvo);
+
+    // o chip perde a moldura e o preenchimento vertical: quem define a
+    // espessura da faixa é o token, não a soma do que cada chip acrescenta
+    expect(trecho).not.toMatch(/\.chip\s*{[^}]*border:/);
+    expect(trecho).toMatch(/\.chip\s*{[^}]*padding:\s*0\s+var\(--espaco-2\)/);
   });
 
-  it('@spec:AC-275 a faixa cresce só até o teto, nunca força largura maior que a tela, e o movimento respeita prefers-reduced-motion', () => {
+  it('@spec:AC-275 a faixa nunca força largura maior que a tela, e o movimento respeita prefers-reduced-motion', () => {
     const trecho = ESTILO.replace(/\s+/g, ' ');
 
-    // fluida: ocupa a largura disponível até o teto do token
+    // fluida: ocupa a largura que o painel der
     expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*width:\s*100%/);
     // nunca impõe largura mínima maior que a tela estreita
     expect(trecho).not.toMatch(/\.barra-mercado\s*{[^}]*min-width:/);

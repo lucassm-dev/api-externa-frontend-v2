@@ -1,0 +1,60 @@
+<h2>Como o investidor deve aparecer?</h2>
+<p class="subtitle">As três opções mantêm os botões de tema e sair como ícones independentes no canto superior direito.</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 26px 18px; background:#111419;">
+      <div style="display:flex;align-items:center;justify-content:flex-end;gap:10px;min-height:52px;padding:0 14px;border:1px solid #293039;background:#171b21;color:#f6f7f8;">
+        <button aria-label="Ativar tema claro" style="display:grid;place-items:center;width:40px;height:40px;border:1px solid #39414b;border-radius:8px;background:#20262d;color:#eaef1b;font-size:19px;">☀</button>
+        <button aria-label="Sair" style="display:grid;place-items:center;width:40px;height:40px;border:1px solid #39414b;border-radius:8px;background:#20262d;color:#f6f7f8;font-size:18px;">↪</button>
+        <div title="lucas@exemplo.com" style="display:grid;place-items:center;width:42px;height:42px;border:2px solid #eaef1b;border-radius:50%;background:#252b32;color:#f6f7f8;font-size:13px;font-weight:750;letter-spacing:.04em;">LE</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Avatar compacto</h3>
+      <p>Mostra as iniciais; o e-mail completo aparece ao passar o mouse ou focar. É a opção mais limpa.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 26px 18px; background:#111419;">
+      <div style="display:flex;align-items:center;justify-content:flex-end;gap:10px;min-height:52px;padding:0 14px;border:1px solid #293039;background:#171b21;color:#f6f7f8;">
+        <button aria-label="Ativar tema claro" style="display:grid;place-items:center;width:40px;height:40px;border:1px solid #39414b;border-radius:8px;background:#20262d;color:#eaef1b;font-size:19px;">☀</button>
+        <button aria-label="Sair" style="display:grid;place-items:center;width:40px;height:40px;border:1px solid #39414b;border-radius:8px;background:#20262d;color:#f6f7f8;font-size:18px;">↪</button>
+        <div style="display:flex;align-items:center;gap:9px;padding:4px 11px 4px 4px;border:1px solid #39414b;border-radius:999px;background:#20262d;">
+          <span style="display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#eaef1b;color:#111419;font-size:11px;font-weight:800;">LE</span>
+          <span style="font-size:12px;">lucas@exemplo.com</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Avatar com e-mail</h3>
+      <p>O círculo identifica o perfil e o endereço continua sempre visível. Ocupa mais espaço.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 26px 18px; background:#111419;">
+      <div style="display:flex;align-items:center;justify-content:flex-end;gap:10px;min-height:52px;padding:0 14px;border:1px solid #293039;background:#171b21;color:#f6f7f8;">
+        <div style="display:flex;flex-direction:column;align-items:flex-end;line-height:1.2;margin-right:3px;">
+          <span style="font-size:10px;color:#aeb6c0;">Investidor</span>
+          <span style="font-size:12px;">lucas@exemplo.com</span>
+        </div>
+        <div style="display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#eaef1b;color:#111419;font-size:13px;font-weight:800;">LE</div>
+        <button aria-label="Ativar tema claro" style="display:grid;place-items:center;width:40px;height:40px;border:1px solid #39414b;border-radius:8px;background:#20262d;color:#eaef1b;font-size:19px;">☀</button>
+        <button aria-label="Sair" style="display:grid;place-items:center;width:40px;height:40px;border:1px solid #39414b;border-radius:8px;background:#20262d;color:#f6f7f8;font-size:18px;">↪</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Identidade completa</h3>
+      <p>Avatar e e-mail ficam separados, com o rótulo “Investidor”. Tem maior presença visual.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:24px;">
+  <div class="pros-cons">
+    <div class="pros"><h4>Recomendação</h4><ul><li>Opção A: reduz ruído, funciona melhor no celular e ainda mantém o e-mail acessível.</li></ul></div>
+    <div class="cons"><h4>Atenção</h4><ul><li>O e-mail não fica permanentemente visível na opção A; aparece no tooltip acessível.</li></ul></div>
+  </div>
+</div>

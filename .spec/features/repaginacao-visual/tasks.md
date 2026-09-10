@@ -73,12 +73,13 @@
 - Arquivos: src/app/features/painel/blocos/barra-mercado.html, src/app/features/painel/blocos/barra-mercado.scss, src/app/features/painel/blocos/barra-mercado.spec.ts
 - Modelo: claude-sonnet-5
 - Esforço: medio
-- Notas: hoje ela ocupa a largura inteira do painel para exibir seis chips. Passa a
-  respeitar a largura máxima em token, centralizada, com chips mais baixos e mais
-  discretos — como a faixa de ETH/SOL no topo da `imagem-base.webp`. O horário da
-  última atualização continua visível (é verdade de produto, não enfeite). A
-  360px, ocupa a largura disponível sem estourar, e `prefers-reduced-motion`
-  continua parando o movimento.
+- Notas: o que incomoda é a ESPESSURA, não o comprimento — a faixa deve atravessar
+  o painel inteiro, como a faixa de ETH/SOL no topo da `imagem-base.webp`, e ser
+  fina o bastante para não competir com os cartões. A altura vem do token
+  `--altura-cotacoes`, os chips perdem moldura e caixa e viram só texto, e o
+  horário da última atualização continua visível (é verdade de produto, não
+  enfeite). A 360px ocupa a largura disponível sem estourar, e
+  `prefers-reduced-motion` continua parando o movimento.
 
 ## T-118 — Mapa de blocos das posições [concluida]
 - Refs: US-078, AC-276, AC-280, AC-281

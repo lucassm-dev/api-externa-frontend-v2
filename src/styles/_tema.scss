@@ -16,10 +16,8 @@
   --raio-grande: 16px;
   --raio-pilula: 999px;
 
-  // Larguras de CONTEÚDO, nunca de janela. A faixa de cotações é a mais
-  // estreita de propósito: ela informa o mercado, não a carteira (AC-274).
+  // Larguras de CONTEÚDO, nunca de janela.
   --largura-conteudo: 1360px;
-  --largura-cotacoes: 760px;
   --largura-formulario: 460px;
   --largura-leitura: 68ch;
 
@@ -58,6 +56,10 @@
   // Alvo de toque do WCAG para dedo, que é o piso desta repaginação (AC-269).
   --alvo-toque: 44px;
   --alvo-minimo: 32px;
+
+  // A faixa de cotações atravessa o painel inteiro — é o mercado passando —,
+  // mas fina: ela informa o mercado, e a carteira é que é o assunto (AC-274).
+  --altura-cotacoes: 36px;
 
   --duracao-rapida: 120ms;
   --duracao: 220ms;

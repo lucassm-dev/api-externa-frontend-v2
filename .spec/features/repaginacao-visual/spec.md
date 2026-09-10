@@ -95,23 +95,23 @@ carteira fora da mesa de trabalho.
 
 ### US-077 — Ler as cotações sem que elas dominem o topo
 
-Como investidor, quero que a faixa de cotações seja discreta, para que o topo do
+Como investidor, quero que a faixa de cotações seja fina, para que o topo do
 painel continue sendo sobre a minha carteira.
 
-#### AC-274 — A faixa tem largura contida e altura baixa
+#### AC-274 — A faixa é fina, e atravessa o painel inteiro
 
 - **Dado** o painel em tela larga
 - **Quando** a barra de cotações é exibida
-- **Então** ela respeita uma largura máxima definida em token, fica centralizada
-  no topo e é mais baixa que os cartões de conteúdo, mantendo visível o horário
-  da última atualização
+- **Então** ela acompanha a largura do painel, sem teto próprio, e sua espessura
+  vem de um token menor que o alvo de toque — mais fina que qualquer cartão de
+  conteúdo —, mantendo visível o horário da última atualização
 
 #### AC-275 — A faixa continua inteira na tela estreita
 
 - **Dado** uma tela de 360px
 - **Quando** a barra de cotações é exibida
-- **Então** ela ocupa a largura disponível sem estourar a horizontal, e o
-  movimento continua respeitando `prefers-reduced-motion`
+- **Então** ela ocupa a largura disponível sem estourar a horizontal nem impor
+  largura mínima, e o movimento continua respeitando `prefers-reduced-motion`
 
 ### US-078 — Explorar a carteira, não só olhar
 
