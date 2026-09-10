@@ -33,14 +33,21 @@ describe('Rotas de acesso e da área interna', () => {
     );
   }
 
-  it('@spec:AC-042 sem sessão, um endereço interno não renderiza e para no login', async () => {
-    await montar();
+  // Prazo próprio: é a primeira navegação da suíte e ela paga o carregamento
+  // preguiçoso das rotas internas. O custo é de arranque, não da asserção — os
+  // testes seguintes deste mesmo arquivo terminam em milissegundos.
+  it(
+    '@spec:AC-042 sem sessão, um endereço interno não renderiza e para no login',
+    async () => {
+      await montar();
 
-    await harness.navigateByUrl('/painel');
+      await harness.navigateByUrl('/painel');
 
-    expect(router.url).toContain('/entrar');
-    expect((harness.routeNativeElement as HTMLElement).textContent).not.toMatch(/painel/i);
-  });
+      expect(router.url).toContain('/entrar');
+      expect((harness.routeNativeElement as HTMLElement).textContent).not.toMatch(/painel/i);
+    },
+    30_000,
+  );
 
   it('@spec:AC-042 depois de sair, voltar ao endereço interno continua barrado', async () => {
     await montar();

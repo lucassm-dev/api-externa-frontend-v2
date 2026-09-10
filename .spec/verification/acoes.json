@@ -1,145 +1,145 @@
 {
   "feature": "acoes",
-  "timestamp": "2026-09-09T23:39:27.208Z",
-  "gitRev": "af1a825",
+  "timestamp": "2026-09-10T02:43:30.437Z",
+  "gitRev": "e1ae88e",
   "command": "npx ng test",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 526,
+  "testsParsed": 600,
   "results": {
     "AC-121": {
       "status": "pass",
-      "testName": "src/app/features/acoes/cadastro/cadastro-acao.spec.ts > Cadastro de ação > @spec:AC-121 o formulário tem exatamente dois campos, ticker e mercado # time=10.71ms",
+      "testName": "src/app/features/acoes/cadastro/cadastro-acao.spec.ts > Cadastro de ação > @spec:AC-121 o formulário tem exatamente dois campos, ticker e mercado # time=105.33ms",
       "method": "tap"
     },
     "AC-122": {
       "status": "pass",
-      "testName": "src/app/features/acoes/acoes.service.spec.ts > Serviço do catálogo de ações > @spec:AC-122 o cadastro envia só ticker e mercado, e devolve a ação com cotação datada # time=0.62ms",
+      "testName": "src/app/features/acoes/acoes.service.spec.ts > Serviço do catálogo de ações > @spec:AC-122 o cadastro envia só ticker e mercado, e devolve a ação com cotação datada # time=9.60ms",
       "method": "tap"
     },
     "AC-123": {
       "status": "pass",
-      "testName": "src/app/features/acoes/cadastro/cadastro-acao.spec.ts > Cadastro de ação > @spec:AC-123 clicar de novo durante a consulta não dispara requisição extra # time=12.04ms",
+      "testName": "src/app/features/acoes/cadastro/cadastro-acao.spec.ts > Cadastro de ação > @spec:AC-123 clicar de novo durante a consulta não dispara requisição extra # time=49.41ms",
       "method": "tap"
     },
     "AC-124": {
       "status": "pass",
-      "testName": "src/app/features/acoes/cadastro/cadastro-acao.spec.ts > Cadastro de ação > @spec:AC-124 EXT-008 mantém ticker e mercado no formulário, sem criar ação # time=14.25ms",
+      "testName": "src/app/features/acoes/cadastro/cadastro-acao.spec.ts > Cadastro de ação > @spec:AC-124 EXT-008 mantém ticker e mercado no formulário, sem criar ação # time=44.48ms",
       "method": "tap"
     },
     "AC-125": {
       "status": "pass",
-      "testName": "src/app/features/acoes/cadastro/cadastro-acao.spec.ts > Cadastro de ação > @spec:AC-125 ACA-002 busca a ação existente e oferece abri-la # time=14.93ms",
+      "testName": "src/app/features/acoes/cadastro/cadastro-acao.spec.ts > Cadastro de ação > @spec:AC-125 ACA-002 busca a ação existente e oferece abri-la # time=64.90ms",
       "method": "tap"
     },
     "AC-126": {
       "status": "pass",
-      "testName": "src/app/features/acoes/acoes.service.spec.ts > Serviço do catálogo de ações > @spec:AC-126 uma carteira no servidor é o bastante para saber que o investidor tem carteira # time=0.36ms",
+      "testName": "src/app/features/acoes/acoes.service.spec.ts > Serviço do catálogo de ações > @spec:AC-126 uma carteira no servidor é o bastante para saber que o investidor tem carteira # time=0.69ms",
       "method": "tap"
     },
     "AC-127": {
       "status": "pass",
-      "testName": "src/app/features/acoes/acoes.service.spec.ts > Serviço do catálogo de ações > @spec:AC-127 catálogo de carteiras vazio responde que o investidor não tem carteira # time=0.28ms",
+      "testName": "src/app/features/acoes/acoes.service.spec.ts > Serviço do catálogo de ações > @spec:AC-127 catálogo de carteiras vazio responde que o investidor não tem carteira # time=0.59ms",
       "method": "tap"
     },
     "AC-128": {
       "status": "pass",
-      "testName": "src/app/features/acoes/acoes.service.spec.ts > Serviço do catálogo de ações > @spec:AC-128 consulta de carteiras que falha vira estado desconhecido, nunca \"não tem\" # time=0.27ms",
+      "testName": "src/app/features/acoes/acoes.service.spec.ts > Serviço do catálogo de ações > @spec:AC-128 consulta de carteiras que falha vira estado desconhecido, nunca \"não tem\" # time=0.66ms",
       "method": "tap"
     },
     "AC-129": {
       "status": "pass",
-      "testName": "src/app/features/acoes/cadastro/cadastro-acao.spec.ts > Cadastro de ação > @spec:AC-129 ACA-004 do backend continua tratado, com o atalho para criar carteira # time=14.79ms",
+      "testName": "src/app/features/acoes/cadastro/cadastro-acao.spec.ts > Cadastro de ação > @spec:AC-129 ACA-004 do backend continua tratado, com o atalho para criar carteira # time=88.98ms",
       "method": "tap"
     },
     "AC-130": {
       "status": "pass",
-      "testName": "src/app/features/acoes/lista/lista-acoes.spec.ts > Lista de ações > @spec:AC-130 o título é \"Ações\" e o catálogo é declarado compartilhado # time=13.87ms",
+      "testName": "src/app/features/acoes/lista/lista-acoes.spec.ts > Lista de ações > @spec:AC-130 o título é \"Ações\" e o catálogo é declarado compartilhado # time=373.02ms",
       "method": "tap"
     },
     "AC-131": {
       "status": "pass",
-      "testName": "src/app/features/acoes/lista/lista-acoes.spec.ts > Lista de ações > @spec:AC-131 cada linha traz ticker, empresa, mercado, moeda e cotação com horário # time=9.57ms",
+      "testName": "src/app/features/acoes/lista/lista-acoes.spec.ts > Lista de ações > @spec:AC-131 cada linha traz ticker, empresa, mercado, moeda e cotação com horário # time=66.23ms",
       "method": "tap"
     },
     "AC-132": {
       "status": "pass",
-      "testName": "src/app/features/acoes/acoes.service.spec.ts > Serviço do catálogo de ações > @spec:AC-132 a listagem pede a página que a tela pediu # time=0.34ms",
+      "testName": "src/app/features/acoes/acoes.service.spec.ts > Serviço do catálogo de ações > @spec:AC-132 a listagem pede a página que a tela pediu # time=1.44ms",
       "method": "tap"
     },
     "AC-133": {
       "status": "pass",
-      "testName": "src/app/features/acoes/acoes.routes.spec.ts > Rotas das ações > @spec:AC-133 a área de ações tem lista e cadastro com endereço próprio # time=14.37ms",
+      "testName": "src/app/features/acoes/acoes.routes.spec.ts > Rotas das ações > @spec:AC-133 a área de ações tem lista e cadastro com endereço próprio # time=101.06ms",
       "method": "tap"
     },
     "AC-134": {
       "status": "pass",
-      "testName": "src/app/features/acoes/lista/lista-acoes.spec.ts > Lista de ações > @spec:AC-134 a lista não marca posse nem consulta posições do investidor # time=9.81ms",
+      "testName": "src/app/features/acoes/lista/lista-acoes.spec.ts > Lista de ações > @spec:AC-134 a lista não marca posse nem consulta posições do investidor # time=71.47ms",
       "method": "tap"
     },
     "AC-135": {
       "status": "pass",
-      "testName": "src/app/features/acoes/detalhe/detalhe-acao.spec.ts > Detalhe da ação > @spec:AC-135 cotação com mais de 15 minutos aparece marcada como defasada # time=4.94ms",
+      "testName": "src/app/features/acoes/detalhe/detalhe-acao.spec.ts > Detalhe da ação > @spec:AC-135 cotação com mais de 15 minutos aparece marcada como defasada # time=11.27ms",
       "method": "tap"
     },
     "AC-136": {
       "status": "pass",
-      "testName": "src/app/features/acoes/acoes.service.spec.ts > Serviço do catálogo de ações > @spec:AC-136 a atualização de cotação só sai quando é pedida, e sem forçar por padrão # time=0.29ms",
+      "testName": "src/app/features/acoes/acoes.service.spec.ts > Serviço do catálogo de ações > @spec:AC-136 a atualização de cotação só sai quando é pedida, e sem forçar por padrão # time=1.09ms",
       "method": "tap"
     },
     "AC-137": {
       "status": "pass",
-      "testName": "src/app/features/acoes/desfecho-cotacao.spec.ts > Desfecho da atualização de cotação > @spec:AC-137 preço e horário novos são comunicados como cotação atualizada # time=0.14ms",
+      "testName": "src/app/features/acoes/desfecho-cotacao.spec.ts > Desfecho da atualização de cotação > @spec:AC-137 preço e horário novos são comunicados como cotação atualizada # time=0.74ms",
       "method": "tap"
     },
     "AC-138": {
       "status": "pass",
-      "testName": "src/app/features/acoes/desfecho-cotacao.spec.ts > Desfecho da atualização de cotação > @spec:AC-138 mesmo preço e mesmo horário significam cache válido, não falha # time=0.09ms",
+      "testName": "src/app/features/acoes/desfecho-cotacao.spec.ts > Desfecho da atualização de cotação > @spec:AC-138 mesmo preço e mesmo horário significam cache válido, não falha # time=0.44ms",
       "method": "tap"
     },
     "AC-139": {
       "status": "pass",
-      "testName": "src/app/features/acoes/detalhe/detalhe-acao.spec.ts > Detalhe da ação > @spec:AC-139 EXT-009 mantém o último preço e nomeia o horário dele # time=10.09ms",
+      "testName": "src/app/features/acoes/detalhe/detalhe-acao.spec.ts > Detalhe da ação > @spec:AC-139 EXT-009 mantém o último preço e nomeia o horário dele # time=18.58ms",
       "method": "tap"
     },
     "AC-140": {
       "status": "pass",
-      "testName": "src/app/features/acoes/detalhe/detalhe-acao.spec.ts > Detalhe da ação > @spec:AC-140 EXT-010 mantém o preço com mensagem diferente da de EXT-009 # time=9.35ms",
+      "testName": "src/app/features/acoes/detalhe/detalhe-acao.spec.ts > Detalhe da ação > @spec:AC-140 EXT-010 mantém o preço com mensagem diferente da de EXT-009 # time=18.06ms",
       "method": "tap"
     },
     "AC-141": {
       "status": "pass",
-      "testName": "src/app/features/acoes/detalhe/detalhe-acao.spec.ts > Detalhe da ação > @spec:AC-141 forçar só aparece depois de o cache ter sido reaproveitado # time=9.37ms",
+      "testName": "src/app/features/acoes/detalhe/detalhe-acao.spec.ts > Detalhe da ação > @spec:AC-141 forçar só aparece depois de o cache ter sido reaproveitado # time=21.80ms",
       "method": "tap"
     },
     "AC-142": {
       "status": "pass",
-      "testName": "src/app/features/acoes/acoes.service.spec.ts > Serviço do catálogo de ações > @spec:AC-142 forçar manda o pedido explícito de ignorar o cache # time=0.25ms",
+      "testName": "src/app/features/acoes/acoes.service.spec.ts > Serviço do catálogo de ações > @spec:AC-142 forçar manda o pedido explícito de ignorar o cache # time=0.70ms",
       "method": "tap"
     },
     "AC-143": {
       "status": "pass",
-      "testName": "src/app/features/acoes/detalhe/detalhe-acao.spec.ts > Detalhe da ação > @spec:AC-143 remover pede confirmação com a consequência antes de qualquer requisição # time=7.70ms",
+      "testName": "src/app/features/acoes/detalhe/detalhe-acao.spec.ts > Detalhe da ação > @spec:AC-143 remover pede confirmação com a consequência antes de qualquer requisição # time=14.84ms",
       "method": "tap"
     },
     "AC-144": {
       "status": "pass",
-      "testName": "src/app/features/acoes/acoes.service.spec.ts > Serviço do catálogo de ações > @spec:AC-144 a exclusão usa o ticker no caminho, nunca o identificador # time=0.26ms",
+      "testName": "src/app/features/acoes/acoes.service.spec.ts > Serviço do catálogo de ações > @spec:AC-144 a exclusão usa o ticker no caminho, nunca o identificador # time=0.68ms",
       "method": "tap"
     },
     "AC-145": {
       "status": "pass",
-      "testName": "src/app/features/acoes/detalhe/detalhe-acao.spec.ts > Detalhe da ação > @spec:AC-145 ACA-003 cancela a exclusão sem expor de quem são as posições # time=10.03ms",
+      "testName": "src/app/features/acoes/detalhe/detalhe-acao.spec.ts > Detalhe da ação > @spec:AC-145 ACA-003 cancela a exclusão sem expor de quem são as posições # time=27.15ms",
       "method": "tap"
     },
     "AC-146": {
       "status": "pass",
-      "testName": "src/app/features/acoes/detalhe/detalhe-acao.spec.ts > Detalhe da ação > @spec:AC-146 removida, a ação some sem falar em lixeira nem desfazer # time=9.00ms",
+      "testName": "src/app/features/acoes/detalhe/detalhe-acao.spec.ts > Detalhe da ação > @spec:AC-146 removida, a ação some sem falar em lixeira nem desfazer # time=19.40ms",
       "method": "tap"
     },
     "AC-147": {
       "status": "pass",
-      "testName": "src/app/features/acoes/acoes.routes.spec.ts > Rotas das ações > @spec:AC-147 o detalhe abre pelo ticker na URL # time=8.28ms",
+      "testName": "src/app/features/acoes/acoes.routes.spec.ts > Rotas das ações > @spec:AC-147 o detalhe abre pelo ticker na URL # time=72.40ms",
       "method": "tap"
     }
   },
