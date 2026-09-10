@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, input, output, signal } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
+import { Botao } from '../../../shared/botao/botao';
 import { DialogoConfirmacao } from '../../../shared/confirmacao/dialogo-confirmacao';
 import {
   formatarDataHora,
@@ -29,7 +29,7 @@ export const AVISO_DE_RECALCULO_NA_CARTEIRA =
 @Component({
   selector: 'app-movimentacoes-carteira',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, MatButtonModule, DialogoConfirmacao, Esqueleto, Monograma, Selo],
+  imports: [RouterLink, Botao, DialogoConfirmacao, Esqueleto, Monograma, Selo],
   templateUrl: './movimentacoes-carteira.html',
   styleUrl: './movimentacoes-carteira.scss',
 })

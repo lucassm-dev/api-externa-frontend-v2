@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
+import { Botao } from '../../../shared/botao/botao';
 import { aplicarErroNoFormulario } from '../../../core/erros/erro-em-formulario';
 import { ErroTraduzido } from '../../../core/erros/tradutor-erro';
 import { MensagemFeedback } from '../../../core/feedback/mensagem-feedback';
@@ -30,7 +30,7 @@ import { CarteirasService } from '../carteiras.service';
     MensagemFeedback,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule,
+    Botao,
   ],
   templateUrl: './criar-carteira.html',
   styleUrl: './criar-carteira.scss',

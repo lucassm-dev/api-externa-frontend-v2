@@ -21,15 +21,24 @@
               aria-label="Novo nome da carteira"
             />
             <button
-              mat-flat-button
+              appBotao
+              intencao="primaria"
+              tamanho="compacto"
               type="button"
               data-salvar-nome
-              [disabled]="salvandoNome()"
+              [ocupado]="salvandoNome()"
               (click)="confirmarRenomeacao()"
             >
               Salvar
             </button>
-            <button mat-button type="button" data-cancelar-nome (click)="cancelarRenomeacao()">
+            <button
+              appBotao
+              intencao="sutil"
+              tamanho="compacto"
+              type="button"
+              data-cancelar-nome
+              (click)="cancelarRenomeacao()"
+            >
               Cancelar
             </button>
           </div>
@@ -41,7 +50,8 @@
 
       <div class="acoes">
         <a
-          mat-flat-button
+          appBotao
+          intencao="primaria"
           data-registrar-compra
           routerLink="/operacoes"
           [queryParams]="{ carteira: carteira.id, tipo: 'COMPRA' }"
@@ -49,15 +59,20 @@
           Registrar compra
         </a>
         <a
-          mat-stroked-button
+          appBotao
+          intencao="secundaria"
           data-registrar-venda
           routerLink="/operacoes"
           [queryParams]="{ carteira: carteira.id, tipo: 'VENDA' }"
         >
           Registrar venda
         </a>
-        <button mat-button type="button" data-renomear (click)="pedirRenomeacao()">Renomear</button>
-        <button mat-button type="button" data-excluir (click)="pedirExclusao()">Excluir</button>
+        <button appBotao intencao="sutil" type="button" data-renomear (click)="pedirRenomeacao()">
+          Renomear
+        </button>
+        <button appBotao intencao="destrutiva" type="button" data-excluir (click)="pedirExclusao()">
+          Excluir
+        </button>
       </div>
 
       <dl class="totais">

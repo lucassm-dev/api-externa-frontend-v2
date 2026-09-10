@@ -8,10 +8,10 @@ import {
   viewChild,
 } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Botao } from '../../../shared/botao/botao';
 import { CATALOGO_ERROS } from '../../../core/erros/catalogo-erros';
 import { aplicarErroNoFormulario } from '../../../core/erros/erro-em-formulario';
 import { ErroTraduzido } from '../../../core/erros/tradutor-erro';
@@ -31,7 +31,7 @@ import { MolduraAcesso } from '../moldura-acesso';
     MensagemFeedback,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule,
+    Botao,
   ],
   templateUrl: './login.html',
   styleUrl: './login.scss',

@@ -72,15 +72,17 @@
 
   <div class="botoes">
     <button
-      mat-flat-button
+      appBotao
+      intencao="primaria"
       type="button"
       data-salvar
-      [disabled]="!podeSalvar() || salvando()"
+      [desabilitado]="!podeSalvar()"
+      [ocupado]="salvando()"
       (click)="pedirConfirmacao()"
     >
       {{ salvando() ? 'Salvando…' : 'Salvar correção' }}
     </button>
-    <button mat-stroked-button type="button" data-cancelar-edicao (click)="fechar()">
+    <button appBotao intencao="secundaria" type="button" data-cancelar-edicao (click)="fechar()">
       Cancelar
     </button>
   </div>

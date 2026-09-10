@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
 import { LucideArrowUpRight, LucidePencil, LucideTrash2 } from '@lucide/angular';
 import { Pagina } from '../../../core/api/pagina';
 import { ErroTraduzido } from '../../../core/erros/tradutor-erro';
 import { MensagemFeedback } from '../../../core/feedback/mensagem-feedback';
 import { formatarReal } from '../../../core/formatacao/formatacao';
+import { Botao } from '../../../shared/botao/botao';
 import { BotaoIcone } from '../../../shared/botao-icone/botao-icone';
 import { DialogoConfirmacao } from '../../../shared/confirmacao/dialogo-confirmacao';
 import { Esqueleto } from '../../../shared/esqueleto/esqueleto';
@@ -31,7 +31,7 @@ import { CarteirasService, NumerosDaCarteira } from '../carteiras.service';
   imports: [
     FormsModule,
     RouterLink,
-    MatButtonModule,
+    Botao,
     MensagemFeedback,
     DialogoConfirmacao,
     Variacao,

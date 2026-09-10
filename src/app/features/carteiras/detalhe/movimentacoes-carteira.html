@@ -58,11 +58,20 @@
             </td>
             <td class="quando">{{ quando(movimentacao) }}</td>
             <td class="acoes">
-              <button mat-button type="button" data-editar (click)="editar.emit(movimentacao)">
+              <button
+                appBotao
+                intencao="sutil"
+                tamanho="compacto"
+                type="button"
+                data-editar
+                (click)="editar.emit(movimentacao)"
+              >
                 Editar
               </button>
               <button
-                mat-button
+                appBotao
+                intencao="destrutiva"
+                tamanho="compacto"
                 type="button"
                 data-excluir
                 (click)="pedirExclusao(movimentacao)"

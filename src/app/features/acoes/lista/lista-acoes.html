@@ -1,7 +1,7 @@
 <section class="tela">
   <header>
     <h1>Ações</h1>
-    <a mat-flat-button routerLink="/acoes/nova">Cadastrar ação</a>
+    <a appBotao intencao="primaria" routerLink="/acoes/nova">Cadastrar ação</a>
   </header>
 
   <p class="apoio" data-catalogo-compartilhado>
@@ -22,16 +22,22 @@
         (ngModelChange)="termo.set($event)"
       />
     </mat-form-field>
-    <button mat-button type="submit" [disabled]="buscando()">Buscar</button>
+    <button appBotao intencao="sutil" type="submit" [ocupado]="buscando()">Buscar</button>
   </form>
 
   @if (tickerSemResultado(); as ticker) {
     <div class="vazio" data-busca-vazia>
       <p>Nenhuma ação com o ticker {{ ticker }} está no catálogo.</p>
-      <a mat-flat-button data-cadastrar-buscado routerLink="/acoes/nova" [queryParams]="{ ticker }">
+      <a
+        appBotao
+        intencao="primaria"
+        data-cadastrar-buscado
+        routerLink="/acoes/nova"
+        [queryParams]="{ ticker }"
+      >
         Cadastrar este ticker
       </a>
-      <button mat-button type="button" (click)="limparBusca()">Limpar busca</button>
+      <button appBotao intencao="sutil" type="button" (click)="limparBusca()">Limpar busca</button>
     </div>
   }
 

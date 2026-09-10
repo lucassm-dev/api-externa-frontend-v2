@@ -13,7 +13,7 @@
         <h1>{{ nomeExibido(corretora) }}</h1>
         <p class="cnpj">{{ formatarCnpj(corretora.cnpj) }}</p>
       </div>
-      <button mat-stroked-button type="button" data-remover (click)="pedirRemocao()">
+      <button appBotao intencao="destrutiva" type="button" data-remover (click)="pedirRemocao()">
         Remover do catálogo
       </button>
     </header>

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, computed, inject, signal } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MensagemFeedback } from '../core/feedback/mensagem-feedback';
+import { Botao } from '../shared/botao/botao';
 import { AcessoService } from '../features/acesso/acesso.service';
 import { MINUTOS_AVISO_EXPIRACAO, ROTA_LOGIN } from '../core/sessao/sessao.model';
 import { SessaoService } from '../core/sessao/sessao.service';
@@ -18,7 +18,7 @@ const INTERVALO_DE_CHECAGEM_MS = 30_000;
 @Component({
   selector: 'app-casca',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, MensagemFeedback, MatButtonModule],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, MensagemFeedback, Botao],
   templateUrl: './casca.html',
   styleUrl: './casca.scss',
 })

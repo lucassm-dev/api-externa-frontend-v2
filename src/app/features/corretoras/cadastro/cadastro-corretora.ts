@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Botao } from '../../../shared/botao/botao';
 import { ErroTraduzido } from '../../../core/erros/tradutor-erro';
 import { MensagemFeedback } from '../../../core/feedback/mensagem-feedback';
 import { REGRA_CNPJ, cnpjValidator, formatarCnpj } from '../cnpj';
@@ -28,7 +28,7 @@ import { CorretorasService } from '../corretoras.service';
     MensagemFeedback,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule,
+    Botao,
   ],
   templateUrl: './cadastro-corretora.html',
   styleUrl: './cadastro-corretora.scss',

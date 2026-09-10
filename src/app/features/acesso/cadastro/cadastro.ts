@@ -8,10 +8,10 @@ import {
   viewChild,
 } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
+import { Botao } from '../../../shared/botao/botao';
 import { aplicarErroNoFormulario } from '../../../core/erros/erro-em-formulario';
 import { NivelFeedback } from '../../../core/feedback/feedback.model';
 import { MensagemFeedback } from '../../../core/feedback/mensagem-feedback';
@@ -41,7 +41,7 @@ import {
     MensagemFeedback,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule,
+    Botao,
   ],
   templateUrl: './cadastro.html',
   styleUrl: './cadastro.scss',
