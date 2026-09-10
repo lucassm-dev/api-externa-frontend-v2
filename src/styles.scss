@@ -31,5 +31,56 @@ body {
 body {
   background: var(--cor-fundo);
   color: var(--cor-texto);
-  font: var(--texto-base) / 1.5 var(--fonte);
+  font: var(--texto-base) / var(--altura-base) var(--fonte);
+  // Produto de números: dígito com largura fixa faz coluna de valor alinhar
+  // sem monoespaçar o texto inteiro.
+  font-variant-numeric: tabular-nums;
+}
+
+// As superfícies que o navegador desenha por nós também são o produto: seleção,
+// cursor, rolagem e foco saem do padrão de ninguém e passam a sair da paleta.
+::selection {
+  background: var(--cor-destaque);
+  color: var(--cor-destaque-texto);
+}
+
+* {
+  caret-color: var(--cor-acento);
+  scrollbar-color: var(--cor-borda) transparent;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: var(--raio-pilula);
+  background: var(--cor-borda);
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cor-texto-fraco);
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+// Piso de foco do produto: o que não for o botão compartilhado ainda ganha o
+// mesmo anel, em vez do contorno padrão de cada navegador.
+:where(a, button, select, input, textarea, summary, [tabindex]):focus-visible {
+  outline: none;
+  box-shadow: var(--anel-foco);
+  border-radius: var(--raio-pequeno);
+}
+
+a {
+  color: var(--cor-acento);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
 }

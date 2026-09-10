@@ -1,7 +1,7 @@
 {
   "feature": "desempenho",
-  "timestamp": "2026-09-10T02:50:31.477Z",
-  "gitRev": "a7703b6",
+  "timestamp": "2026-09-10T02:58:32.346Z",
+  "gitRev": "59f4c19",
   "command": "npx ng test",
   "reporter": "tap",
   "exitCode": 0,
@@ -9,62 +9,62 @@
   "results": {
     "AC-183": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/resultados.spec.ts > Os quatro números da carteira > @spec:AC-183 traz investido, valor de mercado, não realizado e realizado # time=0.20ms",
+      "testName": "src/app/features/desempenho/resultados.spec.ts > Os quatro números da carteira > @spec:AC-183 traz investido, valor de mercado, não realizado e realizado # time=0.53ms",
       "method": "tap"
     },
     "AC-184": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/resultados.spec.ts > Os quatro números da carteira > @spec:AC-184 realizado e não realizado ficam separados e nenhum campo os soma # time=0.15ms",
+      "testName": "src/app/features/desempenho/resultados.spec.ts > Os quatro números da carteira > @spec:AC-184 realizado e não realizado ficam separados e nenhum campo os soma # time=0.65ms",
       "method": "tap"
     },
     "AC-185": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/resultados.spec.ts > Os quatro números da carteira > @spec:AC-185 cada resultado traz o percentual sobre o investido # time=0.10ms",
+      "testName": "src/app/features/desempenho/resultados.spec.ts > Os quatro números da carteira > @spec:AC-185 cada resultado traz o percentual sobre o investido # time=0.24ms",
       "method": "tap"
     },
     "AC-186": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/resultados.spec.ts > Os quatro números da carteira > @spec:AC-186 investido zero não produz percentual, infinito nem NaN # time=0.07ms",
+      "testName": "src/app/features/desempenho/resultados.spec.ts > Os quatro números da carteira > @spec:AC-186 investido zero não produz percentual, infinito nem NaN # time=0.18ms",
       "method": "tap"
     },
     "AC-187": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/blocos/numeros-desempenho.spec.ts > Os quatro números no topo do desempenho > @spec:AC-187 ganho e perda trazem seta e palavra, não só cor # time=6.12ms",
+      "testName": "src/app/features/desempenho/blocos/numeros-desempenho.spec.ts > Os quatro números no topo do desempenho > @spec:AC-187 ganho e perda trazem seta e palavra, não só cor # time=25.71ms",
       "method": "tap"
     },
     "AC-188": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/blocos/numeros-desempenho.spec.ts > Os quatro números no topo do desempenho > @spec:AC-188 nenhum rótulo promete rentabilidade anualizada ou por período # time=5.92ms",
+      "testName": "src/app/features/desempenho/blocos/numeros-desempenho.spec.ts > Os quatro números no topo do desempenho > @spec:AC-188 nenhum rótulo promete rentabilidade anualizada ou por período # time=8.81ms",
       "method": "tap"
     },
     "AC-189": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/desempenho.service.spec.ts > Leituras da tela de desempenho > @spec:AC-189 as carteiras do seletor vêm da listagem, mais recente primeiro # time=1.35ms",
+      "testName": "src/app/features/desempenho/desempenho.service.spec.ts > Leituras da tela de desempenho > @spec:AC-189 as carteiras do seletor vêm da listagem, mais recente primeiro # time=2.08ms",
       "method": "tap"
     },
     "AC-190": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/desempenho.spec.ts > Tela de desempenho > @spec:AC-190 a carteira escolhida numa visita anterior é a que abre # time=25.66ms",
+      "testName": "src/app/features/desempenho/desempenho.spec.ts > Tela de desempenho > @spec:AC-190 a carteira escolhida numa visita anterior é a que abre # time=35.22ms",
       "method": "tap"
     },
     "AC-191": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/desempenho.spec.ts > Tela de desempenho > @spec:AC-191 todas as opções são carteiras concretas: não há visão somada de todas # time=34.29ms",
+      "testName": "src/app/features/desempenho/desempenho.spec.ts > Tela de desempenho > @spec:AC-191 todas as opções são carteiras concretas: não há visão somada de todas # time=70.64ms",
       "method": "tap"
     },
     "AC-192": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/composicao.spec.ts > Composição da carteira > @spec:AC-192 distribui o valor de mercado por ativo, da maior fatia à menor # time=0.68ms",
+      "testName": "src/app/features/desempenho/composicao.spec.ts > Composição da carteira > @spec:AC-192 distribui o valor de mercado por ativo, da maior fatia à menor # time=1.05ms",
       "method": "tap"
     },
     "AC-193": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/composicao.spec.ts > Composição da carteira > @spec:AC-193 a posição em dólar entra convertida, nunca pelo número em dólar # time=0.14ms",
+      "testName": "src/app/features/desempenho/composicao.spec.ts > Composição da carteira > @spec:AC-193 a posição em dólar entra convertida, nunca pelo número em dólar # time=0.23ms",
       "method": "tap"
     },
     "AC-194": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/composicao.spec.ts > Composição da carteira > @spec:AC-194 a soma das fatias bate com o valor de mercado, com moedas diferentes na mesma carteira # time=0.33ms",
+      "testName": "src/app/features/desempenho/composicao.spec.ts > Composição da carteira > @spec:AC-194 a soma das fatias bate com o valor de mercado, com moedas diferentes na mesma carteira # time=0.23ms",
       "method": "tap"
     },
     "AC-195": {
@@ -74,82 +74,82 @@
     },
     "AC-196": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/composicao.spec.ts > Composição da carteira > @spec:AC-196 ticker sem posição aberta não vira fatia nenhuma # time=0.12ms",
+      "testName": "src/app/features/desempenho/composicao.spec.ts > Composição da carteira > @spec:AC-196 ticker sem posição aberta não vira fatia nenhuma # time=0.17ms",
       "method": "tap"
     },
     "AC-197": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/blocos/grafico-composicao.spec.ts > Gráfico de composição da carteira > @spec:AC-197 não há eixo de tempo nem promessa de evolução # time=5.93ms",
+      "testName": "src/app/features/desempenho/blocos/grafico-composicao.spec.ts > Gráfico de composição da carteira > @spec:AC-197 não há eixo de tempo nem promessa de evolução # time=8.96ms",
       "method": "tap"
     },
     "AC-198": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/contribuicao.spec.ts > Contribuição por ativo > @spec:AC-198 ordena do maior ganho à maior perda # time=0.41ms",
+      "testName": "src/app/features/desempenho/contribuicao.spec.ts > Contribuição por ativo > @spec:AC-198 ordena do maior ganho à maior perda # time=0.61ms",
       "method": "tap"
     },
     "AC-199": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/contribuicao.spec.ts > Contribuição por ativo > @spec:AC-199 o resultado em dólar entra convertido pela taxa do consolidado # time=0.07ms",
+      "testName": "src/app/features/desempenho/contribuicao.spec.ts > Contribuição por ativo > @spec:AC-199 o resultado em dólar entra convertido pela taxa do consolidado # time=0.17ms",
       "method": "tap"
     },
     "AC-200": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/blocos/grafico-contribuicao.spec.ts > Gráfico de contribuição por ativo > @spec:AC-200 ganho e perda se distinguem sem cor: lado da barra, sinal e palavra # time=50.58ms",
+      "testName": "src/app/features/desempenho/blocos/grafico-contribuicao.spec.ts > Gráfico de contribuição por ativo > @spec:AC-200 ganho e perda se distinguem sem cor: lado da barra, sinal e palavra # time=9.35ms",
       "method": "tap"
     },
     "AC-201": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/blocos/grafico-contribuicao.spec.ts > Gráfico de contribuição por ativo > @spec:AC-201 não há eixo de tempo no gráfico # time=7.52ms",
+      "testName": "src/app/features/desempenho/blocos/grafico-contribuicao.spec.ts > Gráfico de contribuição por ativo > @spec:AC-201 não há eixo de tempo no gráfico # time=7.97ms",
       "method": "tap"
     },
     "AC-202": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/realizado-por-ticker.spec.ts > Lucro realizado por ticker > @spec:AC-202 traz cada ticker apurado, do maior ao menor, inclusive quem não tem mais posição # time=0.23ms",
+      "testName": "src/app/features/desempenho/realizado-por-ticker.spec.ts > Lucro realizado por ticker > @spec:AC-202 traz cada ticker apurado, do maior ao menor, inclusive quem não tem mais posição # time=0.57ms",
       "method": "tap"
     },
     "AC-203": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/realizado-por-ticker.spec.ts > Lucro realizado por ticker > @spec:AC-203 mapa vazio é o estado sem venda nenhuma # time=0.08ms",
+      "testName": "src/app/features/desempenho/realizado-por-ticker.spec.ts > Lucro realizado por ticker > @spec:AC-203 mapa vazio é o estado sem venda nenhuma # time=0.18ms",
       "method": "tap"
     },
     "AC-204": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/blocos/grafico-realizado.spec.ts > Gráfico de resultado realizado por ativo > @spec:AC-204 não há eixo de tempo no gráfico # time=5.69ms",
+      "testName": "src/app/features/desempenho/blocos/grafico-realizado.spec.ts > Gráfico de resultado realizado por ativo > @spec:AC-204 não há eixo de tempo no gráfico # time=15.15ms",
       "method": "tap"
     },
     "AC-205": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/desempenho.spec.ts > Tela de desempenho > @spec:AC-205 os avisos de dividendos e de snapshot estão sempre visíveis na tela # time=45.82ms",
+      "testName": "src/app/features/desempenho/desempenho.spec.ts > Tela de desempenho > @spec:AC-205 os avisos de dividendos e de snapshot estão sempre visíveis na tela # time=65.95ms",
       "method": "tap"
     },
     "AC-206": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/idade-das-cotacoes.spec.ts > Idade das cotações da carteira > @spec:AC-206 o horário exibido é o mais antigo entre as posições # time=0.27ms",
+      "testName": "src/app/features/desempenho/idade-das-cotacoes.spec.ts > Idade das cotações da carteira > @spec:AC-206 o horário exibido é o mais antigo entre as posições # time=0.67ms",
       "method": "tap"
     },
     "AC-207": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/idade-das-cotacoes.spec.ts > Idade das cotações da carteira > @spec:AC-207 lista os tickers cuja cotação passou do limite de defasagem # time=0.09ms",
+      "testName": "src/app/features/desempenho/idade-das-cotacoes.spec.ts > Idade das cotações da carteira > @spec:AC-207 lista os tickers cuja cotação passou do limite de defasagem # time=0.36ms",
       "method": "tap"
     },
     "AC-208": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/blocos/confissoes-desempenho.spec.ts > O que a tela de desempenho confessa > @spec:AC-208 a taxa de câmbio aparece com o horário, e os avisos do backend vêm como aviso # time=85.63ms",
+      "testName": "src/app/features/desempenho/blocos/confissoes-desempenho.spec.ts > O que a tela de desempenho confessa > @spec:AC-208 a taxa de câmbio aparece com o horário, e os avisos do backend vêm como aviso # time=13.01ms",
       "method": "tap"
     },
     "AC-209": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/desempenho.spec.ts > Tela de desempenho > @spec:AC-209 carteira sem posição e sem venda convida a registrar a primeira compra, sem gráficos # time=35.58ms",
+      "testName": "src/app/features/desempenho/desempenho.spec.ts > Tela de desempenho > @spec:AC-209 carteira sem posição e sem venda convida a registrar a primeira compra, sem gráficos # time=29.18ms",
       "method": "tap"
     },
     "AC-210": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/desempenho.routes.spec.ts > Rota do desempenho > @spec:AC-210 a área de desempenho tem tela própria, e não mais o destino de área em construção # time=20.67ms",
+      "testName": "src/app/features/desempenho/desempenho.routes.spec.ts > Rota do desempenho > @spec:AC-210 a área de desempenho tem tela própria, e não mais o destino de área em construção # time=78.82ms",
       "method": "tap"
     },
     "AC-211": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/desempenho.service.spec.ts > Leituras da tela de desempenho > @spec:AC-211 leitura que falha vira nula e não derruba as outras # time=0.76ms",
+      "testName": "src/app/features/desempenho/desempenho.service.spec.ts > Leituras da tela de desempenho > @spec:AC-211 leitura que falha vira nula e não derruba as outras # time=1.01ms",
       "method": "tap"
     }
   },
