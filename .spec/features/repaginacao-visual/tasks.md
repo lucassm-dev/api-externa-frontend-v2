@@ -48,7 +48,7 @@
   `src/app/shared/botao/padrao-unico.spec.ts` que varre os templates: nenhuma
   diretiva de botão do Material sobrou, e todo `<button>` de tela tem `appBotao`.
 
-## T-115 — Casca responsiva com menu compacto [pendente]
+## T-115 — Casca responsiva com menu compacto [concluida]
 - Refs: US-076, AC-270, AC-271
 - Arquivos: src/styles.scss, src/app/layout/casca.ts, src/app/layout/casca.scss, src/app/layout/casca.spec.ts
 - Modelo: claude-sonnet-5
@@ -58,7 +58,7 @@
   botão de menu com `aria-expanded`, que abre e fecha por teclado e fecha ao
   navegar (AC-271). O `casca.html` é da T-114; aqui mexe-se em lógica e estilo.
 
-## T-116 — Tabela com rolagem contida [pendente]
+## T-116 — Tabela com rolagem contida [concluida]
 - Refs: US-076, AC-272
 - Arquivos: src/app/shared/tabela/tabela.scss, src/app/shared/tabela/tabela.spec.ts, src/app/shared/tabela/rolagem-contida.spec.ts
 - Modelo: claude-sonnet-5
@@ -68,7 +68,7 @@
   Referência de forma: a barra de rolagem própria da tabela em
   `docs/references/exemplo-de-tabelas.webp`.
 
-## T-117 — Barra de cotações contida [pendente]
+## T-117 — Barra de cotações contida [concluida]
 - Refs: US-077, AC-274, AC-275
 - Arquivos: src/app/features/painel/blocos/barra-mercado.html, src/app/features/painel/blocos/barra-mercado.scss, src/app/features/painel/blocos/barra-mercado.spec.ts
 - Modelo: claude-sonnet-5
@@ -80,7 +80,7 @@
   360px, ocupa a largura disponível sem estourar, e `prefers-reduced-motion`
   continua parando o movimento.
 
-## T-118 — Mapa de blocos das posições [pendente]
+## T-118 — Mapa de blocos das posições [concluida]
 - Refs: US-078, AC-276, AC-280, AC-281
 - Arquivos: src/app/features/desempenho/blocos/blocos-do-mapa.ts, src/app/features/desempenho/blocos/blocos-do-mapa.spec.ts, src/app/features/desempenho/blocos/grafico-mapa-posicoes.ts, src/app/features/desempenho/blocos/grafico-mapa-posicoes.html, src/app/features/desempenho/blocos/grafico-mapa-posicoes.scss, src/app/features/desempenho/blocos/grafico-mapa-posicoes.spec.ts
 - Modelo: claude-sonnet-5
@@ -91,7 +91,7 @@
   informação sozinha. Cada bloco é focável e revela no teclado o mesmo detalhe do
   ponteiro (AC-280). Sem eixo de tempo (AC-281).
 
-## T-119 — Investido × valor de mercado [pendente]
+## T-119 — Investido × valor de mercado [concluida]
 - Refs: US-078, AC-277, AC-280, AC-281
 - Arquivos: src/app/features/desempenho/blocos/grafico-investido-mercado.ts, src/app/features/desempenho/blocos/grafico-investido-mercado.html, src/app/features/desempenho/blocos/grafico-investido-mercado.scss, src/app/features/desempenho/blocos/grafico-investido-mercado.spec.ts
 - Modelo: claude-sonnet-5
@@ -100,7 +100,7 @@
   diferença em texto e com sinal. É o ganho embutido sem inventar linha do tempo.
   Focável por ticker, detalhe em texto no foco (AC-280).
 
-## T-120 — Quadrante participação × rentabilidade [pendente]
+## T-120 — Quadrante participação × rentabilidade [concluida]
 - Refs: US-078, AC-278, AC-280, AC-281
 - Arquivos: src/app/features/desempenho/blocos/grafico-quadrante.ts, src/app/features/desempenho/blocos/grafico-quadrante.html, src/app/features/desempenho/blocos/grafico-quadrante.scss, src/app/features/desempenho/blocos/grafico-quadrante.spec.ts
 - Modelo: claude-sonnet-5
@@ -110,7 +110,7 @@
   marcada, para que o quadrante de baixo-e-grande (o peso morto) seja legível. Os
   mesmos dados existem em texto, e cada bolha é focável (AC-280).
 
-## T-121 — Medidor de concentração [pendente]
+## T-121 — Medidor de concentração [concluida]
 - Refs: US-078, AC-279, AC-281
 - Arquivos: src/app/features/desempenho/blocos/concentracao-da-carteira.ts, src/app/features/desempenho/blocos/concentracao-da-carteira.spec.ts, src/app/features/desempenho/blocos/grafico-concentracao.ts, src/app/features/desempenho/blocos/grafico-concentracao.html, src/app/features/desempenho/blocos/grafico-concentracao.scss, src/app/features/desempenho/blocos/grafico-concentracao.spec.ts
 - Modelo: claude-sonnet-5
@@ -130,7 +130,7 @@
   tela. Grade que respira em tela larga e vira coluna única a 360px, cada gráfico
   mantendo legenda e valores legíveis, sem corte nem sobreposição (AC-273).
 
-## T-123 — Movimento com freio [pendente]
+## T-123 — Movimento com freio [concluida]
 - Refs: US-079, AC-284
 - Arquivos: src/styles/movimento.spec.ts, .onp-uiux.json
 - Modelo: claude-sonnet-5
