@@ -4068,6 +4068,393 @@
       "primeiraVez": "2026-09-09T23:38:45.948Z",
       "ultimaVez": "2026-09-09T23:38:45.948Z",
       "gitRev": "af1a825"
+    },
+    "ARQUIVO_INEXISTENTE::repaginacao-visual::T-001": {
+      "codigo": "ARQUIVO_INEXISTENTE",
+      "feature": "repaginacao-visual",
+      "ref": "T-001",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:43:19.182Z",
+      "ultimaVez": "2026-09-10T00:43:19.183Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TASK::repaginacao-visual::AC-270": {
+      "codigo": "AC_SEM_TASK",
+      "feature": "repaginacao-visual",
+      "ref": "AC-270",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:43:19.183Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TASK::repaginacao-visual::AC-271": {
+      "codigo": "AC_SEM_TASK",
+      "feature": "repaginacao-visual",
+      "ref": "AC-271",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:43:19.183Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TASK::repaginacao-visual::AC-272": {
+      "codigo": "AC_SEM_TASK",
+      "feature": "repaginacao-visual",
+      "ref": "AC-272",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:43:19.183Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TASK::repaginacao-visual::AC-273": {
+      "codigo": "AC_SEM_TASK",
+      "feature": "repaginacao-visual",
+      "ref": "AC-273",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:43:19.183Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TASK::repaginacao-visual::AC-274": {
+      "codigo": "AC_SEM_TASK",
+      "feature": "repaginacao-visual",
+      "ref": "AC-274",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:43:19.183Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TASK::repaginacao-visual::AC-275": {
+      "codigo": "AC_SEM_TASK",
+      "feature": "repaginacao-visual",
+      "ref": "AC-275",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:43:19.183Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TASK::repaginacao-visual::AC-276": {
+      "codigo": "AC_SEM_TASK",
+      "feature": "repaginacao-visual",
+      "ref": "AC-276",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:43:19.183Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TASK::repaginacao-visual::AC-277": {
+      "codigo": "AC_SEM_TASK",
+      "feature": "repaginacao-visual",
+      "ref": "AC-277",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:43:19.183Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TASK::repaginacao-visual::AC-278": {
+      "codigo": "AC_SEM_TASK",
+      "feature": "repaginacao-visual",
+      "ref": "AC-278",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:43:19.183Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TASK::repaginacao-visual::AC-279": {
+      "codigo": "AC_SEM_TASK",
+      "feature": "repaginacao-visual",
+      "ref": "AC-279",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:43:19.183Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TASK::repaginacao-visual::AC-280": {
+      "codigo": "AC_SEM_TASK",
+      "feature": "repaginacao-visual",
+      "ref": "AC-280",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:43:19.183Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TASK::repaginacao-visual::AC-281": {
+      "codigo": "AC_SEM_TASK",
+      "feature": "repaginacao-visual",
+      "ref": "AC-281",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:43:19.183Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TASK::repaginacao-visual::AC-282": {
+      "codigo": "AC_SEM_TASK",
+      "feature": "repaginacao-visual",
+      "ref": "AC-282",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:43:19.183Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TASK::repaginacao-visual::AC-283": {
+      "codigo": "AC_SEM_TASK",
+      "feature": "repaginacao-visual",
+      "ref": "AC-283",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:43:19.183Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TASK::repaginacao-visual::AC-284": {
+      "codigo": "AC_SEM_TASK",
+      "feature": "repaginacao-visual",
+      "ref": "AC-284",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:43:19.183Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-266": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-266",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-267": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-267",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-268": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-268",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-269": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-269",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-270": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-270",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-271": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-271",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-272": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-272",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-273": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-273",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-274": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-274",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-275": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-275",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-276": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-276",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-277": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-277",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-278": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-278",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-279": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-279",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-280": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-280",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-281": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-281",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-282": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-282",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-283": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-283",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "AC_SEM_TESTE::repaginacao-visual::AC-284": {
+      "codigo": "AC_SEM_TESTE",
+      "feature": "repaginacao-visual",
+      "ref": "AC-284",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:43:19.183Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "ARQUIVO_INEXISTENTE::repaginacao-visual::T-113": {
+      "codigo": "ARQUIVO_INEXISTENTE",
+      "feature": "repaginacao-visual",
+      "ref": "T-113",
+      "ocorrencias": 4,
+      "primeiraVez": "2026-09-10T00:44:23.564Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "ARQUIVO_INEXISTENTE::repaginacao-visual::T-114": {
+      "codigo": "ARQUIVO_INEXISTENTE",
+      "feature": "repaginacao-visual",
+      "ref": "T-114",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:44:23.565Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "ARQUIVO_INEXISTENTE::repaginacao-visual::T-116": {
+      "codigo": "ARQUIVO_INEXISTENTE",
+      "feature": "repaginacao-visual",
+      "ref": "T-116",
+      "ocorrencias": 1,
+      "primeiraVez": "2026-09-10T00:44:23.565Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "ARQUIVO_INEXISTENTE::repaginacao-visual::T-118": {
+      "codigo": "ARQUIVO_INEXISTENTE",
+      "feature": "repaginacao-visual",
+      "ref": "T-118",
+      "ocorrencias": 6,
+      "primeiraVez": "2026-09-10T00:44:23.565Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "ARQUIVO_INEXISTENTE::repaginacao-visual::T-119": {
+      "codigo": "ARQUIVO_INEXISTENTE",
+      "feature": "repaginacao-visual",
+      "ref": "T-119",
+      "ocorrencias": 4,
+      "primeiraVez": "2026-09-10T00:44:23.565Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "ARQUIVO_INEXISTENTE::repaginacao-visual::T-120": {
+      "codigo": "ARQUIVO_INEXISTENTE",
+      "feature": "repaginacao-visual",
+      "ref": "T-120",
+      "ocorrencias": 4,
+      "primeiraVez": "2026-09-10T00:44:23.565Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "ARQUIVO_INEXISTENTE::repaginacao-visual::T-121": {
+      "codigo": "ARQUIVO_INEXISTENTE",
+      "feature": "repaginacao-visual",
+      "ref": "T-121",
+      "ocorrencias": 6,
+      "primeiraVez": "2026-09-10T00:44:23.565Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
+    },
+    "ARQUIVO_INEXISTENTE::repaginacao-visual::T-123": {
+      "codigo": "ARQUIVO_INEXISTENTE",
+      "feature": "repaginacao-visual",
+      "ref": "T-123",
+      "ocorrencias": 2,
+      "primeiraVez": "2026-09-10T00:44:23.565Z",
+      "ultimaVez": "2026-09-10T00:44:23.565Z",
+      "gitRev": "28305f0"
     }
   }
 }
