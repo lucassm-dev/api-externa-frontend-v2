@@ -1,0 +1,144 @@
+.grafico {
+  display: grid;
+  gap: var(--espaco-4);
+  padding: var(--espaco-5);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-grande);
+  background: var(--cor-superficie);
+}
+
+h2 {
+  margin: 0;
+  font-size: var(--texto-grande);
+}
+
+.apoio {
+  margin: var(--espaco-1) 0 0;
+  color: var(--cor-texto-fraco);
+  font-size: var(--texto-pequeno);
+}
+
+.mapa {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--raio);
+  overflow: hidden;
+}
+
+.bloco {
+  outline: none;
+  cursor: default;
+}
+
+.bloco rect {
+  stroke: var(--cor-superficie);
+  stroke-width: 0.6;
+}
+
+.bloco.ativo rect {
+  stroke: var(--cor-foco);
+  stroke-width: 1.4;
+}
+
+.bloco.atenuado rect {
+  opacity: 0.4;
+}
+
+.bloco:focus-visible rect {
+  stroke: var(--cor-foco);
+  stroke-width: 1.4;
+}
+
+.rotulo-ticker,
+.rotulo-apoio {
+  pointer-events: none;
+  fill: var(--cor-texto);
+}
+
+.rotulo-ticker {
+  font-family: var(--fonte);
+  font-size: 3.4px;
+  font-weight: var(--peso-forte);
+}
+
+.rotulo-apoio {
+  font-family: var(--fonte-numero);
+  font-size: 3px;
+  font-variant-numeric: tabular-nums;
+  fill: var(--cor-texto-fraco);
+}
+
+.detalhe {
+  margin: 0;
+  min-height: var(--espaco-5);
+  color: var(--cor-texto);
+  font-size: var(--texto-apoio);
+}
+
+.legenda {
+  display: grid;
+  gap: var(--espaco-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 12px minmax(4.5rem, 1fr) 8rem 4.5rem auto;
+  align-items: center;
+  gap: var(--espaco-2);
+  min-height: var(--alvo-minimo);
+  padding: var(--espaco-1) var(--espaco-2);
+  border-radius: var(--raio);
+}
+
+.item.ativo {
+  background: var(--cor-superficie-alta);
+}
+
+.item.atenuado {
+  opacity: 0.4;
+}
+
+.amostra {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.ticker {
+  font-weight: var(--peso-medio);
+}
+
+.valor,
+.participacao {
+  text-align: right;
+  font-family: var(--fonte-numero);
+  font-variant-numeric: tabular-nums;
+}
+
+.valor {
+  color: var(--cor-texto-fraco);
+}
+
+.vazio {
+  margin: 0;
+  color: var(--cor-texto-fraco);
+  font-size: var(--texto-pequeno);
+}
+
+@media (max-width: 40rem) {
+  .item {
+    grid-template-columns: 12px minmax(3.5rem, 1fr) auto;
+    row-gap: var(--espaco-1);
+  }
+
+  .participacao,
+  .resultado {
+    grid-column: 2 / -1;
+    text-align: left;
+  }
+}
