@@ -42,6 +42,11 @@
   margin-left: var(--espaco-5);
 }
 
+// `.areas` é flex, então o atributo `hidden` sozinho não a esconde.
+.areas[hidden] {
+  display: none;
+}
+
 .area {
   padding: var(--espaco-2) var(--espaco-3);
   border-radius: var(--raio);
@@ -57,5 +62,39 @@
     color: var(--cor-texto);
     font-weight: 700;
     box-shadow: inset 0 -2px 0 0 var(--cor-acento);
+  }
+}
+
+// Casca compacta: abaixo de 768px a barra empilha e a navegação vira um painel
+// que abre atrás do botão de menu (AC-270, AC-271). O piso de tela é 360px: nada
+// aqui fixa largura de janela.
+@media (max-width: 47.99em) {
+  .barra {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 56px;
+    padding: var(--espaco-3) var(--espaco-4);
+    gap: var(--espaco-3);
+  }
+
+  .menu-alternar {
+    margin-left: auto;
+  }
+
+  .areas.areas-compacta {
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--espaco-1);
+    margin: 0;
+  }
+
+  .areas.areas-compacta .area {
+    padding: var(--espaco-3);
+  }
+
+  .identidade {
+    flex-basis: 100%;
+    justify-content: flex-end;
   }
 }

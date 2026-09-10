@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router, provideRouter } from '@angular/router';
 import { ROTA_LOGIN } from '../core/sessao/sessao.model';
@@ -172,5 +174,197 @@ describe('Navegação do shell', () => {
     TestBed.configureTestingModule({ providers: [provideRouter([])] });
     expect(TestBed.inject(TemaService).tema()).toBe('escuro');
     expect(document.documentElement.getAttribute('data-tema')).toBe('escuro');
+  });
+});
+
+describe('Casca responsiva com menu compacto (T-115)', () => {
+  let fixture: ComponentFixture<Casca>;
+  let router: Router;
+
+  const matchMediaOriginal = globalThis.matchMedia;
+  let estreita: { set(valor: boolean): void };
+
+  function instalarMatchMedia(inicial: boolean) {
+    const ouvintes = new Set<(evento: MediaQueryListEvent) => void>();
+    let atual = inicial;
+    const lista = {
+      get matches() {
+        return atual;
+      },
+      media: '',
+      onchange: null,
+      addEventListener: (_tipo: string, cb: (evento: MediaQueryListEvent) => void) =>
+        ouvintes.add(cb),
+      removeEventListener: (_tipo: string, cb: (evento: MediaQueryListEvent) => void) =>
+        ouvintes.delete(cb),
+      addListener: (cb: (evento: MediaQueryListEvent) => void) => ouvintes.add(cb),
+      removeListener: (cb: (evento: MediaQueryListEvent) => void) => ouvintes.delete(cb),
+      dispatchEvent: () => true,
+    } as unknown as MediaQueryList;
+
+    globalThis.matchMedia = ((consulta: string) => {
+      (lista as { media: string }).media = consulta;
+      return lista;
+    }) as typeof globalThis.matchMedia;
+
+    estreita = {
+      set(valor: boolean) {
+        atual = valor;
+        ouvintes.forEach((cb) => cb({ matches: valor } as MediaQueryListEvent));
+      },
+    };
+  }
+
+  afterEach(() => {
+    globalThis.matchMedia = matchMediaOriginal;
+  });
+
+  async function montar(telaEstreita: boolean, rotaInicial = '/painel') {
+    localStorage.clear();
+    document.documentElement.removeAttribute('data-tema');
+    instalarMatchMedia(telaEstreita);
+    TestBed.resetTestingModule();
+    TestBed.configureTestingModule({
+      providers: [
+        provideRouter([
+          { path: 'entrar', children: [] },
+          { path: 'painel', children: [] },
+          { path: 'corretoras', children: [] },
+          { path: 'carteiras', children: [] },
+          { path: 'acoes', children: [] },
+          { path: 'operacoes', children: [] },
+          { path: 'desempenho', children: [] },
+        ]),
+      ],
+    });
+    const sessao = TestBed.inject(SessaoService);
+    router = TestBed.inject(Router);
+    sessao.iniciar(
+      {
+        token: 'jwt-abc',
+        tipo: 'Bearer',
+        expiraEm: new Date(Date.now() + 600 * 60_000).toISOString(),
+      },
+      'lucas@exemplo.com',
+    );
+    await router.navigateByUrl(rotaInicial);
+    fixture = TestBed.createComponent(Casca);
+    await fixture.whenStable();
+    return fixture.nativeElement as HTMLElement;
+  }
+
+  const menu = (el: HTMLElement) => el.querySelector('[data-menu]') as HTMLButtonElement | null;
+  const nav = (el: HTMLElement) => el.querySelector('[data-areas]') as HTMLElement | null;
+
+  it('@spec:AC-270 o documento não impõe largura mínima maior que a tela', () => {
+    const estilos = readFileSync(join(process.cwd(), 'src/styles.scss'), 'utf8');
+
+    for (const bloco of estilos.match(/\bbody\s*\{[^}]*\}/gs) ?? []) {
+      expect(bloco).not.toMatch(/min-width/);
+    }
+    expect(estilos).not.toContain('largura-minima');
+
+    const estilosCasca = readFileSync(join(process.cwd(), 'src/app/layout/casca.scss'), 'utf8');
+    expect(estilosCasca).not.toMatch(/min-width\s*:/);
+  });
+
+  it('@spec:AC-270 a 360px a navegação larga não fica exposta: colapsa atrás do menu', async () => {
+    const el = await montar(true);
+
+    expect(menu(el)).not.toBeNull();
+    // a lista de áreas não ocupa a horizontal enquanto fechada
+    expect(nav(el)?.hasAttribute('hidden')).toBe(true);
+  });
+
+  it('@spec:AC-271 abaixo de 768px as áreas ficam atrás de um botão de menu', async () => {
+    const el = await montar(true);
+
+    const botao = menu(el);
+    expect(botao).not.toBeNull();
+    expect(botao?.getAttribute('aria-expanded')).toBe('false');
+    expect(botao?.getAttribute('aria-controls')).toBe('areas-do-produto');
+    expect(nav(el)?.id).toBe('areas-do-produto');
+    expect(nav(el)?.hasAttribute('hidden')).toBe(true);
+  });
+
+  it('@spec:AC-271 o botão de menu anuncia o estado e alterna a navegação', async () => {
+    const el = await montar(true);
+
+    menu(el)!.click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(menu(el)?.getAttribute('aria-expanded')).toBe('true');
+    expect(nav(el)?.hasAttribute('hidden')).toBe(false);
+
+    menu(el)!.click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(menu(el)?.getAttribute('aria-expanded')).toBe('false');
+    expect(nav(el)?.hasAttribute('hidden')).toBe(true);
+  });
+
+  it('@spec:AC-271 o menu fecha por teclado com Esc', async () => {
+    const el = await montar(true);
+
+    menu(el)!.click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(menu(el)?.getAttribute('aria-expanded')).toBe('true');
+
+    nav(el)!.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(menu(el)?.getAttribute('aria-expanded')).toBe('false');
+  });
+
+  it('@spec:AC-271 o menu fecha ao navegar para outra área', async () => {
+    const el = await montar(true);
+
+    menu(el)!.click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(menu(el)?.getAttribute('aria-expanded')).toBe('true');
+
+    await router.navigateByUrl('/carteiras');
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(menu(el)?.getAttribute('aria-expanded')).toBe('false');
+  });
+
+  it('@spec:AC-271 clicar numa área do menu fecha o painel', async () => {
+    const el = await montar(true);
+
+    menu(el)!.click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    (nav(el)!.querySelector('[data-area="/carteiras"]') as HTMLAnchorElement).click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(menu(el)?.getAttribute('aria-expanded')).toBe('false');
+  });
+
+  it('@spec:AC-271 em tela larga a navegação fica visível, sem botão de menu', async () => {
+    const el = await montar(false);
+
+    expect(menu(el)).toBeNull();
+    expect(nav(el)).not.toBeNull();
+    expect(nav(el)?.hasAttribute('hidden')).toBe(false);
+  });
+
+  it('@spec:AC-271 ao alargar a tela o menu compacto se recolhe', async () => {
+    const el = await montar(true);
+
+    menu(el)!.click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(menu(el)?.getAttribute('aria-expanded')).toBe('true');
+
+    estreita.set(false);
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(menu(el)).toBeNull();
+    expect(nav(el)?.hasAttribute('hidden')).toBe(false);
   });
 });
