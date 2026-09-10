@@ -1,0 +1,82 @@
+<section class="grafico" data-grafico-mapa>
+  <header>
+    <h2>Mapa de blocos das posições</h2>
+    <p class="apoio">
+      Cada posição aberta é um bloco de área proporcional ao seu valor de mercado, hoje. A cor
+      mostra o sinal do resultado; o glifo e a legenda dizem o mesmo.
+    </p>
+  </header>
+
+  @if (blocos().length === 0) {
+    <p class="vazio" data-sem-mapa>Nenhuma posição aberta para mapear.</p>
+  } @else {
+    <svg
+      class="mapa"
+      data-mapa
+      viewBox="0 0 100 100"
+      role="group"
+      [attr.aria-label]="descricaoMapa()"
+      (keydown.escape)="aoEscapar($event)"
+    >
+      @for (bloco of blocos(); track bloco.ticker) {
+        <g
+          class="bloco"
+          data-bloco
+          [attr.data-bloco-ticker]="bloco.ticker"
+          [attr.data-sinal]="bloco.sinal"
+          tabindex="0"
+          role="img"
+          [attr.aria-label]="bloco.detalhe"
+          [class.ativo]="blocoAtivo() === bloco.ticker"
+          [class.atenuado]="blocoAtivo() !== null && blocoAtivo() !== bloco.ticker"
+          (mouseenter)="ativar(bloco.ticker)"
+          (mouseleave)="repousar()"
+          (focus)="ativar(bloco.ticker)"
+          (blur)="repousar()"
+        >
+          <rect
+            data-bloco-area
+            [attr.x]="bloco.x"
+            [attr.y]="bloco.y"
+            [attr.width]="bloco.largura"
+            [attr.height]="bloco.altura"
+            [attr.fill]="bloco.cor"
+          />
+          @if (bloco.rotuloVisivel) {
+            <text class="rotulo-ticker" [attr.x]="bloco.x + 2" [attr.y]="bloco.y + 6">
+              {{ bloco.ticker }}
+            </text>
+            <text class="rotulo-apoio" aria-hidden="true" [attr.x]="bloco.x + 2" [attr.y]="bloco.y + 11">
+              {{ bloco.glifo }} {{ bloco.participacaoFormatada }}
+            </text>
+          }
+        </g>
+      }
+    </svg>
+
+    <p class="detalhe" data-detalhe-mapa aria-live="polite">{{ detalhe() }}</p>
+
+    <ol class="legenda" data-mapa-legenda aria-label="Legenda do mapa de blocos">
+      @for (bloco of blocos(); track bloco.ticker) {
+        <li
+          class="item"
+          [attr.data-mapa-item]="bloco.ticker"
+          [attr.data-sinal]="bloco.sinal"
+          [attr.title]="bloco.nomeEmpresa"
+          [class.ativo]="blocoAtivo() === bloco.ticker"
+          [class.atenuado]="blocoAtivo() !== null && blocoAtivo() !== bloco.ticker"
+          (mouseenter)="ativar(bloco.ticker)"
+          (mouseleave)="repousar()"
+        >
+          <span class="amostra" [style.background]="bloco.cor" aria-hidden="true"></span>
+          <span class="ticker" data-mapa-ticker>{{ bloco.ticker }}</span>
+          <span class="valor" data-mapa-valor>{{ bloco.valorFormatado }}</span>
+          <span class="participacao" data-mapa-participacao>{{ bloco.participacaoFormatada }}</span>
+          <span class="resultado" data-mapa-resultado>
+            <app-variacao [valor]="bloco.resultado" moeda="BRL" />
+          </span>
+        </li>
+      }
+    </ol>
+  }
+</section>
