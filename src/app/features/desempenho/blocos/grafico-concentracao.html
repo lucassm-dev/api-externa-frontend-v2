@@ -1,0 +1,48 @@
+<section class="grafico" data-grafico-concentracao>
+  <header>
+    <h2>Concentração da carteira</h2>
+    <p class="apoio">
+      Que fatia do valor está nos seus três maiores ativos, hoje. Descreve como a carteira está
+      distribuída — não é recomendação de compra ou venda.
+    </p>
+  </header>
+
+  @if (concentracao(); as c) {
+    <div class="medidor">
+      <svg class="arco" viewBox="0 0 100 58" role="img" [attr.aria-label]="resumo()">
+        <path class="trilha" [attr.d]="trilha" fill="none" stroke="var(--cor-superficie-alta)" />
+        <path
+          class="preenchido"
+          data-arco-preenchido
+          [attr.d]="preenchido()"
+          fill="none"
+          stroke="var(--cor-destaque)"
+        />
+        <text class="numero" data-concentracao-percentual x="50" y="46" text-anchor="middle">
+          {{ percentualFormatado() }}
+        </text>
+      </svg>
+    </div>
+
+    <p class="resumo" data-concentracao-resumo>{{ resumo() }}</p>
+
+    @if (faixa(); as f) {
+      <p class="faixa" data-concentracao-faixa>
+        <span class="faixa-nome">Carteira {{ f.nome }}.</span>
+        {{ f.explicacao }}
+      </p>
+    }
+
+    <ol class="maiores" data-concentracao-maiores aria-label="Os três maiores ativos da carteira">
+      @for (ativo of maiores(); track ativo.ticker) {
+        <li class="item" [attr.data-concentracao-item]="ativo.ticker">
+          <span class="ticker">{{ ativo.ticker }}</span>
+          <span class="valor">{{ ativo.valorFormatado }}</span>
+          <span class="participacao">{{ ativo.participacaoFormatada }}</span>
+        </li>
+      }
+    </ol>
+  } @else {
+    <p class="vazio" data-sem-concentracao>Nenhuma posição aberta para medir.</p>
+  }
+</section>

@@ -1,0 +1,109 @@
+.grafico {
+  display: grid;
+  gap: var(--espaco-4);
+  padding: var(--espaco-5);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-grande);
+  background: var(--cor-superficie);
+}
+
+h2 {
+  margin: 0;
+  font-size: var(--texto-grande);
+}
+
+.apoio {
+  margin: var(--espaco-1) 0 0;
+  color: var(--cor-texto-fraco);
+  font-size: var(--texto-pequeno);
+}
+
+.medidor {
+  display: flex;
+  justify-content: center;
+}
+
+.arco {
+  display: block;
+  width: 100%;
+  max-width: 18rem;
+  height: auto;
+}
+
+.trilha,
+.preenchido {
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+.numero {
+  fill: var(--cor-texto);
+  font-family: var(--fonte-numero);
+  font-size: 16px;
+  font-weight: var(--peso-forte);
+  font-variant-numeric: tabular-nums;
+}
+
+.resumo {
+  margin: 0;
+  text-align: center;
+  font-size: var(--texto-medio);
+}
+
+.faixa {
+  margin: 0;
+  color: var(--cor-texto-fraco);
+  font-size: var(--texto-pequeno);
+}
+
+.faixa-nome {
+  color: var(--cor-texto);
+  font-weight: var(--peso-medio);
+}
+
+.maiores {
+  display: grid;
+  gap: var(--espaco-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: minmax(4rem, 1fr) 8rem 4.5rem;
+  align-items: center;
+  gap: var(--espaco-2);
+  padding: var(--espaco-1) var(--espaco-2);
+  border-radius: var(--raio);
+  background: var(--cor-superficie-alta);
+}
+
+.ticker {
+  font-weight: var(--peso-medio);
+}
+
+.valor,
+.participacao {
+  text-align: right;
+  color: var(--cor-texto-fraco);
+  font-family: var(--fonte-numero);
+  font-variant-numeric: tabular-nums;
+}
+
+.vazio {
+  margin: 0;
+  color: var(--cor-texto-fraco);
+  font-size: var(--texto-pequeno);
+}
+
+@media (max-width: 40rem) {
+  .item {
+    grid-template-columns: 1fr auto;
+    row-gap: var(--espaco-1);
+  }
+
+  .participacao {
+    grid-column: 2;
+  }
+}
