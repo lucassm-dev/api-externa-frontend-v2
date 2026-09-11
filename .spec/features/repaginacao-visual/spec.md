@@ -106,7 +106,7 @@ painel continue sendo sobre a minha carteira.
   recuo da tela, e sua espessura vem de um token menor que o alvo de toque,
   mantendo visível o horário da última atualização
 
-#### AC-285 — O conteúdo que rola nunca empurra a página
+#### AC-290 — O conteúdo que rola nunca empurra a página
 
 - **Dado** um bloco cujo conteúdo é mais largo que a tela — a faixa de cotações,
   que rola em laço
@@ -181,6 +181,15 @@ produto seja agradável e não pareça um formulário administrativo.
 - **Quando** o acento de marca é usado em superfície, texto ou selo
 - **Então** o par texto/fundo atinge o contraste mínimo da WCAG AA nos dois
   temas, e nenhuma cor literal aparece fora de `_tokens.scss`
+
+#### AC-289 — O acento do produto é o amarelo da marca, nunca azul
+
+- **Dado** os dois temas obrigatórios
+- **Quando** o produto pinta um acento — link, foco, área ativa, ação sutil
+- **Então** a cor pertence à família do amarelo da marca, e nenhum token de
+  acento é azul: no tema escuro é o `#eaef1b` puro, e no tema claro é ele
+  escurecido até passar em contraste como texto, porque amarelo puro sobre
+  branco não se lê
 
 #### AC-283 — A hierarquia tipográfica é declarada, não improvisada
 

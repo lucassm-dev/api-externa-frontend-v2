@@ -42,6 +42,9 @@ describe('Tokens da fundação visual', () => {
         ['--cor-sucesso-texto', '--cor-sucesso-fundo'],
         ['--cor-barra-mercado-texto', '--cor-barra-mercado-fundo'],
         ['--cor-barra-mercado-fraco', '--cor-barra-mercado-fundo'],
+        ['--cor-barra-mercado-alta', '--cor-barra-mercado-fundo'],
+        ['--cor-barra-mercado-baixa', '--cor-barra-mercado-fundo'],
+        ['--cor-barra-mercado-estavel', '--cor-barra-mercado-fundo'],
         ['--cor-destaque-texto', '--cor-destaque'],
       ];
 
@@ -133,5 +136,30 @@ describe('Tokens da fundação visual', () => {
     );
 
     expect(new Set(familias).size).toBeLessThanOrEqual(2);
+  });
+
+  it('@spec:AC-289 todo token de acento é da família do amarelo, e nenhum é azul', () => {
+    const canais = (hex: string) => [1, 3, 5].map((i) => Number.parseInt(hex.slice(i, i + 2), 16));
+
+    for (const tema of ['claro', 'escuro'] as const) {
+      const bloco = blocoDoTema(tema);
+
+      for (const token of ['--cor-acento', '--cor-acento-forte', '--cor-foco']) {
+        const [r, g, b] = canais(cor(bloco, token));
+
+        // Amarelo: vermelho e verde altos e parecidos entre si, azul bem abaixo
+        // dos dois. Azul seria exatamente o contrário — e era o que havia aqui.
+        expect(b, `${tema}: ${token} tem azul demais para ser amarelo`).toBeLessThan(
+          Math.min(r, g) * 0.6,
+        );
+        expect(
+          Math.abs(r - g) / Math.max(r, g),
+          `${tema}: ${token} não é da família do amarelo`,
+        ).toBeLessThan(0.25);
+      }
+    }
+
+    // O amarelo da marca segue puro no tema escuro
+    expect(cor(blocoDoTema('escuro'), '--cor-acento')).toBe('#eaef1b');
   });
 });

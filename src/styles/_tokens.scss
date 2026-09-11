@@ -11,15 +11,19 @@
   --cor-texto: #14181f;
   --cor-texto-fraco: #5b6472;
 
-  --cor-acento: #1c5dd1;
+  // O acento é o amarelo da marca. No tema claro ele entra escurecido: o
+  // #eaef1b como TEXTO sobre branco dá 1.25:1 e não se lê. Escurecido, mantém a
+  // família e chega a 5.16:1. O amarelo puro continua vivo onde é
+  // PREENCHIMENTO, em --cor-destaque.
+  --cor-acento: #6e7200;
   --cor-acento-contraste: #ffffff;
 
   // Destaque de marca: somente preenchimento com texto escuro por cima.
   --cor-destaque: #eaef1b;
   --cor-destaque-texto: #14181f;
 
-  --cor-acento-suave: #e7effc;
-  --cor-acento-forte: #16499f;
+  --cor-acento-suave: #f4f6cd;
+  --cor-acento-forte: #545700;
 
   --cor-destaque-forte: #d2d70f;
   --cor-destaque-suave: #f6f8c0;
@@ -29,7 +33,7 @@
   --cor-perigo-suave: #fdecea;
 
   // Anel de foco em duas camadas: o halo separa o anel do preenchimento.
-  --cor-foco: #12161d;
+  --cor-foco: #545700;
   --cor-foco-halo: #ffffff;
 
   --cor-alta: #0f6f47;
@@ -57,6 +61,11 @@
   --cor-barra-mercado-texto: #f5f7fa;
   --cor-barra-mercado-borda: #303a4a;
   --cor-barra-mercado-fraco: #adb8c8;
+  // A faixa é escura nos DOIS temas, então alta e baixa não podem vir do tema:
+  // no claro elas são escuras e caem para 2.9:1 sobre o preto da faixa.
+  --cor-barra-mercado-alta: #5fd39b;
+  --cor-barra-mercado-baixa: #ff8a80;
+  --cor-barra-mercado-estavel: #adb8c8;
 
   --cor-sombra: #14181f24;
 
@@ -92,14 +101,14 @@
   --cor-texto: #e8ecf2;
   --cor-texto-fraco: #9aa5b4;
 
-  --cor-acento: #7aa8f5;
-  --cor-acento-contraste: #0b1017;
+  --cor-acento: #eaef1b;
+  --cor-acento-contraste: #14181f;
 
   --cor-destaque: #eaef1b;
   --cor-destaque-texto: #14181f;
 
-  --cor-acento-suave: #17243a;
-  --cor-acento-forte: #a6c5f9;
+  --cor-acento-suave: #2f3208;
+  --cor-acento-forte: #f2f65e;
 
   --cor-destaque-forte: #f2f65e;
   --cor-destaque-suave: #2f3208;
@@ -135,6 +144,11 @@
   --cor-barra-mercado-texto: #f5f7fa;
   --cor-barra-mercado-borda: #303a4a;
   --cor-barra-mercado-fraco: #adb8c8;
+  // A faixa é escura nos DOIS temas, então alta e baixa não podem vir do tema:
+  // no claro elas são escuras e caem para 2.9:1 sobre o preto da faixa.
+  --cor-barra-mercado-alta: #5fd39b;
+  --cor-barra-mercado-baixa: #ff8a80;
+  --cor-barra-mercado-estavel: #adb8c8;
 
   --cor-sombra: #05080c66;
 

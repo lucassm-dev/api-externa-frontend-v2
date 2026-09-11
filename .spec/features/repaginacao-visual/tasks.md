@@ -3,7 +3,7 @@
 > feature: repaginacao-visual
 
 ## T-112 — Tokens da direção visual [concluida]
-- Refs: US-079, AC-282, AC-283
+- Refs: US-079, AC-282, AC-283, AC-289
 - Arquivos: src/styles/_tokens.scss, src/styles/_tema.scss, src/styles/tokens.spec.ts
 - Modelo: claude-sonnet-5
 - Esforço: alto
@@ -15,6 +15,12 @@
   ganha saturação, mas **não muda de ordem** — a fatia de um ativo não pode trocar
   de cor. Fim do `--largura-minima-app`: o token vira largura de conteúdo, não
   piso de janela.
+  O acento saiu do azul e passou para a família do amarelo (AC-289): no escuro é
+  o `#eaef1b` da marca, no claro é ele escurecido até 5.16:1 — amarelo puro como
+  TEXTO sobre branco dá 1.25:1 e some. A paleta do Angular Material acompanha.
+  Continuam azuis, de propósito: `--cor-info-*` (se info virar amarelo, colide
+  com aviso e a distinção morre) e `--cor-serie-1` (ordem das séries é fixa e
+  validada para daltonismo, fora de escopo).
 
 ## T-113 — Botão único do produto [concluida]
 - Refs: US-075, AC-267, AC-268, AC-269
@@ -69,7 +75,7 @@
   `docs/references/exemplo-de-tabelas.webp`.
 
 ## T-117 — Barra de cotações contida [concluida]
-- Refs: US-077, AC-274, AC-275, AC-285
+- Refs: US-077, AC-274, AC-275, AC-290
 - Arquivos: src/app/features/painel/blocos/barra-mercado.html, src/app/features/painel/blocos/barra-mercado.scss, src/app/features/painel/blocos/barra-mercado.spec.ts, src/app/layout/casca.scss, src/app/features/painel/painel.scss
 - Modelo: claude-sonnet-5
 - Esforço: medio

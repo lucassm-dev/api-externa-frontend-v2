@@ -74,6 +74,11 @@
 }
 
 .selo-variacao {
+  // A superfície aqui é escura nos dois temas; as cores do tema não servem.
+  --cor-alta: var(--cor-barra-mercado-alta);
+  --cor-baixa: var(--cor-barra-mercado-baixa);
+  --cor-estavel: var(--cor-barra-mercado-estavel);
+
   align-self: center;
   border-radius: var(--raio-pilula);
   background: color-mix(in srgb, var(--cor-barra-mercado-texto) 12%, transparent);

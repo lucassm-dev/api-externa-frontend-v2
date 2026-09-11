@@ -166,7 +166,7 @@ describe('Barra de mercado', () => {
     expect(trecho).toMatch(/\.chip\s*{[^}]*padding:\s*0\s+var\(--espaco-2\)/);
   });
 
-  it('@spec:AC-285 cada elo entre o conteúdo que rola e a janela tem piso zero', () => {
+  it('@spec:AC-290 cada elo entre o conteúdo que rola e a janela tem piso zero', () => {
     const trecho = ESTILO.replace(/\s+/g, ' ');
     const painel = readFileSync('src/app/features/painel/painel.scss', 'utf8').replace(/\s+/g, ' ');
     const globais = readFileSync('src/styles.scss', 'utf8').replace(/\s+/g, ' ');
