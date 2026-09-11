@@ -1,0 +1,67 @@
+server {
+    listen 80;
+    server_name _;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # O produto é pt-BR e cheio de número: comprimir texto e fonte vale, e
+    # comprimir imagem já comprimida não vale nada.
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 1024;
+    gzip_types text/plain text/css application/javascript application/json
+               image/svg+xml font/woff font/woff2;
+
+    # A API responde na MESMA ORIGEM que o SPA. É o que dispensa URL base no
+    # código Angular (ele chama caminho relativo) e faz o CORS deixar de
+    # existir: o navegador nunca enxerga duas origens.
+    #
+    # Precisa bater com o proxy.conf.json usado pelo `ng serve`. Divergir aqui
+    # é ter um caminho que funciona em desenvolvimento e dá 404 em produção.
+    location ~ ^/(auth|investidores|corretoras|carteiras|acoes|operacoes|mercado)(/|$) {
+        proxy_pass ${BACKEND_URL};
+        proxy_http_version 1.1;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # Sem este header o Spring não classifica a requisição como CORS e nem
+        # consulta cors.allowed-origins. O navegador manda Origin em POST mesmo
+        # na mesma origem, e o backend — que vê Host diferente do Origin — o
+        # trataria como origem estranha e barraria a chamada.
+        proxy_set_header Origin "";
+
+        proxy_connect_timeout 10s;
+        proxy_read_timeout 60s;
+    }
+
+    location = /saude {
+        access_log off;
+        add_header Content-Type text/plain;
+        return 200 'ok';
+    }
+
+    # Arquivo com hash no nome nunca muda de conteúdo: pode ficar no navegador
+    # para sempre.
+    location ~* \.(?:js|css|woff2?|png|jpe?g|gif|svg|webp|ico)$ {
+        # Um Cache-Control só: `expires` emite o dele e sobrepor com add_header
+        # manda dois cabeçalhos na mesma resposta.
+        add_header Cache-Control "public, max-age=31536000, immutable";
+        try_files $uri =404;
+    }
+
+    # index.html é o oposto: é ele que aponta para os arquivos com hash novo.
+    # Guardado em cache, o usuário fica preso numa versão antiga do produto.
+    location = /index.html {
+        add_header Cache-Control "no-cache";
+    }
+
+    # Rota do Angular é rota de cliente: /desempenho não existe como arquivo, e
+    # sem isto recarregar a página dá 404.
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}

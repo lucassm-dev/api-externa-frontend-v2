@@ -1,0 +1,12 @@
+node_modules
+dist
+.git
+.angular
+.spec
+.claude
+.agents
+.codex
+.impeccable
+docs
+graphify-out
+*.log
