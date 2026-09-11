@@ -40,18 +40,36 @@
   </nav>
 
   <div class="identidade">
-    <span class="email">{{ email() }}</span>
-    <button
-      appBotao
-      intencao="secundaria"
-      type="button"
+    <div class="perfil" data-identidade-investidor>
+      <span class="perfil-texto">
+        <span class="perfil-rotulo">Investidor</span>
+        <span class="email" [attr.title]="email()">{{ email() }}</span>
+      </span>
+      <span class="avatar" data-avatar-investidor aria-hidden="true">{{ iniciais() }}</span>
+    </div>
+
+    <app-botao-icone
+      class="acao-utilitaria"
+      [rotulo]="rotuloTema()"
       data-alternar-tema
       [attr.data-tema-atual]="tema()"
-      (click)="alternarTema()"
+      (pressionado)="alternarTema()"
     >
-      {{ tema() === 'claro' ? 'Tema escuro' : 'Tema claro' }}
-    </button>
-    <button appBotao intencao="secundaria" type="button" data-sair (click)="sair()">Sair</button>
+      @if (tema() === 'claro') {
+        <svg lucideMoon data-icone-tema="lua" aria-hidden="true" focusable="false"></svg>
+      } @else {
+        <svg lucideSun data-icone-tema="sol" aria-hidden="true" focusable="false"></svg>
+      }
+    </app-botao-icone>
+
+    <app-botao-icone
+      class="acao-utilitaria"
+      rotulo="Sair do sistema"
+      data-sair
+      (pressionado)="sair()"
+    >
+      <svg lucideLogOut aria-hidden="true" focusable="false"></svg>
+    </app-botao-icone>
   </div>
 </header>
 
@@ -60,10 +78,18 @@
     <app-mensagem-feedback
       nivel="aviso"
       [mensagem]="
-        'Sua sessão acaba em menos de ' + minutosDeAviso + ' minutos. Entre novamente para não perder o que estiver fazendo.'
+        'Sua sessão acaba em menos de ' +
+        minutosDeAviso +
+        ' minutos. Entre novamente para não perder o que estiver fazendo.'
       "
     />
-    <button appBotao intencao="primaria" type="button" data-entrar-novamente (click)="entrarNovamente()">
+    <button
+      appBotao
+      intencao="primaria"
+      type="button"
+      data-entrar-novamente
+      (click)="entrarNovamente()"
+    >
       Entrar novamente
     </button>
   </div>

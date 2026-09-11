@@ -1,9 +1,20 @@
+// O conteúdo que rola tem largura de max-content: sem piso zero em CADA elo
+// da cadeia, essa largura sobe até o grid do painel e estoura a janela — a
+// página passa a rolar de lado e o fim da faixa fica fora da tela.
+:host {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+
 .barra-mercado {
-  display: flex;
+  display: grid;
+  // A pista que rola nunca pode passar do que sobra; o horário não encolhe.
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
   gap: var(--espaco-4);
   width: 100%;
+  max-width: 100%;
   min-height: var(--altura-cotacoes);
   padding: 0 var(--espaco-4);
   border: 1px solid var(--cor-barra-mercado-borda);
@@ -14,8 +25,8 @@
 }
 
 .viewport {
-  flex: 1;
   min-width: 0;
+  max-width: 100%;
   overflow: hidden;
 }
 

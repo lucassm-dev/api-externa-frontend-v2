@@ -1,18 +1,33 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, computed, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { LucideLogOut, LucideMoon, LucideSun } from '@lucide/angular';
 import { MensagemFeedback } from '../core/feedback/mensagem-feedback';
 import { AcessoService } from '../features/acesso/acesso.service';
 import { MINUTOS_AVISO_EXPIRACAO, ROTA_LOGIN } from '../core/sessao/sessao.model';
 import { SessaoService } from '../core/sessao/sessao.service';
 import { TemaService } from '../core/tema/tema.service';
 import { Botao } from '../shared/botao/botao';
+import { BotaoIcone } from '../shared/botao-icone/botao-icone';
 import { AREAS_DO_PRODUTO } from './areas';
 
 const INTERVALO_DE_CHECAGEM_MS = 30_000;
 
 /** Abaixo disto a navegação some atrás do botão de menu (AC-271). */
 const CONSULTA_TELA_ESTREITA = '(max-width: 47.99em)';
+
+function iniciaisDoEmail(email: string | null | undefined): string {
+  const [parteLocal = '', dominio = ''] = (email ?? '').trim().split('@');
+  const iniciais = `${parteLocal.charAt(0)}${dominio.charAt(0)}`.toLocaleUpperCase('pt-BR');
+  return iniciais || 'IN';
+}
 
 /**
  * Moldura da área autenticada: a navegação das áreas, a troca de tema e o botão
@@ -26,7 +41,17 @@ const CONSULTA_TELA_ESTREITA = '(max-width: 47.99em)';
 @Component({
   selector: 'app-casca',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, MensagemFeedback, Botao],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    LucideLogOut,
+    LucideMoon,
+    LucideSun,
+    MensagemFeedback,
+    Botao,
+    BotaoIcone,
+  ],
   templateUrl: './casca.html',
   styleUrl: './casca.scss',
   host: {
@@ -49,6 +74,10 @@ export class Casca implements OnDestroy {
   protected readonly areas = AREAS_DO_PRODUTO;
   protected readonly tema = this.temaService.tema;
   protected readonly email = this.sessao.email;
+  protected readonly iniciais = computed(() => iniciaisDoEmail(this.email()));
+  protected readonly rotuloTema = computed(() =>
+    this.tema() === 'claro' ? 'Ativar tema escuro' : 'Ativar tema claro',
+  );
   protected readonly minutosDeAviso = MINUTOS_AVISO_EXPIRACAO;
 
   /** Tela estreita: o menu compacto entra no lugar da navegação horizontal. */

@@ -135,23 +135,7 @@ describe('Barra de mercado', () => {
     expect(trecho).toMatch(/\.chip\s*{[^}]*background:[^;]*--cor-barra-mercado/);
   });
 
-  it('@spec:AC-274 a faixa acompanha a coluna de conteúdo, que tem teto em token', () => {
-    const casca = readFileSync('src/app/layout/casca.scss', 'utf8').replace(/\s+/g, ' ');
-
-    // a coluna de conteúdo é fluida até o teto e centrada depois dele
-    expect(casca).toMatch(/max\(\s*var\(--espaco-5\)\s*,\s*calc\(\(100% - var\(--largura-conteudo\)\) \/ 2\)\s*\)/);
-    // e é a coluna que dá o recuo do conteúdo — inclusive o da faixa
-    expect(casca).toMatch(/\.conteudo\s*{[^}]*padding:[^;]*\$coluna/);
-    expect(casca).toMatch(/\.barra\s*{[^}]*padding:[^;]*\$coluna/);
-
-    // e o teto é largura de CONTEÚDO, não piso de janela: nada fixa min-width
-    const escalas = readFileSync('src/styles/_tema.scss', 'utf8');
-    expect(escalas).toMatch(/--largura-conteudo:\s*\d+px/);
-    expect(escalas).not.toMatch(/--largura-minima-app/);
-    expect(readFileSync('src/app/features/painel/painel.scss', 'utf8')).not.toMatch(/min-width/);
-  });
-
-  it('@spec:AC-274 a faixa é fina e mantém o horário visível', async () => {
+  it('@spec:AC-274 a faixa vai de ponta a ponta e mantém o horário visível', async () => {
     const elemento = await montar(cheia);
 
     // o horário da última atualização continua visível
@@ -159,9 +143,11 @@ describe('Barra de mercado', () => {
 
     const trecho = ESTILO.replace(/\s+/g, ' ');
 
-    // sem teto próprio: quem contém a faixa é a coluna de conteúdo da casca,
-    // e não uma largura que a faixa escolha para si
-    expect(trecho).not.toMatch(/\.barra-mercado\s*{[^}]*max-width:/);
+    // sem teto e sem centralização: o comprimento é o da área de conteúdo
+    expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*max-width:\s*100%/);
+    expect(trecho).not.toMatch(/\.barra-mercado\s*{[^}]*max-width:\s*[\d.]+(px|rem|em)/);
+    expect(trecho).not.toMatch(/\.barra-mercado\s*{[^}]*margin-inline:\s*auto/);
+    expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*width:\s*100%/);
 
     // a espessura vem de token, e sem padding vertical somando altura
     expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*min-height:\s*var\(--altura-cotacoes\)/);
@@ -178,6 +164,25 @@ describe('Barra de mercado', () => {
     // espessura da faixa é o token, não a soma do que cada chip acrescenta
     expect(trecho).not.toMatch(/\.chip\s*{[^}]*border:/);
     expect(trecho).toMatch(/\.chip\s*{[^}]*padding:\s*0\s+var\(--espaco-2\)/);
+  });
+
+  it('@spec:AC-285 cada elo entre o conteúdo que rola e a janela tem piso zero', () => {
+    const trecho = ESTILO.replace(/\s+/g, ' ');
+    const painel = readFileSync('src/app/features/painel/painel.scss', 'utf8').replace(/\s+/g, ' ');
+    const globais = readFileSync('src/styles.scss', 'utf8').replace(/\s+/g, ' ');
+
+    // a medida de todo elemento inclui padding e borda — sem isto, width:100%
+    // mais padding estoura o pai e a página passa a rolar de lado
+    expect(globais).toMatch(/\*,\s*\*::before,\s*\*::after\s*{[^}]*box-sizing:\s*border-box/);
+
+    // o painel é grid: pista sem piso zero cresce até o conteúdo mais largo
+    expect(painel).toMatch(/:host\s*{[^}]*grid-template-columns:\s*minmax\(0, 1fr\)/);
+
+    // e a cadeia dentro da faixa, do host até a pista que rola
+    expect(trecho).toMatch(/:host\s*{[^}]*min-width:\s*0/);
+    expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*grid-template-columns:\s*minmax\(0, 1fr\)\s+auto/);
+    expect(trecho).toMatch(/\.viewport\s*{[^}]*min-width:\s*0/);
+    expect(trecho).toMatch(/\.viewport\s*{[^}]*overflow:\s*hidden/);
   });
 
   it('@spec:AC-275 a faixa nunca força largura maior que a tela, e o movimento respeita prefers-reduced-motion', () => {

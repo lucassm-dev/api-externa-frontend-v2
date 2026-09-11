@@ -65,3 +65,28 @@
 .total {
   text-align: right;
 }
+
+// Cinco colunas, uma delas fixa em 150px, não cabem em 360px. Na tela estreita
+// a linha vira duas: a data sozinha em cima, e o resto embaixo com o total
+// empurrado para a direita.
+@media (max-width: 48rem) {
+  .linha {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--espaco-2) var(--espaco-3);
+  }
+
+  .quando {
+    flex-basis: 100%;
+  }
+
+  .ativo {
+    flex: 1 1 auto;
+  }
+
+  .total {
+    margin-left: auto;
+  }
+}
+

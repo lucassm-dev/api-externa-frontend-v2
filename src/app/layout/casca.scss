@@ -1,15 +1,14 @@
-// Coluna de conteúdo do produto: fluida enquanto a tela é menor que o teto,
-// centrada quando passa dele. O `max()` põe a coluna no lugar sem embrulhar
-// tudo num elemento a mais — e a borda da barra continua atravessando a tela,
-// que é o que separa o topo do conteúdo.
-$coluna: max(var(--espaco-5), calc((100% - var(--largura-conteudo)) / 2));
-
+// O conteúdo atravessa a tela com um recuo pequeno, em qualquer largura. Teto
+// centralizado foi tentado e recusado: joga a faixa de cotações para o meio e a
+// faz parecer um cartão, quando ela é uma faixa.
 .barra {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  height: 56px;
-  padding: 0 #{$coluna};
+  gap: var(--espaco-3);
+  min-height: 56px;
+  padding: var(--espaco-2) var(--espaco-5);
   border-bottom: 1px solid var(--cor-borda);
   background: var(--cor-superficie);
 }
@@ -21,28 +20,75 @@ $coluna: max(var(--espaco-5), calc((100% - var(--largura-conteudo)) / 2));
 
 .identidade {
   display: flex;
+  min-width: 0;
   align-items: center;
-  gap: var(--espaco-4);
+  gap: var(--espaco-2);
+  margin-left: auto;
+}
+
+.perfil {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: var(--espaco-3);
+}
+
+// O e-mail é o único texto do topo que cresce sem limite. Ele cede primeiro:
+// corta com reticências em vez de empurrar a barra para fora da tela.
+.perfil-texto {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  align-items: flex-end;
+  line-height: 1.4;
+}
+
+.perfil-rotulo {
+  color: var(--cor-texto-fraco);
+  font-size: var(--texto-rotulo);
+  font-weight: 600;
 }
 
 .email {
+  display: block;
+  max-width: 15rem;
+  overflow: hidden;
   color: var(--cor-texto-fraco);
+  font-size: var(--texto-apoio);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.avatar {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  border-radius: var(--raio-pilula);
+  background: var(--cor-destaque);
+  color: var(--cor-destaque-texto);
+  font-size: var(--texto-apoio);
+  font-weight: 800;
+  letter-spacing: 0.04em;
 }
 
 .aviso {
   display: flex;
   align-items: center;
   gap: var(--espaco-4);
-  padding: var(--espaco-3) #{$coluna};
+  padding: var(--espaco-3) var(--espaco-5);
 }
 
 .conteudo {
   display: block;
-  padding: var(--espaco-5) #{$coluna};
+  padding: var(--espaco-5);
 }
 
 .areas {
   display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--espaco-2);
   margin-right: auto;
@@ -103,6 +149,20 @@ $coluna: max(var(--espaco-5), calc((100% - var(--largura-conteudo)) / 2));
   .identidade {
     flex-basis: 100%;
     justify-content: flex-end;
+  }
+
+  .perfil {
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+
+  .perfil-texto {
+    overflow: hidden;
+  }
+
+  .email {
+    max-width: 100%;
   }
 
   .conteudo {

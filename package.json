@@ -33,6 +33,7 @@
     "@onovoprogramador/onp-ui-ux": "^0.2.0",
     "@types/node": "^26.5.0",
     "jsdom": "^28.0.0",
+    "playwright": "^1.63.0",
     "prettier": "^3.8.1",
     "typescript": "~6.0.2",
     "vitest": "^4.0.8"

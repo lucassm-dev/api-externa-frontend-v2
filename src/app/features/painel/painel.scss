@@ -1,5 +1,8 @@
 :host {
   display: grid;
+  // Sem o piso zero na coluna, um bloco de conteúdo largo (a faixa que rola)
+  // alarga a pista inteira e leva a página junto.
+  grid-template-columns: minmax(0, 1fr);
   grid-auto-rows: min-content;
   gap: var(--espaco-6);
 }

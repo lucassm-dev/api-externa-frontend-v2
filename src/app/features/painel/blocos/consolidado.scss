@@ -45,7 +45,7 @@
 
 .indicadores {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--espaco-4);
   margin: var(--espaco-5) 0 0;
   padding: 0;
@@ -104,5 +104,12 @@
     height: 44px;
     border-radius: var(--raio);
     background: var(--cor-superficie-alta);
+  }
+}
+
+// A 360px três indicadores lado a lado só cabem cortando o número. Empilham.
+@media (max-width: 48rem) {
+  .indicadores {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

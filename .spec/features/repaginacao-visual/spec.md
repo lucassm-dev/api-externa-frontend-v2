@@ -98,14 +98,21 @@ carteira fora da mesa de trabalho.
 Como investidor, quero que a faixa de cotações seja fina, para que o topo do
 painel continue sendo sobre a minha carteira.
 
-#### AC-274 — A faixa é fina e acompanha a coluna de conteúdo
+#### AC-274 — A faixa é fina e vai de um lado ao outro
 
 - **Dado** o painel em qualquer largura de tela
 - **Quando** a barra de cotações é exibida
-- **Então** ela acompanha a coluna de conteúdo do produto — fluida enquanto a
-  tela é menor que o teto declarado em token, centrada quando passa dele, nunca
-  colada nas bordas da janela — e sua espessura vem de um token menor que o alvo
-  de toque, mantendo visível o horário da última atualização
+- **Então** ela atravessa a área de conteúdo de ponta a ponta, deixando apenas o
+  recuo da tela, e sua espessura vem de um token menor que o alvo de toque,
+  mantendo visível o horário da última atualização
+
+#### AC-285 — O conteúdo que rola nunca empurra a página
+
+- **Dado** um bloco cujo conteúdo é mais largo que a tela — a faixa de cotações,
+  que rola em laço
+- **Quando** ele é exibido em qualquer largura, de 360px a 1920px
+- **Então** o documento não ganha rolagem horizontal: cada elo entre o bloco e a
+  janela declara piso zero, e a medida de todo elemento inclui padding e borda
 
 #### AC-275 — A faixa continua inteira na tela estreita
 

@@ -37,7 +37,7 @@ describe('Casca da área interna', () => {
     const elemento = await montar(600);
     const navegou = vi.spyOn(router, 'navigateByUrl');
 
-    const sair = elemento.querySelector('[data-sair]') as HTMLButtonElement;
+    const sair = elemento.querySelector('[data-sair] button') as HTMLButtonElement;
     expect(sair).not.toBeNull();
     sair.click();
     await fixture.whenStable();
@@ -49,8 +49,25 @@ describe('Casca da área interna', () => {
   it('@spec:AC-041 o botão de sair fica sempre visível, com o e-mail de quem está entrado', async () => {
     const elemento = await montar(600);
 
-    expect(elemento.querySelector('[data-sair]')?.textContent).toMatch(/sair/i);
+    expect(elemento.querySelector('[data-sair] button')?.getAttribute('aria-label')).toMatch(
+      /sair/i,
+    );
     expect(elemento.textContent).toContain('lucas@exemplo.com');
+  });
+
+  it('@spec:AC-287 sair por ícone mantém o encerramento direto da sessão', async () => {
+    const elemento = await montar(600);
+    const navegou = vi.spyOn(router, 'navigateByUrl');
+    const sair = elemento.querySelector('[data-sair] button') as HTMLButtonElement;
+
+    expect(sair.getAttribute('aria-label')).toBe('Sair do sistema');
+    expect(elemento.querySelector('[data-sair] svg[aria-hidden="true"]')).not.toBeNull();
+
+    sair.click();
+    await fixture.whenStable();
+
+    expect(sessao.ativa()).toBe(false);
+    expect(String(navegou.mock.calls[0][0])).toContain(ROTA_LOGIN);
   });
 
   it('@spec:AC-043 o aviso aparece a menos de 5 minutos do fim, sem nenhuma chamada ao servidor', async () => {
@@ -153,7 +170,7 @@ describe('Navegação do shell', () => {
   it('@spec:AC-048 sair fica na própria barra, fora de qualquer menu suspenso', async () => {
     const elemento = await montar();
 
-    const sair = elemento.querySelector('[data-sair]');
+    const sair = elemento.querySelector('[data-sair] button');
     expect(sair).not.toBeNull();
     expect(sair?.closest('header.barra')).not.toBeNull();
     expect(elemento.querySelectorAll('[mat-menu-trigger-for], [aria-haspopup]')).toHaveLength(0);
@@ -163,7 +180,7 @@ describe('Navegação do shell', () => {
     const elemento = await montar();
     expect(document.documentElement.getAttribute('data-tema')).toBe('claro');
 
-    (elemento.querySelector('[data-alternar-tema]') as HTMLButtonElement).click();
+    (elemento.querySelector('[data-alternar-tema] button') as HTMLButtonElement).click();
     await fixture.whenStable();
 
     expect(document.documentElement.getAttribute('data-tema')).toBe('escuro');
@@ -174,6 +191,37 @@ describe('Navegação do shell', () => {
     TestBed.configureTestingModule({ providers: [provideRouter([])] });
     expect(TestBed.inject(TemaService).tema()).toBe('escuro');
     expect(document.documentElement.getAttribute('data-tema')).toBe('escuro');
+  });
+
+  it('@spec:AC-285 identifica o investidor com e-mail e avatar de iniciais', async () => {
+    const elemento = await montar();
+    const identidade = elemento.querySelector('[data-identidade-investidor]');
+    const avatar = identidade?.querySelector('[data-avatar-investidor]');
+
+    expect(identidade?.textContent).toContain('Investidor');
+    expect(identidade?.textContent).toContain('lucas@exemplo.com');
+    expect(identidade?.querySelector('.email')?.getAttribute('title')).toBe('lucas@exemplo.com');
+    expect(avatar?.textContent?.trim()).toBe('LE');
+    expect(avatar?.getAttribute('aria-hidden')).toBe('true');
+    expect(identidade?.getAttribute('aria-haspopup')).toBeNull();
+  });
+
+  it('@spec:AC-286 tema usa ícone e nomeia a ação disponível nos dois estados', async () => {
+    const elemento = await montar();
+    const controle = () => elemento.querySelector('[data-alternar-tema]');
+    const botao = () => controle()?.querySelector('button') as HTMLButtonElement;
+
+    expect(controle()?.getAttribute('data-tema-atual')).toBe('claro');
+    expect(botao().getAttribute('aria-label')).toBe('Ativar tema escuro');
+    expect(controle()?.querySelector('[data-icone-tema="lua"]')).not.toBeNull();
+
+    botao().click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(controle()?.getAttribute('data-tema-atual')).toBe('escuro');
+    expect(botao().getAttribute('aria-label')).toBe('Ativar tema claro');
+    expect(controle()?.querySelector('[data-icone-tema="sol"]')).not.toBeNull();
   });
 });
 
@@ -265,7 +313,24 @@ describe('Casca responsiva com menu compacto (T-115)', () => {
     expect(estilos).not.toContain('largura-minima');
 
     const estilosCasca = readFileSync(join(process.cwd(), 'src/app/layout/casca.scss'), 'utf8');
-    expect(estilosCasca).not.toMatch(/min-width\s*:/);
+    const pisosDeclarados = [...estilosCasca.matchAll(/min-width\s*:\s*([^;]+);/g)].map(
+      ([, valor]) => valor.trim(),
+    );
+    expect(pisosDeclarados.every((valor) => valor === '0')).toBe(true);
+  });
+
+  it('@spec:AC-288 a identidade trunca só visualmente e os ícones têm alvo móvel de 44px', async () => {
+    const el = await montar(true);
+    const email = el.querySelector('[data-identidade-investidor] .email');
+    const estilosCasca = readFileSync('src/app/layout/casca.scss', 'utf8');
+    const estilosBotaoIcone = readFileSync('src/app/shared/botao-icone/botao-icone.scss', 'utf8');
+
+    expect(email?.textContent).toBe('lucas@exemplo.com');
+    expect(email?.getAttribute('title')).toBe('lucas@exemplo.com');
+    expect(estilosCasca).toMatch(/\.email\s*{[^}]*text-overflow:\s*ellipsis/s);
+    expect(estilosBotaoIcone).toMatch(
+      /@media\s*\(max-width:\s*47\.99em\)[\s\S]*min-width:\s*44px[\s\S]*min-height:\s*44px/,
+    );
   });
 
   it('@spec:AC-270 a 360px a navegação larga não fica exposta: colapsa atrás do menu', async () => {
