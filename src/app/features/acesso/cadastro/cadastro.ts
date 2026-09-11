@@ -7,7 +7,14 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
@@ -29,6 +36,17 @@ import {
   formatarCpf,
   senhaValidator,
 } from '../validadores';
+
+function senhasCoincidemValidator(formulario: AbstractControl): ValidationErrors | null {
+  const senha = formulario.get('senha')?.value;
+  const confirmarSenha = formulario.get('confirmarSenha')?.value;
+
+  if (!confirmarSenha || senha === confirmarSenha) {
+    return null;
+  }
+
+  return { senhasDiferentes: true };
+}
 
 @Component({
   selector: 'app-cadastro',
@@ -57,15 +75,25 @@ export class Cadastro {
 
   readonly enviando = signal(false);
   readonly mensagemGeral = signal<string | null>(null);
+  readonly confirmacaoSenhaErrorStateMatcher: ErrorStateMatcher = {
+    isErrorState: (controle) =>
+      !!controle &&
+      controle.touched &&
+      (controle.invalid || controle.parent?.hasError('senhasDiferentes') === true),
+  };
   protected readonly nivelMensagem = signal<NivelFeedback>('erro');
   protected readonly codigoMensagem = signal<string | null>(null);
 
-  readonly formulario = inject(FormBuilder).nonNullable.group({
-    nome: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email]],
-    cpf: ['', [Validators.required, cpfValidator]],
-    senha: ['', [Validators.required, senhaValidator]],
-  });
+  readonly formulario = inject(FormBuilder).nonNullable.group(
+    {
+      nome: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      cpf: ['', [Validators.required, cpfValidator]],
+      senha: ['', [Validators.required, senhaValidator]],
+      confirmarSenha: ['', [Validators.required]],
+    },
+    { validators: senhasCoincidemValidator },
+  );
 
   private readonly primeiroCampo = viewChild<ElementRef<HTMLInputElement>>('primeiroCampo');
 
@@ -97,23 +125,30 @@ export class Cadastro {
     const dados = this.formulario.getRawValue();
 
     // O backend valida 11 dígitos: a pontuação fica na tela, não no envio.
-    this.acesso.cadastrar({ ...dados, cpf: digitosDoCpf(dados.cpf) }).subscribe({
-      next: (conta) => {
-        this.enviando.set(false);
-        // Cadastro não entra no sistema: o backend não devolve token (ADR-001).
-        this.router.navigate([ROTA_LOGIN], {
-          queryParams: { email: conta.email, contaCriada: '1' },
-        });
-      },
-      error: (erro: ErroTraduzido) => {
-        this.enviando.set(false);
-        const mensagem = aplicarErroNoFormulario(erro, this.formulario);
-        this.mensagemGeral.set(mensagem);
-        if (mensagem) {
-          this.nivelMensagem.set(erro.nivel);
-          this.codigoMensagem.set(erro.exibirCodigo ? erro.codigo : null);
-        }
-      },
-    });
+    this.acesso
+      .cadastrar({
+        nome: dados.nome,
+        email: dados.email,
+        cpf: digitosDoCpf(dados.cpf),
+        senha: dados.senha,
+      })
+      .subscribe({
+        next: (conta) => {
+          this.enviando.set(false);
+          // Cadastro não entra no sistema: o backend não devolve token (ADR-001).
+          this.router.navigate([ROTA_LOGIN], {
+            queryParams: { email: conta.email, contaCriada: '1' },
+          });
+        },
+        error: (erro: ErroTraduzido) => {
+          this.enviando.set(false);
+          const mensagem = aplicarErroNoFormulario(erro, this.formulario);
+          this.mensagemGeral.set(mensagem);
+          if (mensagem) {
+            this.nivelMensagem.set(erro.nivel);
+            this.codigoMensagem.set(erro.exibirCodigo ? erro.codigo : null);
+          }
+        },
+      });
   }
 }

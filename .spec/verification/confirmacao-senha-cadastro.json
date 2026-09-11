@@ -1,0 +1,32 @@
+{
+  "feature": "confirmacao-senha-cadastro",
+  "timestamp": "2026-09-11T22:31:57.154Z",
+  "gitRev": "2858130",
+  "command": "npx ng test",
+  "reporter": "tap",
+  "exitCode": 1,
+  "testsParsed": 611,
+  "results": {
+    "AC-291": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-291 pede a confirmação logo depois da senha sem antecipar erro # time=463.43ms",
+      "method": "tap"
+    },
+    "AC-292": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-292 mostra a divergência no blur e barra a requisição # time=301.08ms",
+      "method": "tap"
+    },
+    "AC-293": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-293 revalida a confirmação quando a senha original muda # time=684.70ms",
+      "method": "tap"
+    },
+    "AC-294": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-294 envia o cadastro quando as senhas coincidem sem mandar a confirmação # time=360.25ms",
+      "method": "tap"
+    }
+  },
+  "principles": {}
+}

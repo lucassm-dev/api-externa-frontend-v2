@@ -14,6 +14,11 @@ const VALIDO = {
   senha: 'segura123',
 };
 
+const FORMULARIO_VALIDO = {
+  ...VALIDO,
+  confirmarSenha: VALIDO.senha,
+};
+
 function erroDoServidor(codigo: string, status: number, fieldErrors?: { field: string; message: string }[]) {
   return {
     corpo: {
@@ -52,8 +57,8 @@ describe('Tela de cadastro', () => {
     await fixture.whenStable();
   });
 
-  function preencher(dados: Partial<typeof VALIDO> = {}) {
-    componente.formulario.setValue({ ...VALIDO, ...dados });
+  function preencher(dados: Partial<typeof FORMULARIO_VALIDO> = {}) {
+    componente.formulario.setValue({ ...FORMULARIO_VALIDO, ...dados });
   }
 
   async function enviar() {
@@ -130,6 +135,65 @@ describe('Tela de cadastro', () => {
     expect(componente.formulario.controls.senha.invalid).toBe(true);
   });
 
+  it('@spec:AC-291 pede a confirmação logo depois da senha sem antecipar erro', async () => {
+    const raiz = fixture.nativeElement as HTMLElement;
+    const senha = raiz.querySelector('input[formcontrolname="senha"]') as HTMLInputElement;
+    const confirmarSenha = raiz.querySelector(
+      'input[formcontrolname="confirmarSenha"]',
+    ) as HTMLInputElement;
+
+    expect(confirmarSenha).not.toBeNull();
+    expect(senha.closest('mat-form-field')?.nextElementSibling).toBe(
+      confirmarSenha.closest('mat-form-field'),
+    );
+    expect(confirmarSenha.autocomplete).toBe('new-password');
+    expect(raiz.textContent).not.toContain('As senhas não coincidem');
+
+    preencher({ confirmarSenha: '' });
+    await enviar();
+
+    controle.expectNone('/auth/cadastro');
+    expect(componente.formulario.controls.confirmarSenha.touched).toBe(true);
+    expect(raiz.textContent).toContain('Confirme sua senha');
+  });
+
+  it('@spec:AC-292 mostra a divergência no blur e barra a requisição', async () => {
+    const raiz = fixture.nativeElement as HTMLElement;
+    const confirmarSenha = raiz.querySelector(
+      'input[formcontrolname="confirmarSenha"]',
+    ) as HTMLInputElement;
+    preencher({ confirmarSenha: 'diferente123' });
+    await fixture.whenStable();
+
+    expect(raiz.textContent).not.toContain('As senhas não coincidem');
+    confirmarSenha.dispatchEvent(new Event('blur'));
+    await fixture.whenStable();
+
+    expect(raiz.textContent).toContain('As senhas não coincidem');
+    await enviar();
+    controle.expectNone('/auth/cadastro');
+  });
+
+  it('@spec:AC-293 revalida a confirmação quando a senha original muda', async () => {
+    preencher();
+    componente.formulario.controls.senha.setValue('novaSenha123');
+    await enviar();
+
+    controle.expectNone('/auth/cadastro');
+    expect(componente.formulario.hasError('senhasDiferentes')).toBe(true);
+    expect((fixture.nativeElement as HTMLElement).textContent).toContain('As senhas não coincidem');
+  });
+
+  it('@spec:AC-294 envia o cadastro quando as senhas coincidem sem mandar a confirmação', async () => {
+    preencher();
+    await enviar();
+
+    const requisicao = controle.expectOne('/auth/cadastro');
+    expect(requisicao.request.body).toEqual(VALIDO);
+    expect(requisicao.request.body).not.toHaveProperty('confirmarSenha');
+    requisicao.flush({ id: 7, nome: VALIDO.nome, email: VALIDO.email });
+  });
+
   it('@spec:AC-029 e-mail fora de formato barra o envio antes de chamar o backend', async () => {
     preencher({ email: 'lucas-arroba-exemplo' });
     await enviar();
@@ -173,7 +237,7 @@ describe('Tela de cadastro', () => {
     controle.expectOne('/auth/cadastro').flush(corpo, opcoes);
     await fixture.whenStable();
 
-    expect(componente.formulario.value).toEqual(VALIDO);
+    expect(componente.formulario.value).toEqual(FORMULARIO_VALIDO);
     expect(componente.formulario.controls.email.errors?.['servidor']).toBe('Este e-mail já está em uso.');
     expect(componente.formulario.controls.cpf.errors).toBeNull();
     expect(componente.formulario.controls.senha.errors).toBeNull();

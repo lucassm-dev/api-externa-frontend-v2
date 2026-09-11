@@ -62,6 +62,30 @@
         }
       </mat-form-field>
 
+      <mat-form-field appearance="outline">
+        <mat-label>Confirmar senha</mat-label>
+        <input
+          matInput
+          formControlName="confirmarSenha"
+          type="password"
+          autocomplete="new-password"
+          aria-label="Confirmar senha"
+          [errorStateMatcher]="confirmacaoSenhaErrorStateMatcher"
+        />
+        @if (
+          formulario.controls.confirmarSenha.touched &&
+          (formulario.controls.confirmarSenha.invalid || formulario.hasError('senhasDiferentes'))
+        ) {
+          <mat-error>
+            {{
+              formulario.controls.confirmarSenha.hasError('required')
+                ? 'Confirme sua senha'
+                : 'As senhas não coincidem'
+            }}
+          </mat-error>
+        }
+      </mat-form-field>
+
       <app-forca-da-senha [senha]="formulario.controls.senha.value" />
 
       <button appBotao intencao="primaria" type="submit" [ocupado]="enviando()">
