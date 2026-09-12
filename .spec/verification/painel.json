@@ -1,7 +1,7 @@
 {
   "feature": "painel",
-  "timestamp": "2026-09-11T22:32:02.942Z",
-  "gitRev": "2858130",
+  "timestamp": "2026-09-12T02:59:13.386Z",
+  "gitRev": "e26b9e8",
   "command": "npx ng test",
   "reporter": "tap",
   "exitCode": 1,
@@ -9,97 +9,97 @@
   "results": {
     "AC-047": {
       "status": "pass",
-      "testName": "src/app/layout/casca.spec.ts > Navegação do shell > @spec:AC-047 a barra superior leva às seis áreas do produto # time=113.79ms",
+      "testName": "src/app/layout/casca.spec.ts > Navegação do shell > @spec:AC-047 a barra superior leva às seis áreas do produto # time=14.13ms",
       "method": "tap"
     },
     "AC-048": {
       "status": "pass",
-      "testName": "src/app/layout/casca.spec.ts > Navegação do shell > @spec:AC-048 sair fica na própria barra, fora de qualquer menu suspenso # time=34.47ms",
+      "testName": "src/app/layout/casca.spec.ts > Navegação do shell > @spec:AC-048 sair fica na própria barra, fora de qualquer menu suspenso # time=13.01ms",
       "method": "tap"
     },
     "AC-049": {
       "status": "pass",
-      "testName": "src/app/layout/casca.spec.ts > Navegação do shell > @spec:AC-049 a alternância de tema muda o tema e a escolha sobrevive à visita # time=150.11ms",
+      "testName": "src/app/layout/casca.spec.ts > Navegação do shell > @spec:AC-049 a alternância de tema muda o tema e a escolha sobrevive à visita # time=26.46ms",
       "method": "tap"
     },
     "AC-050": {
       "status": "pass",
-      "testName": "src/app/features/painel/painel.service.spec.ts > Leituras do painel > @spec:AC-050 a barra de mercado vem inteira, com itens, horário e avisos # time=2.52ms",
+      "testName": "src/app/features/painel/painel.service.spec.ts > Leituras do painel > @spec:AC-050 a barra de mercado vem inteira, com itens, horário e avisos # time=2.35ms",
       "method": "tap"
     },
     "AC-051": {
       "status": "pass",
-      "testName": "src/app/features/painel/painel.service.spec.ts > Leituras do painel > @spec:AC-051 a barra fora do ar vira ausência de barra, não erro propagado # time=1.73ms",
+      "testName": "src/app/features/painel/painel.service.spec.ts > Leituras do painel > @spec:AC-051 a barra fora do ar vira ausência de barra, não erro propagado # time=1.80ms",
       "method": "tap"
     },
     "AC-052": {
       "status": "pass",
-      "testName": "src/app/features/painel/blocos/barra-mercado.spec.ts > Barra de mercado > @spec:AC-052 o que faltou vira aviso, e nada na barra é apresentado como erro # time=17.99ms",
+      "testName": "src/app/features/painel/blocos/barra-mercado.spec.ts > Barra de mercado > @spec:AC-052 o que faltou vira aviso, e nada na barra é apresentado como erro # time=26.29ms",
       "method": "tap"
     },
     "AC-053": {
       "status": "pass",
-      "testName": "src/app/features/painel/painel.service.spec.ts > Leituras do painel > @spec:AC-053 o consolidado é pedido de uma carteira por vez, pelo identificador dela # time=1.66ms",
+      "testName": "src/app/features/painel/painel.service.spec.ts > Leituras do painel > @spec:AC-053 o consolidado é pedido de uma carteira por vez, pelo identificador dela # time=1.64ms",
       "method": "tap"
     },
     "AC-054": {
       "status": "pass",
-      "testName": "src/app/features/painel/carteira-preferida.spec.ts > Carteira lembrada no consolidado > @spec:AC-054 a escolha de uma visita é a carteira aberta na visita seguinte # time=2.68ms",
+      "testName": "src/app/features/painel/carteira-preferida.spec.ts > Carteira lembrada no consolidado > @spec:AC-054 a escolha de uma visita é a carteira aberta na visita seguinte # time=2.84ms",
       "method": "tap"
     },
     "AC-055": {
       "status": "pass",
-      "testName": "src/app/features/painel/blocos/consolidado.spec.ts > Consolidado de uma carteira > @spec:AC-055 aviso de câmbio aparece como aviso, com os números ainda na tela # time=22.19ms",
+      "testName": "src/app/features/painel/blocos/consolidado.spec.ts > Consolidado de uma carteira > @spec:AC-055 aviso de câmbio aparece como aviso, com os números ainda na tela # time=9.49ms",
       "method": "tap"
     },
     "AC-056": {
       "status": "pass",
-      "testName": "src/app/features/painel/blocos/consolidado.spec.ts > Consolidado de uma carteira > @spec:AC-056 taxa com mais de quinze minutos ganha a marcação de dado defasado # time=39.31ms",
+      "testName": "src/app/features/painel/blocos/consolidado.spec.ts > Consolidado de uma carteira > @spec:AC-056 taxa com mais de quinze minutos ganha a marcação de dado defasado # time=45.74ms",
       "method": "tap"
     },
     "AC-057": {
       "status": "pass",
-      "testName": "src/app/features/painel/painel.service.spec.ts > Leituras do painel > @spec:AC-057 as carteiras são pedidas ordenadas por identificador decrescente # time=1.71ms",
+      "testName": "src/app/features/painel/painel.service.spec.ts > Leituras do painel > @spec:AC-057 as carteiras são pedidas ordenadas por identificador decrescente # time=1.96ms",
       "method": "tap"
     },
     "AC-058": {
       "status": "pass",
-      "testName": "src/app/features/painel/blocos/carteiras-do-investidor.spec.ts > Cartões das carteiras > @spec:AC-058 cada cartão traz nome, corretora e o atalho que abre aquela carteira # time=7.87ms",
+      "testName": "src/app/features/painel/blocos/carteiras-do-investidor.spec.ts > Cartões das carteiras > @spec:AC-058 cada cartão traz nome, corretora e o atalho que abre aquela carteira # time=7.15ms",
       "method": "tap"
     },
     "AC-059": {
       "status": "pass",
-      "testName": "src/app/features/painel/painel.service.spec.ts > Leituras do painel > @spec:AC-059 o painel pede cinco movimentações e nunca exibe mais que isso # time=2.85ms",
+      "testName": "src/app/features/painel/painel.service.spec.ts > Leituras do painel > @spec:AC-059 o painel pede cinco movimentações e nunca exibe mais que isso # time=1.74ms",
       "method": "tap"
     },
     "AC-060": {
       "status": "pass",
-      "testName": "src/app/features/painel/painel.service.spec.ts > Leituras do painel > @spec:AC-060 a sonda do catálogo pergunta se existe alguma corretora, sem trazer a lista # time=5.03ms",
+      "testName": "src/app/features/painel/painel.service.spec.ts > Leituras do painel > @spec:AC-060 a sonda do catálogo pergunta se existe alguma corretora, sem trazer a lista # time=26.98ms",
       "method": "tap"
     },
     "AC-061": {
       "status": "pass",
-      "testName": "src/app/features/painel/proximo-passo.spec.ts > O próximo passo único do painel > @spec:AC-061 com corretora no catálogo e sem carteira, o passo é criar carteira # time=0.10ms",
+      "testName": "src/app/features/painel/proximo-passo.spec.ts > O próximo passo único do painel > @spec:AC-061 com corretora no catálogo e sem carteira, o passo é criar carteira # time=0.11ms",
       "method": "tap"
     },
     "AC-062": {
       "status": "pass",
-      "testName": "src/app/features/painel/proximo-passo.spec.ts > O próximo passo único do painel > @spec:AC-062 com carteira e sem operação, o passo é registrar a primeira compra # time=0.08ms",
+      "testName": "src/app/features/painel/proximo-passo.spec.ts > O próximo passo único do painel > @spec:AC-062 com carteira e sem operação, o passo é registrar a primeira compra # time=0.09ms",
       "method": "tap"
     },
     "AC-063": {
       "status": "pass",
-      "testName": "src/app/features/painel/painel.spec.ts > Painel inicial > @spec:AC-063 com corretora, carteira e operação o painel mostra consolidado, carteiras e movimentações, sem convite # time=36.34ms",
+      "testName": "src/app/features/painel/painel.spec.ts > Painel inicial > @spec:AC-063 com corretora, carteira e operação o painel mostra consolidado, carteiras e movimentações, sem convite # time=26.59ms",
       "method": "tap"
     },
     "AC-064": {
       "status": "pass",
-      "testName": "src/app/features/painel/painel.spec.ts > Painel inicial > @spec:AC-064 com um próximo passo ativo o convite ocupa o corpo da tela e a barra de mercado continua # time=17.70ms",
+      "testName": "src/app/features/painel/painel.spec.ts > Painel inicial > @spec:AC-064 com um próximo passo ativo o convite ocupa o corpo da tela e a barra de mercado continua # time=17.36ms",
       "method": "tap"
     },
     "AC-065": {
       "status": "pass",
-      "testName": "src/app/features/painel/painel.spec.ts > Painel inicial > @spec:AC-065 enquanto as leituras não voltam a tela mostra esqueleto dos blocos, nunca um indicador de tela inteira # time=80.23ms",
+      "testName": "src/app/features/painel/painel.spec.ts > Painel inicial > @spec:AC-065 enquanto as leituras não voltam a tela mostra esqueleto dos blocos, nunca um indicador de tela inteira # time=70.79ms",
       "method": "tap"
     }
   },

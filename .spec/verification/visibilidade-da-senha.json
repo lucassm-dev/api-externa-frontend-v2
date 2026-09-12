@@ -1,0 +1,32 @@
+{
+  "feature": "visibilidade-da-senha",
+  "timestamp": "2026-09-12T03:34:07.482Z",
+  "gitRev": "e26b9e8",
+  "command": "npx ng test",
+  "reporter": "tap",
+  "exitCode": 1,
+  "testsParsed": 596,
+  "results": {
+    "AC-295": {
+      "status": "pass",
+      "testName": "src/app/shared/visibilidade-senha/visibilidade-senha.spec.ts > Botão de visibilidade da senha > @spec:AC-295 revela o conteúdo digitado e volta a ocultar # time=12.67ms",
+      "method": "tap"
+    },
+    "AC-296": {
+      "status": "pass",
+      "testName": "src/app/shared/visibilidade-senha/visibilidade-senha.spec.ts > Botão de visibilidade da senha > @spec:AC-296 o nome acessível descreve a ação e acompanha o estado # time=10.57ms",
+      "method": "tap"
+    },
+    "AC-297": {
+      "status": "pass",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-297 revelar a senha não revela a confirmação, e vice-versa # time=39.01ms",
+      "method": "tap"
+    },
+    "AC-298": {
+      "status": "pass",
+      "testName": "src/app/shared/visibilidade-senha/visibilidade-senha.spec.ts > Botão de visibilidade da senha > @spec:AC-298 acionar o botão não envia o formulário que o contém # time=5.98ms",
+      "method": "tap"
+    }
+  },
+  "principles": {}
+}

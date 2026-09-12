@@ -55,7 +55,14 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Senha</mat-label>
-        <input matInput formControlName="senha" type="password" autocomplete="new-password" aria-label="Senha" />
+        <input
+          matInput
+          formControlName="senha"
+          [type]="senhaVisivel() ? 'text' : 'password'"
+          autocomplete="new-password"
+          aria-label="Senha"
+        />
+        <app-visibilidade-senha matSuffix [(visivel)]="senhaVisivel" campo="senha" />
         <mat-hint>{{ regraSenha }}</mat-hint>
         @if (formulario.controls.senha.touched && formulario.controls.senha.invalid) {
           <mat-error>{{ formulario.controls.senha.errors?.['servidor'] ?? regraSenha }}</mat-error>
@@ -67,10 +74,15 @@
         <input
           matInput
           formControlName="confirmarSenha"
-          type="password"
+          [type]="confirmacaoVisivel() ? 'text' : 'password'"
           autocomplete="new-password"
           aria-label="Confirmar senha"
           [errorStateMatcher]="confirmacaoSenhaErrorStateMatcher"
+        />
+        <app-visibilidade-senha
+          matSuffix
+          [(visivel)]="confirmacaoVisivel"
+          campo="confirmação de senha"
         />
         @if (
           formulario.controls.confirmarSenha.touched &&

@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Botao } from '../../../shared/botao/botao';
+import { VisibilidadeSenha } from '../../../shared/visibilidade-senha/visibilidade-senha';
 import { CATALOGO_ERROS } from '../../../core/erros/catalogo-erros';
 import { aplicarErroNoFormulario } from '../../../core/erros/erro-em-formulario';
 import { ErroTraduzido } from '../../../core/erros/tradutor-erro';
@@ -32,6 +33,7 @@ import { MolduraAcesso } from '../moldura-acesso';
     MatFormFieldModule,
     MatInputModule,
     Botao,
+    VisibilidadeSenha,
   ],
   templateUrl: './login.html',
   styleUrl: './login.scss',
@@ -42,6 +44,9 @@ export class Login {
   private readonly rota = inject(ActivatedRoute);
 
   protected readonly rotaCadastro = ROTA_CADASTRO;
+
+  /** Sempre oculta ao abrir a tela: a preferência não sobrevive ao recarregar. */
+  protected readonly senhaVisivel = signal(false);
 
   readonly enviando = signal(false);
   readonly mensagemGeral = signal<string | null>(null);

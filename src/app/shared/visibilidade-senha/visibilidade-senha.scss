@@ -1,0 +1,49 @@
+:host {
+  display: inline-flex;
+}
+
+.alternar {
+  display: inline-grid;
+  width: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--raio-pilula);
+  background: transparent;
+  color: var(--cor-texto-fraco);
+  cursor: pointer;
+  transition: color var(--duracao-rapida) var(--entrada);
+}
+
+.alternar:hover {
+  background: var(--cor-superficie-alta);
+  color: var(--cor-texto);
+}
+
+.alternar:focus-visible {
+  outline: none;
+  box-shadow: var(--anel-foco);
+}
+
+// Dedo não tem a precisão do ponteiro: onde há toque, o alvo sobe ao mínimo
+// do WCAG, como o botão do produto já faz.
+@media (pointer: coarse) {
+  .alternar {
+    width: var(--alvo-toque);
+    min-width: var(--alvo-toque);
+    min-height: var(--alvo-toque);
+  }
+}
+
+svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alternar {
+    transition: none;
+  }
+}

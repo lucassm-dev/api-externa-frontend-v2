@@ -1,0 +1,15 @@
+<button
+  class="alternar"
+  data-visibilidade-senha
+  type="button"
+  [attr.aria-label]="rotulo()"
+  [attr.title]="rotulo()"
+  [attr.aria-pressed]="visivel()"
+  (click)="alternar()"
+>
+  @if (visivel()) {
+    <svg lucideEyeOff data-icone="oculta" aria-hidden="true" focusable="false"></svg>
+  } @else {
+    <svg lucideEye data-icone="revela" aria-hidden="true" focusable="false"></svg>
+  }
+</button>

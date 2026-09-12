@@ -36,7 +36,14 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Senha</mat-label>
-        <input matInput formControlName="senha" type="password" autocomplete="current-password" aria-label="Senha" />
+        <input
+          matInput
+          formControlName="senha"
+          [type]="senhaVisivel() ? 'text' : 'password'"
+          autocomplete="current-password"
+          aria-label="Senha"
+        />
+        <app-visibilidade-senha matSuffix [(visivel)]="senhaVisivel" campo="senha" />
         @if (formulario.controls.senha.touched && formulario.controls.senha.invalid) {
           <mat-error>Informe sua senha</mat-error>
         }

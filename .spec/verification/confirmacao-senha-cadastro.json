@@ -1,30 +1,30 @@
 {
   "feature": "confirmacao-senha-cadastro",
-  "timestamp": "2026-09-11T22:31:57.154Z",
-  "gitRev": "2858130",
+  "timestamp": "2026-09-12T02:57:09.984Z",
+  "gitRev": "e26b9e8",
   "command": "npx ng test",
   "reporter": "tap",
   "exitCode": 1,
-  "testsParsed": 611,
+  "testsParsed": 608,
   "results": {
     "AC-291": {
       "status": "pass",
-      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-291 pede a confirmação logo depois da senha sem antecipar erro # time=463.43ms",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-291 pede a confirmação logo depois da senha sem antecipar erro # time=84.03ms",
       "method": "tap"
     },
     "AC-292": {
       "status": "pass",
-      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-292 mostra a divergência no blur e barra a requisição # time=301.08ms",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-292 mostra a divergência no blur e barra a requisição # time=81.33ms",
       "method": "tap"
     },
     "AC-293": {
       "status": "pass",
-      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-293 revalida a confirmação quando a senha original muda # time=684.70ms",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-293 revalida a confirmação quando a senha original muda # time=38.27ms",
       "method": "tap"
     },
     "AC-294": {
       "status": "pass",
-      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-294 envia o cadastro quando as senhas coincidem sem mandar a confirmação # time=360.25ms",
+      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-294 envia o cadastro quando as senhas coincidem sem mandar a confirmação # time=46.03ms",
       "method": "tap"
     }
   },

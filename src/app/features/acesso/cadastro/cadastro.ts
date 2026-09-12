@@ -19,6 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
 import { Botao } from '../../../shared/botao/botao';
+import { VisibilidadeSenha } from '../../../shared/visibilidade-senha/visibilidade-senha';
 import { aplicarErroNoFormulario } from '../../../core/erros/erro-em-formulario';
 import { NivelFeedback } from '../../../core/feedback/feedback.model';
 import { MensagemFeedback } from '../../../core/feedback/mensagem-feedback';
@@ -60,11 +61,16 @@ function senhasCoincidemValidator(formulario: AbstractControl): ValidationErrors
     MatFormFieldModule,
     MatInputModule,
     Botao,
+    VisibilidadeSenha,
   ],
   templateUrl: './cadastro.html',
   styleUrl: './cadastro.scss',
 })
 export class Cadastro {
+  /** Um sinal por campo: revelar a senha não revela a confirmação (AC-297). */
+  protected readonly senhaVisivel = signal(false);
+  protected readonly confirmacaoVisivel = signal(false);
+
   private readonly acesso = inject(AcessoService);
   private readonly router = inject(Router);
 

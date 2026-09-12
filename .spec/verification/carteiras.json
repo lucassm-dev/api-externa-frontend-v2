@@ -1,160 +1,160 @@
 {
   "feature": "carteiras",
-  "timestamp": "2026-09-11T22:36:03.608Z",
-  "gitRev": "8869b1a",
+  "timestamp": "2026-09-12T03:02:31.817Z",
+  "gitRev": "e26b9e8",
   "command": "npx ng test",
   "reporter": "tap",
-  "exitCode": 0,
+  "exitCode": 1,
   "testsParsed": 611,
   "results": {
     "AC-091": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/criacao/criar-carteira.spec.ts > Criar carteira > @spec:AC-091 o formulário pede nome, corretora e mercado, e nada mais # time=179.76ms",
+      "testName": "src/app/features/carteiras/criacao/criar-carteira.spec.ts > Criar carteira > @spec:AC-091 o formulário pede nome, corretora e mercado, e nada mais # time=26.90ms",
       "method": "tap"
     },
     "AC-092": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/criacao/criar-carteira.spec.ts > Criar carteira > @spec:AC-092 catálogo vazio não vira seletor vazio: a tela conduz ao cadastro de corretora # time=19.68ms",
+      "testName": "src/app/features/carteiras/criacao/criar-carteira.spec.ts > Criar carteira > @spec:AC-092 catálogo vazio não vira seletor vazio: a tela conduz ao cadastro de corretora # time=6.91ms",
       "method": "tap"
     },
     "AC-093": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-093 envia exatamente o mercado escolhido, sem valor padrão embutido # time=2.05ms",
+      "testName": "src/app/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-093 envia exatamente o mercado escolhido, sem valor padrão embutido # time=1.54ms",
       "method": "tap"
     },
     "AC-094": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/carteiras.routes.spec.ts > Rotas das carteiras > @spec:AC-094 o detalhe da carteira tem endereço próprio, e `nova` não é lido como identificador # time=86.03ms",
+      "testName": "src/app/features/carteiras/carteiras.routes.spec.ts > Rotas das carteiras > @spec:AC-094 o detalhe da carteira tem endereço próprio, e `nova` não é lido como identificador # time=260.97ms",
       "method": "tap"
     },
     "AC-095": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/criacao/criar-carteira.spec.ts > Criar carteira > @spec:AC-095 o mercado é apresentado como moeda de referência, sem restringir a carteira # time=38.76ms",
+      "testName": "src/app/features/carteiras/criacao/criar-carteira.spec.ts > Criar carteira > @spec:AC-095 o mercado é apresentado como moeda de referência, sem restringir a carteira # time=15.08ms",
       "method": "tap"
     },
     "AC-096": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/lista/lista-carteiras.spec.ts > Lista de carteiras > @spec:AC-096 cada linha traz nome, corretora, mercado e os números da carteira # time=387.74ms",
+      "testName": "src/app/features/carteiras/lista/lista-carteiras.spec.ts > Lista de carteiras > @spec:AC-096 cada linha traz nome, corretora, mercado e os números da carteira # time=94.36ms",
       "method": "tap"
     },
     "AC-097": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-097 lista pedindo a página ao servidor, da mais recente para a mais antiga # time=0.71ms",
+      "testName": "src/app/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-097 lista pedindo a página ao servidor, da mais recente para a mais antiga # time=0.38ms",
       "method": "tap"
     },
     "AC-098": {
-      "status": "pass",
-      "testName": "src/app/features/carteiras/carteiras.routes.spec.ts > Rotas das carteiras > @spec:AC-098 a área de carteiras tem lista, criação e detalhe com endereço próprio # time=223.40ms",
+      "status": "fail",
+      "testName": "src/app/features/carteiras/carteiras.routes.spec.ts > Rotas das carteiras > @spec:AC-098 a área de carteiras tem lista, criação e detalhe com endereço próprio # time=8939.00ms",
       "method": "tap"
     },
     "AC-099": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/lista/lista-carteiras.spec.ts > Lista de carteiras > @spec:AC-099 nada na tela sugere carteiras de outros investidores # time=28.16ms",
+      "testName": "src/app/features/carteiras/lista/lista-carteiras.spec.ts > Lista de carteiras > @spec:AC-099 nada na tela sugere carteiras de outros investidores # time=23.04ms",
       "method": "tap"
     },
     "AC-100": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-100 número que falha vira ausência de número, nunca erro propagado # time=0.87ms",
+      "testName": "src/app/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-100 número que falha vira ausência de número, nunca erro propagado # time=0.40ms",
       "method": "tap"
     },
     "AC-101": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts > Detalhe da carteira > @spec:AC-101 o cabeçalho traz identificação e os quatro totais # time=422.66ms",
+      "testName": "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts > Detalhe da carteira > @spec:AC-101 o cabeçalho traz identificação e os quatro totais # time=217.10ms",
       "method": "tap"
     },
     "AC-102": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts > Detalhe da carteira > @spec:AC-102 os totais saem em real, com a taxa de câmbio e o horário dela # time=51.84ms",
+      "testName": "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts > Detalhe da carteira > @spec:AC-102 os totais saem em real, com a taxa de câmbio e o horário dela # time=27.75ms",
       "method": "tap"
     },
     "AC-103": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts > Detalhe da carteira > @spec:AC-103 realizado e não realizado aparecem separados e nunca somados # time=129.85ms",
+      "testName": "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts > Detalhe da carteira > @spec:AC-103 realizado e não realizado aparecem separados e nunca somados # time=52.34ms",
       "method": "tap"
     },
     "AC-104": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts > Detalhe da carteira > @spec:AC-104 aviso do consolidado é aviso e não bloqueia os totais # time=111.92ms",
+      "testName": "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts > Detalhe da carteira > @spec:AC-104 aviso do consolidado é aviso e não bloqueia os totais # time=39.00ms",
       "method": "tap"
     },
     "AC-105": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts > Detalhe da carteira > @spec:AC-105 a tela oferece registrar compra e venda identificando esta carteira # time=97.52ms",
+      "testName": "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts > Detalhe da carteira > @spec:AC-105 a tela oferece registrar compra e venda identificando esta carteira # time=63.65ms",
       "method": "tap"
     },
     "AC-106": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/detalhe/posicoes-carteira.spec.ts > Posições da carteira > @spec:AC-106 cada posição traz ticker, empresa, quantidade, preço médio e cotação com horário # time=70.84ms",
+      "testName": "src/app/features/carteiras/detalhe/posicoes-carteira.spec.ts > Posições da carteira > @spec:AC-106 cada posição traz ticker, empresa, quantidade, preço médio e cotação com horário # time=15.02ms",
       "method": "tap"
     },
     "AC-107": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/rentabilidade.spec.ts > Rentabilidade da posição > @spec:AC-107 o percentual sai sobre o custo da posição # time=0.38ms",
+      "testName": "src/app/features/carteiras/rentabilidade.spec.ts > Rentabilidade da posição > @spec:AC-107 o percentual sai sobre o custo da posição # time=0.25ms",
       "method": "tap"
     },
     "AC-108": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/detalhe/posicoes-carteira.spec.ts > Posições da carteira > @spec:AC-108 só a cotação com mais de 15 minutos aparece marcada # time=26.63ms",
+      "testName": "src/app/features/carteiras/detalhe/posicoes-carteira.spec.ts > Posições da carteira > @spec:AC-108 só a cotação com mais de 15 minutos aparece marcada # time=6.99ms",
       "method": "tap"
     },
     "AC-109": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/posicoes-encerradas.spec.ts > Posições encerradas > @spec:AC-109 lista os tickers com resultado realizado que não têm posição aberta # time=0.73ms",
+      "testName": "src/app/features/carteiras/posicoes-encerradas.spec.ts > Posições encerradas > @spec:AC-109 lista os tickers com resultado realizado que não têm posição aberta # time=0.32ms",
       "method": "tap"
     },
     "AC-110": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/posicoes-encerradas.spec.ts > Posições encerradas > @spec:AC-110 nenhum ticker encerrado quando todos ainda têm posição aberta # time=0.22ms",
+      "testName": "src/app/features/carteiras/posicoes-encerradas.spec.ts > Posições encerradas > @spec:AC-110 nenhum ticker encerrado quando todos ainda têm posição aberta # time=0.09ms",
       "method": "tap"
     },
     "AC-111": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/posicoes-encerradas.spec.ts > Posições encerradas > @spec:AC-111 cada encerrada leva só ticker e resultado realizado # time=0.16ms",
+      "testName": "src/app/features/carteiras/posicoes-encerradas.spec.ts > Posições encerradas > @spec:AC-111 cada encerrada leva só ticker e resultado realizado # time=0.05ms",
       "method": "tap"
     },
     "AC-112": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/movimentacoes-da-carteira.spec.ts > Movimentações da carteira > @spec:AC-112 devolve apenas as operações da carteira aberta # time=0.54ms",
+      "testName": "src/app/features/carteiras/movimentacoes-da-carteira.spec.ts > Movimentações da carteira > @spec:AC-112 devolve apenas as operações da carteira aberta # time=0.35ms",
       "method": "tap"
     },
     "AC-113": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-113 busca o extrato numa página larga e informa quantas existem no servidor # time=0.67ms",
+      "testName": "src/app/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-113 busca o extrato numa página larga e informa quantas existem no servidor # time=0.44ms",
       "method": "tap"
     },
     "AC-114": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/movimentacoes-da-carteira.spec.ts > Movimentações da carteira > @spec:AC-114 extrato que coube inteiro não é parcial # time=0.07ms",
+      "testName": "src/app/features/carteiras/movimentacoes-da-carteira.spec.ts > Movimentações da carteira > @spec:AC-114 extrato que coube inteiro não é parcial # time=0.11ms",
       "method": "tap"
     },
     "AC-115": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-115 renomear manda só o nome # time=0.83ms",
+      "testName": "src/app/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-115 renomear manda só o nome # time=0.42ms",
       "method": "tap"
     },
     "AC-116": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts > Detalhe da carteira > @spec:AC-116 renomear troca o nome e preserva totais, posições e movimentações # time=203.33ms",
+      "testName": "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts > Detalhe da carteira > @spec:AC-116 renomear troca o nome e preserva totais, posições e movimentações # time=57.20ms",
       "method": "tap"
     },
     "AC-117": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts > Detalhe da carteira > @spec:AC-117 excluir pede confirmação simples com a consequência descrita # time=42.10ms",
+      "testName": "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts > Detalhe da carteira > @spec:AC-117 excluir pede confirmação simples com a consequência descrita # time=28.89ms",
       "method": "tap"
     },
     "AC-118": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts > Detalhe da carteira > @spec:AC-118 CAR-002 cancela a exclusão com a mensagem acionável # time=172.31ms",
+      "testName": "src/app/features/carteiras/detalhe/detalhe-carteira.spec.ts > Detalhe da carteira > @spec:AC-118 CAR-002 cancela a exclusão com a mensagem acionável # time=60.31ms",
       "method": "tap"
     },
     "AC-119": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-119 excluir chama a remoção da carteira # time=1.61ms",
+      "testName": "src/app/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-119 excluir chama a remoção da carteira # time=0.34ms",
       "method": "tap"
     },
     "AC-120": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-120 carteira ausente da listagem é tratada como não encontrada # time=1.44ms",
+      "testName": "src/app/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-120 carteira ausente da listagem é tratada como não encontrada # time=0.41ms",
       "method": "tap"
     }
   },

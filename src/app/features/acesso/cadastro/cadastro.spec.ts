@@ -348,4 +348,47 @@ describe('Tela de cadastro', () => {
     expect(raiz.querySelector('[data-codigo]')?.textContent).toContain('SYS-001');
     expect(raiz.textContent).not.toContain('mensagem crua do servidor');
   });
+
+  it('@spec:AC-297 revelar a senha não revela a confirmação, e vice-versa', async () => {
+    const html = fixture.nativeElement as HTMLElement;
+    const senha = html.querySelector('input[formControlName="senha"]') as HTMLInputElement;
+    const confirmacao = html.querySelector(
+      'input[formControlName="confirmarSenha"]',
+    ) as HTMLInputElement;
+    const [botaoSenha, botaoConfirmacao] = [
+      ...html.querySelectorAll('[data-visibilidade-senha]'),
+    ] as HTMLButtonElement[];
+
+    expect(senha).not.toBeNull();
+    expect(confirmacao).not.toBeNull();
+    expect(botaoSenha).toBeDefined();
+    expect(botaoConfirmacao).toBeDefined();
+
+    // Os dois começam ocultos.
+    expect(senha.type).toBe('password');
+    expect(confirmacao.type).toBe('password');
+
+    botaoSenha.click();
+    await fixture.whenStable();
+    expect(senha.type).toBe('text');
+    expect(confirmacao.type).toBe('password');
+
+    botaoConfirmacao.click();
+    await fixture.whenStable();
+    expect(senha.type).toBe('text');
+    expect(confirmacao.type).toBe('text');
+
+    botaoSenha.click();
+    await fixture.whenStable();
+    expect(senha.type).toBe('password');
+    expect(confirmacao.type).toBe('text');
+  });
+
+  it('@spec:AC-296 cada botão nomeia o seu próprio campo', () => {
+    const rotulos = [
+      ...(fixture.nativeElement as HTMLElement).querySelectorAll('[data-visibilidade-senha]'),
+    ].map((b) => b.getAttribute('aria-label'));
+
+    expect(rotulos).toEqual(['Mostrar senha', 'Mostrar confirmação de senha']);
+  });
 });
