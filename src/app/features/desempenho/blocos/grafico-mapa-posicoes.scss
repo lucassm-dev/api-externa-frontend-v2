@@ -51,10 +51,12 @@ h2 {
   stroke-width: 1.4;
 }
 
+// O texto vive sobre o preenchimento do bloco, não sobre a superfície do
+// cartão: a cor dele vem do par do bloco, senão fica ilegível.
 .rotulo-ticker,
 .rotulo-apoio {
   pointer-events: none;
-  fill: var(--cor-texto);
+  fill: var(--cor-bloco-texto);
 }
 
 .rotulo-ticker {
@@ -67,7 +69,9 @@ h2 {
   font-family: var(--fonte-numero);
   font-size: 3px;
   font-variant-numeric: tabular-nums;
-  fill: var(--cor-texto-fraco);
+  // Hierarquia por tamanho e peso, não por cor: clarear este texto sobre o
+  // bloco derruba o contraste de novo.
+  fill-opacity: 0.82;
 }
 
 .detalhe {

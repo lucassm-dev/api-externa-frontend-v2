@@ -29,9 +29,9 @@ type Sinal = 'alta' | 'baixa' | 'estavel';
 const GLIFO: Record<Sinal, string> = { alta: '▲', baixa: '▼', estavel: '–' };
 const PALAVRA: Record<Sinal, string> = { alta: 'ganho', baixa: 'perda', estavel: 'sem resultado' };
 const COR: Record<Sinal, string> = {
-  alta: 'var(--cor-alta)',
-  baixa: 'var(--cor-baixa)',
-  estavel: 'var(--cor-estavel)',
+  alta: 'var(--cor-alta-bloco)',
+  baixa: 'var(--cor-baixa-bloco)',
+  estavel: 'var(--cor-estavel-bloco)',
 };
 
 /** Abaixo disto o rótulo no bloco não cabe legível; a legenda continua com tudo. */

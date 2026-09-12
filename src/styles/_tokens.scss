@@ -67,6 +67,15 @@
   --cor-barra-mercado-baixa: #ff8a80;
   --cor-barra-mercado-estavel: #adb8c8;
 
+  // Blocos do mapa de posições: o preenchimento é área grande e colorida, com
+  // texto POR CIMA. Vindos do tema, alta e baixa reprovam em contraste nos dois
+  // — claro demais no escuro, escuro demais no claro. Aqui o preenchimento é
+  // sempre o claro e o texto é sempre escuro, igual nos dois temas.
+  --cor-alta-bloco: #5fd39b;
+  --cor-baixa-bloco: #ff8a80;
+  --cor-estavel-bloco: #adb8c8;
+  --cor-bloco-texto: #14181f;
+
   --cor-sombra: #14181f24;
 
   --cor-defasado-fundo: #fdf3e0;
@@ -149,6 +158,15 @@
   --cor-barra-mercado-alta: #5fd39b;
   --cor-barra-mercado-baixa: #ff8a80;
   --cor-barra-mercado-estavel: #adb8c8;
+
+  // Blocos do mapa de posições: o preenchimento é área grande e colorida, com
+  // texto POR CIMA. Vindos do tema, alta e baixa reprovam em contraste nos dois
+  // — claro demais no escuro, escuro demais no claro. Aqui o preenchimento é
+  // sempre o claro e o texto é sempre escuro, igual nos dois temas.
+  --cor-alta-bloco: #5fd39b;
+  --cor-baixa-bloco: #ff8a80;
+  --cor-estavel-bloco: #adb8c8;
+  --cor-bloco-texto: #14181f;
 
   --cor-sombra: #05080c66;
 

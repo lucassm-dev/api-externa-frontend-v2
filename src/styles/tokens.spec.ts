@@ -45,6 +45,9 @@ describe('Tokens da fundação visual', () => {
         ['--cor-barra-mercado-alta', '--cor-barra-mercado-fundo'],
         ['--cor-barra-mercado-baixa', '--cor-barra-mercado-fundo'],
         ['--cor-barra-mercado-estavel', '--cor-barra-mercado-fundo'],
+        ['--cor-bloco-texto', '--cor-alta-bloco'],
+        ['--cor-bloco-texto', '--cor-baixa-bloco'],
+        ['--cor-bloco-texto', '--cor-estavel-bloco'],
         ['--cor-destaque-texto', '--cor-destaque'],
       ];
 
