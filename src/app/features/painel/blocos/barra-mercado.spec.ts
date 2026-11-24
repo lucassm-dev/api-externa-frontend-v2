@@ -25,7 +25,7 @@ describe('Barra de mercado', () => {
     avisos: [],
   };
 
-  it('@spec:AC-050 cada item traz símbolo, preço e variação, e a barra traz o horário do dado', async () => {
+  it('@spec:AC-050 cada item traz símbolo, preço e variação', async () => {
     const elemento = await montar(cheia);
 
     const petr = elemento.querySelector('[data-item="PETR4"]') as HTMLElement;
@@ -34,7 +34,6 @@ describe('Barra de mercado', () => {
     expect(petr.textContent).toContain('1,25%');
 
     expect(elemento.querySelector('[data-item="VALE3"]')?.textContent).toContain('0,80%');
-    expect(elemento.querySelector('[data-atualizado-em]')?.textContent).toContain('13:05');
   });
 
   it('@spec:AC-050 item que a fonte não devolveu simplesmente não aparece', async () => {
@@ -104,16 +103,15 @@ describe('Barra de mercado', () => {
     expect(bloco).toMatch(/overflow-x:\s*auto/);
   });
 
-  it('@spec:AC-236 o horário de atualização fica fora da área que rola e legível sempre', async () => {
+  it('@spec:AC-236 a faixa não tem moldura nem horário fixo: só os chips rolando', async () => {
     const elemento = await montar(cheia);
 
-    const trilha = elemento.querySelector('[data-marquee]') as HTMLElement;
-    const horario = elemento.querySelector('[data-atualizado-em]') as HTMLElement;
+    expect(elemento.querySelector('[data-marquee]')).not.toBeNull();
+    expect(elemento.querySelector('[data-atualizado-em]')).toBeNull();
+    expect(elemento.querySelector('[data-barra-mercado]')?.textContent).not.toContain('13:05');
 
-    expect(trilha).not.toBeNull();
-    expect(horario).not.toBeNull();
-    expect(trilha.contains(horario)).toBe(false);
-    expect(horario.textContent).toContain('13:05');
+    const trecho = ESTILO.replace(/\s+/g, ' ');
+    expect(trecho).not.toMatch(/\.barra-mercado\s*{[^}]*border(-radius)?:/);
   });
 
   it('@spec:AC-237 cada cotação é um chip com símbolo, preço e variação com sinal/seta, em superfície escura própria', async () => {
@@ -135,12 +133,7 @@ describe('Barra de mercado', () => {
     expect(trecho).toMatch(/\.chip\s*{[^}]*background:[^;]*--cor-barra-mercado/);
   });
 
-  it('@spec:AC-274 a faixa vai de ponta a ponta e mantém o horário visível', async () => {
-    const elemento = await montar(cheia);
-
-    // o horário da última atualização continua visível
-    expect(elemento.querySelector('[data-atualizado-em]')?.textContent).toContain('13:05');
-
+  it('@spec:AC-274 a faixa vai de ponta a ponta', () => {
     const trecho = ESTILO.replace(/\s+/g, ' ');
 
     // sem teto e sem centralização: o comprimento é o da área de conteúdo
@@ -151,7 +144,7 @@ describe('Barra de mercado', () => {
 
     // a espessura vem de token, e sem padding vertical somando altura
     expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*min-height:\s*var\(--altura-cotacoes\)/);
-    expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*padding:\s*0\s+var\(--espaco-4\)/);
+    expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*padding:\s*0;/);
 
     // e é mais fina que o alvo de toque — ou seja, mais fina que qualquer cartão
     const escalas = readFileSync('src/styles/_tema.scss', 'utf8');
@@ -180,7 +173,7 @@ describe('Barra de mercado', () => {
 
     // e a cadeia dentro da faixa, do host até a pista que rola
     expect(trecho).toMatch(/:host\s*{[^}]*min-width:\s*0/);
-    expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*grid-template-columns:\s*minmax\(0, 1fr\)\s+auto/);
+    expect(trecho).toMatch(/\.barra-mercado\s*{[^}]*grid-template-columns:\s*minmax\(0, 1fr\);/);
     expect(trecho).toMatch(/\.viewport\s*{[^}]*min-width:\s*0/);
     expect(trecho).toMatch(/\.viewport\s*{[^}]*overflow:\s*hidden/);
   });

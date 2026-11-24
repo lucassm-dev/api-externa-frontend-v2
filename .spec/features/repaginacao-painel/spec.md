@@ -44,12 +44,12 @@ para que eu sinta o contexto do mercado sem procurar.
 - **Então** ela não rola, e todos os itens continuam alcançáveis por rolagem
   manual (regra M04 do motor de UI)
 
-#### AC-236 — A barra não finge ser tempo real
+#### AC-236 — A faixa é só a rolagem, sem moldura nem horário fixo
 
-- **Dado** que as cotações são um retrato datado (ADR-005)
+- **Dado** que a faixa deve parecer contínua, sem caixa em volta
 - **Quando** a barra é exibida
-- **Então** o horário de atualização fica visível e fora da área que rola,
-  legível a qualquer momento sem esperar o movimento
+- **Então** não há borda nem horário fixado no canto: só os chips rolando
+  (decisão do usuário em 2026-11-15, revoga a exibição do horário do ADR-005)
 
 #### AC-237 — Cada cotação é um chip legível
 

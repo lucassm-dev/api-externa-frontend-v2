@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
-import { formatarHora, formatarMoeda } from '../../../core/formatacao/formatacao';
+import { formatarMoeda } from '../../../core/formatacao/formatacao';
 import { MensagemFeedback } from '../../../core/feedback/mensagem-feedback';
 import { Variacao } from '../../../shared/variacao/variacao';
 import { BarraDeMercado } from '../painel.model';
@@ -25,11 +25,6 @@ export class BarraMercado {
 
   protected readonly itens = computed(() => this.barra()?.itens ?? []);
   protected readonly avisos = computed(() => this.barra()?.avisos ?? []);
-
-  protected readonly atualizadoEm = computed(() => {
-    const barra = this.barra();
-    return barra ? formatarHora(barra.atualizadoEm) : null;
-  });
 
   /**
    * Q-029: a barra corre a velocidade constante (~40 px/s), não em duração

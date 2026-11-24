@@ -103,8 +103,7 @@ painel continue sendo sobre a minha carteira.
 - **Dado** o painel em qualquer largura de tela
 - **Quando** a barra de cotações é exibida
 - **Então** ela atravessa a área de conteúdo de ponta a ponta, deixando apenas o
-  recuo da tela, e sua espessura vem de um token menor que o alvo de toque,
-  mantendo visível o horário da última atualização
+  recuo da tela, e sua espessura vem de um token menor que o alvo de toque
 
 #### AC-290 — O conteúdo que rola nunca empurra a página
 

@@ -9,16 +9,13 @@
 
 .barra-mercado {
   display: grid;
-  // A pista que rola nunca pode passar do que sobra; o horário não encolhe.
-  grid-template-columns: minmax(0, 1fr) auto;
+  // A pista que rola nunca pode passar do que sobra.
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  gap: var(--espaco-4);
   width: 100%;
   max-width: 100%;
   min-height: var(--altura-cotacoes);
-  padding: 0 var(--espaco-4);
-  border: 1px solid var(--cor-barra-mercado-borda);
-  border-radius: var(--raio);
+  padding: 0;
   background: var(--cor-barra-mercado-fundo);
   color: var(--cor-barra-mercado-texto);
   overflow: hidden;
@@ -83,13 +80,6 @@
   border-radius: var(--raio-pilula);
   background: color-mix(in srgb, var(--cor-barra-mercado-texto) 12%, transparent);
   font-size: var(--texto-rotulo);
-}
-
-.horario {
-  flex-shrink: 0;
-  color: var(--cor-barra-mercado-fraco);
-  font-size: var(--texto-pequeno);
-  white-space: nowrap;
 }
 
 .aviso-barra {

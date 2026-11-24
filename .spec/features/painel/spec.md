@@ -44,11 +44,11 @@ sessão em máquina compartilhada com um clique.
 Como investidor, quero ver preço e variação de alguns papéis de referência assim que
 entro, para me situar antes de olhar o que é meu.
 
-#### AC-050 — Cada item traz símbolo, preço, variação e o horário do dado
+#### AC-050 — Cada item traz símbolo, preço e variação
 
 - **Dado** a barra de mercado respondida com itens e um `atualizadoEm`
 - **Quando** o painel a exibe
-- **Então** cada item mostra símbolo, preço e variação percentual, e o horário de `atualizadoEm` aparece na barra
+- **Então** cada item mostra símbolo, preço e variação percentual
 
 #### AC-051 — Barra de mercado fora do ar não derruba o painel
 
