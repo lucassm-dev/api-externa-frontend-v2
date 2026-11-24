@@ -1,7 +1,7 @@
 {
   "feature": "repaginacao-tabelas",
-  "timestamp": "2026-11-24T23:33:21.466Z",
-  "gitRev": "fcad889",
+  "timestamp": "2026-11-24T23:46:48.062Z",
+  "gitRev": "fd3fcb2",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
@@ -9,47 +9,47 @@
   "results": {
     "AC-242": {
       "status": "pass",
-      "testName": "src/shared/ordenacao.spec.ts > OrdenacaoTabela > @spec:AC-242 uma coluna de dado se anuncia como ordenável e a coluna de ações não # time=2.01ms",
+      "testName": "src/shared/ordenacao.spec.ts > OrdenacaoTabela > @spec:AC-242 uma coluna de dado se anuncia como ordenável e a coluna de ações não # time=0.91ms",
       "method": "tap"
     },
     "AC-243": {
       "status": "pass",
-      "testName": "src/shared/ordenacao.spec.ts > OrdenacaoTabela > @spec:AC-243 ordena sobre os itens já carregados sem mutar o array da página # time=11.28ms",
+      "testName": "src/shared/ordenacao.spec.ts > OrdenacaoTabela > @spec:AC-243 ordena sobre os itens já carregados sem mutar o array da página # time=8.06ms",
       "method": "tap"
     },
     "AC-244": {
       "status": "pass",
-      "testName": "src/components/ui/tabela.spec.tsx > Estilo base de tabela > @spec:AC-244 alinha as colunas numéricas à direita, em fonte de largura fixa e com dígitos de mesma largura # time=2.40ms",
+      "testName": "src/components/ui/tabela.spec.tsx > Estilo base de tabela > @spec:AC-244 alinha as colunas numéricas à direita, em fonte de largura fixa e com dígitos de mesma largura # time=1.56ms",
       "method": "tap"
     },
     "AC-245": {
       "status": "pass",
-      "testName": "src/components/ui/tabela.spec.tsx > Estilo base de tabela > @spec:AC-245 destaca a linha sob o ponteiro sem que o destaque seja a única forma de distingui-la # time=0.47ms",
+      "testName": "src/components/ui/tabela.spec.tsx > Estilo base de tabela > @spec:AC-245 destaca a linha sob o ponteiro sem que o destaque seja a única forma de distingui-la # time=0.30ms",
       "method": "tap"
     },
     "AC-246": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-246 o resultado de uma encerrada vira selo com texto e símbolo, nunca só cor # time=5.49ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-246 o resultado de uma encerrada vira selo com texto e símbolo, nunca só cor # time=2.03ms",
       "method": "tap"
     },
     "AC-247": {
       "status": "pass",
-      "testName": "src/features/acoes/acoes.spec.tsx > Lista de ações > @spec:AC-247 cada linha traz o monograma do ativo junto ao ticker # time=29.05ms",
+      "testName": "src/features/acoes/acoes.spec.tsx > Lista de ações > @spec:AC-247 cada linha traz o monograma do ativo junto ao ticker # time=8.90ms",
       "method": "tap"
     },
     "AC-248": {
       "status": "pass",
-      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Lista de carteiras > @spec:AC-248 as ações da linha viram botões de ícone com nome acessível da ação e do item # time=36.13ms",
+      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Lista de carteiras > @spec:AC-248 as ações da linha viram botões de ícone com nome acessível da ação e do item # time=52.34ms",
       "method": "tap"
     },
     "AC-249": {
       "status": "pass",
-      "testName": "src/features/acoes/acoes.spec.tsx > Lista de ações > @spec:AC-249 o paginador informa página, total e faixa, desabilitando as pontas # time=126.45ms",
+      "testName": "src/features/acoes/acoes.spec.tsx > Lista de ações > @spec:AC-249 o paginador informa página, total e faixa, desabilitando as pontas # time=39.68ms",
       "method": "tap"
     },
     "AC-250": {
       "status": "pass",
-      "testName": "src/features/acoes/acoes.spec.tsx > Lista de ações > @spec:AC-250 carregando mostra esqueleto; catálogo vazio mostra estado vazio com próximo passo # time=12.23ms",
+      "testName": "src/features/acoes/acoes.spec.tsx > Lista de ações > @spec:AC-250 carregando mostra esqueleto; catálogo vazio mostra estado vazio com próximo passo # time=9.24ms",
       "method": "tap"
     }
   },

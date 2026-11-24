@@ -1,4 +1,4 @@
-import { useState, type KeyboardEvent } from 'react';
+import { useState, useSyncExternalStore, type KeyboardEvent } from 'react';
 import { formatarNumero, formatarReal } from '@/core/formatacao/formatacao';
 import { cn } from '@/lib/utils';
 import { Variacao } from '@/shared/variacao';
@@ -43,6 +43,20 @@ const COR: Record<Sinal, string> = {
 const LARGURA_MINIMA_ROTULO = 16;
 const ALTURA_MINIMA_ROTULO = 12;
 
+/** Mesma virada da grade do retrato: na tela larga o mapa é paisagem, para não abrir um vão ao lado. */
+const TELA_LARGA = '(width >= 72rem)';
+
+function useTelaLarga(): boolean {
+  return useSyncExternalStore(
+    (avisar) => {
+      const consulta = typeof window.matchMedia === 'function' ? window.matchMedia(TELA_LARGA) : null;
+      consulta?.addEventListener('change', avisar);
+      return () => consulta?.removeEventListener('change', avisar);
+    },
+    () => (typeof window.matchMedia === 'function' ? window.matchMedia(TELA_LARGA).matches : false),
+  );
+}
+
 const REPOUSO =
   'Passe o ponteiro ou use Tab num bloco para ver ticker, valor de mercado, participação e resultado.';
 
@@ -63,10 +77,11 @@ interface BlocoDesenhado {
   detalhe: string;
 }
 
-function desenharBlocos(posicoes: PosicaoNoMapa[]): BlocoDesenhado[] {
+function desenharBlocos(posicoes: PosicaoNoMapa[], altura: number): BlocoDesenhado[] {
   const somaMercado = posicoes.reduce((soma, p) => soma + Math.max(p.valorDeMercado, 0), 0);
+  const area = { x: 0, y: 0, largura: 100, altura };
 
-  return blocosDoMapa(posicoes.map((p) => p.valorDeMercado)).map((bloco) => {
+  return blocosDoMapa(posicoes.map((p) => p.valorDeMercado), area).map((bloco) => {
     const posicao = posicoes[bloco.indice];
     const participacao = somaMercado > 0 ? (Math.max(posicao.valorDeMercado, 0) / somaMercado) * 100 : 0;
     const sinal: Sinal = posicao.resultado > 0 ? 'alta' : posicao.resultado < 0 ? 'baixa' : 'estavel';
@@ -99,8 +114,9 @@ const NUMERO = 'font-numero tabular-nums';
 
 export function GraficoMapaPosicoes({ posicoes }: GraficoMapaPosicoesProps) {
   const [blocoAtivo, setBlocoAtivo] = useState<string | null>(null);
+  const altura = useTelaLarga() ? 50 : 100;
 
-  const blocos = desenharBlocos(posicoes);
+  const blocos = desenharBlocos(posicoes, altura);
   const descricaoMapa =
     `Mapa de ${blocos.length} posição(ões) abertas. A área de cada bloco é ` +
     `proporcional ao seu valor de mercado.`;
@@ -137,11 +153,11 @@ export function GraficoMapaPosicoes({ posicoes }: GraficoMapaPosicoesProps) {
         <>
           <svg
             data-mapa
-            viewBox="0 0 100 100"
+            viewBox={`0 0 100 ${altura}`}
             role="group"
             aria-label={descricaoMapa}
             onKeyDown={aoEscapar}
-            className="block aspect-square w-full max-w-full overflow-hidden rounded"
+            className={cn('block w-full max-w-full overflow-hidden rounded', altura === 100 ? 'aspect-square' : 'aspect-[2/1]')}
           >
             {blocos.map((bloco) => {
               const ativo = blocoAtivo === bloco.ticker;
@@ -210,7 +226,11 @@ export function GraficoMapaPosicoes({ posicoes }: GraficoMapaPosicoesProps) {
             {detalhe}
           </p>
 
-          <ol data-mapa-legenda aria-label="Legenda do mapa de blocos" className="m-0 grid list-none gap-1 p-0">
+          <ol
+            data-mapa-legenda
+            aria-label="Legenda do mapa de blocos"
+            className="m-0 grid list-none gap-1 p-0 min-[90rem]:grid-cols-2 min-[90rem]:gap-x-4"
+          >
             {blocos.map((bloco) => {
               const ativo = blocoAtivo === bloco.ticker;
               const atenuado = blocoAtivo !== null && !ativo;

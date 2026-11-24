@@ -1,7 +1,7 @@
 {
   "feature": "acesso",
-  "timestamp": "2026-11-24T23:31:32.434Z",
-  "gitRev": "fcad889",
+  "timestamp": "2026-11-24T23:45:03.589Z",
+  "gitRev": "fd3fcb2",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
@@ -9,122 +9,122 @@
   "results": {
     "AC-025": {
       "status": "pass",
-      "testName": "src/features/acesso/acesso.spec.ts > Acesso ao sistema > @spec:AC-025 o cadastro envia os quatro campos para a rota pública de cadastro # time=5.47ms",
+      "testName": "src/features/acesso/acesso.spec.ts > Acesso ao sistema > @spec:AC-025 o cadastro envia os quatro campos para a rota pública de cadastro # time=5.52ms",
       "method": "tap"
     },
     "AC-026": {
       "status": "pass",
-      "testName": "src/features/acesso/acesso.spec.ts > Acesso ao sistema > @spec:AC-026 cadastrar não cria sessão nem guarda a senha em lugar nenhum # time=0.96ms",
+      "testName": "src/features/acesso/acesso.spec.ts > Acesso ao sistema > @spec:AC-026 cadastrar não cria sessão nem guarda a senha em lugar nenhum # time=0.95ms",
       "method": "tap"
     },
     "AC-027": {
       "status": "pass",
-      "testName": "src/features/acesso/acesso.spec.ts > Validação antes do envio > @spec:AC-027 CPF precisa ter exatamente 11 dígitos numéricos # time=9.26ms",
+      "testName": "src/features/acesso/acesso.spec.ts > Validação antes do envio > @spec:AC-027 CPF precisa ter exatamente 11 dígitos numéricos # time=1.15ms",
       "method": "tap"
     },
     "AC-148": {
       "status": "pass",
-      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-148 o campo mostra o CPF pontuado enquanto o investidor digita # time=24.05ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-148 o campo mostra o CPF pontuado enquanto o investidor digita # time=19.08ms",
       "method": "tap"
     },
     "AC-149": {
       "status": "pass",
-      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-149 o servidor recebe os 11 dígitos, sem a máscara # time=90.65ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-149 o servidor recebe os 11 dígitos, sem a máscara # time=50.95ms",
       "method": "tap"
     },
     "AC-028": {
       "status": "pass",
-      "testName": "src/features/acesso/acesso.spec.ts > Validação antes do envio > @spec:AC-028 senha precisa de 8 caracteres, com ao menos uma letra e um número # time=0.24ms",
+      "testName": "src/features/acesso/acesso.spec.ts > Validação antes do envio > @spec:AC-028 senha precisa de 8 caracteres, com ao menos uma letra e um número # time=0.47ms",
       "method": "tap"
     },
     "AC-029": {
       "status": "pass",
-      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-029 e-mail fora de formato barra o envio antes de chamar o backend # time=23.88ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-029 e-mail fora de formato barra o envio antes de chamar o backend # time=17.85ms",
       "method": "tap"
     },
     "AC-030": {
       "status": "pass",
-      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-030 e-mail duplicado preserva o que foi digitado e destaca só o campo do e-mail # time=34.63ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-030 e-mail duplicado preserva o que foi digitado e destaca só o campo do e-mail # time=23.14ms",
       "method": "tap"
     },
     "AC-031": {
       "status": "pass",
-      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-031 CPF duplicado destaca só o CPF, sem limpar o formulário # time=23.23ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-031 CPF duplicado destaca só o CPF, sem limpar o formulário # time=19.89ms",
       "method": "tap"
     },
     "AC-032": {
       "status": "pass",
-      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-032 senha recusada pelo servidor destaca a senha # time=16.36ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-032 senha recusada pelo servidor destaca a senha # time=15.61ms",
       "method": "tap"
     },
     "AC-033": {
       "status": "pass",
-      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-033 erro de validação do servidor se distribui pelos campos, sem balão de topo # time=22.39ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-033 erro de validação do servidor se distribui pelos campos, sem balão de topo # time=25.94ms",
       "method": "tap"
     },
     "AC-034": {
       "status": "pass",
-      "testName": "src/features/acesso/acesso.spec.ts > Validação antes do envio > @spec:AC-034 as regras que o investidor precisa ler estão escritas, não só codificadas # time=0.18ms",
+      "testName": "src/features/acesso/acesso.spec.ts > Validação antes do envio > @spec:AC-034 as regras que o investidor precisa ler estão escritas, não só codificadas # time=4.62ms",
       "method": "tap"
     },
     "AC-035": {
       "status": "pass",
-      "testName": "src/features/acesso/acesso.spec.ts > Acesso ao sistema > @spec:AC-035 entrar guarda a sessão devolvida pelo login # time=1.15ms",
+      "testName": "src/features/acesso/acesso.spec.ts > Acesso ao sistema > @spec:AC-035 entrar guarda a sessão devolvida pelo login # time=1.21ms",
       "method": "tap"
     },
     "AC-036": {
       "status": "pass",
-      "testName": "src/features/acesso/login.spec.tsx > Tela de login > @spec:AC-036 credencial incorreta não revela qual campo errou nem se a conta existe # time=33.05ms",
+      "testName": "src/features/acesso/login.spec.tsx > Tela de login > @spec:AC-036 credencial incorreta não revela qual campo errou nem se a conta existe # time=32.95ms",
       "method": "tap"
     },
     "AC-037": {
       "status": "pass",
-      "testName": "src/features/acesso/login.spec.tsx > Tela de login > @spec:AC-037 o botão fica indisponível durante o envio e nenhuma segunda requisição sai # time=27.18ms",
+      "testName": "src/features/acesso/login.spec.tsx > Tela de login > @spec:AC-037 o botão fica indisponível durante o envio e nenhuma segunda requisição sai # time=14.92ms",
       "method": "tap"
     },
     "AC-038": {
       "status": "pass",
-      "testName": "src/features/acesso/login.spec.tsx > Tela de login > @spec:AC-038 a tela de login não oferece recuperação de senha # time=11.57ms",
+      "testName": "src/features/acesso/login.spec.tsx > Tela de login > @spec:AC-038 a tela de login não oferece recuperação de senha # time=11.16ms",
       "method": "tap"
     },
     "AC-039": {
       "status": "pass",
-      "testName": "src/rotas.spec.tsx > Rotas da aplicação React > @spec:AC-039 quem já tem sessão não fica na tela de login # time=10.78ms",
+      "testName": "src/rotas.spec.tsx > Rotas da aplicação React > @spec:AC-039 quem já tem sessão não fica na tela de login # time=8.40ms",
       "method": "tap"
     },
     "AC-040": {
       "status": "pass",
-      "testName": "src/rotas.spec.tsx > Rotas da aplicação React > @spec:AC-040 login e cadastro têm endereço próprio e público # time=3.48ms",
+      "testName": "src/rotas.spec.tsx > Rotas da aplicação React > @spec:AC-040 login e cadastro têm endereço próprio e público # time=1.79ms",
       "method": "tap"
     },
     "AC-041": {
       "status": "pass",
-      "testName": "src/layout/casca.spec.tsx > Casca da área interna > @spec:AC-041 sair limpa a sessão e leva ao login # time=48.76ms",
+      "testName": "src/layout/casca.spec.tsx > Casca da área interna > @spec:AC-041 sair limpa a sessão e leva ao login # time=36.43ms",
       "method": "tap"
     },
     "AC-042": {
       "status": "pass",
-      "testName": "src/rotas.spec.tsx > Rotas da aplicação React > @spec:AC-042 sem sessão, um endereço interno não renderiza e para no login # time=9.54ms",
+      "testName": "src/rotas.spec.tsx > Rotas da aplicação React > @spec:AC-042 sem sessão, um endereço interno não renderiza e para no login # time=4.75ms",
       "method": "tap"
     },
     "AC-043": {
       "status": "pass",
-      "testName": "src/layout/casca.spec.tsx > Casca da área interna > @spec:AC-043 o aviso aparece a menos de 5 minutos do fim, sem nenhuma chamada ao servidor # time=21.10ms",
+      "testName": "src/layout/casca.spec.tsx > Casca da área interna > @spec:AC-043 o aviso aparece a menos de 5 minutos do fim, sem nenhuma chamada ao servidor # time=20.63ms",
       "method": "tap"
     },
     "AC-044": {
       "status": "pass",
-      "testName": "src/layout/casca.spec.tsx > Casca da área interna > @spec:AC-044 o aviso é comunicado como aviso, não bloqueia e oferece entrar novamente # time=15.95ms",
+      "testName": "src/layout/casca.spec.tsx > Casca da área interna > @spec:AC-044 o aviso é comunicado como aviso, não bloqueia e oferece entrar novamente # time=11.84ms",
       "method": "tap"
     },
     "AC-045": {
       "status": "pass",
-      "testName": "src/features/acesso/login.spec.tsx > Tela de login > @spec:AC-045 quem chega por sessão expirada lê o motivo # time=7.86ms",
+      "testName": "src/features/acesso/login.spec.tsx > Tela de login > @spec:AC-045 quem chega por sessão expirada lê o motivo # time=19.86ms",
       "method": "tap"
     },
     "AC-046": {
       "status": "pass",
-      "testName": "src/core/sessao/sessao.service.spec.ts > Sessão > @spec:AC-046 a sessão nasce de token, tipo e expiraEm, mais o e-mail digitado — e nada além # time=0.61ms",
+      "testName": "src/core/sessao/sessao.service.spec.ts > Sessão > @spec:AC-046 a sessão nasce de token, tipo e expiraEm, mais o e-mail digitado — e nada além # time=1.07ms",
       "method": "tap"
     }
   },

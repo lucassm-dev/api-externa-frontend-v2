@@ -1,4 +1,4 @@
-import { useState, type KeyboardEvent } from 'react';
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { formatarNumero, formatarReal } from '@/core/formatacao/formatacao';
 import { cn } from '@/lib/utils';
 import { Variacao } from '@/shared/variacao';
@@ -30,11 +30,36 @@ export interface GraficoQuadranteProps {
 
 type Sinal = 'alta' | 'baixa' | 'estavel';
 
+// As cores de bloco do mapa: o par com --cor-bloco-texto tem contraste testado nos dois temas.
 const COR: Record<Sinal, string> = {
-  alta: 'var(--cor-alta)',
-  baixa: 'var(--cor-baixa)',
-  estavel: 'var(--cor-estavel)',
+  alta: 'var(--cor-alta-bloco)',
+  baixa: 'var(--cor-baixa-bloco)',
+  estavel: 'var(--cor-estavel-bloco)',
 };
+
+/** Largura do viewBox, para converter px de tela em unidade do desenho. */
+const LARGURA_VIEWBOX = 106;
+
+/**
+ * Texto em SVG cresce com o desenho: no desktop o rótulo de eixo saía com mais de
+ * 20px e no celular com menos de 9px. Medindo a largura real, cada rótulo fica com
+ * o mesmo tamanho em px em qualquer tela; sem medida (teste, primeiro quadro), vale o padrão.
+ */
+function useTamanhoEmUnidades(ativo: boolean) {
+  const ref = useRef<SVGSVGElement>(null);
+  const [largura, setLargura] = useState(0);
+
+  useEffect(() => {
+    const svg = ref.current;
+    if (!svg || typeof ResizeObserver === 'undefined') return;
+    const observador = new ResizeObserver(([entrada]) => setLargura(entrada.contentRect.width));
+    observador.observe(svg);
+    return () => observador.disconnect();
+  }, [ativo]);
+
+  const emUnidades = (px: number, padrao: number) => (largura > 0 ? (px * LARGURA_VIEWBOX) / largura : padrao);
+  return { ref, emUnidades };
+}
 
 /** Moldura do desenho, em unidades do viewBox 0..100. */
 const MOLDURA = { x0: 16, largura: 80, yTopo: 6, altura: 82 } as const;
@@ -120,6 +145,9 @@ export function GraficoQuadrante({ posicoes }: GraficoQuadranteProps) {
   const [bolhaAtiva, setBolhaAtiva] = useState<string | null>(null);
 
   const bolhas = desenharBolhas(posicoes);
+  const { ref, emUnidades } = useTamanhoEmUnidades(bolhas.length > 0);
+  const tick = emUnidades(11, 3);
+  const tituloEixo = emUnidades(13, 3.4);
 
   // Rótulos de ponta dos eixos, para dar leitura de grandeza ao desenho.
   const soma = posicoes.reduce((s, p) => s + Math.max(p.valorDeMercado, 0), 0);
@@ -165,6 +193,7 @@ export function GraficoQuadrante({ posicoes }: GraficoQuadranteProps) {
       ) : (
         <>
           <svg
+            ref={ref}
             data-quadrante
             // Folga de RAIO_MAXIMO além da moldura: a maior bolha, no canto da escala, sai inteira.
             viewBox="0 -4 106 106"
@@ -203,39 +232,32 @@ export function GraficoQuadrante({ posicoes }: GraficoQuadranteProps) {
               x2={X_FIM}
               y2={Y_ZERO}
             />
-            <text aria-hidden="true" className={TICK} fontSize={3} x={MOLDURA.x0 - 2} y={Y_ZERO + 1.5}>
+            <text aria-hidden="true" className={TICK} fontSize={tick} textAnchor="end" x={MOLDURA.x0 - 2} y={Y_ZERO + 1.5}>
               0%
             </text>
 
-            <text aria-hidden="true" className={TICK} fontSize={3} textAnchor="end" x={MOLDURA.x0 - 2} y={MOLDURA.yTopo + 2}>
+            <text aria-hidden="true" className={TICK} fontSize={tick} textAnchor="end" x={MOLDURA.x0 - 2} y={MOLDURA.yTopo + 2}>
               +{escalaRentabilidade}
             </text>
-            <text aria-hidden="true" className={TICK} fontSize={3} textAnchor="end" x={MOLDURA.x0 - 2} y={Y_BASE}>
+            <text aria-hidden="true" className={TICK} fontSize={tick} textAnchor="end" x={MOLDURA.x0 - 2} y={Y_BASE}>
               −{escalaRentabilidade}
             </text>
-            <text aria-hidden="true" className={TICK} fontSize={3} textAnchor="end" x={X_FIM} y={Y_BASE + 5}>
+            <text aria-hidden="true" className={TICK} fontSize={tick} textAnchor="end" x={X_FIM} y={Y_BASE + 5}>
               {escalaParticipacao}
             </text>
 
             <text
               data-eixo-x
               className={ROTULO_EIXO}
-              fontSize={3.4}
+              fontSize={tituloEixo}
               textAnchor="middle"
               x={MOLDURA.x0 + MOLDURA.largura / 2}
               y={98}
             >
               Participação na carteira
             </text>
-            <text
-              data-eixo-y
-              className={ROTULO_EIXO}
-              fontSize={3.4}
-              textAnchor="middle"
-              transform={`rotate(-90 4 ${Y_ZERO})`}
-              x={4}
-              y={Y_ZERO}
-            >
+            {/* Acima do eixo, e não girado na margem: a margem esquerda é das marcas de escala. */}
+            <text data-eixo-y className={ROTULO_EIXO} fontSize={tituloEixo} x={MOLDURA.x0} y={MOLDURA.yTopo - 3}>
               Rentabilidade
             </text>
 
@@ -273,7 +295,7 @@ export function GraficoQuadrante({ posicoes }: GraficoQuadranteProps) {
                   {bolha.rotuloVisivel && (
                     <text
                       aria-hidden="true"
-                      className="pointer-events-none fill-texto font-sans font-bold"
+                      className="pointer-events-none fill-bloco-texto font-sans font-bold"
                       fontSize={3}
                       textAnchor="middle"
                       x={bolha.cx}
