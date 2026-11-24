@@ -180,7 +180,7 @@ Cada critério de aceite vira um teste anotado com `@spec:AC-xxx` no título, e 
 feature só fecha quando a auditoria sai limpa:
 
 ```bash
-node .claude/skills/onp-spec-driven/scripts/onp-spec.mjs audit --ci
+node .claude/skills/onp-spec-driven-claude-v4-0-0/scripts/onp-spec.mjs audit --ci
 ```
 
 Há ainda uma **constituição** em `.spec/constituicao.md` com princípios

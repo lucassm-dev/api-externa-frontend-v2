@@ -17,7 +17,7 @@ set -o pipefail
 RUN_ID='api-externa-frontend-v2-desempenho-mtu0cnzx'
 FEATURE='desempenho'
 BASE_BRANCH='spec/desempenho'
-ENGINE='.claude/skills/onp-spec-driven/scripts/onp-spec.mjs'
+ENGINE='.claude/skills/onp-spec-driven-claude-v4-0-0/scripts/onp-spec.mjs'
 CLAUDE_FLAGS=(--permission-mode acceptEdits --allowedTools 'Bash(git add:*),Bash(git commit:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(npx:*)')
 STREAM_FLAGS=(--output-format stream-json --verbose)
 FALHAS=""
