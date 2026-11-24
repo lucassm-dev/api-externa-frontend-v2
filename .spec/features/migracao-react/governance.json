@@ -1,0 +1,1730 @@
+{
+  "version": 1,
+  "large": true,
+  "documentationContract": "onp-docs-v1",
+  "domains": [],
+  "clientRequest": "quero que migra a linguagem desse projeto api-externa-frontend-v2 que hoje esta em angular, quero que faz a troca para react, utilizando as bibliotecas que te passei para melhorar componentes, deixar o front mais bonito não quero que muda a logica de como esta, somente a linguagem e deixa mais bonito, utilize a skill /onp-spec-driven-claude-v4-0-0 para fazer isso, vamos fazer em loop e utliza a skill /impeccable para ajudar na estilização.",
+  "review": {
+    "summary": "Leitura dos PRD-001 a 009, ADR-001 a 010, constituição v1.2.0, RFC-001/002 e das specs das 17 features. A migração reescreve o código de todos os domínios sem mudar regra, rota, mensagem ou contrato: cada critério existente é portado com a mesma tag e continua provado. Nenhum PRD/ADR fixa a stack Angular. Conflitos semânticos: (1) RFC-001 D6 e RFC-002 recusaram Tailwind/shadcn para o projeto Angular, e a proposta os adota; (2) a verificação mecânica do P-003 cobre só src/app/**/*.scss e não alcança o React; o princípio é mantido pelo AC-300 e a linha de verificação fica para proposta de constituição no corte (Q-040); (3) o AC-024 da fundação cita o servidor de desenvolvimento do Angular; o comportamento (mesma origem) passa ao proxy do Vite (ASM-073), sem reescrever a spec antiga. Releitura em 2026-11-22 após a T-127: a única mudança desde a revisão anterior é o onpspec.config.json (testCommand roda Angular e React; testGlobs/srcGlobs incluem web/), previsto nas notas da T-127, e a medida de referência do bundle no TDD §16. Nenhum requisito, regra, escopo ou conflito novo. Releitura em 2026-11-23: a spec ganhou a US-085 (AC-306 a AC-310) e a tarefa T-139 por pedido explícito do cliente para corrigir no React os bugs que a auditoria achou no Angular. Isso muda comportamento em domínios anteriores: operações (OPE-004 mostra a quantidade real; extrato volta uma página ao esvaziar; listas de escolha com página de 200), carteiras (lista volta uma página; criação de carteira oferece até 200 corretoras), desempenho e painel (resposta atrasada de outra carteira é descartada) e corretoras (cadastro preenchido com o CNPJ buscado). Nenhuma regra de PRD/ADR é contrariada: as correções cumprem o que os critérios originais pretendiam. Releitura em 2026-11-23, rodada da T-136: mudaram (a) a constituição, de v1.2.0 para v1.3.0, só na verificação do P-003, que passa a alcançar web/src com a mesma regex (resposta do cliente à Q-040), sem mudar princípio, nível nem as demais verificações; (b) a Q-040 na spec, marcada respondida; (c) o campo Arquivos das T-128 a T-135, em que cada pasta virou a lista dos arquivos dela, porque o motor v4 só casa caminho exato. Nenhum requisito, regra, rota, mensagem, escopo ou domínio novo. Ressalva: P-002 e P-004 continuam verificados só em src/app/**/*.ts e não alcançam o React; não foram tocados por não estarem na Q-040. Releitura em 2026-11-23 após a T-136: mudou só o tasks.md (Arquivos da T-136 e da T-139 listados por arquivo; T-136 concluída). O código de operações porta as regras sem mudança e aplica as correções já decididas na US-085 (AC-306 a AC-309). Nenhum conflito, regra ou escopo novo. Releitura em 2026-11-24 após a T-137: mudou só o tasks.md (Arquivos da T-137 listados por arquivo, com web/src/rotas.tsx como na T-136; na T-139 a pasta web/src/features/desempenho virou os dois arquivos que levam o AC-309; T-137 concluída). O código de desempenho porta as regras e os testes do Angular com as mesmas tags; o ajuste visual do quadrante (folga do viewBox para a maior bolha e grade da legenda no celular) não muda dado, regra nem texto e atende o AC-273 já existente. Nenhum conflito, regra ou escopo novo. Releitura em 2026-11-24 após o verify da T-137: mudou só o status da T-139 para concluída (AC-306 a AC-310 provados pela suíte React). Nenhum conflito, regra ou escopo novo.",
+    "reviewer": "Claude Code, modelo claude-opus-5-5, sessão 7800ca77, 2026-11-24",
+    "conflicts": [
+      {
+        "id": "impacto:acesso",
+        "automatic": true,
+        "feature": "acesso",
+        "summary": "A mudança interfere no domínio da feature acesso.",
+        "files": [
+          "src"
+        ],
+        "domains": [],
+        "rule": ".spec/features/acesso/spec.md"
+      },
+      {
+        "id": "impacto:acoes",
+        "automatic": true,
+        "feature": "acoes",
+        "summary": "A mudança interfere no domínio da feature acoes.",
+        "files": [
+          "src"
+        ],
+        "domains": [],
+        "rule": ".spec/features/acoes/spec.md"
+      },
+      {
+        "id": "impacto:cabecalho-identidade-acoes",
+        "automatic": true,
+        "feature": "cabecalho-identidade-acoes",
+        "summary": "A mudança interfere no domínio da feature cabecalho-identidade-acoes.",
+        "files": [
+          "src"
+        ],
+        "domains": [],
+        "rule": ".spec/features/cabecalho-identidade-acoes/spec.md"
+      },
+      {
+        "id": "impacto:carteiras",
+        "automatic": true,
+        "feature": "carteiras",
+        "summary": "A mudança interfere no domínio da feature carteiras.",
+        "files": [
+          "src"
+        ],
+        "domains": [],
+        "rule": ".spec/features/carteiras/spec.md"
+      },
+      {
+        "id": "impacto:confirmacao-senha-cadastro",
+        "automatic": true,
+        "feature": "confirmacao-senha-cadastro",
+        "summary": "A mudança interfere no domínio da feature confirmacao-senha-cadastro.",
+        "files": [
+          "src"
+        ],
+        "domains": [],
+        "rule": ".spec/features/confirmacao-senha-cadastro/spec.md"
+      },
+      {
+        "id": "impacto:corretoras",
+        "automatic": true,
+        "feature": "corretoras",
+        "summary": "A mudança interfere no domínio da feature corretoras.",
+        "files": [
+          "src"
+        ],
+        "domains": [],
+        "rule": ".spec/features/corretoras/spec.md"
+      },
+      {
+        "id": "impacto:desempenho",
+        "automatic": true,
+        "feature": "desempenho",
+        "summary": "A mudança interfere no domínio da feature desempenho.",
+        "files": [
+          "src"
+        ],
+        "domains": [],
+        "rule": ".spec/features/desempenho/spec.md"
+      },
+      {
+        "id": "impacto:fundacao",
+        "automatic": true,
+        "feature": "fundacao",
+        "summary": "A mudança interfere no domínio da feature fundacao.",
+        "files": [
+          "angular.json",
+          "onpspec.config.json",
+          "package.json",
+          "proxy.conf.json",
+          "src",
+          "tsconfig.app.json",
+          "tsconfig.json",
+          "tsconfig.spec.json"
+        ],
+        "domains": [],
+        "rule": ".spec/features/fundacao/spec.md"
+      },
+      {
+        "id": "impacto:fundacao-visual",
+        "automatic": true,
+        "feature": "fundacao-visual",
+        "summary": "A mudança interfere no domínio da feature fundacao-visual.",
+        "files": [
+          "package-lock.json",
+          "package.json",
+          "src"
+        ],
+        "domains": [],
+        "rule": ".spec/features/fundacao-visual/spec.md"
+      },
+      {
+        "id": "impacto:operacoes",
+        "automatic": true,
+        "feature": "operacoes",
+        "summary": "A mudança interfere no domínio da feature operacoes.",
+        "files": [
+          "src"
+        ],
+        "domains": [],
+        "rule": ".spec/features/operacoes/spec.md"
+      },
+      {
+        "id": "impacto:painel",
+        "automatic": true,
+        "feature": "painel",
+        "summary": "A mudança interfere no domínio da feature painel.",
+        "files": [
+          "src"
+        ],
+        "domains": [],
+        "rule": ".spec/features/painel/spec.md"
+      },
+      {
+        "id": "impacto:repaginacao-acesso",
+        "automatic": true,
+        "feature": "repaginacao-acesso",
+        "summary": "A mudança interfere no domínio da feature repaginacao-acesso.",
+        "files": [
+          "src"
+        ],
+        "domains": [],
+        "rule": ".spec/features/repaginacao-acesso/spec.md"
+      },
+      {
+        "id": "impacto:repaginacao-desempenho",
+        "automatic": true,
+        "feature": "repaginacao-desempenho",
+        "summary": "A mudança interfere no domínio da feature repaginacao-desempenho.",
+        "files": [
+          "src"
+        ],
+        "domains": [],
+        "rule": ".spec/features/repaginacao-desempenho/spec.md"
+      },
+      {
+        "id": "impacto:repaginacao-painel",
+        "automatic": true,
+        "feature": "repaginacao-painel",
+        "summary": "A mudança interfere no domínio da feature repaginacao-painel.",
+        "files": [
+          "src"
+        ],
+        "domains": [],
+        "rule": ".spec/features/repaginacao-painel/spec.md"
+      },
+      {
+        "id": "impacto:repaginacao-tabelas",
+        "automatic": true,
+        "feature": "repaginacao-tabelas",
+        "summary": "A mudança interfere no domínio da feature repaginacao-tabelas.",
+        "files": [
+          "package-lock.json",
+          "package.json",
+          "src"
+        ],
+        "domains": [],
+        "rule": ".spec/features/repaginacao-tabelas/spec.md"
+      },
+      {
+        "id": "impacto:repaginacao-visual",
+        "automatic": true,
+        "feature": "repaginacao-visual",
+        "summary": "A mudança interfere no domínio da feature repaginacao-visual.",
+        "files": [
+          "src"
+        ],
+        "domains": [],
+        "rule": ".spec/features/repaginacao-visual/spec.md"
+      },
+      {
+        "id": "impacto:visibilidade-da-senha",
+        "automatic": true,
+        "feature": "visibilidade-da-senha",
+        "summary": "A mudança interfere no domínio da feature visibilidade-da-senha.",
+        "files": [
+          "src"
+        ],
+        "domains": [],
+        "rule": ".spec/features/visibilidade-da-senha/spec.md"
+      },
+      {
+        "id": "stack-tailwind-rfc",
+        "summary": "A proposta adota Tailwind v4 e shadcn/ui, que o RFC-001 (Opção 1, D6) e o RFC-002 (Opção 1) recusaram quando o projeto era Angular.",
+        "rule": "docs/rfc/RFC-001-v1-estrategia-de-ui-e-bibliotecas.md"
+      },
+      {
+        "id": "p003-alcance-verificacao",
+        "summary": "A verificação mecânica do P-003 olhava só src/app/**/*.scss. A constituição v1.3.0, aprovada pelo cliente na Q-040, estende a mesma regra ao React em web/src (exceto styles/tokens.*); a v1.2.0 fica preservada em constituicao-v1.2.0.md.",
+        "rule": ".spec/constituicao.md#p-003-deve-cor-do-produto-vem-dos-tokens-nunca-da-tela"
+      },
+      {
+        "id": "ac024-servidor-angular",
+        "summary": "O AC-024 cita o servidor de desenvolvimento do Angular; a prova passa a ser o proxy do Vite com as mesmas raízes de recurso (ASM-073).",
+        "rule": ".spec/features/fundacao/spec.md#ac-024--o-navegador-enxerga-a-api-na-mesma-origem"
+      },
+      {
+        "id": "correcao-bugs-angular",
+        "summary": "A US-085 altera o comportamento herdado do Angular em operações, carteiras, desempenho, painel e corretoras para corrigir os bugs da auditoria (AC-306 a AC-310).",
+        "rule": ".spec/features/operacoes/spec.md"
+      }
+    ],
+    "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+    "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+    "reviewedAt": "2026-11-24T23:07:57.670Z",
+    "documents": [
+      ".spec/features/acesso/spec.md",
+      ".spec/features/acesso/tasks.md",
+      ".spec/features/acoes/spec.md",
+      ".spec/features/acoes/tasks.md",
+      ".spec/features/cabecalho-identidade-acoes/spec.md",
+      ".spec/features/cabecalho-identidade-acoes/tasks.md",
+      ".spec/features/carteiras/spec.md",
+      ".spec/features/carteiras/tasks.md",
+      ".spec/features/confirmacao-senha-cadastro/spec.md",
+      ".spec/features/confirmacao-senha-cadastro/tasks.md",
+      ".spec/features/corretoras/spec.md",
+      ".spec/features/corretoras/tasks.md",
+      ".spec/features/desempenho/spec.md",
+      ".spec/features/desempenho/tasks.md",
+      ".spec/features/fundacao/spec.md",
+      ".spec/features/fundacao/tasks.md",
+      ".spec/features/fundacao-visual/spec.md",
+      ".spec/features/fundacao-visual/tasks.md",
+      ".spec/features/migracao-react/prd.md",
+      ".spec/features/migracao-react/adr.md",
+      ".spec/features/migracao-react/design.md",
+      ".spec/features/migracao-react/spec.md",
+      ".spec/features/migracao-react/tasks.md",
+      ".spec/features/migracao-react/research.md",
+      ".spec/features/operacoes/spec.md",
+      ".spec/features/operacoes/tasks.md",
+      ".spec/features/painel/spec.md",
+      ".spec/features/painel/tasks.md",
+      ".spec/features/repaginacao-acesso/spec.md",
+      ".spec/features/repaginacao-acesso/tasks.md",
+      ".spec/features/repaginacao-desempenho/spec.md",
+      ".spec/features/repaginacao-desempenho/tasks.md",
+      ".spec/features/repaginacao-painel/spec.md",
+      ".spec/features/repaginacao-painel/tasks.md",
+      ".spec/features/repaginacao-tabelas/spec.md",
+      ".spec/features/repaginacao-tabelas/tasks.md",
+      ".spec/features/repaginacao-visual/spec.md",
+      ".spec/features/repaginacao-visual/tasks.md",
+      ".spec/features/visibilidade-da-senha/spec.md",
+      ".spec/features/visibilidade-da-senha/tasks.md",
+      ".spec/constituicao.md",
+      "onpspec.config.json"
+    ]
+  },
+  "decisions": [
+    {
+      "conflictId": "impacto:acesso",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "5c8ea4993f97370f4679e71bb3b4724577aa69a7ef80088fe19bed1eb6041c0a",
+      "answeredAt": "2026-11-23T01:35:55.933Z"
+    },
+    {
+      "conflictId": "impacto:acoes",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "04090deb5e706da1e92c8fa1c17ca9f3a2c07debf7357172209fe6450b191518",
+      "answeredAt": "2026-11-23T01:35:56.298Z"
+    },
+    {
+      "conflictId": "impacto:cabecalho-identidade-acoes",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "d6cf4aaa4f89f58887896998b0ac6d2b665208b13463477763c8b9feb86b705b",
+      "answeredAt": "2026-11-23T01:35:56.667Z"
+    },
+    {
+      "conflictId": "impacto:carteiras",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "02cc1f28067baa2cd15202f95212cf510bf85abbbf537b27797c8a0deaa36996",
+      "answeredAt": "2026-11-23T01:35:57.036Z"
+    },
+    {
+      "conflictId": "impacto:confirmacao-senha-cadastro",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "15606c612946b0a51f02582212f9400e2966bce911e06c906eb7a7ff87ec908a",
+      "answeredAt": "2026-11-23T01:35:57.403Z"
+    },
+    {
+      "conflictId": "impacto:corretoras",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "8a3f45e1055b4494d3fd5c734268f94485b042ac181f09747801cb6c514f1db0",
+      "answeredAt": "2026-11-23T01:35:57.769Z"
+    },
+    {
+      "conflictId": "impacto:desempenho",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "2034190890e2a4dc9ba94f8d449a481976520761aac2d3e18d243504044b0f09",
+      "answeredAt": "2026-11-23T01:35:58.129Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "ac3f9794f1e6b84ccede0a4b245c4252b5f658a660cd972377aad89b3b34f569",
+      "answeredAt": "2026-11-23T01:35:58.493Z"
+    },
+    {
+      "conflictId": "impacto:fundacao-visual",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "7d341e980804fe38cc9bd747306de68e1414a62e40d2e4ffba54c0ac4f1e997a",
+      "answeredAt": "2026-11-23T01:35:58.862Z"
+    },
+    {
+      "conflictId": "impacto:operacoes",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "d5cdb090e971e5116fcd9aa9626b2569acc91a82baa6998c65b86493ea6a6c69",
+      "answeredAt": "2026-11-23T01:35:59.236Z"
+    },
+    {
+      "conflictId": "impacto:painel",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "41c8aa4c1f059a6b0a6bdda0761afd836b8059299106ab7cb2400e5718dcfe1e",
+      "answeredAt": "2026-11-23T01:35:59.617Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-acesso",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "f312a4574beb3e378802a247bc101af0d5e73a77fa86c5634e2c74641da9de8c",
+      "answeredAt": "2026-11-23T01:35:59.983Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-desempenho",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "9d04499a6d31f026db976858ce50536414879bd43cf000497273a1165dc8a02b",
+      "answeredAt": "2026-11-23T01:36:00.363Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-painel",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "c2c47b47590f89af64cc58647d416c282ec7f2e9d560bb77b35a1987fd485a18",
+      "answeredAt": "2026-11-23T01:36:00.744Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "7edfbf0e16340fe85a93184bbc0d4b1bae6a19fb02f8045d3b9648102d0ad9a8",
+      "answeredAt": "2026-11-23T01:36:01.110Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-visual",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "d2960daa55c8a439a880dd14158294fcc6e9d85598135d2fd776bd922277ea2c",
+      "answeredAt": "2026-11-23T01:36:01.479Z"
+    },
+    {
+      "conflictId": "impacto:visibilidade-da-senha",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "34ee2924f6d7292e811b58928663fd76dcd6f5eb8aa5be52848566667eb25f4c",
+      "answeredAt": "2026-11-23T01:36:01.844Z"
+    },
+    {
+      "conflictId": "stack-tailwind-rfc",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "1ca4ea2338467691cf8aba48d08e2577ffa2784a2de6fd9354307e08bdff896c",
+      "answeredAt": "2026-11-23T01:36:02.229Z"
+    },
+    {
+      "conflictId": "p003-alcance-verificacao",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "607417f13acf4c508eacf32ce99ee928d77a30b104e92209bb3182b59fba47c5",
+      "answeredAt": "2026-11-23T01:36:02.610Z"
+    },
+    {
+      "conflictId": "ac024-servidor-angular",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-22, pergunta única cobrindo os 17 domínios e os conflitos RFC-001/002, P-003 e AC-024",
+      "fingerprint": "038f4fa6d9090867d748e176bf1e6166134ec2a7be2c628085f93a8afe22be3f",
+      "ownFingerprint": "ad5e3801767b76d6bf77d77f4e6e5c46bed34ce8e7df42795b2899701c01d031",
+      "conflictFingerprint": "eee03edb6eb5033674b2e7a9bc96704b2bc502b8eb785e283bf3ecaf5670e772",
+      "answeredAt": "2026-11-23T01:36:02.986Z"
+    },
+    {
+      "conflictId": "impacto:acesso",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "5c8ea4993f97370f4679e71bb3b4724577aa69a7ef80088fe19bed1eb6041c0a",
+      "answeredAt": "2026-11-23T01:42:21.652Z"
+    },
+    {
+      "conflictId": "impacto:acoes",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "04090deb5e706da1e92c8fa1c17ca9f3a2c07debf7357172209fe6450b191518",
+      "answeredAt": "2026-11-23T01:42:22.253Z"
+    },
+    {
+      "conflictId": "impacto:cabecalho-identidade-acoes",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "d6cf4aaa4f89f58887896998b0ac6d2b665208b13463477763c8b9feb86b705b",
+      "answeredAt": "2026-11-23T01:42:22.875Z"
+    },
+    {
+      "conflictId": "impacto:carteiras",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "02cc1f28067baa2cd15202f95212cf510bf85abbbf537b27797c8a0deaa36996",
+      "answeredAt": "2026-11-23T01:42:23.522Z"
+    },
+    {
+      "conflictId": "impacto:confirmacao-senha-cadastro",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "15606c612946b0a51f02582212f9400e2966bce911e06c906eb7a7ff87ec908a",
+      "answeredAt": "2026-11-23T01:42:24.150Z"
+    },
+    {
+      "conflictId": "impacto:corretoras",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "8a3f45e1055b4494d3fd5c734268f94485b042ac181f09747801cb6c514f1db0",
+      "answeredAt": "2026-11-23T01:42:25.044Z"
+    },
+    {
+      "conflictId": "impacto:desempenho",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "2034190890e2a4dc9ba94f8d449a481976520761aac2d3e18d243504044b0f09",
+      "answeredAt": "2026-11-23T01:42:25.711Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "ac3f9794f1e6b84ccede0a4b245c4252b5f658a660cd972377aad89b3b34f569",
+      "answeredAt": "2026-11-23T01:42:26.474Z"
+    },
+    {
+      "conflictId": "impacto:fundacao-visual",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "7d341e980804fe38cc9bd747306de68e1414a62e40d2e4ffba54c0ac4f1e997a",
+      "answeredAt": "2026-11-23T01:42:27.274Z"
+    },
+    {
+      "conflictId": "impacto:operacoes",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "d5cdb090e971e5116fcd9aa9626b2569acc91a82baa6998c65b86493ea6a6c69",
+      "answeredAt": "2026-11-23T01:42:27.830Z"
+    },
+    {
+      "conflictId": "impacto:painel",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "41c8aa4c1f059a6b0a6bdda0761afd836b8059299106ab7cb2400e5718dcfe1e",
+      "answeredAt": "2026-11-23T01:42:28.232Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-acesso",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "f312a4574beb3e378802a247bc101af0d5e73a77fa86c5634e2c74641da9de8c",
+      "answeredAt": "2026-11-23T01:42:28.632Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-desempenho",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "9d04499a6d31f026db976858ce50536414879bd43cf000497273a1165dc8a02b",
+      "answeredAt": "2026-11-23T01:42:29.026Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-painel",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "c2c47b47590f89af64cc58647d416c282ec7f2e9d560bb77b35a1987fd485a18",
+      "answeredAt": "2026-11-23T01:42:29.471Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "7edfbf0e16340fe85a93184bbc0d4b1bae6a19fb02f8045d3b9648102d0ad9a8",
+      "answeredAt": "2026-11-23T01:42:29.904Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-visual",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "d2960daa55c8a439a880dd14158294fcc6e9d85598135d2fd776bd922277ea2c",
+      "answeredAt": "2026-11-23T01:42:30.329Z"
+    },
+    {
+      "conflictId": "impacto:visibilidade-da-senha",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "34ee2924f6d7292e811b58928663fd76dcd6f5eb8aa5be52848566667eb25f4c",
+      "answeredAt": "2026-11-23T01:42:30.754Z"
+    },
+    {
+      "conflictId": "stack-tailwind-rfc",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "1ca4ea2338467691cf8aba48d08e2577ffa2784a2de6fd9354307e08bdff896c",
+      "answeredAt": "2026-11-23T01:42:31.265Z"
+    },
+    {
+      "conflictId": "p003-alcance-verificacao",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "607417f13acf4c508eacf32ce99ee928d77a30b104e92209bb3182b59fba47c5",
+      "answeredAt": "2026-11-23T01:42:31.964Z"
+    },
+    {
+      "conflictId": "ac024-servidor-angular",
+      "choice": "prosseguir",
+      "answer": "Autorizo seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas em 2026-11-22 para estes mesmos 20 conflitos; reaplicada após a T-127 mudar só o onpspec.config.json (comando de teste) e a medida de bundle no TDD, sem conflito novo",
+      "fingerprint": "e854a236fbc3fb8f93b3a28b640c242afce30fdb6cc472073d69a82dce352368",
+      "ownFingerprint": "51659ccacddc3ec03d0f34b561a5b2eb950406550eddc63fd837f6069675a437",
+      "conflictFingerprint": "eee03edb6eb5033674b2e7a9bc96704b2bc502b8eb785e283bf3ecaf5670e772",
+      "answeredAt": "2026-11-23T01:42:32.829Z"
+    },
+    {
+      "conflictId": "impacto:acesso",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "5c8ea4993f97370f4679e71bb3b4724577aa69a7ef80088fe19bed1eb6041c0a",
+      "answeredAt": "2026-11-23T22:18:44.664Z"
+    },
+    {
+      "conflictId": "impacto:acoes",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "04090deb5e706da1e92c8fa1c17ca9f3a2c07debf7357172209fe6450b191518",
+      "answeredAt": "2026-11-23T22:18:45.047Z"
+    },
+    {
+      "conflictId": "impacto:cabecalho-identidade-acoes",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "d6cf4aaa4f89f58887896998b0ac6d2b665208b13463477763c8b9feb86b705b",
+      "answeredAt": "2026-11-23T22:18:45.421Z"
+    },
+    {
+      "conflictId": "impacto:carteiras",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "02cc1f28067baa2cd15202f95212cf510bf85abbbf537b27797c8a0deaa36996",
+      "answeredAt": "2026-11-23T22:18:45.797Z"
+    },
+    {
+      "conflictId": "impacto:confirmacao-senha-cadastro",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "15606c612946b0a51f02582212f9400e2966bce911e06c906eb7a7ff87ec908a",
+      "answeredAt": "2026-11-23T22:18:46.178Z"
+    },
+    {
+      "conflictId": "impacto:corretoras",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "8a3f45e1055b4494d3fd5c734268f94485b042ac181f09747801cb6c514f1db0",
+      "answeredAt": "2026-11-23T22:18:46.560Z"
+    },
+    {
+      "conflictId": "impacto:desempenho",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "2034190890e2a4dc9ba94f8d449a481976520761aac2d3e18d243504044b0f09",
+      "answeredAt": "2026-11-23T22:18:46.952Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "ac3f9794f1e6b84ccede0a4b245c4252b5f658a660cd972377aad89b3b34f569",
+      "answeredAt": "2026-11-23T22:18:47.347Z"
+    },
+    {
+      "conflictId": "impacto:fundacao-visual",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "7d341e980804fe38cc9bd747306de68e1414a62e40d2e4ffba54c0ac4f1e997a",
+      "answeredAt": "2026-11-23T22:18:47.731Z"
+    },
+    {
+      "conflictId": "impacto:operacoes",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "d5cdb090e971e5116fcd9aa9626b2569acc91a82baa6998c65b86493ea6a6c69",
+      "answeredAt": "2026-11-23T22:18:48.109Z"
+    },
+    {
+      "conflictId": "impacto:painel",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "41c8aa4c1f059a6b0a6bdda0761afd836b8059299106ab7cb2400e5718dcfe1e",
+      "answeredAt": "2026-11-23T22:18:48.508Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-acesso",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "f312a4574beb3e378802a247bc101af0d5e73a77fa86c5634e2c74641da9de8c",
+      "answeredAt": "2026-11-23T22:18:48.895Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-desempenho",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "9d04499a6d31f026db976858ce50536414879bd43cf000497273a1165dc8a02b",
+      "answeredAt": "2026-11-23T22:18:49.292Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-painel",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "c2c47b47590f89af64cc58647d416c282ec7f2e9d560bb77b35a1987fd485a18",
+      "answeredAt": "2026-11-23T22:18:49.680Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "7edfbf0e16340fe85a93184bbc0d4b1bae6a19fb02f8045d3b9648102d0ad9a8",
+      "answeredAt": "2026-11-23T22:18:50.067Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-visual",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "d2960daa55c8a439a880dd14158294fcc6e9d85598135d2fd776bd922277ea2c",
+      "answeredAt": "2026-11-23T22:18:50.459Z"
+    },
+    {
+      "conflictId": "impacto:visibilidade-da-senha",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "34ee2924f6d7292e811b58928663fd76dcd6f5eb8aa5be52848566667eb25f4c",
+      "answeredAt": "2026-11-23T22:18:50.864Z"
+    },
+    {
+      "conflictId": "stack-tailwind-rfc",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "1ca4ea2338467691cf8aba48d08e2577ffa2784a2de6fd9354307e08bdff896c",
+      "answeredAt": "2026-11-23T22:18:51.247Z"
+    },
+    {
+      "conflictId": "p003-alcance-verificacao",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "607417f13acf4c508eacf32ce99ee928d77a30b104e92209bb3182b59fba47c5",
+      "answeredAt": "2026-11-23T22:18:51.642Z"
+    },
+    {
+      "conflictId": "ac024-servidor-angular",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "eee03edb6eb5033674b2e7a9bc96704b2bc502b8eb785e283bf3ecaf5670e772",
+      "answeredAt": "2026-11-23T22:18:52.028Z"
+    },
+    {
+      "conflictId": "correcao-bugs-angular",
+      "choice": "prosseguir",
+      "answer": "quero que corriga os bugs que achou em angular para react",
+      "source": "Mensagem de Lucas no chat do Claude Code em 2026-11-23, em resposta às questões abertas; vale com a autorização anterior (AskUserQuestion de 2026-11-22, \"Autorizo seguir\") para a migração dos 17 domínios",
+      "fingerprint": "6897a9221bd3ed88db16ba382935dac0f4ff526bba78174b35cee6efacde46f5",
+      "ownFingerprint": "a3dc4d9a41cbb96dcc2affd935dd700d2f4eb2ffba7262c56262c4090c498087",
+      "conflictFingerprint": "750158efd52c5da665e656f486cb08f637a003167a9ded75875f67a9ae43968d",
+      "answeredAt": "2026-11-23T22:18:52.429Z"
+    },
+    {
+      "conflictId": "impacto:acesso",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "5c8ea4993f97370f4679e71bb3b4724577aa69a7ef80088fe19bed1eb6041c0a",
+      "answeredAt": "2026-11-24T00:21:46.229Z"
+    },
+    {
+      "conflictId": "impacto:acoes",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "04090deb5e706da1e92c8fa1c17ca9f3a2c07debf7357172209fe6450b191518",
+      "answeredAt": "2026-11-24T00:21:47.696Z"
+    },
+    {
+      "conflictId": "impacto:cabecalho-identidade-acoes",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "d6cf4aaa4f89f58887896998b0ac6d2b665208b13463477763c8b9feb86b705b",
+      "answeredAt": "2026-11-24T00:21:49.206Z"
+    },
+    {
+      "conflictId": "impacto:carteiras",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "02cc1f28067baa2cd15202f95212cf510bf85abbbf537b27797c8a0deaa36996",
+      "answeredAt": "2026-11-24T00:21:50.703Z"
+    },
+    {
+      "conflictId": "impacto:confirmacao-senha-cadastro",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "15606c612946b0a51f02582212f9400e2966bce911e06c906eb7a7ff87ec908a",
+      "answeredAt": "2026-11-24T00:21:52.198Z"
+    },
+    {
+      "conflictId": "impacto:corretoras",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "8a3f45e1055b4494d3fd5c734268f94485b042ac181f09747801cb6c514f1db0",
+      "answeredAt": "2026-11-24T00:21:53.686Z"
+    },
+    {
+      "conflictId": "impacto:desempenho",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "2034190890e2a4dc9ba94f8d449a481976520761aac2d3e18d243504044b0f09",
+      "answeredAt": "2026-11-24T00:21:55.190Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "ac3f9794f1e6b84ccede0a4b245c4252b5f658a660cd972377aad89b3b34f569",
+      "answeredAt": "2026-11-24T00:21:56.686Z"
+    },
+    {
+      "conflictId": "impacto:fundacao-visual",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "7d341e980804fe38cc9bd747306de68e1414a62e40d2e4ffba54c0ac4f1e997a",
+      "answeredAt": "2026-11-24T00:21:58.225Z"
+    },
+    {
+      "conflictId": "impacto:operacoes",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "d5cdb090e971e5116fcd9aa9626b2569acc91a82baa6998c65b86493ea6a6c69",
+      "answeredAt": "2026-11-24T00:21:59.772Z"
+    },
+    {
+      "conflictId": "impacto:painel",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "41c8aa4c1f059a6b0a6bdda0761afd836b8059299106ab7cb2400e5718dcfe1e",
+      "answeredAt": "2026-11-24T00:22:01.327Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-acesso",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "f312a4574beb3e378802a247bc101af0d5e73a77fa86c5634e2c74641da9de8c",
+      "answeredAt": "2026-11-24T00:22:02.847Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-desempenho",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "9d04499a6d31f026db976858ce50536414879bd43cf000497273a1165dc8a02b",
+      "answeredAt": "2026-11-24T00:22:04.381Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-painel",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "c2c47b47590f89af64cc58647d416c282ec7f2e9d560bb77b35a1987fd485a18",
+      "answeredAt": "2026-11-24T00:22:05.902Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "7edfbf0e16340fe85a93184bbc0d4b1bae6a19fb02f8045d3b9648102d0ad9a8",
+      "answeredAt": "2026-11-24T00:22:07.453Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-visual",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "d2960daa55c8a439a880dd14158294fcc6e9d85598135d2fd776bd922277ea2c",
+      "answeredAt": "2026-11-24T00:22:08.990Z"
+    },
+    {
+      "conflictId": "impacto:visibilidade-da-senha",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "34ee2924f6d7292e811b58928663fd76dcd6f5eb8aa5be52848566667eb25f4c",
+      "answeredAt": "2026-11-24T00:22:10.550Z"
+    },
+    {
+      "conflictId": "stack-tailwind-rfc",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "1ca4ea2338467691cf8aba48d08e2577ffa2784a2de6fd9354307e08bdff896c",
+      "answeredAt": "2026-11-24T00:22:12.152Z"
+    },
+    {
+      "conflictId": "p003-alcance-verificacao",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "3f0b13974046fa122ee16e7453805b6ebefdb34a8783733c8c6b5fe7147964fb",
+      "answeredAt": "2026-11-24T00:22:13.742Z"
+    },
+    {
+      "conflictId": "ac024-servidor-angular",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "eee03edb6eb5033674b2e7a9bc96704b2bc502b8eb785e283bf3ecaf5670e772",
+      "answeredAt": "2026-11-24T00:22:15.278Z"
+    },
+    {
+      "conflictId": "correcao-bugs-angular",
+      "choice": "prosseguir",
+      "answer": "Reaplicar e seguir (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), pergunta única sobre reaplicar a autorização aos 21 conflitos após a constituição v1.3.0 (Q-040: \"Aprovo a v1.3.0 (Recomendado)\") e a expansão do mapeamento de arquivos",
+      "fingerprint": "175126cf8a4093599937e718a14a40c9213bcecd84432eb13d06c8d4d5134a2e",
+      "ownFingerprint": "29439cc715b27c67c4d0e1574b495673680728fbb341683c4ee8a1fe71a88004",
+      "conflictFingerprint": "750158efd52c5da665e656f486cb08f637a003167a9ded75875f67a9ae43968d",
+      "answeredAt": "2026-11-24T00:22:16.817Z"
+    },
+    {
+      "conflictId": "impacto:acesso",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "5c8ea4993f97370f4679e71bb3b4724577aa69a7ef80088fe19bed1eb6041c0a",
+      "answeredAt": "2026-11-24T00:36:07.331Z"
+    },
+    {
+      "conflictId": "impacto:acoes",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "04090deb5e706da1e92c8fa1c17ca9f3a2c07debf7357172209fe6450b191518",
+      "answeredAt": "2026-11-24T00:36:11.308Z"
+    },
+    {
+      "conflictId": "impacto:cabecalho-identidade-acoes",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "d6cf4aaa4f89f58887896998b0ac6d2b665208b13463477763c8b9feb86b705b",
+      "answeredAt": "2026-11-24T00:36:13.421Z"
+    },
+    {
+      "conflictId": "impacto:carteiras",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "02cc1f28067baa2cd15202f95212cf510bf85abbbf537b27797c8a0deaa36996",
+      "answeredAt": "2026-11-24T00:36:17.393Z"
+    },
+    {
+      "conflictId": "impacto:confirmacao-senha-cadastro",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "15606c612946b0a51f02582212f9400e2966bce911e06c906eb7a7ff87ec908a",
+      "answeredAt": "2026-11-24T00:36:20.998Z"
+    },
+    {
+      "conflictId": "impacto:corretoras",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "8a3f45e1055b4494d3fd5c734268f94485b042ac181f09747801cb6c514f1db0",
+      "answeredAt": "2026-11-24T00:36:24.419Z"
+    },
+    {
+      "conflictId": "impacto:desempenho",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "2034190890e2a4dc9ba94f8d449a481976520761aac2d3e18d243504044b0f09",
+      "answeredAt": "2026-11-24T00:36:28.510Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "ac3f9794f1e6b84ccede0a4b245c4252b5f658a660cd972377aad89b3b34f569",
+      "answeredAt": "2026-11-24T00:36:32.606Z"
+    },
+    {
+      "conflictId": "impacto:fundacao-visual",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "7d341e980804fe38cc9bd747306de68e1414a62e40d2e4ffba54c0ac4f1e997a",
+      "answeredAt": "2026-11-24T00:36:34.778Z"
+    },
+    {
+      "conflictId": "impacto:operacoes",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "d5cdb090e971e5116fcd9aa9626b2569acc91a82baa6998c65b86493ea6a6c69",
+      "answeredAt": "2026-11-24T00:36:38.598Z"
+    },
+    {
+      "conflictId": "impacto:painel",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "41c8aa4c1f059a6b0a6bdda0761afd836b8059299106ab7cb2400e5718dcfe1e",
+      "answeredAt": "2026-11-24T00:36:42.442Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-acesso",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "f312a4574beb3e378802a247bc101af0d5e73a77fa86c5634e2c74641da9de8c",
+      "answeredAt": "2026-11-24T00:36:46.098Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-desempenho",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "9d04499a6d31f026db976858ce50536414879bd43cf000497273a1165dc8a02b",
+      "answeredAt": "2026-11-24T00:36:49.774Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-painel",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "c2c47b47590f89af64cc58647d416c282ec7f2e9d560bb77b35a1987fd485a18",
+      "answeredAt": "2026-11-24T00:36:54.147Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "7edfbf0e16340fe85a93184bbc0d4b1bae6a19fb02f8045d3b9648102d0ad9a8",
+      "answeredAt": "2026-11-24T00:36:56.284Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-visual",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "d2960daa55c8a439a880dd14158294fcc6e9d85598135d2fd776bd922277ea2c",
+      "answeredAt": "2026-11-24T00:36:59.756Z"
+    },
+    {
+      "conflictId": "impacto:visibilidade-da-senha",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "34ee2924f6d7292e811b58928663fd76dcd6f5eb8aa5be52848566667eb25f4c",
+      "answeredAt": "2026-11-24T00:37:03.668Z"
+    },
+    {
+      "conflictId": "stack-tailwind-rfc",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "1ca4ea2338467691cf8aba48d08e2577ffa2784a2de6fd9354307e08bdff896c",
+      "answeredAt": "2026-11-24T00:37:07.568Z"
+    },
+    {
+      "conflictId": "p003-alcance-verificacao",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "3f0b13974046fa122ee16e7453805b6ebefdb34a8783733c8c6b5fe7147964fb",
+      "answeredAt": "2026-11-24T00:37:11.799Z"
+    },
+    {
+      "conflictId": "ac024-servidor-angular",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "eee03edb6eb5033674b2e7a9bc96704b2bc502b8eb785e283bf3ecaf5670e772",
+      "answeredAt": "2026-11-24T00:37:16.142Z"
+    },
+    {
+      "conflictId": "correcao-bugs-angular",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; conflito novo ou mudança de spec, regra ou escopo exige nova pergunta",
+      "fingerprint": "0125ccd5168fa816f4b1bce67204db42b88efdd3a98dfa5e45e7e91cdfce7019",
+      "ownFingerprint": "b9e95203afd19ec7811b7e802159edd132c64e3b099e8080ca6618baf520d6e1",
+      "conflictFingerprint": "750158efd52c5da665e656f486cb08f637a003167a9ded75875f67a9ae43968d",
+      "answeredAt": "2026-11-24T00:37:18.636Z"
+    },
+    {
+      "conflictId": "impacto:acesso",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "5c8ea4993f97370f4679e71bb3b4724577aa69a7ef80088fe19bed1eb6041c0a",
+      "answeredAt": "2026-11-24T22:58:05.562Z"
+    },
+    {
+      "conflictId": "impacto:acoes",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "04090deb5e706da1e92c8fa1c17ca9f3a2c07debf7357172209fe6450b191518",
+      "answeredAt": "2026-11-24T22:58:07.754Z"
+    },
+    {
+      "conflictId": "impacto:cabecalho-identidade-acoes",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "d6cf4aaa4f89f58887896998b0ac6d2b665208b13463477763c8b9feb86b705b",
+      "answeredAt": "2026-11-24T22:58:09.873Z"
+    },
+    {
+      "conflictId": "impacto:carteiras",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "02cc1f28067baa2cd15202f95212cf510bf85abbbf537b27797c8a0deaa36996",
+      "answeredAt": "2026-11-24T22:58:12.063Z"
+    },
+    {
+      "conflictId": "impacto:confirmacao-senha-cadastro",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "15606c612946b0a51f02582212f9400e2966bce911e06c906eb7a7ff87ec908a",
+      "answeredAt": "2026-11-24T22:58:14.326Z"
+    },
+    {
+      "conflictId": "impacto:corretoras",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "8a3f45e1055b4494d3fd5c734268f94485b042ac181f09747801cb6c514f1db0",
+      "answeredAt": "2026-11-24T22:58:16.495Z"
+    },
+    {
+      "conflictId": "impacto:desempenho",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "2034190890e2a4dc9ba94f8d449a481976520761aac2d3e18d243504044b0f09",
+      "answeredAt": "2026-11-24T22:58:18.682Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "ac3f9794f1e6b84ccede0a4b245c4252b5f658a660cd972377aad89b3b34f569",
+      "answeredAt": "2026-11-24T22:58:20.834Z"
+    },
+    {
+      "conflictId": "impacto:fundacao-visual",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "7d341e980804fe38cc9bd747306de68e1414a62e40d2e4ffba54c0ac4f1e997a",
+      "answeredAt": "2026-11-24T22:58:23.019Z"
+    },
+    {
+      "conflictId": "impacto:operacoes",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "d5cdb090e971e5116fcd9aa9626b2569acc91a82baa6998c65b86493ea6a6c69",
+      "answeredAt": "2026-11-24T22:58:25.213Z"
+    },
+    {
+      "conflictId": "impacto:painel",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "41c8aa4c1f059a6b0a6bdda0761afd836b8059299106ab7cb2400e5718dcfe1e",
+      "answeredAt": "2026-11-24T22:58:27.426Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-acesso",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "f312a4574beb3e378802a247bc101af0d5e73a77fa86c5634e2c74641da9de8c",
+      "answeredAt": "2026-11-24T22:58:29.557Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-desempenho",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "9d04499a6d31f026db976858ce50536414879bd43cf000497273a1165dc8a02b",
+      "answeredAt": "2026-11-24T22:58:31.698Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-painel",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "c2c47b47590f89af64cc58647d416c282ec7f2e9d560bb77b35a1987fd485a18",
+      "answeredAt": "2026-11-24T22:58:33.885Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "7edfbf0e16340fe85a93184bbc0d4b1bae6a19fb02f8045d3b9648102d0ad9a8",
+      "answeredAt": "2026-11-24T22:58:36.054Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-visual",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "d2960daa55c8a439a880dd14158294fcc6e9d85598135d2fd776bd922277ea2c",
+      "answeredAt": "2026-11-24T22:58:38.230Z"
+    },
+    {
+      "conflictId": "impacto:visibilidade-da-senha",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "34ee2924f6d7292e811b58928663fd76dcd6f5eb8aa5be52848566667eb25f4c",
+      "answeredAt": "2026-11-24T22:58:40.320Z"
+    },
+    {
+      "conflictId": "stack-tailwind-rfc",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "1ca4ea2338467691cf8aba48d08e2577ffa2784a2de6fd9354307e08bdff896c",
+      "answeredAt": "2026-11-24T22:58:42.494Z"
+    },
+    {
+      "conflictId": "p003-alcance-verificacao",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "3f0b13974046fa122ee16e7453805b6ebefdb34a8783733c8c6b5fe7147964fb",
+      "answeredAt": "2026-11-24T22:58:44.566Z"
+    },
+    {
+      "conflictId": "ac024-servidor-angular",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "eee03edb6eb5033674b2e7a9bc96704b2bc502b8eb785e283bf3ecaf5670e772",
+      "answeredAt": "2026-11-24T22:58:46.761Z"
+    },
+    {
+      "conflictId": "correcao-bugs-angular",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) após a T-137, mudança só em Arquivos/status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "750158efd52c5da665e656f486cb08f637a003167a9ded75875f67a9ae43968d",
+      "answeredAt": "2026-11-24T22:58:48.925Z"
+    },
+    {
+      "conflictId": "impacto:acesso",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "5c8ea4993f97370f4679e71bb3b4724577aa69a7ef80088fe19bed1eb6041c0a",
+      "answeredAt": "2026-11-24T23:08:00.667Z"
+    },
+    {
+      "conflictId": "impacto:acoes",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "04090deb5e706da1e92c8fa1c17ca9f3a2c07debf7357172209fe6450b191518",
+      "answeredAt": "2026-11-24T23:08:02.780Z"
+    },
+    {
+      "conflictId": "impacto:cabecalho-identidade-acoes",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "d6cf4aaa4f89f58887896998b0ac6d2b665208b13463477763c8b9feb86b705b",
+      "answeredAt": "2026-11-24T23:08:04.871Z"
+    },
+    {
+      "conflictId": "impacto:carteiras",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "02cc1f28067baa2cd15202f95212cf510bf85abbbf537b27797c8a0deaa36996",
+      "answeredAt": "2026-11-24T23:08:06.936Z"
+    },
+    {
+      "conflictId": "impacto:confirmacao-senha-cadastro",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "15606c612946b0a51f02582212f9400e2966bce911e06c906eb7a7ff87ec908a",
+      "answeredAt": "2026-11-24T23:08:09.048Z"
+    },
+    {
+      "conflictId": "impacto:corretoras",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "8a3f45e1055b4494d3fd5c734268f94485b042ac181f09747801cb6c514f1db0",
+      "answeredAt": "2026-11-24T23:08:11.203Z"
+    },
+    {
+      "conflictId": "impacto:desempenho",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "2034190890e2a4dc9ba94f8d449a481976520761aac2d3e18d243504044b0f09",
+      "answeredAt": "2026-11-24T23:08:13.323Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "ac3f9794f1e6b84ccede0a4b245c4252b5f658a660cd972377aad89b3b34f569",
+      "answeredAt": "2026-11-24T23:08:15.484Z"
+    },
+    {
+      "conflictId": "impacto:fundacao-visual",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "7d341e980804fe38cc9bd747306de68e1414a62e40d2e4ffba54c0ac4f1e997a",
+      "answeredAt": "2026-11-24T23:08:17.689Z"
+    },
+    {
+      "conflictId": "impacto:operacoes",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "d5cdb090e971e5116fcd9aa9626b2569acc91a82baa6998c65b86493ea6a6c69",
+      "answeredAt": "2026-11-24T23:08:19.817Z"
+    },
+    {
+      "conflictId": "impacto:painel",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "41c8aa4c1f059a6b0a6bdda0761afd836b8059299106ab7cb2400e5718dcfe1e",
+      "answeredAt": "2026-11-24T23:08:21.947Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-acesso",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "f312a4574beb3e378802a247bc101af0d5e73a77fa86c5634e2c74641da9de8c",
+      "answeredAt": "2026-11-24T23:08:24.105Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-desempenho",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "9d04499a6d31f026db976858ce50536414879bd43cf000497273a1165dc8a02b",
+      "answeredAt": "2026-11-24T23:08:26.229Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-painel",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "c2c47b47590f89af64cc58647d416c282ec7f2e9d560bb77b35a1987fd485a18",
+      "answeredAt": "2026-11-24T23:08:28.412Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "7edfbf0e16340fe85a93184bbc0d4b1bae6a19fb02f8045d3b9648102d0ad9a8",
+      "answeredAt": "2026-11-24T23:08:30.604Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-visual",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "d2960daa55c8a439a880dd14158294fcc6e9d85598135d2fd776bd922277ea2c",
+      "answeredAt": "2026-11-24T23:08:32.758Z"
+    },
+    {
+      "conflictId": "impacto:visibilidade-da-senha",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "34ee2924f6d7292e811b58928663fd76dcd6f5eb8aa5be52848566667eb25f4c",
+      "answeredAt": "2026-11-24T23:08:34.929Z"
+    },
+    {
+      "conflictId": "stack-tailwind-rfc",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "1ca4ea2338467691cf8aba48d08e2577ffa2784a2de6fd9354307e08bdff896c",
+      "answeredAt": "2026-11-24T23:08:37.109Z"
+    },
+    {
+      "conflictId": "p003-alcance-verificacao",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "3f0b13974046fa122ee16e7453805b6ebefdb34a8783733c8c6b5fe7147964fb",
+      "answeredAt": "2026-11-24T23:08:39.283Z"
+    },
+    {
+      "conflictId": "ac024-servidor-angular",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "eee03edb6eb5033674b2e7a9bc96704b2bc502b8eb785e283bf3ecaf5670e772",
+      "answeredAt": "2026-11-24T23:08:41.437Z"
+    },
+    {
+      "conflictId": "correcao-bugs-angular",
+      "choice": "prosseguir",
+      "answer": "Reaplicar nesta e nas próximas (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-23 (sessão 131b6f5a), ao fechar a T-136: autoriza reaplicar a decisão destes mesmos conflitos enquanto durar o loop da migracao-react, só para mudança mecânica de Arquivos/status das tarefas; reaplicada em 2026-11-24 (sessão 7800ca77) ao concluir a T-139, mudança só de status",
+      "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
+      "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
+      "conflictFingerprint": "750158efd52c5da665e656f486cb08f637a003167a9ded75875f67a9ae43968d",
+      "answeredAt": "2026-11-24T23:08:43.584Z"
+    }
+  ]
+}

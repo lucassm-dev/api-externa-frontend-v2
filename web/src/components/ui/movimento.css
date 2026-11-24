@@ -1,0 +1,81 @@
+/*
+ * Movimento do kit. Só transform e opacity (AC-230, AC-284), saída exponencial,
+ * e cada animação tem o seu freio aqui mesmo, além do freio global.
+ */
+
+/* Brilho do esqueleto: passa três vezes e para — carregamento longo não vira
+   pisca-pisca eterno. */
+.esqueleto-linha::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: linear-gradient(90deg, transparent, var(--cor-superficie), transparent);
+  animation: brilho-esqueleto 1.4s ease-in-out 3;
+}
+
+@keyframes brilho-esqueleto {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.72;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Barra de cotações: cada cópia da lista anda a própria largura mais o vão. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+/* Diálogo: o véu escurece e o painel assenta, sem quicar. */
+.animacao-veu {
+  animation: surgir var(--duracao) var(--saida);
+}
+
+.animacao-dialogo {
+  animation: assentar var(--duracao) var(--saida);
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes assentar {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .esqueleto-linha::after {
+    animation: none;
+    transform: none;
+    opacity: 0.24;
+  }
+
+  .animacao-veu,
+  .animacao-dialogo,
+  .animate-marquee {
+    animation: none;
+  }
+}

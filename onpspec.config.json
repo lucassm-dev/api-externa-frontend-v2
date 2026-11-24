@@ -1,12 +1,18 @@
 {
-  "testCommand": "npx ng test",
+  "testCommand": "npx ng test; npm --prefix web test --silent",
   "reporter": "tap",
   "testGlobs": [
-    "src/**/*.spec.ts"
+    "src/**/*.spec.ts",
+    "web/src/**/*.spec.ts",
+    "web/src/**/*.spec.tsx"
   ],
   "srcGlobs": [
     "src/**",
     "proxy.conf.json",
-    "angular.json"
+    "angular.json",
+    "web/src/**",
+    "web/index.html",
+    "web/vite.config.ts",
+    "web/package.json"
   ]
 }

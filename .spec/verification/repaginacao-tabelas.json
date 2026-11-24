@@ -1,55 +1,55 @@
 {
   "feature": "repaginacao-tabelas",
-  "timestamp": "2026-09-12T03:00:43.652Z",
-  "gitRev": "e26b9e8",
-  "command": "npx ng test",
+  "timestamp": "2026-11-24T23:06:40.657Z",
+  "gitRev": "14c2b77",
+  "command": "npx ng test; npm --prefix web test --silent",
   "reporter": "tap",
-  "exitCode": 1,
-  "testsParsed": 611,
+  "exitCode": 0,
+  "testsParsed": 1255,
   "results": {
     "AC-242": {
       "status": "pass",
-      "testName": "src/app/shared/tabela/cabecalho-ordenavel.spec.ts > Cabeçalho ordenável > @spec:AC-242 anuncia o sentido atual em aria-sort e o alterna conforme o estado recebido # time=20.19ms",
+      "testName": "src/app/shared/tabela/cabecalho-ordenavel.spec.ts > Cabeçalho ordenável > @spec:AC-242 anuncia o sentido atual em aria-sort e o alterna conforme o estado recebido # time=12.02ms",
       "method": "tap"
     },
     "AC-243": {
       "status": "pass",
-      "testName": "src/app/shared/tabela/ordenacao.spec.ts > OrdenacaoTabela > @spec:AC-243 ordena sobre os itens já carregados sem mutar o array da página # time=1.06ms",
+      "testName": "src/app/shared/tabela/ordenacao.spec.ts > OrdenacaoTabela > @spec:AC-243 ordena sobre os itens já carregados sem mutar o array da página # time=0.85ms",
       "method": "tap"
     },
     "AC-244": {
       "status": "pass",
-      "testName": "src/app/shared/tabela/tabela.spec.ts > Estilo base de tabela > @spec:AC-244 alinha as colunas numéricas à direita, em fonte de largura fixa e com dígitos de mesma largura # time=0.60ms",
+      "testName": "src/app/shared/tabela/tabela.spec.ts > Estilo base de tabela > @spec:AC-244 alinha as colunas numéricas à direita, em fonte de largura fixa e com dígitos de mesma largura # time=0.43ms",
       "method": "tap"
     },
     "AC-245": {
       "status": "pass",
-      "testName": "src/app/shared/tabela/tabela.spec.ts > Estilo base de tabela > @spec:AC-245 destaca a linha sob o ponteiro sem que o destaque seja a única forma de distingui-la # time=0.28ms",
+      "testName": "src/app/shared/tabela/tabela.spec.ts > Estilo base de tabela > @spec:AC-245 destaca a linha sob o ponteiro sem que o destaque seja a única forma de distingui-la # time=0.21ms",
       "method": "tap"
     },
     "AC-246": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/detalhe/movimentacoes-carteira.spec.ts > Movimentações da carteira na tela > @spec:AC-246 o tipo da operação vira selo com texto e símbolo, nunca só cor # time=13.70ms",
+      "testName": "src/app/features/carteiras/detalhe/movimentacoes-carteira.spec.ts > Movimentações da carteira na tela > @spec:AC-246 o tipo da operação vira selo com texto e símbolo, nunca só cor # time=11.33ms",
       "method": "tap"
     },
     "AC-247": {
       "status": "pass",
-      "testName": "src/app/features/acoes/lista/lista-acoes.spec.ts > Lista de ações > @spec:AC-247 cada linha traz o monograma do ativo junto ao ticker # time=54.82ms",
+      "testName": "src/app/features/acoes/lista/lista-acoes.spec.ts > Lista de ações > @spec:AC-247 cada linha traz o monograma do ativo junto ao ticker # time=51.83ms",
       "method": "tap"
     },
     "AC-248": {
       "status": "pass",
-      "testName": "src/app/features/carteiras/lista/lista-carteiras.spec.ts > Lista de carteiras > @spec:AC-248 as ações da linha viram botões de ícone com nome acessível da ação e do item # time=19.32ms",
+      "testName": "src/app/features/carteiras/lista/lista-carteiras.spec.ts > Lista de carteiras > @spec:AC-248 as ações da linha viram botões de ícone com nome acessível da ação e do item # time=29.13ms",
       "method": "tap"
     },
     "AC-249": {
       "status": "pass",
-      "testName": "src/app/features/acoes/lista/lista-acoes.spec.ts > Lista de ações > @spec:AC-249 o paginador informa página, total e faixa, desabilitando as pontas # time=121.50ms",
+      "testName": "src/app/features/acoes/lista/lista-acoes.spec.ts > Lista de ações > @spec:AC-249 o paginador informa página, total e faixa, desabilitando as pontas # time=38.65ms",
       "method": "tap"
     },
     "AC-250": {
       "status": "pass",
-      "testName": "src/app/features/acoes/lista/lista-acoes.spec.ts > Lista de ações > @spec:AC-250 carregando mostra esqueleto; catálogo vazio mostra estado vazio com próximo passo # time=61.33ms",
+      "testName": "src/app/features/acoes/lista/lista-acoes.spec.ts > Lista de ações > @spec:AC-250 carregando mostra esqueleto; catálogo vazio mostra estado vazio com próximo passo # time=91.44ms",
       "method": "tap"
     }
   },

@@ -1,4 +1,8 @@
-# Constituição — v1.2.0
+# Constituição — v1.3.0
+
+> v1.3.0 (2026-11-23): a verificação do P-003 passa a alcançar o React em `web/src`
+> (Q-040 da migracao-react, aprovada por Lucas). A v1.2.0 está preservada em
+> [constituicao-v1.2.0.md](constituicao-v1.2.0.md).
 
 <!--
   Princípios inegociáveis do projeto. Não são estilo: são restrições.
@@ -36,6 +40,21 @@ telas consomem variáveis. É o que permite os dois temas obrigatórios (PRD-001
 sem caçar cor solta.
 
 - verificação(proibido): `(#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\()` em `src/app/**/*.scss`
+
+No React, as cores vivem em `web/src/styles/tokens.css`. A pasta `styles/` é a
+casa dos tokens e dos testes que conferem seus valores, por isso fica de fora,
+menos o `global.css`. No corte (T-138), os caminhos abaixo perdem o prefixo
+`web/` junto com a mudança de pasta.
+
+- verificação(proibido): `(#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\()` em `web/src/*.ts*`
+- verificação(proibido): `(#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\()` em `web/src/features/**/*`
+- verificação(proibido): `(#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\()` em `web/src/components/**/*`
+- verificação(proibido): `(#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\()` em `web/src/core/**/*`
+- verificação(proibido): `(#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\()` em `web/src/shared/**/*`
+- verificação(proibido): `(#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\()` em `web/src/layout/**/*`
+- verificação(proibido): `(#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\()` em `web/src/lib/**/*`
+- verificação(proibido): `(#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\()` em `web/src/test/**/*`
+- verificação(proibido): `(#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\()` em `web/src/styles/global.css`
 
 ## P-004 [DEVE] Erro é tratado por código, nunca por texto
 

@@ -8,6 +8,9 @@
 
 # Node
 /node_modules
+/web/node_modules
+/web/dist
+/.playwright-mcp
 npm-debug.log
 yarn-error.log
 

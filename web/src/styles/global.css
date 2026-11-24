@@ -1,0 +1,240 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "../components/ui/movimento.css";
+@import "../components/ui/tabela.css";
+
+/*
+ * Tailwind sem paleta própria (AC-300, ADR da migração): cor, tamanho de texto
+ * e família só existem como apelido dos tokens. `bg-red-500` não gera nada;
+ * `bg-superficie` resolve em var(--cor-superficie) e acompanha o tema.
+ */
+@custom-variant dark (&:where([data-tema=escuro], [data-tema=escuro] *));
+
+@theme {
+  --color-*: initial;
+  --text-*: initial;
+  --font-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+}
+
+@theme inline {
+  --color-fundo: var(--cor-fundo);
+  --color-superficie: var(--cor-superficie);
+  --color-superficie-alta: var(--cor-superficie-alta);
+  --color-borda: var(--cor-borda);
+  --color-texto: var(--cor-texto);
+  --color-texto-fraco: var(--cor-texto-fraco);
+  --color-acento: var(--cor-acento);
+  --color-acento-contraste: var(--cor-acento-contraste);
+  --color-destaque: var(--cor-destaque);
+  --color-destaque-texto: var(--cor-destaque-texto);
+  --color-acento-suave: var(--cor-acento-suave);
+  --color-acento-forte: var(--cor-acento-forte);
+  --color-destaque-forte: var(--cor-destaque-forte);
+  --color-destaque-suave: var(--cor-destaque-suave);
+  --color-perigo: var(--cor-perigo);
+  --color-perigo-contraste: var(--cor-perigo-contraste);
+  --color-perigo-suave: var(--cor-perigo-suave);
+  --color-foco: var(--cor-foco);
+  --color-foco-halo: var(--cor-foco-halo);
+  --color-alta: var(--cor-alta);
+  --color-baixa: var(--cor-baixa);
+  --color-estavel: var(--cor-estavel);
+  --color-info-borda: var(--cor-info-borda);
+  --color-info-fundo: var(--cor-info-fundo);
+  --color-info-texto: var(--cor-info-texto);
+  --color-aviso-borda: var(--cor-aviso-borda);
+  --color-aviso-fundo: var(--cor-aviso-fundo);
+  --color-aviso-texto: var(--cor-aviso-texto);
+  --color-erro-borda: var(--cor-erro-borda);
+  --color-erro-fundo: var(--cor-erro-fundo);
+  --color-erro-texto: var(--cor-erro-texto);
+  --color-sucesso-borda: var(--cor-sucesso-borda);
+  --color-sucesso-fundo: var(--cor-sucesso-fundo);
+  --color-sucesso-texto: var(--cor-sucesso-texto);
+  --color-barra-mercado-fundo: var(--cor-barra-mercado-fundo);
+  --color-barra-mercado-texto: var(--cor-barra-mercado-texto);
+  --color-barra-mercado-borda: var(--cor-barra-mercado-borda);
+  --color-barra-mercado-fraco: var(--cor-barra-mercado-fraco);
+  --color-barra-mercado-alta: var(--cor-barra-mercado-alta);
+  --color-barra-mercado-baixa: var(--cor-barra-mercado-baixa);
+  --color-barra-mercado-estavel: var(--cor-barra-mercado-estavel);
+  --color-alta-bloco: var(--cor-alta-bloco);
+  --color-baixa-bloco: var(--cor-baixa-bloco);
+  --color-estavel-bloco: var(--cor-estavel-bloco);
+  --color-bloco-texto: var(--cor-bloco-texto);
+  --color-sombra: var(--cor-sombra);
+  --color-defasado-fundo: var(--cor-defasado-fundo);
+  --color-defasado-texto: var(--cor-defasado-texto);
+  --color-serie-1: var(--cor-serie-1);
+  --color-serie-2: var(--cor-serie-2);
+  --color-serie-3: var(--cor-serie-3);
+  --color-serie-4: var(--cor-serie-4);
+  --color-serie-5: var(--cor-serie-5);
+  --color-serie-6: var(--cor-serie-6);
+  --color-serie-7: var(--cor-serie-7);
+  --color-serie-8: var(--cor-serie-8);
+  --color-serie-resto: var(--cor-serie-resto);
+  --color-grafico-eixo: var(--cor-grafico-eixo);
+  --color-grafico-grade: var(--cor-grafico-grade);
+  --color-sombra-modal: var(--cor-sombra-modal);
+
+  /* Kit shadcn: os nomes que os componentes copiados usam, ligados aos tokens. */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Degraus nomeados da escala de tipos (AC-283): uma tela escolhe um degrau. */
+  --text-rotulo: var(--texto-rotulo);
+  --text-apoio: var(--texto-apoio);
+  --text-base: var(--texto-base);
+  --text-medio: var(--texto-medio);
+  --text-grande: var(--texto-grande);
+  --text-titulo: var(--texto-titulo);
+  --text-display: var(--texto-display);
+
+  --font-sans: var(--fonte);
+  --font-numero: var(--fonte-numero);
+
+  --radius-pequeno: var(--raio-pequeno);
+  --radius: var(--raio);
+  --radius-grande: var(--raio-grande);
+  --radius-pilula: var(--raio-pilula);
+
+  --shadow-baixa: var(--sombra-baixa);
+  --shadow-cartao: var(--sombra-cartao);
+  --shadow-media: var(--sombra-media);
+  --shadow-alta: var(--sombra-alta);
+
+  /*
+   * Apelidos para os nomes que os componentes copiados do shadcn e das
+   * bibliotecas da lista usam. Sem eles, `rounded-md` ou `text-sm` não geram
+   * nada e o componente aparece quebrado sem nenhum aviso.
+   */
+  --radius-sm: var(--raio-pequeno);
+  --radius-md: var(--raio);
+  --radius-lg: var(--raio-grande);
+  --radius-xl: var(--raio-grande);
+  --radius-full: var(--raio-pilula);
+  --shadow-xs: var(--sombra-baixa);
+  --shadow-sm: var(--sombra-cartao);
+  --shadow-md: var(--sombra-media);
+  --shadow-lg: var(--sombra-alta);
+  --text-xs: var(--texto-rotulo);
+  --text-sm: var(--texto-base);
+
+  --ease-saida: var(--saida);
+  --ease-entrada: var(--entrada);
+
+  /* Barra de cotações (Marquee do Magic UI): cada cópia anda a própria largura. */
+  --animate-marquee: marquee var(--duracao-marquee, 40s) linear infinite;
+}
+
+:root {
+  --background: var(--cor-fundo);
+  --foreground: var(--cor-texto);
+  --card: var(--cor-superficie);
+  --card-foreground: var(--cor-texto);
+  --popover: var(--cor-superficie);
+  --popover-foreground: var(--cor-texto);
+  /* Ação primária: o amarelo da marca como PREENCHIMENTO, texto escuro por cima. */
+  --primary: var(--cor-destaque);
+  --primary-foreground: var(--cor-destaque-texto);
+  --secondary: var(--cor-superficie-alta);
+  --secondary-foreground: var(--cor-texto);
+  --muted: var(--cor-superficie-alta);
+  --muted-foreground: var(--cor-texto-fraco);
+  --accent: var(--cor-acento-suave);
+  --accent-foreground: var(--cor-texto);
+  --destructive: var(--cor-perigo);
+  --destructive-foreground: var(--cor-perigo-contraste);
+  --border: var(--cor-borda);
+  --input: var(--cor-borda);
+  --ring: var(--cor-foco);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+
+  html {
+    color-scheme: light dark;
+  }
+
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    font: var(--texto-base) / var(--altura-base) var(--fonte);
+    /* Produto de números: dígito com largura fixa alinha coluna de valor. */
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--cor-destaque);
+    color: var(--cor-destaque-texto);
+  }
+
+  * {
+    caret-color: var(--cor-acento);
+    scrollbar-color: var(--cor-borda) transparent;
+    scrollbar-width: thin;
+  }
+
+  /* Piso de foco do produto: anel de duas camadas em tudo que recebe foco. */
+  :where(a, button, select, input, textarea, summary, [tabindex]):focus-visible {
+    outline: none;
+    box-shadow: var(--anel-foco);
+    border-radius: var(--raio-pequeno);
+  }
+
+  a {
+    color: var(--cor-acento);
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+}
+
+/*
+ * Freio único de movimento (AC-284, AC-302): com "reduzir movimento" ligado,
+ * nenhuma animação nem transição CSS roda, venha de folha própria ou de
+ * classe do Tailwind. Animação feita em JS (motion) consulta a mesma preferência.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
