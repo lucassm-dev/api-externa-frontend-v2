@@ -75,13 +75,13 @@ preencher — é a fronteira do que o produto pode afirmar com honestidade.
 
 | Camada | O que é usado |
 |---|---|
-| Framework | Angular 22, componentes standalone, signals, `ChangeDetectionStrategy.OnPush` |
+| Framework | React 19 + React Router, empacotado pelo Vite |
 | Linguagem | TypeScript 6 |
-| Estilo | SCSS por componente, tokens em `src/styles/_tokens.scss` |
-| Componentes | Angular Material 22 + CDK, ícones Lucide |
-| Tabelas | TanStack Table (Angular) |
-| HTTP | `HttpClient` com interceptors de sessão e de erro |
-| Testes | Vitest + jsdom — 98 arquivos de spec |
+| Estilo | Tailwind CSS v4, tokens em `src/styles/tokens.css` |
+| Componentes | shadcn/ui sobre Radix, ícones Lucide, Sonner nos avisos, Motion nas animações |
+| Tabelas | TanStack Table (React) |
+| HTTP | `fetch` com o token da sessão e a tradução de erro por código |
+| Testes | Vitest + jsdom + Testing Library — 71 arquivos de spec |
 | Verificação visual | Playwright (capturas e medição de contraste e responsividade) |
 | Empacotamento | Docker multi-stage — Node compila, nginx serve |
 
@@ -120,7 +120,7 @@ Precisa do backend rodando em `localhost:8080`:
 
 ```bash
 npm install
-npm start           # ng serve com proxy → http://localhost:4200
+npm run dev         # Vite com proxy → http://localhost:4200
 ```
 
 ```bash
@@ -132,28 +132,30 @@ npm run build       # bundle de produção em dist/
 
 ## Como o frontend fala com a API
 
-O código Angular chama **caminho relativo** — `/auth`, `/investidores`,
+O código chama **caminho relativo** — `/auth`, `/investidores`,
 `/corretoras`, `/carteiras`, `/acoes`, `/operacoes`, `/mercado`. Não existe URL
 base configurável, e isso é proposital: quem resolve o endereço é a camada de
 fora.
 
-- Em desenvolvimento, o `proxy.conf.json` repassa esses prefixos para
+- Em desenvolvimento, o proxy do Vite (`proxy.config.ts`) repassa esses prefixos para
   `localhost:8080`.
 - Em container, o nginx da imagem faz o mesmo repasse para o backend.
 
 O efeito é que **a API responde sempre na mesma origem do SPA**, e com isso o CORS
 deixa de existir em vez de virar mais uma coisa a configurar por ambiente.
 
-> Mexeu nos prefixos do `proxy.conf.json`? Mexa também em
+> Mexeu nos prefixos do `proxy.config.ts`? Mexa também em
 > `nginx/padrao.conf.template`. Divergir entre os dois cria um caminho que
-> funciona no `ng serve` e devolve 404 no container.
+> funciona no `npm run dev` e devolve 404 no container.
 
 ---
 
 ## Organização do código
 
 ```
-src/app/
+src/
+  components/  kit de interface (shadcn/ui e peças próprias)
+  lib/         utilitários de classe, formulário e movimento
   core/        sessão, erros, formatação, tema, acesso a dados
   layout/      casca do produto: topo, navegação, menu compacto
   shared/      botão, selo, tabela, paginador, estado vazio, monograma…
@@ -165,7 +167,8 @@ src/app/
     acoes/         catálogo de ações
     operacoes/     compra, venda e extrato
     desempenho/    números e os sete gráficos
-src/styles/    tokens de cor e escalas (único lugar onde cor é escrita)
+  styles/      tokens de cor e escalas (único lugar onde cor é escrita)
+  test/        apoio dos testes (servidor simulado, rotas, Tailwind)
 ```
 
 ---
@@ -185,7 +188,7 @@ node .claude/skills/onp-spec-driven-claude-v4-0-0/scripts/onp-spec.mjs audit --c
 
 Há ainda uma **constituição** em `.spec/constituicao.md` com princípios
 verificados por regex sobre o código — por exemplo, nenhuma cor literal fora de
-`_tokens.scss`, e nenhum tratamento de erro que compare o texto da mensagem do
+`tokens.css`, e nenhum tratamento de erro que compare o texto da mensagem do
 servidor em vez do código.
 
 Decisões de produto e de arquitetura ficam em `docs/prd/`, `docs/adr/` e

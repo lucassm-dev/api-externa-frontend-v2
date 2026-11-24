@@ -5,100 +5,19 @@
   "domains": [],
   "clientRequest": "quero que migra a linguagem desse projeto api-externa-frontend-v2 que hoje esta em angular, quero que faz a troca para react, utilizando as bibliotecas que te passei para melhorar componentes, deixar o front mais bonito não quero que muda a logica de como esta, somente a linguagem e deixa mais bonito, utilize a skill /onp-spec-driven-claude-v4-0-0 para fazer isso, vamos fazer em loop e utliza a skill /impeccable para ajudar na estilização.",
   "review": {
-    "summary": "Leitura dos PRD-001 a 009, ADR-001 a 010, constituição v1.2.0, RFC-001/002 e das specs das 17 features. A migração reescreve o código de todos os domínios sem mudar regra, rota, mensagem ou contrato: cada critério existente é portado com a mesma tag e continua provado. Nenhum PRD/ADR fixa a stack Angular. Conflitos semânticos: (1) RFC-001 D6 e RFC-002 recusaram Tailwind/shadcn para o projeto Angular, e a proposta os adota; (2) a verificação mecânica do P-003 cobre só src/app/**/*.scss e não alcança o React; o princípio é mantido pelo AC-300 e a linha de verificação fica para proposta de constituição no corte (Q-040); (3) o AC-024 da fundação cita o servidor de desenvolvimento do Angular; o comportamento (mesma origem) passa ao proxy do Vite (ASM-073), sem reescrever a spec antiga. Releitura em 2026-11-22 após a T-127: a única mudança desde a revisão anterior é o onpspec.config.json (testCommand roda Angular e React; testGlobs/srcGlobs incluem web/), previsto nas notas da T-127, e a medida de referência do bundle no TDD §16. Nenhum requisito, regra, escopo ou conflito novo. Releitura em 2026-11-23: a spec ganhou a US-085 (AC-306 a AC-310) e a tarefa T-139 por pedido explícito do cliente para corrigir no React os bugs que a auditoria achou no Angular. Isso muda comportamento em domínios anteriores: operações (OPE-004 mostra a quantidade real; extrato volta uma página ao esvaziar; listas de escolha com página de 200), carteiras (lista volta uma página; criação de carteira oferece até 200 corretoras), desempenho e painel (resposta atrasada de outra carteira é descartada) e corretoras (cadastro preenchido com o CNPJ buscado). Nenhuma regra de PRD/ADR é contrariada: as correções cumprem o que os critérios originais pretendiam. Releitura em 2026-11-23, rodada da T-136: mudaram (a) a constituição, de v1.2.0 para v1.3.0, só na verificação do P-003, que passa a alcançar web/src com a mesma regex (resposta do cliente à Q-040), sem mudar princípio, nível nem as demais verificações; (b) a Q-040 na spec, marcada respondida; (c) o campo Arquivos das T-128 a T-135, em que cada pasta virou a lista dos arquivos dela, porque o motor v4 só casa caminho exato. Nenhum requisito, regra, rota, mensagem, escopo ou domínio novo. Ressalva: P-002 e P-004 continuam verificados só em src/app/**/*.ts e não alcançam o React; não foram tocados por não estarem na Q-040. Releitura em 2026-11-23 após a T-136: mudou só o tasks.md (Arquivos da T-136 e da T-139 listados por arquivo; T-136 concluída). O código de operações porta as regras sem mudança e aplica as correções já decididas na US-085 (AC-306 a AC-309). Nenhum conflito, regra ou escopo novo. Releitura em 2026-11-24 após a T-137: mudou só o tasks.md (Arquivos da T-137 listados por arquivo, com web/src/rotas.tsx como na T-136; na T-139 a pasta web/src/features/desempenho virou os dois arquivos que levam o AC-309; T-137 concluída). O código de desempenho porta as regras e os testes do Angular com as mesmas tags; o ajuste visual do quadrante (folga do viewBox para a maior bolha e grade da legenda no celular) não muda dado, regra nem texto e atende o AC-273 já existente. Nenhum conflito, regra ou escopo novo. Releitura em 2026-11-24 após o verify da T-137: mudou só o status da T-139 para concluída (AC-306 a AC-310 provados pela suíte React). Nenhum conflito, regra ou escopo novo.",
+    "summary": "Leitura dos PRD-001 a 009, ADR-001 a 010, constituição v1.2.0, RFC-001/002 e das specs das 17 features. A migração reescreve o código de todos os domínios sem mudar regra, rota, mensagem ou contrato: cada critério existente é portado com a mesma tag e continua provado. Nenhum PRD/ADR fixa a stack Angular. Conflitos semânticos: (1) RFC-001 D6 e RFC-002 recusaram Tailwind/shadcn para o projeto Angular, e a proposta os adota; (2) a verificação mecânica do P-003 cobre só src/app/**/*.scss e não alcança o React; o princípio é mantido pelo AC-300 e a linha de verificação fica para proposta de constituição no corte (Q-040); (3) o AC-024 da fundação cita o servidor de desenvolvimento do Angular; o comportamento (mesma origem) passa ao proxy do Vite (ASM-073), sem reescrever a spec antiga. Releitura em 2026-11-22 após a T-127: a única mudança desde a revisão anterior é o onpspec.config.json (testCommand roda Angular e React; testGlobs/srcGlobs incluem web/), previsto nas notas da T-127, e a medida de referência do bundle no TDD §16. Nenhum requisito, regra, escopo ou conflito novo. Releitura em 2026-11-23: a spec ganhou a US-085 (AC-306 a AC-310) e a tarefa T-139 por pedido explícito do cliente para corrigir no React os bugs que a auditoria achou no Angular. Isso muda comportamento em domínios anteriores: operações (OPE-004 mostra a quantidade real; extrato volta uma página ao esvaziar; listas de escolha com página de 200), carteiras (lista volta uma página; criação de carteira oferece até 200 corretoras), desempenho e painel (resposta atrasada de outra carteira é descartada) e corretoras (cadastro preenchido com o CNPJ buscado). Nenhuma regra de PRD/ADR é contrariada: as correções cumprem o que os critérios originais pretendiam. Releitura em 2026-11-23, rodada da T-136: mudaram (a) a constituição, de v1.2.0 para v1.3.0, só na verificação do P-003, que passa a alcançar web/src com a mesma regex (resposta do cliente à Q-040), sem mudar princípio, nível nem as demais verificações; (b) a Q-040 na spec, marcada respondida; (c) o campo Arquivos das T-128 a T-135, em que cada pasta virou a lista dos arquivos dela, porque o motor v4 só casa caminho exato. Nenhum requisito, regra, rota, mensagem, escopo ou domínio novo. Ressalva: P-002 e P-004 continuam verificados só em src/app/**/*.ts e não alcançam o React; não foram tocados por não estarem na Q-040. Releitura em 2026-11-23 após a T-136: mudou só o tasks.md (Arquivos da T-136 e da T-139 listados por arquivo; T-136 concluída). O código de operações porta as regras sem mudança e aplica as correções já decididas na US-085 (AC-306 a AC-309). Nenhum conflito, regra ou escopo novo. Releitura em 2026-11-24 após a T-137: mudou só o tasks.md (Arquivos da T-137 listados por arquivo, com web/src/rotas.tsx como na T-136; na T-139 a pasta web/src/features/desempenho virou os dois arquivos que levam o AC-309; T-137 concluída). O código de desempenho porta as regras e os testes do Angular com as mesmas tags; o ajuste visual do quadrante (folga do viewBox para a maior bolha e grade da legenda no celular) não muda dado, regra nem texto e atende o AC-273 já existente. Nenhum conflito, regra ou escopo novo. Releitura em 2026-11-24 após o verify da T-137: mudou só o status da T-139 para concluída (AC-306 a AC-310 provados pela suíte React). Nenhum conflito, regra ou escopo novo. Releitura em 2026-11-24 na T-138 (corte), autorizado por Lucas (\"Fazer o corte (Recomendado)\", AskUserQuestion, 2026-11-24): o Angular saiu (src/app, angular.json, tsconfig.app/spec, proxy.conf.json, pacotes @angular/*) e web/ virou a raiz; onpspec.config.json, README, PRODUCT.md, Dockerfile (dist/), .dockerignore, nginx (comentários), .gitignore e .vscode passam a descrever o React; Arquivos das T-127 a T-139 perdem o prefixo web/. Nenhuma regra, rota, mensagem ou contrato de API muda; os 298 critérios antigos seguem provados pela suíte React e o AC-305 ganha teste. Mudanças de regra, cada uma com decisão explícita de hoje: constituição v1.4.0 (P-003 sem prefixo web/ e sem a linha do SCSS Angular; P-002 e P-004 em src/**/*.ts*, Q-041) e revisão do TDD em design-v2.md (teto do bundle 470 kB / 141 kB, com checagem no npm run build, Q-042). Fontes passam a carregar só o subconjunto latino (pt-BR), sem mudança de texto. Ainda na T-138: a conferência no navegador achou divergência do porte no painel. O Angular tratava barra de cotações sem itens/avisos e consolidado sem avisos como lista vazia (?? []), e o React chamava .map direto, derrubando a rota. Os dois voltam ao comportamento do Angular (ADR-006), com teste que falha sem a correção. Nenhuma regra nova: é restaurar a lógica original.",
     "reviewer": "Claude Code, modelo claude-opus-5-5, sessão 7800ca77, 2026-11-24",
     "conflicts": [
-      {
-        "id": "impacto:acesso",
-        "automatic": true,
-        "feature": "acesso",
-        "summary": "A mudança interfere no domínio da feature acesso.",
-        "files": [
-          "src"
-        ],
-        "domains": [],
-        "rule": ".spec/features/acesso/spec.md"
-      },
-      {
-        "id": "impacto:acoes",
-        "automatic": true,
-        "feature": "acoes",
-        "summary": "A mudança interfere no domínio da feature acoes.",
-        "files": [
-          "src"
-        ],
-        "domains": [],
-        "rule": ".spec/features/acoes/spec.md"
-      },
-      {
-        "id": "impacto:cabecalho-identidade-acoes",
-        "automatic": true,
-        "feature": "cabecalho-identidade-acoes",
-        "summary": "A mudança interfere no domínio da feature cabecalho-identidade-acoes.",
-        "files": [
-          "src"
-        ],
-        "domains": [],
-        "rule": ".spec/features/cabecalho-identidade-acoes/spec.md"
-      },
-      {
-        "id": "impacto:carteiras",
-        "automatic": true,
-        "feature": "carteiras",
-        "summary": "A mudança interfere no domínio da feature carteiras.",
-        "files": [
-          "src"
-        ],
-        "domains": [],
-        "rule": ".spec/features/carteiras/spec.md"
-      },
-      {
-        "id": "impacto:confirmacao-senha-cadastro",
-        "automatic": true,
-        "feature": "confirmacao-senha-cadastro",
-        "summary": "A mudança interfere no domínio da feature confirmacao-senha-cadastro.",
-        "files": [
-          "src"
-        ],
-        "domains": [],
-        "rule": ".spec/features/confirmacao-senha-cadastro/spec.md"
-      },
-      {
-        "id": "impacto:corretoras",
-        "automatic": true,
-        "feature": "corretoras",
-        "summary": "A mudança interfere no domínio da feature corretoras.",
-        "files": [
-          "src"
-        ],
-        "domains": [],
-        "rule": ".spec/features/corretoras/spec.md"
-      },
-      {
-        "id": "impacto:desempenho",
-        "automatic": true,
-        "feature": "desempenho",
-        "summary": "A mudança interfere no domínio da feature desempenho.",
-        "files": [
-          "src"
-        ],
-        "domains": [],
-        "rule": ".spec/features/desempenho/spec.md"
-      },
       {
         "id": "impacto:fundacao",
         "automatic": true,
         "feature": "fundacao",
         "summary": "A mudança interfere no domínio da feature fundacao.",
         "files": [
-          "angular.json",
+          ".gitignore",
           "onpspec.config.json",
           "package.json",
-          "proxy.conf.json",
-          "src",
-          "tsconfig.app.json",
-          "tsconfig.json",
-          "tsconfig.spec.json"
+          "tsconfig.json"
         ],
         "domains": [],
         "rule": ".spec/features/fundacao/spec.md"
@@ -111,65 +30,10 @@
         "files": [
           "package-lock.json",
           "package.json",
-          "src"
+          "src/styles/tokens.spec.ts"
         ],
         "domains": [],
         "rule": ".spec/features/fundacao-visual/spec.md"
-      },
-      {
-        "id": "impacto:operacoes",
-        "automatic": true,
-        "feature": "operacoes",
-        "summary": "A mudança interfere no domínio da feature operacoes.",
-        "files": [
-          "src"
-        ],
-        "domains": [],
-        "rule": ".spec/features/operacoes/spec.md"
-      },
-      {
-        "id": "impacto:painel",
-        "automatic": true,
-        "feature": "painel",
-        "summary": "A mudança interfere no domínio da feature painel.",
-        "files": [
-          "src"
-        ],
-        "domains": [],
-        "rule": ".spec/features/painel/spec.md"
-      },
-      {
-        "id": "impacto:repaginacao-acesso",
-        "automatic": true,
-        "feature": "repaginacao-acesso",
-        "summary": "A mudança interfere no domínio da feature repaginacao-acesso.",
-        "files": [
-          "src"
-        ],
-        "domains": [],
-        "rule": ".spec/features/repaginacao-acesso/spec.md"
-      },
-      {
-        "id": "impacto:repaginacao-desempenho",
-        "automatic": true,
-        "feature": "repaginacao-desempenho",
-        "summary": "A mudança interfere no domínio da feature repaginacao-desempenho.",
-        "files": [
-          "src"
-        ],
-        "domains": [],
-        "rule": ".spec/features/repaginacao-desempenho/spec.md"
-      },
-      {
-        "id": "impacto:repaginacao-painel",
-        "automatic": true,
-        "feature": "repaginacao-painel",
-        "summary": "A mudança interfere no domínio da feature repaginacao-painel.",
-        "files": [
-          "src"
-        ],
-        "domains": [],
-        "rule": ".spec/features/repaginacao-painel/spec.md"
       },
       {
         "id": "impacto:repaginacao-tabelas",
@@ -178,8 +42,7 @@
         "summary": "A mudança interfere no domínio da feature repaginacao-tabelas.",
         "files": [
           "package-lock.json",
-          "package.json",
-          "src"
+          "package.json"
         ],
         "domains": [],
         "rule": ".spec/features/repaginacao-tabelas/spec.md"
@@ -190,21 +53,10 @@
         "feature": "repaginacao-visual",
         "summary": "A mudança interfere no domínio da feature repaginacao-visual.",
         "files": [
-          "src"
+          "src/styles/tokens.spec.ts"
         ],
         "domains": [],
         "rule": ".spec/features/repaginacao-visual/spec.md"
-      },
-      {
-        "id": "impacto:visibilidade-da-senha",
-        "automatic": true,
-        "feature": "visibilidade-da-senha",
-        "summary": "A mudança interfere no domínio da feature visibilidade-da-senha.",
-        "files": [
-          "src"
-        ],
-        "domains": [],
-        "rule": ".spec/features/visibilidade-da-senha/spec.md"
       },
       {
         "id": "stack-tailwind-rfc",
@@ -225,11 +77,21 @@
         "id": "correcao-bugs-angular",
         "summary": "A US-085 altera o comportamento herdado do Angular em operações, carteiras, desempenho, painel e corretoras para corrigir os bugs da auditoria (AC-306 a AC-310).",
         "rule": ".spec/features/operacoes/spec.md"
+      },
+      {
+        "id": "p002-p004-alcance-verificacao",
+        "summary": "As verificações do P-002 e do P-004 apontavam só para src/app/**/*.ts, que deixa de existir no corte; a v1.4.0 as estende a src/**/*.ts*.",
+        "rule": ".spec/constituicao-v1.3.0.md"
+      },
+      {
+        "id": "orcamento-bundle-tdd",
+        "summary": "O bundle inicial do React (468 kB brutos / 140 kB gzip) passa o teto do TDD §16 (378 kB / 89 kB, o do Angular); design-v2.md fixa 470 kB / 141 kB.",
+        "rule": ".spec/features/migracao-react/design.md"
       }
     ],
-    "fingerprint": "1ac1cbda307cabd0d9c642b0953e46001103ec030e16eba7c101557e62fc9858",
-    "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
-    "reviewedAt": "2026-11-24T23:07:57.670Z",
+    "fingerprint": "e21e6e3bae3ab791a36325f0d98a7c14c1a9b3e4bd042f096c5e7b3dd418784f",
+    "ownFingerprint": "821d2c64c5089d784bdbb56ceeef567f6a28284626c0abf7054700d5818190d1",
+    "reviewedAt": "2026-11-24T23:30:46.936Z",
     "documents": [
       ".spec/features/acesso/spec.md",
       ".spec/features/acesso/tasks.md",
@@ -1725,6 +1587,206 @@
       "ownFingerprint": "9e5f7b86062943ab0ae755b2bee28b0f10677a903f8f32f7c15f21f88aaa9d26",
       "conflictFingerprint": "750158efd52c5da665e656f486cb08f637a003167a9ded75875f67a9ae43968d",
       "answeredAt": "2026-11-24T23:08:43.584Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "Fazer o corte (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77): \"Fazer o corte (Recomendado)\" para a T-138, que remove o Angular e promove o React à raiz; mantém a decisão prosseguir destes conflitos já dada em 2026-11-23 (\"Reaplicar nesta e nas próximas (Recomendado)\", sessão 131b6f5a)",
+      "fingerprint": "a305f599ad083110ad2d626f42e26db0d87461c4a6b9bcf73a8188b7b54983a0",
+      "ownFingerprint": "778ca063a3ef591ed2e2573fff4be5faf98b628d1b7d846b34c4840004829d71",
+      "conflictFingerprint": "839046bc1f71b5776352600127d674961fe77b4785c376b7755a8eb5ee78d4a0",
+      "answeredAt": "2026-11-24T23:28:14.388Z"
+    },
+    {
+      "conflictId": "impacto:fundacao-visual",
+      "choice": "prosseguir",
+      "answer": "Fazer o corte (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77): \"Fazer o corte (Recomendado)\" para a T-138, que remove o Angular e promove o React à raiz; mantém a decisão prosseguir destes conflitos já dada em 2026-11-23 (\"Reaplicar nesta e nas próximas (Recomendado)\", sessão 131b6f5a)",
+      "fingerprint": "a305f599ad083110ad2d626f42e26db0d87461c4a6b9bcf73a8188b7b54983a0",
+      "ownFingerprint": "778ca063a3ef591ed2e2573fff4be5faf98b628d1b7d846b34c4840004829d71",
+      "conflictFingerprint": "6ef917670fb3ea3f8ef06670764d01129c6c79e5578bb8e0a2882af91b9cef95",
+      "answeredAt": "2026-11-24T23:28:16.453Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Fazer o corte (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77): \"Fazer o corte (Recomendado)\" para a T-138, que remove o Angular e promove o React à raiz; mantém a decisão prosseguir destes conflitos já dada em 2026-11-23 (\"Reaplicar nesta e nas próximas (Recomendado)\", sessão 131b6f5a)",
+      "fingerprint": "a305f599ad083110ad2d626f42e26db0d87461c4a6b9bcf73a8188b7b54983a0",
+      "ownFingerprint": "778ca063a3ef591ed2e2573fff4be5faf98b628d1b7d846b34c4840004829d71",
+      "conflictFingerprint": "47dd3b9bd40b113af2316f025db718701330b8dd6eec059b8b4aac09272a3a09",
+      "answeredAt": "2026-11-24T23:28:18.618Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-visual",
+      "choice": "prosseguir",
+      "answer": "Fazer o corte (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77): \"Fazer o corte (Recomendado)\" para a T-138, que remove o Angular e promove o React à raiz; mantém a decisão prosseguir destes conflitos já dada em 2026-11-23 (\"Reaplicar nesta e nas próximas (Recomendado)\", sessão 131b6f5a)",
+      "fingerprint": "a305f599ad083110ad2d626f42e26db0d87461c4a6b9bcf73a8188b7b54983a0",
+      "ownFingerprint": "778ca063a3ef591ed2e2573fff4be5faf98b628d1b7d846b34c4840004829d71",
+      "conflictFingerprint": "a28d42f2a70c94b3cbd2cec963c8a75ffe243443cd394922922a12637f78f28c",
+      "answeredAt": "2026-11-24T23:28:20.809Z"
+    },
+    {
+      "conflictId": "stack-tailwind-rfc",
+      "choice": "prosseguir",
+      "answer": "Fazer o corte (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77): \"Fazer o corte (Recomendado)\" para a T-138, que remove o Angular e promove o React à raiz; mantém a decisão prosseguir destes conflitos já dada em 2026-11-23 (\"Reaplicar nesta e nas próximas (Recomendado)\", sessão 131b6f5a)",
+      "fingerprint": "a305f599ad083110ad2d626f42e26db0d87461c4a6b9bcf73a8188b7b54983a0",
+      "ownFingerprint": "778ca063a3ef591ed2e2573fff4be5faf98b628d1b7d846b34c4840004829d71",
+      "conflictFingerprint": "1ca4ea2338467691cf8aba48d08e2577ffa2784a2de6fd9354307e08bdff896c",
+      "answeredAt": "2026-11-24T23:28:22.932Z"
+    },
+    {
+      "conflictId": "p003-alcance-verificacao",
+      "choice": "prosseguir",
+      "answer": "Fazer o corte (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77): \"Fazer o corte (Recomendado)\" para a T-138, que remove o Angular e promove o React à raiz; mantém a decisão prosseguir destes conflitos já dada em 2026-11-23 (\"Reaplicar nesta e nas próximas (Recomendado)\", sessão 131b6f5a)",
+      "fingerprint": "a305f599ad083110ad2d626f42e26db0d87461c4a6b9bcf73a8188b7b54983a0",
+      "ownFingerprint": "778ca063a3ef591ed2e2573fff4be5faf98b628d1b7d846b34c4840004829d71",
+      "conflictFingerprint": "3f0b13974046fa122ee16e7453805b6ebefdb34a8783733c8c6b5fe7147964fb",
+      "answeredAt": "2026-11-24T23:28:25.039Z"
+    },
+    {
+      "conflictId": "ac024-servidor-angular",
+      "choice": "prosseguir",
+      "answer": "Fazer o corte (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77): \"Fazer o corte (Recomendado)\" para a T-138, que remove o Angular e promove o React à raiz; mantém a decisão prosseguir destes conflitos já dada em 2026-11-23 (\"Reaplicar nesta e nas próximas (Recomendado)\", sessão 131b6f5a)",
+      "fingerprint": "a305f599ad083110ad2d626f42e26db0d87461c4a6b9bcf73a8188b7b54983a0",
+      "ownFingerprint": "778ca063a3ef591ed2e2573fff4be5faf98b628d1b7d846b34c4840004829d71",
+      "conflictFingerprint": "eee03edb6eb5033674b2e7a9bc96704b2bc502b8eb785e283bf3ecaf5670e772",
+      "answeredAt": "2026-11-24T23:28:27.154Z"
+    },
+    {
+      "conflictId": "correcao-bugs-angular",
+      "choice": "prosseguir",
+      "answer": "Fazer o corte (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77): \"Fazer o corte (Recomendado)\" para a T-138, que remove o Angular e promove o React à raiz; mantém a decisão prosseguir destes conflitos já dada em 2026-11-23 (\"Reaplicar nesta e nas próximas (Recomendado)\", sessão 131b6f5a)",
+      "fingerprint": "a305f599ad083110ad2d626f42e26db0d87461c4a6b9bcf73a8188b7b54983a0",
+      "ownFingerprint": "778ca063a3ef591ed2e2573fff4be5faf98b628d1b7d846b34c4840004829d71",
+      "conflictFingerprint": "750158efd52c5da665e656f486cb08f637a003167a9ded75875f67a9ae43968d",
+      "answeredAt": "2026-11-24T23:28:29.264Z"
+    },
+    {
+      "conflictId": "p002-p004-alcance-verificacao",
+      "choice": "prosseguir",
+      "answer": "Estender ao React (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77), Q-041 da migracao-react: constituição v1.4.0",
+      "fingerprint": "a305f599ad083110ad2d626f42e26db0d87461c4a6b9bcf73a8188b7b54983a0",
+      "ownFingerprint": "778ca063a3ef591ed2e2573fff4be5faf98b628d1b7d846b34c4840004829d71",
+      "conflictFingerprint": "64856843c9c0c8706b2d1cdf0ba6eb5df04b38c74981117452f28e0277c373b6",
+      "answeredAt": "2026-11-24T23:28:31.371Z"
+    },
+    {
+      "conflictId": "orcamento-bundle-tdd",
+      "choice": "prosseguir",
+      "answer": "Aceitar e fixar novo teto (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77), Q-042 da migracao-react: design-v2.md",
+      "fingerprint": "a305f599ad083110ad2d626f42e26db0d87461c4a6b9bcf73a8188b7b54983a0",
+      "ownFingerprint": "778ca063a3ef591ed2e2573fff4be5faf98b628d1b7d846b34c4840004829d71",
+      "conflictFingerprint": "860f1b39bf4420332e46f83f84c0ee07df36dc45f3eaf295a72f83ba2a30042f",
+      "answeredAt": "2026-11-24T23:28:33.475Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "Fazer o corte (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77): \"Fazer o corte (Recomendado)\" para a T-138, que remove o Angular e promove o React à raiz; mantém a decisão prosseguir destes conflitos já dada em 2026-11-23 (\"Reaplicar nesta e nas próximas (Recomendado)\", sessão 131b6f5a)",
+      "fingerprint": "e21e6e3bae3ab791a36325f0d98a7c14c1a9b3e4bd042f096c5e7b3dd418784f",
+      "ownFingerprint": "821d2c64c5089d784bdbb56ceeef567f6a28284626c0abf7054700d5818190d1",
+      "conflictFingerprint": "839046bc1f71b5776352600127d674961fe77b4785c376b7755a8eb5ee78d4a0",
+      "answeredAt": "2026-11-24T23:30:59.852Z"
+    },
+    {
+      "conflictId": "impacto:fundacao-visual",
+      "choice": "prosseguir",
+      "answer": "Fazer o corte (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77): \"Fazer o corte (Recomendado)\" para a T-138, que remove o Angular e promove o React à raiz; mantém a decisão prosseguir destes conflitos já dada em 2026-11-23 (\"Reaplicar nesta e nas próximas (Recomendado)\", sessão 131b6f5a)",
+      "fingerprint": "e21e6e3bae3ab791a36325f0d98a7c14c1a9b3e4bd042f096c5e7b3dd418784f",
+      "ownFingerprint": "821d2c64c5089d784bdbb56ceeef567f6a28284626c0abf7054700d5818190d1",
+      "conflictFingerprint": "6ef917670fb3ea3f8ef06670764d01129c6c79e5578bb8e0a2882af91b9cef95",
+      "answeredAt": "2026-11-24T23:31:01.920Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Fazer o corte (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77): \"Fazer o corte (Recomendado)\" para a T-138, que remove o Angular e promove o React à raiz; mantém a decisão prosseguir destes conflitos já dada em 2026-11-23 (\"Reaplicar nesta e nas próximas (Recomendado)\", sessão 131b6f5a)",
+      "fingerprint": "e21e6e3bae3ab791a36325f0d98a7c14c1a9b3e4bd042f096c5e7b3dd418784f",
+      "ownFingerprint": "821d2c64c5089d784bdbb56ceeef567f6a28284626c0abf7054700d5818190d1",
+      "conflictFingerprint": "47dd3b9bd40b113af2316f025db718701330b8dd6eec059b8b4aac09272a3a09",
+      "answeredAt": "2026-11-24T23:31:04.036Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-visual",
+      "choice": "prosseguir",
+      "answer": "Fazer o corte (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77): \"Fazer o corte (Recomendado)\" para a T-138, que remove o Angular e promove o React à raiz; mantém a decisão prosseguir destes conflitos já dada em 2026-11-23 (\"Reaplicar nesta e nas próximas (Recomendado)\", sessão 131b6f5a)",
+      "fingerprint": "e21e6e3bae3ab791a36325f0d98a7c14c1a9b3e4bd042f096c5e7b3dd418784f",
+      "ownFingerprint": "821d2c64c5089d784bdbb56ceeef567f6a28284626c0abf7054700d5818190d1",
+      "conflictFingerprint": "a28d42f2a70c94b3cbd2cec963c8a75ffe243443cd394922922a12637f78f28c",
+      "answeredAt": "2026-11-24T23:31:06.186Z"
+    },
+    {
+      "conflictId": "stack-tailwind-rfc",
+      "choice": "prosseguir",
+      "answer": "Fazer o corte (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77): \"Fazer o corte (Recomendado)\" para a T-138, que remove o Angular e promove o React à raiz; mantém a decisão prosseguir destes conflitos já dada em 2026-11-23 (\"Reaplicar nesta e nas próximas (Recomendado)\", sessão 131b6f5a)",
+      "fingerprint": "e21e6e3bae3ab791a36325f0d98a7c14c1a9b3e4bd042f096c5e7b3dd418784f",
+      "ownFingerprint": "821d2c64c5089d784bdbb56ceeef567f6a28284626c0abf7054700d5818190d1",
+      "conflictFingerprint": "1ca4ea2338467691cf8aba48d08e2577ffa2784a2de6fd9354307e08bdff896c",
+      "answeredAt": "2026-11-24T23:31:08.325Z"
+    },
+    {
+      "conflictId": "p003-alcance-verificacao",
+      "choice": "prosseguir",
+      "answer": "Fazer o corte (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77): \"Fazer o corte (Recomendado)\" para a T-138, que remove o Angular e promove o React à raiz; mantém a decisão prosseguir destes conflitos já dada em 2026-11-23 (\"Reaplicar nesta e nas próximas (Recomendado)\", sessão 131b6f5a)",
+      "fingerprint": "e21e6e3bae3ab791a36325f0d98a7c14c1a9b3e4bd042f096c5e7b3dd418784f",
+      "ownFingerprint": "821d2c64c5089d784bdbb56ceeef567f6a28284626c0abf7054700d5818190d1",
+      "conflictFingerprint": "3f0b13974046fa122ee16e7453805b6ebefdb34a8783733c8c6b5fe7147964fb",
+      "answeredAt": "2026-11-24T23:31:10.400Z"
+    },
+    {
+      "conflictId": "ac024-servidor-angular",
+      "choice": "prosseguir",
+      "answer": "Fazer o corte (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77): \"Fazer o corte (Recomendado)\" para a T-138, que remove o Angular e promove o React à raiz; mantém a decisão prosseguir destes conflitos já dada em 2026-11-23 (\"Reaplicar nesta e nas próximas (Recomendado)\", sessão 131b6f5a)",
+      "fingerprint": "e21e6e3bae3ab791a36325f0d98a7c14c1a9b3e4bd042f096c5e7b3dd418784f",
+      "ownFingerprint": "821d2c64c5089d784bdbb56ceeef567f6a28284626c0abf7054700d5818190d1",
+      "conflictFingerprint": "eee03edb6eb5033674b2e7a9bc96704b2bc502b8eb785e283bf3ecaf5670e772",
+      "answeredAt": "2026-11-24T23:31:12.441Z"
+    },
+    {
+      "conflictId": "correcao-bugs-angular",
+      "choice": "prosseguir",
+      "answer": "Fazer o corte (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77): \"Fazer o corte (Recomendado)\" para a T-138, que remove o Angular e promove o React à raiz; mantém a decisão prosseguir destes conflitos já dada em 2026-11-23 (\"Reaplicar nesta e nas próximas (Recomendado)\", sessão 131b6f5a)",
+      "fingerprint": "e21e6e3bae3ab791a36325f0d98a7c14c1a9b3e4bd042f096c5e7b3dd418784f",
+      "ownFingerprint": "821d2c64c5089d784bdbb56ceeef567f6a28284626c0abf7054700d5818190d1",
+      "conflictFingerprint": "750158efd52c5da665e656f486cb08f637a003167a9ded75875f67a9ae43968d",
+      "answeredAt": "2026-11-24T23:31:14.565Z"
+    },
+    {
+      "conflictId": "p002-p004-alcance-verificacao",
+      "choice": "prosseguir",
+      "answer": "Estender ao React (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77), Q-041 da migracao-react: constituição v1.4.0",
+      "fingerprint": "e21e6e3bae3ab791a36325f0d98a7c14c1a9b3e4bd042f096c5e7b3dd418784f",
+      "ownFingerprint": "821d2c64c5089d784bdbb56ceeef567f6a28284626c0abf7054700d5818190d1",
+      "conflictFingerprint": "64856843c9c0c8706b2d1cdf0ba6eb5df04b38c74981117452f28e0277c373b6",
+      "answeredAt": "2026-11-24T23:31:16.699Z"
+    },
+    {
+      "conflictId": "orcamento-bundle-tdd",
+      "choice": "prosseguir",
+      "answer": "Aceitar e fixar novo teto (Recomendado)",
+      "source": "AskUserQuestion respondida por Lucas no Claude Code em 2026-11-24 (sessão 7800ca77), Q-042 da migracao-react: design-v2.md",
+      "fingerprint": "e21e6e3bae3ab791a36325f0d98a7c14c1a9b3e4bd042f096c5e7b3dd418784f",
+      "ownFingerprint": "821d2c64c5089d784bdbb56ceeef567f6a28284626c0abf7054700d5818190d1",
+      "conflictFingerprint": "860f1b39bf4420332e46f83f84c0ee07df36dc45f3eaf295a72f83ba2a30042f",
+      "answeredAt": "2026-11-24T23:31:18.856Z"
     }
   ]
 }

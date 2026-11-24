@@ -1,45 +1,45 @@
 {
   "feature": "repaginacao-desempenho",
-  "timestamp": "2026-11-24T23:05:42.633Z",
-  "gitRev": "14c2b77",
-  "command": "npx ng test; npm --prefix web test --silent",
+  "timestamp": "2026-11-24T23:33:05.086Z",
+  "gitRev": "fcad889",
+  "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 1255,
+  "testsParsed": 641,
   "results": {
     "AC-259": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/blocos/grafico-composicao.spec.ts > Gráfico de composição da carteira > @spec:AC-259 apresenta setores de rosca e o valor de mercado no centro # time=9.96ms",
+      "testName": "src/features/desempenho/blocos/grafico-composicao.spec.tsx > Gráfico de composição da carteira > @spec:AC-259 apresenta setores de rosca e o valor de mercado no centro # time=9.51ms",
       "method": "tap"
     },
     "AC-260": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/blocos/grafico-composicao.spec.ts > Gráfico de composição da carteira > @spec:AC-260 ticker, valor e participação ficam disponíveis em texto na legenda # time=8.94ms",
+      "testName": "src/features/desempenho/blocos/grafico-composicao.spec.tsx > Gráfico de composição da carteira > @spec:AC-260 ticker, valor e participação ficam disponíveis em texto na legenda # time=4.93ms",
       "method": "tap"
     },
     "AC-261": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/blocos/grafico-composicao.spec.ts > Gráfico de composição da carteira > @spec:AC-261 entrar no setor ou na legenda destaca os dois juntos e sair limpa o destaque # time=7.65ms",
+      "testName": "src/features/desempenho/blocos/grafico-composicao.spec.tsx > Gráfico de composição da carteira > @spec:AC-261 entrar no setor ou na legenda destaca os dois juntos e sair limpa o destaque # time=14.99ms",
       "method": "tap"
     },
     "AC-262": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/blocos/grafico-composicao.spec.ts > Gráfico de composição da carteira > @spec:AC-262 a ressalva de soma divergente permanece junto da rosca visível # time=7.49ms",
+      "testName": "src/features/desempenho/blocos/grafico-composicao.spec.tsx > Gráfico de composição da carteira > @spec:AC-262 a ressalva de soma divergente permanece junto da rosca visível # time=3.90ms",
       "method": "tap"
     },
     "AC-263": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/blocos/grafico-contribuicao.spec.ts > Gráfico de contribuição por ativo > @spec:AC-263 ganhos e perdas partem da mesma linha de zero e trazem sinal em texto # time=4.60ms",
+      "testName": "src/features/desempenho/blocos/grafico-contribuicao.spec.tsx > Gráfico de contribuição por ativo > @spec:AC-263 ganhos e perdas partem da mesma linha de zero e trazem sinal em texto # time=7.21ms",
       "method": "tap"
     },
     "AC-264": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/blocos/numeros-desempenho.spec.ts > Os quatro números no topo do desempenho > @spec:AC-264 cada indicador tem rótulo pequeno, valor destacado e selo nos resultados # time=9.70ms",
+      "testName": "src/features/desempenho/blocos/numeros-desempenho.spec.tsx > Os quatro números no topo do desempenho > @spec:AC-264 cada indicador tem rótulo pequeno, valor destacado e selo nos resultados # time=6.10ms",
       "method": "tap"
     },
     "AC-265": {
       "status": "pass",
-      "testName": "src/app/features/desempenho/blocos/numeros-desempenho.spec.ts > Os quatro números no topo do desempenho > @spec:AC-265 não sugere eixo de tempo, tendência nem comparação com período anterior # time=18.33ms",
+      "testName": "src/features/desempenho/blocos/numeros-desempenho.spec.tsx > Os quatro números no topo do desempenho > @spec:AC-265 não sugere eixo de tempo, tendência nem comparação com período anterior # time=4.12ms",
       "method": "tap"
     }
   },

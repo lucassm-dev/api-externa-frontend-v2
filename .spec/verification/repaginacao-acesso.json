@@ -1,50 +1,50 @@
 {
   "feature": "repaginacao-acesso",
-  "timestamp": "2026-11-24T23:05:16.601Z",
-  "gitRev": "14c2b77",
-  "command": "npx ng test; npm --prefix web test --silent",
+  "timestamp": "2026-11-24T23:32:57.226Z",
+  "gitRev": "fcad889",
+  "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 1255,
+  "testsParsed": 641,
   "results": {
     "AC-251": {
       "status": "pass",
-      "testName": "src/app/features/acesso/moldura-acesso.spec.ts > Moldura das telas de acesso > @spec:AC-251 separa o formulário da região de marca e limita a largura de leitura # time=7.53ms",
+      "testName": "src/features/acesso/moldura-e-forca.spec.tsx > Moldura das telas de acesso > @spec:AC-251 separa o formulário da região de marca e limita a largura de leitura # time=115.23ms",
       "method": "tap"
     },
     "AC-252": {
       "status": "pass",
-      "testName": "src/app/features/acesso/moldura-acesso.spec.ts > Moldura das telas de acesso > @spec:AC-252 mantém a marca fora da tabulação e deixa os controles no formulário # time=6.80ms",
+      "testName": "src/features/acesso/moldura-e-forca.spec.tsx > Moldura das telas de acesso > @spec:AC-252 mantém a marca fora da tabulação e deixa os controles no formulário # time=11.93ms",
       "method": "tap"
     },
     "AC-253": {
       "status": "pass",
-      "testName": "src/app/features/acesso/moldura-acesso.spec.ts > Moldura das telas de acesso > @spec:AC-253 desliga o movimento opcional e anima somente transformação e opacidade # time=0.42ms",
+      "testName": "src/features/acesso/moldura-e-forca.spec.tsx > Moldura das telas de acesso > @spec:AC-253 @spec:AC-302 desliga o movimento opcional e anima somente transformação e opacidade (moldura) # time=19.50ms",
       "method": "tap"
     },
     "AC-254": {
       "status": "pass",
-      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-254 só mostra a orientação do nome obrigatório depois que o campo perde foco # time=73.00ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-254 só mostra a orientação do nome obrigatório depois que o campo perde foco # time=11.14ms",
       "method": "tap"
     },
     "AC-255": {
       "status": "pass",
-      "testName": "src/app/features/acesso/forca-da-senha.spec.ts > Medidor da força da senha > @spec:AC-255 concorda com o validador real para senhas aceitas e recusadas # time=41.45ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-255 liga o campo de senha ao medidor da política vigente # time=12.07ms",
       "method": "tap"
     },
     "AC-256": {
       "status": "pass",
-      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-256 deixa o primeiro campo pronto para digitar quando a tela abre # time=35.13ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-256 deixa o primeiro campo pronto para digitar quando a tela abre # time=11.90ms",
       "method": "tap"
     },
     "AC-257": {
       "status": "pass",
-      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-257 mantém o rótulo Criar conta ao lado do indicador durante o envio # time=63.09ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-257 mantém o rótulo Criar conta ao lado do indicador durante o envio # time=41.90ms",
       "method": "tap"
     },
     "AC-258": {
       "status": "pass",
-      "testName": "src/app/features/acesso/cadastro/cadastro.spec.ts > Tela de cadastro > @spec:AC-258 exibe nível e código definidos pelo catálogo, ignorando o texto cru # time=99.58ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-258 exibe nível e código definidos pelo catálogo, ignorando o texto cru # time=22.21ms",
       "method": "tap"
     }
   },

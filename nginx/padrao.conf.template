@@ -14,10 +14,10 @@ server {
                image/svg+xml font/woff font/woff2;
 
     # A API responde na MESMA ORIGEM que o SPA. É o que dispensa URL base no
-    # código Angular (ele chama caminho relativo) e faz o CORS deixar de
+    # código (ele chama caminho relativo) e faz o CORS deixar de
     # existir: o navegador nunca enxerga duas origens.
     #
-    # Precisa bater com o proxy.conf.json usado pelo `ng serve`. Divergir aqui
+    # Precisa bater com o proxy.config.ts usado pelo Vite. Divergir aqui
     # é ter um caminho que funciona em desenvolvimento e dá 404 em produção.
     location ~ ^/(auth|investidores|corretoras|carteiras|acoes|operacoes|mercado)(/|$) {
         proxy_pass ${BACKEND_URL};
@@ -59,7 +59,7 @@ server {
         add_header Cache-Control "no-cache";
     }
 
-    # Rota do Angular é rota de cliente: /desempenho não existe como arquivo, e
+    # Rota do SPA é rota de cliente: /desempenho não existe como arquivo, e
     # sem isto recarregar a página dá 404.
     location / {
         try_files $uri $uri/ /index.html;

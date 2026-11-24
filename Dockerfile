@@ -5,11 +5,6 @@ FROM node:24-alpine AS construcao
 
 WORKDIR /app
 
-# O Playwright entra como dependência de desenvolvimento para a conferência
-# visual em navegador. A imagem não roda navegador nenhum: baixar os binários
-# aqui só engordaria a camada de build.
-ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-
 # package.json e lock antes do resto: enquanto as dependências não mudarem,
 # esta camada vem do cache e o build não reinstala nada.
 COPY package.json package-lock.json ./
@@ -28,7 +23,7 @@ ENV NGINX_ENVSUBST_FILTER=BACKEND_
 ENV BACKEND_URL=http://backend:8080
 
 COPY nginx/padrao.conf.template /etc/nginx/templates/default.conf.template
-COPY --from=construcao /app/dist/api-externa-frontend/browser /usr/share/nginx/html
+COPY --from=construcao /app/dist /usr/share/nginx/html
 
 EXPOSE 80
 

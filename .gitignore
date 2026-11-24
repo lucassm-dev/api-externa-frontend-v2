@@ -8,8 +8,6 @@
 
 # Node
 /node_modules
-/web/node_modules
-/web/dist
 /.playwright-mcp
 npm-debug.log
 yarn-error.log
@@ -33,7 +31,7 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+*.tsbuildinfo
 .sass-cache/
 /connect.lock
 /coverage

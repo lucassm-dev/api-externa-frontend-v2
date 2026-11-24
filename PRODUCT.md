@@ -83,9 +83,10 @@ Restrições técnicas duráveis:
 - **Tudo em real**, com posições em dólar convertidas pela taxa corrente; a
   taxa e o horário dela fazem parte do número (ADR-004).
 - **Erro é tratado por código, nunca por texto** (ADR-009).
-- **Cor vem só de token**, em `src/styles/_tokens.scss`, nos dois temas (P-003).
-- Angular 22 standalone, Angular Material, SCSS por componente, Vitest.
-  Gráficos em SVG próprio, sem biblioteca de gráficos (RFC-001).
+- **Cor vem só de token**, em `src/styles/tokens.css`, nos dois temas (P-003).
+- React 19 + Vite, Tailwind CSS v4, shadcn/ui sobre Radix, Vitest (migração
+  da feature migracao-react, 2026-11-24). Gráficos em SVG próprio, sem
+  biblioteca de gráficos (RFC-001).
 
 Fora de escopo: ordem real, custódia, backtest em data passada, proventos,
 apuração de IR, venda a descoberto, recomendação de investimento, qualquer

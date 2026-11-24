@@ -123,6 +123,8 @@ Decisão do cliente em 2026-11-23: "quero que corriga os bugs que achou em angul
 | ID | Pergunta | Status | Resposta |
 |---|---|---|---|
 | Q-040 | No corte final, a linha de verificação do P-003 (`src/app/**/*.scss`) deixa de alcançar o código. Aprovar a proposta de constituição v1.3.0, que estende a verificação ao React (arquivos `.tsx`, `.ts`, `.css`, exceto tokens)? | respondida | "Aprovo a v1.3.0 (Recomendado)" — Lucas, AskUserQuestion no Claude Code, 2026-11-23. Gravada em [constituicao.md](../../constituicao.md); a v1.2.0 fica em `constituicao-v1.2.0.md` |
+| Q-041 | P-002 (segredo no código) e P-004 (erro tratado por texto) só varrem `src/app/**/*.ts`, que deixa de existir no corte; sem ajuste, as duas regras passam sem verificar nada. Estender a verificação ao código React? | respondida | "Estender ao React (Recomendado)" — Lucas, AskUserQuestion no Claude Code, 2026-11-24. Gravada na [constituição](../../constituicao.md) v1.4.0 (alvo `src/**/*.ts*`, mesma regex); a v1.3.0 fica em `constituicao-v1.3.0.md` |
+| Q-042 | O bundle inicial medido no corte (468 kB brutos / 140 kB gzip) passa o teto do TDD §16 (378 kB / 89 kB do Angular), que não cabe com React. Aceitar novo teto, otimizar antes ou manter o do Angular? | respondida | "Aceitar e fixar novo teto (Recomendado)" — Lucas, AskUserQuestion no Claude Code, 2026-11-24. Registrada em [design-v2.md](design-v2.md); `npm run build` falha acima de 470 kB / 141 kB |
 
 ## Documentos relacionados
 
