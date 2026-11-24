@@ -4,7 +4,7 @@
 
 ## T-092 — Barra de mercado: chips, superfície escura e rolagem [concluida]
 - Refs: US-063, AC-233, AC-234, AC-235, AC-236, AC-237
-- Arquivos: src/app/features/painel/blocos/barra-mercado.ts, src/app/features/painel/blocos/barra-mercado.html, src/app/features/painel/blocos/barra-mercado.scss, src/app/features/painel/blocos/barra-mercado.spec.ts
+- Arquivos: src/features/painel/blocos/barra-mercado.spec.tsx, src/features/painel/blocos/barra-mercado.tsx, src/features/painel/painel.model.ts
 - Modelo: claude-sonnet-5
 - Esforço: alto
 - Notas: o coração da feature. A lista de itens é duplicada uma vez e o conjunto
@@ -19,7 +19,7 @@
 
 ## T-093 — Consolidado com hierarquia de número [concluida]
 - Refs: US-064, AC-238, AC-239
-- Arquivos: src/app/features/painel/blocos/consolidado.ts, src/app/features/painel/blocos/consolidado.html, src/app/features/painel/blocos/consolidado.scss, src/app/features/painel/blocos/consolidado.spec.ts
+- Arquivos: src/core/api/pagina.ts, src/features/painel/blocos/consolidado.spec.tsx, src/features/painel/blocos/consolidado.tsx, src/features/painel/carteira-preferida.ts, src/features/painel/painel.model.ts, src/features/painel/painel.spec.tsx, src/features/painel/painel.tsx
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: troca a `<dl>` chapada por cartões de indicador — rótulo pequeno em
@@ -32,7 +32,7 @@
 
 ## T-094 — Últimas movimentações com monograma e selo [concluida]
 - Refs: US-065, AC-240
-- Arquivos: src/app/features/painel/blocos/ultimas-movimentacoes.ts, src/app/features/painel/blocos/ultimas-movimentacoes.html, src/app/features/painel/blocos/ultimas-movimentacoes.scss, src/app/features/painel/blocos/ultimas-movimentacoes.spec.ts
+- Arquivos: src/features/painel/blocos/outros-blocos.spec.tsx, src/features/painel/blocos/outros-blocos.tsx, src/features/painel/painel.model.ts, src/features/painel/proximo-passo.ts
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: monograma ao lado do ticker e tipo da operação como selo com texto —
@@ -41,7 +41,7 @@
 
 ## T-095 — Carteiras e convite ao próximo passo [concluida]
 - Refs: US-065, AC-241
-- Arquivos: src/app/features/painel/blocos/carteiras-do-investidor.ts, src/app/features/painel/blocos/carteiras-do-investidor.html, src/app/features/painel/blocos/carteiras-do-investidor.scss, src/app/features/painel/blocos/convite-proximo-passo.ts, src/app/features/painel/blocos/convite-proximo-passo.html, src/app/features/painel/blocos/convite-proximo-passo.scss, src/app/features/painel/blocos/carteiras-do-investidor.spec.ts, src/app/features/painel/blocos/convite-proximo-passo.spec.ts
+- Arquivos: src/features/painel/blocos/outros-blocos.spec.tsx, src/features/painel/blocos/outros-blocos.tsx, src/features/painel/painel.model.ts, src/features/painel/proximo-passo.ts
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: carteiras viram cartões; o convite passa a usar a primitiva de estado
@@ -50,7 +50,7 @@
 
 ## T-096 — Composição da tela do painel [concluida]
 - Refs: US-064, AC-238
-- Arquivos: src/app/features/painel/painel.html, src/app/features/painel/painel.scss, src/app/features/painel/painel.spec.ts
+- Arquivos: src/core/api/pagina.ts, src/features/painel/blocos/consolidado.spec.tsx, src/features/painel/blocos/consolidado.tsx, src/features/painel/carteira-preferida.ts, src/features/painel/painel.model.ts, src/features/painel/painel.spec.tsx, src/features/painel/painel.tsx
 - Modelo: claude-sonnet-5
 - Esforço: baixo
 - Notas: grade da página, respiro entre blocos e substituição dos esqueletos de

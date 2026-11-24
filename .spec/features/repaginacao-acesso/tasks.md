@@ -4,7 +4,7 @@
 
 ## T-103 — Moldura da tela de acesso [concluida]
 - Refs: US-069, AC-251, AC-252, AC-253
-- Arquivos: src/app/features/acesso/moldura-acesso.ts, src/app/features/acesso/moldura-acesso.html, src/app/features/acesso/moldura-acesso.scss, src/app/features/acesso/moldura-acesso.spec.ts
+- Arquivos: src/features/acesso/forca-da-senha.tsx, src/features/acesso/moldura-acesso.tsx, src/features/acesso/moldura-e-forca.spec.tsx, src/features/acesso/validadores.ts
 - Modelo: claude-sonnet-5
 - Esforço: alto
 - Notas: componente compartilhado por login e cadastro — formulário de um lado,
@@ -16,7 +16,7 @@
 
 ## T-104 — Medidor de força de senha [concluida]
 - Refs: US-070, AC-255
-- Arquivos: src/app/features/acesso/forca-da-senha.ts, src/app/features/acesso/forca-da-senha.html, src/app/features/acesso/forca-da-senha.scss, src/app/features/acesso/forca-da-senha.spec.ts
+- Arquivos: src/core/sessao/sessao.model.ts, src/core/sessao/sessao.service.ts, src/features/acesso/acesso.model.ts, src/features/acesso/cadastro.spec.tsx, src/features/acesso/cadastro.tsx, src/features/acesso/forca-da-senha.tsx, src/features/acesso/login.spec.tsx, src/features/acesso/login.tsx, src/features/acesso/moldura-acesso.tsx, src/features/acesso/moldura-e-forca.spec.tsx, src/features/acesso/validadores.ts
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: **deriva da política que já existe** em `validadores.ts` — oito
@@ -28,7 +28,7 @@
 
 ## T-105 — Tela de login [concluida]
 - Refs: US-069, US-070, US-071, AC-251, AC-254, AC-256, AC-257, AC-258
-- Arquivos: src/app/features/acesso/login/login.ts, src/app/features/acesso/login/login.html, src/app/features/acesso/login/login.scss, src/app/features/acesso/login/login.spec.ts
+- Arquivos: src/core/sessao/sessao.model.ts, src/core/sessao/sessao.service.ts, src/features/acesso/acesso.model.ts, src/features/acesso/cadastro.spec.tsx, src/features/acesso/cadastro.tsx, src/features/acesso/forca-da-senha.tsx, src/features/acesso/login.spec.tsx, src/features/acesso/login.tsx, src/features/acesso/moldura-acesso.tsx, src/features/acesso/moldura-e-forca.spec.tsx, src/features/acesso/validadores.ts
 - Modelo: claude-sonnet-5
 - Esforço: alto
 - Notas: adota a moldura, o botão com indicador de carregamento junto do rótulo —
@@ -38,7 +38,7 @@
 
 ## T-106 — Tela de cadastro [concluida]
 - Refs: US-069, US-070, US-071, AC-251, AC-254, AC-255, AC-256, AC-257, AC-258
-- Arquivos: src/app/features/acesso/cadastro/cadastro.ts, src/app/features/acesso/cadastro/cadastro.html, src/app/features/acesso/cadastro/cadastro.scss, src/app/features/acesso/cadastro/cadastro.spec.ts
+- Arquivos: src/core/sessao/sessao.model.ts, src/core/sessao/sessao.service.ts, src/features/acesso/acesso.model.ts, src/features/acesso/cadastro.spec.tsx, src/features/acesso/cadastro.tsx, src/features/acesso/forca-da-senha.tsx, src/features/acesso/login.spec.tsx, src/features/acesso/login.tsx, src/features/acesso/moldura-acesso.tsx, src/features/acesso/moldura-e-forca.spec.tsx, src/features/acesso/validadores.ts
 - Modelo: claude-sonnet-5
 - Esforço: alto
 - Notas: mesma moldura, mais o medidor de senha da T-104. Os quatro campos

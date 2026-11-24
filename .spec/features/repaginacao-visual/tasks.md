@@ -4,7 +4,7 @@
 
 ## T-112 — Tokens da direção visual [concluida]
 - Refs: US-079, AC-282, AC-283, AC-289
-- Arquivos: src/styles/_tokens.scss, src/styles/_tema.scss, src/styles/tokens.spec.ts
+- Arquivos: src/styles/tokens.spec.ts, src/styles/movimento.spec.ts
 - Modelo: claude-sonnet-5
 - Esforço: alto
 - Notas: base de tudo — nenhuma outra tarefa desenha antes desta. Aplica a direção
@@ -24,7 +24,7 @@
 
 ## T-113 — Botão único do produto [concluida]
 - Refs: US-075, AC-267, AC-268, AC-269
-- Arquivos: src/app/shared/botao/botao.ts, src/app/shared/botao/botao.html, src/app/shared/botao/botao.scss, src/app/shared/botao/botao.spec.ts
+- Arquivos: src/components/ui/botao.spec.tsx, src/components/ui/botao.tsx, src/components/ui/padrao-unico.spec.ts
 - Modelo: claude-sonnet-5
 - Esforço: alto
 - Notas: um componente só, com quatro intenções nomeadas — primária, secundária,
@@ -36,7 +36,7 @@
 
 ## T-114 — Migrar todo template para o botão único [pendente]
 - Refs: US-075, AC-266
-- Arquivos: src/app/layout/casca.html, src/app/shared/paginador/paginador.html, src/app/shared/confirmacao/dialogo-confirmacao.html, src/app/shared/estado-vazio/estado-vazio.html, src/app/shared/tabela/cabecalho-ordenavel.html, src/app/features/acesso/login/login.html, src/app/features/acesso/cadastro/cadastro.html, src/app/features/carteiras/lista/lista-carteiras.html, src/app/features/carteiras/criacao/criar-carteira.html, src/app/features/carteiras/detalhe/detalhe-carteira.html, src/app/features/carteiras/detalhe/movimentacoes-carteira.html, src/app/features/corretoras/lista/lista-corretoras.html, src/app/features/corretoras/cadastro/cadastro-corretora.html, src/app/features/corretoras/detalhe/detalhe-corretora.html, src/app/features/acoes/lista/lista-acoes.html, src/app/features/acoes/cadastro/cadastro-acao.html, src/app/features/acoes/detalhe/detalhe-acao.html, src/app/features/operacoes/formulario/formulario-operacao.html, src/app/features/operacoes/edicao/editar-operacao.html, src/app/shared/botao/padrao-unico.spec.ts
+- Arquivos: src/components/ui/botao.spec.tsx, src/components/ui/botao.tsx, src/components/ui/padrao-unico.spec.ts
 - Modelo: claude-sonnet-5
 - Esforço: alto
 - Notas: a T-113 JÁ ESTÁ PRONTA em `src/app/shared/botao/botao.ts`. É um componente
@@ -56,7 +56,7 @@
 
 ## T-115 — Casca responsiva com menu compacto [concluida]
 - Refs: US-076, AC-270, AC-271
-- Arquivos: src/styles.scss, src/app/layout/casca.ts, src/app/layout/casca.scss, src/app/layout/casca.spec.ts
+- Arquivos: src/components/ui/tabela.spec.tsx, src/components/ui/tabela.tsx, src/core/sessao/sessao.model.ts, src/core/sessao/sessao.service.ts, src/core/tema/tema.service.ts, src/features/desempenho/desempenho.spec.tsx, src/features/desempenho/desempenho.tsx, src/features/painel/carteira-preferida.ts, src/layout/casca.spec.tsx, src/layout/casca.tsx, src/rotas.tsx
 - Modelo: claude-sonnet-5
 - Esforço: alto
 - Notas: remove o `min-width` global do `body` — é ele que hoje impede o produto de
@@ -66,7 +66,7 @@
 
 ## T-116 — Tabela com rolagem contida [concluida]
 - Refs: US-076, AC-272
-- Arquivos: src/app/shared/tabela/tabela.scss, src/app/shared/tabela/tabela.spec.ts, src/app/shared/tabela/rolagem-contida.spec.ts
+- Arquivos: src/components/ui/tabela.spec.tsx, src/components/ui/tabela.tsx, src/core/sessao/sessao.model.ts, src/core/sessao/sessao.service.ts, src/core/tema/tema.service.ts, src/features/desempenho/desempenho.spec.tsx, src/features/desempenho/desempenho.tsx, src/features/painel/carteira-preferida.ts, src/layout/casca.spec.tsx, src/layout/casca.tsx, src/rotas.tsx
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: a rolagem horizontal fica dentro do bloco da tabela, com a região rolável
@@ -76,7 +76,7 @@
 
 ## T-117 — Barra de cotações contida [concluida]
 - Refs: US-077, AC-274, AC-275, AC-290
-- Arquivos: src/app/features/painel/blocos/barra-mercado.html, src/app/features/painel/blocos/barra-mercado.scss, src/app/features/painel/blocos/barra-mercado.spec.ts, src/app/layout/casca.scss, src/app/features/painel/painel.scss
+- Arquivos: src/features/painel/blocos/barra-mercado.spec.tsx, src/features/painel/blocos/barra-mercado.tsx, src/features/painel/painel.model.ts
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: o que incomoda é a ESPESSURA, não o comprimento — a faixa deve atravessar
@@ -94,7 +94,7 @@
 
 ## T-118 — Mapa de blocos das posições [concluida]
 - Refs: US-078, AC-276, AC-280, AC-281
-- Arquivos: src/app/features/desempenho/blocos/blocos-do-mapa.ts, src/app/features/desempenho/blocos/blocos-do-mapa.spec.ts, src/app/features/desempenho/blocos/grafico-mapa-posicoes.ts, src/app/features/desempenho/blocos/grafico-mapa-posicoes.html, src/app/features/desempenho/blocos/grafico-mapa-posicoes.scss, src/app/features/desempenho/blocos/grafico-mapa-posicoes.spec.ts
+- Arquivos: src/features/desempenho/blocos/blocos-do-mapa.spec.ts, src/features/desempenho/blocos/blocos-do-mapa.ts, src/features/desempenho/blocos/concentracao-da-carteira.spec.ts, src/features/desempenho/blocos/concentracao-da-carteira.ts, src/features/desempenho/blocos/grafico-concentracao.spec.tsx, src/features/desempenho/blocos/grafico-concentracao.tsx, src/features/desempenho/blocos/grafico-investido-mercado.spec.tsx, src/features/desempenho/blocos/grafico-investido-mercado.tsx, src/features/desempenho/blocos/grafico-mapa-posicoes.spec.tsx, src/features/desempenho/blocos/grafico-mapa-posicoes.tsx, src/features/desempenho/blocos/grafico-quadrante.spec.tsx, src/features/desempenho/blocos/grafico-quadrante.tsx
 - Modelo: claude-sonnet-5
 - Esforço: alto
 - Notas: geometria pura primeiro (divisão recursiva por faixas, testável sozinha),
@@ -105,7 +105,7 @@
 
 ## T-119 — Investido × valor de mercado [concluida]
 - Refs: US-078, AC-277, AC-280, AC-281
-- Arquivos: src/app/features/desempenho/blocos/grafico-investido-mercado.ts, src/app/features/desempenho/blocos/grafico-investido-mercado.html, src/app/features/desempenho/blocos/grafico-investido-mercado.scss, src/app/features/desempenho/blocos/grafico-investido-mercado.spec.ts
+- Arquivos: src/features/desempenho/blocos/blocos-do-mapa.spec.ts, src/features/desempenho/blocos/blocos-do-mapa.ts, src/features/desempenho/blocos/concentracao-da-carteira.spec.ts, src/features/desempenho/blocos/concentracao-da-carteira.ts, src/features/desempenho/blocos/grafico-concentracao.spec.tsx, src/features/desempenho/blocos/grafico-concentracao.tsx, src/features/desempenho/blocos/grafico-investido-mercado.spec.tsx, src/features/desempenho/blocos/grafico-investido-mercado.tsx, src/features/desempenho/blocos/grafico-mapa-posicoes.spec.tsx, src/features/desempenho/blocos/grafico-mapa-posicoes.tsx, src/features/desempenho/blocos/grafico-quadrante.spec.tsx, src/features/desempenho/blocos/grafico-quadrante.tsx
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: duas barras por ticker num eixo comum — custo e valor de hoje — com a
@@ -114,7 +114,7 @@
 
 ## T-120 — Quadrante participação × rentabilidade [concluida]
 - Refs: US-078, AC-278, AC-280, AC-281
-- Arquivos: src/app/features/desempenho/blocos/grafico-quadrante.ts, src/app/features/desempenho/blocos/grafico-quadrante.html, src/app/features/desempenho/blocos/grafico-quadrante.scss, src/app/features/desempenho/blocos/grafico-quadrante.spec.ts
+- Arquivos: src/features/desempenho/blocos/blocos-do-mapa.spec.ts, src/features/desempenho/blocos/blocos-do-mapa.ts, src/features/desempenho/blocos/concentracao-da-carteira.spec.ts, src/features/desempenho/blocos/concentracao-da-carteira.ts, src/features/desempenho/blocos/grafico-concentracao.spec.tsx, src/features/desempenho/blocos/grafico-concentracao.tsx, src/features/desempenho/blocos/grafico-investido-mercado.spec.tsx, src/features/desempenho/blocos/grafico-investido-mercado.tsx, src/features/desempenho/blocos/grafico-mapa-posicoes.spec.tsx, src/features/desempenho/blocos/grafico-mapa-posicoes.tsx, src/features/desempenho/blocos/grafico-quadrante.spec.tsx, src/features/desempenho/blocos/grafico-quadrante.tsx
 - Modelo: claude-sonnet-5
 - Esforço: alto
 - Notas: bolha por ativo — X é quanto pesa na carteira, Y é como está indo, o
@@ -124,7 +124,7 @@
 
 ## T-121 — Medidor de concentração [concluida]
 - Refs: US-078, AC-279, AC-281
-- Arquivos: src/app/features/desempenho/blocos/concentracao-da-carteira.ts, src/app/features/desempenho/blocos/concentracao-da-carteira.spec.ts, src/app/features/desempenho/blocos/grafico-concentracao.ts, src/app/features/desempenho/blocos/grafico-concentracao.html, src/app/features/desempenho/blocos/grafico-concentracao.scss, src/app/features/desempenho/blocos/grafico-concentracao.spec.ts
+- Arquivos: src/features/desempenho/blocos/blocos-do-mapa.spec.ts, src/features/desempenho/blocos/blocos-do-mapa.ts, src/features/desempenho/blocos/concentracao-da-carteira.spec.ts, src/features/desempenho/blocos/concentracao-da-carteira.ts, src/features/desempenho/blocos/grafico-concentracao.spec.tsx, src/features/desempenho/blocos/grafico-concentracao.tsx, src/features/desempenho/blocos/grafico-investido-mercado.spec.tsx, src/features/desempenho/blocos/grafico-investido-mercado.tsx, src/features/desempenho/blocos/grafico-mapa-posicoes.spec.tsx, src/features/desempenho/blocos/grafico-mapa-posicoes.tsx, src/features/desempenho/blocos/grafico-quadrante.spec.tsx, src/features/desempenho/blocos/grafico-quadrante.tsx
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: cálculo puro (participação dos três maiores) separado do arco. Forma de
@@ -135,7 +135,7 @@
 
 ## T-122 — Grade responsiva do desempenho [concluida]
 - Refs: US-076, US-078, AC-273
-- Arquivos: src/app/features/desempenho/desempenho.html, src/app/features/desempenho/desempenho.scss, src/app/features/desempenho/desempenho.spec.ts
+- Arquivos: src/components/ui/tabela.spec.tsx, src/components/ui/tabela.tsx, src/core/sessao/sessao.model.ts, src/core/sessao/sessao.service.ts, src/core/tema/tema.service.ts, src/features/desempenho/blocos/blocos-do-mapa.spec.ts, src/features/desempenho/blocos/blocos-do-mapa.ts, src/features/desempenho/blocos/concentracao-da-carteira.spec.ts, src/features/desempenho/blocos/concentracao-da-carteira.ts, src/features/desempenho/blocos/grafico-concentracao.spec.tsx, src/features/desempenho/blocos/grafico-concentracao.tsx, src/features/desempenho/blocos/grafico-investido-mercado.spec.tsx, src/features/desempenho/blocos/grafico-investido-mercado.tsx, src/features/desempenho/blocos/grafico-mapa-posicoes.spec.tsx, src/features/desempenho/blocos/grafico-mapa-posicoes.tsx, src/features/desempenho/blocos/grafico-quadrante.spec.tsx, src/features/desempenho/blocos/grafico-quadrante.tsx, src/features/desempenho/desempenho.spec.tsx, src/features/desempenho/desempenho.tsx, src/features/painel/carteira-preferida.ts, src/layout/casca.spec.tsx, src/layout/casca.tsx, src/rotas.tsx
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: depende das T-118 a T-121 — é onde os quatro gráficos novos entram na

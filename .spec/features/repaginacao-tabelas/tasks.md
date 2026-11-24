@@ -4,7 +4,7 @@
 
 ## T-097 — Dependência de tabela e ordenação compartilhada [concluida]
 - Refs: US-066, AC-242, AC-243
-- Arquivos: package.json, package-lock.json, src/app/shared/tabela/ordenacao.ts, src/app/shared/tabela/ordenacao.spec.ts
+- Arquivos: package.json, package-lock.json, src/components/ui/tabela.spec.tsx, src/components/ui/tabela.tsx, src/features/carteiras/carteiras.model.ts, src/features/operacoes/extrato-operacoes.spec.tsx, src/features/operacoes/extrato-operacoes.tsx, src/features/operacoes/operacoes.model.ts, src/shared/ordenacao.spec.ts, src/shared/ordenacao.ts
 - Modelo: claude-sonnet-5
 - Esforço: alto
 - Notas: instala `@tanstack/angular-table` (D2 do RFC-001) e cria o utilitário que
@@ -15,7 +15,7 @@
 
 ## T-098 — Cabeçalho ordenável [concluida]
 - Refs: US-066, AC-242
-- Arquivos: src/app/shared/tabela/cabecalho-ordenavel.ts, src/app/shared/tabela/cabecalho-ordenavel.html, src/app/shared/tabela/cabecalho-ordenavel.scss, src/app/shared/tabela/cabecalho-ordenavel.spec.ts
+- Arquivos: src/components/ui/tabela.spec.tsx, src/components/ui/tabela.tsx, src/features/carteiras/carteiras.model.ts, src/features/operacoes/extrato-operacoes.spec.tsx, src/features/operacoes/extrato-operacoes.tsx, src/features/operacoes/operacoes.model.ts, src/shared/ordenacao.spec.ts, src/shared/ordenacao.ts
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: `<th>` com botão interno, glifo de duas setas indicando o sentido e
@@ -25,7 +25,7 @@
 
 ## T-099 — Estilo base de tabela [concluida]
 - Refs: US-067, AC-244, AC-245
-- Arquivos: src/app/shared/tabela/tabela.scss
+- Arquivos: src/components/ui/tabela.spec.tsx, src/components/ui/tabela.tsx, src/core/feedback/feedback.service.ts, src/core/sessao/sessao.service.ts, src/features/acoes/acoes.model.ts, src/features/acoes/acoes.service.ts, src/features/acoes/acoes.spec.tsx, src/features/acoes/cadastro-acao.tsx, src/features/acoes/detalhe-acao.tsx, src/features/acoes/lista-acoes.tsx, src/features/carteiras/carteiras.model.ts, src/features/carteiras/criar-carteira.tsx, src/features/carteiras/detalhe-carteira.tsx, src/features/carteiras/detalhe.spec.tsx, src/features/carteiras/lista-carteiras.tsx, src/features/carteiras/lista-e-criacao.spec.tsx, src/features/carteiras/movimentacoes-carteira.tsx, src/features/carteiras/posicoes-carteira.tsx, src/features/corretoras/cadastro-corretora.tsx, src/features/corretoras/corretoras.model.ts, src/features/corretoras/corretoras.service.ts, src/features/corretoras/corretoras.spec.tsx, src/features/corretoras/detalhe-corretora.tsx, src/features/corretoras/lista-corretoras.tsx, src/features/operacoes/extrato-operacoes.spec.tsx, src/features/operacoes/extrato-operacoes.tsx, src/features/operacoes/operacoes.model.ts, src/rotas.tsx
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: folha compartilhada com densidade, zebra sutil, destaque de linha sob o
@@ -34,7 +34,7 @@
 
 ## T-100 — Extrato de operações [concluida]
 - Refs: US-066, US-067, US-068, AC-244, AC-246, AC-247, AC-248, AC-249, AC-250
-- Arquivos: src/app/features/operacoes/extrato/extrato-operacoes.ts, src/app/features/operacoes/extrato/extrato-operacoes.html, src/app/features/operacoes/extrato/extrato-operacoes.scss, src/app/features/operacoes/extrato/extrato-operacoes.spec.ts
+- Arquivos: src/components/ui/tabela.spec.tsx, src/components/ui/tabela.tsx, src/core/feedback/feedback.service.ts, src/core/sessao/sessao.service.ts, src/features/acoes/acoes.model.ts, src/features/acoes/acoes.service.ts, src/features/acoes/acoes.spec.tsx, src/features/acoes/cadastro-acao.tsx, src/features/acoes/detalhe-acao.tsx, src/features/acoes/lista-acoes.tsx, src/features/carteiras/carteiras.model.ts, src/features/carteiras/criar-carteira.tsx, src/features/carteiras/detalhe-carteira.tsx, src/features/carteiras/detalhe.spec.tsx, src/features/carteiras/lista-carteiras.tsx, src/features/carteiras/lista-e-criacao.spec.tsx, src/features/carteiras/movimentacoes-carteira.tsx, src/features/carteiras/posicoes-carteira.tsx, src/features/corretoras/cadastro-corretora.tsx, src/features/corretoras/corretoras.model.ts, src/features/corretoras/corretoras.service.ts, src/features/corretoras/corretoras.spec.tsx, src/features/corretoras/detalhe-corretora.tsx, src/features/corretoras/lista-corretoras.tsx, src/features/operacoes/extrato-operacoes.spec.tsx, src/features/operacoes/extrato-operacoes.tsx, src/features/operacoes/operacoes.model.ts, src/rotas.tsx, src/shared/ordenacao.spec.ts, src/shared/ordenacao.ts
 - Modelo: claude-sonnet-5
 - Esforço: alto
 - Notas: a tabela mais visível do produto. Ganha ordenação, monograma no ticker,
@@ -45,7 +45,7 @@
 
 ## T-101 — Posições e movimentações da carteira [concluida]
 - Refs: US-066, US-067, AC-244, AC-246, AC-247, AC-250
-- Arquivos: src/app/features/carteiras/detalhe/posicoes-carteira.ts, src/app/features/carteiras/detalhe/posicoes-carteira.html, src/app/features/carteiras/detalhe/posicoes-carteira.scss, src/app/features/carteiras/detalhe/movimentacoes-carteira.ts, src/app/features/carteiras/detalhe/movimentacoes-carteira.html, src/app/features/carteiras/detalhe/movimentacoes-carteira.scss, src/app/features/carteiras/detalhe/posicoes-carteira.spec.ts, src/app/features/carteiras/detalhe/movimentacoes-carteira.spec.ts
+- Arquivos: src/components/ui/tabela.spec.tsx, src/components/ui/tabela.tsx, src/core/feedback/feedback.service.ts, src/core/sessao/sessao.service.ts, src/features/acoes/acoes.model.ts, src/features/acoes/acoes.service.ts, src/features/acoes/acoes.spec.tsx, src/features/acoes/cadastro-acao.tsx, src/features/acoes/detalhe-acao.tsx, src/features/acoes/lista-acoes.tsx, src/features/carteiras/carteiras.model.ts, src/features/carteiras/criar-carteira.tsx, src/features/carteiras/detalhe-carteira.tsx, src/features/carteiras/detalhe.spec.tsx, src/features/carteiras/lista-carteiras.tsx, src/features/carteiras/lista-e-criacao.spec.tsx, src/features/carteiras/movimentacoes-carteira.tsx, src/features/carteiras/posicoes-carteira.tsx, src/features/corretoras/cadastro-corretora.tsx, src/features/corretoras/corretoras.model.ts, src/features/corretoras/corretoras.service.ts, src/features/corretoras/corretoras.spec.tsx, src/features/corretoras/detalhe-corretora.tsx, src/features/corretoras/lista-corretoras.tsx, src/features/operacoes/extrato-operacoes.spec.tsx, src/features/operacoes/extrato-operacoes.tsx, src/features/operacoes/operacoes.model.ts, src/rotas.tsx, src/shared/ordenacao.spec.ts, src/shared/ordenacao.ts
 - Modelo: claude-sonnet-5
 - Esforço: alto
 - Notas: mesmo tratamento do extrato. As posições são a tela mais parecida com o
@@ -54,7 +54,7 @@
 
 ## T-102 — Listas de ações, corretoras e carteiras [concluida]
 - Refs: US-067, US-068, AC-245, AC-247, AC-248, AC-249, AC-250
-- Arquivos: src/app/features/acoes/lista/lista-acoes.ts, src/app/features/acoes/lista/lista-acoes.html, src/app/features/acoes/lista/lista-acoes.scss, src/app/features/corretoras/lista/lista-corretoras.ts, src/app/features/corretoras/lista/lista-corretoras.html, src/app/features/corretoras/lista/lista-corretoras.scss, src/app/features/carteiras/lista/lista-carteiras.ts, src/app/features/carteiras/lista/lista-carteiras.html, src/app/features/carteiras/lista/lista-carteiras.scss, src/app/features/acoes/lista/lista-acoes.spec.ts, src/app/features/corretoras/lista/lista-corretoras.spec.ts, src/app/features/carteiras/lista/lista-carteiras.spec.ts
+- Arquivos: src/components/ui/tabela.spec.tsx, src/components/ui/tabela.tsx, src/core/feedback/feedback.service.ts, src/core/sessao/sessao.service.ts, src/features/acoes/acoes.model.ts, src/features/acoes/acoes.service.ts, src/features/acoes/acoes.spec.tsx, src/features/acoes/cadastro-acao.tsx, src/features/acoes/detalhe-acao.tsx, src/features/acoes/lista-acoes.tsx, src/features/carteiras/carteiras.model.ts, src/features/carteiras/criar-carteira.tsx, src/features/carteiras/detalhe-carteira.tsx, src/features/carteiras/detalhe.spec.tsx, src/features/carteiras/lista-carteiras.tsx, src/features/carteiras/lista-e-criacao.spec.tsx, src/features/carteiras/movimentacoes-carteira.tsx, src/features/carteiras/posicoes-carteira.tsx, src/features/corretoras/cadastro-corretora.tsx, src/features/corretoras/corretoras.model.ts, src/features/corretoras/corretoras.service.ts, src/features/corretoras/corretoras.spec.tsx, src/features/corretoras/detalhe-corretora.tsx, src/features/corretoras/lista-corretoras.tsx, src/features/operacoes/extrato-operacoes.spec.tsx, src/features/operacoes/extrato-operacoes.tsx, src/features/operacoes/operacoes.model.ts, src/rotas.tsx
 - Modelo: claude-sonnet-5
 - Esforço: alto
 - Notas: as três listas do catálogo. Ações ganham monograma; corretoras mantêm o

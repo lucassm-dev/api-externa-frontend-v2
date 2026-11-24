@@ -4,7 +4,7 @@
 
 ## T-107 — Geometria da rosca [concluida]
 - Refs: US-072, AC-259
-- Arquivos: src/app/features/desempenho/blocos/setores-da-rosca.ts, src/app/features/desempenho/blocos/setores-da-rosca.spec.ts
+- Arquivos: src/features/desempenho/blocos/grafico-composicao.spec.tsx, src/features/desempenho/blocos/grafico-composicao.tsx, src/features/desempenho/blocos/setores-da-rosca.spec.ts, src/features/desempenho/blocos/setores-da-rosca.ts, src/features/desempenho/composicao.ts
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: função pura que recebe as participações e devolve os caminhos SVG dos
@@ -15,7 +15,7 @@
 
 ## T-108 — Composição em rosca [concluida]
 - Refs: US-072, AC-259, AC-260, AC-261, AC-262
-- Arquivos: src/app/features/desempenho/blocos/grafico-composicao.ts, src/app/features/desempenho/blocos/grafico-composicao.html, src/app/features/desempenho/blocos/grafico-composicao.scss, src/app/features/desempenho/blocos/grafico-composicao.spec.ts
+- Arquivos: src/features/desempenho/blocos/grafico-composicao.spec.tsx, src/features/desempenho/blocos/grafico-composicao.tsx, src/features/desempenho/blocos/setores-da-rosca.spec.ts, src/features/desempenho/blocos/setores-da-rosca.ts, src/features/desempenho/composicao.ts
 - Modelo: claude-sonnet-5
 - Esforço: alto
 - Notas: troca as barras horizontais pela rosca da T-107, mantendo a legenda com
@@ -27,7 +27,7 @@
 
 ## T-109 — Contribuição com linha de zero [concluida]
 - Refs: US-073, AC-263
-- Arquivos: src/app/features/desempenho/blocos/grafico-contribuicao.ts, src/app/features/desempenho/blocos/grafico-contribuicao.html, src/app/features/desempenho/blocos/grafico-contribuicao.scss, src/app/features/desempenho/blocos/grafico-contribuicao.spec.ts
+- Arquivos: src/features/desempenho/blocos/grafico-contribuicao.spec.tsx, src/features/desempenho/blocos/grafico-contribuicao.tsx, src/features/desempenho/blocos/grafico-realizado.spec.tsx, src/features/desempenho/blocos/grafico-realizado.tsx, src/features/desempenho/contribuicao.ts, src/features/desempenho/realizado-por-ticker.ts
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: barras divergentes a partir de uma linha de zero comum, positivas para
@@ -37,7 +37,7 @@
 
 ## T-110 — Realizado por ticker [concluida]
 - Refs: US-073, AC-263
-- Arquivos: src/app/features/desempenho/blocos/grafico-realizado.ts, src/app/features/desempenho/blocos/grafico-realizado.html, src/app/features/desempenho/blocos/grafico-realizado.scss, src/app/features/desempenho/blocos/grafico-realizado.spec.ts
+- Arquivos: src/features/desempenho/blocos/grafico-contribuicao.spec.tsx, src/features/desempenho/blocos/grafico-contribuicao.tsx, src/features/desempenho/blocos/grafico-realizado.spec.tsx, src/features/desempenho/blocos/grafico-realizado.tsx, src/features/desempenho/contribuicao.ts, src/features/desempenho/realizado-por-ticker.ts
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: mesmo tratamento da contribuição, com selo de resultado por ticker.
@@ -45,7 +45,7 @@
 
 ## T-111 — Números do desempenho e composição da tela [concluida]
 - Refs: US-074, AC-264, AC-265
-- Arquivos: src/app/features/desempenho/blocos/numeros-desempenho.ts, src/app/features/desempenho/blocos/numeros-desempenho.html, src/app/features/desempenho/blocos/numeros-desempenho.scss, src/app/features/desempenho/desempenho.html, src/app/features/desempenho/desempenho.scss, src/app/features/desempenho/blocos/numeros-desempenho.spec.ts
+- Arquivos: src/features/desempenho/blocos/numeros-desempenho.spec.tsx, src/features/desempenho/blocos/numeros-desempenho.tsx, src/features/desempenho/resultados.ts
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: os números viram cartões de indicador com rótulo pequeno, valor grande em

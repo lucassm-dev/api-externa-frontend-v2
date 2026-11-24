@@ -4,7 +4,7 @@
 
 ## T-126 — Botão de visibilidade e sua adoção nos três campos [concluida]
 - Refs: US-082, AC-295, AC-296, AC-297, AC-298
-- Arquivos: src/app/shared/visibilidade-senha/visibilidade-senha.ts, src/app/shared/visibilidade-senha/visibilidade-senha.html, src/app/shared/visibilidade-senha/visibilidade-senha.scss, src/app/shared/visibilidade-senha/visibilidade-senha.spec.ts, src/app/features/acesso/login/login.html, src/app/features/acesso/login/login.ts, src/app/features/acesso/cadastro/cadastro.html, src/app/features/acesso/cadastro/cadastro.ts, src/app/features/acesso/cadastro/cadastro.spec.ts
+- Arquivos: src/core/dados/idade-dado.ts, src/core/sessao/sessao.model.ts, src/core/sessao/sessao.service.ts, src/features/acesso/cadastro.spec.tsx, src/features/acesso/cadastro.tsx, src/features/acesso/login.tsx, src/shared/estado-vazio.tsx, src/shared/monograma.tsx, src/shared/shared.spec.tsx, src/shared/valor-com-horario.tsx, src/shared/variacao.tsx, src/shared/visibilidade-senha.tsx
 - Modelo: claude-sonnet-5
 - Esforço: medio
 - Notas: um componente só, usado como sufixo do `mat-form-field`, para que os três
