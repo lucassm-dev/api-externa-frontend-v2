@@ -7,6 +7,7 @@ import { Esqueleto } from '@/components/ui/esqueleto';
 import { Paginador } from '@/components/ui/paginador';
 import { Selo } from '@/components/ui/selo';
 import { Pagina } from '@/core/api/pagina';
+import { sessao } from '@/core/sessao/sessao.service';
 import { EstadoVazio } from '@/shared/estado-vazio';
 import { formatarCnpj, somenteDigitos } from './cnpj';
 import { Corretora, cidadeComUf, nomeExibido } from './corretoras.model';
@@ -26,6 +27,8 @@ export function ListaCorretoras() {
   const [termo, setTermo] = useState('');
   const [buscando, setBuscando] = useState(false);
   const [cnpjSemResultado, setCnpjSemResultado] = useState<string | null>(null);
+  // Cadastrar é do ADMIN (AC-317); o selo conta carteiras, que o ADMIN não tem (403).
+  const ehAdmin = sessao.papel() === 'ADMIN';
 
   const irPara = useCallback(async (numero: number) => {
     setCarregando(true);
@@ -33,11 +36,11 @@ export function ListaCorretoras() {
     try {
       setPagina(await corretorasService.listar(numero));
       setCarregando(false);
-      setSelos(await corretorasService.carteirasPorCorretora());
+      if (!ehAdmin) setSelos(await corretorasService.carteirasPorCorretora());
     } catch {
       setCarregando(false);
     }
-  }, []);
+  }, [ehAdmin]);
 
   useEffect(() => {
     void irPara(0);
@@ -64,12 +67,14 @@ export function ListaCorretoras() {
     <section className="grid gap-5">
       <header className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="m-0 text-titulo font-bold tracking-(--entrelinha-titulo)">Corretoras</h1>
-        <Botao asChild intencao="primaria">
-          <Link to="/corretoras/nova">
-            <Plus aria-hidden="true" focusable="false" />
-            Cadastrar corretora
-          </Link>
-        </Botao>
+        {ehAdmin && (
+          <Botao asChild intencao="primaria">
+            <Link to="/corretoras/nova">
+              <Plus aria-hidden="true" focusable="false" />
+              Cadastrar corretora
+            </Link>
+          </Botao>
+        )}
       </header>
 
       <p data-catalogo-compartilhado className="m-0 max-w-(--largura-leitura) text-texto-fraco">
@@ -96,11 +101,13 @@ export function ListaCorretoras() {
       {cnpjSemResultado && (
         <div data-busca-vazia className="flex flex-wrap items-center gap-3 rounded-grande border border-dashed border-borda bg-superficie p-4">
           <p className="m-0 flex-[1_1_100%]">Nenhuma corretora com o CNPJ {formatarCnpj(cnpjSemResultado)} está no catálogo.</p>
-          <Botao asChild intencao="primaria">
-            <Link data-cadastrar-buscado to={`/corretoras/nova?${new URLSearchParams({ cnpj: cnpjSemResultado })}`}>
-              Cadastrar este CNPJ
-            </Link>
-          </Botao>
+          {ehAdmin && (
+            <Botao asChild intencao="primaria">
+              <Link data-cadastrar-buscado to={`/corretoras/nova?${new URLSearchParams({ cnpj: cnpjSemResultado })}`}>
+                Cadastrar este CNPJ
+              </Link>
+            </Botao>
+          )}
           <Botao
             intencao="sutil"
             type="button"
@@ -121,9 +128,12 @@ export function ListaCorretoras() {
         (pagina.content.length === 0 ? (
           <EstadoVazio
             titulo="Nenhuma corretora no catálogo"
-            descricao="O catálogo ainda não tem nenhuma corretora. Cadastre a primeira para usar nas suas carteiras."
-            rotuloAcao="Cadastrar corretora"
-            aoAcionar={() => navegar('/corretoras/nova')}
+            descricao={
+              ehAdmin
+                ? 'O catálogo ainda não tem nenhuma corretora. Cadastre a primeira para os investidores usarem nas carteiras.'
+                : 'O catálogo ainda não tem nenhuma corretora. Assim que o administrador cadastrar, ela aparece aqui.'
+            }
+            {...(ehAdmin && { rotuloAcao: 'Cadastrar corretora', aoAcionar: () => navegar('/corretoras/nova') })}
           />
         ) : (
           <>

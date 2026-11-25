@@ -42,7 +42,7 @@ describe('Tradução de erro por código', () => {
   it('@spec:AC-001 a tabela inteira do PRD-009 tem mensagem própria e nenhuma cai no genérico', () => {
     const codigos = [
       'COR-001', 'COR-002', 'COR-003', 'COR-004',
-      'ACA-001', 'ACA-002', 'ACA-003', 'ACA-004',
+      'ACA-001',
       'CAR-001', 'CAR-002',
       'OPE-001', 'OPE-003', 'OPE-004', 'OPE-005',
       'AUT-001', 'AUT-002', 'AUT-003', 'AUT-004', 'AUT-005', 'AUT-006', 'AUT-007', 'AUT-008',

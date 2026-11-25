@@ -2,13 +2,15 @@
 export interface AreaDoProduto {
   rota: string;
   rotulo: string;
+  /** O ADMIN recebe 403 nestas áreas: elas nem aparecem para ele. */
+  somenteInvestidor?: boolean;
 }
 
 export const AREAS_DO_PRODUTO: AreaDoProduto[] = [
-  { rota: '/painel', rotulo: 'Painel' },
+  { rota: '/painel', somenteInvestidor: true, rotulo: 'Painel' },
   { rota: '/corretoras', rotulo: 'Corretoras' },
-  { rota: '/carteiras', rotulo: 'Carteiras' },
+  { rota: '/carteiras', somenteInvestidor: true, rotulo: 'Carteiras' },
   { rota: '/acoes', rotulo: 'Ações' },
-  { rota: '/operacoes', rotulo: 'Operações' },
-  { rota: '/desempenho', rotulo: 'Desempenho' },
+  { rota: '/operacoes', somenteInvestidor: true, rotulo: 'Operações' },
+  { rota: '/desempenho', somenteInvestidor: true, rotulo: 'Desempenho' },
 ];

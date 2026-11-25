@@ -1,8 +1,7 @@
-import { ArrowLeft, CircleCheck, Clock, RefreshCw, Trash2 } from 'lucide-react';
+import { ArrowLeft, CircleCheck, Clock, RefreshCw } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 import { Botao } from '@/components/ui/botao';
-import { DialogoConfirmacao } from '@/components/ui/dialogo-confirmacao';
 import { Esqueleto } from '@/components/ui/esqueleto';
 import { CATALOGO_ERROS } from '@/core/erros/catalogo-erros';
 import { ehErroTraduzido, traduzirErro } from '@/core/erros/tradutor-erro';
@@ -27,8 +26,6 @@ const ROTULO = 'm-0 text-rotulo font-medium uppercase tracking-(--entrelinha-rot
  *
  * Nada de cotação parte daqui sozinho: abrir a tela não atualiza, e não há
  * intervalo nenhum agendado. A fonte gratuita é compartilhada por todos.
- *
- * A exclusão manda o TICKER na rota — diferente de corretora, que vai por id.
  */
 export function DetalheAcao() {
   const { ticker = '' } = useParams();
@@ -38,8 +35,6 @@ export function DetalheAcao() {
   const [atualizando, setAtualizando] = useState(false);
   const [resultado, setResultado] = useState<{ desfecho: Desfecho; mensagem: string } | null>(null);
   const [erro, setErro] = useState<Erro | null>(null);
-  const [confirmandoRemocao, setConfirmandoRemocao] = useState(false);
-  const [removendo, setRemovendo] = useState(false);
 
   useEffect(() => {
     let vigente = true;
@@ -93,24 +88,6 @@ export function DetalheAcao() {
     }
   };
 
-  const confirmarRemocao = async () => {
-    if (!acao || removendo) return;
-    setRemovendo(true);
-    try {
-      await acoesService.remover(acao.ticker);
-      feedback.informar(`${acao.ticker} saiu do catálogo.`);
-      navegar('/acoes');
-    } catch (falha) {
-      if (!ehErroTraduzido(falha)) throw falha;
-      // ACA-003 cancela a exclusão. O texto é o do catálogo e não diz de quem
-      // são as posições nem em qual carteira estão.
-      setErro({ texto: falha.mensagem, codigo: falha.codigo, nivel: 'erro' });
-    } finally {
-      setRemovendo(false);
-      setConfirmandoRemocao(false);
-    }
-  };
-
   return (
     <section className="grid gap-5">
       <Link to="/acoes" className="inline-flex items-center gap-1 justify-self-start text-apoio font-semibold no-underline hover:underline">
@@ -140,18 +117,6 @@ export function DetalheAcao() {
                   </p>
                 </div>
               </div>
-              <Botao
-                intencao="destrutiva"
-                type="button"
-                data-remover
-                onClick={() => {
-                  limparMensagens();
-                  setConfirmandoRemocao(true);
-                }}
-              >
-                <Trash2 aria-hidden="true" focusable="false" />
-                Remover do catálogo
-              </Botao>
             </header>
 
             <section aria-labelledby="titulo-cotacao" className="grid gap-5 rounded-grande border border-borda bg-superficie p-5 shadow-cartao max-sm:p-4">
@@ -219,16 +184,6 @@ export function DetalheAcao() {
               )}
             </section>
 
-            {confirmandoRemocao && (
-              <DialogoConfirmacao
-                titulo="Remover esta ação?"
-                consequencia="Ela sai do catálogo para todos os investidores e não aparece mais nas listas nem nos formulários de compra. Não há como desfazer."
-                rotuloConfirmar="Remover"
-                ocupado={removendo}
-                aoConfirmar={() => void confirmarRemocao()}
-                aoCancelar={() => setConfirmandoRemocao(false)}
-              />
-            )}
           </>
         )
       )}

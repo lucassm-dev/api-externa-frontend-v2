@@ -46,3 +46,6 @@ Thumbs.db
 
 # graphify (saída gerada)
 /graphify-out
+
+# ai-memory (dados locais)
+/.ai-memory

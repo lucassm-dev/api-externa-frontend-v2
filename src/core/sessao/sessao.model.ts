@@ -5,19 +5,32 @@ export interface RespostaLogin {
   expiraEm: string;
 }
 
+export type Papel = 'INVESTIDOR' | 'ADMIN';
+
+/** O que `GET /auth/me` devolve, menos o e-mail (já guardado). ADMIN vem com `nome` nulo. */
+export interface Identidade {
+  papel: Papel;
+  nome: string | null;
+  fotoUrl: string | null;
+}
+
 /**
- * A sessão guardada: o que o login devolveu mais o e-mail que o próprio
- * investidor digitou. O backend não tem endpoint de "quem sou eu", e a senha
- * nunca é guardada.
+ * A sessão guardada: o que o login devolveu, o e-mail digitado e a identidade
+ * de "quem sou eu". Sessão guardada antes da identidade existir não a tem
+ * (ASM-077). A senha nunca é guardada.
  */
 export interface Sessao extends RespostaLogin {
   email: string;
+  identidade?: Identidade;
 }
 
 export const CHAVE_SESSAO = 'carteira.sessao';
 
 /** Endereço do login. Único destino possível sem sessão, junto do cadastro. */
 export const ROTA_LOGIN = '/entrar';
+
+/** Onde o ADMIN entra enquanto não há painel administrativo (Q-044). */
+export const ROTA_INICIAL_ADMIN = '/corretoras';
 
 /**
  * Antecedência do aviso de sessão acabando. Sai do `expiraEm` devolvido no

@@ -197,7 +197,7 @@ do login, para não escrever tela sobre um contrato que não existe.
 | ID | Suposição | Status | Resolução |
 |---|---|---|---|
 | ASM-006 | `POST /auth/login` responde `{ token, tipo, expiraEm }` e `POST /auth/cadastro` responde `{ id, nome, email }` | confirmada | Lido em `AuthResource.java` e nos DTOs do backend em 08/09/2026; invalida a ASM-001 da fundação, que assumia um investidor na resposta do login |
-| ASM-007 | A identidade exibida na área interna é o e-mail que o investidor digitou no login | confirmada | Decidido pelo dono do produto em 08/09/2026: o backend não tem endpoint de "quem sou eu" e o id só existe dentro do token |
+| ASM-007 | A identidade exibida na área interna é o e-mail que o investidor digitou no login | invalidada | Superada por identidade-papel (AC-311, AC-312) em 24/11/2026: o backend passou a ter GET /auth/me.  Decidido pelo dono do produto em 08/09/2026: o backend não tem endpoint de "quem sou eu" e o id só existe dentro do token |
 | ASM-008 | O aviso de sessão acabando dispara a 5 minutos do fim | confirmada | Token dura 24 horas (`jwt.expiration-ms=86400000`): 5 minutos é raro o bastante para não virar ruído e suficiente para terminar um formulário curto |
 | ASM-009 | `expiraEm` chega como instante ISO-8601 em UTC | confirmada | O DTO usa `java.time.Instant`, serializado pelo Jackson em ISO-8601 |
 | ASM-010 | A política de senha do cliente é a mesma do servidor: 8+ caracteres, com ao menos uma letra e um número | confirmada | Mesma expressão de `AutenticacaoService.POLITICA_SENHA` no backend |

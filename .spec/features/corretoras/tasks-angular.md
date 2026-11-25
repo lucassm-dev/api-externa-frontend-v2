@@ -33,7 +33,7 @@
 - Notas: título "Corretoras" e uma linha de texto dizendo que o catálogo é compartilhado — "Minhas corretoras" não aparece em lugar nenhum (AC-076, ADR-002). Cada linha traz nome, CNPJ formatado, cidade/UF e validação. Busca por CNPJ abre o detalhe; sem resultado, estado vazio com oferta de cadastrar, nunca a mensagem de COR-001 (AC-080, Q-010). O selo entra depois, sem reordenar (AC-082), e some sem alarde se a contagem falhar (AC-083).
 
 ## T-036 — Detalhe da corretora e remoção [concluida]
-- Refs: AC-084, AC-085, AC-086, AC-088, AC-089, AC-090
+- Refs: AC-084, AC-085, AC-086, AC-088, AC-089
 - Arquivos: src/app/features/corretoras/detalhe/detalhe-corretora.ts, src/app/features/corretoras/detalhe/detalhe-corretora.html, src/app/features/corretoras/detalhe/detalhe-corretora.scss, src/app/features/corretoras/detalhe/detalhe-corretora.spec.ts
 - Notas: dados cadastrais, endereço completo, marca de validação na CVM e a data da base oficial formatada — ela importa porque a base reflete o último dia útil (AC-085). Remover está disponível para qualquer corretora, sem checagem de autoria (AC-090, ADR-002); usa o diálogo da T-033 e, na volta, a corretora só some da lista — sem lixeira, sem desfazer (AC-088, ADR-007). COR-004 cancela a exclusão com o texto exato do catálogo, que não nomeia investidor nem quantidade (AC-089). COR-001 devolve à lista (AC-086).
 

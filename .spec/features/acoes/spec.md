@@ -64,37 +64,37 @@ poder operá-la sem digitar nome de empresa nem preço que o sistema já sabe bu
 - **Quando** a tela trata a recusa
 - **Então** a mensagem é exatamente "Não encontramos este ticker no mercado selecionado. Confira o código e o mercado.", o investidor continua no formulário com o ticker e o mercado que escolheu, e nenhuma ação é criada no estado da tela
 
-#### AC-125 — Ticker já cadastrado leva à ação existente, não a um beco sem saída
+#### ~~AC-125~~ — Ticker já cadastrado leva à ação existente, não a um beco sem saída (superado por identidade-papel)
 
 - **Dado** um cadastro recusado com ACA-002
 - **Quando** a tela trata a recusa
 - **Então** a mensagem é "Este ticker já está cadastrado.", a ação existente é buscada e apresentada com ticker e nome da empresa, e o investidor recebe um caminho para abri-la
 
-### US-037 — Não esbarrar no pré-requisito depois de preencher o formulário
+### ~~US-037~~ — Não esbarrar no pré-requisito depois de preencher o formulário (superado por identidade-papel, AC-320)
 
 Como investidor sem carteira, quero saber antes de digitar qualquer coisa que cadastrar
 ação depende de ter carteira, e ter o atalho para criá-la, porque essa dependência não
 é adivinhável.
 
-#### AC-126 — Sem carteira ativa, a entrada do cadastro é bloqueada antes de qualquer formulário
+#### ~~AC-126~~ — Sem carteira ativa, a entrada do cadastro é bloqueada antes de qualquer formulário (superado por identidade-papel)
 
 - **Dado** um investidor cujo servidor informa que ele não tem nenhuma carteira
 - **Quando** ele abre a entrada do cadastro de ação
 - **Então** nenhum campo de ticker ou mercado é renderizado, a tela explica "Crie uma carteira antes de cadastrar ações." e oferece o atalho para a criação de carteira
 
-#### AC-127 — Com carteira ativa, o cadastro abre normalmente
+#### ~~AC-127~~ — Com carteira ativa, o cadastro abre normalmente (superado por identidade-papel)
 
 - **Dado** um investidor cujo servidor informa ao menos uma carteira
 - **Quando** ele abre a entrada do cadastro de ação
 - **Então** o formulário de ticker e mercado é renderizado e nenhuma mensagem de pré-requisito aparece
 
-#### AC-128 — Estado desconhecido não inventa bloqueio nem libera às cegas
+#### ~~AC-128~~ — Estado desconhecido não inventa bloqueio nem libera às cegas (superado por identidade-papel)
 
 - **Dado** que a consulta que diz se o investidor tem carteira falhou
 - **Quando** a tela decide o que mostrar
 - **Então** ela não afirma que o investidor não tem carteira: o formulário é apresentado e o pré-requisito volta a ser decidido pelo servidor no envio (ACA-004)
 
-#### AC-129 — ACA-004 vindo do backend continua tratado como rede de segurança
+#### ~~AC-129~~ — ACA-004 vindo do backend continua tratado como rede de segurança (superado por identidade-papel)
 
 - **Dado** um cadastro enviado e recusado com ACA-004
 - **Quando** a tela trata a recusa
@@ -198,25 +198,25 @@ desfechos ocorreu, porque atualizar e não ver o número mudar parece um bug.
 Como investidor, quero remover do catálogo uma ação cadastrada por engano, e entender o
 bloqueio quando ela estiver em uso.
 
-#### AC-143 — A remoção pede confirmação com a consequência descrita
+#### ~~AC-143~~ — A remoção pede confirmação com a consequência descrita (superado por identidade-papel)
 
 - **Dado** o detalhe de uma ação
 - **Quando** o investidor aciona remover
 - **Então** uma confirmação aparece descrevendo a consequência antes de qualquer requisição de exclusão ser enviada
 
-#### AC-144 — A exclusão identifica a ação pelo ticker na rota
+#### ~~AC-144~~ — A exclusão identifica a ação pelo ticker na rota (superado por identidade-papel)
 
 - **Dado** uma remoção confirmada
 - **Quando** a requisição de exclusão é enviada
 - **Então** ela usa o ticker da ação no caminho (`DELETE /acoes/{ticker}`), e não o identificador numérico
 
-#### AC-145 — Ação com posições abertas não é removida e o motivo não expõe ninguém
+#### ~~AC-145~~ — Ação com posições abertas não é removida e o motivo não expõe ninguém (superado por identidade-papel)
 
 - **Dado** uma remoção recusada com ACA-003
 - **Quando** a tela trata o erro
 - **Então** a exclusão é cancelada, a ação continua no catálogo, e a mensagem é exatamente "Esta ação tem posições abertas e não pode ser removida.", sem citar investidor, carteira, dono ou quantidade
 
-#### AC-146 — Removida, a ação some do catálogo sem falar em lixeira ou desfazer
+#### ~~AC-146~~ — Removida, a ação some do catálogo sem falar em lixeira ou desfazer (superado por identidade-papel)
 
 - **Dado** uma remoção aceita pelo servidor
 - **Quando** o investidor volta ao catálogo

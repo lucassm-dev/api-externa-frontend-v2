@@ -190,7 +190,7 @@ vai acontecer e por que às vezes não dá.
 - **Quando** a tela trata o erro
 - **Então** a exclusão é cancelada, a corretora continua na lista, e a mensagem é exatamente "Esta corretora tem carteiras vinculadas e não pode ser removida.", sem citar investidor, dono, nome ou quantidade de carteiras
 
-#### AC-090 — Qualquer investidor pode remover qualquer corretora
+#### ~~AC-090~~ — Qualquer investidor pode remover qualquer corretora (superado por identidade-papel, AC-317 e AC-318)
 
 - **Dado** uma corretora cadastrada por outro investidor
 - **Quando** o investidor olha o detalhe dela

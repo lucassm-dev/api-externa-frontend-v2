@@ -8,6 +8,7 @@ import { ehErroTraduzido } from '@/core/erros/tradutor-erro';
 import { feedback } from '@/core/feedback/feedback.service';
 import { MensagemFeedback } from '@/core/feedback/mensagem-feedback';
 import { formatarData } from '@/core/formatacao/formatacao';
+import { sessao } from '@/core/sessao/sessao.service';
 import { formatarCnpj } from './cnpj';
 import { Corretora, nomeExibido } from './corretoras.model';
 import { corretorasService } from './corretoras.service';
@@ -19,8 +20,8 @@ type Erro = { texto: string; codigo: string | null };
  * aparece junto da validação porque a base reflete o último dia útil: uma
  * corretora autorizada hoje de manhã pode ainda não constar nela (PRD-004).
  *
- * Remover está disponível em qualquer corretora — o catálogo não tem dono
- * (ADR-002) — e a única proteção é o vínculo ativo, que o servidor decide.
+ * Remover é só do ADMIN (AC-317, AC-318); para ele, a única proteção é o
+ * vínculo ativo, que o servidor decide.
  */
 export function DetalheCorretora() {
   const { id } = useParams();
@@ -117,13 +118,15 @@ export function DetalheCorretora() {
                 <h1 className="m-0 text-titulo font-bold tracking-(--entrelinha-titulo)">{nomeExibido(corretora)}</h1>
                 <p className="m-0 mt-1 font-numero text-texto-fraco">{formatarCnpj(corretora.cnpj)}</p>
               </div>
-              <Botao intencao="destrutiva" type="button" data-remover onClick={() => {
-                setErro(null);
-                setConfirmandoRemocao(true);
-              }}>
-                <Trash2 aria-hidden="true" focusable="false" />
-                Remover do catálogo
-              </Botao>
+              {sessao.papel() === 'ADMIN' && (
+                <Botao intencao="destrutiva" type="button" data-remover onClick={() => {
+                  setErro(null);
+                  setConfirmandoRemocao(true);
+                }}>
+                  <Trash2 aria-hidden="true" focusable="false" />
+                  Remover do catálogo
+                </Botao>
+              )}
             </header>
 
             <p data-validacao className="m-0 grid gap-1 rounded-grande border border-borda bg-superficie p-4">

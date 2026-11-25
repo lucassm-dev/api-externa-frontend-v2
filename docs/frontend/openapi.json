@@ -1,0 +1,2442 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API — Simulação de Carteira de Ações",
+    "description": "Carteiras hipotéticas de ações: cadastro de corretoras validadas na CVM, catálogo de ações com cotação de fonte externa, compra e venda a preço de mercado e consolidação em BRL.\n\nFaça login em POST /auth/login, copie o campo \"token\" da resposta e cole em Authorize — sem ele, todo endpoint fora de /auth/** responde 401 (AUT-005).",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "API local (docker compose)"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/operacoes/{id}": {
+      "put": {
+        "tags": [
+          "operacao-resource"
+        ],
+        "operationId": "editar",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OperacaoEditarDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperacaoResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "operacao-resource"
+        ],
+        "operationId": "excluir",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/auth/senha": {
+      "put": {
+        "tags": [
+          "auth-resource"
+        ],
+        "operationId": "trocarSenha",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrocarSenhaRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthTokenResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/me/foto": {
+      "get": {
+        "tags": [
+          "auth-resource"
+        ],
+        "operationId": "foto",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "byte"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "auth-resource"
+        ],
+        "operationId": "enviarFoto",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "arquivo"
+                ],
+                "type": "object",
+                "properties": {
+                  "arquivo": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "auth-resource"
+        ],
+        "operationId": "removerFoto",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/acoes/{id}/atualizar-cotacao": {
+      "put": {
+        "tags": [
+          "acao-resource"
+        ],
+        "operationId": "atualizarCotacao",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "forcar",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AcaoResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/operacoes/venda": {
+      "post": {
+        "tags": [
+          "operacao-resource"
+        ],
+        "operationId": "vender",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OperacaoRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperacaoResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/operacoes/compra": {
+      "post": {
+        "tags": [
+          "operacao-resource"
+        ],
+        "operationId": "comprar",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OperacaoRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperacaoResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/corretoras": {
+      "get": {
+        "tags": [
+          "corretora-resource"
+        ],
+        "operationId": "listar_1",
+        "parameters": [
+          {
+            "name": "pageable",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Pageable"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageCorretoraResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "corretora-resource"
+        ],
+        "operationId": "cadastrar",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CorretoraRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorretoraResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/carteiras": {
+      "get": {
+        "tags": [
+          "carteira-resource"
+        ],
+        "operationId": "listar_2",
+        "parameters": [
+          {
+            "name": "pageable",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Pageable"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageCarteiraResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "carteira-resource"
+        ],
+        "operationId": "criar",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarteiraRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarteiraResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/redefinir-senha": {
+      "post": {
+        "tags": [
+          "auth-resource"
+        ],
+        "operationId": "redefinirSenha",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedefinirSenhaRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "auth-resource"
+        ],
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthLoginRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthTokenResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/esqueci-senha": {
+      "post": {
+        "tags": [
+          "auth-resource"
+        ],
+        "operationId": "esqueciSenha",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EsqueciSenhaRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/auth/email": {
+      "post": {
+        "tags": [
+          "auth-resource"
+        ],
+        "operationId": "pedirTrocaEmail",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PedirTrocaEmailRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/auth/email/confirmar": {
+      "post": {
+        "tags": [
+          "auth-resource"
+        ],
+        "operationId": "confirmarTrocaEmail",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfirmarTrocaEmailRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/auth/cadastro": {
+      "post": {
+        "tags": [
+          "auth-resource"
+        ],
+        "operationId": "cadastrar_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthCadastroRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvestidorResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/usuarios": {
+      "get": {
+        "tags": [
+          "usuario-admin-resource"
+        ],
+        "operationId": "listar_3",
+        "parameters": [
+          {
+            "name": "situacao",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ATIVO",
+                "BLOQUEADO",
+                "EXCLUIDO"
+              ]
+            }
+          },
+          {
+            "name": "papel",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "INVESTIDOR",
+                "ADMIN"
+              ]
+            }
+          },
+          {
+            "name": "pageable",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Pageable"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageUsuarioAdminResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "usuario-admin-resource"
+        ],
+        "operationId": "criarAdmin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CriarAdminRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioAdminResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/corretoras/{id}/descontinuar": {
+      "patch": {
+        "tags": [
+          "corretora-resource"
+        ],
+        "operationId": "descontinuar",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DescontinuacaoRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorretoraResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/carteiras/{id}": {
+      "delete": {
+        "tags": [
+          "carteira-resource"
+        ],
+        "operationId": "excluir_3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "carteira-resource"
+        ],
+        "operationId": "renomear",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarteiraRenomearDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarteiraResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/usuarios/{id}/desbloquear": {
+      "patch": {
+        "tags": [
+          "usuario-admin-resource"
+        ],
+        "operationId": "desbloquear",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioAdminResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/usuarios/{id}/bloquear": {
+      "patch": {
+        "tags": [
+          "usuario-admin-resource"
+        ],
+        "operationId": "bloquear",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BloqueioRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioAdminResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/operacoes": {
+      "get": {
+        "tags": [
+          "operacao-resource"
+        ],
+        "operationId": "historico",
+        "parameters": [
+          {
+            "name": "dataInicio",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "dataFim",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "ticker",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "carteiraId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "tipo",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "COMPRA",
+                "VENDA"
+              ]
+            }
+          },
+          {
+            "name": "resultado",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "LUCRO",
+                "PREJUIZO"
+              ]
+            }
+          },
+          {
+            "name": "pageable",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Pageable"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageOperacaoResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mercado/barra-cotacoes": {
+      "get": {
+        "tags": [
+          "mercado-resource"
+        ],
+        "operationId": "barraCotacoes",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BarraCotacoesResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/investidores": {
+      "get": {
+        "tags": [
+          "investidor-resource"
+        ],
+        "operationId": "listar",
+        "parameters": [
+          {
+            "name": "pageable",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Pageable"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageInvestidorResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/investidores/{id}": {
+      "get": {
+        "tags": [
+          "investidor-resource"
+        ],
+        "operationId": "buscarPorId",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvestidorResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "investidor-resource"
+        ],
+        "operationId": "excluir_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/corretoras/{id}": {
+      "get": {
+        "tags": [
+          "corretora-resource"
+        ],
+        "operationId": "buscarPorId_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorretoraResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "corretora-resource"
+        ],
+        "operationId": "excluir_2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/corretoras/{id}/carteiras-afetadas": {
+      "get": {
+        "tags": [
+          "corretora-resource"
+        ],
+        "operationId": "carteirasAfetadas",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarteirasAfetadasResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/corretoras/cnpj/{cnpj}": {
+      "get": {
+        "tags": [
+          "corretora-resource"
+        ],
+        "operationId": "buscarPorCnpj",
+        "parameters": [
+          {
+            "name": "cnpj",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorretoraResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/carteiras/{id}/posicoes": {
+      "get": {
+        "tags": [
+          "operacao-resource"
+        ],
+        "operationId": "posicoes",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CarteiraAcaoResponseDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/carteiras/{id}/lucro-realizado": {
+      "get": {
+        "tags": [
+          "operacao-resource"
+        ],
+        "operationId": "lucroRealizado",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/LucroRealizadoResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/carteiras/{id}/consolidado": {
+      "get": {
+        "tags": [
+          "operacao-resource"
+        ],
+        "operationId": "consolidado",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarteiraConsolidadaResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "tags": [
+          "auth-resource"
+        ],
+        "operationId": "me",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioLogadoResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/usuarios/totais": {
+      "get": {
+        "tags": [
+          "usuario-admin-resource"
+        ],
+        "operationId": "totais",
+        "parameters": [
+          {
+            "name": "papel",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "INVESTIDOR",
+                "ADMIN"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer",
+                    "format": "int64"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/uso": {
+      "get": {
+        "tags": [
+          "relatorio-uso-resource"
+        ],
+        "operationId": "relatorio",
+        "parameters": [
+          {
+            "name": "dataInicio",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "dataFim",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RelatorioUsoResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/acoes": {
+      "get": {
+        "tags": [
+          "acao-resource"
+        ],
+        "operationId": "listar_4",
+        "parameters": [
+          {
+            "name": "pageable",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Pageable"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageAcaoResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/acoes/ticker/{ticker}": {
+      "get": {
+        "tags": [
+          "acao-resource"
+        ],
+        "operationId": "buscarPorTicker",
+        "parameters": [
+          {
+            "name": "ticker",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "mercado",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "BR",
+                "US"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AcaoResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "OperacaoEditarDTO": {
+        "type": "object",
+        "properties": {
+          "quantidade": {
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "precoUnitario": {
+            "type": "number"
+          }
+        }
+      },
+      "OperacaoResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "carteiraId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ticker": {
+            "type": "string"
+          },
+          "tipo": {
+            "type": "string",
+            "enum": [
+              "COMPRA",
+              "VENDA"
+            ]
+          },
+          "quantidade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "precoUnitario": {
+            "type": "number"
+          },
+          "valorTotal": {
+            "type": "number"
+          },
+          "dataHora": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "moeda": {
+            "type": "string"
+          },
+          "avisos": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "precoMedioCompraNoMomento": {
+            "type": "number"
+          },
+          "lucroRealizado": {
+            "type": "number"
+          },
+          "taxaCambioNaOperacao": {
+            "type": "number"
+          }
+        }
+      },
+      "TrocarSenhaRequestDTO": {
+        "required": [
+          "novaSenha",
+          "senhaAtual"
+        ],
+        "type": "object",
+        "properties": {
+          "senhaAtual": {
+            "type": "string"
+          },
+          "novaSenha": {
+            "type": "string"
+          }
+        }
+      },
+      "AuthTokenResponseDTO": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "tipo": {
+            "type": "string"
+          },
+          "expiraEm": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AcaoResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ticker": {
+            "type": "string"
+          },
+          "nomeEmpresa": {
+            "type": "string"
+          },
+          "mercado": {
+            "type": "string",
+            "enum": [
+              "BR",
+              "US"
+            ]
+          },
+          "moeda": {
+            "type": "string"
+          },
+          "cotacaoAtual": {
+            "type": "number"
+          },
+          "dataHoraCotacao": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "OperacaoRequestDTO": {
+        "required": [
+          "carteiraId",
+          "quantidade",
+          "ticker"
+        ],
+        "type": "object",
+        "properties": {
+          "carteiraId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ticker": {
+            "type": "string"
+          },
+          "quantidade": {
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "precoUnitario": {
+            "type": "number"
+          }
+        }
+      },
+      "CorretoraRequestDTO": {
+        "required": [
+          "cnpj"
+        ],
+        "type": "object",
+        "properties": {
+          "cnpj": {
+            "pattern": "\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2}|\\d{14}",
+            "type": "string"
+          }
+        }
+      },
+      "CorretoraResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "cnpj": {
+            "type": "string"
+          },
+          "razaoSocial": {
+            "type": "string"
+          },
+          "nomeFantasia": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "telefone": {
+            "type": "string"
+          },
+          "cep": {
+            "type": "string"
+          },
+          "logradouro": {
+            "type": "string"
+          },
+          "numero": {
+            "type": "string"
+          },
+          "complemento": {
+            "type": "string"
+          },
+          "bairro": {
+            "type": "string"
+          },
+          "cidade": {
+            "type": "string"
+          },
+          "uf": {
+            "type": "string"
+          },
+          "situacaoCadastral": {
+            "type": "string"
+          },
+          "validadaNaCvm": {
+            "type": "boolean"
+          },
+          "dataBaseCvm": {
+            "type": "string",
+            "format": "date"
+          },
+          "dataCadastro": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "descontinuada": {
+            "type": "boolean"
+          }
+        }
+      },
+      "CarteiraRequestDTO": {
+        "required": [
+          "corretoraId",
+          "mercado",
+          "nome"
+        ],
+        "type": "object",
+        "properties": {
+          "corretoraId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "mercado": {
+            "type": "string",
+            "enum": [
+              "BR",
+              "US"
+            ]
+          },
+          "nome": {
+            "type": "string"
+          }
+        }
+      },
+      "CarteiraResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "investidorId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "corretoraId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nomeCorretora": {
+            "type": "string"
+          },
+          "mercado": {
+            "type": "string",
+            "enum": [
+              "BR",
+              "US"
+            ]
+          },
+          "moeda": {
+            "type": "string"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "ativa": {
+            "type": "boolean"
+          },
+          "corretoraDescontinuada": {
+            "type": "boolean"
+          }
+        }
+      },
+      "RedefinirSenhaRequestDTO": {
+        "required": [
+          "codigo",
+          "email",
+          "novaSenha"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "codigo": {
+            "type": "string"
+          },
+          "novaSenha": {
+            "type": "string"
+          }
+        }
+      },
+      "AuthLoginRequestDTO": {
+        "required": [
+          "email",
+          "senha"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "senha": {
+            "type": "string"
+          }
+        }
+      },
+      "EsqueciSenhaRequestDTO": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "PedirTrocaEmailRequestDTO": {
+        "required": [
+          "novoEmail",
+          "senhaAtual"
+        ],
+        "type": "object",
+        "properties": {
+          "novoEmail": {
+            "type": "string"
+          },
+          "senhaAtual": {
+            "type": "string"
+          }
+        }
+      },
+      "ConfirmarTrocaEmailRequestDTO": {
+        "required": [
+          "codigo"
+        ],
+        "type": "object",
+        "properties": {
+          "codigo": {
+            "type": "string"
+          }
+        }
+      },
+      "AuthCadastroRequestDTO": {
+        "required": [
+          "cpf",
+          "email",
+          "nome",
+          "senha"
+        ],
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "cpf": {
+            "pattern": "\\d{11}",
+            "type": "string"
+          },
+          "senha": {
+            "type": "string"
+          }
+        }
+      },
+      "InvestidorResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "CriarAdminRequestDTO": {
+        "required": [
+          "email",
+          "senha"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "senha": {
+            "type": "string"
+          }
+        }
+      },
+      "UsuarioAdminResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "email": {
+            "type": "string"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "papel": {
+            "type": "string",
+            "enum": [
+              "INVESTIDOR",
+              "ADMIN"
+            ]
+          },
+          "situacao": {
+            "type": "string",
+            "enum": [
+              "ATIVO",
+              "BLOQUEADO",
+              "EXCLUIDO"
+            ]
+          },
+          "motivoBloqueio": {
+            "type": "string"
+          },
+          "carteirasAtivas": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "temPosicaoAberta": {
+            "type": "boolean"
+          }
+        }
+      },
+      "DescontinuacaoRequestDTO": {
+        "required": [
+          "motivo"
+        ],
+        "type": "object",
+        "properties": {
+          "motivo": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          }
+        }
+      },
+      "CarteiraRenomearDTO": {
+        "required": [
+          "nome"
+        ],
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          }
+        }
+      },
+      "BloqueioRequestDTO": {
+        "required": [
+          "motivo"
+        ],
+        "type": "object",
+        "properties": {
+          "motivo": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          }
+        }
+      },
+      "Pageable": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "minimum": 0,
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "PageOperacaoResponseDTO": {
+        "type": "object",
+        "properties": {
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OperacaoResponseDTO"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SortObject"
+            }
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PageableObject": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sort": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SortObject"
+            }
+          },
+          "paged": {
+            "type": "boolean"
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unpaged": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SortObject": {
+        "type": "object",
+        "properties": {
+          "direction": {
+            "type": "string"
+          },
+          "nullHandling": {
+            "type": "string"
+          },
+          "ascending": {
+            "type": "boolean"
+          },
+          "property": {
+            "type": "string"
+          },
+          "ignoreCase": {
+            "type": "boolean"
+          }
+        }
+      },
+      "BarraCotacoesResponseDTO": {
+        "type": "object",
+        "properties": {
+          "itens": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItemBarraCotacoesDTO"
+            }
+          },
+          "atualizadoEm": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "avisos": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ItemBarraCotacoesDTO": {
+        "type": "object",
+        "properties": {
+          "simbolo": {
+            "type": "string"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "preco": {
+            "type": "number"
+          },
+          "variacaoPercentual": {
+            "type": "number"
+          },
+          "logoUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "PageInvestidorResponseDTO": {
+        "type": "object",
+        "properties": {
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InvestidorResponseDTO"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SortObject"
+            }
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PageCorretoraResponseDTO": {
+        "type": "object",
+        "properties": {
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CorretoraResponseDTO"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SortObject"
+            }
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "CarteirasAfetadasResponseDTO": {
+        "type": "object",
+        "properties": {
+          "carteirasAtivas": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "PageCarteiraResponseDTO": {
+        "type": "object",
+        "properties": {
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarteiraResponseDTO"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SortObject"
+            }
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "CarteiraAcaoResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ticker": {
+            "type": "string"
+          },
+          "nomeEmpresa": {
+            "type": "string"
+          },
+          "quantidade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "precoMedio": {
+            "type": "number"
+          },
+          "cotacaoAtual": {
+            "type": "number"
+          },
+          "dataHoraCotacao": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "rentabilidadeNaoRealizada": {
+            "type": "number"
+          }
+        }
+      },
+      "LucroRealizadoResponseDTO": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "number"
+          },
+          "porTicker": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "CarteiraConsolidadaResponseDTO": {
+        "type": "object",
+        "properties": {
+          "valorInvestido": {
+            "type": "number"
+          },
+          "valorDeMercado": {
+            "type": "number"
+          },
+          "lucroNaoRealizado": {
+            "type": "number"
+          },
+          "taxaCambioAtual": {
+            "type": "number"
+          },
+          "dataHoraTaxaCambio": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "avisos": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "UsuarioLogadoResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "papel": {
+            "type": "string",
+            "enum": [
+              "INVESTIDOR",
+              "ADMIN"
+            ]
+          },
+          "fotoUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "PageUsuarioAdminResponseDTO": {
+        "type": "object",
+        "properties": {
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UsuarioAdminResponseDTO"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SortObject"
+            }
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Pico": {
+        "type": "object",
+        "properties": {
+          "hora": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "requisicoes": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "RelatorioUsoResponseDTO": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "picos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Pico"
+            }
+          },
+          "usuarios": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UsuarioUso"
+            }
+          }
+        }
+      },
+      "UsuarioUso": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "email": {
+            "type": "string"
+          },
+          "requisicoes": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "PageAcaoResponseDTO": {
+        "type": "object",
+        "properties": {
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AcaoResponseDTO"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SortObject"
+            }
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "description": "Token devolvido por POST /auth/login. Cole só o token, sem o prefixo Bearer.",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

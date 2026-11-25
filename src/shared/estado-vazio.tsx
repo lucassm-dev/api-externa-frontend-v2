@@ -5,8 +5,9 @@ import { Botao } from '@/components/ui/botao';
 interface Props {
   titulo: string;
   descricao: string;
-  rotuloAcao: string;
-  aoAcionar: () => void;
+  /** Sem ação quando o próximo passo não é de quem está vendo (corretora para o investidor). */
+  rotuloAcao?: string;
+  aoAcionar?: () => void;
 }
 
 /** Tela vazia é feature: explica a ausência e conduz ao próximo passo (AC-223). */
@@ -31,10 +32,12 @@ export function EstadoVazio({ titulo, descricao, rotuloAcao, aoAcionar }: Props)
       <p data-descricao className="m-0 max-w-[52ch] text-texto-fraco">
         {descricao}
       </p>
-      <Botao intencao="primaria" type="button" data-proximo-passo onClick={aoAcionar} className="mt-3">
-        <span>{rotuloAcao}</span>
-        <ArrowRight aria-hidden="true" focusable="false" />
-      </Botao>
+      {rotuloAcao && aoAcionar && (
+        <Botao intencao="primaria" type="button" data-proximo-passo onClick={aoAcionar} className="mt-3">
+          <span>{rotuloAcao}</span>
+          <ArrowRight aria-hidden="true" focusable="false" />
+        </Botao>
+      )}
     </section>
   );
 }
