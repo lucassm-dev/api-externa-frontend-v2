@@ -35,7 +35,7 @@ export function simularServidor(responder: Responder) {
     const chamada: Chamada = {
       metodo: inicio.method ?? 'GET',
       url: String(url),
-      corpo: typeof inicio.body === 'string' ? JSON.parse(inicio.body) : undefined,
+      corpo: typeof inicio.body === 'string' ? JSON.parse(inicio.body) : (inicio.body ?? undefined),
       cabecalhos: new Headers(inicio.headers),
     };
     chamadas.push(chamada);

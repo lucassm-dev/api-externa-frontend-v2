@@ -1,4 +1,4 @@
-import { LogOut, Menu, Moon, Sun } from 'lucide-react';
+import { CircleUserRound, LogOut, Menu, Moon, Sun } from 'lucide-react';
 import { useEffect, useState, useSyncExternalStore, type KeyboardEvent } from 'react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router';
 import { Botao } from '@/components/ui/botao';
@@ -7,6 +7,8 @@ import { MensagemFeedback } from '@/core/feedback/mensagem-feedback';
 import { MINUTOS_AVISO_EXPIRACAO, ROTA_LOGIN } from '@/core/sessao/sessao.model';
 import { sessao } from '@/core/sessao/sessao.service';
 import { temaService } from '@/core/tema/tema.service';
+import { ROTA_CONTA } from '@/features/conta/conta';
+import { FotoDePerfil } from '@/features/conta/foto-de-perfil';
 import { cn } from '@/lib/utils';
 import { AREAS_DO_PRODUTO } from './areas';
 
@@ -14,12 +16,6 @@ const INTERVALO_DE_CHECAGEM_MS = 30_000;
 
 /** Abaixo disto a navegação some atrás do botão de menu (AC-271). */
 const CONSULTA_TELA_ESTREITA = '(max-width: 47.99em)';
-
-function iniciaisDoEmail(email: string | null | undefined): string {
-  const [parteLocal = '', dominio = ''] = (email ?? '').trim().split('@');
-  const iniciais = `${parteLocal.charAt(0)}${dominio.charAt(0)}`.toLocaleUpperCase('pt-BR');
-  return iniciais || 'IN';
-}
 
 function consultaEstreita(): MediaQueryList | null {
   return typeof window.matchMedia === 'function' ? window.matchMedia(CONSULTA_TELA_ESTREITA) : null;
@@ -150,14 +146,14 @@ export function Casca() {
                 {nome ?? email}
               </span>
             </span>
-            <span
-              data-avatar-investidor
-              aria-hidden="true"
-              className="grid size-10 flex-none place-items-center rounded-pilula bg-destaque text-apoio font-extrabold tracking-(--entrelinha-rotulo) text-destaque-texto"
-            >
-              {iniciaisDoEmail(email)}
-            </span>
+            <FotoDePerfil data-avatar-investidor />
           </div>
+
+          <span data-minha-conta className="contents">
+            <BotaoIcone rotulo="Minha conta" aoPressionar={() => navegar(ROTA_CONTA)}>
+              <CircleUserRound aria-hidden="true" focusable="false" />
+            </BotaoIcone>
+          </span>
 
           <span data-alternar-tema data-tema-atual={tema} className="contents">
             <BotaoIcone rotulo={rotuloTema} aoPressionar={() => temaService.alternar()}>

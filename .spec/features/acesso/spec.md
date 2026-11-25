@@ -112,7 +112,7 @@ Como investidor cadastrado, quero entrar com e-mail e senha, para acessar minhas
 - **Quando** o investidor tenta enviar de novo
 - **Então** o botão está indisponível e nenhuma segunda requisição sai
 
-#### AC-038 — A tela de login não oferece recuperação de senha
+#### ~~AC-038~~ — A tela de login não oferece recuperação de senha (superado por conta, AC-329)
 
 - **Dado** a tela de login
 - **Quando** o investidor procura por "esqueci minha senha"

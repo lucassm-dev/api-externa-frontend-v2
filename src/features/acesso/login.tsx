@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { useNavigate, useSearchParams } from 'react-router';
+import { Link, useNavigate, useSearchParams } from 'react-router';
 import { Botao } from '@/components/ui/botao';
 import { Campo } from '@/components/ui/campo';
 import { CATALOGO_ERROS } from '@/core/erros/catalogo-erros';
@@ -11,7 +11,7 @@ import { sessao } from '@/core/sessao/sessao.service';
 import { useFormulario, type Erros } from '@/lib/formulario';
 import { VisibilidadeSenha } from '@/shared/visibilidade-senha';
 import { acesso } from './acesso';
-import { ROTA_AREA_INTERNA, ROTA_CADASTRO } from './acesso.model';
+import { ROTA_AREA_INTERNA, ROTA_CADASTRO, ROTA_ESQUECI_SENHA } from './acesso.model';
 import { CartaoAcesso, MensagemDoEnvio, type MensagemDaTela } from './cartao-acesso';
 import { MolduraAcesso } from './moldura-acesso';
 import { emailValido } from './validadores';
@@ -40,6 +40,7 @@ export function Login() {
 
   // Confirmação de conta criada, vinda do cadastro.
   const contaCriada = parametros.get('contaCriada') === '1';
+  const senhaRedefinida = parametros.get('senhaRedefinida') === '1';
   // Motivo do retorno ao login: o texto vem do catálogo pelo código, nunca do servidor.
   const motivo = parametros.get('motivo');
   const motivoDeSaida = motivo ? (CATALOGO_ERROS[motivo]?.mensagem ?? null) : null;
@@ -77,6 +78,7 @@ export function Login() {
         avisos={
           <>
             {contaCriada && <MensagemFeedback nivel="informacao" mensagem="Conta criada. Entre para começar." />}
+            {senhaRedefinida && <MensagemFeedback nivel="sucesso" mensagem="Senha redefinida. Entre com a senha nova." />}
             {motivoDeSaida && <MensagemFeedback nivel="aviso" mensagem={motivoDeSaida} />}
             <MensagemDoEnvio mensagem={mensagem} />
           </>
@@ -105,6 +107,12 @@ export function Login() {
             erro={formulario.erroDe('senha')}
             sufixo={<VisibilidadeSenha visivel={senhaVisivel} aoAlternar={setSenhaVisivel} campo="senha" />}
           />
+          <Link
+            to={`${ROTA_ESQUECI_SENHA}?${new URLSearchParams({ email: formulario.valores.email })}`}
+            className="justify-self-end text-apoio"
+          >
+            Esqueci a senha
+          </Link>
           <Botao intencao="primaria" type="submit" ocupado={enviando} className="mt-2 w-full">
             Entrar
           </Botao>

@@ -4,7 +4,8 @@ import { readFileSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 
 // 475/142 desde identidade-papel (Q-046): o catálogo completo de erros passou 0,79 kB do teto sem folga.
-const TETO = { bruto: 475_000, gzip: 142_000 };
+// 477/143 desde conta (Q-048): foto no avatar e botão Minha conta na casca.
+const TETO = { bruto: 477_000, gzip: 143_000 };
 
 const html = readFileSync('dist/index.html', 'utf8');
 const arquivos = [...html.matchAll(/(?:src|href)="\/(assets\/[^"]+\.(?:js|css))"/g)].map(([, caminho]) =>

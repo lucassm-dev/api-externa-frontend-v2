@@ -24,3 +24,13 @@ export const ROTA_AREA_INTERNA = '/painel';
 
 /** Endereço do cadastro, alcançável em um clique a partir do login. */
 export const ROTA_CADASTRO = '/criar-conta';
+
+/** Recuperação da senha esquecida, alcançável pelo login (AC-329). */
+export const ROTA_ESQUECI_SENHA = '/esqueci-senha';
+
+/** Corpo de POST /auth/redefinir-senha. */
+export interface RedefinirSenhaRequisicao {
+  email: string;
+  codigo: string;
+  novaSenha: string;
+}

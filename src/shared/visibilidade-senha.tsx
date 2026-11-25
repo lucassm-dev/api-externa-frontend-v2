@@ -1,4 +1,6 @@
 import { Eye, EyeOff } from 'lucide-react';
+import { useState } from 'react';
+import { Campo } from '@/components/ui/campo';
 
 interface Props {
   /**
@@ -39,5 +41,17 @@ export function VisibilidadeSenha({ visivel, aoAlternar, campo = 'senha' }: Prop
         <Eye data-icone="revela" aria-hidden="true" focusable="false" className="size-4.5" />
       )}
     </button>
+  );
+}
+
+/** Cada campo de senha com o seu olho: revelar um não revela o outro (AC-297). */
+export function CampoSenha(props: Omit<Parameters<typeof Campo>[0], 'type' | 'sufixo'>) {
+  const [visivel, setVisivel] = useState(false);
+  return (
+    <Campo
+      {...props}
+      type={visivel ? 'text' : 'password'}
+      sufixo={<VisibilidadeSenha visivel={visivel} aoAlternar={setVisivel} campo={props.rotulo.toLocaleLowerCase('pt-BR')} />}
+    />
   );
 }

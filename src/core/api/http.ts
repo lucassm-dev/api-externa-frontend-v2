@@ -10,6 +10,8 @@ export interface Opcoes {
   corpo?: unknown;
   /** Cancela a leitura quando a tela sai ou a escolha muda. */
   sinal?: AbortSignal;
+  /** A foto de perfil chega em bytes, não em JSON. */
+  comoBlob?: boolean;
 }
 
 function endereco(url: string, params?: Parametros): string {
@@ -40,14 +42,16 @@ export async function requisitar<T>(metodo: string, url: string, opcoes: Opcoes 
   if (token) cabecalhos.set('Authorization', `Bearer ${token}`);
   // Como o HttpClient: corpo null (o PUT de atualizar cotação) não vira "null" no fio.
   const temCorpo = opcoes.corpo !== undefined && opcoes.corpo !== null;
-  if (temCorpo) cabecalhos.set('Content-Type', 'application/json');
+  // FormData sem Content-Type: o navegador põe o multipart com o boundary.
+  const ehFormulario = opcoes.corpo instanceof FormData;
+  if (temCorpo && !ehFormulario) cabecalhos.set('Content-Type', 'application/json');
 
   let resposta: Response;
   try {
     resposta = await fetch(endereco(url, opcoes.params), {
       method: metodo,
       headers: cabecalhos,
-      body: temCorpo ? JSON.stringify(opcoes.corpo) : undefined,
+      body: ehFormulario ? (opcoes.corpo as FormData) : temCorpo ? JSON.stringify(opcoes.corpo) : undefined,
       signal: opcoes.sinal,
     });
   } catch (erro) {
@@ -55,6 +59,7 @@ export async function requisitar<T>(metodo: string, url: string, opcoes: Opcoes 
     throw traduzirErro({ status: 0, error: erro, url });
   }
 
+  if (resposta.ok && opcoes.comoBlob) return (await resposta.blob()) as T;
   const corpo = await lerCorpo(resposta);
   if (resposta.ok) return corpo as T;
 
@@ -68,6 +73,7 @@ export async function requisitar<T>(metodo: string, url: string, opcoes: Opcoes 
 
 export const http = {
   get: <T>(url: string, opcoes?: Omit<Opcoes, 'corpo'>) => requisitar<T>('GET', url, opcoes),
+  blob: (url: string, sinal?: AbortSignal) => requisitar<Blob>('GET', url, { sinal, comoBlob: true }),
   post: <T>(url: string, corpo?: unknown, opcoes?: Omit<Opcoes, 'corpo'>) =>
     requisitar<T>('POST', url, { ...opcoes, corpo }),
   patch: <T>(url: string, corpo?: unknown, opcoes?: Omit<Opcoes, 'corpo'>) =>
