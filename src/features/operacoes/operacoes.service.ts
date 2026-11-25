@@ -1,4 +1,4 @@
-import { http } from '@/core/api/http';
+import { http, Parametros } from '@/core/api/http';
 import { Pagina } from '@/core/api/pagina';
 import { AlteracaoDeOperacao, NovaOperacao, OPERACOES_POR_PAGINA, Operacao, OperacaoDoExtrato, TipoOperacao } from './operacoes.model';
 
@@ -13,13 +13,9 @@ export const operacoesService = {
     return http.post<Operacao>(rota, nova);
   },
 
-  /**
-   * `GET /operacoes` é global e não aceita filtro por carteira, ticker, tipo
-   * nem período (ADR-010). Só `page` e `size` saem daqui — qualquer parâmetro a
-   * mais seria um filtro que o servidor ignora e a tela promete.
-   */
-  extrato(pagina: number): Promise<Pagina<OperacaoDoExtrato>> {
-    return http.get<Pagina<OperacaoDoExtrato>>('/operacoes', { params: { page: pagina, size: OPERACOES_POR_PAGINA } });
+  /** Os filtros são aplicados no servidor, antes da paginação (ADR-018 do backend, AC-340). */
+  extrato(pagina: number, filtros: Parametros = {}): Promise<Pagina<OperacaoDoExtrato>> {
+    return http.get<Pagina<OperacaoDoExtrato>>('/operacoes', { params: { ...filtros, page: pagina, size: OPERACOES_POR_PAGINA } });
   },
 
   /** Editar sem preço reutiliza a última cotação conhecida — omitir é a instrução. */

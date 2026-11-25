@@ -1,5 +1,5 @@
 import { Pencil, Trash2 } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, type ReactNode } from 'react';
 import { BotaoIcone } from '@/components/ui/botao-icone';
 import { DialogoConfirmacao } from '@/components/ui/dialogo-confirmacao';
 import { Esqueleto } from '@/components/ui/esqueleto';
@@ -16,6 +16,12 @@ import { OPERACOES_POR_PAGINA, OperacaoDoExtrato } from './operacoes.model';
 export const AVISO_DE_RECALCULO = 'Excluir esta operação vai recalcular a posição e o resultado da carteira. Não há como desfazer.';
 
 interface Props {
+  /** A barra de filtros; o estado dela mora na página (na busca do endereço). */
+  filtros?: ReactNode;
+  /** Presente quando há filtro aplicado: a tela conta o recorte e oferece limpar (AC-344). */
+  recorte?: { aoLimpar: () => void } | null;
+  /** `totalElements` do servidor: o total do recorte, não só da página. */
+  totalDeItens?: number;
   operacoes: OperacaoDoExtrato[];
   carteiras?: Carteira[];
   pagina?: number;
@@ -45,15 +51,16 @@ function varianteDoResultado(lucro: number): VarianteSelo {
  * Data e hora, carteira, tipo, ticker, quantidade, preço unitário, valor total
  * e moeda, do mais recente para o mais antigo, paginado (PRD-007).
  *
- * **Sem filtros.** O backend não aceita filtro por carteira, ticker, tipo nem
- * período, e filtrar só a página carregada mentiria: o investidor filtraria por
- * um ticker, não acharia a operação que sabe existir, e concluiria que o
- * sistema perdeu o lançamento (ADR-010). Nenhum controle de filtro existe aqui.
+ * Os filtros são do servidor (ADR-018 do backend): nada aqui filtra a página
+ * carregada, que mentiria sobre o que existe.
  *
  * A ordenação vale só sobre a página já carregada — nunca busca de novo nem
  * troca de página (AC-243, ADR-010).
  */
 export function ExtratoOperacoes({
+  filtros,
+  recorte = null,
+  totalDeItens = 0,
   operacoes,
   carteiras = SEM_CARTEIRAS,
   pagina = 0,
@@ -99,23 +106,32 @@ export function ExtratoOperacoes({
     />
   );
 
-  /**
-   * O total real de itens não chega do backend nesta tela; a última página
-   * fecha a conta pelo que carregou e as demais assumem página cheia. Basta
-   * para o rodapé anunciar a faixa exibida (AC-249).
-   */
-  const ultima = totalDePaginas - 1;
-  const totalDeItens = pagina >= ultima ? ultima * OPERACOES_POR_PAGINA + operacoes.length : totalDePaginas * OPERACOES_POR_PAGINA;
-
   return (
     <section data-extrato aria-labelledby="titulo-extrato" className="grid gap-4">
       <h2 id="titulo-extrato" className="m-0 text-medio font-semibold tracking-(--entrelinha-titulo)">
         Extrato de movimentações
       </h2>
 
+      {filtros}
+
+      {recorte && !carregando && operacoes.length > 0 && (
+        <p data-contagem-recorte className="m-0 text-apoio text-texto-fraco" aria-live="polite">
+          {totalDeItens === 1 ? '1 operação neste recorte' : `${formatarNumero(totalDeItens, 0)} operações neste recorte`}
+        </p>
+      )}
+
       {carregando ? (
         <div data-extrato-carregando>
           <Esqueleto formato="tabela" />
+        </div>
+      ) : operacoes.length === 0 && recorte ? (
+        <div data-extrato-vazio-recorte>
+          <EstadoVazio
+            titulo="Nenhuma operação neste recorte"
+            descricao="Mude os filtros ou limpe todos para ver o extrato completo."
+            rotuloAcao="Limpar filtros"
+            aoAcionar={recorte.aoLimpar}
+          />
         </div>
       ) : operacoes.length === 0 ? (
         <div data-extrato-vazio>
