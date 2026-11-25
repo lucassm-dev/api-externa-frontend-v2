@@ -1,0 +1,409 @@
+{
+  "version": 1,
+  "large": false,
+  "domains": [],
+  "decisions": [
+    {
+      "conflictId": "impacto:acesso",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended) / AC-038: Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026",
+      "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
+      "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
+      "conflictFingerprint": "86d72535cafe95332bd9e798af7a00d7c62d7742dfc78eb545ef7751c4858bc7",
+      "answeredAt": "2026-11-25T03:28:26.389Z"
+    },
+    {
+      "conflictId": "impacto:acoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended) / AC-038: Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026",
+      "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
+      "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
+      "conflictFingerprint": "936df01b2558a01aa5372d1e6002acb43029bbfc6bea0e0608e09b25c8f86d74",
+      "answeredAt": "2026-11-25T03:28:26.775Z"
+    },
+    {
+      "conflictId": "impacto:cabecalho-identidade-acoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended) / AC-038: Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026",
+      "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
+      "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
+      "conflictFingerprint": "80f9b88e522d35d6e7649da77c61e652053188db8525ee89b0278fbcc6e224ef",
+      "answeredAt": "2026-11-25T03:28:27.170Z"
+    },
+    {
+      "conflictId": "impacto:confirmacao-senha-cadastro",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended) / AC-038: Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026",
+      "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
+      "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
+      "conflictFingerprint": "27f432fba898f326af9ecd0a35e7e2b778d3f521167ba378651fa368e6cf4594",
+      "answeredAt": "2026-11-25T03:28:27.557Z"
+    },
+    {
+      "conflictId": "impacto:desempenho",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended) / AC-038: Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026",
+      "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
+      "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
+      "conflictFingerprint": "78205e89f2197c243cffdc9b4c75d3f7b0a4c0ecc3d8668454447e829344bf3f",
+      "answeredAt": "2026-11-25T03:28:27.961Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended) / AC-038: Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026",
+      "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
+      "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
+      "conflictFingerprint": "7865094cb5868d8e48f17ab02a743a18878a3d3f634f2f975e0d7bda925fa373",
+      "answeredAt": "2026-11-25T03:28:28.352Z"
+    },
+    {
+      "conflictId": "impacto:identidade-papel",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended) / AC-038: Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026",
+      "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
+      "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
+      "conflictFingerprint": "20cacf4ea0134df5882aab611dcbc380a32f43a61ee5e938a78c80788ec3d1b5",
+      "answeredAt": "2026-11-25T03:28:28.734Z"
+    },
+    {
+      "conflictId": "impacto:migracao-react",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended) / AC-038: Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026",
+      "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
+      "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
+      "conflictFingerprint": "bf24209963601b0f77c1ec11d68d3feb7b03bed2951656438e767dfc333789eb",
+      "answeredAt": "2026-11-25T03:28:29.133Z"
+    },
+    {
+      "conflictId": "impacto:operacoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended) / AC-038: Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026",
+      "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
+      "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
+      "conflictFingerprint": "f20723efd4addb63ab4f9691195040004e645fed3146e378042411f55609ed38",
+      "answeredAt": "2026-11-25T03:28:29.541Z"
+    },
+    {
+      "conflictId": "impacto:painel",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended) / AC-038: Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026",
+      "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
+      "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
+      "conflictFingerprint": "96adf8b2b15a15c8f02124acb525c73bdcfd83f69cbe646e004a9ecb76df0bf9",
+      "answeredAt": "2026-11-25T03:28:29.946Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-acesso",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended) / AC-038: Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026",
+      "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
+      "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
+      "conflictFingerprint": "50b19ec971eb6a662b5a75d8ea3f9a20fccc35b76b69911f52a4e005e471eb82",
+      "answeredAt": "2026-11-25T03:28:30.335Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended) / AC-038: Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026",
+      "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
+      "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
+      "conflictFingerprint": "a1d0e5cfdc7f4de76ecbb91897f7beacf11bc3c4a15d27802f77cd8fb5e1fb59",
+      "answeredAt": "2026-11-25T03:28:30.719Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-visual",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended) / AC-038: Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026",
+      "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
+      "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
+      "conflictFingerprint": "117e57f7360adaf6288e8b3a08bab8caf861549b579ff52f355ba0e536bfa56e",
+      "answeredAt": "2026-11-25T03:28:31.103Z"
+    },
+    {
+      "conflictId": "impacto:visibilidade-da-senha",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended) / AC-038: Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026",
+      "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
+      "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
+      "conflictFingerprint": "1b12f29c661f8a900caa9d7f73b989416f961a3269365cf492fc70c49ee0dec6",
+      "answeredAt": "2026-11-25T03:28:31.482Z"
+    },
+    {
+      "conflictId": "acesso-ac-038",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended) / AC-038: Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026",
+      "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
+      "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
+      "conflictFingerprint": "6ab5d9722d8fcfc6cff0479beb93db0a852d57c1fcdbb7e6c58c1115cdcfa38f",
+      "answeredAt": "2026-11-25T03:28:31.877Z"
+    }
+  ],
+  "clientRequest": "",
+  "review": {
+    "summary": "Lidas as specs de acesso, cabecalho-identidade-acoes (AC-285 a AC-287), confirmacao-senha-cadastro, visibilidade-da-senha e identidade-papel. A feature conta só acrescenta: rota pública /esqueci-senha com o loader visitante, página /conta, botão de ícone 'Minha conta' ao lado de tema e sair (sem menu suspenso, AC-287 preservado), e foto no avatar sem tirar as iniciais do e-mail quando não há foto (AC-285 preservado). Política de senha e confirmação reaproveitam validadores do cadastro. Os 14 impactos do motor vêm de arquivos compartilhados (rotas.tsx, casca.tsx, sessao.service.ts), sem mudar regra existente. Conflito real encontrado ao rodar a suíte: acesso AC-038 (login sem recuperação de senha), resolvido pelo Lucas em 25/11/2026 (Q-048): superado pelo AC-329.",
+    "reviewer": "Claude Code (Opus 5.5), sessão de 24/11/2026",
+    "conflicts": [
+      {
+        "id": "impacto:acesso",
+        "automatic": true,
+        "feature": "acesso",
+        "summary": "A mudança interfere no domínio da feature acesso.",
+        "files": [
+          "src/core/sessao/sessao.service.ts",
+          "src/features/acesso/acesso.model.ts",
+          "src/features/acesso/acesso.ts",
+          "src/features/acesso/login.spec.tsx",
+          "src/features/acesso/login.tsx",
+          "src/layout/casca.tsx",
+          "src/rotas.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/acesso/spec.md"
+      },
+      {
+        "id": "impacto:acoes",
+        "automatic": true,
+        "feature": "acoes",
+        "summary": "A mudança interfere no domínio da feature acoes.",
+        "files": [
+          "src/core/sessao/sessao.service.ts",
+          "src/rotas.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/acoes/spec.md"
+      },
+      {
+        "id": "impacto:cabecalho-identidade-acoes",
+        "automatic": true,
+        "feature": "cabecalho-identidade-acoes",
+        "summary": "A mudança interfere no domínio da feature cabecalho-identidade-acoes.",
+        "files": [
+          "src/core/sessao/sessao.service.ts",
+          "src/layout/casca.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/cabecalho-identidade-acoes/spec.md"
+      },
+      {
+        "id": "impacto:confirmacao-senha-cadastro",
+        "automatic": true,
+        "feature": "confirmacao-senha-cadastro",
+        "summary": "A mudança interfere no domínio da feature confirmacao-senha-cadastro.",
+        "files": [
+          "src/core/sessao/sessao.service.ts",
+          "src/features/acesso/login.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/confirmacao-senha-cadastro/spec.md"
+      },
+      {
+        "id": "impacto:desempenho",
+        "automatic": true,
+        "feature": "desempenho",
+        "summary": "A mudança interfere no domínio da feature desempenho.",
+        "files": [
+          "src/core/sessao/sessao.service.ts",
+          "src/rotas.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/desempenho/spec.md"
+      },
+      {
+        "id": "impacto:fundacao",
+        "automatic": true,
+        "feature": "fundacao",
+        "summary": "A mudança interfere no domínio da feature fundacao.",
+        "files": [
+          "src/core/api/http.ts",
+          "src/core/sessao/sessao.service.ts",
+          "src/rotas.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/fundacao/spec.md"
+      },
+      {
+        "id": "impacto:identidade-papel",
+        "automatic": true,
+        "feature": "identidade-papel",
+        "summary": "A mudança interfere no domínio da feature identidade-papel.",
+        "files": [
+          "scripts/orcamento-bundle.mjs",
+          "src/core/sessao/sessao.service.ts",
+          "src/features/acesso/acesso.ts",
+          "src/features/acesso/login.tsx",
+          "src/layout/casca.tsx",
+          "src/rotas.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/identidade-papel/spec.md"
+      },
+      {
+        "id": "impacto:migracao-react",
+        "automatic": true,
+        "feature": "migracao-react",
+        "summary": "A mudança interfere no domínio da feature migracao-react.",
+        "files": [
+          "scripts/orcamento-bundle.mjs",
+          "src/core/api/http.ts",
+          "src/core/sessao/sessao.service.ts",
+          "src/features/acesso/acesso.model.ts",
+          "src/features/acesso/acesso.ts",
+          "src/features/acesso/login.spec.tsx",
+          "src/features/acesso/login.tsx",
+          "src/layout/casca.tsx",
+          "src/rotas.tsx",
+          "src/test/servidor.ts"
+        ],
+        "domains": [],
+        "rule": ".spec/features/migracao-react/prd.md"
+      },
+      {
+        "id": "impacto:operacoes",
+        "automatic": true,
+        "feature": "operacoes",
+        "summary": "A mudança interfere no domínio da feature operacoes.",
+        "files": [
+          "src/core/sessao/sessao.service.ts",
+          "src/rotas.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/operacoes/spec.md"
+      },
+      {
+        "id": "impacto:painel",
+        "automatic": true,
+        "feature": "painel",
+        "summary": "A mudança interfere no domínio da feature painel.",
+        "files": [
+          "src/core/sessao/sessao.service.ts",
+          "src/layout/casca.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/painel/spec.md"
+      },
+      {
+        "id": "impacto:repaginacao-acesso",
+        "automatic": true,
+        "feature": "repaginacao-acesso",
+        "summary": "A mudança interfere no domínio da feature repaginacao-acesso.",
+        "files": [
+          "src/core/sessao/sessao.service.ts",
+          "src/features/acesso/acesso.model.ts",
+          "src/features/acesso/login.spec.tsx",
+          "src/features/acesso/login.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/repaginacao-acesso/spec.md"
+      },
+      {
+        "id": "impacto:repaginacao-tabelas",
+        "automatic": true,
+        "feature": "repaginacao-tabelas",
+        "summary": "A mudança interfere no domínio da feature repaginacao-tabelas.",
+        "files": [
+          "src/core/sessao/sessao.service.ts",
+          "src/rotas.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/repaginacao-tabelas/spec.md"
+      },
+      {
+        "id": "impacto:repaginacao-visual",
+        "automatic": true,
+        "feature": "repaginacao-visual",
+        "summary": "A mudança interfere no domínio da feature repaginacao-visual.",
+        "files": [
+          "src/core/sessao/sessao.service.ts",
+          "src/layout/casca.tsx",
+          "src/rotas.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/repaginacao-visual/spec.md"
+      },
+      {
+        "id": "impacto:visibilidade-da-senha",
+        "automatic": true,
+        "feature": "visibilidade-da-senha",
+        "summary": "A mudança interfere no domínio da feature visibilidade-da-senha.",
+        "files": [
+          "src/core/sessao/sessao.service.ts",
+          "src/features/acesso/login.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/visibilidade-da-senha/spec.md"
+      },
+      {
+        "id": "acesso-ac-038",
+        "summary": "O link 'Esqueci a senha' no login contradiz o AC-038, que proibia recuperação de senha.",
+        "rule": ".spec/features/acesso/spec.md#ac-038"
+      }
+    ],
+    "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
+    "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
+    "reviewedAt": "2026-11-25T03:28:17.726Z",
+    "documents": [
+      ".spec/features/acesso/spec.md",
+      ".spec/features/acesso/tasks.md",
+      ".spec/features/acoes/spec.md",
+      ".spec/features/acoes/tasks.md",
+      ".spec/features/cabecalho-identidade-acoes/spec.md",
+      ".spec/features/cabecalho-identidade-acoes/tasks.md",
+      ".spec/features/carteiras/spec.md",
+      ".spec/features/carteiras/tasks.md",
+      ".spec/features/confirmacao-senha-cadastro/spec.md",
+      ".spec/features/confirmacao-senha-cadastro/tasks.md",
+      ".spec/features/conta/spec.md",
+      ".spec/features/conta/tasks.md",
+      ".spec/features/corretoras/spec.md",
+      ".spec/features/corretoras/tasks.md",
+      ".spec/features/desempenho/spec.md",
+      ".spec/features/desempenho/tasks.md",
+      ".spec/features/fundacao/spec.md",
+      ".spec/features/fundacao/tasks.md",
+      ".spec/features/fundacao-visual/spec.md",
+      ".spec/features/fundacao-visual/tasks.md",
+      ".spec/features/identidade-papel/spec.md",
+      ".spec/features/identidade-papel/tasks.md",
+      ".spec/features/migracao-react/prd.md",
+      ".spec/features/migracao-react/adr.md",
+      ".spec/features/migracao-react/design.md",
+      ".spec/features/migracao-react/spec.md",
+      ".spec/features/migracao-react/tasks.md",
+      ".spec/features/migracao-react/research.md",
+      ".spec/features/operacoes/spec.md",
+      ".spec/features/operacoes/tasks.md",
+      ".spec/features/painel/spec.md",
+      ".spec/features/painel/tasks.md",
+      ".spec/features/repaginacao-acesso/spec.md",
+      ".spec/features/repaginacao-acesso/tasks.md",
+      ".spec/features/repaginacao-desempenho/spec.md",
+      ".spec/features/repaginacao-desempenho/tasks.md",
+      ".spec/features/repaginacao-painel/spec.md",
+      ".spec/features/repaginacao-painel/tasks.md",
+      ".spec/features/repaginacao-tabelas/spec.md",
+      ".spec/features/repaginacao-tabelas/tasks.md",
+      ".spec/features/repaginacao-visual/spec.md",
+      ".spec/features/repaginacao-visual/tasks.md",
+      ".spec/features/visibilidade-da-senha/spec.md",
+      ".spec/features/visibilidade-da-senha/tasks.md",
+      ".spec/constituicao.md",
+      "onpspec.config.json"
+    ]
+  }
+}

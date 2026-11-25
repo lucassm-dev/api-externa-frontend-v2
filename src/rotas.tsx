@@ -16,7 +16,7 @@ function ErroGeral() {
 }
 
 /**
- * Mesma tabela do app.routes.ts. Sem sessão só existem login e cadastro; tudo
+ * Mesma tabela do app.routes.ts. Sem sessão só existem login, cadastro e esqueci a senha; tudo
  * o que fica sob a casca passa pela guarda e não renderiza sem sessão válida.
  */
 export const rotas: RouteObject[] = [
@@ -37,9 +37,15 @@ export const rotas: RouteObject[] = [
         lazy: async () => ({ Component: (await import('@/features/acesso/cadastro')).Cadastro }),
       },
       {
+        path: 'esqueci-senha',
+        loader: visitante,
+        lazy: async () => ({ Component: (await import('@/features/acesso/esqueci-senha')).EsqueciSenha }),
+      },
+      {
         loader: exigirSessao,
         element: <Casca />,
         children: [
+          { path: 'conta', lazy: async () => ({ Component: (await import('@/features/conta/minha-conta')).Conta }) },
           { path: 'painel', loader: exigirInvestidor, lazy: async () => ({ Component: (await import('@/features/painel/painel')).Painel }) },
           {
             path: 'corretoras',

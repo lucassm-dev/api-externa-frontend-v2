@@ -60,6 +60,10 @@ export class SessaoService {
     return this.sessaoValida()?.identidade?.papel ?? 'INVESTIDOR';
   }
 
+  identidade(): Identidade | null {
+    return this.sessaoValida()?.identidade ?? null;
+  }
+
   token(): string | null {
     return this.sessaoValida()?.token ?? null;
   }
@@ -93,6 +97,14 @@ export class SessaoService {
     }
     this.estado = sessao;
     this.avisar();
+  }
+
+  /** Token novo (troca de senha), e-mail novo ou identidade recarregada, sem recomeçar a sessão. */
+  atualizar(mudanca: Partial<Sessao>): void {
+    const atual = this.sessaoValida();
+    if (!atual) return;
+    const { token, tipo, expiraEm, email, identidade } = { ...atual, ...mudanca };
+    this.iniciar({ token, tipo, expiraEm }, email, identidade);
   }
 
   encerrar(): void {

@@ -1,160 +1,160 @@
 {
   "feature": "carteiras",
-  "timestamp": "2026-11-25T00:01:21.751Z",
-  "gitRev": "4b334d0",
+  "timestamp": "2026-11-25T03:45:58.331Z",
+  "gitRev": "ae7dc19",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 641,
+  "testsParsed": 654,
   "results": {
     "AC-091": {
       "status": "pass",
-      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Criar carteira > @spec:AC-091 o formulário pede nome, corretora e mercado, e nada mais # time=15.18ms",
+      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Criar carteira > @spec:AC-091 o formulário pede nome, corretora e mercado, e nada mais # time=12.35ms",
       "method": "tap"
     },
     "AC-092": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-092 cadastro concluído devolve o investidor à criação de carteira # time=6.98ms",
+      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Criar carteira > @spec:AC-092 catálogo vazio não vira seletor vazio: a tela conduz ao cadastro de corretora # time=7.64ms",
       "method": "tap"
     },
     "AC-093": {
       "status": "pass",
-      "testName": "src/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-093 envia exatamente o mercado escolhido, sem valor padrão embutido # time=3.94ms",
+      "testName": "src/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-093 envia exatamente o mercado escolhido, sem valor padrão embutido # time=6.39ms",
       "method": "tap"
     },
     "AC-094": {
       "status": "pass",
-      "testName": "src/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-094 a criação devolve a carteira com o identificador do servidor # time=0.43ms",
+      "testName": "src/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-094 a criação devolve a carteira com o identificador do servidor # time=1.63ms",
       "method": "tap"
     },
     "AC-095": {
       "status": "pass",
-      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Criar carteira > @spec:AC-095 o mercado é apresentado como moeda de referência, sem restringir a carteira # time=5.60ms",
+      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Criar carteira > @spec:AC-095 o mercado é apresentado como moeda de referência, sem restringir a carteira # time=4.56ms",
       "method": "tap"
     },
     "AC-096": {
       "status": "pass",
-      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Lista de carteiras > @spec:AC-096 cada linha traz nome, corretora, mercado e os números da carteira # time=75.91ms",
+      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Lista de carteiras > @spec:AC-096 cada linha traz nome, corretora, mercado e os números da carteira # time=84.22ms",
       "method": "tap"
     },
     "AC-097": {
       "status": "pass",
-      "testName": "src/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-097 lista pedindo a página ao servidor, da mais recente para a mais antiga # time=0.40ms",
+      "testName": "src/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-097 lista pedindo a página ao servidor, da mais recente para a mais antiga # time=0.92ms",
       "method": "tap"
     },
     "AC-098": {
       "status": "pass",
-      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Lista de carteiras > @spec:AC-098 cada linha oferece abrir, renomear e excluir # time=27.64ms",
+      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Lista de carteiras > @spec:AC-098 cada linha oferece abrir, renomear e excluir # time=15.23ms",
       "method": "tap"
     },
     "AC-099": {
       "status": "pass",
-      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Lista de carteiras > @spec:AC-099 nada na tela sugere carteiras de outros investidores # time=26.07ms",
+      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Lista de carteiras > @spec:AC-099 nada na tela sugere carteiras de outros investidores # time=15.51ms",
       "method": "tap"
     },
     "AC-100": {
       "status": "pass",
-      "testName": "src/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-100 número que falha vira ausência de número, nunca erro propagado # time=1.08ms",
+      "testName": "src/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-100 número que falha vira ausência de número, nunca erro propagado # time=1.16ms",
       "method": "tap"
     },
     "AC-101": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Detalhe da carteira > @spec:AC-101 o cabeçalho traz identificação e os quatro totais # time=69.83ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Detalhe da carteira > @spec:AC-101 o cabeçalho traz identificação e os quatro totais # time=92.40ms",
       "method": "tap"
     },
     "AC-102": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Detalhe da carteira > @spec:AC-102 os totais saem em real, com a taxa de câmbio e o horário dela # time=16.55ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Detalhe da carteira > @spec:AC-102 os totais saem em real, com a taxa de câmbio e o horário dela # time=25.22ms",
       "method": "tap"
     },
     "AC-103": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Detalhe da carteira > @spec:AC-103 realizado e não realizado aparecem separados e nunca somados # time=56.21ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Detalhe da carteira > @spec:AC-103 realizado e não realizado aparecem separados e nunca somados # time=29.56ms",
       "method": "tap"
     },
     "AC-104": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Detalhe da carteira > @spec:AC-104 aviso do consolidado é aviso e não bloqueia os totais # time=22.97ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Detalhe da carteira > @spec:AC-104 aviso do consolidado é aviso e não bloqueia os totais # time=25.51ms",
       "method": "tap"
     },
     "AC-105": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Detalhe da carteira > @spec:AC-105 a tela oferece registrar compra e venda identificando esta carteira # time=25.20ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Detalhe da carteira > @spec:AC-105 a tela oferece registrar compra e venda identificando esta carteira # time=14.14ms",
       "method": "tap"
     },
     "AC-106": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-106 cada posição traz ticker, empresa, quantidade, preço médio e cotação com horário # time=2.26ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-106 cada posição traz ticker, empresa, quantidade, preço médio e cotação com horário # time=3.50ms",
       "method": "tap"
     },
     "AC-107": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-107 a rentabilidade não realizada aparece em valor e em percentual # time=1.72ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-107 a rentabilidade não realizada aparece em valor e em percentual # time=1.90ms",
       "method": "tap"
     },
     "AC-108": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-108 só a cotação com mais de 15 minutos aparece marcada # time=2.44ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-108 só a cotação com mais de 15 minutos aparece marcada # time=5.97ms",
       "method": "tap"
     },
     "AC-109": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-109 a seção \"Encerradas\" lista os tickers com resultado realizado e sem posição aberta # time=17.16ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-109 a seção \"Encerradas\" lista os tickers com resultado realizado e sem posição aberta # time=2.81ms",
       "method": "tap"
     },
     "AC-110": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-110 sem ativo encerrado a seção não aparece # time=1.71ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-110 sem ativo encerrado a seção não aparece # time=1.44ms",
       "method": "tap"
     },
     "AC-111": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-111 a encerrada mostra ticker e resultado, e nada de posição # time=1.52ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-111 a encerrada mostra ticker e resultado, e nada de posição # time=1.31ms",
       "method": "tap"
     },
     "AC-112": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Movimentações da carteira na tela > @spec:AC-112 mostra apenas as operações desta carteira # time=9.25ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Movimentações da carteira na tela > @spec:AC-112 mostra apenas as operações desta carteira # time=2.44ms",
       "method": "tap"
     },
     "AC-113": {
       "status": "pass",
-      "testName": "src/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-113 busca o extrato numa página larga e informa quantas existem no servidor # time=0.38ms",
+      "testName": "src/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-113 busca o extrato numa página larga e informa quantas existem no servidor # time=1.43ms",
       "method": "tap"
     },
     "AC-114": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Movimentações da carteira na tela > @spec:AC-114 extrato que coube inteiro não recebe aviso de recorte # time=20.60ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Movimentações da carteira na tela > @spec:AC-114 extrato que coube inteiro não recebe aviso de recorte # time=7.72ms",
       "method": "tap"
     },
     "AC-115": {
       "status": "pass",
-      "testName": "src/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-115 renomear manda só o nome # time=0.27ms",
+      "testName": "src/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-115 renomear manda só o nome # time=1.56ms",
       "method": "tap"
     },
     "AC-116": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Detalhe da carteira > @spec:AC-116 renomear troca o nome e preserva totais, posições e movimentações # time=39.96ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Detalhe da carteira > @spec:AC-116 renomear troca o nome e preserva totais, posições e movimentações # time=50.07ms",
       "method": "tap"
     },
     "AC-117": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Detalhe da carteira > @spec:AC-117 excluir pede confirmação simples com a consequência descrita # time=81.44ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Detalhe da carteira > @spec:AC-117 excluir pede confirmação simples com a consequência descrita # time=40.00ms",
       "method": "tap"
     },
     "AC-118": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Detalhe da carteira > @spec:AC-118 CAR-002 cancela a exclusão com a mensagem acionável # time=129.47ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Detalhe da carteira > @spec:AC-118 CAR-002 cancela a exclusão com a mensagem acionável # time=113.06ms",
       "method": "tap"
     },
     "AC-119": {
       "status": "pass",
-      "testName": "src/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-119 excluir chama a remoção da carteira # time=0.17ms",
+      "testName": "src/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-119 excluir chama a remoção da carteira # time=0.46ms",
       "method": "tap"
     },
     "AC-120": {
       "status": "pass",
-      "testName": "src/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-120 carteira ausente da listagem é tratada como não encontrada # time=0.30ms",
+      "testName": "src/features/carteiras/carteiras.service.spec.ts > Serviço das carteiras > @spec:AC-120 carteira ausente da listagem é tratada como não encontrada # time=1.20ms",
       "method": "tap"
     }
   },

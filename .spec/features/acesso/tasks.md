@@ -28,7 +28,7 @@
 
 ## T-017 — Tela de login [concluida]
 
-- Refs: AC-035, AC-036, AC-037, AC-038, AC-039, AC-045
+- Refs: AC-035, AC-036, AC-037, AC-039, AC-045
 - Arquivos: src/core/sessao/sessao.guard.ts, src/core/sessao/sessao.model.ts, src/core/sessao/sessao.service.ts, src/features/acesso/acesso.model.ts, src/features/acesso/acesso.spec.ts, src/features/acesso/acesso.ts, src/features/acesso/cadastro.tsx, src/features/acesso/login.spec.tsx, src/features/acesso/login.tsx, src/features/acesso/validadores.ts, src/rotas.spec.tsx, src/rotas.tsx
 - Notas: mensagem genérica em AUT-004, sem link de recuperação de senha, e-mail preenchido quando vem do cadastro, motivo de expiração exibido quando vem de AUT-006.
 

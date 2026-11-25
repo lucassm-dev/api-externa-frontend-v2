@@ -60,12 +60,6 @@ describe('Tela de login', () => {
     servidor.liberar(SESSAO());
   });
 
-  it('@spec:AC-038 a tela de login não oferece recuperação de senha', async () => {
-    const { raiz } = await montarTela('/entrar');
-
-    expect(raiz.innerHTML).not.toMatch(/esqueci|recuperar senha|redefinir senha/i);
-  });
-
   it('@spec:AC-025 quem vem do cadastro chega com o e-mail preenchido e a conta confirmada', async () => {
     const { raiz } = await montarTela('/entrar?email=nova%40exemplo.com&contaCriada=1');
 
