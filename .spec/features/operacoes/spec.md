@@ -187,7 +187,7 @@ Como investidor, quero um extrato de todas as minhas compras e vendas.
 - **Quando** ele avança e volta de página
 - **Então** cada mudança pede a página correspondente ao servidor e a tela mostra em que página está
 
-#### AC-172 — Não existe filtro nenhum no extrato
+#### ~~AC-172~~ — Não existe filtro nenhum no extrato (superado por filtros-extrato, AC-340)
 
 - **Dado** o extrato carregado
 - **Quando** o investidor procura como recortar por carteira, ticker, tipo ou período

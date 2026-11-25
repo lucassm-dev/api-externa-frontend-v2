@@ -1,80 +1,80 @@
 {
   "feature": "identidade-papel",
-  "timestamp": "2026-11-25T03:46:47.182Z",
-  "gitRev": "ae7dc19",
+  "timestamp": "2026-11-25T23:30:49.842Z",
+  "gitRev": "afaeccf",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 654,
+  "testsParsed": 659,
   "results": {
     "AC-311": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Identidade de quem entrou > @spec:AC-311 depois do login o topo mostra o nome e o papel vindos de \"quem sou eu\" # time=306.09ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Identidade de quem entrou > @spec:AC-311 depois do login o topo mostra o nome e o papel vindos de \"quem sou eu\" # time=289.71ms",
       "method": "tap"
     },
     "AC-312": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Identidade de quem entrou > @spec:AC-312 administrador sem nome aparece pelo e-mail, com o papel Administrador # time=56.06ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Identidade de quem entrou > @spec:AC-312 administrador sem nome aparece pelo e-mail, com o papel Administrador # time=96.90ms",
       "method": "tap"
     },
     "AC-313": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Identidade de quem entrou > @spec:AC-313 se \"quem sou eu\" falha, a sessão é encerrada e o login continua na tela # time=17.64ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Identidade de quem entrou > @spec:AC-313 se \"quem sou eu\" falha, a sessão é encerrada e o login continua na tela # time=28.24ms",
       "method": "tap"
     },
     "AC-314": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Menu e rotas pelo papel > @spec:AC-314 administrador entra por Corretoras e o menu oferece só Corretoras e Ações # time=79.81ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Menu e rotas pelo papel > @spec:AC-314 administrador entra por Corretoras e o menu oferece só Corretoras e Ações # time=99.89ms",
       "method": "tap"
     },
     "AC-315": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Menu e rotas pelo papel > @spec:AC-315 rota de investidor aberta pelo administrador leva a Corretoras sem requisitar a área # time=116.52ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Menu e rotas pelo papel > @spec:AC-315 rota de investidor aberta pelo administrador leva a Corretoras sem requisitar a área # time=70.69ms",
       "method": "tap"
     },
     "AC-316": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Menu e rotas pelo papel > @spec:AC-316 o investidor continua com todas as áreas # time=10.92ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Menu e rotas pelo papel > @spec:AC-316 o investidor continua com todas as áreas # time=9.40ms",
       "method": "tap"
     },
     "AC-317": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Corretora pelo papel > @spec:AC-317 investidor não vê cadastrar nem remover, e /corretoras/nova volta à lista # time=60.66ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Corretora pelo papel > @spec:AC-317 investidor não vê cadastrar nem remover, e /corretoras/nova volta à lista # time=92.76ms",
       "method": "tap"
     },
     "AC-318": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Corretora pelo papel > @spec:AC-318 administrador cadastra e remove corretora # time=52.97ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Corretora pelo papel > @spec:AC-318 administrador cadastra e remove corretora # time=45.43ms",
       "method": "tap"
     },
     "AC-319": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Ação entra pela pesquisa > @spec:AC-319 incluir pesquisa o ticker no mercado escolhido e abre a ação # time=36.84ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Ação entra pela pesquisa > @spec:AC-319 incluir pesquisa o ticker no mercado escolhido e abre a ação # time=55.65ms",
       "method": "tap"
     },
     "AC-320": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Ação entra pela pesquisa > @spec:AC-320 o formulário abre sem consultar carteiras # time=34.89ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Ação entra pela pesquisa > @spec:AC-320 o formulário abre sem consultar carteiras # time=12.98ms",
       "method": "tap"
     },
     "AC-321": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Ação entra pela pesquisa > @spec:AC-321 o detalhe da ação não oferece remover # time=23.73ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Ação entra pela pesquisa > @spec:AC-321 o detalhe da ação não oferece remover # time=64.02ms",
       "method": "tap"
     },
     "AC-322": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Recusas novas do servidor > @spec:AC-322 conta bloqueada no login é dita no formulário e nenhuma sessão começa # time=33.07ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Recusas novas do servidor > @spec:AC-322 conta bloqueada no login é dita no formulário e nenhuma sessão começa # time=14.50ms",
       "method": "tap"
     },
     "AC-323": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Recusas novas do servidor > @spec:AC-323 conta bloqueada durante o uso encerra a sessão e o login diz o motivo # time=18.67ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Recusas novas do servidor > @spec:AC-323 conta bloqueada durante o uso encerra a sessão e o login diz o motivo # time=8.81ms",
       "method": "tap"
     },
     "AC-324": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Recusas novas do servidor > @spec:AC-324 os códigos novos do contrato têm texto próprio e os extintos saem do catálogo # time=2.01ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Recusas novas do servidor > @spec:AC-324 os códigos novos do contrato têm texto próprio e os extintos saem do catálogo # time=1.11ms",
       "method": "tap"
     }
   },

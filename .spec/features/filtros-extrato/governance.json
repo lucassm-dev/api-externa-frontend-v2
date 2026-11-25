@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "large": false,
+  "domains": [],
+  "decisions": [
+    {
+      "conflictId": "operacoes-ac-172",
+      "choice": "prosseguir",
+      "answer": "Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta AC-172",
+      "fingerprint": "c77b4a9a52ea78c4e922624e131e3c8901b21955aacba69ee512ec321025f3d3",
+      "ownFingerprint": "7b089fa84c6d6f12e4816f1b60f453089f008626ecaccd3320ff960ace13c678",
+      "conflictFingerprint": "1852441ebddc505a213fc0084008ba09defec74b76f78780e9b6692834c3b005",
+      "answeredAt": "2026-11-25T23:29:09.238Z"
+    },
+    {
+      "conflictId": "impacto:migracao-react",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 3 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (filtros-extrato)",
+      "fingerprint": "c77b4a9a52ea78c4e922624e131e3c8901b21955aacba69ee512ec321025f3d3",
+      "ownFingerprint": "7b089fa84c6d6f12e4816f1b60f453089f008626ecaccd3320ff960ace13c678",
+      "conflictFingerprint": "fe93757f801d952b35a69fd52319d330df08b96ab55ac76e5f4fc6780945de7e",
+      "answeredAt": "2026-11-25T23:33:08.673Z"
+    },
+    {
+      "conflictId": "impacto:operacoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 3 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (filtros-extrato)",
+      "fingerprint": "c77b4a9a52ea78c4e922624e131e3c8901b21955aacba69ee512ec321025f3d3",
+      "ownFingerprint": "7b089fa84c6d6f12e4816f1b60f453089f008626ecaccd3320ff960ace13c678",
+      "conflictFingerprint": "b076c3e210a281b6e21f2e4455509be52c123322a993ea851e7c89cfe3b90d58",
+      "answeredAt": "2026-11-25T23:33:08.998Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 3 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (filtros-extrato)",
+      "fingerprint": "c77b4a9a52ea78c4e922624e131e3c8901b21955aacba69ee512ec321025f3d3",
+      "ownFingerprint": "7b089fa84c6d6f12e4816f1b60f453089f008626ecaccd3320ff960ace13c678",
+      "conflictFingerprint": "dbb53b712b51656cb4ec3cf2a0c85fc5d5d8608b71bd7bd3e5c5849d372afc2e",
+      "answeredAt": "2026-11-25T23:33:09.325Z"
+    }
+  ],
+  "clientRequest": "",
+  "review": {
+    "summary": "Lidas as specs de operacoes (AC-169 a AC-182, AC-243, AC-249, AC-307), carteiras (link registrar compra/venda com ?carteira=&tipo=) e o ADR-010 do front. Conflito real: AC-172 (sem filtro no extrato), resolvido pelo Lucas em 25/11/2026 (Q-049): superado pelo AC-340. A ordenação continua só sobre a página carregada (AC-243). O link do detalhe da carteira continua só preenchendo o formulário (AC-345).",
+    "reviewer": "Claude Code (Opus 5.5), sessão de 25/11/2026",
+    "conflicts": [
+      {
+        "id": "impacto:migracao-react",
+        "automatic": true,
+        "feature": "migracao-react",
+        "summary": "A mudança interfere no domínio da feature migracao-react.",
+        "files": [
+          ".spec/features/operacoes/tasks-angular.md",
+          ".spec/features/operacoes/tasks.md",
+          "src/features/operacoes/extrato-operacoes.spec.tsx",
+          "src/features/operacoes/extrato-operacoes.tsx",
+          "src/features/operacoes/operacoes.service.spec.ts",
+          "src/features/operacoes/operacoes.service.ts",
+          "src/features/operacoes/operacoes.spec.tsx",
+          "src/features/operacoes/operacoes.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/migracao-react/prd.md"
+      },
+      {
+        "id": "impacto:operacoes",
+        "automatic": true,
+        "feature": "operacoes",
+        "summary": "A mudança interfere no domínio da feature operacoes.",
+        "files": [
+          "src/features/operacoes/extrato-operacoes.spec.tsx",
+          "src/features/operacoes/extrato-operacoes.tsx",
+          "src/features/operacoes/operacoes.service.spec.ts",
+          "src/features/operacoes/operacoes.service.ts",
+          "src/features/operacoes/operacoes.spec.tsx",
+          "src/features/operacoes/operacoes.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/operacoes/spec.md"
+      },
+      {
+        "id": "impacto:repaginacao-tabelas",
+        "automatic": true,
+        "feature": "repaginacao-tabelas",
+        "summary": "A mudança interfere no domínio da feature repaginacao-tabelas.",
+        "files": [
+          "src/features/operacoes/extrato-operacoes.spec.tsx",
+          "src/features/operacoes/extrato-operacoes.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/repaginacao-tabelas/spec.md"
+      },
+      {
+        "id": "operacoes-ac-172",
+        "summary": "Filtros no extrato contradizem o AC-172, que proibia qualquer filtro.",
+        "rule": ".spec/features/operacoes/spec.md#ac-172"
+      }
+    ],
+    "fingerprint": "c77b4a9a52ea78c4e922624e131e3c8901b21955aacba69ee512ec321025f3d3",
+    "ownFingerprint": "7b089fa84c6d6f12e4816f1b60f453089f008626ecaccd3320ff960ace13c678",
+    "reviewedAt": "2026-11-25T23:29:08.812Z",
+    "documents": [
+      ".spec/features/acesso/spec.md",
+      ".spec/features/acesso/tasks.md",
+      ".spec/features/acoes/spec.md",
+      ".spec/features/acoes/tasks.md",
+      ".spec/features/cabecalho-identidade-acoes/spec.md",
+      ".spec/features/cabecalho-identidade-acoes/tasks.md",
+      ".spec/features/carteiras/spec.md",
+      ".spec/features/carteiras/tasks.md",
+      ".spec/features/confirmacao-senha-cadastro/spec.md",
+      ".spec/features/confirmacao-senha-cadastro/tasks.md",
+      ".spec/features/conta/spec.md",
+      ".spec/features/conta/tasks.md",
+      ".spec/features/corretoras/spec.md",
+      ".spec/features/corretoras/tasks.md",
+      ".spec/features/desempenho/spec.md",
+      ".spec/features/desempenho/tasks.md",
+      ".spec/features/filtros-extrato/spec.md",
+      ".spec/features/filtros-extrato/tasks.md",
+      ".spec/features/fundacao/spec.md",
+      ".spec/features/fundacao/tasks.md",
+      ".spec/features/fundacao-visual/spec.md",
+      ".spec/features/fundacao-visual/tasks.md",
+      ".spec/features/identidade-papel/spec.md",
+      ".spec/features/identidade-papel/tasks.md",
+      ".spec/features/migracao-react/prd.md",
+      ".spec/features/migracao-react/adr.md",
+      ".spec/features/migracao-react/design.md",
+      ".spec/features/migracao-react/spec.md",
+      ".spec/features/migracao-react/tasks.md",
+      ".spec/features/migracao-react/research.md",
+      ".spec/features/operacoes/spec.md",
+      ".spec/features/operacoes/tasks.md",
+      ".spec/features/painel/spec.md",
+      ".spec/features/painel/tasks.md",
+      ".spec/features/repaginacao-acesso/spec.md",
+      ".spec/features/repaginacao-acesso/tasks.md",
+      ".spec/features/repaginacao-desempenho/spec.md",
+      ".spec/features/repaginacao-desempenho/tasks.md",
+      ".spec/features/repaginacao-painel/spec.md",
+      ".spec/features/repaginacao-painel/tasks.md",
+      ".spec/features/repaginacao-tabelas/spec.md",
+      ".spec/features/repaginacao-tabelas/tasks.md",
+      ".spec/features/repaginacao-visual/spec.md",
+      ".spec/features/repaginacao-visual/tasks.md",
+      ".spec/features/visibilidade-da-senha/spec.md",
+      ".spec/features/visibilidade-da-senha/tasks.md",
+      ".spec/constituicao.md",
+      "onpspec.config.json"
+    ]
+  }
+}

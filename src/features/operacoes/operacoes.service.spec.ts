@@ -44,15 +44,6 @@ describe('Serviço de operações', () => {
     expect(busca(servidor.chamadas[0].url).get('size')).toBe('20');
   });
 
-  it('@spec:AC-172 a leitura do extrato não carrega nenhum parâmetro de filtro', async () => {
-    const servidor = simularServidor(() => json(VAZIA));
-
-    await operacoesService.extrato(0);
-
-    expect(new URL(servidor.chamadas[0].url, 'http://localhost').pathname).toBe('/operacoes');
-    expect([...busca(servidor.chamadas[0].url).keys()].sort()).toEqual(['page', 'size']);
-  });
-
   it('@spec:AC-176 alterar sem preço novo não envia preço unitário', async () => {
     const servidor = simularServidor(() => json({}));
 

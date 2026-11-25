@@ -3,7 +3,7 @@
 > feature: operacoes
 
 ## T-055 — Contratos e serviço de operações [concluida]
-- Refs: AC-154, AC-163, AC-169, AC-171, AC-172, AC-176
+- Refs: AC-154, AC-163, AC-169, AC-171, AC-176
 - Arquivos: src/app/features/operacoes/operacoes.model.ts, src/app/features/operacoes/operacoes.service.ts, src/app/features/operacoes/operacoes.service.spec.ts
 - Esforço: medio
 - Notas: cinco chamadas — `POST /operacoes/compra`, `POST /operacoes/venda`, `GET /operacoes?page&size`, `PUT /operacoes/{id}` e `DELETE /operacoes/{id}`. `precoUnitario` é **omitido do corpo** quando o preço é automático: mandar `null` ou `0` seria dizer ao backend que o investidor escolheu esse preço (AC-154, AC-163, AC-176). A leitura do extrato nunca acrescenta parâmetro de filtro — só `page` e `size` (AC-172, ADR-010). O item do extrato traz `lucroRealizado` e `precoMedioCompraNoMomento` como opcionais (ASM-038): ausente é ausente, não é zero.
@@ -33,7 +33,7 @@
 - Notas: **o ponto crítico da feature.** A operação aconteceu; o bloco afirma isso e mostra os números da resposta — inclusive o `precoUnitario` efetivo, que pode não ser a estimativa que estava no formulário (AC-155). Cada aviso usa o nível "aviso" da fundação, jamais o componente de erro: aviso pintado de vermelho faz o investidor registrar de novo e criar uma compra que nunca existiu (AC-166, AC-167, ADR-006). Lista vazia não vira mensagem nenhuma (AC-168). Nas vendas, resultado realizado e preço médio de compra no momento — o número que o investidor foi ali buscar (AC-160).
 
 ## T-060 — Extrato paginado, sem filtro nenhum [concluida]
-- Refs: AC-169, AC-170, AC-171, AC-172, AC-179, AC-180, AC-182
+- Refs: AC-169, AC-170, AC-171, AC-179, AC-180, AC-182
 - Arquivos: src/app/features/operacoes/extrato/extrato-operacoes.ts, src/app/features/operacoes/extrato/extrato-operacoes.html, src/app/features/operacoes/extrato/extrato-operacoes.scss, src/app/features/operacoes/extrato/extrato-operacoes.spec.ts
 - Esforço: alto
 - Notas: data e hora, carteira, tipo, ticker, quantidade, preço unitário, valor total e moeda, do mais recente para o mais antigo, paginado (AC-169, AC-171). Nas vendas, o resultado realizado; ausente, o campo some da linha em vez de virar traço ou zero (AC-170, ASM-038). **Nenhum controle de filtro ou busca é construído** — filtrar só a página carregada faria o investidor concluir que o sistema perdeu um lançamento (AC-172, ADR-010). Excluir usa o diálogo compartilhado com o aviso de recálculo e a ausência de desfazer (AC-179); OPE-001 relê o extrato em vez de insistir (AC-182).
@@ -57,7 +57,7 @@
 - Notas: é no detalhe da carteira que o recálculo fica visível (Q-020). A seção de movimentações ganha editar e excluir e avisa o detalhe quando algo mudou; o detalhe relê posições, consolidado, resultado realizado e movimentações (AC-178, AC-181). Nenhum outro comportamento da tela de carteira é alterado.
 
 ## T-064 — Rotas da área de operações [concluida]
-- Refs: AC-150, AC-172
+- Refs: AC-150
 - Arquivos: src/app/features/operacoes/operacoes.routes.ts, src/app/features/operacoes/operacoes.routes.spec.ts, src/app/app.routes.ts
 - Esforço: baixo
 - Notas: substitui a área em construção pela tela real, sob a casca e a guarda de sessão, mantendo `/operacoes` como o endereço que os links existentes já usam.

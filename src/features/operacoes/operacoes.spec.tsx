@@ -213,10 +213,4 @@ describe('Rotas das operações', () => {
     expect(document.querySelector('[data-em-migracao]')).toBeNull();
   });
 
-  it('@spec:AC-172 a tela do extrato continua atendendo o link que já existe no produto', async () => {
-    const roteador = abrirComSessao('/operacoes?carteira=9&tipo=VENDA');
-
-    await esperarElemento(() => document.querySelector('[data-extrato]'));
-    expect(roteador.state.location.pathname).toBe('/operacoes');
-  });
 });

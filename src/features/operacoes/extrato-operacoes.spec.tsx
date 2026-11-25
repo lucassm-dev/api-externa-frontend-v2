@@ -23,6 +23,7 @@ const VENDA: OperacaoDoExtrato = { ...COMPRA, id: 2, tipo: 'VENDA', quantidade: 
 interface Entradas {
   pagina?: number;
   totalDePaginas?: number;
+  totalDeItens?: number;
   carregando?: boolean;
 }
 
@@ -32,6 +33,7 @@ function montar(operacoes: OperacaoDoExtrato[], entradas: Entradas = {}) {
     <ExtratoOperacoes
       operacoes={operacoes}
       carteiras={CARTEIRAS}
+      totalDeItens={60}
       {...entradas}
       aoMudarPagina={(pagina) => eventos.paginas.push(pagina)}
       aoEditar={(operacao) => eventos.editadas.push(operacao)}
@@ -98,17 +100,6 @@ describe('Extrato de operações', () => {
   it('@spec:AC-171 na primeira página não há anterior, e na última não há próxima', () => {
     expect(montar([COMPRA], { pagina: 0, totalDePaginas: 2 }).raiz.querySelector<HTMLButtonElement>('[data-anterior]')!.disabled).toBe(true);
     expect(montar([COMPRA], { pagina: 1, totalDePaginas: 2 }).raiz.querySelector<HTMLButtonElement>('[data-proxima]')!.disabled).toBe(true);
-  });
-
-  it('@spec:AC-172 não existe nenhum controle de filtro ou busca no extrato', () => {
-    const { raiz } = montar([COMPRA, VENDA]);
-    const texto = raiz.textContent!.toLowerCase();
-
-    expect(raiz.querySelectorAll('select')).toHaveLength(0);
-    expect(raiz.querySelectorAll('input')).toHaveLength(0);
-    expect(texto).not.toContain('filtrar');
-    expect(texto).not.toContain('buscar');
-    expect(texto).not.toContain('período');
   });
 
   it('@spec:AC-179 excluir pede confirmação avisando do recálculo e da ausência de desfazer', async () => {
