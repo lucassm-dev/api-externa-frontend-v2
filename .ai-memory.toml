@@ -1,0 +1,3 @@
+workspace = "default"
+project = "api-externa-frontend-v2"
+project_strategy = "repo-root"
