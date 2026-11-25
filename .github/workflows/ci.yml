@@ -57,13 +57,14 @@ jobs:
       # O audit acusa prova desatualizada comparando o mtime do código com a data
       # do último verify; no checkout todo arquivo nasce com a hora do job. Aqui a
       # prova (.spec/verification) vai no mesmo commit que o código, depois do
-      # verify, então a data do commit não serve: o código que não mudou desde o
-      # último commit da prova fica com mtime 0, e só o que mudou depois dele
-      # continua com a hora do job e reprova.
-      - name: mtime dos fontes conforme o último commit da prova
+      # verify, então a data do commit não serve: o código que não mudou desde a
+      # prova mais antiga entre as features fica com mtime 0, e só o que mudou
+      # depois dela continua com a hora do job e reprova. sinais.json fica de fora:
+      # o próprio audit o reescreve, não é prova.
+      - name: mtime dos fontes conforme a prova mais antiga
         run: |
           FONTES="src index.html vite.config.ts proxy.config.ts package.json"
-          PROVA=$(git log -1 --format=%H -- .spec/verification)
+          PROVA=$(for f in .spec/verification/*.json; do [ "$f" = .spec/verification/sinais.json ] || git log -1 --format='%ct %H' -- "$f"; done | sort -n | head -1 | cut -d' ' -f2)
           git ls-files -- $FONTES | perl -ne 'chomp; utime(0, 0, $_)'
           git diff --name-only "$PROVA" HEAD -- $FONTES | perl -ne 'chomp; utime(undef, undef, $_) if -e $_'
 
