@@ -46,7 +46,8 @@ describe('Serviço do catálogo de ações', () => {
 
     const acao = await acoesService.cadastrar({ ticker: ' petr4 ', mercado: 'BR' });
 
-    expect(servidor.chamadas[0]).toMatchObject({ metodo: 'POST', url: '/acoes', corpo: { ticker: 'PETR4', mercado: 'BR' } });
+    // Sem cadastro no servidor: a pesquisa com o mercado inclui no catálogo (identidade-papel, AC-319).
+    expect(servidor.chamadas[0]).toMatchObject({ metodo: 'GET', url: '/acoes/ticker/PETR4?mercado=BR' });
     expect(acao.dataHoraCotacao).toBe(PETR4.dataHoraCotacao);
   });
 
@@ -82,31 +83,6 @@ describe('Serviço do catálogo de ações', () => {
     expect(busca(servidor.chamadas[0].url).get('forcar')).toBe('true');
   });
 
-  it('@spec:AC-144 a exclusão usa o ticker no caminho, nunca o identificador', async () => {
-    const servidor = simularServidor(() => json(undefined, 204));
-
-    await acoesService.remover('petr4');
-
-    expect(servidor.chamadas[0]).toMatchObject({ metodo: 'DELETE', url: '/acoes/PETR4' });
-  });
-
-  it('@spec:AC-126 uma carteira no servidor é o bastante para saber que o investidor tem carteira', async () => {
-    const servidor = simularServidor(() => json(pagina([{ id: 1 }])));
-
-    expect(await acoesService.investidorTemCarteira()).toBe(true);
-    expect(busca(servidor.chamadas[0].url).get('page')).toBe('0');
-    expect(busca(servidor.chamadas[0].url).get('size')).toBe('1');
-  });
-
-  it('@spec:AC-127 catálogo de carteiras vazio responde que o investidor não tem carteira', async () => {
-    simularServidor(() => json(pagina([])));
-    expect(await acoesService.investidorTemCarteira()).toBe(false);
-  });
-
-  it('@spec:AC-128 consulta de carteiras que falha vira estado desconhecido, nunca "não tem"', async () => {
-    simularServidor(() => json({ message: 'fora do ar' }, 500));
-    expect(await acoesService.investidorTemCarteira()).toBeNull();
-  });
 });
 
 describe('Rotas das ações', () => {
@@ -287,18 +263,13 @@ describe('Lista de ações', () => {
 });
 
 interface CenarioDoCadastro {
-  carteiras?: number | 'falha';
   cadastrar?: () => Response | Promise<Response>;
 }
 
-async function abrirCadastro({ carteiras = 1, cadastrar = () => json(PETR4) }: CenarioDoCadastro = {}) {
-  const servidor = simularServidor(({ url, metodo }) => {
-    if (url.startsWith('/carteiras')) return carteiras === 'falha' ? json({ message: 'fora do ar' }, 500) : json({ content: [], totalElements: carteiras, totalPages: 1, number: 0, size: 1 });
-    if (metodo === 'POST') return cadastrar();
-    return json(PETR4);
-  });
-  const tela = montarEm({ '/acoes/nova': <CadastroAcao />, '/acoes/:ticker': <p data-tela-detalhe />, '/carteiras/nova': <p data-tela-carteira /> }, '/acoes/nova');
-  await esperarElemento(() => tela.raiz.querySelector('form, [data-sem-carteira]'));
+async function abrirCadastro({ cadastrar = () => json(PETR4) }: CenarioDoCadastro = {}) {
+  const servidor = simularServidor(({ url }) => (url.startsWith('/acoes/ticker/') ? cadastrar() : json(PETR4)));
+  const tela = montarEm({ '/acoes/nova': <CadastroAcao />, '/acoes/:ticker': <p data-tela-detalhe /> }, '/acoes/nova');
+  await esperarElemento(() => tela.raiz.querySelector('form'));
   return { ...tela, servidor };
 }
 
@@ -308,32 +279,9 @@ function enviarCadastro(raiz: HTMLElement, ticker = 'PETR4') {
 }
 
 const banner = (raiz: HTMLElement) => raiz.querySelector('[data-nivel="erro"] [data-mensagem]')?.textContent;
-const cadastros = (chamadas: Chamada[]) => chamadas.filter((c) => c.metodo === 'POST');
+const cadastros = (chamadas: Chamada[]) => chamadas.filter((c) => c.url.startsWith('/acoes/ticker/'));
 
 describe('Cadastro de ação', () => {
-  it('@spec:AC-126 sem carteira, nenhum campo é renderizado e o atalho para criar carteira aparece', async () => {
-    const { raiz } = await abrirCadastro({ carteiras: 0 });
-
-    expect(raiz.querySelectorAll('input, select, textarea')).toHaveLength(0);
-    expect(raiz.querySelector('[data-sem-carteira]')?.textContent).toContain('Crie uma carteira antes de cadastrar ações.');
-    expect(raiz.querySelector('[data-criar-carteira]')?.getAttribute('href')).toContain('/carteiras/nova');
-  });
-
-  it('@spec:AC-126 sem carteira, nenhuma requisição de cadastro sai da tela', async () => {
-    const { raiz, servidor } = await abrirCadastro({ carteiras: 0 });
-
-    expect(raiz.querySelector('form')).toBeNull();
-    expect(cadastros(servidor.chamadas)).toEqual([]);
-  });
-
-  it('@spec:AC-127 com carteira, o formulário abre sem mensagem de pré-requisito', async () => {
-    const { raiz } = await abrirCadastro({ carteiras: 1 });
-
-    expect(raiz.querySelector('[data-sem-carteira]')).toBeNull();
-    expect(raiz.querySelector('[data-campo-ticker]')).not.toBeNull();
-    expect(raiz.querySelector('[data-campo-mercado]')).not.toBeNull();
-  });
-
   it('@spec:AC-121 o formulário tem exatamente dois campos, ticker e mercado', async () => {
     const { raiz } = await abrirCadastro();
 
@@ -345,20 +293,13 @@ describe('Cadastro de ação', () => {
     for (const daFonte of ['empresa', 'moeda', 'cotação']) expect(rotulos).not.toContain(daFonte);
   });
 
-  it('@spec:AC-128 consulta de carteiras que falhou não vira bloqueio', async () => {
-    const { raiz } = await abrirCadastro({ carteiras: 'falha' });
-
-    expect(raiz.querySelector('[data-sem-carteira]')).toBeNull();
-    expect(raiz.querySelector('[data-campo-ticker]')).not.toBeNull();
-  });
-
   it('@spec:AC-122 cadastro aceito leva à ação com nome, moeda e cotação datada', async () => {
     const { raiz, servidor, caminho } = await abrirCadastro();
 
     enviarCadastro(raiz);
 
     await waitFor(() => expect(caminho()).toBe('/acoes/PETR4'));
-    expect(cadastros(servidor.chamadas)[0].corpo).toEqual({ ticker: 'PETR4', mercado: 'BR' });
+    expect(cadastros(servidor.chamadas)[0].url).toBe('/acoes/ticker/PETR4?mercado=BR');
   });
 
   it('@spec:AC-123 clicar de novo durante a consulta não dispara requisição extra', async () => {
@@ -385,43 +326,20 @@ describe('Cadastro de ação', () => {
     expect((raiz.querySelector('[data-campo-ticker]') as HTMLInputElement).value).toBe('PETR4');
     expect((raiz.querySelector('[data-campo-mercado]') as HTMLSelectElement).value).toBe('BR');
     expect(raiz.querySelector('[data-campo="ticker"] [data-erro]')).not.toBeNull();
-    expect(raiz.querySelector('[data-existente]')).toBeNull();
-    expect(servidor.para('/acoes/ticker/')).toEqual([]);
+    expect(cadastros(servidor.chamadas)).toHaveLength(1);
   });
 
-  it('@spec:AC-125 ACA-002 busca a ação existente e oferece abri-la', async () => {
-    const { raiz } = await abrirCadastro({ cadastrar: () => erroPadrao('ACA-002', 409) });
-
-    enviarCadastro(raiz);
-
-    const cartao = await esperarElemento(() => raiz.querySelector('[data-existente]'));
-    expect(banner(raiz)).toBe('Este ticker já está cadastrado.');
-    expect(cartao.textContent).toContain('PETR4');
-    expect(cartao.textContent).toContain('Petróleo Brasileiro S.A.');
-    expect(raiz.querySelector('[data-abrir]')?.getAttribute('href')).toContain('/acoes/PETR4');
-  });
-
-  it('@spec:AC-129 ACA-004 do backend continua tratado, com o atalho para criar carteira', async () => {
-    const { raiz } = await abrirCadastro({ cadastrar: () => erroPadrao('ACA-004', 422) });
-
-    enviarCadastro(raiz);
-
-    await waitFor(() => expect(banner(raiz)).toBe('Crie uma carteira antes de cadastrar ações.'));
-    expect(raiz.querySelector('[data-criar-carteira]')?.getAttribute('href')).toContain('/carteiras/nova');
-  });
 });
 
 interface CenarioDoDetalhe {
   acao?: Acao | null;
   /** Respostas da atualização de cotação, na ordem dos pedidos. */
   atualizacoes?: Array<() => Response>;
-  remover?: () => Response;
 }
 
-async function abrirDetalhe({ acao = PETR4, atualizacoes: respostas = [], remover = () => json(undefined, 204) }: CenarioDoDetalhe = {}) {
+async function abrirDetalhe({ acao = PETR4, atualizacoes: respostas = [] }: CenarioDoDetalhe = {}) {
   const servidor = simularServidor(({ metodo }) => {
     if (metodo === 'PUT') return respostas.shift()!();
-    if (metodo === 'DELETE') return remover();
     return acao ? json(acao) : erroPadrao('ACA-001', 404);
   });
   const tela = montarEm({ '/acoes/:ticker': <DetalheAcao />, '/acoes': <p data-tela-lista /> }, '/acoes/PETR4');
@@ -435,11 +353,6 @@ const aviso = (raiz: HTMLElement) => raiz.querySelector('[data-nivel] [data-mens
 async function atualizar(raiz: HTMLElement, botao = '[data-atualizar]') {
   fireEvent.click(raiz.querySelector(botao)!);
   await waitFor(() => expect(raiz.querySelector('[data-atualizar]')?.textContent).toContain('Atualizar cotação'));
-}
-
-async function pedirRemocao(raiz: HTMLElement) {
-  fireEvent.click(raiz.querySelector('[data-remover]')!);
-  return esperarElemento(() => document.querySelector('[data-consequencia]'));
 }
 
 describe('Detalhe da ação', () => {
@@ -531,48 +444,6 @@ describe('Detalhe da ação', () => {
     expect(busca(comum.url).has('forcar')).toBe(false);
     expect(busca(forcada.url).get('forcar')).toBe('true');
     expect(precoNaTela(raiz)).toContain('40,10');
-  });
-
-  it('@spec:AC-143 remover pede confirmação com a consequência antes de qualquer requisição', async () => {
-    const { raiz, servidor } = await abrirDetalhe();
-
-    const consequencia = await pedirRemocao(raiz);
-
-    expect(consequencia.textContent!.length).toBeGreaterThan(20);
-    expect(servidor.chamadas.filter((c) => c.metodo === 'DELETE')).toEqual([]);
-  });
-
-  it('@spec:AC-144 a exclusão confirmada usa o ticker na rota', async () => {
-    const { raiz, servidor, caminho } = await abrirDetalhe();
-
-    await pedirRemocao(raiz);
-    fireEvent.click(document.querySelector('[data-confirmar]')!);
-
-    await waitFor(() => expect(caminho()).toBe('/acoes'));
-    expect(servidor.chamadas.find((c) => c.metodo === 'DELETE')?.url).toBe('/acoes/PETR4');
-  });
-
-  it('@spec:AC-146 removida, a ação some sem falar em lixeira nem desfazer', async () => {
-    const { raiz, caminho } = await abrirDetalhe();
-
-    await pedirRemocao(raiz);
-    fireEvent.click(document.querySelector('[data-confirmar]')!);
-
-    await waitFor(() => expect(caminho()).toBe('/acoes'));
-    const texto = feedback.mensagens().map((m) => m.texto).join(' ').toLowerCase();
-    for (const proibido of ['lixeira', 'desfazer', 'inativ']) expect(texto).not.toContain(proibido);
-  });
-
-  it('@spec:AC-145 ACA-003 cancela a exclusão sem expor de quem são as posições', async () => {
-    const { raiz, caminho } = await abrirDetalhe({ remover: () => erroPadrao('ACA-003', 409) });
-
-    await pedirRemocao(raiz);
-    fireEvent.click(document.querySelector('[data-confirmar]')!);
-
-    await waitFor(() => expect(aviso(raiz)).toBe('Esta ação tem posições abertas e não pode ser removida.'));
-    expect(raiz.querySelector('[data-ticker]')?.textContent).toBe('PETR4');
-    expect(caminho()).toBe('/acoes/PETR4');
-    for (const vazamento of ['investidor', 'carteira', 'dono', 'quantidade']) expect(aviso(raiz)!.toLowerCase()).not.toContain(vazamento);
   });
 
   it('@spec:AC-147 ticker que não existe devolve o investidor à lista', async () => {

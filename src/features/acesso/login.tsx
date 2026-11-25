@@ -6,6 +6,8 @@ import { CATALOGO_ERROS } from '@/core/erros/catalogo-erros';
 import { aplicarErroNoFormulario } from '@/core/erros/erro-em-formulario';
 import { ehErroTraduzido } from '@/core/erros/tradutor-erro';
 import { MensagemFeedback } from '@/core/feedback/mensagem-feedback';
+import { ROTA_INICIAL_ADMIN } from '@/core/sessao/sessao.model';
+import { sessao } from '@/core/sessao/sessao.service';
 import { useFormulario, type Erros } from '@/lib/formulario';
 import { VisibilidadeSenha } from '@/shared/visibilidade-senha';
 import { acesso } from './acesso';
@@ -55,7 +57,7 @@ export function Login() {
     try {
       await acesso.entrar(formulario.valores);
       setEnviando(false);
-      navegar(ROTA_AREA_INTERNA);
+      navegar(sessao.papel() === 'ADMIN' ? ROTA_INICIAL_ADMIN : ROTA_AREA_INTERNA);
     } catch (erro) {
       setEnviando(false);
       if (!ehErroTraduzido(erro)) throw erro;

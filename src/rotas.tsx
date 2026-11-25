@@ -1,7 +1,7 @@
 import { Navigate, useRouteError, type RouteObject } from 'react-router';
 import { MENSAGEM_GENERICA } from '@/core/erros/catalogo-erros';
 import { MensagemFeedback } from '@/core/feedback/mensagem-feedback';
-import { exigirSessao } from '@/core/sessao/sessao.guard';
+import { exigirAdmin, exigirInvestidor, exigirSessao } from '@/core/sessao/sessao.guard';
 import { visitante } from '@/features/acesso/visitante';
 import { Casca } from '@/layout/casca';
 
@@ -40,17 +40,18 @@ export const rotas: RouteObject[] = [
         loader: exigirSessao,
         element: <Casca />,
         children: [
-          { path: 'painel', lazy: async () => ({ Component: (await import('@/features/painel/painel')).Painel }) },
+          { path: 'painel', loader: exigirInvestidor, lazy: async () => ({ Component: (await import('@/features/painel/painel')).Painel }) },
           {
             path: 'corretoras',
             children: [
               { index: true, lazy: async () => ({ Component: (await import('@/features/corretoras/lista-corretoras')).ListaCorretoras }) },
-              { path: 'nova', lazy: async () => ({ Component: (await import('@/features/corretoras/cadastro-corretora')).CadastroCorretora }) },
+              { path: 'nova', loader: exigirAdmin, lazy: async () => ({ Component: (await import('@/features/corretoras/cadastro-corretora')).CadastroCorretora }) },
               { path: ':id', lazy: async () => ({ Component: (await import('@/features/corretoras/detalhe-corretora')).DetalheCorretora }) },
             ],
           },
           {
             path: 'carteiras',
+            loader: exigirInvestidor,
             children: [
               { index: true, lazy: async () => ({ Component: (await import('@/features/carteiras/lista-carteiras')).ListaCarteiras }) },
               { path: 'nova', lazy: async () => ({ Component: (await import('@/features/carteiras/criar-carteira')).CriarCarteira }) },
@@ -65,8 +66,8 @@ export const rotas: RouteObject[] = [
               { path: ':ticker', lazy: async () => ({ Component: (await import('@/features/acoes/detalhe-acao')).DetalheAcao }) },
             ],
           },
-          { path: 'operacoes', lazy: async () => ({ Component: (await import('@/features/operacoes/operacoes')).Operacoes }) },
-          { path: 'desempenho', lazy: async () => ({ Component: (await import('@/features/desempenho/desempenho')).Desempenho }) },
+          { path: 'operacoes', loader: exigirInvestidor, lazy: async () => ({ Component: (await import('@/features/operacoes/operacoes')).Operacoes }) },
+          { path: 'desempenho', loader: exigirInvestidor, lazy: async () => ({ Component: (await import('@/features/desempenho/desempenho')).Desempenho }) },
         ],
       },
       { path: '*', element: <Navigate to="/entrar" replace /> },

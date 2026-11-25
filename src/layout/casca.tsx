@@ -37,6 +37,9 @@ export function Casca() {
   const navegar = useNavigate();
   const { pathname } = useLocation();
   const email = useSyncExternalStore(sessao.assinar, () => sessao.email());
+  const nome = useSyncExternalStore(sessao.assinar, () => sessao.nome());
+  const papel = useSyncExternalStore(sessao.assinar, () => sessao.papel());
+  const areas = AREAS_DO_PRODUTO.filter((area) => papel !== 'ADMIN' || !area.somenteInvestidor);
   const tema = useSyncExternalStore(temaService.assinar, temaService.tema);
 
   // Reavalia a idade da sessão de tempos em tempos, sem consultar o backend.
@@ -116,7 +119,7 @@ export function Casca() {
             compacto && 'm-0 basis-full flex-col items-stretch gap-1',
           )}
         >
-          {AREAS_DO_PRODUTO.map((area) => (
+          {areas.map((area) => (
             <NavLink
               key={area.rota}
               to={area.rota}
@@ -141,9 +144,10 @@ export function Casca() {
         <div className={cn('ml-auto flex min-w-0 items-center gap-2', compacto && 'basis-full justify-end')}>
           <div data-identidade-investidor className="flex min-w-0 flex-auto items-center justify-end gap-3 overflow-hidden">
             <span className="flex min-w-0 flex-col items-end leading-(--altura-apertada)">
-              <span className="text-rotulo font-semibold text-texto-fraco">Investidor</span>
+              <span className="text-rotulo font-semibold text-texto-fraco">{papel === 'ADMIN' ? 'Administrador' : 'Investidor'}</span>
+              {/* ADMIN não tem perfil de investidor: sem nome, o e-mail o identifica (AC-312). */}
               <span data-email title={email ?? undefined} className="block max-w-60 truncate text-apoio text-texto-fraco max-md:max-w-full">
-                {email}
+                {nome ?? email}
               </span>
             </span>
             <span

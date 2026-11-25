@@ -1,4 +1,4 @@
-import { CHAVE_SESSAO, MINUTOS_AVISO_EXPIRACAO, RespostaLogin, Sessao, ehSessao } from './sessao.model';
+import { CHAVE_SESSAO, Identidade, MINUTOS_AVISO_EXPIRACAO, Papel, RespostaLogin, Sessao, ehSessao } from './sessao.model';
 
 function ler(): Sessao | null {
   try {
@@ -51,6 +51,15 @@ export class SessaoService {
     return this.sessaoValida()?.email ?? null;
   }
 
+  nome(): string | null {
+    return this.sessaoValida()?.identidade?.nome ?? null;
+  }
+
+  /** Sem identidade guardada, investidor: o servidor continua sendo quem barra (ASM-077, ASM-079). */
+  papel(): Papel {
+    return this.sessaoValida()?.identidade?.papel ?? 'INVESTIDOR';
+  }
+
   token(): string | null {
     return this.sessaoValida()?.token ?? null;
   }
@@ -74,9 +83,9 @@ export class SessaoService {
     return sessao ? new Date(sessao.expiraEm) : null;
   }
 
-  /** O e-mail vem do formulário de login: o servidor não o devolve. */
-  iniciar(resposta: RespostaLogin, email: string): void {
-    const sessao: Sessao = { ...resposta, email };
+  /** O e-mail vem do formulário de login; a identidade, de `GET /auth/me`. */
+  iniciar(resposta: RespostaLogin, email: string, identidade?: Identidade): void {
+    const sessao: Sessao = { ...resposta, email, identidade };
     try {
       localStorage.setItem(CHAVE_SESSAO, JSON.stringify(sessao));
     } catch {

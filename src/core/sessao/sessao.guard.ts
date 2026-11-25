@@ -1,5 +1,5 @@
 import { redirect, type LoaderFunctionArgs } from 'react-router';
-import { ROTA_LOGIN } from './sessao.model';
+import { ROTA_INICIAL_ADMIN, ROTA_LOGIN } from './sessao.model';
 import { sessao } from './sessao.service';
 
 /**
@@ -14,4 +14,16 @@ export function exigirSessao({ request }: LoaderFunctionArgs): null {
   sessao.encerrar();
   const { pathname, search } = new URL(request.url);
   throw redirect(`${ROTA_LOGIN}?${new URLSearchParams({ destino: `${pathname}${search}` })}`);
+}
+
+/** Áreas de investidor: o ADMIN recebe 403 nelas, então nem chega a abrir (AC-315). */
+export function exigirInvestidor(): null {
+  if (sessao.papel() === 'ADMIN') throw redirect(ROTA_INICIAL_ADMIN);
+  return null;
+}
+
+/** Cadastrar corretora é só do ADMIN; o investidor volta à lista (AC-317). */
+export function exigirAdmin(): null {
+  if (sessao.papel() !== 'ADMIN') throw redirect('/corretoras');
+  return null;
 }

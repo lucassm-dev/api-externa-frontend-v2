@@ -1,5 +1,5 @@
 import { http } from '@/core/api/http';
-import { RespostaLogin } from '@/core/sessao/sessao.model';
+import { Identidade, RespostaLogin } from '@/core/sessao/sessao.model';
 import { sessao } from '@/core/sessao/sessao.service';
 import { CadastroRequisicao, CadastroResposta, LoginRequisicao } from './acesso.model';
 
@@ -10,12 +10,19 @@ export const acesso = {
   },
 
   /**
-   * O e-mail guardado é o que o investidor digitou: o login devolve só token,
-   * tipo e expiração. A senha não é guardada em lugar nenhum (ADR-001).
+   * O login só termina com a identidade de `GET /auth/me`, que já precisa do
+   * token. Sem ela, ninguém entra pela metade (AC-313). A senha não é guardada.
    */
   async entrar(credenciais: LoginRequisicao): Promise<RespostaLogin> {
     const resposta = await http.post<RespostaLogin>('/auth/login', credenciais);
     sessao.iniciar(resposta, credenciais.email);
+    try {
+      const { papel, nome, fotoUrl } = await http.get<Identidade>('/auth/me');
+      sessao.iniciar(resposta, credenciais.email, { papel, nome, fotoUrl });
+    } catch (erro) {
+      sessao.encerrar();
+      throw erro;
+    }
     return resposta;
   },
 

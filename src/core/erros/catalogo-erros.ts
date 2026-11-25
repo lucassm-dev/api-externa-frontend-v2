@@ -12,7 +12,6 @@ export type ComportamentoTela =
   | 'cancelar-exclusao'
   | 'recarregar'
   | 'oferecer-existente'
-  | 'oferecer-pre-requisito'
   | 'ir-ao-login'
   | 'manter-ultimo-valor';
 
@@ -45,17 +44,13 @@ export const CATALOGO_ERROS: Record<string, EntradaCatalogo> = {
     mensagem: 'Esta corretora tem carteiras vinculadas e não pode ser removida.',
     comportamento: 'cancelar-exclusao',
   },
+  'COR-005': {
+    mensagem: 'Esta corretora foi descontinuada e não aceita carteiras novas.',
+    comportamento: 'permanecer-no-formulario',
+  },
+  'COR-006': { mensagem: 'Esta corretora já está descontinuada.', comportamento: 'recarregar' },
 
   'ACA-001': { mensagem: 'Ação não encontrada.', comportamento: 'voltar-a-lista' },
-  'ACA-002': { mensagem: 'Este ticker já está cadastrado.', comportamento: 'oferecer-existente' },
-  'ACA-003': {
-    mensagem: 'Esta ação tem posições abertas e não pode ser removida.',
-    comportamento: 'cancelar-exclusao',
-  },
-  'ACA-004': {
-    mensagem: 'Crie uma carteira antes de cadastrar ações.',
-    comportamento: 'oferecer-pre-requisito',
-  },
 
   'CAR-001': { mensagem: 'Carteira não encontrada.', comportamento: 'voltar-a-lista' },
   'CAR-002': {
@@ -77,6 +72,11 @@ export const CATALOGO_ERROS: Record<string, EntradaCatalogo> = {
     mensagem: 'O preço pode ter no máximo 2 casas decimais.',
     comportamento: 'permanecer-no-formulario',
     campoDestacado: 'precoUnitario',
+  },
+  'OPE-006': {
+    mensagem: 'A data final não pode ser anterior à data inicial.',
+    comportamento: 'permanecer-no-formulario',
+    campoDestacado: 'dataFim',
   },
 
   'AUT-001': {
@@ -110,6 +110,46 @@ export const CATALOGO_ERROS: Record<string, EntradaCatalogo> = {
     comportamento: 'permanecer-no-formulario',
     campoDestacado: 'senha',
   },
+  'AUT-009': {
+    mensagem: 'Esta conta está bloqueada. Fale com o administrador do sistema.',
+    comportamento: 'permanecer-no-formulario',
+  },
+  'AUT-010': {
+    mensagem: 'Sua conta foi bloqueada. Fale com o administrador do sistema.',
+    comportamento: 'ir-ao-login',
+    encerraSessao: true,
+  },
+  'AUT-011': { mensagem: 'Você não pode bloquear a sua própria conta.', comportamento: 'permanecer-no-formulario' },
+  'AUT-012': { mensagem: 'Usuário não encontrado.', comportamento: 'voltar-a-lista' },
+  'AUT-013': {
+    mensagem: 'Código inválido ou expirado. Peça um código novo.',
+    comportamento: 'permanecer-no-formulario',
+    campoDestacado: 'codigo',
+  },
+  'AUT-014': {
+    mensagem: 'A senha atual está incorreta.',
+    comportamento: 'permanecer-no-formulario',
+    campoDestacado: 'senhaAtual',
+  },
+  'AUT-015': {
+    mensagem: 'Você pediu códigos demais. Aguarde alguns minutos e tente de novo.',
+    comportamento: 'permanecer-no-formulario',
+  },
+  'AUT-016': {
+    mensagem: 'A foto pode ter no máximo 2 MB.',
+    comportamento: 'permanecer-no-formulario',
+    campoDestacado: 'arquivo',
+  },
+  'AUT-017': {
+    mensagem: 'Envie a foto em JPEG, PNG ou WebP.',
+    comportamento: 'permanecer-no-formulario',
+    campoDestacado: 'arquivo',
+  },
+  'AUT-018': {
+    mensagem: 'A data final não pode ser anterior à data inicial.',
+    comportamento: 'permanecer-no-formulario',
+    campoDestacado: 'dataFim',
+  },
 
   'EXT-007': {
     mensagem: 'Não conseguimos verificar esta corretora agora. Tente novamente em instantes.',
@@ -139,6 +179,15 @@ export const CATALOGO_ERROS: Record<string, EntradaCatalogo> = {
     nivel: 'aviso',
   },
 
+  'EXT-012': {
+    mensagem: 'Não conseguimos enviar o e-mail agora. Tente novamente em instantes.',
+    comportamento: 'permanecer-no-formulario',
+  },
+
+  'VAL-002': {
+    mensagem: 'Algum filtro tem um valor inválido. Confira e tente de novo.',
+    comportamento: 'permanecer-no-formulario',
+  },
   // VAL-001 nunca tem texto próprio: a mensagem vai para cada campo.
   'VAL-001': { mensagem: '', comportamento: 'destacar-campos' },
   'SYS-001': { mensagem: MENSAGEM_GENERICA, comportamento: 'permanecer-no-formulario' },

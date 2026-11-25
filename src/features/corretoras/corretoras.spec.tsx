@@ -1,6 +1,7 @@
 import { fireEvent, waitFor } from '@testing-library/react';
 import { readFileSync } from 'node:fs';
 import { feedback } from '@/core/feedback/feedback.service';
+import { sessao } from '@/core/sessao/sessao.service';
 import { erroPadrao, esperarElemento, json, simularServidor } from '@/test/servidor';
 import { montarEm } from '@/test/rotas';
 import { classesDe, gerarCss } from '@/test/tailwind';
@@ -20,7 +21,18 @@ function corretora(id: number, razaoSocial = 'XP INVESTIMENTOS CCTVM S.A.', cnpj
 const pagina = <T,>(content: T[], extra: Record<string, number> = {}) => ({ content, totalElements: content.length, totalPages: 1, number: 0, size: 20, ...extra });
 const busca = (url: string) => new URL(url, 'http://localhost').searchParams;
 
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => {
+  vi.unstubAllGlobals();
+  sessao.encerrar();
+});
+
+/** Cadastrar e remover corretora é só do ADMIN (identidade-papel, AC-317 e AC-318). */
+const comoAdmin = () =>
+  sessao.iniciar({ token: 'jwt', tipo: 'Bearer', expiraEm: new Date(Date.now() + 86_400_000).toISOString() }, 'admin@exemplo.com', {
+    papel: 'ADMIN',
+    nome: null,
+    fotoUrl: null,
+  });
 
 describe('Catálogo de corretoras', () => {
   it('@spec:AC-074 o cadastro envia só o CNPJ, em dígitos, e nada é guardado quando é recusado', async () => {
@@ -106,7 +118,8 @@ async function abrirLista(conteudo = CATALOGO, carteiras: { corretoraId: number 
   const servidor = servidorDaLista(conteudo, carteiras, extra);
   const tela = montarEm({ '/corretoras': <ListaCorretoras />, '/corretoras/nova': <p data-tela-nova />, '/corretoras/:id': <p data-tela-detalhe /> }, '/corretoras');
   await waitFor(() => expect(tela.raiz.querySelector('[data-corretora], [data-proximo-passo]')).not.toBeNull());
-  await waitFor(() => expect(servidor.para('/carteiras').length).toBeGreaterThan(0));
+  // O selo só existe para o investidor: o ADMIN não tem carteiras.
+  if (sessao.papel() !== 'ADMIN') await waitFor(() => expect(servidor.para('/carteiras').length).toBeGreaterThan(0));
   return { ...tela, servidor };
 }
 
@@ -148,6 +161,7 @@ describe('Lista de corretoras', () => {
   });
 
   it('@spec:AC-080 busca sem resultado vira estado vazio com oferta de cadastrar, não erro', async () => {
+    comoAdmin();
     const { raiz, caminho } = await abrirLista();
 
     fireEvent.change(raiz.querySelector('input[name="termo"]')!, { target: { value: '11.222.333/0001-81' } });
@@ -217,6 +231,7 @@ describe('Lista de corretoras', () => {
   });
 
   it('@spec:AC-250 carregando mostra esqueleto; catálogo vazio mostra estado vazio com próximo passo', async () => {
+    comoAdmin();
     const servidor = simularServidor(() => servidor.segurar());
     const { raiz } = montarEm({ '/corretoras': <ListaCorretoras /> }, '/corretoras');
 
@@ -417,7 +432,10 @@ async function pedirRemocao(raiz: HTMLElement) {
 }
 
 describe('Detalhe da corretora', () => {
-  beforeEach(() => feedback.limpar());
+  beforeEach(() => {
+    feedback.limpar();
+    comoAdmin();
+  });
 
   it('@spec:AC-084 mostra os dados cadastrais e o endereço completo', async () => {
     const { raiz } = await abrirDetalhe(() => json(corretora(7)));
@@ -484,14 +502,6 @@ describe('Detalhe da corretora', () => {
     expect(caminho()).toBe('/corretoras/7');
     expect(raiz.querySelector('h1')?.textContent).toBeTruthy();
   });
-
-  it('@spec:AC-090 remover está disponível em qualquer corretora, sem checar quem cadastrou', async () => {
-    const { raiz } = await abrirDetalhe(() => json(corretora(7)));
-    await carregada(raiz);
-
-    expect((raiz.querySelector('[data-remover]') as HTMLButtonElement).disabled).toBe(false);
-    expect(raiz.textContent).not.toMatch(/cadastrada por|quem cadastrou|dono|proprietári/i);
-  });
 });
 
 describe('Rotas das corretoras', () => {
@@ -513,6 +523,7 @@ describe('Rotas das corretoras', () => {
 
 describe('Bugs do Angular corrigidos em corretoras', () => {
   it('@spec:AC-310 cadastrar o CNPJ buscado já abre o cadastro com esse CNPJ no campo', async () => {
+    comoAdmin();
     const { raiz } = await abrirLista();
 
     fireEvent.change(raiz.querySelector('input[name="termo"]')!, { target: { value: '11.222.333/0001-81' } });
