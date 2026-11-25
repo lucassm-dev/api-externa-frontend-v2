@@ -1,23 +1,28 @@
 {
   "ignore": [
-    "**/shared/botao-icone/botao-icone.html",
-    "**/shared/monograma/monograma.html"
+    "**/components/ui/caixa-de-marcar.tsx",
+    "**/components/ui/grupo-de-opcoes.tsx",
+    "**/components/ui/selecao.tsx"
   ],
   "max_colors": 32,
   "excecoes": [
     {
-      "suposicao": "ASM-070",
-      "arquivo": "src/app/shared/botao-icone/botao-icone.html",
-      "regra": "A03",
+      "arquivo": "src/components/ui/caixa-de-marcar.tsx",
+      "regra": "A02",
       "severidade": "erro",
-      "motivo": "O nome acessível existe: o <button> recebe [attr.aria-label]=\"rotulo()\" e [attr.title]=\"rotulo()\". O motor faz análise estática e não resolve binding de atributo do Angular ([attr.aria-label]), então acusa botão sem nome acessível. É falso-positivo: o atributo é emitido em runtime. Exceção declarada, não correção de código."
+      "motivo": "O <input type=\"checkbox\"> fica dentro de um <label> que traz o texto {rotulo}: rótulo implícito, válido em HTML e lido pelo leitor de tela. Em JSX o motor só reconhece aria-label, title ou id ligado a htmlFor, e não enxerga o <label> que envolve o campo. É falso-positivo: exceção declarada, não correção de código. Substitui a exceção equivalente do Angular (ASM-070), que saiu no corte da migracao-react."
     },
     {
-      "suposicao": "ASM-070",
-      "arquivo": "src/app/shared/monograma/monograma.html",
-      "regra": "A01",
+      "arquivo": "src/components/ui/grupo-de-opcoes.tsx",
+      "regra": "A02",
       "severidade": "erro",
-      "motivo": "A <img> tem [alt]=\"'Logo do ativo ' + tickerNormalizado()\". O motor reconhece :alt (Vue) e alt={x} (JSX) como alt presente, mas não a forma [alt] do Angular, e acusa img sem alt. É falso-positivo: o alt é emitido em runtime. Exceção declarada, não correção de código."
+      "motivo": "Cada <input type=\"radio\"> fica dentro de um <label> com o texto {opcao.rotulo}, e o grupo tem <fieldset> com <legend>. O motor não reconhece o <label> que envolve o campo em JSX. Falso-positivo: exceção declarada, não correção de código."
+    },
+    {
+      "arquivo": "src/components/ui/selecao.tsx",
+      "regra": "A02",
+      "severidade": "erro",
+      "motivo": "O <select> fica dentro de um <label> cujo primeiro filho é o texto {rotulo}, visível ou em sr-only. O motor não reconhece o <label> que envolve o campo em JSX. Falso-positivo: exceção declarada, não correção de código."
     }
   ]
 }
