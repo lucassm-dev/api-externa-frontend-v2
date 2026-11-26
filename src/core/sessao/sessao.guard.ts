@@ -22,6 +22,12 @@ export function exigirInvestidor(): null {
   return null;
 }
 
+/** Painel administrativo: o investidor volta ao painel dele sem requisitar nada (AC-350). */
+export function exigirPainelAdmin(): null {
+  if (sessao.papel() !== 'ADMIN') throw redirect('/painel');
+  return null;
+}
+
 /** Cadastrar corretora é só do ADMIN; o investidor volta à lista (AC-317). */
 export function exigirAdmin(): null {
   if (sessao.papel() !== 'ADMIN') throw redirect('/corretoras');

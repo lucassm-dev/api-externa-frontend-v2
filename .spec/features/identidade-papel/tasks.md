@@ -4,7 +4,7 @@
 
 ## T-140 — Identidade na sessão, papel no menu e nas rotas [concluida]
 
-- Refs: US-086, AC-311, AC-312, AC-313, US-087, AC-314, AC-315, AC-316
+- Refs: US-086, AC-311, AC-312, AC-313, US-087, AC-316
 - Arquivos: src/core/sessao/sessao.model.ts, src/core/sessao/sessao.service.ts, src/core/sessao/sessao.guard.ts, src/features/acesso/acesso.ts, src/features/acesso/login.tsx, src/layout/areas.ts, src/layout/casca.tsx, src/rotas.tsx, src/features/identidade-papel.spec.tsx
 - Notas: a identidade (`papel`, `nome`, `fotoUrl`) entra na sessão guardada; o login só
   termina depois de `GET /auth/me`. Dois loaders novos (`exigirInvestidor`, `exigirAdmin`)

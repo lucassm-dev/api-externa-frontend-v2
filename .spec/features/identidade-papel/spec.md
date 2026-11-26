@@ -53,13 +53,13 @@ com que conta e com que permissões estou trabalhando.
 Como administrador, quero que o menu e as rotas mostrem só as áreas que eu posso usar,
 para que eu não caia em telas que o servidor recusa.
 
-#### AC-314 — Administrador vê só Corretoras e Ações e entra pelas corretoras
+#### ~~AC-314~~ — Administrador vê só Corretoras e Ações e entra pelas corretoras (superado por administracao, AC-348)
 
 - **Dado** um administrador conectado
 - **Quando** o login termina ou ele abre o endereço inicial
 - **Então** ele cai em Corretoras, e o menu oferece só Corretoras e Ações
 
-#### AC-315 — Rota de investidor aberta pelo administrador leva às corretoras
+#### ~~AC-315~~ — Rota de investidor aberta pelo administrador leva às corretoras (superado por administracao, AC-349)
 
 - **Dado** um administrador conectado
 - **Quando** ele abre direto Painel, Carteiras, Operações ou Desempenho pelo endereço

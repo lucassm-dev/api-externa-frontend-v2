@@ -1,0 +1,47 @@
+{
+  "feature": "administracao",
+  "timestamp": "2026-11-25T23:58:40.193Z",
+  "gitRev": "48e4e90",
+  "command": "npm test --silent",
+  "reporter": "tap",
+  "exitCode": 0,
+  "testsParsed": 664,
+  "results": {
+    "AC-348": {
+      "status": "pass",
+      "testName": "src/features/admin/usuarios.spec.tsx > O ADMIN começa pelos usuários > @spec:AC-348 o ADMIN entra por Usuários e o menu oferece Usuários, Corretoras e Ações # time=333.95ms",
+      "method": "tap"
+    },
+    "AC-349": {
+      "status": "pass",
+      "testName": "src/features/admin/usuarios.spec.tsx > O ADMIN começa pelos usuários > @spec:AC-349 rota de investidor aberta pelo ADMIN leva aos usuários sem requisitar a área # time=170.63ms",
+      "method": "tap"
+    },
+    "AC-350": {
+      "status": "pass",
+      "testName": "src/features/admin/usuarios.spec.tsx > O ADMIN começa pelos usuários > @spec:AC-350 o investidor não vê Usuários e o endereço o leva ao Painel sem requisitar /admin # time=17.14ms",
+      "method": "tap"
+    },
+    "AC-351": {
+      "status": "pass",
+      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-351 cada linha mostra e-mail, nome, papel, situação, carteiras ativas e posição aberta # time=24.42ms",
+      "method": "tap"
+    },
+    "AC-352": {
+      "status": "pass",
+      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-352 situação e papel vão ao servidor, moram no endereço e não oferecem excluído # time=106.92ms",
+      "method": "tap"
+    },
+    "AC-353": {
+      "status": "pass",
+      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-353 os totais acompanham o papel # time=69.92ms",
+      "method": "tap"
+    },
+    "AC-354": {
+      "status": "pass",
+      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-354 a próxima página leva os filtros # time=35.26ms",
+      "method": "tap"
+    }
+  },
+  "principles": {}
+}

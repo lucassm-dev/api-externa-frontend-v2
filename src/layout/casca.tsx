@@ -35,7 +35,7 @@ export function Casca() {
   const email = useSyncExternalStore(sessao.assinar, () => sessao.email());
   const nome = useSyncExternalStore(sessao.assinar, () => sessao.nome());
   const papel = useSyncExternalStore(sessao.assinar, () => sessao.papel());
-  const areas = AREAS_DO_PRODUTO.filter((area) => papel !== 'ADMIN' || !area.somenteInvestidor);
+  const areas = AREAS_DO_PRODUTO.filter((area) => (papel === 'ADMIN' ? !area.somenteInvestidor : !area.somenteAdmin));
   const tema = useSyncExternalStore(temaService.assinar, temaService.tema);
 
   // Reavalia a idade da sessão de tempos em tempos, sem consultar o backend.
