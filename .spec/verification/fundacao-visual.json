@@ -1,55 +1,55 @@
 {
   "feature": "fundacao-visual",
-  "timestamp": "2026-11-26T23:31:58.297Z",
-  "gitRev": "18b17f7",
+  "timestamp": "2026-11-26T23:42:48.152Z",
+  "gitRev": "76323c8",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 696,
+  "testsParsed": 697,
   "results": {
     "AC-212": {
       "status": "pass",
-      "testName": "src/core/feedback/feedback.spec.tsx > Os três níveis de comunicação > @spec:AC-212 sucesso tem rótulo e papel próprios sem depender da cor # time=10.09ms",
+      "testName": "src/core/feedback/feedback.spec.tsx > Os três níveis de comunicação > @spec:AC-212 sucesso tem rótulo e papel próprios sem depender da cor # time=3.65ms",
       "method": "tap"
     },
     "AC-213": {
       "status": "pass",
-      "testName": "src/core/feedback/notificacao.spec.tsx > Notificação de feedback > @spec:AC-213 sucesso usa a mensagem comum e desaparece sozinho em cerca de cinco segundos # time=1.80ms",
+      "testName": "src/core/feedback/notificacao.spec.tsx > Notificação de feedback > @spec:AC-213 sucesso usa a mensagem comum e desaparece sozinho em cerca de cinco segundos # time=2.66ms",
       "method": "tap"
     },
     "AC-214": {
       "status": "pass",
-      "testName": "src/core/feedback/feedback.spec.tsx > Os três níveis de comunicação > @spec:AC-214 a apresentação de falha conserva mensagem e código em regiões distintas # time=5.84ms",
+      "testName": "src/core/feedback/feedback.spec.tsx > Os três níveis de comunicação > @spec:AC-214 a apresentação de falha conserva mensagem e código em regiões distintas # time=1.38ms",
       "method": "tap"
     },
     "AC-215": {
       "status": "pass",
-      "testName": "src/core/feedback/feedback.spec.tsx > Os três níveis de comunicação > @spec:AC-215 cada nível usa um ícone SVG próprio, decorativo, e mantém o rótulo # time=25.10ms",
+      "testName": "src/core/feedback/feedback.spec.tsx > Os três níveis de comunicação > @spec:AC-215 cada nível usa um ícone SVG próprio, decorativo, e mantém o rótulo # time=6.29ms",
       "method": "tap"
     },
     "AC-216": {
       "status": "pass",
-      "testName": "src/components/ui/kit.spec.tsx > Botão de ícone > @spec:AC-216 exige e aplica um nome acessível enquanto oculta o ícone # time=18.61ms",
+      "testName": "src/components/ui/kit.spec.tsx > Botão de ícone > @spec:AC-216 exige e aplica um nome acessível enquanto oculta o ícone # time=27.64ms",
       "method": "tap"
     },
     "AC-217": {
       "status": "pass",
-      "testName": "src/components/ui/kit.spec.tsx > Botão de ícone > @spec:AC-217 mantém área acionável de pelo menos 24 por 24 pixels # time=2.53ms",
+      "testName": "src/components/ui/kit.spec.tsx > Botão de ícone > @spec:AC-217 mantém área acionável de pelo menos 24 por 24 pixels # time=1.96ms",
       "method": "tap"
     },
     "AC-219": {
       "status": "pass",
-      "testName": "src/shared/shared.spec.tsx > Monograma do ativo > @spec:AC-219 deriva uma cor de série estável para o mesmo ticker # time=4.24ms",
+      "testName": "src/shared/shared.spec.tsx > Monograma do ativo > @spec:AC-219 deriva uma cor de série estável para o mesmo ticker # time=1.64ms",
       "method": "tap"
     },
     "AC-220": {
       "status": "pass",
-      "testName": "src/shared/shared.spec.tsx > Monograma do ativo > @spec:AC-220 anuncia o ticker no fallback e no logo curado # time=6.77ms",
+      "testName": "src/shared/shared.spec.tsx > Monograma do ativo > @spec:AC-220 anuncia o ticker no fallback e no logo curado # time=2.12ms",
       "method": "tap"
     },
     "AC-221": {
       "status": "pass",
-      "testName": "src/components/ui/kit.spec.tsx > Esqueleto de carregamento > @spec:AC-221 expõe formatos com silhuetas distintas e fica oculto da árvore acessível # time=2.67ms",
+      "testName": "src/components/ui/kit.spec.tsx > Esqueleto de carregamento > @spec:AC-221 expõe formatos com silhuetas distintas e fica oculto da árvore acessível # time=2.51ms",
       "method": "tap"
     },
     "AC-222": {
@@ -59,42 +59,42 @@
     },
     "AC-223": {
       "status": "pass",
-      "testName": "src/shared/shared.spec.tsx > Estado vazio > @spec:AC-223 explica a ausência e oferece um próximo passo acionável # time=59.98ms",
+      "testName": "src/shared/shared.spec.tsx > Estado vazio > @spec:AC-223 explica a ausência e oferece um próximo passo acionável # time=26.22ms",
       "method": "tap"
     },
     "AC-224": {
       "status": "pass",
-      "testName": "src/components/ui/kit.spec.tsx > Paginador > @spec:AC-224 informa posição, faixa e desabilita os controles nos limites # time=3.57ms",
+      "testName": "src/components/ui/kit.spec.tsx > Paginador > @spec:AC-224 informa posição, faixa e desabilita os controles nos limites # time=5.24ms",
       "method": "tap"
     },
     "AC-225": {
       "status": "pass",
-      "testName": "src/components/ui/kit.spec.tsx > Cartão > @spec:AC-225 agrupa título e conteúdo numa estrutura de seção previsível # time=6.40ms",
+      "testName": "src/components/ui/kit.spec.tsx > Cartão > @spec:AC-225 agrupa título e conteúdo numa estrutura de seção previsível # time=9.32ms",
       "method": "tap"
     },
     "AC-226": {
       "status": "pass",
-      "testName": "src/styles/tokens.spec.ts > Tokens da fundação visual > @spec:AC-226 os novos pares de texto e fundo passam em contraste AA nos dois temas # time=3.03ms",
+      "testName": "src/styles/tokens.spec.ts > Tokens da fundação visual > @spec:AC-226 os novos pares de texto e fundo passam em contraste AA nos dois temas # time=1.85ms",
       "method": "tap"
     },
     "AC-227": {
       "status": "pass",
-      "testName": "src/styles/tokens.spec.ts > Tokens da fundação visual > @spec:AC-227 a barra de mercado tem tokens próprios e superfície escura nos dois temas # time=0.88ms",
+      "testName": "src/styles/tokens.spec.ts > Tokens da fundação visual > @spec:AC-227 a barra de mercado tem tokens próprios e superfície escura nos dois temas # time=0.74ms",
       "method": "tap"
     },
     "AC-228": {
       "status": "pass",
-      "testName": "src/components/ui/kit.spec.tsx > Botão de ícone > @spec:AC-228 declara foco de teclado visível sem remover o contorno # time=50.11ms",
+      "testName": "src/components/ui/kit.spec.tsx > Botão de ícone > @spec:AC-228 declara foco de teclado visível sem remover o contorno # time=45.95ms",
       "method": "tap"
     },
     "AC-232": {
       "status": "pass",
-      "testName": "src/styles/tokens.spec.ts > Tokens da fundação visual > @spec:AC-232 o destaque usa o amarelo aprovado como preenchimento com texto escuro # time=0.32ms",
+      "testName": "src/styles/tokens.spec.ts > Tokens da fundação visual > @spec:AC-232 o destaque usa o amarelo aprovado como preenchimento com texto escuro # time=0.23ms",
       "method": "tap"
     },
     "AC-229": {
       "status": "pass",
-      "testName": "src/components/ui/kit.spec.tsx > Esqueleto de carregamento > @spec:AC-229 desliga a animação quando o sistema pede movimento reduzido # time=0.21ms",
+      "testName": "src/components/ui/kit.spec.tsx > Esqueleto de carregamento > @spec:AC-229 desliga a animação quando o sistema pede movimento reduzido # time=0.18ms",
       "method": "tap"
     },
     "AC-230": {
@@ -104,7 +104,7 @@
     },
     "AC-231": {
       "status": "pass",
-      "testName": "src/components/ui/nome-acessivel.spec.ts > Nomes acessíveis declarados no código > @spec:AC-231 todo input e select tem nome acessível verificável sem executar a tela # time=18.83ms",
+      "testName": "src/components/ui/nome-acessivel.spec.ts > Nomes acessíveis declarados no código > @spec:AC-231 todo input e select tem nome acessível verificável sem executar a tela # time=14.15ms",
       "method": "tap"
     }
   },

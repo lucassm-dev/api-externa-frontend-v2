@@ -23,6 +23,10 @@ export const proxyDoBackend = Object.fromEntries(
       changeOrigin: true,
       secure: false,
       bypass: (requisicao: IncomingMessage) => (ehNavegacaoDePagina(requisicao) ? '/index.html' : undefined),
+      // Como o `proxy_set_header Origin ""` do nginx: o navegador manda Origin em todo POST, e o
+      // backend do docker-compose (perfil prod, CORS_ALLOWED_ORIGINS vazio) recusaria com 403.
+      configure: (proxy: { on: (evento: 'proxyReq', ouvinte: (pedido: { removeHeader: (nome: string) => void }) => void) => void }) =>
+        proxy.on('proxyReq', (pedido) => pedido.removeHeader('origin')),
     },
   ]),
 );
