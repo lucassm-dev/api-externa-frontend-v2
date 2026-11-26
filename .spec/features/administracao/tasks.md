@@ -14,3 +14,9 @@
 - Arquivos: src/components/ui/dialogo-confirmacao.tsx, src/features/admin/admin.service.ts, src/features/admin/usuarios.tsx, src/features/admin/bloqueio.spec.tsx
 - Notas: issue #32. O diálogo de confirmação ganha um espaço para campo, que a descontinuação
   de corretora (#35) também usa.
+
+## T-151 — Criar administrador [concluida]
+
+- Refs: US-101, AC-360, AC-361, AC-362, AC-363, AC-364
+- Arquivos: src/rotas.tsx, src/features/admin/admin.service.ts, src/features/admin/usuarios.tsx, src/features/admin/novo-admin.tsx, src/features/admin/novo-admin.spec.tsx
+- Notas: issue #33. Mesma política de senha, confirmação e força da senha do cadastro.

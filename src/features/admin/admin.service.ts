@@ -7,6 +7,10 @@ export const adminService = {
     return http.get<Pagina<UsuarioAdmin>>('/admin/usuarios', { params: { ...filtros, page: pagina, size: USUARIOS_POR_PAGINA } });
   },
 
+  criarAdmin(email: string, senha: string): Promise<UsuarioAdmin> {
+    return http.post<UsuarioAdmin>('/admin/usuarios', { email, senha });
+  },
+
   bloquear(id: number, motivo: string): Promise<UsuarioAdmin> {
     return http.patch<UsuarioAdmin>(`/admin/usuarios/${id}/bloquear`, { motivo });
   },
