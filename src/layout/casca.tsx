@@ -80,7 +80,8 @@ export function Casca() {
         data-barra
         className={cn(
           'sticky top-0 z-10 flex flex-wrap items-center justify-between gap-3',
-          'min-h-14 border-b border-borda bg-superficie px-5 py-2 shadow-baixa',
+          // A barra ocupa a janela, mas o conteúdo dela alinha com a coluna do <main>.
+          'min-h-14 border-b border-borda bg-superficie px-[max(1.25rem,calc((100%-var(--largura-pagina))/2+1.25rem))] py-2 shadow-baixa',
           'max-md:px-4 max-md:py-3',
         )}
       >
@@ -174,7 +175,7 @@ export function Casca() {
       </header>
 
       {sessaoAcabando && (
-        <div data-aviso-sessao className="flex flex-wrap items-center gap-4 px-5 py-3 max-md:p-3">
+        <div data-aviso-sessao className="flex flex-wrap items-center gap-4 px-[max(1.25rem,calc((100%-var(--largura-pagina))/2+1.25rem))] py-3 max-md:p-3">
           <MensagemFeedback
             nivel="aviso"
             mensagem={`Sua sessão acaba em menos de ${MINUTOS_AVISO_EXPIRACAO} minutos. Entre novamente para não perder o que estiver fazendo.`}
@@ -186,7 +187,7 @@ export function Casca() {
         </div>
       )}
 
-      <main className="block p-5 max-md:px-3 max-md:py-4">
+      <main className="mx-auto block w-full max-w-(--largura-pagina) p-5 max-md:px-3 max-md:py-4">
         <Outlet />
       </main>
     </div>

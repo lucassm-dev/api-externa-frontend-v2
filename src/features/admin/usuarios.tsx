@@ -176,7 +176,8 @@ export function Usuarios() {
                 {pagina.content.map((usuario) => (
                   <tr key={usuario.id} data-usuario={usuario.id}>
                     <td className="max-w-64 truncate font-semibold">{usuario.email}</td>
-                    <td className={usuario.nome ? undefined : 'text-texto-fraco'}>{usuario.nome ?? 'Sem nome'}</td>
+                    {/* w-full: a célula estica a tabela até a largura da coluna, como o ticker no extrato. */}
+                    <td className={usuario.nome ? 'w-full' : 'w-full text-texto-fraco'}>{usuario.nome ?? 'Sem nome'}</td>
                     <td>{ROTULO_DO_PAPEL[usuario.papel]}</td>
                     <td>
                       <Selo variante={usuario.situacao === 'ATIVO' ? 'sucesso' : 'erro'} texto={ROTULO_DA_SITUACAO[usuario.situacao]} />

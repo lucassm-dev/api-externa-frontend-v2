@@ -80,7 +80,7 @@ export function CadastroCorretora() {
   };
 
   return (
-    <section className="grid max-w-(--largura-formulario) gap-5">
+    <section className="mx-auto grid w-full max-w-(--largura-formulario) gap-5">
       <div>
         <h1 className="m-0 mb-1 text-titulo font-bold tracking-(--entrelinha-titulo)">Cadastrar corretora</h1>
         <p className="m-0 text-texto-fraco">

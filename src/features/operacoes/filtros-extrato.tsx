@@ -72,7 +72,7 @@ export function FiltrosExtrato({ filtros, carteiras, recusa, aoAplicar }: Props)
   });
 
   return (
-    <form data-filtros-extrato aria-label="Filtros do extrato" onSubmit={aplicar} noValidate className="grid gap-3">
+    <form data-filtros-extrato aria-label="Filtros do extrato" onSubmit={aplicar} noValidate className="grid gap-4 rounded-grande border border-borda bg-superficie p-5 shadow-cartao max-sm:p-4">
       {recusa && !recusa.campo && <MensagemFeedback nivel="erro" mensagem={recusa.mensagem} />}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <Campo rotulo="Data inicial" type="date" {...ligar('dataInicio')} />

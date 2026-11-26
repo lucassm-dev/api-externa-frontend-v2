@@ -68,7 +68,7 @@ export function NovoAdmin() {
   };
 
   return (
-    <section className="grid max-w-(--largura-formulario) gap-5">
+    <section className="mx-auto grid w-full max-w-(--largura-formulario) gap-5">
       <header className="grid gap-3">
         <Botao asChild intencao="sutil" tamanho="compacto" className="justify-self-start">
           <Link to="/admin/usuarios">
