@@ -41,6 +41,7 @@ export function Login() {
   // Confirmação de conta criada, vinda do cadastro.
   const contaCriada = parametros.get('contaCriada') === '1';
   const senhaRedefinida = parametros.get('senhaRedefinida') === '1';
+  const contaExcluida = parametros.get('contaExcluida') === '1';
   // Motivo do retorno ao login: o texto vem do catálogo pelo código, nunca do servidor.
   const motivo = parametros.get('motivo');
   const motivoDeSaida = motivo ? (CATALOGO_ERROS[motivo]?.mensagem ?? null) : null;
@@ -79,6 +80,7 @@ export function Login() {
           <>
             {contaCriada && <MensagemFeedback nivel="informacao" mensagem="Conta criada. Entre para começar." />}
             {senhaRedefinida && <MensagemFeedback nivel="sucesso" mensagem="Senha redefinida. Entre com a senha nova." />}
+            {contaExcluida && <MensagemFeedback nivel="informacao" mensagem="Sua conta foi excluída. O e-mail dela está livre para um novo cadastro." />}
             {motivoDeSaida && <MensagemFeedback nivel="aviso" mensagem={motivoDeSaida} />}
             <MensagemDoEnvio mensagem={mensagem} />
           </>

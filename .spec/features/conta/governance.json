@@ -152,12 +152,172 @@
       "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
       "conflictFingerprint": "6ab5d9722d8fcfc6cff0479beb93db0a852d57c1fcdbb7e6c58c1115cdcfa38f",
       "answeredAt": "2026-11-25T03:28:31.877Z"
+    },
+    {
+      "conflictId": "impacto:acesso",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 16 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (conta #48)",
+      "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+      "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+      "conflictFingerprint": "86d72535cafe95332bd9e798af7a00d7c62d7742dfc78eb545ef7751c4858bc7",
+      "answeredAt": "2026-11-26T23:25:36.711Z"
+    },
+    {
+      "conflictId": "impacto:acoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 16 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (conta #48)",
+      "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+      "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+      "conflictFingerprint": "936df01b2558a01aa5372d1e6002acb43029bbfc6bea0e0608e09b25c8f86d74",
+      "answeredAt": "2026-11-26T23:25:37.144Z"
+    },
+    {
+      "conflictId": "impacto:administracao",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 16 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (conta #48)",
+      "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+      "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+      "conflictFingerprint": "b481e8f70efc9e5b3a1a7dbf0e88333aa6f08ea362b0b0be09dc569d9371ec24",
+      "answeredAt": "2026-11-26T23:25:37.579Z"
+    },
+    {
+      "conflictId": "impacto:cabecalho-identidade-acoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 16 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (conta #48)",
+      "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+      "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+      "conflictFingerprint": "80f9b88e522d35d6e7649da77c61e652053188db8525ee89b0278fbcc6e224ef",
+      "answeredAt": "2026-11-26T23:25:38.016Z"
+    },
+    {
+      "conflictId": "impacto:confirmacao-senha-cadastro",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 16 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (conta #48)",
+      "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+      "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+      "conflictFingerprint": "27f432fba898f326af9ecd0a35e7e2b778d3f521167ba378651fa368e6cf4594",
+      "answeredAt": "2026-11-26T23:25:38.475Z"
+    },
+    {
+      "conflictId": "impacto:desempenho",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 16 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (conta #48)",
+      "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+      "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+      "conflictFingerprint": "78205e89f2197c243cffdc9b4c75d3f7b0a4c0ecc3d8668454447e829344bf3f",
+      "answeredAt": "2026-11-26T23:25:38.935Z"
+    },
+    {
+      "conflictId": "impacto:estrutura-visual",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 16 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (conta #48)",
+      "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+      "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+      "conflictFingerprint": "2009c800fcafcc7c3193f01aa2fce98de2e8afe8e5241e79a8cd51d81469014e",
+      "answeredAt": "2026-11-26T23:25:39.372Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 16 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (conta #48)",
+      "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+      "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+      "conflictFingerprint": "7865094cb5868d8e48f17ab02a743a18878a3d3f634f2f975e0d7bda925fa373",
+      "answeredAt": "2026-11-26T23:25:39.826Z"
+    },
+    {
+      "conflictId": "impacto:identidade-papel",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 16 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (conta #48)",
+      "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+      "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+      "conflictFingerprint": "20cacf4ea0134df5882aab611dcbc380a32f43a61ee5e938a78c80788ec3d1b5",
+      "answeredAt": "2026-11-26T23:25:40.278Z"
+    },
+    {
+      "conflictId": "impacto:migracao-react",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 16 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (conta #48)",
+      "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+      "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+      "conflictFingerprint": "bf24209963601b0f77c1ec11d68d3feb7b03bed2951656438e767dfc333789eb",
+      "answeredAt": "2026-11-26T23:25:40.728Z"
+    },
+    {
+      "conflictId": "impacto:operacoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 16 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (conta #48)",
+      "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+      "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+      "conflictFingerprint": "f20723efd4addb63ab4f9691195040004e645fed3146e378042411f55609ed38",
+      "answeredAt": "2026-11-26T23:25:41.167Z"
+    },
+    {
+      "conflictId": "impacto:painel",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 16 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (conta #48)",
+      "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+      "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+      "conflictFingerprint": "96adf8b2b15a15c8f02124acb525c73bdcfd83f69cbe646e004a9ecb76df0bf9",
+      "answeredAt": "2026-11-26T23:25:41.616Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-acesso",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 16 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (conta #48)",
+      "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+      "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+      "conflictFingerprint": "50b19ec971eb6a662b5a75d8ea3f9a20fccc35b76b69911f52a4e005e471eb82",
+      "answeredAt": "2026-11-26T23:25:42.055Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 16 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (conta #48)",
+      "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+      "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+      "conflictFingerprint": "a1d0e5cfdc7f4de76ecbb91897f7beacf11bc3c4a15d27802f77cd8fb5e1fb59",
+      "answeredAt": "2026-11-26T23:25:42.493Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-visual",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 16 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (conta #48)",
+      "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+      "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+      "conflictFingerprint": "117e57f7360adaf6288e8b3a08bab8caf861549b579ff52f355ba0e536bfa56e",
+      "answeredAt": "2026-11-26T23:25:42.922Z"
+    },
+    {
+      "conflictId": "impacto:visibilidade-da-senha",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 16 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (conta #48)",
+      "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+      "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+      "conflictFingerprint": "1b12f29c661f8a900caa9d7f73b989416f961a3269365cf492fc70c49ee0dec6",
+      "answeredAt": "2026-11-26T23:25:43.349Z"
     }
   ],
   "clientRequest": "",
   "review": {
-    "summary": "Lidas as specs de acesso, cabecalho-identidade-acoes (AC-285 a AC-287), confirmacao-senha-cadastro, visibilidade-da-senha e identidade-papel. A feature conta só acrescenta: rota pública /esqueci-senha com o loader visitante, página /conta, botão de ícone 'Minha conta' ao lado de tema e sair (sem menu suspenso, AC-287 preservado), e foto no avatar sem tirar as iniciais do e-mail quando não há foto (AC-285 preservado). Política de senha e confirmação reaproveitam validadores do cadastro. Os 14 impactos do motor vêm de arquivos compartilhados (rotas.tsx, casca.tsx, sessao.service.ts), sem mudar regra existente. Conflito real encontrado ao rodar a suíte: acesso AC-038 (login sem recuperação de senha), resolvido pelo Lucas em 25/11/2026 (Q-048): superado pelo AC-329.",
-    "reviewer": "Claude Code (Opus 5.5), sessão de 24/11/2026",
+    "summary": "Issue #48. Lidas as specs de conta (US-091 a US-095, fora de escopo que dizia que excluir a conta não era oferecido), acesso (login: mensagens de retorno) e identidade-papel (ADMIN sem investidor). Minha conta ganha 'Dados pessoais' e 'Excluir minha conta', só para o investidor; o login ganha o aviso de conta excluída, no mesmo padrão de contaCriada e senhaRedefinida. O item de fora de escopo da conta foi atualizado por decisão do Lucas (Q-054). Nenhuma regra de spec anterior é contrariada.",
+    "reviewer": "Claude Code (Opus 5.5), sessão de 26/11/2026",
     "conflicts": [
       {
         "id": "impacto:acesso",
@@ -187,6 +347,19 @@
         ],
         "domains": [],
         "rule": ".spec/features/acoes/spec.md"
+      },
+      {
+        "id": "impacto:administracao",
+        "automatic": true,
+        "feature": "administracao",
+        "summary": "A mudança interfere no domínio da feature administracao.",
+        "files": [
+          "scripts/orcamento-bundle.mjs",
+          "src/layout/casca.tsx",
+          "src/rotas.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/administracao/spec.md"
       },
       {
         "id": "impacto:cabecalho-identidade-acoes",
@@ -223,6 +396,18 @@
         ],
         "domains": [],
         "rule": ".spec/features/desempenho/spec.md"
+      },
+      {
+        "id": "impacto:estrutura-visual",
+        "automatic": true,
+        "feature": "estrutura-visual",
+        "summary": "A mudança interfere no domínio da feature estrutura-visual.",
+        "files": [
+          "src/features/conta/minha-conta.tsx",
+          "src/layout/casca.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/estrutura-visual/spec.md"
       },
       {
         "id": "impacto:fundacao",
@@ -347,21 +532,18 @@
         ],
         "domains": [],
         "rule": ".spec/features/visibilidade-da-senha/spec.md"
-      },
-      {
-        "id": "acesso-ac-038",
-        "summary": "O link 'Esqueci a senha' no login contradiz o AC-038, que proibia recuperação de senha.",
-        "rule": ".spec/features/acesso/spec.md#ac-038"
       }
     ],
-    "fingerprint": "175af2793b33d1412395e9bd42824ea3896210c892b6b10db45ee9d02ff71911",
-    "ownFingerprint": "712a1dfee5f6e33ef9c0ae1295730359674b2e19c1f31cff4f800a3c0699344f",
-    "reviewedAt": "2026-11-25T03:28:17.726Z",
+    "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
+    "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
+    "reviewedAt": "2026-11-26T23:11:59.757Z",
     "documents": [
       ".spec/features/acesso/spec.md",
       ".spec/features/acesso/tasks.md",
       ".spec/features/acoes/spec.md",
       ".spec/features/acoes/tasks.md",
+      ".spec/features/administracao/spec.md",
+      ".spec/features/administracao/tasks.md",
       ".spec/features/cabecalho-identidade-acoes/spec.md",
       ".spec/features/cabecalho-identidade-acoes/tasks.md",
       ".spec/features/carteiras/spec.md",
@@ -374,12 +556,18 @@
       ".spec/features/corretoras/tasks.md",
       ".spec/features/desempenho/spec.md",
       ".spec/features/desempenho/tasks.md",
+      ".spec/features/estrutura-visual/spec.md",
+      ".spec/features/estrutura-visual/tasks.md",
+      ".spec/features/filtros-extrato/spec.md",
+      ".spec/features/filtros-extrato/tasks.md",
       ".spec/features/fundacao/spec.md",
       ".spec/features/fundacao/tasks.md",
       ".spec/features/fundacao-visual/spec.md",
       ".spec/features/fundacao-visual/tasks.md",
       ".spec/features/identidade-papel/spec.md",
       ".spec/features/identidade-papel/tasks.md",
+      ".spec/features/logos-acoes/spec.md",
+      ".spec/features/logos-acoes/tasks.md",
       ".spec/features/migracao-react/prd.md",
       ".spec/features/migracao-react/adr.md",
       ".spec/features/migracao-react/design.md",
