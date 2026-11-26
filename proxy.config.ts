@@ -2,7 +2,7 @@ import type { IncomingMessage } from 'node:http';
 
 // Mesmas raízes do proxy.conf.json do Angular (AC-024, ASM-073): o navegador
 // fala com a própria origem e o servidor de desenvolvimento encaminha ao backend.
-export const RAIZES_DO_BACKEND = ['/auth', '/investidores', '/corretoras', '/carteiras', '/acoes', '/operacoes', '/mercado'];
+export const RAIZES_DO_BACKEND = ['/auth', '/investidores', '/corretoras', '/carteiras', '/acoes', '/operacoes', '/mercado', '/admin'];
 
 export const BACKEND = 'http://localhost:8080';
 
