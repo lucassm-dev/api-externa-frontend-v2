@@ -1,7 +1,7 @@
 import { Navigate, useRouteError, type RouteObject } from 'react-router';
 import { MENSAGEM_GENERICA } from '@/core/erros/catalogo-erros';
 import { MensagemFeedback } from '@/core/feedback/mensagem-feedback';
-import { exigirAdmin, exigirInvestidor, exigirSessao } from '@/core/sessao/sessao.guard';
+import { exigirAdmin, exigirInvestidor, exigirPainelAdmin, exigirSessao } from '@/core/sessao/sessao.guard';
 import { visitante } from '@/features/acesso/visitante';
 import { Casca } from '@/layout/casca';
 
@@ -45,6 +45,7 @@ export const rotas: RouteObject[] = [
         loader: exigirSessao,
         element: <Casca />,
         children: [
+          { path: 'admin/usuarios', loader: exigirPainelAdmin, lazy: async () => ({ Component: (await import('@/features/admin/usuarios')).Usuarios }) },
           { path: 'conta', lazy: async () => ({ Component: (await import('@/features/conta/minha-conta')).Conta }) },
           { path: 'painel', loader: exigirInvestidor, lazy: async () => ({ Component: (await import('@/features/painel/painel')).Painel }) },
           {

@@ -96,33 +96,6 @@ describe('Identidade de quem entrou', () => {
 });
 
 describe('Menu e rotas pelo papel', () => {
-  it('@spec:AC-314 administrador entra por Corretoras e o menu oferece só Corretoras e Ações', async () => {
-    simularServidor((chamada) => responder(chamada, ADMIN));
-    const { caminho } = await entrarPeloFormulario();
-
-    await casca();
-    await waitFor(() => expect(caminho()).toBe('/corretoras'));
-    expect(areasDoMenu()).toEqual(['/corretoras', '/acoes']);
-    cleanup();
-
-    const raiz = abrir('/');
-    await waitFor(() => expect(raiz.caminho()).toBe('/corretoras'));
-  });
-
-  it('@spec:AC-315 rota de investidor aberta pelo administrador leva a Corretoras sem requisitar a área', async () => {
-    for (const area of ['/painel', '/carteiras', '/operacoes', '/desempenho']) {
-      conectar(ADMIN);
-      const servidor = simularServidor((chamada) => responder(chamada, ADMIN));
-      const { caminho } = abrir(area);
-
-      await waitFor(() => expect(caminho()).toBe('/corretoras'));
-      await casca();
-      const daArea = servidor.chamadas.filter(({ url }) => /^\/(carteiras|operacoes|mercado|painel)/.test(url));
-      expect(daArea, `${area} requisitou ${daArea.map((c) => c.url)}`).toEqual([]);
-      cleanup();
-      vi.unstubAllGlobals();
-    }
-  });
 
   it('@spec:AC-316 o investidor continua com todas as áreas', async () => {
     conectar(INVESTIDOR);

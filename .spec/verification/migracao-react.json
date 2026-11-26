@@ -1,70 +1,70 @@
 {
   "feature": "migracao-react",
-  "timestamp": "2026-11-25T23:30:57.339Z",
-  "gitRev": "afaeccf",
+  "timestamp": "2026-11-26T00:00:07.419Z",
+  "gitRev": "48e4e90",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 659,
+  "testsParsed": 664,
   "results": {
     "AC-299": {
       "status": "pass",
-      "testName": "src/rotas.spec.tsx > Rotas da aplicação React > @spec:AC-299 cada endereço abre a mesma área de antes, e sem sessão o investidor vai para o login # time=610.32ms",
+      "testName": "src/rotas.spec.tsx > Rotas da aplicação React > @spec:AC-299 cada endereço abre a mesma área de antes, e sem sessão o investidor vai para o login # time=677.23ms",
       "method": "tap"
     },
     "AC-305": {
       "status": "pass",
-      "testName": "src/corte.spec.ts > Corte final da migração > @spec:AC-305 o package.json da raiz não traz nenhum pacote do Angular # time=1.02ms",
+      "testName": "src/corte.spec.ts > Corte final da migração > @spec:AC-305 o package.json da raiz não traz nenhum pacote do Angular # time=1.92ms",
       "method": "tap"
     },
     "AC-300": {
       "status": "pass",
-      "testName": "src/styles/tokens.spec.ts > Cor só nos tokens, no React > @spec:AC-282 @spec:AC-300 só o arquivo de tokens contém cor, e nenhuma classe escreve cor arbitrária # time=13.67ms",
+      "testName": "src/styles/tokens.spec.ts > Cor só nos tokens, no React > @spec:AC-282 @spec:AC-300 só o arquivo de tokens contém cor, e nenhuma classe escreve cor arbitrária # time=20.82ms",
       "method": "tap"
     },
     "AC-301": {
       "status": "pass",
-      "testName": "src/styles/tokens.spec.ts > Dois temas, mesmas cores > @spec:AC-301 todo token de cor do tema claro existe no escuro e vice-versa # time=0.31ms",
+      "testName": "src/styles/tokens.spec.ts > Dois temas, mesmas cores > @spec:AC-301 todo token de cor do tema claro existe no escuro e vice-versa # time=0.47ms",
       "method": "tap"
     },
     "AC-302": {
       "status": "pass",
-      "testName": "src/features/acesso/moldura-e-forca.spec.tsx > Moldura das telas de acesso > @spec:AC-253 @spec:AC-302 desliga o movimento opcional e anima somente transformação e opacidade (moldura) # time=35.37ms",
+      "testName": "src/features/acesso/moldura-e-forca.spec.tsx > Moldura das telas de acesso > @spec:AC-253 @spec:AC-302 desliga o movimento opcional e anima somente transformação e opacidade (moldura) # time=8.23ms",
       "method": "tap"
     },
     "AC-303": {
       "status": "pass",
-      "testName": "src/components/ui/kit-nas-telas.spec.ts > Telas sobre o kit > @spec:AC-303 nenhuma tela monta botão, campo ou tabela cru, nem aviso ou diálogo fora do kit # time=3.45ms",
+      "testName": "src/components/ui/kit-nas-telas.spec.ts > Telas sobre o kit > @spec:AC-303 nenhuma tela monta botão, campo ou tabela cru, nem aviso ou diálogo fora do kit # time=3.25ms",
       "method": "tap"
     },
     "AC-304": {
       "status": "pass",
-      "testName": "src/styles/tokens.spec.ts > Kit shadcn legível nos dois temas > @spec:AC-304 os pares de texto e fundo do kit têm contraste de pelo menos 4,5:1 nos dois temas # time=1.02ms",
+      "testName": "src/styles/tokens.spec.ts > Kit shadcn legível nos dois temas > @spec:AC-304 os pares de texto e fundo do kit têm contraste de pelo menos 4,5:1 nos dois temas # time=2.11ms",
       "method": "tap"
     },
     "AC-306": {
       "status": "pass",
-      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-306 OPE-004 relê a carteira e diz a quantidade real, nunca o marcador cru # time=26.68ms",
+      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-306 OPE-004 relê a carteira e diz a quantidade real, nunca o marcador cru # time=39.71ms",
       "method": "tap"
     },
     "AC-307": {
       "status": "pass",
-      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Lista de carteiras > @spec:AC-307 excluir o único item da última página volta à página anterior, sem esvaziar a lista # time=42.03ms",
+      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Lista de carteiras > @spec:AC-307 excluir o único item da última página volta à página anterior, sem esvaziar a lista # time=42.95ms",
       "method": "tap"
     },
     "AC-308": {
       "status": "pass",
-      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Criar carteira > @spec:AC-308 a escolha de corretora oferece até 200 do catálogo, não só as 20 primeiras # time=13.09ms",
+      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Criar carteira > @spec:AC-308 a escolha de corretora oferece até 200 do catálogo, não só as 20 primeiras # time=11.42ms",
       "method": "tap"
     },
     "AC-309": {
       "status": "pass",
-      "testName": "src/features/painel/painel.spec.tsx > Painel inicial > @spec:AC-053 @spec:AC-309 trocar de carteira rápido nunca mostra o consolidado da anterior com o nome da nova (painel) # time=50.68ms",
+      "testName": "src/features/painel/painel.spec.tsx > Painel inicial > @spec:AC-053 @spec:AC-309 trocar de carteira rápido nunca mostra o consolidado da anterior com o nome da nova (painel) # time=66.18ms",
       "method": "tap"
     },
     "AC-310": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Bugs do Angular corrigidos em corretoras > @spec:AC-310 cadastrar o CNPJ buscado já abre o cadastro com esse CNPJ no campo # time=32.27ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Bugs do Angular corrigidos em corretoras > @spec:AC-310 cadastrar o CNPJ buscado já abre o cadastro com esse CNPJ no campo # time=25.42ms",
       "method": "tap"
     }
   },

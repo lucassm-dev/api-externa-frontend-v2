@@ -4,9 +4,12 @@ export interface AreaDoProduto {
   rotulo: string;
   /** O ADMIN recebe 403 nestas áreas: elas nem aparecem para ele. */
   somenteInvestidor?: boolean;
+  /** Painel administrativo: o investidor nem vê (AC-350). */
+  somenteAdmin?: boolean;
 }
 
 export const AREAS_DO_PRODUTO: AreaDoProduto[] = [
+  { rota: '/admin/usuarios', somenteAdmin: true, rotulo: 'Usuários' },
   { rota: '/painel', somenteInvestidor: true, rotulo: 'Painel' },
   { rota: '/corretoras', rotulo: 'Corretoras' },
   { rota: '/carteiras', somenteInvestidor: true, rotulo: 'Carteiras' },

@@ -29,8 +29,8 @@ export const CHAVE_SESSAO = 'carteira.sessao';
 /** Endereço do login. Único destino possível sem sessão, junto do cadastro. */
 export const ROTA_LOGIN = '/entrar';
 
-/** Onde o ADMIN entra enquanto não há painel administrativo (Q-044). */
-export const ROTA_INICIAL_ADMIN = '/corretoras';
+/** Onde o ADMIN entra: o painel de usuários (Q-050, resolve a Q-044). */
+export const ROTA_INICIAL_ADMIN = '/admin/usuarios';
 
 /**
  * Antecedência do aviso de sessão acabando. Sai do `expiraEm` devolvido no
