@@ -1,50 +1,50 @@
 {
   "feature": "filtros-extrato",
-  "timestamp": "2026-11-26T00:22:14.253Z",
-  "gitRev": "08ce64f",
+  "timestamp": "2026-11-26T00:40:09.992Z",
+  "gitRev": "62b3e5e",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 680,
+  "testsParsed": 685,
   "results": {
     "AC-340": {
       "status": "pass",
-      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Recortar o extrato > @spec:AC-340 os filtros vão ao servidor, combinados, a partir da primeira página # time=120.59ms",
+      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Recortar o extrato > @spec:AC-340 os filtros vão ao servidor, combinados, a partir da primeira página # time=128.02ms",
       "method": "tap"
     },
     "AC-341": {
       "status": "pass",
-      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Recortar o extrato > @spec:AC-341 sem filtro, a leitura leva só page e size # time=25.12ms",
+      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Recortar o extrato > @spec:AC-341 sem filtro, a leitura leva só page e size # time=24.41ms",
       "method": "tap"
     },
     "AC-342": {
       "status": "pass",
-      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Recortar o extrato > @spec:AC-342 data final antes da inicial não sai; OPE-006 do servidor diz o mesmo # time=56.16ms",
+      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Recortar o extrato > @spec:AC-342 data final antes da inicial não sai; OPE-006 do servidor diz o mesmo # time=50.12ms",
       "method": "tap"
     },
     "AC-343": {
       "status": "pass",
-      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Recortar o extrato > @spec:AC-343 o recorte vem do endereço, preenche os campos e acompanha a troca de página # time=77.88ms",
+      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Recortar o extrato > @spec:AC-343 o recorte vem do endereço, preenche os campos e acompanha a troca de página # time=63.90ms",
       "method": "tap"
     },
     "AC-344": {
       "status": "pass",
-      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Recortar o extrato > @spec:AC-344 o recorte diz quantas achou; sem nada, \"Limpar filtros\" volta ao extrato completo # time=80.68ms",
+      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Recortar o extrato > @spec:AC-344 o recorte diz quantas achou; sem nada, \"Limpar filtros\" volta ao extrato completo # time=73.13ms",
       "method": "tap"
     },
     "AC-345": {
       "status": "pass",
-      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Recortar o extrato > @spec:AC-345 o link do detalhe da carteira preenche o formulário e não filtra o extrato # time=51.15ms",
+      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Recortar o extrato > @spec:AC-345 o link do detalhe da carteira preenche o formulário e não filtra o extrato # time=23.13ms",
       "method": "tap"
     },
     "AC-346": {
       "status": "pass",
-      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Lucro ou prejuízo > @spec:AC-346 o resultado sai junto com os outros filtros # time=69.83ms",
+      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Lucro ou prejuízo > @spec:AC-346 o resultado sai junto com os outros filtros # time=49.39ms",
       "method": "tap"
     },
     "AC-347": {
       "status": "pass",
-      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Lucro ou prejuízo > @spec:AC-347 a dica do resultado explica que só vendas entram # time=28.30ms",
+      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Lucro ou prejuízo > @spec:AC-347 a dica do resultado explica que só vendas entram # time=16.99ms",
       "method": "tap"
     }
   },

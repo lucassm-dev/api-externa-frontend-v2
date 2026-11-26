@@ -28,3 +28,9 @@
 - Notas: issue #34. Barras na cor `--cor-serie-1`, validada no tema claro e no escuro com o
   validador da skill dataviz; o valor fica em texto ao lado da barra. Teto do bundle sobe para
   480/144 kB (Q-051).
+
+## T-153 — Descontinuar corretora [concluida]
+
+- Refs: US-103, AC-371, AC-372, AC-373, AC-374, AC-375
+- Arquivos: src/features/corretoras/corretoras.model.ts, src/features/corretoras/corretoras.service.ts, src/features/corretoras/detalhe-corretora.tsx, src/features/corretoras/lista-corretoras.tsx, src/features/carteiras/criar-carteira.tsx, src/features/corretoras/descontinuar.spec.tsx
+- Notas: issue #35. Usa o espaço de campo do diálogo de confirmação (T-150).

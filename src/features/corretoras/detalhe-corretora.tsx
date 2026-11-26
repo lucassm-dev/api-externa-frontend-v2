@@ -1,9 +1,11 @@
-import { ArrowLeft, BadgeCheck, CircleAlert, Trash2 } from 'lucide-react';
+import { ArrowLeft, Ban, BadgeCheck, CircleAlert, Trash2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 import { Botao } from '@/components/ui/botao';
+import { Campo } from '@/components/ui/campo';
 import { DialogoConfirmacao } from '@/components/ui/dialogo-confirmacao';
 import { Esqueleto } from '@/components/ui/esqueleto';
+import { Selo } from '@/components/ui/selo';
 import { ehErroTraduzido } from '@/core/erros/tradutor-erro';
 import { feedback } from '@/core/feedback/feedback.service';
 import { MensagemFeedback } from '@/core/feedback/mensagem-feedback';
@@ -21,7 +23,8 @@ type Erro = { texto: string; codigo: string | null };
  * corretora autorizada hoje de manhã pode ainda não constar nela (PRD-004).
  *
  * Remover é só do ADMIN (AC-317, AC-318); para ele, a única proteção é o
- * vínculo ativo, que o servidor decide.
+ * vínculo ativo, que o servidor decide. Descontinuar também é do ADMIN: antes
+ * de confirmar, a tela diz quantas carteiras continuam existindo (AC-372).
  */
 export function DetalheCorretora() {
   const { id } = useParams();
@@ -31,6 +34,11 @@ export function DetalheCorretora() {
   const [confirmandoRemocao, setConfirmandoRemocao] = useState(false);
   const [removendo, setRemovendo] = useState(false);
   const [erro, setErro] = useState<Erro | null>(null);
+  const [afetadas, setAfetadas] = useState<number | null>(null);
+  const [motivo, setMotivo] = useState('');
+  const [problemaDaDescontinuacao, setProblemaDaDescontinuacao] = useState<{ campo: boolean; texto: string } | null>(null);
+  const [descontinuando, setDescontinuando] = useState(false);
+  const ehAdmin = sessao.papel() === 'ADMIN';
 
   useEffect(() => {
     let vigente = true;
@@ -80,6 +88,39 @@ export function DetalheCorretora() {
     }
   };
 
+  const abrirDescontinuacao = async () => {
+    if (!corretora) return;
+    setErro(null);
+    try {
+      const quantas = await corretorasService.carteirasAfetadas(corretora.id);
+      setMotivo('');
+      setProblemaDaDescontinuacao(null);
+      setAfetadas(quantas);
+    } catch (falha) {
+      if (!ehErroTraduzido(falha)) throw falha;
+      setErro({ texto: falha.mensagem, codigo: falha.codigo });
+    }
+  };
+
+  const descontinuar = async () => {
+    if (!corretora || descontinuando) return;
+    const texto = motivo.trim();
+    if (!texto) {
+      setProblemaDaDescontinuacao({ campo: true, texto: 'Informe o motivo da descontinuação' });
+      return;
+    }
+    setDescontinuando(true);
+    try {
+      setCorretora(await corretorasService.descontinuar(corretora.id, texto));
+      setAfetadas(null);
+      feedback.informar(`${nomeExibido(corretora)} foi descontinuada.`);
+    } catch (falha) {
+      if (!ehErroTraduzido(falha)) throw falha;
+      setProblemaDaDescontinuacao({ campo: false, texto: falha.mensagem });
+    }
+    setDescontinuando(false);
+  };
+
   const dados: Array<[string, string | null]> = corretora
     ? [
         ['Razão social', corretora.razaoSocial],
@@ -118,16 +159,31 @@ export function DetalheCorretora() {
                 <h1 className="m-0 text-titulo font-bold tracking-(--entrelinha-titulo)">{nomeExibido(corretora)}</h1>
                 <p className="m-0 mt-1 font-numero text-texto-fraco">{formatarCnpj(corretora.cnpj)}</p>
               </div>
-              {sessao.papel() === 'ADMIN' && (
-                <Botao intencao="destrutiva" type="button" data-remover onClick={() => {
-                  setErro(null);
-                  setConfirmandoRemocao(true);
-                }}>
-                  <Trash2 aria-hidden="true" focusable="false" />
-                  Remover do catálogo
-                </Botao>
+              {ehAdmin && (
+                <div className="flex flex-wrap gap-2">
+                  {!corretora.descontinuada && (
+                    <Botao intencao="secundaria" type="button" data-descontinuar onClick={() => void abrirDescontinuacao()}>
+                      <Ban aria-hidden="true" focusable="false" />
+                      Descontinuar
+                    </Botao>
+                  )}
+                  <Botao intencao="destrutiva" type="button" data-remover onClick={() => {
+                    setErro(null);
+                    setConfirmandoRemocao(true);
+                  }}>
+                    <Trash2 aria-hidden="true" focusable="false" />
+                    Remover do catálogo
+                  </Botao>
+                </div>
               )}
             </header>
+
+            {corretora.descontinuada && (
+              <p data-descontinuada className="m-0 flex flex-wrap items-center gap-2 rounded-grande border border-borda bg-superficie p-4">
+                <Selo variante="aviso" texto="Descontinuada" />
+                <span className="text-texto-fraco">Não aceita carteiras novas. As carteiras que já existem continuam.</span>
+              </p>
+            )}
 
             <p data-validacao className="m-0 grid gap-1 rounded-grande border border-borda bg-superficie p-4">
               <span className="inline-flex items-center gap-2 font-semibold">
@@ -156,6 +212,32 @@ export function DetalheCorretora() {
                   </div>
                 ))}
             </dl>
+
+            {afetadas !== null && (
+              <DialogoConfirmacao
+                titulo="Descontinuar esta corretora?"
+                consequencia={`${afetadas === 1 ? '1 carteira ativa continua' : `${afetadas} carteiras ativas continuam`} existindo, mas ninguém poderá criar carteira nova nesta corretora.`}
+                rotuloConfirmar="Descontinuar"
+                ocupado={descontinuando}
+                aoConfirmar={() => void descontinuar()}
+                aoCancelar={() => setAfetadas(null)}
+              >
+                {problemaDaDescontinuacao && !problemaDaDescontinuacao.campo && (
+                  <MensagemFeedback nivel="erro" mensagem={problemaDaDescontinuacao.texto} />
+                )}
+                <Campo
+                  rotulo="Motivo"
+                  name="motivo"
+                  autoComplete="off"
+                  value={motivo}
+                  onChange={(evento) => {
+                    setMotivo(evento.target.value);
+                    setProblemaDaDescontinuacao(null);
+                  }}
+                  erro={problemaDaDescontinuacao?.campo ? problemaDaDescontinuacao.texto : null}
+                />
+              </DialogoConfirmacao>
+            )}
 
             {confirmandoRemocao && (
               <DialogoConfirmacao
