@@ -76,7 +76,7 @@ que eu identifique o tipo de aviso e as ações da tela sem ler tudo.
 Como investidor, quero identificar visualmente cada ativo na lista, para que eu
 localize o que procuro sem ler ticker por ticker.
 
-#### AC-218 — Ativo sem logo exibe monograma
+#### ~~AC-218~~ — Ativo sem logo exibe monograma (superado por logos-acoes, AC-381)
 
 - **Dado** um ativo cujo logo não está disponível
 - **Quando** ele é exibido em lista, tabela ou cartão

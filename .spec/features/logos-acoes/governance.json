@@ -1,0 +1,245 @@
+{
+  "version": 1,
+  "large": false,
+  "domains": [],
+  "decisions": [
+    {
+      "conflictId": "fundacao-visual-ac-218",
+      "choice": "prosseguir",
+      "answer": "brapi + ícone de reserva (Recommended): Substitui o AC-218 (monograma de iniciais).",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Logos",
+      "fingerprint": "2c83e7a633dfcc019a430324442f8c4a69759846da1f539e0af1f52af02746dc",
+      "ownFingerprint": "dc1c4ee8e53ac6a47ae3ebdc173d1e2e8d8d10ae296ba87e3367f449fa3b4bdc",
+      "conflictFingerprint": "0362871ea33af667cd1011a2bda0b4e71edfbe99c792de647068e8f1b91eb6fd",
+      "answeredAt": "2026-11-26T22:57:45.379Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 7 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (logos-acoes #45)",
+      "fingerprint": "2c83e7a633dfcc019a430324442f8c4a69759846da1f539e0af1f52af02746dc",
+      "ownFingerprint": "dc1c4ee8e53ac6a47ae3ebdc173d1e2e8d8d10ae296ba87e3367f449fa3b4bdc",
+      "conflictFingerprint": "04b13ab439150dda9834367c8a60be87e55a29f0c488eae1c76d672c6856c3d6",
+      "answeredAt": "2026-11-26T22:59:50.967Z"
+    },
+    {
+      "conflictId": "impacto:fundacao-visual",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 7 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (logos-acoes #45)",
+      "fingerprint": "2c83e7a633dfcc019a430324442f8c4a69759846da1f539e0af1f52af02746dc",
+      "ownFingerprint": "dc1c4ee8e53ac6a47ae3ebdc173d1e2e8d8d10ae296ba87e3367f449fa3b4bdc",
+      "conflictFingerprint": "d5cbb3f76029aca09db48a6cff5d8afdd5f07d01149c381c0f9de9248e042f64",
+      "answeredAt": "2026-11-26T22:59:51.398Z"
+    },
+    {
+      "conflictId": "impacto:migracao-react",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 7 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (logos-acoes #45)",
+      "fingerprint": "2c83e7a633dfcc019a430324442f8c4a69759846da1f539e0af1f52af02746dc",
+      "ownFingerprint": "dc1c4ee8e53ac6a47ae3ebdc173d1e2e8d8d10ae296ba87e3367f449fa3b4bdc",
+      "conflictFingerprint": "c82a17ad4185a2fc46d1f4b2d9aac07053dae2382aba77f7b6a03d0be343c10f",
+      "answeredAt": "2026-11-26T22:59:51.839Z"
+    },
+    {
+      "conflictId": "impacto:painel",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 7 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (logos-acoes #45)",
+      "fingerprint": "2c83e7a633dfcc019a430324442f8c4a69759846da1f539e0af1f52af02746dc",
+      "ownFingerprint": "dc1c4ee8e53ac6a47ae3ebdc173d1e2e8d8d10ae296ba87e3367f449fa3b4bdc",
+      "conflictFingerprint": "b51f7c6272b22fe120238908b922647b203fd12671f1a6dc3d1e2b911d6fe401",
+      "answeredAt": "2026-11-26T22:59:52.274Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-painel",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 7 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (logos-acoes #45)",
+      "fingerprint": "2c83e7a633dfcc019a430324442f8c4a69759846da1f539e0af1f52af02746dc",
+      "ownFingerprint": "dc1c4ee8e53ac6a47ae3ebdc173d1e2e8d8d10ae296ba87e3367f449fa3b4bdc",
+      "conflictFingerprint": "abfbaf67eb8309070622f67b0cedde42d3eaeb401da7c15368347e0b62969cd9",
+      "answeredAt": "2026-11-26T22:59:52.711Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-visual",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 7 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (logos-acoes #45)",
+      "fingerprint": "2c83e7a633dfcc019a430324442f8c4a69759846da1f539e0af1f52af02746dc",
+      "ownFingerprint": "dc1c4ee8e53ac6a47ae3ebdc173d1e2e8d8d10ae296ba87e3367f449fa3b4bdc",
+      "conflictFingerprint": "635361d2305c84c8a52660bffa7a539f790024a98f063927c3fb4e174049abac",
+      "answeredAt": "2026-11-26T22:59:53.247Z"
+    },
+    {
+      "conflictId": "impacto:visibilidade-da-senha",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 7 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (logos-acoes #45)",
+      "fingerprint": "2c83e7a633dfcc019a430324442f8c4a69759846da1f539e0af1f52af02746dc",
+      "ownFingerprint": "dc1c4ee8e53ac6a47ae3ebdc173d1e2e8d8d10ae296ba87e3367f449fa3b4bdc",
+      "conflictFingerprint": "5deaf3a8482c34dbdbe996eefa53b7f3d429aac41b261d4e2909f8d62d17656b",
+      "answeredAt": "2026-11-26T22:59:53.680Z"
+    }
+  ],
+  "clientRequest": "",
+  "review": {
+    "summary": "Issue #45. Lidas as specs de fundacao-visual (AC-218 a AC-220), repaginacao-tabelas e repaginacao-painel (AC-240, AC-247: o ativo traz o monograma ao lado do ticker) e painel (barra de cotações, AC-050 a AC-052). Conflito real: AC-218 (iniciais quando não há logo), resolvido pelo Lucas em 26/11/2026 (Q-053): superado pelo AC-381. AC-219 e AC-220 continuam valendo; o data-monograma e o ticker anunciado permanecem nos seis lugares que usam o componente, então AC-240 e AC-247 não mudam.",
+    "reviewer": "Claude Code (Opus 5.5), sessão de 26/11/2026",
+    "conflicts": [
+      {
+        "id": "impacto:fundacao",
+        "automatic": true,
+        "feature": "fundacao",
+        "summary": "A mudança interfere no domínio da feature fundacao.",
+        "files": [
+          "src/shared/monograma.tsx",
+          "src/shared/shared.spec.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/fundacao/spec.md"
+      },
+      {
+        "id": "impacto:fundacao-visual",
+        "automatic": true,
+        "feature": "fundacao-visual",
+        "summary": "A mudança interfere no domínio da feature fundacao-visual.",
+        "files": [
+          "src/shared/monograma.tsx",
+          "src/shared/shared.spec.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/fundacao-visual/spec.md"
+      },
+      {
+        "id": "impacto:migracao-react",
+        "automatic": true,
+        "feature": "migracao-react",
+        "summary": "A mudança interfere no domínio da feature migracao-react.",
+        "files": [
+          ".spec/features/fundacao-visual/tasks.md",
+          "src/features/painel/blocos/barra-mercado.spec.tsx",
+          "src/features/painel/blocos/barra-mercado.tsx",
+          "src/shared/monograma.tsx",
+          "src/shared/shared.spec.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/migracao-react/prd.md"
+      },
+      {
+        "id": "impacto:painel",
+        "automatic": true,
+        "feature": "painel",
+        "summary": "A mudança interfere no domínio da feature painel.",
+        "files": [
+          "src/features/painel/blocos/barra-mercado.spec.tsx",
+          "src/features/painel/blocos/barra-mercado.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/painel/spec.md"
+      },
+      {
+        "id": "impacto:repaginacao-painel",
+        "automatic": true,
+        "feature": "repaginacao-painel",
+        "summary": "A mudança interfere no domínio da feature repaginacao-painel.",
+        "files": [
+          "src/features/painel/blocos/barra-mercado.spec.tsx",
+          "src/features/painel/blocos/barra-mercado.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/repaginacao-painel/spec.md"
+      },
+      {
+        "id": "impacto:repaginacao-visual",
+        "automatic": true,
+        "feature": "repaginacao-visual",
+        "summary": "A mudança interfere no domínio da feature repaginacao-visual.",
+        "files": [
+          "src/features/painel/blocos/barra-mercado.spec.tsx",
+          "src/features/painel/blocos/barra-mercado.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/repaginacao-visual/spec.md"
+      },
+      {
+        "id": "impacto:visibilidade-da-senha",
+        "automatic": true,
+        "feature": "visibilidade-da-senha",
+        "summary": "A mudança interfere no domínio da feature visibilidade-da-senha.",
+        "files": [
+          "src/shared/monograma.tsx",
+          "src/shared/shared.spec.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/visibilidade-da-senha/spec.md"
+      },
+      {
+        "id": "fundacao-visual-ac-218",
+        "summary": "Logo ou ícone no lugar das iniciais contradiz o AC-218.",
+        "rule": ".spec/features/fundacao-visual/spec.md#ac-218"
+      }
+    ],
+    "fingerprint": "2c83e7a633dfcc019a430324442f8c4a69759846da1f539e0af1f52af02746dc",
+    "ownFingerprint": "dc1c4ee8e53ac6a47ae3ebdc173d1e2e8d8d10ae296ba87e3367f449fa3b4bdc",
+    "reviewedAt": "2026-11-26T22:57:45.142Z",
+    "documents": [
+      ".spec/features/acesso/spec.md",
+      ".spec/features/acesso/tasks.md",
+      ".spec/features/acoes/spec.md",
+      ".spec/features/acoes/tasks.md",
+      ".spec/features/administracao/spec.md",
+      ".spec/features/administracao/tasks.md",
+      ".spec/features/cabecalho-identidade-acoes/spec.md",
+      ".spec/features/cabecalho-identidade-acoes/tasks.md",
+      ".spec/features/carteiras/spec.md",
+      ".spec/features/carteiras/tasks.md",
+      ".spec/features/confirmacao-senha-cadastro/spec.md",
+      ".spec/features/confirmacao-senha-cadastro/tasks.md",
+      ".spec/features/conta/spec.md",
+      ".spec/features/conta/tasks.md",
+      ".spec/features/corretoras/spec.md",
+      ".spec/features/corretoras/tasks.md",
+      ".spec/features/desempenho/spec.md",
+      ".spec/features/desempenho/tasks.md",
+      ".spec/features/estrutura-visual/spec.md",
+      ".spec/features/estrutura-visual/tasks.md",
+      ".spec/features/filtros-extrato/spec.md",
+      ".spec/features/filtros-extrato/tasks.md",
+      ".spec/features/fundacao/spec.md",
+      ".spec/features/fundacao/tasks.md",
+      ".spec/features/fundacao-visual/spec.md",
+      ".spec/features/fundacao-visual/tasks.md",
+      ".spec/features/identidade-papel/spec.md",
+      ".spec/features/identidade-papel/tasks.md",
+      ".spec/features/logos-acoes/spec.md",
+      ".spec/features/logos-acoes/tasks.md",
+      ".spec/features/migracao-react/prd.md",
+      ".spec/features/migracao-react/adr.md",
+      ".spec/features/migracao-react/design.md",
+      ".spec/features/migracao-react/spec.md",
+      ".spec/features/migracao-react/tasks.md",
+      ".spec/features/migracao-react/research.md",
+      ".spec/features/operacoes/spec.md",
+      ".spec/features/operacoes/tasks.md",
+      ".spec/features/painel/spec.md",
+      ".spec/features/painel/tasks.md",
+      ".spec/features/repaginacao-acesso/spec.md",
+      ".spec/features/repaginacao-acesso/tasks.md",
+      ".spec/features/repaginacao-desempenho/spec.md",
+      ".spec/features/repaginacao-desempenho/tasks.md",
+      ".spec/features/repaginacao-painel/spec.md",
+      ".spec/features/repaginacao-painel/tasks.md",
+      ".spec/features/repaginacao-tabelas/spec.md",
+      ".spec/features/repaginacao-tabelas/tasks.md",
+      ".spec/features/repaginacao-visual/spec.md",
+      ".spec/features/repaginacao-visual/tasks.md",
+      ".spec/features/visibilidade-da-senha/spec.md",
+      ".spec/features/visibilidade-da-senha/tasks.md",
+      ".spec/constituicao.md",
+      "onpspec.config.json"
+    ]
+  }
+}
