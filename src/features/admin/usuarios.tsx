@@ -2,7 +2,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { Botao } from '@/components/ui/botao';
 import { Campo } from '@/components/ui/campo';
 import { DialogoConfirmacao } from '@/components/ui/dialogo-confirmacao';
-import { useSearchParams } from 'react-router';
+import { Plus } from 'lucide-react';
+import { Link, useSearchParams } from 'react-router';
 import { Esqueleto } from '@/components/ui/esqueleto';
 import { Paginador } from '@/components/ui/paginador';
 import { Selecao } from '@/components/ui/selecao';
@@ -111,7 +112,15 @@ export function Usuarios() {
 
   return (
     <section className="grid gap-5">
-      <h1 className="m-0 text-titulo font-bold tracking-(--entrelinha-titulo)">Usuários</h1>
+      <header className="flex flex-wrap items-center justify-between gap-3">
+        <h1 className="m-0 text-titulo font-bold tracking-(--entrelinha-titulo)">Usuários</h1>
+        <Botao asChild intencao="primaria">
+          <Link to="/admin/usuarios/novo">
+            <Plus aria-hidden="true" focusable="false" />
+            Novo administrador
+          </Link>
+        </Botao>
+      </header>
 
       {erro && <MensagemFeedback nivel="erro" mensagem={erro} />}
 

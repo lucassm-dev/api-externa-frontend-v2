@@ -113,6 +113,42 @@ para que eu contenha um uso indevido sem apagar nada.
 - **Quando** a lista aparece
 - **Então** a linha mostra o motivo junto da situação
 
+### US-101 — Criar outro administrador
+
+Como administrador, quero criar a conta de outro administrador, porque o cadastro
+público só cria investidor.
+
+#### AC-360 — A área de usuários leva ao formulário de novo administrador
+
+- **Dado** a área de usuários
+- **Quando** o administrador aciona "Novo administrador"
+- **Então** `/admin/usuarios/novo` abre com e-mail, senha e confirmação de senha
+
+#### AC-361 — Criar manda e-mail e senha e volta à lista
+
+- **Dado** um e-mail válido e uma senha na política, repetida na confirmação
+- **Quando** o administrador envia
+- **Então** sai `POST /admin/usuarios` só com `email` e `senha`, a tela volta para
+  `/admin/usuarios`, que é lida de novo, e um aviso confirma a criação
+
+#### AC-362 — Dados inválidos não saem
+
+- **Dado** um e-mail fora do formato, uma senha fora da política ou uma confirmação diferente
+- **Quando** o administrador envia
+- **Então** o campo com problema mostra a regra e nenhuma requisição sai
+
+#### AC-363 — E-mail em uso aparece no campo
+
+- **Dado** um e-mail que já tem conta (`AUT-001`)
+- **Quando** o servidor recusa
+- **Então** o campo "E-mail" diz que ele já está em uso e o que foi digitado continua lá
+
+#### AC-364 — O investidor não abre o formulário
+
+- **Dado** um investidor conectado
+- **Quando** ele abre `/admin/usuarios/novo` pelo endereço
+- **Então** é levado ao Painel sem requisitar `/admin`
+
 ## Fora de escopo
 
 - Excluir usuário: o backend não oferece a rota.

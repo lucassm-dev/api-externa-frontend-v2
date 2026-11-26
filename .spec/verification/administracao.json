@@ -1,70 +1,95 @@
 {
   "feature": "administracao",
-  "timestamp": "2026-11-26T00:05:49.239Z",
-  "gitRev": "a4ffa7a",
+  "timestamp": "2026-11-26T00:12:43.728Z",
+  "gitRev": "a49f624",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 669,
+  "testsParsed": 674,
   "results": {
     "AC-348": {
       "status": "pass",
-      "testName": "src/features/admin/usuarios.spec.tsx > O ADMIN começa pelos usuários > @spec:AC-348 o ADMIN entra por Usuários e o menu oferece Usuários, Corretoras e Ações # time=543.39ms",
+      "testName": "src/features/admin/usuarios.spec.tsx > O ADMIN começa pelos usuários > @spec:AC-348 o ADMIN entra por Usuários e o menu oferece Usuários, Corretoras e Ações # time=325.63ms",
       "method": "tap"
     },
     "AC-349": {
       "status": "pass",
-      "testName": "src/features/admin/usuarios.spec.tsx > O ADMIN começa pelos usuários > @spec:AC-349 rota de investidor aberta pelo ADMIN leva aos usuários sem requisitar a área # time=158.55ms",
+      "testName": "src/features/admin/usuarios.spec.tsx > O ADMIN começa pelos usuários > @spec:AC-349 rota de investidor aberta pelo ADMIN leva aos usuários sem requisitar a área # time=118.69ms",
       "method": "tap"
     },
     "AC-350": {
       "status": "pass",
-      "testName": "src/features/admin/usuarios.spec.tsx > O ADMIN começa pelos usuários > @spec:AC-350 o investidor não vê Usuários e o endereço o leva ao Painel sem requisitar /admin # time=18.06ms",
+      "testName": "src/features/admin/usuarios.spec.tsx > O ADMIN começa pelos usuários > @spec:AC-350 o investidor não vê Usuários e o endereço o leva ao Painel sem requisitar /admin # time=74.49ms",
       "method": "tap"
     },
     "AC-351": {
       "status": "pass",
-      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-351 cada linha mostra e-mail, nome, papel, situação, carteiras ativas e posição aberta # time=45.56ms",
+      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-351 cada linha mostra e-mail, nome, papel, situação, carteiras ativas e posição aberta # time=57.49ms",
       "method": "tap"
     },
     "AC-352": {
       "status": "pass",
-      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-352 situação e papel vão ao servidor, moram no endereço e não oferecem excluído # time=139.88ms",
+      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-352 situação e papel vão ao servidor, moram no endereço e não oferecem excluído # time=107.53ms",
       "method": "tap"
     },
     "AC-353": {
       "status": "pass",
-      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-353 os totais acompanham o papel # time=40.12ms",
+      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-353 os totais acompanham o papel # time=29.12ms",
       "method": "tap"
     },
     "AC-354": {
       "status": "pass",
-      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-354 a próxima página leva os filtros # time=26.33ms",
+      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-354 a próxima página leva os filtros # time=33.88ms",
       "method": "tap"
     },
     "AC-355": {
       "status": "pass",
-      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-355 bloquear manda o motivo e relê a lista e os totais # time=192.04ms",
+      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-355 bloquear manda o motivo e relê a lista e os totais # time=222.54ms",
       "method": "tap"
     },
     "AC-356": {
       "status": "pass",
-      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-356 sem motivo o bloqueio não sai e o diálogo continua aberto # time=46.39ms",
+      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-356 sem motivo o bloqueio não sai e o diálogo continua aberto # time=35.89ms",
       "method": "tap"
     },
     "AC-357": {
       "status": "pass",
-      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-357 a própria linha não oferece bloquear; AUT-011 do servidor aparece no diálogo # time=81.79ms",
+      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-357 a própria linha não oferece bloquear; AUT-011 do servidor aparece no diálogo # time=41.49ms",
       "method": "tap"
     },
     "AC-358": {
       "status": "pass",
-      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-358 desbloquear manda o PATCH e relê a lista e os totais # time=60.03ms",
+      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-358 desbloquear manda o PATCH e relê a lista e os totais # time=31.36ms",
       "method": "tap"
     },
     "AC-359": {
       "status": "pass",
-      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-359 a linha bloqueada mostra o motivo # time=25.89ms",
+      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-359 a linha bloqueada mostra o motivo # time=14.02ms",
+      "method": "tap"
+    },
+    "AC-360": {
+      "status": "pass",
+      "testName": "src/features/admin/novo-admin.spec.tsx > Criar outro administrador > @spec:AC-360 a área de usuários leva ao formulário com e-mail, senha e confirmação # time=179.03ms",
+      "method": "tap"
+    },
+    "AC-361": {
+      "status": "pass",
+      "testName": "src/features/admin/novo-admin.spec.tsx > Criar outro administrador > @spec:AC-361 criar manda só e-mail e senha, volta à lista relida e avisa # time=59.23ms",
+      "method": "tap"
+    },
+    "AC-362": {
+      "status": "pass",
+      "testName": "src/features/admin/novo-admin.spec.tsx > Criar outro administrador > @spec:AC-362 e-mail, senha ou confirmação inválidos não saem # time=34.05ms",
+      "method": "tap"
+    },
+    "AC-363": {
+      "status": "pass",
+      "testName": "src/features/admin/novo-admin.spec.tsx > Criar outro administrador > @spec:AC-363 e-mail em uso aparece no campo e o digitado fica # time=37.75ms",
+      "method": "tap"
+    },
+    "AC-364": {
+      "status": "pass",
+      "testName": "src/features/admin/novo-admin.spec.tsx > Criar outro administrador > @spec:AC-364 o investidor que abre o endereço vai ao Painel sem requisitar /admin # time=90.41ms",
       "method": "tap"
     }
   },
