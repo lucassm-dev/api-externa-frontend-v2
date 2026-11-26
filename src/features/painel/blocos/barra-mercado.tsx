@@ -16,6 +16,18 @@ function Chip({ item, real }: { item: ItemDeMercado; real: boolean }) {
       data-item={real ? item.simbolo : undefined}
       className="flex items-baseline gap-2 rounded-pequeno bg-[color-mix(in_srgb,var(--cor-barra-mercado-borda)_30%,var(--cor-barra-mercado-fundo))] px-2 text-rotulo whitespace-nowrap"
     >
+      {/* Decorativo: o símbolo ao lado já diz qual é o ativo. Logo que não carrega some. */}
+      {item.logoUrl && (
+        <img
+          data-logo-mercado={real ? '' : undefined}
+          src={item.logoUrl}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          onError={(evento) => (evento.currentTarget.hidden = true)}
+          className="size-4 self-center rounded-pilula object-cover"
+        />
+      )}
       <span data-simbolo={real ? '' : undefined} className="font-bold text-barra-mercado-texto">
         {item.simbolo}
       </span>

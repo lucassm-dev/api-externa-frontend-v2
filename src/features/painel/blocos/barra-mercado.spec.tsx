@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { classesDe, gerarCss } from '@/test/tailwind';
 import { BarraDeMercado } from '../painel.model';
 import { BarraMercado } from './barra-mercado';
@@ -28,6 +28,21 @@ describe('Barra de mercado', () => {
     expect(petr.querySelector('[data-preco]')?.textContent).toContain('38,40');
     expect(petr.textContent).toContain('1,25%');
     expect(elemento.querySelector('[data-item="VALE3"]')?.textContent).toContain('0,80%');
+  });
+
+  it('@spec:AC-382 o logo que o backend manda aparece antes do símbolo; sem ele, ou se falhar, só o texto', () => {
+    const elemento = montar({ ...cheia, itens: [{ ...cheia.itens[0], logoUrl: 'https://icons.brapi.dev/icons/PETR4.svg' }, cheia.itens[1]] });
+    const petr = elemento.querySelector('[data-item="PETR4"]')!;
+    const logo = petr.querySelector('[data-logo-mercado]') as HTMLImageElement;
+
+    expect(logo.getAttribute('src')).toBe('https://icons.brapi.dev/icons/PETR4.svg');
+    expect(logo.alt).toBe('');
+    expect(logo.compareDocumentPosition(petr.querySelector('[data-simbolo]')!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(elemento.querySelector('[data-item="VALE3"] img')).toBeNull();
+
+    fireEvent.error(logo);
+    expect(logo.hidden).toBe(true);
+    expect(petr.querySelector('[data-simbolo]')?.textContent).toContain('PETR4');
   });
 
   it('@spec:AC-050 item que a fonte não devolveu simplesmente não aparece', () => {

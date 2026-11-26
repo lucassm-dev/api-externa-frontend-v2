@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { useState } from 'react';
 import { LIMITE_DEFASAGEM_MINUTOS, estaDefasado, idadeEmMinutos } from '@/core/dados/idade-dado';
 import { EstadoVazio } from './estado-vazio';
-import { Monograma, iniciais } from './monograma';
+import { Monograma } from './monograma';
 import { ValorComHorario } from './valor-com-horario';
 import { Variacao } from './variacao';
 import { VisibilidadeSenha } from './visibilidade-senha';
@@ -31,14 +31,28 @@ describe('Estado vazio', () => {
 describe('Monograma do ativo', () => {
   const montar = (ticker: string, logoUrl: string | null = null) => render(<Monograma ticker={ticker} logoUrl={logoUrl} />).container;
 
-  it('@spec:AC-218 usa as iniciais do ticker quando não há logo curado', () => {
-    const elemento = montar('PETR4');
+  it('@spec:AC-380 o ativo mostra o logo da brapi, decorativo, com o ticker anunciado por fora', () => {
+    const elemento = montar(' petr4 ').querySelector('[data-monograma]') as HTMLElement;
+    const imagem = elemento.querySelector('img') as HTMLImageElement;
 
-    expect(elemento.querySelector('[data-monograma]')?.textContent?.trim()).toBe('PE');
+    expect(imagem.getAttribute('src')).toBe('https://icons.brapi.dev/icons/PETR4.svg');
+    expect(imagem.alt).toBe('');
+    expect(elemento.getAttribute('role')).toBe('img');
+    expect(elemento.getAttribute('aria-label')).toContain('PETR4');
+  });
+
+  it('@spec:AC-381 sem logo, ícone na cor do ativo e nenhuma letra; ticker novo tenta o logo de novo', () => {
+    const { container, rerender } = render(<Monograma ticker="XXXX9" />);
+    fireEvent.error(container.querySelector('img')!);
+
+    const elemento = container.querySelector('[data-monograma]') as HTMLElement;
     expect(elemento.querySelector('img')).toBeNull();
-    // Mesma regra do `initials` do ngx-oneforall que o Angular usava.
-    expect(iniciais('Banco do Brasil', 2)).toBe('BD');
-    expect(iniciais('  vale3 ', 2)).toBe('VA');
+    expect(elemento.querySelector('[data-icone-ativo]')).not.toBeNull();
+    expect(elemento.textContent?.trim()).toBe('');
+    expect(elemento.style.getPropertyValue('--cor-monograma')).toMatch(/^var\(--cor-serie-[1-8]\)$/);
+
+    rerender(<Monograma ticker="VALE3" />);
+    expect(container.querySelector('img')?.getAttribute('src')).toBe('https://icons.brapi.dev/icons/VALE3.svg');
   });
 
   it('@spec:AC-219 deriva uma cor de série estável para o mesmo ticker', () => {
@@ -50,12 +64,16 @@ describe('Monograma do ativo', () => {
   });
 
   it('@spec:AC-220 anuncia o ticker no fallback e no logo curado', () => {
-    const fallback = montar('VALE3').querySelector('[data-monograma]') as HTMLElement;
-    expect(fallback.getAttribute('role')).toBe('img');
-    expect(fallback.getAttribute('aria-label')).toContain('VALE3');
+    const { container } = render(<Monograma ticker="VALE3" />);
+    fireEvent.error(container.querySelector('img')!);
+    const reserva = container.querySelector('[data-monograma]') as HTMLElement;
+    expect(reserva.getAttribute('role')).toBe('img');
+    expect(reserva.getAttribute('aria-label')).toContain('VALE3');
 
-    const imagem = montar('VALE3', '/ativos/VALE3.svg').querySelector('img') as HTMLImageElement;
-    expect(imagem.alt).toContain('VALE3');
+    // Com logo, quem anuncia é o elemento de fora; a imagem não repete o ticker.
+    const comLogo = montar('VALE3', '/ativos/VALE3.svg').querySelector('[data-monograma]') as HTMLElement;
+    expect(comLogo.getAttribute('aria-label')).toContain('VALE3');
+    expect(comLogo.querySelector('img')?.getAttribute('src')).toBe('/ativos/VALE3.svg');
   });
 });
 

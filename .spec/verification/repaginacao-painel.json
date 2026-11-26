@@ -1,55 +1,55 @@
 {
   "feature": "repaginacao-painel",
-  "timestamp": "2026-11-26T22:52:47.099Z",
-  "gitRev": "de83975",
+  "timestamp": "2026-11-26T23:01:00.743Z",
+  "gitRev": "e817f63",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 690,
+  "testsParsed": 692,
   "results": {
     "AC-233": {
       "status": "pass",
-      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-233 os chips deslizam para a esquerda em loop, com a lista repetida e animação só de transform # time=41.02ms",
+      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-233 os chips deslizam para a esquerda em loop, com a lista repetida e animação só de transform # time=40.84ms",
       "method": "tap"
     },
     "AC-234": {
       "status": "pass",
-      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-234 a rolagem pausa quando o ponteiro entra na barra ou um chip recebe foco # time=10.01ms",
+      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-234 a rolagem pausa quando o ponteiro entra na barra ou um chip recebe foco # time=12.87ms",
       "method": "tap"
     },
     "AC-235": {
       "status": "pass",
-      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-235 @spec:AC-302 movimento reduzido desliga a rolagem e devolve rolagem manual (barra) # time=41.72ms",
+      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-235 @spec:AC-302 movimento reduzido desliga a rolagem e devolve rolagem manual (barra) # time=48.59ms",
       "method": "tap"
     },
     "AC-236": {
       "status": "pass",
-      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-236 a faixa não tem moldura nem horário fixo: só os chips rolando # time=19.81ms",
+      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-236 a faixa não tem moldura nem horário fixo: só os chips rolando # time=12.42ms",
       "method": "tap"
     },
     "AC-237": {
       "status": "pass",
-      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-237 cada cotação é um chip com símbolo, preço e variação com sinal/seta, em superfície escura própria # time=26.59ms",
+      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-237 cada cotação é um chip com símbolo, preço e variação com sinal/seta, em superfície escura própria # time=23.45ms",
       "method": "tap"
     },
     "AC-238": {
       "status": "pass",
-      "testName": "src/features/painel/painel.spec.tsx > Painel inicial > @spec:AC-238 na composição da tela, o consolidado entra com o rótulo pequeno acima e o valor em destaque, com selo de variação no resultado # time=20.08ms",
+      "testName": "src/features/painel/painel.spec.tsx > Painel inicial > @spec:AC-238 na composição da tela, o consolidado entra com o rótulo pequeno acima e o valor em destaque, com selo de variação no resultado # time=22.24ms",
       "method": "tap"
     },
     "AC-239": {
       "status": "pass",
-      "testName": "src/features/painel/blocos/consolidado.spec.tsx > Consolidado de uma carteira > @spec:AC-239 nenhum indicador mostra comparação com período anterior ou miniatura de evolução # time=3.59ms",
+      "testName": "src/features/painel/blocos/consolidado.spec.tsx > Consolidado de uma carteira > @spec:AC-239 nenhum indicador mostra comparação com período anterior ou miniatura de evolução # time=7.87ms",
       "method": "tap"
     },
     "AC-240": {
       "status": "pass",
-      "testName": "src/features/painel/blocos/outros-blocos.spec.tsx > Últimas movimentações do painel > @spec:AC-240 traz o monograma do ativo ao lado do ticker # time=7.89ms",
+      "testName": "src/features/painel/blocos/outros-blocos.spec.tsx > Últimas movimentações do painel > @spec:AC-240 traz o monograma do ativo ao lado do ticker # time=2.71ms",
       "method": "tap"
     },
     "AC-241": {
       "status": "pass",
-      "testName": "src/features/painel/blocos/outros-blocos.spec.tsx > Convite do próximo passo > @spec:AC-241 painel sem carteira mostra o estado vazio: ícone, explicação e a ação seguinte # time=3.51ms",
+      "testName": "src/features/painel/blocos/outros-blocos.spec.tsx > Convite do próximo passo > @spec:AC-241 painel sem carteira mostra o estado vazio: ícone, explicação e a ação seguinte # time=4.64ms",
       "method": "tap"
     }
   },

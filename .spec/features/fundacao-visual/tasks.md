@@ -3,7 +3,7 @@
 > feature: fundacao-visual
 
 ## T-080 — Dependências da repaginação [concluida]
-- Refs: US-057, US-058, AC-215, AC-218
+- Refs: US-057, US-058, AC-215
 - Arquivos: package.json, package-lock.json
 - Modelo: claude-sonnet-5
 - Esforço: baixo
@@ -95,7 +95,7 @@
   perder acessibilidade.
 
 ## T-089 — Monograma do ativo [concluida]
-- Refs: US-058, AC-218, AC-219, AC-220
+- Refs: US-058, AC-219, AC-220
 - Arquivos: src/core/dados/idade-dado.ts, src/shared/estado-vazio.tsx, src/shared/monograma.tsx, src/shared/shared.spec.tsx, src/shared/valor-com-horario.tsx, src/shared/variacao.tsx, src/shared/visibilidade-senha.tsx
 - Modelo: claude-sonnet-5
 - Esforço: medio

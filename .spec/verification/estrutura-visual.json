@@ -1,30 +1,30 @@
 {
   "feature": "estrutura-visual",
-  "timestamp": "2026-11-26T22:51:17.760Z",
-  "gitRev": "de83975",
+  "timestamp": "2026-11-26T22:59:23.744Z",
+  "gitRev": "e817f63",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 690,
+  "testsParsed": 692,
   "results": {
     "AC-376": {
       "status": "pass",
-      "testName": "src/layout/estrutura.spec.tsx > Coluna central > @spec:AC-376 o conteúdo fica numa coluna central e a barra do topo alinha com ela # time=108.57ms",
+      "testName": "src/layout/estrutura.spec.tsx > Coluna central > @spec:AC-376 o conteúdo fica numa coluna central e a barra do topo alinha com ela # time=107.00ms",
       "method": "tap"
     },
     "AC-377": {
       "status": "pass",
-      "testName": "src/layout/estrutura.spec.tsx > Coluna central > @spec:AC-377 Minha conta e os formulários ficam no centro da coluna # time=149.40ms",
+      "testName": "src/layout/estrutura.spec.tsx > Coluna central > @spec:AC-377 Minha conta e os formulários ficam no centro da coluna # time=93.44ms",
       "method": "tap"
     },
     "AC-378": {
       "status": "pass",
-      "testName": "src/layout/estrutura.spec.tsx > Telas na língua do kit > @spec:AC-378 escolher foto é um botão do kit com o campo de arquivo dentro e a dica ligada # time=27.54ms",
+      "testName": "src/layout/estrutura.spec.tsx > Telas na língua do kit > @spec:AC-378 escolher foto é um botão do kit com o campo de arquivo dentro e a dica ligada # time=21.37ms",
       "method": "tap"
     },
     "AC-379": {
       "status": "pass",
-      "testName": "src/layout/estrutura.spec.tsx > Telas na língua do kit > @spec:AC-379 filtros do extrato num cartão e tabela de usuários na largura da coluna # time=80.70ms",
+      "testName": "src/layout/estrutura.spec.tsx > Telas na língua do kit > @spec:AC-379 filtros do extrato num cartão e tabela de usuários na largura da coluna # time=129.77ms",
       "method": "tap"
     }
   },

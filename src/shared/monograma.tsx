@@ -1,19 +1,8 @@
+import { ChartCandlestick } from 'lucide-react';
 import { useState, type CSSProperties } from 'react';
 
-/**
- * A mesma regra do `initials` do ngx-oneforall, que o Angular usava: uma
- * palavra vira os primeiros caracteres; várias viram a inicial de cada uma.
- */
-export function iniciais(texto: string, quantidade = 2): string {
-  const palavras = texto.trim().split(/\s+/).filter(Boolean);
-  if (palavras.length === 0) return '';
-  if (palavras.length === 1) return palavras[0].slice(0, quantidade).toUpperCase();
-  return palavras
-    .slice(0, quantidade)
-    .map((palavra) => palavra.charAt(0))
-    .join('')
-    .toUpperCase();
-}
+/** Mesma fonte dos logos que o backend usa na barra de cotações (brapi). */
+export const logoDoTicker = (ticker: string) => `https://icons.brapi.dev/icons/${encodeURIComponent(ticker)}.svg`;
 
 /** Série estável por ticker: o mesmo ativo tem sempre a mesma cor (AC-219). */
 function serieDe(ticker: string): number {
@@ -24,21 +13,17 @@ function serieDe(ticker: string): number {
   return Math.abs(hash % 8) + 1;
 }
 
-/** Logo curado quando existe; senão, as iniciais do ticker na cor da série (AC-218, AC-220). */
+/**
+ * O logo da empresa; sem logo, um ícone na cor da série do ativo, nunca letras
+ * (AC-380, AC-381). O ticker é anunciado pelo elemento de fora, então a imagem
+ * é decorativa e o leitor de tela não o repete (AC-220).
+ */
 export function Monograma({ ticker, logoUrl = null }: { ticker: string; logoUrl?: string | null }) {
-  const [logoFalhou, setLogoFalhou] = useState(false);
   const normalizado = ticker.trim().toUpperCase();
-
-  if (logoUrl && !logoFalhou) {
-    return (
-      <img
-        src={logoUrl}
-        alt={`Logo do ativo ${normalizado}`}
-        onError={() => setLogoFalhou(true)}
-        className="size-9 flex-none rounded bg-superficie object-contain"
-      />
-    );
-  }
+  const fonte = logoUrl ?? logoDoTicker(normalizado);
+  // Guardar qual fonte falhou, e não um booleano, faz um ticker novo tentar o logo de novo.
+  const [fonteQueFalhou, setFonteQueFalhou] = useState<string | null>(null);
+  const comLogo = fonteQueFalhou !== fonte;
 
   const serie = serieDe(normalizado);
   const estilo = { '--cor-monograma': `var(--cor-serie-${serie})` } as CSSProperties;
@@ -46,17 +31,21 @@ export function Monograma({ ticker, logoUrl = null }: { ticker: string; logoUrl?
   return (
     <span
       data-monograma
+      data-logo={comLogo || undefined}
       role="img"
       aria-label={`Ativo ${normalizado}`}
       data-serie={serie}
       style={estilo}
       className={[
-        'inline-grid size-9 flex-none place-items-center rounded',
-        'border-2 border-(--cor-monograma) bg-[color-mix(in_srgb,var(--cor-monograma)_16%,var(--cor-superficie))]',
-        'font-numero text-rotulo font-bold tracking-(--entrelinha-rotulo) text-texto',
+        'inline-grid size-9 flex-none place-items-center overflow-hidden rounded-pilula',
+        'ring-1 ring-borda bg-[color-mix(in_srgb,var(--cor-monograma)_14%,var(--cor-superficie))] text-(--cor-monograma)',
       ].join(' ')}
     >
-      {iniciais(normalizado, 2)}
+      {comLogo ? (
+        <img src={fonte} alt="" loading="lazy" decoding="async" onError={() => setFonteQueFalhou(fonte)} className="size-full object-cover" />
+      ) : (
+        <ChartCandlestick data-icone-ativo aria-hidden="true" focusable="false" className="size-4.5" strokeWidth={2.25} />
+      )}
     </span>
   );
 }
