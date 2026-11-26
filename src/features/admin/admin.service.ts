@@ -1,6 +1,6 @@
 import { http, Parametros } from '@/core/api/http';
 import { Pagina } from '@/core/api/pagina';
-import { TotaisPorSituacao, USUARIOS_POR_PAGINA, UsuarioAdmin } from './admin.model';
+import { RelatorioDeUso, TotaisPorSituacao, USUARIOS_POR_PAGINA, UsuarioAdmin } from './admin.model';
 
 export const adminService = {
   usuarios(pagina: number, filtros: Parametros): Promise<Pagina<UsuarioAdmin>> {
@@ -17,6 +17,10 @@ export const adminService = {
 
   desbloquear(id: number): Promise<UsuarioAdmin> {
     return http.patch<UsuarioAdmin>(`/admin/usuarios/${id}/desbloquear`);
+  },
+
+  uso(periodo: Parametros): Promise<RelatorioDeUso> {
+    return http.get<RelatorioDeUso>('/admin/uso', { params: periodo });
   },
 
   totais(papel: string): Promise<TotaisPorSituacao> {

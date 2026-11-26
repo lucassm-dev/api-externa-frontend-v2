@@ -10,6 +10,7 @@ export interface AreaDoProduto {
 
 export const AREAS_DO_PRODUTO: AreaDoProduto[] = [
   { rota: '/admin/usuarios', somenteAdmin: true, rotulo: 'Usuários' },
+  { rota: '/admin/uso', somenteAdmin: true, rotulo: 'Uso' },
   { rota: '/painel', somenteInvestidor: true, rotulo: 'Painel' },
   { rota: '/corretoras', rotulo: 'Corretoras' },
   { rota: '/carteiras', somenteInvestidor: true, rotulo: 'Carteiras' },

@@ -58,7 +58,7 @@ afterEach(() => {
 });
 
 describe('O ADMIN começa pelos usuários', () => {
-  it('@spec:AC-348 o ADMIN entra por Usuários e o menu oferece Usuários, Corretoras e Ações', async () => {
+  it('@spec:AC-348 o ADMIN entra por Usuários e o menu oferece Usuários, Uso, Corretoras e Ações', async () => {
     simularServidor((chamada) => responder(chamada));
     const tela = abrir('/entrar');
     const form = await waitFor(() => {
@@ -71,7 +71,7 @@ describe('O ADMIN começa pelos usuários', () => {
     fireEvent.submit(form);
 
     await waitFor(() => expect(tela.caminho()).toBe('/admin/usuarios'));
-    await waitFor(() => expect(areasDoMenu()).toEqual(['/admin/usuarios', '/corretoras', '/acoes']));
+    await waitFor(() => expect(areasDoMenu()).toEqual(['/admin/usuarios', '/admin/uso', '/corretoras', '/acoes']));
     cleanup();
 
     const inicio = abrir('/');
