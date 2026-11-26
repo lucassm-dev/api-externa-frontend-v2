@@ -2,6 +2,7 @@ import { useState, useSyncExternalStore, type ChangeEvent, type FormEvent } from
 import { Botao } from '@/components/ui/botao';
 import { Campo } from '@/components/ui/campo';
 import { Cartao } from '@/components/ui/cartao';
+import { EscolhaDeArquivo } from '@/components/ui/escolha-de-arquivo';
 import { aplicarErroNoFormulario } from '@/core/erros/erro-em-formulario';
 import { ehErroTraduzido } from '@/core/erros/tradutor-erro';
 import { MensagemFeedback } from '@/core/feedback/mensagem-feedback';
@@ -252,12 +253,11 @@ function SecaoFoto() {
   return (
     <div data-secao-conta="foto">
       <Cartao titulo="Foto" apoio="Aparece no topo, ao lado do seu nome.">
-        <div className="flex flex-wrap items-start gap-5">
+        <div className="flex flex-wrap items-center gap-5">
           <FotoDePerfil className="size-20 text-medio" />
-          <div className="grid min-w-0 flex-[1_1_16rem] gap-3">
-            <Campo
-              rotulo="Escolher foto"
-              type="file"
+          <div className="flex min-w-0 flex-[1_1_16rem] flex-wrap items-start gap-2">
+            <EscolhaDeArquivo
+              rotulo={temFoto ? 'Trocar foto' : 'Escolher foto'}
               accept={TIPOS_DE_FOTO.join(',')}
               dica="JPEG, PNG ou WebP, até 2 MB"
               erro={problema}
@@ -284,7 +284,7 @@ function SecaoFoto() {
 
 export function Conta() {
   return (
-    <section className="grid max-w-(--largura-formulario) gap-5">
+    <section className="mx-auto grid w-full max-w-(--largura-conta) gap-5">
       <div>
         <h1 className="m-0 mb-1 text-titulo font-bold tracking-(--entrelinha-titulo)">Minha conta</h1>
         <p className="m-0 text-texto-fraco">Sua foto, o e-mail de acesso e a senha.</p>
