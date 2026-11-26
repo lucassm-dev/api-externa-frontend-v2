@@ -5,7 +5,7 @@ import { BACKEND, RAIZES_DO_BACKEND, ehNavegacaoDePagina, proxyDoBackend } from 
 describe('Fundação da aplicação', () => {
   // ASM-073: o "servidor de desenvolvimento do Angular" do AC-024 passa a ser o do Vite.
   it('@spec:AC-024 o navegador enxerga a API na mesma origem, encaminhada para o backend', () => {
-    const esperadas = ['/auth', '/investidores', '/corretoras', '/carteiras', '/acoes', '/operacoes', '/mercado'];
+    const esperadas = ['/auth', '/investidores', '/corretoras', '/carteiras', '/acoes', '/operacoes', '/mercado', '/admin'];
     expect([...RAIZES_DO_BACKEND].sort()).toEqual([...esperadas].sort());
     expect(BACKEND).toBe('http://localhost:8080');
 
@@ -20,6 +20,14 @@ describe('Fundação da aplicação', () => {
     expect(ehNavegacaoDePagina({ headers: { accept: 'text/html,application/xhtml+xml' } })).toBe(true);
     expect(ehNavegacaoDePagina({ headers: { accept: 'application/json, text/plain, */*' } })).toBe(false);
     expect(ehNavegacaoDePagina({ headers: {} })).toBe(false);
+  });
+
+  it('@spec:AC-024 o nginx de produção encaminha as mesmas raízes do Vite e entrega o app a quem pede HTML', () => {
+    const nginx = readFileSync('nginx/padrao.conf.template', 'utf8');
+    const [, lista = ''] = /location ~ \^\/\(([^)]+)\)\(\/\|\$\)/.exec(nginx) ?? [];
+    expect(lista.split('|').map((raiz) => `/${raiz}`).sort()).toEqual([...RAIZES_DO_BACKEND].sort());
+    // Recarregar uma tela que divide o endereço com a API: como o ehNavegacaoDePagina do Vite.
+    expect(nginx).toMatch(/if \(\$http_accept ~\* "text\/html"\) \{\s*rewrite \^ \/index\.html last;\s*\}/);
   });
 
   it('@spec:AC-020 a aplicação registra pt-BR como idioma único, uma vez só', () => {

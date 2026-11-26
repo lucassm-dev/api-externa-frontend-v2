@@ -19,7 +19,14 @@ server {
     #
     # Precisa bater com o proxy.config.ts usado pelo Vite. Divergir aqui
     # é ter um caminho que funciona em desenvolvimento e dá 404 em produção.
-    location ~ ^/(auth|investidores|corretoras|carteiras|acoes|operacoes|mercado)(/|$) {
+    location ~ ^/(auth|investidores|corretoras|carteiras|acoes|operacoes|mercado|admin)(/|$) {
+        # /corretoras, /carteiras, /acoes, /operacoes e /admin/* são também telas:
+        # recarregar uma delas pede HTML e deve receber o app, não o backend.
+        # É o mesmo critério do ehNavegacaoDePagina do Vite.
+        if ($http_accept ~* "text/html") {
+            rewrite ^ /index.html last;
+        }
+
         proxy_pass ${BACKEND_URL};
         proxy_http_version 1.1;
 
