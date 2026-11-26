@@ -1,130 +1,130 @@
 {
   "feature": "corretoras",
-  "timestamp": "2026-11-25T23:59:20.018Z",
-  "gitRev": "48e4e90",
+  "timestamp": "2026-11-26T00:06:29.124Z",
+  "gitRev": "a4ffa7a",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 664,
+  "testsParsed": 669,
   "results": {
     "AC-066": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-066 o formulário tem um campo só, o CNPJ # time=6.28ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-066 o formulário tem um campo só, o CNPJ # time=6.91ms",
       "method": "tap"
     },
     "AC-067": {
       "status": "pass",
-      "testName": "src/features/corretoras/cnpj.spec.ts > CNPJ > @spec:AC-067 máscara e dígitos puros produzem o mesmo CNPJ para o envio # time=1.60ms",
+      "testName": "src/features/corretoras/cnpj.spec.ts > CNPJ > @spec:AC-067 máscara e dígitos puros produzem o mesmo CNPJ para o envio # time=0.89ms",
       "method": "tap"
     },
     "AC-068": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-068 enquanto consulta, a tela diz que está consultando as fontes externas # time=8.51ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-068 enquanto consulta, a tela diz que está consultando as fontes externas # time=9.22ms",
       "method": "tap"
     },
     "AC-069": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-069 nenhuma segunda requisição sai durante a consulta, e o botão fica indisponível # time=8.11ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-069 nenhuma segunda requisição sai durante a consulta, e o botão fica indisponível # time=22.07ms",
       "method": "tap"
     },
     "AC-070": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-070 cadastro aceito leva à corretora criada, validada e com a data da base # time=8.83ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-070 cadastro aceito leva à corretora criada, validada e com a data da base # time=14.11ms",
       "method": "tap"
     },
     "AC-071": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-071 a recusa mostra o motivo específico que o servidor informou # time=12.13ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-071 a recusa mostra o motivo específico que o servidor informou # time=12.46ms",
       "method": "tap"
     },
     "AC-072": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-072 falha de verificação não é apresentada como reprovação da empresa # time=9.02ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-072 falha de verificação não é apresentada como reprovação da empresa # time=10.60ms",
       "method": "tap"
     },
     "AC-073": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-073 COR-003 preserva o CNPJ digitado e destaca o campo # time=9.66ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-073 COR-003 preserva o CNPJ digitado e destaca o campo # time=12.86ms",
       "method": "tap"
     },
     "AC-074": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Catálogo de corretoras > @spec:AC-074 o cadastro envia só o CNPJ, em dígitos, e nada é guardado quando é recusado # time=6.00ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Catálogo de corretoras > @spec:AC-074 o cadastro envia só o CNPJ, em dígitos, e nada é guardado quando é recusado # time=6.88ms",
       "method": "tap"
     },
     "AC-075": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-075 CNPJ já cadastrado mostra a corretora existente e oferece abri-la # time=45.36ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Cadastro de corretora > @spec:AC-075 CNPJ já cadastrado mostra a corretora existente e oferece abri-la # time=11.18ms",
       "method": "tap"
     },
     "AC-076": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Lista de corretoras > @spec:AC-076 o título é \"Corretoras\" e o catálogo é apresentado como compartilhado # time=76.72ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Lista de corretoras > @spec:AC-076 o título é \"Corretoras\" e o catálogo é apresentado como compartilhado # time=83.13ms",
       "method": "tap"
     },
     "AC-077": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Lista de corretoras > @spec:AC-077 cada linha traz nome, CNPJ formatado, cidade/UF e a validação # time=16.65ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Lista de corretoras > @spec:AC-077 cada linha traz nome, CNPJ formatado, cidade/UF e a validação # time=21.82ms",
       "method": "tap"
     },
     "AC-078": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Catálogo de corretoras > @spec:AC-078 a listagem é paginada e pede a página que a tela pediu # time=1.03ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Catálogo de corretoras > @spec:AC-078 a listagem é paginada e pede a página que a tela pediu # time=0.92ms",
       "method": "tap"
     },
     "AC-079": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Catálogo de corretoras > @spec:AC-079 a busca por CNPJ consulta a rota por CNPJ em dígitos puros # time=0.73ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Catálogo de corretoras > @spec:AC-079 a busca por CNPJ consulta a rota por CNPJ em dígitos puros # time=1.64ms",
       "method": "tap"
     },
     "AC-080": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Catálogo de corretoras > @spec:AC-080 CNPJ ausente do catálogo devolve nada encontrado, não um erro # time=0.73ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Catálogo de corretoras > @spec:AC-080 CNPJ ausente do catálogo devolve nada encontrado, não um erro # time=3.91ms",
       "method": "tap"
     },
     "AC-081": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Catálogo de corretoras > @spec:AC-081 a contagem do selo percorre todas as páginas das carteiras do investidor # time=1.47ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Catálogo de corretoras > @spec:AC-081 a contagem do selo percorre todas as páginas das carteiras do investidor # time=1.88ms",
       "method": "tap"
     },
     "AC-082": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Lista de corretoras > @spec:AC-082 o selo não reordena a lista # time=14.99ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Lista de corretoras > @spec:AC-082 o selo não reordena a lista # time=10.40ms",
       "method": "tap"
     },
     "AC-083": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Catálogo de corretoras > @spec:AC-083 falha ao ler as carteiras vira contagem vazia, nunca erro na lista # time=0.50ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Catálogo de corretoras > @spec:AC-083 falha ao ler as carteiras vira contagem vazia, nunca erro na lista # time=3.77ms",
       "method": "tap"
     },
     "AC-084": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Detalhe da corretora > @spec:AC-084 mostra os dados cadastrais e o endereço completo # time=16.88ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Detalhe da corretora > @spec:AC-084 mostra os dados cadastrais e o endereço completo # time=20.26ms",
       "method": "tap"
     },
     "AC-085": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Detalhe da corretora > @spec:AC-085 a validação na CVM vem junto da data da base oficial usada # time=6.77ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Detalhe da corretora > @spec:AC-085 a validação na CVM vem junto da data da base oficial usada # time=8.22ms",
       "method": "tap"
     },
     "AC-086": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Detalhe da corretora > @spec:AC-086 corretora inexistente devolve o investidor à lista com a mensagem do catálogo # time=6.39ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Detalhe da corretora > @spec:AC-086 corretora inexistente devolve o investidor à lista com a mensagem do catálogo # time=4.84ms",
       "method": "tap"
     },
     "AC-087": {
       "status": "pass",
-      "testName": "src/components/ui/kit.spec.tsx > Diálogo de confirmação > @spec:AC-087 descreve a consequência e oferece exatamente dois botões # time=56.72ms",
+      "testName": "src/components/ui/kit.spec.tsx > Diálogo de confirmação > @spec:AC-087 descreve a consequência e oferece exatamente dois botões # time=113.42ms",
       "method": "tap"
     },
     "AC-088": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Detalhe da corretora > @spec:AC-088 confirmar remove a corretora e volta à lista, sem lixeira nem desfazer # time=33.63ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Detalhe da corretora > @spec:AC-088 confirmar remove a corretora e volta à lista, sem lixeira nem desfazer # time=49.54ms",
       "method": "tap"
     },
     "AC-089": {
       "status": "pass",
-      "testName": "src/features/corretoras/corretoras.spec.tsx > Detalhe da corretora > @spec:AC-089 COR-004 cancela a exclusão sem revelar de quem são as carteiras # time=40.79ms",
+      "testName": "src/features/corretoras/corretoras.spec.tsx > Detalhe da corretora > @spec:AC-089 COR-004 cancela a exclusão sem revelar de quem são as carteiras # time=63.37ms",
       "method": "tap"
     }
   },

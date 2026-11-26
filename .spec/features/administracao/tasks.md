@@ -7,3 +7,10 @@
 - Refs: US-098, AC-348, AC-349, AC-350, US-099, AC-351, AC-352, AC-353, AC-354
 - Arquivos: .spec/features/identidade-papel/spec.md, .spec/features/identidade-papel/tasks.md, src/core/sessao/sessao.model.ts, src/core/sessao/sessao.guard.ts, src/layout/areas.ts, src/layout/casca.tsx, src/rotas.tsx, src/features/identidade-papel.spec.tsx, src/features/admin/admin.model.ts, src/features/admin/admin.service.ts, src/features/admin/usuarios.tsx, src/features/admin/usuarios.spec.tsx
 - Notas: issue #31. Substitui AC-314 e AC-315 (Q-050).
+
+## T-150 — Bloquear e desbloquear usuário [concluida]
+
+- Refs: US-100, AC-355, AC-356, AC-357, AC-358, AC-359
+- Arquivos: src/components/ui/dialogo-confirmacao.tsx, src/features/admin/admin.service.ts, src/features/admin/usuarios.tsx, src/features/admin/bloqueio.spec.tsx
+- Notas: issue #32. O diálogo de confirmação ganha um espaço para campo, que a descontinuação
+  de corretora (#35) também usa.

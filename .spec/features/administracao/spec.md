@@ -75,6 +75,44 @@ quem está ativo, quem está bloqueado e quem tem dinheiro investido.
 - **Quando** o administrador vai para a próxima página
 - **Então** a leitura sai com a página nova e os mesmos filtros
 
+### US-100 — Bloquear e desbloquear
+
+Como administrador, quero bloquear uma conta dizendo o motivo e desfazer o bloqueio,
+para que eu contenha um uso indevido sem apagar nada.
+
+#### AC-355 — Bloquear exige motivo e atualiza lista e totais
+
+- **Dado** um usuário ativo na lista
+- **Quando** o administrador aciona "Bloquear", escreve o motivo e confirma
+- **Então** sai `PATCH /admin/usuarios/{id}/bloquear` com o `motivo` sem espaços nas pontas,
+  e a lista e os totais são lidos de novo
+
+#### AC-356 — Sem motivo, o bloqueio não sai
+
+- **Dado** o diálogo de bloqueio com o motivo vazio ou só com espaços
+- **Quando** o administrador confirma
+- **Então** o campo diz que o motivo é obrigatório, o diálogo continua aberto e nenhuma
+  requisição sai
+
+#### AC-357 — O administrador não bloqueia a si mesmo
+
+- **Dado** a linha do próprio administrador conectado
+- **Quando** a lista aparece
+- **Então** essa linha não oferece "Bloquear"; se o servidor recusar mesmo assim (`AUT-011`),
+  a mensagem aparece no diálogo
+
+#### AC-358 — Desbloquear devolve a conta à situação ativa
+
+- **Dado** um usuário bloqueado na lista
+- **Quando** o administrador aciona "Desbloquear"
+- **Então** sai `PATCH /admin/usuarios/{id}/desbloquear`, e a lista e os totais são lidos de novo
+
+#### AC-359 — A linha bloqueada mostra o motivo
+
+- **Dado** um usuário bloqueado com motivo
+- **Quando** a lista aparece
+- **Então** a linha mostra o motivo junto da situação
+
 ## Fora de escopo
 
 - Excluir usuário: o backend não oferece a rota.
@@ -86,6 +124,7 @@ quem está ativo, quem está bloqueado e quem tem dinheiro investido.
 | ID | Suposição | Status | Resolução |
 |---|---|---|---|
 | ASM-087 | Os totais trazem sempre as chaves `ATIVO` e `BLOQUEADO`, e só elas | confirmada | CONTRATO.md, seção "Admin" |
+| ASM-089 | A linha do próprio administrador é reconhecida pelo e-mail da sessão, que é único | confirmada | E-mail é a identidade de login (CONTRATO.md, "Autenticação"); evita guardar o `id` na sessão |
 | ASM-088 | A lista usa a página padrão de 20 itens, como o resto do produto | confirmada | Mesmo `size` das outras listas paginadas |
 
 ## Perguntas em aberto

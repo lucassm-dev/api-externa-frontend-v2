@@ -7,6 +7,14 @@ export const adminService = {
     return http.get<Pagina<UsuarioAdmin>>('/admin/usuarios', { params: { ...filtros, page: pagina, size: USUARIOS_POR_PAGINA } });
   },
 
+  bloquear(id: number, motivo: string): Promise<UsuarioAdmin> {
+    return http.patch<UsuarioAdmin>(`/admin/usuarios/${id}/bloquear`, { motivo });
+  },
+
+  desbloquear(id: number): Promise<UsuarioAdmin> {
+    return http.patch<UsuarioAdmin>(`/admin/usuarios/${id}/desbloquear`);
+  },
+
   totais(papel: string): Promise<TotaisPorSituacao> {
     return http.get<TotaisPorSituacao>('/admin/usuarios/totais', papel ? { params: { papel } } : undefined);
   },

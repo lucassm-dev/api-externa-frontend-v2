@@ -182,11 +182,181 @@
       "ownFingerprint": "d907c6be501ebd9996482a5c30fb1ab0e31ae909ac4fcfe2fcbd8df10af3bec9",
       "conflictFingerprint": "5d39933b4b35988141b66c36b04a79b8c6db1a80da87e95004d052a6c0c1ab5b",
       "answeredAt": "2026-11-25T23:59:16.747Z"
+    },
+    {
+      "conflictId": "impacto:acesso",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "ec796c788e235e6dd14db51d78dfcb629e35a70d0ba5c692f1e1b7f6290b3c0f",
+      "answeredAt": "2026-11-26T00:05:26.472Z"
+    },
+    {
+      "conflictId": "impacto:acoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "c8a43983366903435a7769c5c6bd8bc3a9baf99db4f965cc01c63ba757d3cb74",
+      "answeredAt": "2026-11-26T00:05:27.600Z"
+    },
+    {
+      "conflictId": "impacto:cabecalho-identidade-acoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "9066f35b0dff1faeab9de16c3c6de7e58bbb7cff2285c18a1e06bde3cd6639fa",
+      "answeredAt": "2026-11-26T00:05:28.645Z"
+    },
+    {
+      "conflictId": "impacto:confirmacao-senha-cadastro",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "b4018e855eaf5dad6c223d3065c32e62298cc7033ebc5ec69d0e809059562ad2",
+      "answeredAt": "2026-11-26T00:05:29.604Z"
+    },
+    {
+      "conflictId": "impacto:conta",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "bc297f481d89e2db4dc8248a18b5833f187e79ce8aa20def45991f9c5cfac42b",
+      "answeredAt": "2026-11-26T00:05:30.486Z"
+    },
+    {
+      "conflictId": "impacto:corretoras",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "5b22269291314aa3ff7c202aadeaffb2af96537a0a5119a98bbaff8b875e6ef6",
+      "answeredAt": "2026-11-26T00:05:31.385Z"
+    },
+    {
+      "conflictId": "impacto:desempenho",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "06cacedee31495325b00bfe913725e9477b0692051569405fc7c11c2682bf5d0",
+      "answeredAt": "2026-11-26T00:05:32.242Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "370cdae8ecfb759f086088a4c3d6ca0a987b87fa168872f882af97c52bc409c7",
+      "answeredAt": "2026-11-26T00:05:32.903Z"
+    },
+    {
+      "conflictId": "impacto:fundacao-visual",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "14bb02c230f1701a64c59586adc896549f7563f3f020470b946606025f8bad7a",
+      "answeredAt": "2026-11-26T00:05:33.354Z"
+    },
+    {
+      "conflictId": "impacto:identidade-papel",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "2d014eb517420d0fc6c5b0057600b9bc18b47e9c07698592576c19176deac715",
+      "answeredAt": "2026-11-26T00:05:34.119Z"
+    },
+    {
+      "conflictId": "impacto:migracao-react",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "dd9fea697002232415ba31826f379a6be25eca8a2f262b79dfda51a37317112e",
+      "answeredAt": "2026-11-26T00:05:35.019Z"
+    },
+    {
+      "conflictId": "impacto:operacoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "02d3dc33d3ecb858eb41a310ab964812bf82cce43cb0bb362d63c11f5ec18a21",
+      "answeredAt": "2026-11-26T00:05:35.908Z"
+    },
+    {
+      "conflictId": "impacto:painel",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "e389459bb9b938bf98bfe968171085e9984b923b3f4f12e916b2fc2e25726478",
+      "answeredAt": "2026-11-26T00:05:36.610Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-acesso",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "49886bfef9dd0def4ee0767fdd8031266ed77d517d5655354286534cf866230c",
+      "answeredAt": "2026-11-26T00:05:37.459Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "cac296b58a5d6df57faa87a841e234b85411336cb3fff93676c60278ed3f617c",
+      "answeredAt": "2026-11-26T00:05:38.287Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-visual",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "ef0dd2b32b015f2999a5304c2124c5cab2308e0ac6c8617cc84bf4002d8fea39",
+      "answeredAt": "2026-11-26T00:05:39.147Z"
+    },
+    {
+      "conflictId": "impacto:visibilidade-da-senha",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 17 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026, pergunta Impacto (administracao #32)",
+      "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+      "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+      "conflictFingerprint": "5d39933b4b35988141b66c36b04a79b8c6db1a80da87e95004d052a6c0c1ab5b",
+      "answeredAt": "2026-11-26T00:05:39.975Z"
     }
   ],
   "clientRequest": "",
   "review": {
-    "summary": "Lidas as specs de identidade-papel (AC-311 a AC-324, Q-044), acesso (login e destino) e cabecalho-identidade-acoes (menu da casca). Conflito real: AC-314 e AC-315 (ADMIN entra por Corretoras), resolvidos pelo Lucas em 25/11/2026 (Q-050): o ADMIN passa a entrar por /admin/usuarios; superados por AC-348 e AC-349. O menu do investidor não muda (AC-316).",
+    "summary": "Issue #32. Lidas as specs que usam o DialogoConfirmacao (corretoras AC-088, operacoes AC-179, carteiras e repaginacao-visual) e a administracao (US-098, US-099). O diálogo ganha um children opcional; sem children ele renderiza igual ao de antes, então nenhuma confirmação existente muda. A lista de usuários ganha a coluna de ações e o motivo do bloqueio. Nenhuma regra de spec anterior é contrariada.",
     "reviewer": "Claude Code (Opus 5.5), sessão de 25/11/2026",
     "conflicts": [
       {
@@ -250,6 +420,17 @@
         "rule": ".spec/features/conta/spec.md"
       },
       {
+        "id": "impacto:corretoras",
+        "automatic": true,
+        "feature": "corretoras",
+        "summary": "A mudança interfere no domínio da feature corretoras.",
+        "files": [
+          "src/components/ui/dialogo-confirmacao.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/corretoras/spec.md"
+      },
+      {
         "id": "impacto:desempenho",
         "automatic": true,
         "feature": "desempenho",
@@ -274,6 +455,17 @@
         "rule": ".spec/features/fundacao/spec.md"
       },
       {
+        "id": "impacto:fundacao-visual",
+        "automatic": true,
+        "feature": "fundacao-visual",
+        "summary": "A mudança interfere no domínio da feature fundacao-visual.",
+        "files": [
+          "src/components/ui/dialogo-confirmacao.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/fundacao-visual/spec.md"
+      },
+      {
         "id": "impacto:identidade-papel",
         "automatic": true,
         "feature": "identidade-papel",
@@ -295,6 +487,7 @@
         "feature": "migracao-react",
         "summary": "A mudança interfere no domínio da feature migracao-react.",
         "files": [
+          "src/components/ui/dialogo-confirmacao.tsx",
           "src/core/sessao/sessao.guard.ts",
           "src/core/sessao/sessao.model.ts",
           "src/layout/areas.ts",
@@ -372,16 +565,11 @@
         ],
         "domains": [],
         "rule": ".spec/features/visibilidade-da-senha/spec.md"
-      },
-      {
-        "id": "identidade-papel-ac-314-315",
-        "summary": "O ADMIN deixa de entrar por Corretoras e o menu dele ganha Usuários, contradizendo AC-314 e AC-315.",
-        "rule": ".spec/features/identidade-papel/spec.md#ac-314"
       }
     ],
-    "fingerprint": "d092dbdbc44ae66c2b754b3b3647a3c023f5582af97c592a89dc84875abe9f3c",
-    "ownFingerprint": "d907c6be501ebd9996482a5c30fb1ab0e31ae909ac4fcfe2fcbd8df10af3bec9",
-    "reviewedAt": "2026-11-25T23:58:00.500Z",
+    "fingerprint": "7d4fe7e824c1f5c22a9d9120f26f0d0a1564fb4b0fe86f1ed6c85104ad42763a",
+    "ownFingerprint": "1f137e9f2f32cffd64eda6a38d7449edbe9967905bf9aacbb308ff0accb96f1d",
+    "reviewedAt": "2026-11-26T00:05:06.474Z",
     "documents": [
       ".spec/features/acesso/spec.md",
       ".spec/features/acesso/tasks.md",

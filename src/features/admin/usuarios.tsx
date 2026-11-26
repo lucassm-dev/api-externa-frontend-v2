@@ -1,4 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
+import { Botao } from '@/components/ui/botao';
+import { Campo } from '@/components/ui/campo';
+import { DialogoConfirmacao } from '@/components/ui/dialogo-confirmacao';
 import { useSearchParams } from 'react-router';
 import { Esqueleto } from '@/components/ui/esqueleto';
 import { Paginador } from '@/components/ui/paginador';
@@ -6,7 +9,10 @@ import { Selecao } from '@/components/ui/selecao';
 import { Selo } from '@/components/ui/selo';
 import { Tabela } from '@/components/ui/tabela';
 import { Pagina } from '@/core/api/pagina';
+import { ehErroTraduzido } from '@/core/erros/tradutor-erro';
+import { MensagemFeedback } from '@/core/feedback/mensagem-feedback';
 import { formatarNumero } from '@/core/formatacao/formatacao';
+import { sessao } from '@/core/sessao/sessao.service';
 import { EstadoVazio } from '@/shared/estado-vazio';
 import { ROTULO_DA_SITUACAO, ROTULO_DO_PAPEL, TotaisPorSituacao, UsuarioAdmin } from './admin.model';
 import { adminService } from './admin.service';
@@ -23,6 +29,13 @@ export function Usuarios() {
   const [pagina, setPagina] = useState<Pagina<UsuarioAdmin> | null>(null);
   const [carregando, setCarregando] = useState(true);
   const [totais, setTotais] = useState<TotaisPorSituacao | null>(null);
+  const [emBloqueio, setEmBloqueio] = useState<UsuarioAdmin | null>(null);
+  const [motivo, setMotivo] = useState('');
+  const [problemaDoBloqueio, setProblemaDoBloqueio] = useState<{ campo: boolean; texto: string } | null>(null);
+  const [ocupado, setOcupado] = useState(false);
+  const [erro, setErro] = useState<string | null>(null);
+  // A própria linha não oferece bloquear (AC-357, ASM-089).
+  const meuEmail = sessao.email();
 
   const ler = useCallback(
     async (numero: number) => {
@@ -41,9 +54,52 @@ export function Usuarios() {
     void ler(0);
   }, [ler]);
 
+  const lerTotais = useCallback(() => adminService.totais(papel).then(setTotais, () => setTotais(null)), [papel]);
+
   useEffect(() => {
-    adminService.totais(papel).then(setTotais, () => setTotais(null));
-  }, [papel]);
+    void lerTotais();
+  }, [lerTotais]);
+
+  const releitura = () => {
+    void ler(pagina?.number ?? 0);
+    void lerTotais();
+  };
+
+  const abrirBloqueio = (usuario: UsuarioAdmin) => {
+    setMotivo('');
+    setProblemaDoBloqueio(null);
+    setEmBloqueio(usuario);
+  };
+
+  const bloquear = async () => {
+    if (!emBloqueio || ocupado) return;
+    const texto = motivo.trim();
+    if (!texto) {
+      setProblemaDoBloqueio({ campo: true, texto: 'Informe o motivo do bloqueio' });
+      return;
+    }
+    setOcupado(true);
+    try {
+      await adminService.bloquear(emBloqueio.id, texto);
+      setEmBloqueio(null);
+      releitura();
+    } catch (falha) {
+      if (!ehErroTraduzido(falha)) throw falha;
+      setProblemaDoBloqueio({ campo: false, texto: falha.mensagem });
+    }
+    setOcupado(false);
+  };
+
+  const desbloquear = async (usuario: UsuarioAdmin) => {
+    setErro(null);
+    try {
+      await adminService.desbloquear(usuario.id);
+      releitura();
+    } catch (falha) {
+      if (!ehErroTraduzido(falha)) throw falha;
+      setErro(falha.mensagem);
+    }
+  };
 
   const filtrar = (campo: 'situacao' | 'papel', valor: string) =>
     setBusca((atual) => {
@@ -56,6 +112,8 @@ export function Usuarios() {
   return (
     <section className="grid gap-5">
       <h1 className="m-0 text-titulo font-bold tracking-(--entrelinha-titulo)">Usuários</h1>
+
+      {erro && <MensagemFeedback nivel="erro" mensagem={erro} />}
 
       {totais && (
         <dl aria-label="Totais por situação" className="m-0 flex flex-wrap gap-3">
@@ -100,6 +158,9 @@ export function Usuarios() {
                     Carteiras ativas
                   </th>
                   <th scope="col">Posição aberta</th>
+                  <th scope="col">
+                    <span className="sr-only">Ações</span>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -110,11 +171,29 @@ export function Usuarios() {
                     <td>{ROTULO_DO_PAPEL[usuario.papel]}</td>
                     <td>
                       <Selo variante={usuario.situacao === 'ATIVO' ? 'sucesso' : 'erro'} texto={ROTULO_DA_SITUACAO[usuario.situacao]} />
+                      {usuario.situacao === 'BLOQUEADO' && usuario.motivoBloqueio && (
+                        <span data-motivo-bloqueio className="mt-1 block max-w-56 text-rotulo text-texto-fraco">
+                          {usuario.motivoBloqueio}
+                        </span>
+                      )}
                     </td>
                     <td data-numero data-carteiras-ativas>
                       {formatarNumero(usuario.carteirasAtivas, 0)}
                     </td>
                     <td data-posicao-aberta>{usuario.temPosicaoAberta ? 'Sim' : 'Não'}</td>
+                    <td className="text-right">
+                      {usuario.situacao === 'BLOQUEADO' ? (
+                        <Botao intencao="secundaria" tamanho="compacto" type="button" onClick={() => void desbloquear(usuario)}>
+                          Desbloquear
+                        </Botao>
+                      ) : (
+                        usuario.email !== meuEmail && (
+                          <Botao intencao="secundaria" tamanho="compacto" type="button" onClick={() => abrirBloqueio(usuario)}>
+                            Bloquear
+                          </Botao>
+                        )
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -131,6 +210,30 @@ export function Usuarios() {
             )}
           </>
         ))
+      )}
+
+      {emBloqueio && (
+        <DialogoConfirmacao
+          titulo={`Bloquear ${emBloqueio.email}?`}
+          consequencia="A pessoa deixa de entrar e as sessões abertas dela param de valer. Dá para desbloquear depois."
+          rotuloConfirmar="Bloquear"
+          ocupado={ocupado}
+          aoConfirmar={() => void bloquear()}
+          aoCancelar={() => setEmBloqueio(null)}
+        >
+          {problemaDoBloqueio && !problemaDoBloqueio.campo && <MensagemFeedback nivel="erro" mensagem={problemaDoBloqueio.texto} />}
+          <Campo
+            rotulo="Motivo"
+            name="motivo"
+            autoComplete="off"
+            value={motivo}
+            onChange={(evento) => {
+              setMotivo(evento.target.value);
+              setProblemaDoBloqueio(null);
+            }}
+            erro={problemaDoBloqueio?.campo ? problemaDoBloqueio.texto : null}
+          />
+        </DialogoConfirmacao>
       )}
     </section>
   );
