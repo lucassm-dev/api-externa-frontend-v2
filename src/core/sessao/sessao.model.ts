@@ -29,6 +29,9 @@ export const CHAVE_SESSAO = 'carteira.sessao';
 /** Endereço do login. Único destino possível sem sessão, junto do cadastro. */
 export const ROTA_LOGIN = '/entrar';
 
+/** Minha conta: fica aqui, e não no serviço de conta, para a casca não puxar o serviço inteiro para o bundle inicial. */
+export const ROTA_CONTA = '/conta';
+
 /** Onde o ADMIN entra: o painel de usuários (Q-050, resolve a Q-044). */
 export const ROTA_INICIAL_ADMIN = '/admin/usuarios';
 

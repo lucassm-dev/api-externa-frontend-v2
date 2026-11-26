@@ -1,7 +1,7 @@
 import { useEffect, useState, useSyncExternalStore } from 'react';
 import { sessao } from '@/core/sessao/sessao.service';
 import { cn } from '@/lib/utils';
-import { conta } from './conta';
+import { http } from '@/core/api/http';
 
 export function iniciaisDoEmail(email: string | null | undefined): string {
   const [parteLocal = '', dominio = ''] = (email ?? '').trim().split('@');
@@ -22,7 +22,7 @@ function useFoto(): string | null {
     if (!identidade?.fotoUrl) return;
     const controle = new AbortController();
     let criado: string | null = null;
-    conta.buscarFoto(controle.signal).then(
+    http.blob('/auth/me/foto', controle.signal).then(
       (foto) => {
         criado = URL.createObjectURL(foto);
         setEndereco(criado);

@@ -1,7 +1,7 @@
 {
   "feature": "administracao",
-  "timestamp": "2026-11-26T23:12:39.399Z",
-  "gitRev": "c168963",
+  "timestamp": "2026-11-26T23:30:28.536Z",
+  "gitRev": "18b17f7",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
@@ -9,142 +9,142 @@
   "results": {
     "AC-348": {
       "status": "pass",
-      "testName": "src/features/admin/usuarios.spec.tsx > O ADMIN começa pelos usuários > @spec:AC-348 o ADMIN entra por Usuários e o menu oferece Usuários, Uso, Corretoras e Ações # time=336.36ms",
+      "testName": "src/features/admin/usuarios.spec.tsx > O ADMIN começa pelos usuários > @spec:AC-348 o ADMIN entra por Usuários e o menu oferece Usuários, Uso, Corretoras e Ações # time=361.87ms",
       "method": "tap"
     },
     "AC-349": {
       "status": "pass",
-      "testName": "src/features/admin/usuarios.spec.tsx > O ADMIN começa pelos usuários > @spec:AC-349 rota de investidor aberta pelo ADMIN leva aos usuários sem requisitar a área # time=189.02ms",
+      "testName": "src/features/admin/usuarios.spec.tsx > O ADMIN começa pelos usuários > @spec:AC-349 rota de investidor aberta pelo ADMIN leva aos usuários sem requisitar a área # time=187.85ms",
       "method": "tap"
     },
     "AC-350": {
       "status": "pass",
-      "testName": "src/features/admin/usuarios.spec.tsx > O ADMIN começa pelos usuários > @spec:AC-350 o investidor não vê Usuários e o endereço o leva ao Painel sem requisitar /admin # time=14.82ms",
+      "testName": "src/features/admin/usuarios.spec.tsx > O ADMIN começa pelos usuários > @spec:AC-350 o investidor não vê Usuários e o endereço o leva ao Painel sem requisitar /admin # time=19.43ms",
       "method": "tap"
     },
     "AC-351": {
       "status": "pass",
-      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-351 cada linha mostra e-mail, nome, papel, situação, carteiras ativas e posição aberta # time=15.51ms",
+      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-351 cada linha mostra e-mail, nome, papel, situação, carteiras ativas e posição aberta # time=17.66ms",
       "method": "tap"
     },
     "AC-352": {
       "status": "pass",
-      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-352 situação e papel vão ao servidor, moram no endereço e não oferecem excluído # time=116.27ms",
+      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-352 situação e papel vão ao servidor, moram no endereço e não oferecem excluído # time=117.23ms",
       "method": "tap"
     },
     "AC-353": {
       "status": "pass",
-      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-353 os totais acompanham o papel # time=46.51ms",
+      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-353 os totais acompanham o papel # time=33.74ms",
       "method": "tap"
     },
     "AC-354": {
       "status": "pass",
-      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-354 a próxima página leva os filtros # time=38.20ms",
+      "testName": "src/features/admin/usuarios.spec.tsx > Ver os usuários > @spec:AC-354 a próxima página leva os filtros # time=27.61ms",
       "method": "tap"
     },
     "AC-355": {
       "status": "pass",
-      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-355 bloquear manda o motivo e relê a lista e os totais # time=165.54ms",
+      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-355 bloquear manda o motivo e relê a lista e os totais # time=178.24ms",
       "method": "tap"
     },
     "AC-356": {
       "status": "pass",
-      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-356 sem motivo o bloqueio não sai e o diálogo continua aberto # time=58.86ms",
+      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-356 sem motivo o bloqueio não sai e o diálogo continua aberto # time=75.50ms",
       "method": "tap"
     },
     "AC-357": {
       "status": "pass",
-      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-357 a própria linha não oferece bloquear; AUT-011 do servidor aparece no diálogo # time=91.44ms",
+      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-357 a própria linha não oferece bloquear; AUT-011 do servidor aparece no diálogo # time=84.45ms",
       "method": "tap"
     },
     "AC-358": {
       "status": "pass",
-      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-358 desbloquear manda o PATCH e relê a lista e os totais # time=21.44ms",
+      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-358 desbloquear manda o PATCH e relê a lista e os totais # time=40.24ms",
       "method": "tap"
     },
     "AC-359": {
       "status": "pass",
-      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-359 a linha bloqueada mostra o motivo # time=14.02ms",
+      "testName": "src/features/admin/bloqueio.spec.tsx > Bloquear e desbloquear > @spec:AC-359 a linha bloqueada mostra o motivo # time=23.91ms",
       "method": "tap"
     },
     "AC-360": {
       "status": "pass",
-      "testName": "src/features/admin/novo-admin.spec.tsx > Criar outro administrador > @spec:AC-360 a área de usuários leva ao formulário com e-mail, senha e confirmação # time=154.29ms",
+      "testName": "src/features/admin/novo-admin.spec.tsx > Criar outro administrador > @spec:AC-360 a área de usuários leva ao formulário com e-mail, senha e confirmação # time=200.82ms",
       "method": "tap"
     },
     "AC-361": {
       "status": "pass",
-      "testName": "src/features/admin/novo-admin.spec.tsx > Criar outro administrador > @spec:AC-361 criar manda só e-mail e senha, volta à lista relida e avisa # time=62.17ms",
+      "testName": "src/features/admin/novo-admin.spec.tsx > Criar outro administrador > @spec:AC-361 criar manda só e-mail e senha, volta à lista relida e avisa # time=60.35ms",
       "method": "tap"
     },
     "AC-362": {
       "status": "pass",
-      "testName": "src/features/admin/novo-admin.spec.tsx > Criar outro administrador > @spec:AC-362 e-mail, senha ou confirmação inválidos não saem # time=33.30ms",
+      "testName": "src/features/admin/novo-admin.spec.tsx > Criar outro administrador > @spec:AC-362 e-mail, senha ou confirmação inválidos não saem # time=35.74ms",
       "method": "tap"
     },
     "AC-363": {
       "status": "pass",
-      "testName": "src/features/admin/novo-admin.spec.tsx > Criar outro administrador > @spec:AC-363 e-mail em uso aparece no campo e o digitado fica # time=27.41ms",
+      "testName": "src/features/admin/novo-admin.spec.tsx > Criar outro administrador > @spec:AC-363 e-mail em uso aparece no campo e o digitado fica # time=34.90ms",
       "method": "tap"
     },
     "AC-364": {
       "status": "pass",
-      "testName": "src/features/admin/novo-admin.spec.tsx > Criar outro administrador > @spec:AC-364 o investidor que abre o endereço vai ao Painel sem requisitar /admin # time=61.23ms",
+      "testName": "src/features/admin/novo-admin.spec.tsx > Criar outro administrador > @spec:AC-364 o investidor que abre o endereço vai ao Painel sem requisitar /admin # time=93.77ms",
       "method": "tap"
     },
     "AC-365": {
       "status": "pass",
-      "testName": "src/features/admin/uso.spec.tsx > Ver o uso da API > @spec:AC-365 o ADMIN vê Uso depois de Usuários; o investidor não vê e o endereço o leva ao Painel # time=190.83ms",
+      "testName": "src/features/admin/uso.spec.tsx > Ver o uso da API > @spec:AC-365 o ADMIN vê Uso depois de Usuários; o investidor não vê e o endereço o leva ao Painel # time=284.22ms",
       "method": "tap"
     },
     "AC-366": {
       "status": "pass",
-      "testName": "src/features/admin/uso.spec.tsx > Ver o uso da API > @spec:AC-366 sem período, a leitura sai sem datas e a tela fala dos últimos 7 dias # time=17.41ms",
+      "testName": "src/features/admin/uso.spec.tsx > Ver o uso da API > @spec:AC-366 sem período, a leitura sai sem datas e a tela fala dos últimos 7 dias # time=21.40ms",
       "method": "tap"
     },
     "AC-367": {
       "status": "pass",
-      "testName": "src/features/admin/uso.spec.tsx > Ver o uso da API > @spec:AC-367 o período vai ao servidor e ao endereço; data final antes da inicial não sai; AUT-018 vai ao campo # time=63.78ms",
+      "testName": "src/features/admin/uso.spec.tsx > Ver o uso da API > @spec:AC-367 o período vai ao servidor e ao endereço; data final antes da inicial não sai; AUT-018 vai ao campo # time=63.50ms",
       "method": "tap"
     },
     "AC-368": {
       "status": "pass",
-      "testName": "src/features/admin/uso.spec.tsx > Ver o uso da API > @spec:AC-368 cada pico tem a hora, uma barra proporcional à maior e o valor escrito # time=19.10ms",
+      "testName": "src/features/admin/uso.spec.tsx > Ver o uso da API > @spec:AC-368 cada pico tem a hora, uma barra proporcional à maior e o valor escrito # time=24.86ms",
       "method": "tap"
     },
     "AC-369": {
       "status": "pass",
-      "testName": "src/features/admin/uso.spec.tsx > Ver o uso da API > @spec:AC-369 quem mais chamou aparece com e-mail e requisições, na ordem do servidor # time=16.63ms",
+      "testName": "src/features/admin/uso.spec.tsx > Ver o uso da API > @spec:AC-369 quem mais chamou aparece com e-mail e requisições, na ordem do servidor # time=21.25ms",
       "method": "tap"
     },
     "AC-370": {
       "status": "pass",
-      "testName": "src/features/admin/uso.spec.tsx > Ver o uso da API > @spec:AC-370 período sem uso mostra estado vazio, sem gráfico nem lista # time=16.01ms",
+      "testName": "src/features/admin/uso.spec.tsx > Ver o uso da API > @spec:AC-370 período sem uso mostra estado vazio, sem gráfico nem lista # time=20.41ms",
       "method": "tap"
     },
     "AC-371": {
       "status": "pass",
-      "testName": "src/features/corretoras/descontinuar.spec.tsx > Descontinuar corretora > @spec:AC-371 só o ADMIN vê Descontinuar, e só em corretora ativa # time=151.03ms",
+      "testName": "src/features/corretoras/descontinuar.spec.tsx > Descontinuar corretora > @spec:AC-371 só o ADMIN vê Descontinuar, e só em corretora ativa # time=173.69ms",
       "method": "tap"
     },
     "AC-372": {
       "status": "pass",
-      "testName": "src/features/corretoras/descontinuar.spec.tsx > Descontinuar corretora > @spec:AC-372 o diálogo diz quantas carteiras ativas são afetadas # time=103.36ms",
+      "testName": "src/features/corretoras/descontinuar.spec.tsx > Descontinuar corretora > @spec:AC-372 o diálogo diz quantas carteiras ativas são afetadas # time=96.31ms",
       "method": "tap"
     },
     "AC-373": {
       "status": "pass",
-      "testName": "src/features/corretoras/descontinuar.spec.tsx > Descontinuar corretora > @spec:AC-373 com motivo, descontinua e marca o detalhe; sem motivo, nada sai # time=67.48ms",
+      "testName": "src/features/corretoras/descontinuar.spec.tsx > Descontinuar corretora > @spec:AC-373 com motivo, descontinua e marca o detalhe; sem motivo, nada sai # time=66.60ms",
       "method": "tap"
     },
     "AC-374": {
       "status": "pass",
-      "testName": "src/features/corretoras/descontinuar.spec.tsx > Descontinuar corretora > @spec:AC-374 a corretora descontinuada aparece marcada na lista e no detalhe # time=27.85ms",
+      "testName": "src/features/corretoras/descontinuar.spec.tsx > Descontinuar corretora > @spec:AC-374 a corretora descontinuada aparece marcada na lista e no detalhe # time=53.84ms",
       "method": "tap"
     },
     "AC-375": {
       "status": "pass",
-      "testName": "src/features/corretoras/descontinuar.spec.tsx > Descontinuar corretora > @spec:AC-375 criar carteira não oferece a descontinuada; COR-005 do servidor aparece no formulário # time=47.22ms",
+      "testName": "src/features/corretoras/descontinuar.spec.tsx > Descontinuar corretora > @spec:AC-375 criar carteira não oferece a descontinuada; COR-005 do servidor aparece no formulário # time=45.31ms",
       "method": "tap"
     }
   },

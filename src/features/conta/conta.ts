@@ -12,7 +12,6 @@ export interface DadosPessoais {
 
 export const LIMITE_FOTO_BYTES = 2 * 1024 * 1024;
 export const TIPOS_DE_FOTO = ['image/jpeg', 'image/png', 'image/webp'];
-export const ROTA_CONTA = '/conta';
 
 /** Mesmos textos de AUT-016 e AUT-017: recusar antes ou depois de enviar diz a mesma coisa. */
 export function problemaDaFoto(arquivo: File): string | null {
@@ -66,9 +65,5 @@ export const conta = {
   async removerFoto(): Promise<void> {
     await http.delete<void>('/auth/me/foto');
     await recarregarIdentidade();
-  },
-
-  buscarFoto(sinal: AbortSignal): Promise<Blob> {
-    return http.blob('/auth/me/foto', sinal);
   },
 };
