@@ -35,6 +35,14 @@ export const corretorasService = {
     }
   },
 
+  async carteirasAfetadas(id: number): Promise<number> {
+    return (await http.get<{ carteirasAtivas: number }>(`/corretoras/${id}/carteiras-afetadas`)).carteirasAtivas;
+  },
+
+  descontinuar(id: number, motivo: string): Promise<Corretora> {
+    return http.patch<Corretora>(`/corretoras/${id}/descontinuar`, { motivo });
+  },
+
   remover(id: number): Promise<void> {
     return http.delete<void>(`/corretoras/${id}`);
   },

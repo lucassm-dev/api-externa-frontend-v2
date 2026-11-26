@@ -122,8 +122,10 @@ export function CriarCarteira() {
           <Selecao rotulo="Corretora" empilhado data-campo-corretora {...ligar('corretoraId')} onChange={(evento) => formulario.mudar('corretoraId', evento.target.value)}>
             <option value="">Escolha a corretora</option>
             {catalogo.map((corretora) => (
-              <option key={corretora.id} value={corretora.id}>
+              // Descontinuada não aceita carteira nova (COR-005): fica à vista, mas indisponível (AC-375).
+              <option key={corretora.id} value={corretora.id} disabled={corretora.descontinuada}>
                 {nomeExibido(corretora)}
+                {corretora.descontinuada && ' (descontinuada)'}
               </option>
             ))}
           </Selecao>

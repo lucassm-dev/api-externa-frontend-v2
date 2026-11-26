@@ -21,6 +21,8 @@ export interface Corretora {
   /** Data da base oficial da CVM usada na verificação — reflete o último dia útil. */
   dataBaseCvm: string | null;
   dataCadastro: string;
+  /** Descontinuada não aceita carteira nova; as existentes continuam (COR-005). */
+  descontinuada?: boolean;
 }
 
 export const CORRETORAS_POR_PAGINA = 20;

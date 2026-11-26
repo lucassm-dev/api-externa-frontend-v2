@@ -196,6 +196,46 @@ eu acompanhe a carga e perceba abusos.
 - **Então** aparece um estado vazio dizendo que não houve requisições no período, sem
   gráfico nem lista
 
+### US-103 — Descontinuar corretora
+
+Como administrador, quero descontinuar uma corretora que encerrou a atividade, para que
+ninguém crie carteira nova nela, sem mexer nas carteiras que já existem.
+
+#### AC-371 — Só o ADMIN vê "Descontinuar", e só em corretora ativa
+
+- **Dado** o detalhe de uma corretora
+- **Quando** a tela abre
+- **Então** o administrador vê "Descontinuar" se a corretora ainda não foi descontinuada;
+  o investidor nunca vê a ação
+
+#### AC-372 — Antes de confirmar, a tela diz quantas carteiras são afetadas
+
+- **Dado** o administrador no detalhe de uma corretora ativa
+- **Quando** ele aciona "Descontinuar"
+- **Então** sai `GET /corretoras/{id}/carteiras-afetadas` e o diálogo diz quantas carteiras
+  ativas continuam existindo, antes de qualquer confirmação
+
+#### AC-373 — Descontinuar exige motivo e marca a corretora
+
+- **Dado** o diálogo de descontinuação
+- **Quando** o administrador escreve o motivo e confirma
+- **Então** sai `PATCH /corretoras/{id}/descontinuar` com o `motivo` sem espaços nas pontas,
+  e o detalhe passa a mostrar que a corretora está descontinuada, sem a ação; sem motivo,
+  o campo diz que ele é obrigatório e nada sai
+
+#### AC-374 — A corretora descontinuada aparece marcada no catálogo
+
+- **Dado** uma corretora descontinuada
+- **Quando** a lista de corretoras ou o detalhe dela aparecem
+- **Então** ela traz a marca "Descontinuada"
+
+#### AC-375 — Carteira nova não é oferecida em corretora descontinuada
+
+- **Dado** o formulário de criar carteira com uma corretora descontinuada no catálogo
+- **Quando** o investidor escolhe a corretora
+- **Então** a descontinuada aparece indisponível, com "(descontinuada)" no nome; se o
+  servidor recusar mesmo assim (`COR-005`), a mensagem aparece no formulário
+
 ## Fora de escopo
 
 - Excluir usuário: o backend não oferece a rota.
@@ -210,6 +250,7 @@ eu acompanhe a carga e perceba abusos.
 | ASM-089 | A linha do próprio administrador é reconhecida pelo e-mail da sessão, que é único | confirmada | E-mail é a identidade de login (CONTRATO.md, "Autenticação"); evita guardar o `id` na sessão |
 | ASM-090 | Os picos são as 10 horas com mais requisições, já ordenadas pelo servidor, e não uma série no tempo; por isso o gráfico é um ranking de barras, sem eixo de tempo | confirmada | `RegistroUsoRepository.picosPorHora` do backend (`order by requisicoes desc, hora desc limit 10`), lido em 25/11/2026 |
 | ASM-091 | A hora do pico vem sem fuso (`LocalDateTime`) e é mostrada como chegou | confirmada | `RelatorioUsoService` do backend; o servidor grava no fuso de Brasília (#61 do backend) |
+| ASM-092 | O motivo da descontinuação não volta na corretora (`CorretoraResponseDTO` só traz `descontinuada`), então a tela marca a situação sem mostrar o motivo | confirmada | `docs/frontend/openapi.json` |
 | ASM-088 | A lista usa a página padrão de 20 itens, como o resto do produto | confirmada | Mesmo `size` das outras listas paginadas |
 
 ## Perguntas em aberto

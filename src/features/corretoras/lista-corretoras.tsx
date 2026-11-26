@@ -159,6 +159,7 @@ export function ListaCorretoras() {
                       <span data-validacao className="text-rotulo font-medium text-texto-fraco">
                         {corretora.validadaNaCvm ? 'Validada na CVM' : 'Sem validação na CVM'}
                       </span>
+                      {corretora.descontinuada && <Selo variante="aviso" texto="Descontinuada" />}
                       {selo && <Selo variante="estavel" texto={selo} />}
                     </span>
                   </li>
