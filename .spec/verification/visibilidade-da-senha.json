@@ -1,7 +1,7 @@
 {
   "feature": "visibilidade-da-senha",
-  "timestamp": "2026-11-26T23:15:42.731Z",
-  "gitRev": "c168963",
+  "timestamp": "2026-11-26T23:33:42.577Z",
+  "gitRev": "18b17f7",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
@@ -9,22 +9,22 @@
   "results": {
     "AC-295": {
       "status": "pass",
-      "testName": "src/shared/shared.spec.tsx > Botão de visibilidade da senha > @spec:AC-295 revela o conteúdo digitado e volta a ocultar # time=9.04ms",
+      "testName": "src/shared/shared.spec.tsx > Botão de visibilidade da senha > @spec:AC-295 revela o conteúdo digitado e volta a ocultar # time=5.55ms",
       "method": "tap"
     },
     "AC-296": {
       "status": "pass",
-      "testName": "src/shared/shared.spec.tsx > Botão de visibilidade da senha > @spec:AC-296 o nome acessível descreve a ação e acompanha o estado # time=3.03ms",
+      "testName": "src/shared/shared.spec.tsx > Botão de visibilidade da senha > @spec:AC-296 o nome acessível descreve a ação e acompanha o estado # time=2.50ms",
       "method": "tap"
     },
     "AC-297": {
       "status": "pass",
-      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-297 revelar a senha não revela a confirmação, e vice-versa # time=30.18ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-297 revelar a senha não revela a confirmação, e vice-versa # time=18.06ms",
       "method": "tap"
     },
     "AC-298": {
       "status": "pass",
-      "testName": "src/shared/shared.spec.tsx > Botão de visibilidade da senha > @spec:AC-298 acionar o botão não envia o formulário que o contém # time=4.45ms",
+      "testName": "src/shared/shared.spec.tsx > Botão de visibilidade da senha > @spec:AC-298 acionar o botão não envia o formulário que o contém # time=11.52ms",
       "method": "tap"
     }
   },
