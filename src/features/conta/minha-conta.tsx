@@ -1,17 +1,20 @@
-import { useState, useSyncExternalStore, type ChangeEvent, type FormEvent } from 'react';
+import { useEffect, useState, useSyncExternalStore, type ChangeEvent, type FormEvent } from 'react';
+import { useNavigate } from 'react-router';
 import { Botao } from '@/components/ui/botao';
 import { Campo } from '@/components/ui/campo';
 import { Cartao } from '@/components/ui/cartao';
+import { DialogoConfirmacao } from '@/components/ui/dialogo-confirmacao';
 import { EscolhaDeArquivo } from '@/components/ui/escolha-de-arquivo';
 import { aplicarErroNoFormulario } from '@/core/erros/erro-em-formulario';
 import { ehErroTraduzido } from '@/core/erros/tradutor-erro';
 import { MensagemFeedback } from '@/core/feedback/mensagem-feedback';
+import { ROTA_LOGIN } from '@/core/sessao/sessao.model';
 import { sessao } from '@/core/sessao/sessao.service';
 import { ForcaDaSenha } from '@/features/acesso/forca-da-senha';
 import { REGRA_EMAIL, REGRA_SENHA, emailValido, validarSenha } from '@/features/acesso/validadores';
 import { useFormulario, type Erros } from '@/lib/formulario';
 import { CampoSenha } from '@/shared/visibilidade-senha';
-import { TIPOS_DE_FOTO, conta, problemaDaFoto } from './conta';
+import { DadosPessoais, TIPOS_DE_FOTO, conta, problemaDaFoto } from './conta';
 import { FotoDePerfil } from './foto-de-perfil';
 
 interface Mensagem {
@@ -282,16 +285,97 @@ function SecaoFoto() {
   );
 }
 
+function SecaoDadosPessoais({ dados }: { dados: DadosPessoais | null }) {
+  return (
+    <div data-secao-conta="dados">
+      <Cartao titulo="Dados pessoais" apoio="Como você está cadastrado. Nome e CPF não mudam por aqui.">
+        {dados ? (
+          <dl className="m-0 grid gap-x-6 gap-y-3 sm:grid-cols-2">
+            {(
+              [
+                ['Nome', dados.nome],
+                ['E-mail', dados.email],
+              ] as const
+            ).map(([rotulo, valor]) => (
+              <div key={rotulo} className="grid min-w-0 gap-0.5">
+                <dt className="text-rotulo font-medium text-texto-fraco">{rotulo}</dt>
+                <dd className="m-0 truncate font-medium">{valor}</dd>
+              </div>
+            ))}
+          </dl>
+        ) : (
+          <p className="m-0 text-texto-fraco">Carregando seus dados…</p>
+        )}
+      </Cartao>
+    </div>
+  );
+}
+
+function SecaoExcluir({ dados }: { dados: DadosPessoais | null }) {
+  const navegar = useNavigate();
+  const [confirmando, setConfirmando] = useState(false);
+  const [excluindo, setExcluindo] = useState(false);
+  const [erro, setErro] = useState<string | null>(null);
+
+  const excluir = async () => {
+    if (!dados || excluindo) return;
+    setExcluindo(true);
+    try {
+      await conta.excluirConta(dados.id);
+      navegar(`${ROTA_LOGIN}?contaExcluida=1`);
+    } catch (falha) {
+      setExcluindo(false);
+      setConfirmando(false);
+      if (!ehErroTraduzido(falha)) throw falha;
+      setErro(falha.mensagem);
+    }
+  };
+
+  return (
+    <div data-secao-conta="excluir">
+      <Cartao titulo="Excluir minha conta" apoio="A conta é desativada e você não consegue mais entrar com ela. O e-mail fica livre para um novo cadastro.">
+        <div className="grid gap-3">
+          {erro && <MensagemFeedback nivel="erro" mensagem={erro} />}
+          <Botao intencao="destrutiva" type="button" desabilitado={!dados} className="justify-self-start" onClick={() => setConfirmando(true)}>
+            Excluir minha conta
+          </Botao>
+        </div>
+      </Cartao>
+      {confirmando && (
+        <DialogoConfirmacao
+          titulo="Excluir sua conta?"
+          consequencia="A conta é desativada e a sessão termina agora. O e-mail fica livre para um novo cadastro, mas esta conta não volta."
+          rotuloConfirmar="Excluir conta"
+          ocupado={excluindo}
+          aoConfirmar={() => void excluir()}
+          aoCancelar={() => setConfirmando(false)}
+        />
+      )}
+    </div>
+  );
+}
+
 export function Conta() {
+  // O ADMIN não tem investidor: /investidores responde 403 para ele (AC-384).
+  const ehInvestidor = useSyncExternalStore(sessao.assinar, () => sessao.papel()) === 'INVESTIDOR';
+  const [dados, setDados] = useState<DadosPessoais | null>(null);
+
+  useEffect(() => {
+    if (!ehInvestidor) return;
+    conta.dadosPessoais().then(setDados, () => setDados(null));
+  }, [ehInvestidor]);
+
   return (
     <section className="mx-auto grid w-full max-w-(--largura-conta) gap-5">
       <div>
         <h1 className="m-0 mb-1 text-titulo font-bold tracking-(--entrelinha-titulo)">Minha conta</h1>
-        <p className="m-0 text-texto-fraco">Sua foto, o e-mail de acesso e a senha.</p>
+        <p className="m-0 text-texto-fraco">{ehInvestidor ? 'Seus dados, a foto, o e-mail de acesso e a senha.' : 'Sua foto, o e-mail de acesso e a senha.'}</p>
       </div>
+      {ehInvestidor && <SecaoDadosPessoais dados={dados} />}
       <SecaoFoto />
       <SecaoEmail />
       <SecaoSenha />
+      {ehInvestidor && <SecaoExcluir dados={dados} />}
     </section>
   );
 }

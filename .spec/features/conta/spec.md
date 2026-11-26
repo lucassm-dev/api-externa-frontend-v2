@@ -153,9 +153,41 @@ a minha conta no topo.
 - **Então** a foto é buscada em `GET /auth/me/foto` com o token, e não por um endereço
   direto na imagem; sem `fotoUrl`, ou se a busca falhar, o avatar mostra as iniciais do e-mail
 
+### US-107 — Ver meus dados e encerrar minha conta
+
+Como investidor, quero ver os dados pessoais da minha conta e poder excluí-la, para que eu
+confira com que dados estou cadastrado e saia do produto quando quiser.
+
+#### AC-383 — O investidor vê nome e e-mail
+
+- **Dado** um investidor em Minha conta
+- **Quando** a página abre
+- **Então** a seção "Dados pessoais" mostra o nome e o e-mail que `GET /investidores` devolve
+
+#### AC-384 — O administrador não vê dados pessoais
+
+- **Dado** um administrador em Minha conta
+- **Quando** a página abre
+- **Então** não aparecem as seções "Dados pessoais" e "Excluir minha conta", e nenhuma
+  requisição a `/investidores` sai
+
+#### AC-385 — Excluir a conta pede confirmação
+
+- **Dado** a área "Excluir minha conta"
+- **Quando** o investidor aciona "Excluir minha conta"
+- **Então** um diálogo explica que a conta é desativada e o e-mail fica livre; cancelar fecha
+  o diálogo sem excluir nada
+
+#### AC-386 — Confirmar exclui, encerra a sessão e explica no login
+
+- **Dado** o diálogo de exclusão
+- **Quando** o investidor confirma
+- **Então** sai `DELETE /investidores/{id}` com o `id` dos dados pessoais, a sessão termina e
+  o login abre dizendo que a conta foi excluída
+
 ## Fora de escopo
 
-- Excluir a conta, trocar o nome ou o CPF: o backend não oferece.
+- Trocar o nome ou o CPF: o backend não oferece. (Excluir a conta entrou depois, na US-107.)
 - Botão "reenviar código": pedir de novo é voltar ao primeiro passo, e o servidor limita
   a 3 pedidos a cada 15 minutos.
 - Recortar ou redimensionar a foto antes do envio.
@@ -168,6 +200,7 @@ a minha conta no topo.
 | ASM-080 | `PUT /auth/senha` devolve o mesmo corpo do login (`token`, `tipo`, `expiraEm`); o openapi não descreve a resposta, só o CONTRATO.md diz "devolve um token NOVO" | confirmada | `AuthResource.trocarSenha` devolve `AuthTokenResponseDTO`, o mesmo corpo do login (backend `main`, lido em 24/11/2026) |
 | ASM-081 | `GET /auth/me` devolve o `email` atual, e é de lá que sai o e-mail novo depois da confirmação | confirmada | CONTRATO.md, seção "Autenticação": `papel`, `nome`, `email` e `fotoUrl` |
 | ASM-082 | A foto vale para os dois papéis; o administrador também pode ter foto | confirmada | CONTRATO.md, "Papéis e telas": `/auth/me/foto` está em "Ambos" |
+| ASM-096 | `GET /investidores` devolve só o próprio investidor (o backend filtra pelo token), então o `id` para excluir sai dele, sem guardar o `id` na sessão | confirmada | `InvestidorService.listar` do backend, lido em 26/11/2026 |
 | ASM-083 | A validação de tamanho e tipo no front olha o `File` (tamanho e tipo declarado); quem decide pelo conteúdo é o servidor (`AUT-017`) | confirmada | CONTRATO.md, "Foto de perfil": tipo detectado pelo conteúdo |
 
 ## Perguntas em aberto
@@ -176,3 +209,4 @@ a minha conta no topo.
 |---|---|---|---|
 | Q-047 | Como organizar as telas de conta? | respondida | Uma página `/conta` com Foto, E-mail e Senha; esqueci a senha numa tela pública em 2 passos; foto também no avatar do topo, com iniciais sem foto; documentação spec + tasks, sem PRD/ADR/TDD (Lucas, 24/11/2026) |
 | Q-048 | O AC-038 da spec de acesso proíbe link de recuperação no login, e o bundle inicial passou 0,77 kB do teto (475,77/142,27 contra 475/142). O que fazer? | respondida | AC-038 marcado como superado pelo AC-329, com o teste antigo removido; teto sobe para 477 kB brutos / 143 kB gzip em `scripts/orcamento-bundle.mjs` (Lucas, 25/11/2026) |
+| Q-054 | O que entra em "Dados pessoais"? | respondida | Ler nome e e-mail e excluir a própria conta, com confirmação; o ADMIN não vê a seção (Lucas, 26/11/2026). Issue #48 |

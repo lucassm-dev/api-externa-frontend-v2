@@ -1,6 +1,14 @@
 import { http } from '@/core/api/http';
+import { Pagina } from '@/core/api/pagina';
 import { Identidade, RespostaLogin } from '@/core/sessao/sessao.model';
 import { sessao } from '@/core/sessao/sessao.service';
+
+/** O próprio investidor: `GET /investidores` só devolve o dono do token (ASM-096). */
+export interface DadosPessoais {
+  id: number;
+  nome: string;
+  email: string;
+}
 
 export const LIMITE_FOTO_BYTES = 2 * 1024 * 1024;
 export const TIPOS_DE_FOTO = ['image/jpeg', 'image/png', 'image/webp'];
@@ -20,6 +28,16 @@ async function recarregarIdentidade(): Promise<void> {
 }
 
 export const conta = {
+  async dadosPessoais(): Promise<DadosPessoais | null> {
+    return (await http.get<Pagina<DadosPessoais>>('/investidores')).content[0] ?? null;
+  },
+
+  /** O backend desativa a conta e libera o e-mail; daqui em diante o token não vale mais. */
+  async excluirConta(id: number): Promise<void> {
+    await http.delete<void>(`/investidores/${id}`);
+    sessao.encerrar();
+  },
+
   /** O servidor invalida os tokens anteriores: o novo substitui o guardado (ASM-080). */
   async trocarSenha(senhaAtual: string, novaSenha: string): Promise<void> {
     const { token, tipo, expiraEm } = await http.put<RespostaLogin>('/auth/senha', {
