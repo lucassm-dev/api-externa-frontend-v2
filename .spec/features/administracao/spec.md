@@ -28,7 +28,7 @@ que só eu posso fazer.
 
 - **Dado** um administrador
 - **Quando** o login termina ou ele abre o endereço inicial
-- **Então** ele cai em `/admin/usuarios`, e o menu oferece Usuários, Corretoras e Ações
+- **Então** ele cai em `/admin/usuarios`, e o menu oferece Usuários, Uso, Corretoras e Ações
 
 #### AC-349 — Rota de investidor aberta pelo ADMIN leva aos usuários
 
@@ -149,6 +149,53 @@ público só cria investidor.
 - **Quando** ele abre `/admin/usuarios/novo` pelo endereço
 - **Então** é levado ao Painel sem requisitar `/admin`
 
+### US-102 — Ver o uso da API
+
+Como administrador, quero saber quanto a API é usada, em que horas e por quem, para que
+eu acompanhe a carga e perceba abusos.
+
+#### AC-365 — A área de uso é só do ADMIN
+
+- **Dado** um administrador ou um investidor conectado
+- **Quando** a área interna abre, ou o investidor abre `/admin/uso` pelo endereço
+- **Então** o menu do administrador oferece "Uso" depois de "Usuários"; o do investidor
+  não, e o endereço o leva ao Painel sem requisitar `/admin`
+
+#### AC-366 — Sem período, os últimos 7 dias
+
+- **Dado** a área de uso aberta sem período no endereço
+- **Quando** a tela carrega
+- **Então** `GET /admin/uso` sai sem `dataInicio` nem `dataFim`, a tela diz que mostra os
+  últimos 7 dias e exibe o total de requisições
+
+#### AC-367 — O período vai ao servidor e mora no endereço
+
+- **Dado** data inicial e final escolhidas
+- **Quando** o administrador aplica o período
+- **Então** `GET /admin/uso` sai com `dataInicio` e `dataFim`, o período vai para o endereço
+  e sobrevive ao recarregar; data final antes da inicial não sai, e `AUT-018` do servidor
+  mostra o mesmo texto no campo
+
+#### AC-368 — Os picos aparecem como barras com o valor escrito
+
+- **Dado** a resposta com as horas de maior uso
+- **Quando** a tela mostra os picos
+- **Então** cada hora aparece como "dia/mês às HHh", na ordem do servidor, com uma barra
+  proporcional à maior e o número de requisições em texto
+
+#### AC-369 — Quem mais chamou, na ordem do servidor
+
+- **Dado** a resposta com os usuários que mais chamaram
+- **Quando** a tela mostra a lista
+- **Então** cada linha traz o e-mail e o número de requisições, na ordem do servidor
+
+#### AC-370 — Período sem uso tem estado vazio
+
+- **Dado** um período em que ninguém chamou a API (total zero)
+- **Quando** a tela carrega
+- **Então** aparece um estado vazio dizendo que não houve requisições no período, sem
+  gráfico nem lista
+
 ## Fora de escopo
 
 - Excluir usuário: o backend não oferece a rota.
@@ -161,6 +208,8 @@ público só cria investidor.
 |---|---|---|---|
 | ASM-087 | Os totais trazem sempre as chaves `ATIVO` e `BLOQUEADO`, e só elas | confirmada | CONTRATO.md, seção "Admin" |
 | ASM-089 | A linha do próprio administrador é reconhecida pelo e-mail da sessão, que é único | confirmada | E-mail é a identidade de login (CONTRATO.md, "Autenticação"); evita guardar o `id` na sessão |
+| ASM-090 | Os picos são as 10 horas com mais requisições, já ordenadas pelo servidor, e não uma série no tempo; por isso o gráfico é um ranking de barras, sem eixo de tempo | confirmada | `RegistroUsoRepository.picosPorHora` do backend (`order by requisicoes desc, hora desc limit 10`), lido em 25/11/2026 |
+| ASM-091 | A hora do pico vem sem fuso (`LocalDateTime`) e é mostrada como chegou | confirmada | `RelatorioUsoService` do backend; o servidor grava no fuso de Brasília (#61 do backend) |
 | ASM-088 | A lista usa a página padrão de 20 itens, como o resto do produto | confirmada | Mesmo `size` das outras listas paginadas |
 
 ## Perguntas em aberto
@@ -168,3 +217,4 @@ público só cria investidor.
 | ID | Pergunta | Status | Resposta |
 |---|---|---|---|
 | Q-050 | Como organizar o painel administrativo? | respondida | Áreas "Usuários" e "Uso" no menu, só do ADMIN, que passa a entrar por Usuários (resolve a Q-044); bloquear e desbloquear, criar administrador e descontinuar corretora entram; picos de uso em gráfico de barras; uma issue e um PR por entrega (Lucas, 25/11/2026) |
+| Q-051 | O bundle inicial passou 0,35 kB do teto (477,35/142,66 contra 477/143) com a área de uso: o CSS único do Tailwind leva as classes da página nova. Subir o teto ou cortar? | respondida | Subir para 480 kB brutos / 144 kB gzip em `scripts/orcamento-bundle.mjs`, com folga para a #35 (Lucas, 25/11/2026) |

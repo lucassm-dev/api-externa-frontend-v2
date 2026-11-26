@@ -20,3 +20,11 @@
 - Refs: US-101, AC-360, AC-361, AC-362, AC-363, AC-364
 - Arquivos: src/rotas.tsx, src/features/admin/admin.service.ts, src/features/admin/usuarios.tsx, src/features/admin/novo-admin.tsx, src/features/admin/novo-admin.spec.tsx
 - Notas: issue #33. Mesma política de senha, confirmação e força da senha do cadastro.
+
+## T-152 — Relatório de uso da API [concluida]
+
+- Refs: US-102, AC-365, AC-366, AC-367, AC-368, AC-369, AC-370
+- Arquivos: scripts/orcamento-bundle.mjs, src/layout/areas.ts, src/rotas.tsx, src/features/admin/admin.model.ts, src/features/admin/admin.service.ts, src/features/admin/uso.tsx, src/features/admin/uso.spec.tsx
+- Notas: issue #34. Barras na cor `--cor-serie-1`, validada no tema claro e no escuro com o
+  validador da skill dataviz; o valor fica em texto ao lado da barra. Teto do bundle sobe para
+  480/144 kB (Q-051).

@@ -1,30 +1,30 @@
 {
   "feature": "cabecalho-identidade-acoes",
-  "timestamp": "2026-11-26T00:12:51.330Z",
-  "gitRev": "a49f624",
+  "timestamp": "2026-11-26T00:21:26.450Z",
+  "gitRev": "08ce64f",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 674,
+  "testsParsed": 680,
   "results": {
     "AC-285": {
       "status": "pass",
-      "testName": "src/layout/casca.spec.tsx > Navegação do shell > @spec:AC-285 identifica o investidor com e-mail e avatar de iniciais # time=7.27ms",
+      "testName": "src/layout/casca.spec.tsx > Navegação do shell > @spec:AC-285 identifica o investidor com e-mail e avatar de iniciais # time=9.59ms",
       "method": "tap"
     },
     "AC-286": {
       "status": "pass",
-      "testName": "src/layout/casca.spec.tsx > Navegação do shell > @spec:AC-286 tema usa ícone e nomeia a ação disponível nos dois estados # time=9.32ms",
+      "testName": "src/layout/casca.spec.tsx > Navegação do shell > @spec:AC-286 tema usa ícone e nomeia a ação disponível nos dois estados # time=14.12ms",
       "method": "tap"
     },
     "AC-287": {
       "status": "pass",
-      "testName": "src/layout/casca.spec.tsx > Casca da área interna > @spec:AC-287 sair por ícone mantém o encerramento direto da sessão # time=12.48ms",
+      "testName": "src/layout/casca.spec.tsx > Casca da área interna > @spec:AC-287 sair por ícone mantém o encerramento direto da sessão # time=9.26ms",
       "method": "tap"
     },
     "AC-288": {
       "status": "pass",
-      "testName": "src/layout/casca.spec.tsx > Casca responsiva com menu compacto > @spec:AC-288 a identidade trunca só visualmente e os ícones têm alvo móvel de 44px # time=46.93ms",
+      "testName": "src/layout/casca.spec.tsx > Casca responsiva com menu compacto > @spec:AC-288 a identidade trunca só visualmente e os ícones têm alvo móvel de 44px # time=38.58ms",
       "method": "tap"
     }
   },

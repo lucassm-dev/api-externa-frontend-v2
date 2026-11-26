@@ -46,6 +46,7 @@ export const rotas: RouteObject[] = [
         element: <Casca />,
         children: [
           { path: 'admin/usuarios', loader: exigirPainelAdmin, lazy: async () => ({ Component: (await import('@/features/admin/usuarios')).Usuarios }) },
+          { path: 'admin/uso', loader: exigirPainelAdmin, lazy: async () => ({ Component: (await import('@/features/admin/uso')).Uso }) },
           { path: 'admin/usuarios/novo', loader: exigirPainelAdmin, lazy: async () => ({ Component: (await import('@/features/admin/novo-admin')).NovoAdmin }) },
           { path: 'conta', lazy: async () => ({ Component: (await import('@/features/conta/minha-conta')).Conta }) },
           { path: 'painel', loader: exigirInvestidor, lazy: async () => ({ Component: (await import('@/features/painel/painel')).Painel }) },

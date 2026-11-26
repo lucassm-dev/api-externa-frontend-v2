@@ -1,120 +1,120 @@
 {
   "feature": "fundacao",
-  "timestamp": "2026-11-26T00:13:49.098Z",
-  "gitRev": "a49f624",
+  "timestamp": "2026-11-26T00:22:22.225Z",
+  "gitRev": "08ce64f",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 674,
+  "testsParsed": 680,
   "results": {
     "AC-001": {
       "status": "pass",
-      "testName": "src/core/erros/tradutor-erro.spec.ts > Tradução de erro por código > @spec:AC-001 código conhecido vira a mensagem do produto, com o código guardado para o rodapé # time=2.03ms",
+      "testName": "src/core/erros/tradutor-erro.spec.ts > Tradução de erro por código > @spec:AC-001 código conhecido vira a mensagem do produto, com o código guardado para o rodapé # time=2.23ms",
       "method": "tap"
     },
     "AC-002": {
       "status": "pass",
-      "testName": "src/core/erros/tradutor-erro.spec.ts > Tradução de erro por código > @spec:AC-002 código desconhecido cai no genérico com o código visível # time=0.18ms",
+      "testName": "src/core/erros/tradutor-erro.spec.ts > Tradução de erro por código > @spec:AC-002 código desconhecido cai no genérico com o código visível # time=0.35ms",
       "method": "tap"
     },
     "AC-003": {
       "status": "pass",
-      "testName": "src/core/erros/tradutor-erro.spec.ts > Tradução de erro por código > @spec:AC-003 VAL-001 distribui as mensagens por campo, sem nenhum balão único no topo # time=0.22ms",
+      "testName": "src/core/erros/tradutor-erro.spec.ts > Tradução de erro por código > @spec:AC-003 VAL-001 distribui as mensagens por campo, sem nenhum balão único no topo # time=0.34ms",
       "method": "tap"
     },
     "AC-004": {
       "status": "pass",
-      "testName": "src/core/erros/tradutor-erro.spec.ts > Tradução de erro por código > @spec:AC-004 sem resposta do servidor tem mensagem própria, diferente do erro do servidor # time=0.17ms",
+      "testName": "src/core/erros/tradutor-erro.spec.ts > Tradução de erro por código > @spec:AC-004 sem resposta do servidor tem mensagem própria, diferente do erro do servidor # time=0.86ms",
       "method": "tap"
     },
     "AC-005": {
       "status": "pass",
-      "testName": "src/core/erros/erro-na-requisicao.spec.ts > Erro que encerra a sessão > @spec:AC-005 AUT-006 encerra a sessão e leva ao login com a mensagem de expiração # time=5.82ms",
+      "testName": "src/core/erros/erro-na-requisicao.spec.ts > Erro que encerra a sessão > @spec:AC-005 AUT-006 encerra a sessão e leva ao login com a mensagem de expiração # time=8.58ms",
       "method": "tap"
     },
     "AC-006": {
       "status": "pass",
-      "testName": "src/core/feedback/feedback.spec.tsx > Os três níveis de comunicação > @spec:AC-006 informação, aviso e erro se apresentam de forma distinta e anunciável # time=55.55ms",
+      "testName": "src/core/feedback/feedback.spec.tsx > Os três níveis de comunicação > @spec:AC-006 informação, aviso e erro se apresentam de forma distinta e anunciável # time=30.48ms",
       "method": "tap"
     },
     "AC-007": {
       "status": "pass",
-      "testName": "src/core/feedback/feedback.spec.tsx > Os três níveis de comunicação > @spec:AC-007 sucesso com avisos vira aviso, nunca erro # time=0.63ms",
+      "testName": "src/core/feedback/feedback.spec.tsx > Os três níveis de comunicação > @spec:AC-007 sucesso com avisos vira aviso, nunca erro # time=0.94ms",
       "method": "tap"
     },
     "AC-008": {
       "status": "pass",
-      "testName": "src/shared/shared.spec.tsx > Valor com horário de obtenção > @spec:AC-008 o valor nunca aparece sozinho: vem com o momento em que foi obtido # time=23.55ms",
+      "testName": "src/shared/shared.spec.tsx > Valor com horário de obtenção > @spec:AC-008 o valor nunca aparece sozinho: vem com o momento em que foi obtido # time=18.15ms",
       "method": "tap"
     },
     "AC-009": {
       "status": "pass",
-      "testName": "src/shared/shared.spec.tsx > Valor com horário de obtenção > @spec:AC-009 passados 15 minutos o dado ganha marcação, além do horário em texto # time=4.36ms",
+      "testName": "src/shared/shared.spec.tsx > Valor com horário de obtenção > @spec:AC-009 passados 15 minutos o dado ganha marcação, além do horário em texto # time=12.19ms",
       "method": "tap"
     },
     "AC-010": {
       "status": "pass",
-      "testName": "src/shared/shared.spec.tsx > Valor com horário de obtenção > @spec:AC-010 o limite de 15 minutos é exato # time=0.29ms",
+      "testName": "src/shared/shared.spec.tsx > Valor com horário de obtenção > @spec:AC-010 o limite de 15 minutos é exato # time=0.22ms",
       "method": "tap"
     },
     "AC-011": {
       "status": "pass",
-      "testName": "src/core/sessao/sessao.service.spec.ts > Sessão > @spec:AC-011 a sessão sobrevive ao fechamento do navegador # time=2.43ms",
+      "testName": "src/core/sessao/sessao.service.spec.ts > Sessão > @spec:AC-011 a sessão sobrevive ao fechamento do navegador # time=4.85ms",
       "method": "tap"
     },
     "AC-012": {
       "status": "pass",
-      "testName": "src/core/sessao/sessao.service.spec.ts > Sessão > @spec:AC-012 sair apaga a sessão e nada dela permanece guardado # time=0.45ms",
+      "testName": "src/core/sessao/sessao.service.spec.ts > Sessão > @spec:AC-012 sair apaga a sessão e nada dela permanece guardado # time=0.73ms",
       "method": "tap"
     },
     "AC-013": {
       "status": "pass",
-      "testName": "src/core/sessao/sessao.service.spec.ts > Sessão > @spec:AC-013 sessão com prazo vencido é tratada como ausência de sessão e o guardado é limpo # time=0.26ms",
+      "testName": "src/core/sessao/sessao.service.spec.ts > Sessão > @spec:AC-013 sessão com prazo vencido é tratada como ausência de sessão e o guardado é limpo # time=0.42ms",
       "method": "tap"
     },
     "AC-014": {
       "status": "pass",
-      "testName": "src/core/sessao/sessao.service.spec.ts > Sessão > @spec:AC-014 a sessão avisa que está acabando a menos de 5 minutos do fim, sem consultar o servidor # time=0.27ms",
+      "testName": "src/core/sessao/sessao.service.spec.ts > Sessão > @spec:AC-014 a sessão avisa que está acabando a menos de 5 minutos do fim, sem consultar o servidor # time=0.46ms",
       "method": "tap"
     },
     "AC-015": {
       "status": "pass",
-      "testName": "src/rotas.spec.tsx > Guarda das telas internas > @spec:AC-015 sem sessão, o acesso é negado e o destino vira o login # time=0.37ms",
+      "testName": "src/rotas.spec.tsx > Guarda das telas internas > @spec:AC-015 sem sessão, o acesso é negado e o destino vira o login # time=0.56ms",
       "method": "tap"
     },
     "AC-016": {
       "status": "pass",
-      "testName": "src/rotas.spec.tsx > Guarda das telas internas > @spec:AC-016 com sessão válida, o acesso é liberado sem redirecionamento # time=0.10ms",
+      "testName": "src/rotas.spec.tsx > Guarda das telas internas > @spec:AC-016 com sessão válida, o acesso é liberado sem redirecionamento # time=0.20ms",
       "method": "tap"
     },
     "AC-017": {
       "status": "pass",
-      "testName": "src/core/sessao/autenticacao.spec.ts > Envio do token > @spec:AC-017 com sessão, a requisição leva Authorization: Bearer <token> # time=6.40ms",
+      "testName": "src/core/sessao/autenticacao.spec.ts > Envio do token > @spec:AC-017 com sessão, a requisição leva Authorization: Bearer <token> # time=5.87ms",
       "method": "tap"
     },
     "AC-018": {
       "status": "pass",
-      "testName": "src/core/sessao/autenticacao.spec.ts > Envio do token > @spec:AC-018 sem sessão, nenhum cabeçalho Authorization é adicionado # time=1.03ms",
+      "testName": "src/core/sessao/autenticacao.spec.ts > Envio do token > @spec:AC-018 sem sessão, nenhum cabeçalho Authorization é adicionado # time=0.95ms",
       "method": "tap"
     },
     "AC-019": {
       "status": "pass",
-      "testName": "src/core/formatacao/formatacao.spec.ts > Formatação pt-BR > @spec:AC-019 real e dólar saem em pt-BR e o símbolo distingue os dois # time=18.84ms",
+      "testName": "src/core/formatacao/formatacao.spec.ts > Formatação pt-BR > @spec:AC-019 real e dólar saem em pt-BR e o símbolo distingue os dois # time=15.67ms",
       "method": "tap"
     },
     "AC-020": {
       "status": "pass",
-      "testName": "src/app.spec.ts > Fundação da aplicação > @spec:AC-020 a aplicação registra pt-BR como idioma único, uma vez só # time=30.19ms",
+      "testName": "src/app.spec.ts > Fundação da aplicação > @spec:AC-020 a aplicação registra pt-BR como idioma único, uma vez só # time=13.47ms",
       "method": "tap"
     },
     "AC-021": {
       "status": "pass",
-      "testName": "src/shared/shared.spec.tsx > Ganho e perda > @spec:AC-021 alta, baixa e estável têm sinal próprio, legível sem depender de cor # time=6.94ms",
+      "testName": "src/shared/shared.spec.tsx > Ganho e perda > @spec:AC-021 alta, baixa e estável têm sinal próprio, legível sem depender de cor # time=4.47ms",
       "method": "tap"
     },
     "AC-022": {
       "status": "pass",
-      "testName": "src/core/tema/tema.service.spec.ts > Tema > @spec:AC-022 a escolha de tema é aplicada ao documento e lembrada na volta # time=8.44ms",
+      "testName": "src/core/tema/tema.service.spec.ts > Tema > @spec:AC-022 a escolha de tema é aplicada ao documento e lembrada na volta # time=6.21ms",
       "method": "tap"
     },
     "AC-023": {
@@ -124,7 +124,7 @@
     },
     "AC-024": {
       "status": "pass",
-      "testName": "src/app.spec.ts > Fundação da aplicação > @spec:AC-024 o navegador enxerga a API na mesma origem, encaminhada para o backend # time=3.05ms",
+      "testName": "src/app.spec.ts > Fundação da aplicação > @spec:AC-024 o navegador enxerga a API na mesma origem, encaminhada para o backend # time=2.39ms",
       "method": "tap"
     }
   },
