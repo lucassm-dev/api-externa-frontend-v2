@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { AlertDialog } from 'radix-ui';
 import { Botao } from './botao';
 
@@ -9,6 +10,8 @@ interface Props {
   ocupado?: boolean;
   aoConfirmar: () => void;
   aoCancelar: () => void;
+  /** Um campo que a confirmação exige, como o motivo de um bloqueio. */
+  children?: ReactNode;
 }
 
 /**
@@ -27,6 +30,7 @@ export function DialogoConfirmacao({
   ocupado = false,
   aoConfirmar,
   aoCancelar,
+  children,
 }: Props) {
   const cancelar = () => {
     if (!ocupado) aoCancelar();
@@ -46,6 +50,7 @@ export function DialogoConfirmacao({
           <AlertDialog.Description data-consequencia className="m-0 text-texto-fraco">
             {consequencia}
           </AlertDialog.Description>
+          {children && <div className="mt-4 grid gap-3">{children}</div>}
 
           <div className="mt-6 flex flex-wrap justify-end gap-2">
             <Botao intencao="sutil" type="button" data-cancelar desabilitado={ocupado} onClick={aoCancelar}>
