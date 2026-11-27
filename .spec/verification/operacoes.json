@@ -1,170 +1,170 @@
 {
   "feature": "operacoes",
-  "timestamp": "2026-11-27T04:52:12.278Z",
-  "gitRev": "17b4de8",
+  "timestamp": "2026-11-27T05:11:34.359Z",
+  "gitRev": "68181bb",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 701,
+  "testsParsed": 704,
   "results": {
     "AC-150": {
       "status": "pass",
-      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-150 o tipo é um par de opções lado a lado, marcado sem interação # time=60.17ms",
+      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-150 o tipo é um par de opções lado a lado, marcado sem interação # time=62.92ms",
       "method": "tap"
     },
     "AC-151": {
       "status": "pass",
-      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-151 trocar o tipo preserva a carteira e limpa quantidade e preço # time=63.11ms",
+      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-151 trocar o tipo preserva a carteira e limpa quantidade e preço # time=72.84ms",
       "method": "tap"
     },
     "AC-152": {
       "status": "pass",
-      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-152 na compra a ação vem do catálogo inteiro # time=20.66ms",
+      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-152 na compra a ação vem do catálogo inteiro # time=16.22ms",
       "method": "tap"
     },
     "AC-153": {
       "status": "pass",
-      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-153 o botão diz qual operação será registrada em cada tipo # time=14.93ms",
+      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-153 o botão diz qual operação será registrada em cada tipo # time=15.99ms",
       "method": "tap"
     },
     "AC-154": {
       "status": "pass",
-      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-154 confirmar a compra emite carteira, ticker e quantidade, sem preço # time=30.14ms",
+      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-154 confirmar a compra emite carteira, ticker e quantidade, sem preço # time=23.33ms",
       "method": "tap"
     },
     "AC-155": {
       "status": "pass",
-      "testName": "src/features/operacoes/resultado-operacao.spec.tsx > Resultado da operação > @spec:AC-155 mostra os números da resposta, com o preço efetivo e não a estimativa # time=58.36ms",
+      "testName": "src/features/operacoes/resultado-operacao.spec.tsx > Resultado da operação > @spec:AC-155 mostra os números da resposta, com o preço efetivo e não a estimativa # time=48.62ms",
       "method": "tap"
     },
     "AC-156": {
       "status": "pass",
-      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-156 depois de registrar, a carteira fica, a quantidade sai e as posições são relidas # time=30.59ms",
+      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-156 depois de registrar, a carteira fica, a quantidade sai e as posições são relidas # time=34.76ms",
       "method": "tap"
     },
     "AC-157": {
       "status": "pass",
-      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-157 na venda só aparecem ações com posição na carteira escolhida # time=22.36ms",
+      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-157 na venda só aparecem ações com posição na carteira escolhida # time=22.04ms",
       "method": "tap"
     },
     "AC-158": {
       "status": "pass",
-      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-158 a venda mostra o disponível e impede exceder a posição # time=36.76ms",
+      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-158 a venda mostra o disponível e impede exceder a posição # time=30.04ms",
       "method": "tap"
     },
     "AC-159": {
       "status": "pass",
-      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-159 trocar a carteira na venda descarta ação e quantidade anteriores # time=40.85ms",
+      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-159 trocar a carteira na venda descarta ação e quantidade anteriores # time=55.70ms",
       "method": "tap"
     },
     "AC-160": {
       "status": "pass",
-      "testName": "src/features/operacoes/resultado-operacao.spec.tsx > Resultado da operação > @spec:AC-160 depois da venda, resultado realizado e preço médio aparecem identificados # time=4.38ms",
+      "testName": "src/features/operacoes/resultado-operacao.spec.tsx > Resultado da operação > @spec:AC-160 depois da venda, resultado realizado e preço médio aparecem identificados # time=4.31ms",
       "method": "tap"
     },
     "AC-161": {
       "status": "pass",
-      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-161 OPE-004 destaca a quantidade e mantém o formulário preenchido # time=26.72ms",
+      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-161 OPE-004 destaca a quantidade e mantém o formulário preenchido # time=29.04ms",
       "method": "tap"
     },
     "AC-162": {
       "status": "pass",
-      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-162 o campo de preço não vem aberto — só o controle de opt-in # time=12.90ms",
+      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-162 o campo de preço não vem aberto — só o controle de opt-in # time=9.31ms",
       "method": "tap"
     },
     "AC-163": {
       "status": "pass",
-      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-163 ativar o preço manual abre o campo e o preço vai na operação # time=35.82ms",
+      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-163 ativar o preço manual abre o campo e o preço vai na operação # time=24.42ms",
       "method": "tap"
     },
     "AC-164": {
       "status": "pass",
-      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-164 preço manual com três casas não sai da tela e é acusado # time=17.71ms",
+      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-164 preço manual com três casas não sai da tela e é acusado # time=20.87ms",
       "method": "tap"
     },
     "AC-165": {
       "status": "pass",
-      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-165 a estimativa aparece com o horário da cotação e declarada como estimativa # time=21.70ms",
+      "testName": "src/features/operacoes/formulario-operacao.spec.tsx > Formulário de compra e venda > @spec:AC-165 a estimativa aparece com o horário da cotação e declarada como estimativa # time=32.59ms",
       "method": "tap"
     },
     "AC-166": {
       "status": "pass",
-      "testName": "src/features/operacoes/operacoes.spec.tsx > Tela de operações > @spec:AC-166 uma compra com avisos é apresentada como registrada, sem erro na tela # time=55.08ms",
+      "testName": "src/features/operacoes/operacoes.spec.tsx > Tela de operações > @spec:AC-166 uma compra com avisos é apresentada como registrada, sem erro na tela # time=69.02ms",
       "method": "tap"
     },
     "AC-167": {
       "status": "pass",
-      "testName": "src/features/operacoes/resultado-operacao.spec.tsx > Resultado da operação > @spec:AC-167 cada aviso sai no nível aviso, e nenhum elemento de erro é renderizado # time=6.53ms",
+      "testName": "src/features/operacoes/resultado-operacao.spec.tsx > Resultado da operação > @spec:AC-167 cada aviso sai no nível aviso, e nenhum elemento de erro é renderizado # time=4.99ms",
       "method": "tap"
     },
     "AC-168": {
       "status": "pass",
-      "testName": "src/features/operacoes/resultado-operacao.spec.tsx > Resultado da operação > @spec:AC-168 uma resposta sem avisos não exibe aviso nenhum # time=2.89ms",
+      "testName": "src/features/operacoes/resultado-operacao.spec.tsx > Resultado da operação > @spec:AC-168 uma resposta sem avisos não exibe aviso nenhum # time=6.11ms",
       "method": "tap"
     },
     "AC-169": {
       "status": "pass",
-      "testName": "src/features/operacoes/extrato-operacoes.spec.tsx > Extrato de operações > @spec:AC-169 cada linha traz data e hora, carteira, tipo, ticker, quantidade, preço, total e moeda # time=92.59ms",
+      "testName": "src/features/operacoes/extrato-operacoes.spec.tsx > Extrato de operações > @spec:AC-169 cada linha traz data e hora, carteira, tipo, ticker, quantidade, preço, total e moeda # time=82.26ms",
       "method": "tap"
     },
     "AC-170": {
       "status": "pass",
-      "testName": "src/features/operacoes/extrato-operacoes.spec.tsx > Extrato de operações > @spec:AC-170 a venda mostra o resultado realizado e a compra não # time=6.81ms",
+      "testName": "src/features/operacoes/extrato-operacoes.spec.tsx > Extrato de operações > @spec:AC-170 a venda mostra o resultado realizado e a compra não # time=15.55ms",
       "method": "tap"
     },
     "AC-171": {
       "status": "pass",
-      "testName": "src/features/operacoes/extrato-operacoes.spec.tsx > Extrato de operações > @spec:AC-171 a paginação diz onde está e pede a página pedida # time=18.08ms",
+      "testName": "src/features/operacoes/extrato-operacoes.spec.tsx > Extrato de operações > @spec:AC-171 a paginação diz onde está e pede a página pedida # time=20.49ms",
       "method": "tap"
     },
     "AC-173": {
       "status": "pass",
-      "testName": "src/features/operacoes/operacoes.spec.tsx > Tela de operações > @spec:AC-173 a operação registrada aparece no extrato sem recarga manual # time=112.20ms",
+      "testName": "src/features/operacoes/operacoes.spec.tsx > Tela de operações > @spec:AC-173 a operação registrada aparece no extrato sem recarga manual # time=74.94ms",
       "method": "tap"
     },
     "AC-174": {
       "status": "pass",
-      "testName": "src/features/operacoes/editar-operacao.spec.tsx > Edição de operação > @spec:AC-174 só quantidade e preço unitário são editáveis # time=69.10ms",
+      "testName": "src/features/operacoes/editar-operacao.spec.tsx > Edição de operação > @spec:AC-174 só quantidade e preço unitário são editáveis # time=68.75ms",
       "method": "tap"
     },
     "AC-175": {
       "status": "pass",
-      "testName": "src/features/operacoes/editar-operacao.spec.tsx > Edição de operação > @spec:AC-175 salvar pede confirmação avisando do recálculo antes de enviar # time=73.06ms",
+      "testName": "src/features/operacoes/editar-operacao.spec.tsx > Edição de operação > @spec:AC-175 salvar pede confirmação avisando do recálculo antes de enviar # time=88.13ms",
       "method": "tap"
     },
     "AC-176": {
       "status": "pass",
-      "testName": "src/features/operacoes/editar-operacao.spec.tsx > Edição de operação > @spec:AC-176 sem preço novo a tela avisa da reutilização e o envio não leva preço # time=27.62ms",
+      "testName": "src/features/operacoes/editar-operacao.spec.tsx > Edição de operação > @spec:AC-176 sem preço novo a tela avisa da reutilização e o envio não leva preço # time=27.10ms",
       "method": "tap"
     },
     "AC-177": {
       "status": "pass",
-      "testName": "src/features/operacoes/editar-operacao.spec.tsx > Edição de operação > @spec:AC-177 preço novo com três casas decimais é recusado antes do envio # time=14.28ms",
+      "testName": "src/features/operacoes/editar-operacao.spec.tsx > Edição de operação > @spec:AC-177 preço novo com três casas decimais é recusado antes do envio # time=27.03ms",
       "method": "tap"
     },
     "AC-178": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Correção de operações pelo detalhe da carteira > @spec:AC-178 editar pela carteira relê posições, consolidado, resultado e movimentações # time=65.78ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Correção de operações pelo detalhe da carteira > @spec:AC-178 editar pela carteira relê posições, consolidado, resultado e movimentações # time=57.48ms",
       "method": "tap"
     },
     "AC-179": {
       "status": "pass",
-      "testName": "src/features/operacoes/extrato-operacoes.spec.tsx > Extrato de operações > @spec:AC-179 excluir pede confirmação avisando do recálculo e da ausência de desfazer # time=95.15ms",
+      "testName": "src/features/operacoes/extrato-operacoes.spec.tsx > Extrato de operações > @spec:AC-179 excluir pede confirmação avisando do recálculo e da ausência de desfazer # time=102.99ms",
       "method": "tap"
     },
     "AC-180": {
       "status": "pass",
-      "testName": "src/features/operacoes/extrato-operacoes.spec.tsx > Extrato de operações > @spec:AC-180 cancelar a exclusão fecha a confirmação sem excluir nada # time=28.08ms",
+      "testName": "src/features/operacoes/extrato-operacoes.spec.tsx > Extrato de operações > @spec:AC-180 cancelar a exclusão fecha a confirmação sem excluir nada # time=25.29ms",
       "method": "tap"
     },
     "AC-181": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Correção de operações pelo detalhe da carteira > @spec:AC-181 excluir pela carteira relê os números recalculados sem recarga manual # time=49.63ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Correção de operações pelo detalhe da carteira > @spec:AC-181 excluir pela carteira relê os números recalculados sem recarga manual # time=66.38ms",
       "method": "tap"
     },
     "AC-182": {
       "status": "pass",
-      "testName": "src/features/operacoes/editar-operacao.spec.tsx > Edição de operação > @spec:AC-182 cancelar a edição avisa quem a abriu e não envia nada # time=2.70ms",
+      "testName": "src/features/operacoes/editar-operacao.spec.tsx > Edição de operação > @spec:AC-182 cancelar a edição avisa quem a abriu e não envia nada # time=4.05ms",
       "method": "tap"
     }
   },

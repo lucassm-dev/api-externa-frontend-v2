@@ -14,7 +14,6 @@ export interface DadosDaCarteira {
 }
 
 /** Página larga, como no extrato e na varredura de carteiras (ASM-046). */
-export const ACOES_PARA_MOEDA = 200;
 export const CARTEIRAS_NO_SELETOR = 200;
 
 export type CarteiraDoSeletor = Carteira;

@@ -1,3 +1,5 @@
+import { http } from '@/core/api/http';
+import { Pagina } from '@/core/api/pagina';
 import { Moeda } from '@/core/formatacao/formatacao';
 import { Acao } from '@/features/acoes/acoes.model';
 
@@ -21,6 +23,16 @@ export function mapaDeMoedas(acoes: Acao[]): MapaDeMoedas {
     mapa[acao.ticker] = acao.moeda;
   }
   return mapa;
+}
+
+/** O catálogo numa leitura só (ASM-045). Falhou, mapa vazio: as moedas ficam desconhecidas, nunca inventadas. */
+export const ACOES_PARA_MOEDA = 200;
+
+export function moedasDoCatalogo(): Promise<MapaDeMoedas> {
+  return http
+    .get<Pagina<Acao>>('/acoes', { params: { page: 0, size: ACOES_PARA_MOEDA } })
+    .then((pagina) => mapaDeMoedas(pagina.content))
+    .catch((): MapaDeMoedas => ({}));
 }
 
 export function moedaDe(ticker: string, mapa: MapaDeMoedas): MoedaDaPosicao {

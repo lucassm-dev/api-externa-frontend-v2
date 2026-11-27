@@ -3,7 +3,8 @@ import { Botao } from '@/components/ui/botao';
 import { Esqueleto } from '@/components/ui/esqueleto';
 import { Selo, VarianteSelo } from '@/components/ui/selo';
 import { Tabela } from '@/components/ui/tabela';
-import { formatarNumero, formatarReal } from '@/core/formatacao/formatacao';
+import { formatarMoeda, formatarNumero, formatarReal } from '@/core/formatacao/formatacao';
+import { MapaDeMoedas, moedaDe } from '@/features/desempenho/moeda-das-posicoes';
 import { Monograma } from '@/shared/monograma';
 import { ValorComHorario } from '@/shared/valor-com-horario';
 import { Variacao } from '@/shared/variacao';
@@ -23,6 +24,8 @@ function varianteDoResultado(valor: number): VarianteSelo {
 interface Props {
   posicoes: Posicao[];
   lucroPorTicker?: Record<string, number>;
+  /** As posições vêm na moeda da ação; sem a moeda no mapa, o valor sai sem símbolo (AC-393). */
+  moedas?: MapaDeMoedas;
   carregando?: boolean;
 }
 
@@ -32,7 +35,7 @@ interface Props {
  * tickers que ainda têm posição. Sem essa seção, quem vendeu tudo de um ativo
  * conclui que o sistema perdeu o registro (PRD-005).
  */
-export function PosicoesCarteira({ posicoes, lucroPorTicker = {}, carregando = false }: Props) {
+export function PosicoesCarteira({ posicoes, lucroPorTicker = {}, moedas = {}, carregando = false }: Props) {
   const encerradas = posicoesEncerradas(lucroPorTicker, posicoes);
 
   return (
@@ -69,6 +72,8 @@ export function PosicoesCarteira({ posicoes, lucroPorTicker = {}, carregando = f
             <tbody>
               {posicoes.map((posicao) => {
                 const percentual = percentualNaoRealizado(posicao);
+                const moeda = moedaDe(posicao.ticker, moedas);
+                const simbolo = moeda === 'desconhecida' ? null : moeda;
                 return (
                   <tr key={posicao.id} data-posicao={posicao.ticker}>
                     <td>
@@ -81,12 +86,12 @@ export function PosicoesCarteira({ posicoes, lucroPorTicker = {}, carregando = f
                       </span>
                     </td>
                     <td data-numero data-quantidade>{formatarNumero(posicao.quantidade, 0)}</td>
-                    <td data-numero data-preco-medio>{formatarReal(posicao.precoMedio)}</td>
+                    <td data-numero data-preco-medio>{simbolo ? formatarMoeda(posicao.precoMedio, simbolo) : formatarNumero(posicao.precoMedio, 2)}</td>
                     <td data-numero data-cotacao>
-                      <ValorComHorario valor={posicao.cotacaoAtual} obtidoEm={posicao.dataHoraCotacao} />
+                      <ValorComHorario valor={posicao.cotacaoAtual} moeda={simbolo} obtidoEm={posicao.dataHoraCotacao} />
                     </td>
                     <td data-numero data-rentabilidade-valor>
-                      <Variacao valor={posicao.rentabilidadeNaoRealizada} moeda="BRL" />
+                      <Variacao valor={posicao.rentabilidadeNaoRealizada} moeda={simbolo} />
                     </td>
                     {percentual === null ? (
                       <td data-numero data-sem-percentual>—</td>
