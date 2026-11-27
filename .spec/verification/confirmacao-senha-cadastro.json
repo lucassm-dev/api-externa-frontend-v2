@@ -1,7 +1,7 @@
 {
   "feature": "confirmacao-senha-cadastro",
-  "timestamp": "2026-11-27T00:56:25.038Z",
-  "gitRev": "76a77ae",
+  "timestamp": "2026-11-27T04:50:22.664Z",
+  "gitRev": "17b4de8",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
@@ -9,22 +9,22 @@
   "results": {
     "AC-291": {
       "status": "pass",
-      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-291 pede a confirmação logo depois da senha sem antecipar erro # time=13.33ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-291 pede a confirmação logo depois da senha sem antecipar erro # time=30.31ms",
       "method": "tap"
     },
     "AC-292": {
       "status": "pass",
-      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-292 mostra a divergência no blur e barra a requisição # time=20.88ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-292 mostra a divergência no blur e barra a requisição # time=29.07ms",
       "method": "tap"
     },
     "AC-293": {
       "status": "pass",
-      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-293 revalida a confirmação quando a senha original muda # time=34.78ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-293 revalida a confirmação quando a senha original muda # time=101.59ms",
       "method": "tap"
     },
     "AC-294": {
       "status": "pass",
-      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-294 envia o cadastro quando as senhas coincidem sem mandar a confirmação # time=42.48ms",
+      "testName": "src/features/acesso/cadastro.spec.tsx > Tela de cadastro > @spec:AC-294 envia o cadastro quando as senhas coincidem sem mandar a confirmação # time=39.17ms",
       "method": "tap"
     }
   },

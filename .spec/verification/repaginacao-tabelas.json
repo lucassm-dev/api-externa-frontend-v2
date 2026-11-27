@@ -1,7 +1,7 @@
 {
   "feature": "repaginacao-tabelas",
-  "timestamp": "2026-11-27T00:58:52.942Z",
-  "gitRev": "76a77ae",
+  "timestamp": "2026-11-27T04:53:11.074Z",
+  "gitRev": "17b4de8",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
@@ -9,47 +9,47 @@
   "results": {
     "AC-242": {
       "status": "pass",
-      "testName": "src/shared/ordenacao.spec.ts > OrdenacaoTabela > @spec:AC-242 uma coluna de dado se anuncia como ordenável e a coluna de ações não # time=1.86ms",
+      "testName": "src/shared/ordenacao.spec.ts > OrdenacaoTabela > @spec:AC-242 uma coluna de dado se anuncia como ordenável e a coluna de ações não # time=1.61ms",
       "method": "tap"
     },
     "AC-243": {
       "status": "pass",
-      "testName": "src/shared/ordenacao.spec.ts > OrdenacaoTabela > @spec:AC-243 ordena sobre os itens já carregados sem mutar o array da página # time=11.14ms",
+      "testName": "src/shared/ordenacao.spec.ts > OrdenacaoTabela > @spec:AC-243 ordena sobre os itens já carregados sem mutar o array da página # time=10.45ms",
       "method": "tap"
     },
     "AC-244": {
       "status": "pass",
-      "testName": "src/components/ui/tabela.spec.tsx > Estilo base de tabela > @spec:AC-244 alinha as colunas numéricas à direita, em fonte de largura fixa e com dígitos de mesma largura # time=2.31ms",
+      "testName": "src/components/ui/tabela.spec.tsx > Estilo base de tabela > @spec:AC-244 alinha as colunas numéricas à direita, em fonte de largura fixa e com dígitos de mesma largura # time=2.49ms",
       "method": "tap"
     },
     "AC-245": {
       "status": "pass",
-      "testName": "src/components/ui/tabela.spec.tsx > Estilo base de tabela > @spec:AC-245 destaca a linha sob o ponteiro sem que o destaque seja a única forma de distingui-la # time=0.52ms",
+      "testName": "src/components/ui/tabela.spec.tsx > Estilo base de tabela > @spec:AC-245 destaca a linha sob o ponteiro sem que o destaque seja a única forma de distingui-la # time=0.41ms",
       "method": "tap"
     },
     "AC-246": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-246 o resultado de uma encerrada vira selo com texto e símbolo, nunca só cor # time=2.08ms",
+      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-246 o resultado de uma encerrada vira selo com texto e símbolo, nunca só cor # time=9.63ms",
       "method": "tap"
     },
     "AC-247": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-247 cada linha de ativo traz o monograma junto do ticker # time=34.34ms",
+      "testName": "src/features/acoes/acoes.spec.tsx > Lista de ações > @spec:AC-247 cada linha traz o monograma do ativo junto ao ticker # time=13.61ms",
       "method": "tap"
     },
     "AC-248": {
       "status": "pass",
-      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Lista de carteiras > @spec:AC-248 as ações da linha viram botões de ícone com nome acessível da ação e do item # time=36.99ms",
+      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Lista de carteiras > @spec:AC-248 as ações da linha viram botões de ícone com nome acessível da ação e do item # time=119.16ms",
       "method": "tap"
     },
     "AC-249": {
       "status": "pass",
-      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Lista de carteiras > @spec:AC-249 o paginador informa página, total e faixa, desabilitando as pontas # time=33.61ms",
+      "testName": "src/features/acoes/acoes.spec.tsx > Lista de ações > @spec:AC-249 o paginador informa página, total e faixa, desabilitando as pontas # time=45.31ms",
       "method": "tap"
     },
     "AC-250": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-250 sem posições a tabela dá lugar a um estado vazio com próximo passo # time=1.38ms",
+      "testName": "src/features/acoes/acoes.spec.tsx > Lista de ações > @spec:AC-250 carregando mostra esqueleto; catálogo vazio mostra estado vazio com próximo passo # time=13.00ms",
       "method": "tap"
     }
   },
