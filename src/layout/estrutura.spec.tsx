@@ -82,7 +82,7 @@ describe('Telas na língua do kit', () => {
   });
 
   it('@spec:AC-379 filtros do extrato num cartão e tabela de usuários na largura da coluna', async () => {
-    abrir('/operacoes');
+    abrir('/relatorios');
     const filtros = await esperar(() => document.querySelector('[data-filtros-extrato]'));
     expect(classes(filtros)).toMatch(/rounded-grande.*border|border.*rounded-grande/);
     expect(classes(filtros)).toContain('bg-superficie');

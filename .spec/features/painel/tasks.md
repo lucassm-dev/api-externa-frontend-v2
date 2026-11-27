@@ -22,7 +22,7 @@
 
 ## T-023 — Shell: navegação das áreas, tema e sair [concluida]
 
-- Refs: AC-047, AC-048, AC-049
+- Refs: AC-048, AC-049
 - Arquivos: src/core/sessao/sessao.model.ts, src/core/sessao/sessao.service.ts, src/core/tema/tema.service.ts, src/layout/casca.spec.tsx, src/layout/casca.tsx
 - Notas: barra superior desktop, sem menu compacto (PRD-001). Sair continua na barra (ADR-001) e o aviso de sessão acabando permanece como está. As áreas ainda sem tela recebiam rota mínima; o painel de verdade entra pela T-029. (O destino de área em construção saiu na T-079, com a última área ganhando tela.)
 

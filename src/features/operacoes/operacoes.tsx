@@ -1,5 +1,5 @@
-import { ArrowLeft } from 'lucide-react';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { Botao } from '@/components/ui/botao';
 import { ErroTraduzido, ehErroTraduzido } from '@/core/erros/tradutor-erro';
@@ -9,7 +9,6 @@ import { Carteira } from '@/features/carteiras/carteiras.model';
 import { carteirasService } from '@/features/carteiras/carteiras.service';
 import { EditarOperacao } from './editar-operacao';
 import { ExtratoOperacoes } from './extrato-operacoes';
-import { CAMPOS_DO_FILTRO, Filtros, FiltrosExtrato, RecusaDoFiltro, filtrosDaBusca, parametrosDoServidor, temFiltro } from './filtros-extrato';
 import { DesfechoDoRegistro, FormularioOperacao, ID_CAMPO_CARTEIRA, PedidoDeRegistro } from './formulario-operacao';
 import { AlteracaoDeOperacao, Operacao, OperacaoDoExtrato } from './operacoes.model';
 import { operacoesService } from './operacoes.service';
@@ -19,28 +18,22 @@ import { ResultadoOperacao } from './resultado-operacao';
  * Uma tela só: formulário no topo, extrato abaixo (Q-019). É o destino dos dois
  * links que já existem no produto — o "registrar compra/venda" do detalhe da
  * carteira, com `?carteira=&tipo=`, e o "ver o extrato completo" das
- * movimentações. Os filtros do extrato também moram na busca, com nomes
- * próprios, e a busca é a única fonte deles (AC-343, ASM-084).
+ * movimentações. Recortar e totalizar o extrato é na área Relatórios (AC-400).
  *
  * O formulário nunca fecha depois de registrar: quem registra uma compra
  * normalmente registra várias na mesma sessão, e obrigar a voltar à carteira a
  * cada lançamento é o atrito mais caro do produto (PRD-007).
  */
 export function Operacoes() {
-  const [busca, setBusca] = useSearchParams();
+  const [busca] = useSearchParams();
   const carteiraInicial = busca.get('carteira') ? Number(busca.get('carteira')) : null;
   const tipoInicial = busca.get('tipo') === 'VENDA' ? 'VENDA' : 'COMPRA';
-
-  // Só os campos do filtro: mudar `carteira`/`tipo` do formulário não relê o extrato.
-  const chaveDoRecorte = JSON.stringify(filtrosDaBusca(busca));
-  const filtros = useMemo<Filtros>(() => JSON.parse(chaveDoRecorte), [chaveDoRecorte]);
 
   const [carteiras, setCarteiras] = useState<Carteira[]>([]);
   const [extrato, setExtrato] = useState<OperacaoDoExtrato[]>([]);
   const [pagina, setPagina] = useState(0);
   const [totalDePaginas, setTotalDePaginas] = useState(0);
   const [totalDeItens, setTotalDeItens] = useState(0);
-  const [recusa, setRecusa] = useState<RecusaDoFiltro | null>(null);
   const [carregandoExtrato, setCarregandoExtrato] = useState(true);
 
   const [ultimaOperacao, setUltimaOperacao] = useState<Operacao | null>(null);
@@ -52,23 +45,19 @@ export function Operacoes() {
 
   const lerExtrato = useCallback(async (numero: number): Promise<void> => {
     setCarregandoExtrato(true);
-    setRecusa(null);
     try {
-      const resposta = await operacoesService.extrato(numero, parametrosDoServidor(filtros));
+      const resposta = await operacoesService.extrato(numero);
       // A última página esvaziou (o único item foi excluído): volta uma página (AC-307).
       if (resposta.content.length === 0 && resposta.number > 0) return await lerExtrato(resposta.number - 1);
       setExtrato(resposta.content);
       setPagina(resposta.number);
       setTotalDePaginas(resposta.totalPages);
       setTotalDeItens(resposta.totalElements);
-    } catch (falha) {
-      // Filtro recusado (OPE-006, VAL-002) é dito nos filtros; o resto deixa o extrato como estava.
-      if (ehErroTraduzido(falha) && (falha.codigo === 'OPE-006' || falha.codigo === 'VAL-002')) {
-        setRecusa({ mensagem: falha.mensagem, campo: falha.campoDestacado ?? null });
-      }
+    } catch {
+      // O extrato que não veio fica como estava; a tela segue utilizável.
     }
     setCarregandoExtrato(false);
-  }, [filtros]);
+  }, []);
 
   useEffect(() => {
     carteirasService.listar(0).then(
@@ -80,16 +69,6 @@ export function Operacoes() {
   useEffect(() => {
     void lerExtrato(0);
   }, [lerExtrato]);
-
-  const aplicarFiltros = (novos: Filtros) =>
-    setBusca((atual) => {
-      const proxima = new URLSearchParams(atual);
-      for (const campo of CAMPOS_DO_FILTRO) {
-        if (novos[campo]) proxima.set(campo, novos[campo]);
-        else proxima.delete(campo);
-      }
-      return proxima;
-    });
 
   const traduzida = (falha: unknown): ErroTraduzido => {
     if (!ehErroTraduzido(falha)) throw falha;
@@ -183,8 +162,12 @@ export function Operacoes() {
       )}
 
       <ExtratoOperacoes
-        filtros={<FiltrosExtrato key={chaveDoRecorte} filtros={filtros} carteiras={carteiras} recusa={recusa} aoAplicar={aplicarFiltros} />}
-        recorte={temFiltro(filtros) ? { aoLimpar: () => aplicarFiltros(filtrosDaBusca(new URLSearchParams())) } : null}
+        aoLadoDoTitulo={
+          <Link to="/relatorios" className="inline-flex items-center gap-1 text-apoio font-semibold no-underline hover:underline">
+            Filtrar e totalizar em Relatórios
+            <ArrowRight aria-hidden="true" focusable="false" className="size-4" />
+          </Link>
+        }
         totalDeItens={totalDeItens}
         operacoes={extrato}
         carteiras={carteiras}

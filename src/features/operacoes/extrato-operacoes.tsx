@@ -16,6 +16,9 @@ import { OPERACOES_POR_PAGINA, OperacaoDoExtrato } from './operacoes.model';
 export const AVISO_DE_RECALCULO = 'Excluir esta operação vai recalcular a posição e o resultado da carteira. Não há como desfazer.';
 
 interface Props {
+  titulo?: string;
+  /** Ao lado do título, como o link para os Relatórios em Operações (AC-400). */
+  aoLadoDoTitulo?: ReactNode;
   /** A barra de filtros; o estado dela mora na página (na busca do endereço). */
   filtros?: ReactNode;
   /** Presente quando há filtro aplicado: a tela conta o recorte e oferece limpar (AC-344). */
@@ -29,9 +32,10 @@ interface Props {
   carregando?: boolean;
   excluindo?: boolean;
   aoMudarPagina: (pagina: number) => void;
-  aoEditar: (operacao: OperacaoDoExtrato) => void;
-  aoExcluir: (operacao: OperacaoDoExtrato) => void;
-  aoRegistrarPrimeira: () => void;
+  /** Sem editar nem excluir, a tabela é só leitura, como no relatório (AC-399). */
+  aoEditar?: (operacao: OperacaoDoExtrato) => void;
+  aoExcluir?: (operacao: OperacaoDoExtrato) => void;
+  aoRegistrarPrimeira?: () => void;
 }
 
 /** Carteira fora da listagem carregada aparece pelo identificador, nunca em branco. */
@@ -58,6 +62,8 @@ function varianteDoResultado(lucro: number): VarianteSelo {
  * troca de página (AC-243, ADR-010).
  */
 export function ExtratoOperacoes({
+  titulo = 'Extrato de movimentações',
+  aoLadoDoTitulo,
   filtros,
   recorte = null,
   totalDeItens = 0,
@@ -73,6 +79,7 @@ export function ExtratoOperacoes({
   aoRegistrarPrimeira,
 }: Props) {
   const [emExclusao, setEmExclusao] = useState<OperacaoDoExtrato | null>(null);
+  const comAcoes = Boolean(aoEditar || aoExcluir);
   // A ordenação é estado imperativo do utilitário; a versão faz a tela reprojetar a cada acionamento.
   const [versao, setVersao] = useState(0);
 
@@ -108,9 +115,12 @@ export function ExtratoOperacoes({
 
   return (
     <section data-extrato aria-labelledby="titulo-extrato" className="grid gap-4">
-      <h2 id="titulo-extrato" className="m-0 text-medio font-semibold tracking-(--entrelinha-titulo)">
-        Extrato de movimentações
-      </h2>
+      <div className="flex flex-wrap items-baseline justify-between gap-3">
+        <h2 id="titulo-extrato" className="m-0 text-medio font-semibold tracking-(--entrelinha-titulo)">
+          {titulo}
+        </h2>
+        {aoLadoDoTitulo}
+      </div>
 
       {filtros}
 
@@ -138,8 +148,7 @@ export function ExtratoOperacoes({
           <EstadoVazio
             titulo="Nenhuma operação registrada"
             descricao="Quando você registrar uma compra ou venda, ela aparece aqui no extrato."
-            rotuloAcao="Registrar primeira operação"
-            aoAcionar={aoRegistrarPrimeira}
+            {...(aoRegistrarPrimeira && { rotuloAcao: 'Registrar primeira operação', aoAcionar: aoRegistrarPrimeira })}
           />
         </div>
       ) : (
@@ -155,9 +164,11 @@ export function ExtratoOperacoes({
                 {cabecalho('preco', 'Preço unitário', true)}
                 {cabecalho('total', 'Valor total', true)}
                 {cabecalho('resultado', 'Resultado', true)}
-                <th scope="col">
-                  <span className="sr-only">Ações</span>
-                </th>
+                {comAcoes && (
+                  <th scope="col">
+                    <span className="sr-only">Ações</span>
+                  </th>
+                )}
               </tr>
             </thead>
             <tbody>
@@ -197,20 +208,26 @@ export function ExtratoOperacoes({
                         </span>
                       )}
                     </td>
-                    <td>
-                      <span className="flex justify-end gap-1">
-                        <span data-editar className="contents">
-                          <BotaoIcone rotulo={`Editar operação de ${operacao.ticker} em ${quando}`} aoPressionar={() => aoEditar(operacao)}>
-                            <Pencil aria-hidden="true" focusable="false" />
-                          </BotaoIcone>
+                    {comAcoes && (
+                      <td>
+                        <span className="flex justify-end gap-1">
+                          {aoEditar && (
+                            <span data-editar className="contents">
+                              <BotaoIcone rotulo={`Editar operação de ${operacao.ticker} em ${quando}`} aoPressionar={() => aoEditar(operacao)}>
+                                <Pencil aria-hidden="true" focusable="false" />
+                              </BotaoIcone>
+                            </span>
+                          )}
+                          {aoExcluir && (
+                            <span data-excluir className="contents">
+                              <BotaoIcone rotulo={`Excluir operação de ${operacao.ticker} em ${quando}`} aoPressionar={() => setEmExclusao(operacao)}>
+                                <Trash2 aria-hidden="true" focusable="false" />
+                              </BotaoIcone>
+                            </span>
+                          )}
                         </span>
-                        <span data-excluir className="contents">
-                          <BotaoIcone rotulo={`Excluir operação de ${operacao.ticker} em ${quando}`} aoPressionar={() => setEmExclusao(operacao)}>
-                            <Trash2 aria-hidden="true" focusable="false" />
-                          </BotaoIcone>
-                        </span>
-                      </span>
-                    </td>
+                      </td>
+                    )}
                   </tr>
                 );
               })}
@@ -238,7 +255,7 @@ export function ExtratoOperacoes({
           rotuloConfirmar="Excluir operação"
           ocupado={excluindo}
           aoConfirmar={() => {
-            aoExcluir(emExclusao);
+            aoExcluir?.(emExclusao);
             setEmExclusao(null);
           }}
           aoCancelar={() => setEmExclusao(null)}

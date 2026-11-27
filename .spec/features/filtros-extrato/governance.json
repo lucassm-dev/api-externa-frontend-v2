@@ -42,13 +42,84 @@
       "ownFingerprint": "7b089fa84c6d6f12e4816f1b60f453089f008626ecaccd3320ff960ace13c678",
       "conflictFingerprint": "dbb53b712b51656cb4ec3cf2a0c85fc5d5d8608b71bd7bd3e5c5849d372afc2e",
       "answeredAt": "2026-11-25T23:33:09.325Z"
+    },
+    {
+      "conflictId": "impacto:estrutura-visual",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 3 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026 (filtros-extrato #28); regravada em 27/11/2026 após marcar critérios superados pelos Relatórios (Q-055), sem mudança de escopo",
+      "fingerprint": "fba17346354bc1f17c965d54d5866b001d7909beee6d2bc4fff260ba8d8e5247",
+      "ownFingerprint": "17e186435742bce9cd5d6f8e6f692bfb400bf108efe3c2bbb83552e6bc43a765",
+      "conflictFingerprint": "5db4cc4866514f2078069165b7e0892d9e1e5bf8ae2689afdcd19f2e66cf0a2f",
+      "answeredAt": "2026-11-27T19:46:23.195Z"
+    },
+    {
+      "conflictId": "impacto:migracao-react",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 3 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026 (filtros-extrato #28); regravada em 27/11/2026 após marcar critérios superados pelos Relatórios (Q-055), sem mudança de escopo",
+      "fingerprint": "fba17346354bc1f17c965d54d5866b001d7909beee6d2bc4fff260ba8d8e5247",
+      "ownFingerprint": "17e186435742bce9cd5d6f8e6f692bfb400bf108efe3c2bbb83552e6bc43a765",
+      "conflictFingerprint": "fe93757f801d952b35a69fd52319d330df08b96ab55ac76e5f4fc6780945de7e",
+      "answeredAt": "2026-11-27T19:46:23.559Z"
+    },
+    {
+      "conflictId": "impacto:operacoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 3 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026 (filtros-extrato #28); regravada em 27/11/2026 após marcar critérios superados pelos Relatórios (Q-055), sem mudança de escopo",
+      "fingerprint": "fba17346354bc1f17c965d54d5866b001d7909beee6d2bc4fff260ba8d8e5247",
+      "ownFingerprint": "17e186435742bce9cd5d6f8e6f692bfb400bf108efe3c2bbb83552e6bc43a765",
+      "conflictFingerprint": "b076c3e210a281b6e21f2e4455509be52c123322a993ea851e7c89cfe3b90d58",
+      "answeredAt": "2026-11-27T19:46:23.929Z"
+    },
+    {
+      "conflictId": "impacto:relatorios",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 3 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026 (filtros-extrato #28); regravada em 27/11/2026 após marcar critérios superados pelos Relatórios (Q-055), sem mudança de escopo",
+      "fingerprint": "fba17346354bc1f17c965d54d5866b001d7909beee6d2bc4fff260ba8d8e5247",
+      "ownFingerprint": "17e186435742bce9cd5d6f8e6f692bfb400bf108efe3c2bbb83552e6bc43a765",
+      "conflictFingerprint": "a1f4e27d7af5d04123b7d1ea41e1c9b4a7062b563df34a818880c7536634a0c0",
+      "answeredAt": "2026-11-27T19:46:24.301Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 3 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026 (filtros-extrato #28); regravada em 27/11/2026 após marcar critérios superados pelos Relatórios (Q-055), sem mudança de escopo",
+      "fingerprint": "fba17346354bc1f17c965d54d5866b001d7909beee6d2bc4fff260ba8d8e5247",
+      "ownFingerprint": "17e186435742bce9cd5d6f8e6f692bfb400bf108efe3c2bbb83552e6bc43a765",
+      "conflictFingerprint": "dbb53b712b51656cb4ec3cf2a0c85fc5d5d8608b71bd7bd3e5c5849d372afc2e",
+      "answeredAt": "2026-11-27T19:46:24.683Z"
+    },
+    {
+      "conflictId": "operacoes-ac-172",
+      "choice": "prosseguir",
+      "answer": "Marcar superado (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 25/11/2026 (filtros-extrato #28); regravada em 27/11/2026 após marcar critérios superados pelos Relatórios (Q-055), sem mudança de escopo",
+      "fingerprint": "fba17346354bc1f17c965d54d5866b001d7909beee6d2bc4fff260ba8d8e5247",
+      "ownFingerprint": "17e186435742bce9cd5d6f8e6f692bfb400bf108efe3c2bbb83552e6bc43a765",
+      "conflictFingerprint": "1852441ebddc505a213fc0084008ba09defec74b76f78780e9b6692834c3b005",
+      "answeredAt": "2026-11-27T19:46:25.038Z"
     }
   ],
   "clientRequest": "",
   "review": {
-    "summary": "Lidas as specs de operacoes (AC-169 a AC-182, AC-243, AC-249, AC-307), carteiras (link registrar compra/venda com ?carteira=&tipo=) e o ADR-010 do front. Conflito real: AC-172 (sem filtro no extrato), resolvido pelo Lucas em 25/11/2026 (Q-049): superado pelo AC-340. A ordenação continua só sobre a página carregada (AC-243). O link do detalhe da carteira continua só preenchendo o formulário (AC-345).",
-    "reviewer": "Claude Code (Opus 5.5), sessão de 25/11/2026",
+    "summary": "Revisão regravada em 27/11/2026: a spec de filtros-extrato só recebeu a marcação dos critérios superados pelos Relatórios (AC-340, AC-342 a AC-344, AC-346, AC-347 e US-097 → relatorios, Q-055) e o apontamento da T-148 para a US-110. Os critérios que continuam (AC-341, AC-345) e o conflito original com o AC-172 de operações, decidido pelo Lucas na Q-049, não mudam.",
+    "reviewer": "Claude Code (Opus 5.5), sessão de 27/11/2026",
     "conflicts": [
+      {
+        "id": "impacto:estrutura-visual",
+        "automatic": true,
+        "feature": "estrutura-visual",
+        "summary": "A mudança interfere no domínio da feature estrutura-visual.",
+        "files": [
+          "src/features/operacoes/filtros-extrato.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/estrutura-visual/spec.md"
+      },
       {
         "id": "impacto:migracao-react",
         "automatic": true,
@@ -84,6 +155,19 @@
         "rule": ".spec/features/operacoes/spec.md"
       },
       {
+        "id": "impacto:relatorios",
+        "automatic": true,
+        "feature": "relatorios",
+        "summary": "A mudança interfere no domínio da feature relatorios.",
+        "files": [
+          "src/features/operacoes/extrato-operacoes.tsx",
+          "src/features/operacoes/filtros-extrato.spec.tsx",
+          "src/features/operacoes/operacoes.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/relatorios/spec.md"
+      },
+      {
         "id": "impacto:repaginacao-tabelas",
         "automatic": true,
         "feature": "repaginacao-tabelas",
@@ -101,14 +185,16 @@
         "rule": ".spec/features/operacoes/spec.md#ac-172"
       }
     ],
-    "fingerprint": "c77b4a9a52ea78c4e922624e131e3c8901b21955aacba69ee512ec321025f3d3",
-    "ownFingerprint": "7b089fa84c6d6f12e4816f1b60f453089f008626ecaccd3320ff960ace13c678",
-    "reviewedAt": "2026-11-25T23:29:08.812Z",
+    "fingerprint": "fba17346354bc1f17c965d54d5866b001d7909beee6d2bc4fff260ba8d8e5247",
+    "ownFingerprint": "17e186435742bce9cd5d6f8e6f692bfb400bf108efe3c2bbb83552e6bc43a765",
+    "reviewedAt": "2026-11-27T19:46:22.535Z",
     "documents": [
       ".spec/features/acesso/spec.md",
       ".spec/features/acesso/tasks.md",
       ".spec/features/acoes/spec.md",
       ".spec/features/acoes/tasks.md",
+      ".spec/features/administracao/spec.md",
+      ".spec/features/administracao/tasks.md",
       ".spec/features/cabecalho-identidade-acoes/spec.md",
       ".spec/features/cabecalho-identidade-acoes/tasks.md",
       ".spec/features/carteiras/spec.md",
@@ -121,6 +207,8 @@
       ".spec/features/corretoras/tasks.md",
       ".spec/features/desempenho/spec.md",
       ".spec/features/desempenho/tasks.md",
+      ".spec/features/estrutura-visual/spec.md",
+      ".spec/features/estrutura-visual/tasks.md",
       ".spec/features/filtros-extrato/spec.md",
       ".spec/features/filtros-extrato/tasks.md",
       ".spec/features/fundacao/spec.md",
@@ -129,16 +217,22 @@
       ".spec/features/fundacao-visual/tasks.md",
       ".spec/features/identidade-papel/spec.md",
       ".spec/features/identidade-papel/tasks.md",
+      ".spec/features/logos-acoes/spec.md",
+      ".spec/features/logos-acoes/tasks.md",
       ".spec/features/migracao-react/prd.md",
       ".spec/features/migracao-react/adr.md",
       ".spec/features/migracao-react/design.md",
       ".spec/features/migracao-react/spec.md",
       ".spec/features/migracao-react/tasks.md",
       ".spec/features/migracao-react/research.md",
+      ".spec/features/moeda-na-carteira/spec.md",
+      ".spec/features/moeda-na-carteira/tasks.md",
       ".spec/features/operacoes/spec.md",
       ".spec/features/operacoes/tasks.md",
       ".spec/features/painel/spec.md",
       ".spec/features/painel/tasks.md",
+      ".spec/features/relatorios/spec.md",
+      ".spec/features/relatorios/tasks.md",
       ".spec/features/repaginacao-acesso/spec.md",
       ".spec/features/repaginacao-acesso/tasks.md",
       ".spec/features/repaginacao-desempenho/spec.md",
@@ -149,6 +243,8 @@
       ".spec/features/repaginacao-tabelas/tasks.md",
       ".spec/features/repaginacao-visual/spec.md",
       ".spec/features/repaginacao-visual/tasks.md",
+      ".spec/features/situacao-cadastral/spec.md",
+      ".spec/features/situacao-cadastral/tasks.md",
       ".spec/features/visibilidade-da-senha/spec.md",
       ".spec/features/visibilidade-da-senha/tasks.md",
       ".spec/constituicao.md",

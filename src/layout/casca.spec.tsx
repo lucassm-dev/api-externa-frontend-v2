@@ -7,7 +7,7 @@ import { TemaService, temaService } from '@/core/tema/tema.service';
 import { classesDe, gerarCss } from '@/test/tailwind';
 import { Casca } from './casca';
 
-const AREAS = ['/painel', '/corretoras', '/carteiras', '/acoes', '/operacoes', '/desempenho'];
+const AREAS = ['/painel', '/corretoras', '/carteiras', '/acoes', '/operacoes', '/relatorios', '/desempenho'];
 
 function instalarMatchMedia(inicial: boolean) {
   const ouvintes = new Set<(evento: MediaQueryListEvent) => void>();
@@ -129,14 +129,14 @@ describe('Casca da área interna', () => {
 });
 
 describe('Navegação do shell', () => {
-  it('@spec:AC-047 a barra superior leva às seis áreas do produto', async () => {
+  it('@spec:AC-401 a barra do investidor leva às sete áreas, em ordem', async () => {
     const { el } = await montar();
 
     const areas = [...el.querySelectorAll('[data-areas] a')].map((link) => link.getAttribute('data-area'));
     expect(areas).toEqual(AREAS);
   });
 
-  it('@spec:AC-047 a área em que o investidor está aparece marcada', async () => {
+  it('@spec:AC-401 a área em que o investidor está aparece marcada', async () => {
     const noPainel = await montar({ rota: '/painel' });
     expect(noPainel.el.querySelector('[data-area="/painel"]')?.getAttribute('aria-current')).toBe('page');
     expect(noPainel.el.querySelector('[data-area="/carteiras"]')?.getAttribute('aria-current')).toBeNull();

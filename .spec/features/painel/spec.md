@@ -21,7 +21,7 @@ Como investidor logado, quero uma barra superior com as áreas do produto, a tro
 tema e o botão de sair sempre à vista, para navegar sem procurar e para encerrar a
 sessão em máquina compartilhada com um clique.
 
-#### AC-047 — As seis áreas do produto ficam na barra superior
+#### ~~AC-047~~ — As seis áreas do produto ficam na barra superior (superado por relatorios, AC-401)
 
 - **Dado** um investidor com sessão válida em qualquer tela da área autenticada
 - **Quando** ele olha a barra superior

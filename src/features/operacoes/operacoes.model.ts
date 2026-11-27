@@ -79,6 +79,8 @@ export interface OperacaoDoExtrato extends OperacaoEditavel {
   moeda: Moeda;
   lucroRealizado?: number;
   precoMedioCompraNoMomento?: number;
+  /** Taxa do dia da operação (1 para real): valor e resultado vêm na moeda da ação (ASM-099). */
+  taxaCambioNaOperacao?: number;
 }
 
 /** Só quantidade e preço unitário são editáveis — nada mais (PRD-007). */

@@ -25,7 +25,7 @@ série histórica, como no backend.
 Como investidor, quero filtrar o extrato por período, ticker, carteira e tipo, para que
 eu ache as movimentações que procuro sem passar página por página.
 
-#### AC-340 — Os filtros vão ao servidor e se combinam
+#### ~~AC-340~~ — Os filtros vão ao servidor e se combinam (superado por relatorios, AC-395)
 
 - **Dado** o extrato com data inicial, data final, ticker, carteira e tipo preenchidos
 - **Quando** o investidor aplica os filtros
@@ -38,21 +38,21 @@ eu ache as movimentações que procuro sem passar página por página.
 - **Quando** o extrato carrega
 - **Então** a requisição leva só `page` e `size`, como antes
 
-#### AC-342 — Data final antes da inicial não sai
+#### ~~AC-342~~ — Data final antes da inicial não sai (superado por relatorios, AC-396)
 
 - **Dado** uma data final anterior à data inicial
 - **Quando** o investidor aplica os filtros
 - **Então** o campo "Data final" diz que ela não pode ser anterior à inicial e nenhuma
   requisição sai; se o servidor recusar mesmo assim (`OPE-006`), o mesmo texto aparece
 
-#### AC-343 — O recorte mora no endereço
+#### ~~AC-343~~ — O recorte mora no endereço (superado por relatorios, AC-395)
 
 - **Dado** o endereço `/operacoes` com filtros na busca (ex.: `?ticker=PETR4&dataInicio=2026-09-01`)
 - **Quando** a tela abre, o investidor troca de página ou recarrega
 - **Então** os campos aparecem preenchidos, a primeira leitura já sai filtrada e a leitura
   das outras páginas leva os mesmos filtros
 
-#### AC-344 — O recorte diz quantas operações achou e tem saída quando não acha nada
+#### ~~AC-344~~ — O recorte diz quantas operações achou e tem saída quando não acha nada (superado por relatorios, AC-399)
 
 - **Dado** filtros aplicados
 - **Quando** o servidor responde
@@ -66,19 +66,19 @@ eu ache as movimentações que procuro sem passar página por página.
 - **Então** o formulário de registro vem com a carteira e o tipo escolhidos, e o extrato
   carrega completo, sem filtro
 
-### US-097 — Ver o que deu lucro ou prejuízo
+### ~~US-097~~ — Ver o que deu lucro ou prejuízo (superado por relatorios, US-110)
 
 Como investidor, quero filtrar as vendas que deram lucro ou prejuízo, para que eu saiba
 onde ganhei e onde perdi.
 
-#### AC-346 — O resultado vai ao servidor junto com os outros filtros
+#### ~~AC-346~~ — O resultado vai ao servidor junto com os outros filtros (superado por relatorios, AC-395)
 
 - **Dado** o filtro de resultado em "Lucro" ou "Prejuízo", com ou sem outros filtros
 - **Quando** o investidor aplica os filtros
 - **Então** `GET /operacoes` sai com `resultado=LUCRO` ou `resultado=PREJUIZO` junto dos
   demais filtros
 
-#### AC-347 — A tela explica que só vendas entram no resultado
+#### ~~AC-347~~ — A tela explica que só vendas entram no resultado (superado por relatorios, AC-395)
 
 - **Dado** o filtro de resultado
 - **Quando** o investidor olha o campo

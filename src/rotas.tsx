@@ -76,6 +76,7 @@ export const rotas: RouteObject[] = [
             ],
           },
           { path: 'operacoes', loader: exigirInvestidor, lazy: async () => ({ Component: (await import('@/features/operacoes/operacoes')).Operacoes }) },
+          { path: 'relatorios', loader: exigirInvestidor, lazy: async () => ({ Component: (await import('@/features/relatorios/relatorios')).Relatorios }) },
           { path: 'desempenho', loader: exigirInvestidor, lazy: async () => ({ Component: (await import('@/features/desempenho/desempenho')).Desempenho }) },
         ],
       },
