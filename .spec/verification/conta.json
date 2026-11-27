@@ -1,105 +1,105 @@
 {
   "feature": "conta",
-  "timestamp": "2026-11-27T00:36:31.151Z",
-  "gitRev": "c182fef",
+  "timestamp": "2026-11-27T00:56:34.223Z",
+  "gitRev": "76a77ae",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 699,
+  "testsParsed": 701,
   "results": {
     "AC-325": {
       "status": "pass",
-      "testName": "src/features/conta/conta.spec.tsx > Chegar à minha conta > @spec:AC-325 o botão Minha conta do topo abre a página com Foto, E-mail e Senha # time=160.19ms",
+      "testName": "src/features/conta/conta.spec.tsx > Chegar à minha conta > @spec:AC-325 o botão Minha conta do topo abre a página com Foto, E-mail e Senha # time=188.39ms",
       "method": "tap"
     },
     "AC-326": {
       "status": "pass",
-      "testName": "src/features/conta/conta.spec.tsx > Trocar a senha > @spec:AC-326 trocar a senha guarda o token novo, limpa os campos e confirma # time=73.45ms",
+      "testName": "src/features/conta/conta.spec.tsx > Trocar a senha > @spec:AC-326 trocar a senha guarda o token novo, limpa os campos e confirma # time=53.99ms",
       "method": "tap"
     },
     "AC-327": {
       "status": "pass",
-      "testName": "src/features/conta/conta.spec.tsx > Trocar a senha > @spec:AC-327 senha nova fora da política ou diferente da confirmação não sai # time=32.02ms",
+      "testName": "src/features/conta/conta.spec.tsx > Trocar a senha > @spec:AC-327 senha nova fora da política ou diferente da confirmação não sai # time=57.13ms",
       "method": "tap"
     },
     "AC-328": {
       "status": "pass",
-      "testName": "src/features/conta/conta.spec.tsx > Trocar a senha > @spec:AC-328 senha atual errada aparece no campo e a sessão continua # time=33.88ms",
+      "testName": "src/features/conta/conta.spec.tsx > Trocar a senha > @spec:AC-328 senha atual errada aparece no campo e a sessão continua # time=47.05ms",
       "method": "tap"
     },
     "AC-329": {
       "status": "pass",
-      "testName": "src/features/acesso/esqueci-senha.spec.tsx > Esqueci a senha > @spec:AC-329 o login leva à recuperação levando o e-mail digitado # time=255.41ms",
+      "testName": "src/features/acesso/esqueci-senha.spec.tsx > Esqueci a senha > @spec:AC-329 o login leva à recuperação levando o e-mail digitado # time=260.68ms",
       "method": "tap"
     },
     "AC-330": {
       "status": "pass",
-      "testName": "src/features/acesso/esqueci-senha.spec.tsx > Esqueci a senha > @spec:AC-330 pedir o código diz a mesma coisa exista ou não o e-mail e abre o segundo passo # time=24.65ms",
+      "testName": "src/features/acesso/esqueci-senha.spec.tsx > Esqueci a senha > @spec:AC-330 pedir o código diz a mesma coisa exista ou não o e-mail e abre o segundo passo # time=27.90ms",
       "method": "tap"
     },
     "AC-331": {
       "status": "pass",
-      "testName": "src/features/acesso/esqueci-senha.spec.tsx > Esqueci a senha > @spec:AC-331 código certo redefine a senha e leva ao login com o e-mail e o aviso # time=44.02ms",
+      "testName": "src/features/acesso/esqueci-senha.spec.tsx > Esqueci a senha > @spec:AC-331 código certo redefine a senha e leva ao login com o e-mail e o aviso # time=97.28ms",
       "method": "tap"
     },
     "AC-332": {
       "status": "pass",
-      "testName": "src/features/acesso/esqueci-senha.spec.tsx > Esqueci a senha > @spec:AC-332 código fora do formato não sai; código recusado pelo servidor vai ao campo # time=173.14ms",
+      "testName": "src/features/acesso/esqueci-senha.spec.tsx > Esqueci a senha > @spec:AC-332 código fora do formato não sai; código recusado pelo servidor vai ao campo # time=113.35ms",
       "method": "tap"
     },
     "AC-333": {
       "status": "pass",
-      "testName": "src/features/conta/conta.spec.tsx > Trocar o e-mail > @spec:AC-333 pedir a troca envia o código para o e-mail novo e pede o código # time=75.72ms",
+      "testName": "src/features/conta/conta.spec.tsx > Trocar o e-mail > @spec:AC-333 pedir a troca envia o código para o e-mail novo e pede o código # time=34.91ms",
       "method": "tap"
     },
     "AC-334": {
       "status": "pass",
-      "testName": "src/features/conta/conta.spec.tsx > Trocar o e-mail > @spec:AC-334 confirmar o código recarrega quem sou eu e mostra o e-mail novo # time=36.39ms",
+      "testName": "src/features/conta/conta.spec.tsx > Trocar o e-mail > @spec:AC-334 confirmar o código recarrega quem sou eu e mostra o e-mail novo # time=30.88ms",
       "method": "tap"
     },
     "AC-335": {
       "status": "pass",
-      "testName": "src/features/conta/conta.spec.tsx > Trocar o e-mail > @spec:AC-335 senha errada e e-mail em uso vão aos campos; pedidos demais vão à seção # time=70.37ms",
+      "testName": "src/features/conta/conta.spec.tsx > Trocar o e-mail > @spec:AC-335 senha errada e e-mail em uso vão aos campos; pedidos demais vão à seção # time=94.89ms",
       "method": "tap"
     },
     "AC-336": {
       "status": "pass",
-      "testName": "src/features/conta/conta.spec.tsx > Foto de perfil > @spec:AC-336 enviar uma foto válida a mostra na página e no topo # time=85.80ms",
+      "testName": "src/features/conta/conta.spec.tsx > Foto de perfil > @spec:AC-336 enviar uma foto válida a mostra na página e no topo # time=46.30ms",
       "method": "tap"
     },
     "AC-337": {
       "status": "pass",
-      "testName": "src/features/conta/conta.spec.tsx > Foto de perfil > @spec:AC-337 arquivo grande demais ou de outro tipo não sai; a recusa do servidor também é dita # time=58.29ms",
+      "testName": "src/features/conta/conta.spec.tsx > Foto de perfil > @spec:AC-337 arquivo grande demais ou de outro tipo não sai; a recusa do servidor também é dita # time=47.41ms",
       "method": "tap"
     },
     "AC-338": {
       "status": "pass",
-      "testName": "src/features/conta/conta.spec.tsx > Foto de perfil > @spec:AC-338 remover a foto volta às iniciais na página e no topo # time=33.38ms",
+      "testName": "src/features/conta/conta.spec.tsx > Foto de perfil > @spec:AC-338 remover a foto volta às iniciais na página e no topo # time=22.88ms",
       "method": "tap"
     },
     "AC-339": {
       "status": "pass",
-      "testName": "src/features/conta/conta.spec.tsx > Foto de perfil > @spec:AC-339 a foto vem por GET com o token; sem fotoUrl ou com falha, ficam as iniciais # time=151.82ms",
+      "testName": "src/features/conta/conta.spec.tsx > Foto de perfil > @spec:AC-339 a foto vem por GET com o token; sem fotoUrl ou com falha, ficam as iniciais # time=92.01ms",
       "method": "tap"
     },
     "AC-383": {
       "status": "pass",
-      "testName": "src/features/conta/dados-pessoais.spec.tsx > Dados pessoais e exclusão da conta > @spec:AC-383 o investidor vê nome e e-mail de GET /investidores # time=113.14ms",
+      "testName": "src/features/conta/dados-pessoais.spec.tsx > Dados pessoais e exclusão da conta > @spec:AC-383 o investidor vê nome e e-mail de GET /investidores # time=85.01ms",
       "method": "tap"
     },
     "AC-384": {
       "status": "pass",
-      "testName": "src/features/conta/dados-pessoais.spec.tsx > Dados pessoais e exclusão da conta > @spec:AC-384 o administrador não vê dados pessoais nem excluir, e não requisita /investidores # time=19.37ms",
+      "testName": "src/features/conta/dados-pessoais.spec.tsx > Dados pessoais e exclusão da conta > @spec:AC-384 o administrador não vê dados pessoais nem excluir, e não requisita /investidores # time=17.22ms",
       "method": "tap"
     },
     "AC-385": {
       "status": "pass",
-      "testName": "src/features/conta/dados-pessoais.spec.tsx > Dados pessoais e exclusão da conta > @spec:AC-385 excluir pede confirmação, e cancelar não exclui # time=342.25ms",
+      "testName": "src/features/conta/dados-pessoais.spec.tsx > Dados pessoais e exclusão da conta > @spec:AC-385 excluir pede confirmação, e cancelar não exclui # time=122.01ms",
       "method": "tap"
     },
     "AC-386": {
       "status": "pass",
-      "testName": "src/features/conta/dados-pessoais.spec.tsx > Dados pessoais e exclusão da conta > @spec:AC-386 confirmar exclui pelo id, encerra a sessão e o login explica # time=237.02ms",
+      "testName": "src/features/conta/dados-pessoais.spec.tsx > Dados pessoais e exclusão da conta > @spec:AC-386 confirmar exclui pelo id, encerra a sessão e o login explica # time=194.38ms",
       "method": "tap"
     }
   },
