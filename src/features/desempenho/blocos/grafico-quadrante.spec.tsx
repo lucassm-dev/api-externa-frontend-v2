@@ -136,4 +136,20 @@ describe('Gráfico de quadrante participação × rentabilidade', () => {
     expect(elemento.querySelector('[data-quadrante]')).toBeNull();
     expect(elemento.querySelectorAll('[data-bolha]').length).toBe(0);
   });
+
+  it('@spec:AC-388 bolhas sobrepostas não cobrem os rótulos: só a maior mostra o ticker, e todas seguem na lista', () => {
+    const elemento = montar([posicao('AAPL', 10000, -1), posicao('PETR4', 3000, 0), posicao('ITUB4', 2600, 0), posicao('VALE3', 2400, 0)]);
+    const rotuloDentro = (ticker: string) => bolha(elemento, ticker).querySelector('text')?.textContent ?? null;
+
+    // As três de rentabilidade 0% e participação parecida se sobrepõem.
+    expect(Math.hypot(cx(elemento, 'PETR4') - cx(elemento, 'VALE3'), cy(elemento, 'PETR4') - cy(elemento, 'VALE3'))).toBeLessThan(raio(elemento, 'PETR4') + raio(elemento, 'VALE3'));
+    expect(rotuloDentro('PETR4')).toBe('PETR4');
+    expect(rotuloDentro('ITUB4')).toBeNull();
+    expect(rotuloDentro('VALE3')).toBeNull();
+    expect(rotuloDentro('AAPL')).toBe('AAPL');
+    // A posição não muda para abrir espaço: ITUB4 e VALE3 continuam no zero, como PETR4.
+    expect(cy(elemento, 'ITUB4')).toBe(cy(elemento, 'PETR4'));
+    expect(elemento.textContent).toContain('ITUB4');
+    expect(elemento.textContent).toContain('VALE3');
+  });
 });

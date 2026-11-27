@@ -8,3 +8,10 @@
 - Arquivos: src/styles/tokens.css, src/layout/casca.tsx, src/features/conta/minha-conta.tsx, src/features/carteiras/criar-carteira.tsx, src/features/corretoras/cadastro-corretora.tsx, src/features/acoes/cadastro-acao.tsx, src/features/admin/novo-admin.tsx, src/components/ui/escolha-de-arquivo.tsx, src/features/operacoes/filtros-extrato.tsx, src/features/admin/usuarios.tsx, src/layout/estrutura.spec.tsx
 - Notas: issue #44. Tokens novos `--largura-pagina` (1280px) e `--largura-conta` (640px). A
   barra do topo alinha o conteúdo com a coluna por padding, sem mudar a estrutura dela.
+
+## T-157 — Desempenho: cartão sem vão e rótulos do quadrante sem sobreposição [concluida]
+
+- Refs: AC-387, AC-388
+- Arquivos: src/features/desempenho/blocos/grafico-investido-mercado.tsx, src/features/desempenho/blocos/grafico-investido-mercado.spec.tsx, src/features/desempenho/blocos/grafico-quadrante.tsx, src/features/desempenho/blocos/grafico-quadrante.spec.tsx
+- Notas: issue #54. As bolhas não se deslocam: mudar a posição mentiria sobre participação ou
+  rentabilidade. Só o rótulo dentro da bolha menor some quando há sobreposição.

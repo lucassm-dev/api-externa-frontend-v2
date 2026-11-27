@@ -1,25 +1,25 @@
 {
   "feature": "repaginacao-tabelas",
-  "timestamp": "2026-11-26T23:44:09.360Z",
-  "gitRev": "76323c8",
+  "timestamp": "2026-11-27T00:38:39.436Z",
+  "gitRev": "c182fef",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 697,
+  "testsParsed": 699,
   "results": {
     "AC-242": {
       "status": "pass",
-      "testName": "src/components/ui/tabela.spec.tsx > Cabeçalho ordenável > @spec:AC-242 anuncia o sentido atual em aria-sort e o alterna conforme o estado recebido # time=19.12ms",
+      "testName": "src/shared/ordenacao.spec.ts > OrdenacaoTabela > @spec:AC-242 uma coluna de dado se anuncia como ordenável e a coluna de ações não # time=1.71ms",
       "method": "tap"
     },
     "AC-243": {
       "status": "pass",
-      "testName": "src/shared/ordenacao.spec.ts > OrdenacaoTabela > @spec:AC-243 ordena sobre os itens já carregados sem mutar o array da página # time=15.51ms",
+      "testName": "src/shared/ordenacao.spec.ts > OrdenacaoTabela > @spec:AC-243 ordena sobre os itens já carregados sem mutar o array da página # time=10.58ms",
       "method": "tap"
     },
     "AC-244": {
       "status": "pass",
-      "testName": "src/components/ui/tabela.spec.tsx > Estilo base de tabela > @spec:AC-244 alinha as colunas numéricas à direita, em fonte de largura fixa e com dígitos de mesma largura # time=8.15ms",
+      "testName": "src/components/ui/tabela.spec.tsx > Estilo base de tabela > @spec:AC-244 alinha as colunas numéricas à direita, em fonte de largura fixa e com dígitos de mesma largura # time=2.09ms",
       "method": "tap"
     },
     "AC-245": {
@@ -29,27 +29,27 @@
     },
     "AC-246": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-246 o resultado de uma encerrada vira selo com texto e símbolo, nunca só cor # time=2.75ms",
+      "testName": "src/features/operacoes/extrato-operacoes.spec.tsx > Extrato de operações > @spec:AC-246 tipo e resultado aparecem como selo com texto e sinal, nunca só cor # time=29.64ms",
       "method": "tap"
     },
     "AC-247": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-247 cada linha de ativo traz o monograma junto do ticker # time=8.52ms",
+      "testName": "src/features/acoes/acoes.spec.tsx > Lista de ações > @spec:AC-247 cada linha traz o monograma do ativo junto ao ticker # time=8.80ms",
       "method": "tap"
     },
     "AC-248": {
       "status": "pass",
-      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Lista de carteiras > @spec:AC-248 as ações da linha viram botões de ícone com nome acessível da ação e do item # time=27.07ms",
+      "testName": "src/features/operacoes/extrato-operacoes.spec.tsx > Extrato de operações > @spec:AC-248 as ações da linha são botões de ícone com nome acessível da ação e do item # time=8.21ms",
       "method": "tap"
     },
     "AC-249": {
       "status": "pass",
-      "testName": "src/features/carteiras/lista-e-criacao.spec.tsx > Lista de carteiras > @spec:AC-249 o paginador informa página, total e faixa, desabilitando as pontas # time=38.64ms",
+      "testName": "src/features/acoes/acoes.spec.tsx > Lista de ações > @spec:AC-249 o paginador informa página, total e faixa, desabilitando as pontas # time=28.81ms",
       "method": "tap"
     },
     "AC-250": {
       "status": "pass",
-      "testName": "src/features/carteiras/detalhe.spec.tsx > Posições da carteira > @spec:AC-250 sem posições a tabela dá lugar a um estado vazio com próximo passo # time=2.48ms",
+      "testName": "src/features/acoes/acoes.spec.tsx > Lista de ações > @spec:AC-250 carregando mostra esqueleto; catálogo vazio mostra estado vazio com próximo passo # time=20.28ms",
       "method": "tap"
     }
   },

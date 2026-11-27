@@ -63,7 +63,7 @@ export function GraficoInvestidoMercado({ posicoes }: PropsGraficoInvestidoMerca
   return (
     <section
       data-grafico-investido-mercado
-      className="grid gap-4 rounded-grande border border-borda bg-superficie p-5 shadow-cartao max-sm:p-4"
+      className="grid content-start gap-4 rounded-grande border border-borda bg-superficie p-5 shadow-cartao max-sm:p-4"
     >
       <header>
         <h2 className="m-0 text-medio font-semibold tracking-(--entrelinha-titulo)">Investido × valor de mercado</h2>
