@@ -1,10 +1,9 @@
 import { http } from '@/core/api/http';
 import { Pagina } from '@/core/api/pagina';
-import { Acao } from '@/features/acoes/acoes.model';
 import { Carteira } from '@/features/carteiras/carteiras.model';
 import { carteirasService } from '@/features/carteiras/carteiras.service';
-import { ACOES_PARA_MOEDA, CARTEIRAS_NO_SELETOR, DadosDaCarteira } from './desempenho.model';
-import { MapaDeMoedas, mapaDeMoedas } from './moeda-das-posicoes';
+import { CARTEIRAS_NO_SELETOR, DadosDaCarteira } from './desempenho.model';
+import { moedasDoCatalogo } from './moeda-das-posicoes';
 
 const ouNulo = <T>(leitura: Promise<T>): Promise<T | null> => leitura.catch(() => null);
 
@@ -30,10 +29,7 @@ export const desempenhoService = {
       ouNulo(carteirasService.consolidado(carteiraId)),
       ouNulo(carteirasService.posicoes(carteiraId)),
       ouNulo(carteirasService.lucroRealizado(carteiraId)),
-      http
-        .get<Pagina<Acao>>('/acoes', { params: { page: 0, size: ACOES_PARA_MOEDA } })
-        .then((pagina): MapaDeMoedas => mapaDeMoedas(pagina.content))
-        .catch((): MapaDeMoedas => ({})),
+      moedasDoCatalogo(),
     ]);
     return { consolidado, posicoes, lucroRealizado, moedas };
   },

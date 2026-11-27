@@ -1,0 +1,333 @@
+{
+  "version": 1,
+  "large": false,
+  "domains": [],
+  "decisions": [
+    {
+      "conflictId": "impacto:carteiras",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62)",
+      "fingerprint": "e61eba422c2ae80596ff2a61295fde1c10e39e94d683c62135bf1d5848487fe1",
+      "ownFingerprint": "1be1c9b882e851960892373b24040771e1da7660e6f51f9f26baba2fb7449067",
+      "conflictFingerprint": "29b82ba581398d9dda30f7ea1735b61d5f1616e0d692d0252da8b1255fc4fae9",
+      "answeredAt": "2026-11-27T05:08:52.755Z"
+    },
+    {
+      "conflictId": "impacto:desempenho",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62)",
+      "fingerprint": "e61eba422c2ae80596ff2a61295fde1c10e39e94d683c62135bf1d5848487fe1",
+      "ownFingerprint": "1be1c9b882e851960892373b24040771e1da7660e6f51f9f26baba2fb7449067",
+      "conflictFingerprint": "3079cb523ed3a29709a6ced7d192eedcd7f1b959f93c774cb333457fc7764ddd",
+      "answeredAt": "2026-11-27T05:08:53.309Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62)",
+      "fingerprint": "e61eba422c2ae80596ff2a61295fde1c10e39e94d683c62135bf1d5848487fe1",
+      "ownFingerprint": "1be1c9b882e851960892373b24040771e1da7660e6f51f9f26baba2fb7449067",
+      "conflictFingerprint": "a4abdafcc2f8d0f7789b2aaadb22ee50c551fff5413e8931b1df573156d99c9d",
+      "answeredAt": "2026-11-27T05:08:53.639Z"
+    },
+    {
+      "conflictId": "impacto:fundacao-visual",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62)",
+      "fingerprint": "e61eba422c2ae80596ff2a61295fde1c10e39e94d683c62135bf1d5848487fe1",
+      "ownFingerprint": "1be1c9b882e851960892373b24040771e1da7660e6f51f9f26baba2fb7449067",
+      "conflictFingerprint": "d2a729eaca8b28013e1fa4bd627a20054367a8786ed26c7471469cb538d809a4",
+      "answeredAt": "2026-11-27T05:08:53.918Z"
+    },
+    {
+      "conflictId": "impacto:migracao-react",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62)",
+      "fingerprint": "e61eba422c2ae80596ff2a61295fde1c10e39e94d683c62135bf1d5848487fe1",
+      "ownFingerprint": "1be1c9b882e851960892373b24040771e1da7660e6f51f9f26baba2fb7449067",
+      "conflictFingerprint": "0d92707f93f698b9bb93838160bad8e39042e701743abe050cd4b5be6be0fc52",
+      "answeredAt": "2026-11-27T05:08:54.455Z"
+    },
+    {
+      "conflictId": "impacto:operacoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62)",
+      "fingerprint": "e61eba422c2ae80596ff2a61295fde1c10e39e94d683c62135bf1d5848487fe1",
+      "ownFingerprint": "1be1c9b882e851960892373b24040771e1da7660e6f51f9f26baba2fb7449067",
+      "conflictFingerprint": "a9bed682e0ca0b278580eb7efde1da14039fdf3ccbb58002c11d7b72f83937bd",
+      "answeredAt": "2026-11-27T05:08:55.128Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62)",
+      "fingerprint": "e61eba422c2ae80596ff2a61295fde1c10e39e94d683c62135bf1d5848487fe1",
+      "ownFingerprint": "1be1c9b882e851960892373b24040771e1da7660e6f51f9f26baba2fb7449067",
+      "conflictFingerprint": "0f77ade2b14685c50cc8f367a26bc009a83ed445443da66d563b791dad2629c5",
+      "answeredAt": "2026-11-27T05:08:55.692Z"
+    },
+    {
+      "conflictId": "impacto:visibilidade-da-senha",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62)",
+      "fingerprint": "e61eba422c2ae80596ff2a61295fde1c10e39e94d683c62135bf1d5848487fe1",
+      "ownFingerprint": "1be1c9b882e851960892373b24040771e1da7660e6f51f9f26baba2fb7449067",
+      "conflictFingerprint": "958862da5bd0083f1e9926bfa59f8659fddc23974657dab3b909153c86bd96c5",
+      "answeredAt": "2026-11-27T05:08:56.304Z"
+    },
+    {
+      "conflictId": "impacto:carteiras",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62); regravada após trocar o status da ASM-025 de descartada para invalidada, sem mudança de escopo",
+      "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+      "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+      "conflictFingerprint": "29b82ba581398d9dda30f7ea1735b61d5f1616e0d692d0252da8b1255fc4fae9",
+      "answeredAt": "2026-11-27T05:15:55.810Z"
+    },
+    {
+      "conflictId": "impacto:desempenho",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62); regravada após trocar o status da ASM-025 de descartada para invalidada, sem mudança de escopo",
+      "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+      "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+      "conflictFingerprint": "3079cb523ed3a29709a6ced7d192eedcd7f1b959f93c774cb333457fc7764ddd",
+      "answeredAt": "2026-11-27T05:15:56.044Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62); regravada após trocar o status da ASM-025 de descartada para invalidada, sem mudança de escopo",
+      "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+      "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+      "conflictFingerprint": "a4abdafcc2f8d0f7789b2aaadb22ee50c551fff5413e8931b1df573156d99c9d",
+      "answeredAt": "2026-11-27T05:15:56.276Z"
+    },
+    {
+      "conflictId": "impacto:fundacao-visual",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62); regravada após trocar o status da ASM-025 de descartada para invalidada, sem mudança de escopo",
+      "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+      "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+      "conflictFingerprint": "d2a729eaca8b28013e1fa4bd627a20054367a8786ed26c7471469cb538d809a4",
+      "answeredAt": "2026-11-27T05:15:56.517Z"
+    },
+    {
+      "conflictId": "impacto:migracao-react",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62); regravada após trocar o status da ASM-025 de descartada para invalidada, sem mudança de escopo",
+      "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+      "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+      "conflictFingerprint": "0d92707f93f698b9bb93838160bad8e39042e701743abe050cd4b5be6be0fc52",
+      "answeredAt": "2026-11-27T05:15:56.751Z"
+    },
+    {
+      "conflictId": "impacto:operacoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62); regravada após trocar o status da ASM-025 de descartada para invalidada, sem mudança de escopo",
+      "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+      "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+      "conflictFingerprint": "a9bed682e0ca0b278580eb7efde1da14039fdf3ccbb58002c11d7b72f83937bd",
+      "answeredAt": "2026-11-27T05:15:56.986Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62); regravada após trocar o status da ASM-025 de descartada para invalidada, sem mudança de escopo",
+      "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+      "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+      "conflictFingerprint": "0f77ade2b14685c50cc8f367a26bc009a83ed445443da66d563b791dad2629c5",
+      "answeredAt": "2026-11-27T05:15:57.218Z"
+    },
+    {
+      "conflictId": "impacto:visibilidade-da-senha",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62); regravada após trocar o status da ASM-025 de descartada para invalidada, sem mudança de escopo",
+      "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+      "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+      "conflictFingerprint": "958862da5bd0083f1e9926bfa59f8659fddc23974657dab3b909153c86bd96c5",
+      "answeredAt": "2026-11-27T05:15:57.453Z"
+    }
+  ],
+  "clientRequest": "",
+  "review": {
+    "summary": "Issue #62. Lidas as specs de carteiras (AC-101 a AC-110, ASM-025), desempenho (ASM-044, ASM-045, ASM-048: posições na moeda da ação, moeda pelo catálogo) e fundacao (ValorComHorario, AC-008). Conflito real: ASM-025 da carteira supunha posições em real, o que o backend contradiz; descartada com a evidência. O detalhe da carteira passa a formatar cada linha na moeda do catálogo; o ValorComHorario aceita moeda nula (sem símbolo) mantendo BRL como padrão; a busca do mapa de moedas sai do serviço do Desempenho para moeda-das-posicoes.ts, sem mudar o comportamento do Desempenho.",
+    "reviewer": "Claude Code (Opus 5.5), sessão de 27/11/2026",
+    "conflicts": [
+      {
+        "id": "impacto:carteiras",
+        "automatic": true,
+        "feature": "carteiras",
+        "summary": "A mudança interfere no domínio da feature carteiras.",
+        "files": [
+          "src/features/carteiras/detalhe-carteira.tsx",
+          "src/features/carteiras/posicoes-carteira.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/carteiras/spec.md"
+      },
+      {
+        "id": "impacto:desempenho",
+        "automatic": true,
+        "feature": "desempenho",
+        "summary": "A mudança interfere no domínio da feature desempenho.",
+        "files": [
+          "src/features/desempenho/desempenho.service.ts",
+          "src/features/desempenho/moeda-das-posicoes.ts"
+        ],
+        "domains": [],
+        "rule": ".spec/features/desempenho/spec.md"
+      },
+      {
+        "id": "impacto:fundacao",
+        "automatic": true,
+        "feature": "fundacao",
+        "summary": "A mudança interfere no domínio da feature fundacao.",
+        "files": [
+          "src/shared/valor-com-horario.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/fundacao/spec.md"
+      },
+      {
+        "id": "impacto:fundacao-visual",
+        "automatic": true,
+        "feature": "fundacao-visual",
+        "summary": "A mudança interfere no domínio da feature fundacao-visual.",
+        "files": [
+          "src/shared/valor-com-horario.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/fundacao-visual/spec.md"
+      },
+      {
+        "id": "impacto:migracao-react",
+        "automatic": true,
+        "feature": "migracao-react",
+        "summary": "A mudança interfere no domínio da feature migracao-react.",
+        "files": [
+          "src/features/carteiras/detalhe-carteira.tsx",
+          "src/features/carteiras/posicoes-carteira.tsx",
+          "src/features/desempenho/desempenho.service.ts",
+          "src/features/desempenho/moeda-das-posicoes.ts",
+          "src/shared/valor-com-horario.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/migracao-react/prd.md"
+      },
+      {
+        "id": "impacto:operacoes",
+        "automatic": true,
+        "feature": "operacoes",
+        "summary": "A mudança interfere no domínio da feature operacoes.",
+        "files": [
+          "src/features/carteiras/detalhe-carteira.tsx",
+          "src/features/carteiras/posicoes-carteira.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/operacoes/spec.md"
+      },
+      {
+        "id": "impacto:repaginacao-tabelas",
+        "automatic": true,
+        "feature": "repaginacao-tabelas",
+        "summary": "A mudança interfere no domínio da feature repaginacao-tabelas.",
+        "files": [
+          "src/features/carteiras/detalhe-carteira.tsx",
+          "src/features/carteiras/posicoes-carteira.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/repaginacao-tabelas/spec.md"
+      },
+      {
+        "id": "impacto:visibilidade-da-senha",
+        "automatic": true,
+        "feature": "visibilidade-da-senha",
+        "summary": "A mudança interfere no domínio da feature visibilidade-da-senha.",
+        "files": [
+          "src/shared/valor-com-horario.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/visibilidade-da-senha/spec.md"
+      }
+    ],
+    "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+    "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+    "reviewedAt": "2026-11-27T05:15:55.391Z",
+    "documents": [
+      ".spec/features/acesso/spec.md",
+      ".spec/features/acesso/tasks.md",
+      ".spec/features/acoes/spec.md",
+      ".spec/features/acoes/tasks.md",
+      ".spec/features/administracao/spec.md",
+      ".spec/features/administracao/tasks.md",
+      ".spec/features/cabecalho-identidade-acoes/spec.md",
+      ".spec/features/cabecalho-identidade-acoes/tasks.md",
+      ".spec/features/carteiras/spec.md",
+      ".spec/features/carteiras/tasks.md",
+      ".spec/features/confirmacao-senha-cadastro/spec.md",
+      ".spec/features/confirmacao-senha-cadastro/tasks.md",
+      ".spec/features/conta/spec.md",
+      ".spec/features/conta/tasks.md",
+      ".spec/features/corretoras/spec.md",
+      ".spec/features/corretoras/tasks.md",
+      ".spec/features/desempenho/spec.md",
+      ".spec/features/desempenho/tasks.md",
+      ".spec/features/estrutura-visual/spec.md",
+      ".spec/features/estrutura-visual/tasks.md",
+      ".spec/features/filtros-extrato/spec.md",
+      ".spec/features/filtros-extrato/tasks.md",
+      ".spec/features/fundacao/spec.md",
+      ".spec/features/fundacao/tasks.md",
+      ".spec/features/fundacao-visual/spec.md",
+      ".spec/features/fundacao-visual/tasks.md",
+      ".spec/features/identidade-papel/spec.md",
+      ".spec/features/identidade-papel/tasks.md",
+      ".spec/features/logos-acoes/spec.md",
+      ".spec/features/logos-acoes/tasks.md",
+      ".spec/features/migracao-react/prd.md",
+      ".spec/features/migracao-react/adr.md",
+      ".spec/features/migracao-react/design.md",
+      ".spec/features/migracao-react/spec.md",
+      ".spec/features/migracao-react/tasks.md",
+      ".spec/features/migracao-react/research.md",
+      ".spec/features/moeda-na-carteira/spec.md",
+      ".spec/features/moeda-na-carteira/tasks.md",
+      ".spec/features/operacoes/spec.md",
+      ".spec/features/operacoes/tasks.md",
+      ".spec/features/painel/spec.md",
+      ".spec/features/painel/tasks.md",
+      ".spec/features/repaginacao-acesso/spec.md",
+      ".spec/features/repaginacao-acesso/tasks.md",
+      ".spec/features/repaginacao-desempenho/spec.md",
+      ".spec/features/repaginacao-desempenho/tasks.md",
+      ".spec/features/repaginacao-painel/spec.md",
+      ".spec/features/repaginacao-painel/tasks.md",
+      ".spec/features/repaginacao-tabelas/spec.md",
+      ".spec/features/repaginacao-tabelas/tasks.md",
+      ".spec/features/repaginacao-visual/spec.md",
+      ".spec/features/repaginacao-visual/tasks.md",
+      ".spec/features/situacao-cadastral/spec.md",
+      ".spec/features/situacao-cadastral/tasks.md",
+      ".spec/features/visibilidade-da-senha/spec.md",
+      ".spec/features/visibilidade-da-senha/tasks.md",
+      ".spec/constituicao.md",
+      "onpspec.config.json"
+    ]
+  }
+}

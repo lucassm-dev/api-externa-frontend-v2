@@ -18,6 +18,7 @@ import { Variacao } from '@/shared/variacao';
 import { Carteira, ConsolidadoDaCarteira, ExtratoBuscado, LucroRealizado, MovimentacaoDoExtrato, Posicao, rotuloDoMercado } from './carteiras.model';
 import { carteirasService } from './carteiras.service';
 import { MovimentacoesCarteira } from './movimentacoes-carteira';
+import { MapaDeMoedas, moedasDoCatalogo } from '@/features/desempenho/moeda-das-posicoes';
 import { PosicoesCarteira } from './posicoes-carteira';
 
 type Erro = { texto: string; codigo: string | null };
@@ -44,6 +45,7 @@ export function DetalheCarteira() {
   const [posicoes, setPosicoes] = useState<Posicao[]>([]);
   const [consolidado, setConsolidado] = useState<ConsolidadoDaCarteira | null>(null);
   const [lucroRealizado, setLucroRealizado] = useState<LucroRealizado | null>(null);
+  const [moedas, setMoedas] = useState<MapaDeMoedas>({});
   const [extrato, setExtrato] = useState<ExtratoBuscado | null>(null);
   const [carregando, setCarregando] = useState(true);
   const [renomeando, setRenomeando] = useState(false);
@@ -86,6 +88,8 @@ export function DetalheCarteira() {
       carteirasService.posicoes(carteiraId).then(setPosicoes, tratar);
       carteirasService.consolidado(carteiraId).then(setConsolidado, tratar);
       carteirasService.lucroRealizado(carteiraId).then(setLucroRealizado, tratar);
+      // As posições vêm na moeda da ação, sem dizer qual (#62): o catálogo diz.
+      void moedasDoCatalogo().then(setMoedas);
       carteirasService.extratoDoInvestidor().then(setExtrato, () => setExtrato(null));
     },
     [tratar],
@@ -323,7 +327,7 @@ export function DetalheCarteira() {
               )}
             </header>
 
-            <PosicoesCarteira posicoes={posicoes} lucroPorTicker={lucroRealizado?.porTicker ?? {}} />
+            <PosicoesCarteira posicoes={posicoes} moedas={moedas} lucroPorTicker={lucroRealizado?.porTicker ?? {}} />
 
             {operacaoEmEdicao && (
               <EditarOperacao

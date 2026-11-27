@@ -1,10 +1,11 @@
 import { Clock } from 'lucide-react';
 import { estaDefasado, idadeEmMinutos } from '@/core/dados/idade-dado';
-import { Moeda, formatarHora, formatarMoeda } from '@/core/formatacao/formatacao';
+import { Moeda, formatarHora, formatarMoeda, formatarNumero } from '@/core/formatacao/formatacao';
 
 interface Props {
   valor: number;
-  moeda?: Moeda;
+  /** `null`: moeda desconhecida, o valor sai sem símbolo em vez de afirmar real. */
+  moeda?: Moeda | null;
   obtidoEm: Date | string;
 }
 
@@ -18,7 +19,7 @@ export function ValorComHorario({ valor, moeda = 'BRL', obtidoEm }: Props) {
   return (
     <span data-valor-com-horario data-defasado={String(defasado)} className="inline-flex flex-wrap items-baseline gap-x-2 gap-y-1">
       <span data-numero className="font-numero tabular-nums">
-        {formatarMoeda(valor, moeda)}
+        {moeda ? formatarMoeda(valor, moeda) : formatarNumero(valor, 2)}
       </span>
       <span data-horario className="text-rotulo text-texto-fraco">
         obtido às {formatarHora(obtidoEm)}

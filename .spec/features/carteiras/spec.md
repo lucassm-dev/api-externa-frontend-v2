@@ -261,7 +261,7 @@ acontecer e por que às vezes não dá.
 |---|---|---|---|
 | ASM-023 | O mercado trafega como `BR` e `US`, como o painel já consome em `GET /carteiras`, e o `POST /carteiras` aceita os mesmos valores | aberta | — |
 | ASM-024 | `POST /carteiras` devolve a carteira criada com o identificador, permitindo abrir o detalhe dela sem nova listagem | aberta | — |
-| ASM-025 | Os valores de `GET /carteiras/{id}/posicoes` e de `lucro-realizado` chegam em real, como o consolidado (ADR-004); as respostas não trazem moeda por linha | aberta | — |
+| ASM-025 | Os valores de `GET /carteiras/{id}/posicoes` e de `lucro-realizado` chegam em real, como o consolidado (ADR-004); as respostas não trazem moeda por linha | invalidada | Falsa: `ConsultaOperacaoService.posicoes` do backend devolve preço médio, cotação e resultado na moeda da ação, sem conversão e sem campo de moeda (lido em 27/11/2026). O detalhe da carteira passou a formatar cada linha na moeda do catálogo (moeda-na-carteira, #62) |
 | ASM-026 | `lucro-realizado.porTicker` acumula o realizado por ticker da carteira, inclusive de ativos que ainda têm posição aberta — por isso o cruzamento com as posições abertas é necessário para achar os encerrados | aberta | — |
 | ASM-027 | Cada item de `GET /operacoes` traz `carteiraId`, e o envelope traz `totalElements` com o total de operações do investidor | aberta | — |
 | ASM-028 | `PATCH /carteiras/{id}` com `{ nome }` devolve a carteira atualizada e não altera nenhum outro campo | aberta | — |
