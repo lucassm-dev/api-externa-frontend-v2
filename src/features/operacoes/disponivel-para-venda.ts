@@ -9,6 +9,7 @@ export interface AcaoVendavel {
   ticker: string;
   nomeEmpresa: string;
   quantidadeDisponivel: number;
+  precoMedio: number;
   cotacaoAtual: number;
   dataHoraCotacao: string;
 }
@@ -20,6 +21,7 @@ export function acoesVendaveis(posicoes: Posicao[]): AcaoVendavel[] {
       ticker: posicao.ticker,
       nomeEmpresa: posicao.nomeEmpresa,
       quantidadeDisponivel: posicao.quantidade,
+      precoMedio: posicao.precoMedio,
       cotacaoAtual: posicao.cotacaoAtual,
       dataHoraCotacao: posicao.dataHoraCotacao,
     }));

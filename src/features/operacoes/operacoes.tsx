@@ -155,10 +155,14 @@ export function Operacoes() {
       {emEdicao ? (
         <EditarOperacao operacao={emEdicao} salvando={salvandoEdicao} aoSalvar={(alteracao) => void salvarEdicao(alteracao)} aoCancelar={() => setEmEdicao(null)} />
       ) : (
-        <div className="grid items-start gap-4 xl:grid-cols-[35rem_minmax(0,35rem)]">
-          <FormularioOperacao carteiraInicial={carteiraInicial} tipoInicial={tipoInicial} enviando={registrando} aoRegistrar={registrar} />
-          {ultimaOperacao && <ResultadoOperacao operacao={ultimaOperacao} />}
-        </div>
+        <FormularioOperacao
+          carteiraInicial={carteiraInicial}
+          tipoInicial={tipoInicial}
+          enviando={registrando}
+          aoRegistrar={registrar}
+          comprovante={ultimaOperacao && <ResultadoOperacao operacao={ultimaOperacao} />}
+          aoMexer={() => setUltimaOperacao(null)}
+        />
       )}
 
       <ExtratoOperacoes

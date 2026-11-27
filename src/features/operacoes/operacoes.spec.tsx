@@ -214,3 +214,57 @@ describe('Rotas das operações', () => {
   });
 
 });
+
+describe('Resumo ao vivo da operação', () => {
+  const resumo = (raiz: HTMLElement) => raiz.querySelector('[data-resumo-operacao]')?.textContent?.replace(/\s+/g, ' ') ?? '';
+
+  it('@spec:AC-402 sem carteira e ação, o cartão ao lado diz o que vai aparecer', async () => {
+    const { raiz } = await abrir({ extrato: [[]] });
+
+    expect(raiz.querySelector('[data-resumo-vazio]')).toBeTruthy();
+    expect(resumo(raiz)).toMatch(/cotação.*posição.*total estimado/i);
+  });
+
+  it('@spec:AC-403 a ação escolhida aparece com logo, nome e cotação com horário', async () => {
+    const { raiz } = await abrir({ extrato: [[]] });
+    mudar(raiz, '[data-campo-acao]', 'PETR4');
+
+    const cartao = await esperarElemento(() => raiz.querySelector('[data-resumo-operacao] [data-resumo-acao]'));
+    expect(cartao.querySelector('img, [data-monograma]')).toBeTruthy();
+    expect(resumo(raiz)).toContain('Petrobras');
+    expect(cartao.closest('[data-resumo-operacao]')!.querySelector('[data-valor-com-horario]')!.textContent).toContain('32,50');
+  });
+
+  it('@spec:AC-404 mostra a posição na carteira; na venda, como disponível; sem posição, diz que não tem', async () => {
+    const { raiz } = await abrir({ extrato: [[]] });
+    mudar(raiz, '[data-campo-carteira]', '9');
+    await waitFor(() => expect((raiz.querySelector('[data-campo-acao]') as HTMLSelectElement).options.length).toBeGreaterThan(1));
+    mudar(raiz, '[data-campo-acao]', 'PETR4');
+
+    const posicao = await esperarElemento(() => raiz.querySelector('[data-resumo-posicao]'));
+    await waitFor(() => expect(posicao.textContent).toContain('100'));
+    expect(posicao.textContent).toContain('30,00');
+
+    fireEvent.click(raiz.querySelector('[data-tipo="VENDA"] input')!);
+    mudar(raiz, '[data-campo-acao]', 'PETR4');
+    await waitFor(() => expect(raiz.querySelector('[data-resumo-posicao]')!.textContent).toMatch(/disponível para venda/i));
+  });
+
+  it('@spec:AC-404 carteira sem a ação: o resumo diz que ela ainda não tem', async () => {
+    const { raiz } = await abrir({ extrato: [[]], posicoes: [] });
+    mudar(raiz, '[data-campo-carteira]', '9');
+    mudar(raiz, '[data-campo-acao]', 'PETR4');
+
+    await waitFor(() => expect(raiz.querySelector('[data-resumo-posicao]')!.textContent).toMatch(/ainda não tem/i));
+  });
+
+  it('@spec:AC-405 depois de registrar o comprovante ocupa o lugar do resumo; mexer no formulário traz o resumo de volta', async () => {
+    const { raiz } = await abrir({ extrato: [[]] });
+    await registrarCompra(raiz);
+
+    expect(raiz.querySelector('[data-resumo-operacao]')).toBeNull();
+    mudar(raiz, '[data-campo-quantidade]', '5');
+    await waitFor(() => expect(raiz.querySelector('[data-resultado]')).toBeNull());
+    expect(raiz.querySelector('[data-resumo-operacao]')).toBeTruthy();
+  });
+});
