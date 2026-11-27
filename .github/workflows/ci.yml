@@ -70,3 +70,82 @@ jobs:
 
       - name: onp-spec audit --ci
         run: node .claude/skills/onp-spec-driven-claude-v4-0-0/scripts/onp-spec.mjs audit --ci
+
+  e2e:
+    name: E2E
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: frontend
+
+      - uses: actions/checkout@v4
+        with:
+          repository: lucassm-dev/api-externa-backend-v1
+          path: backend
+
+      # O docker-compose do backend monta o front de produção (nginx) a partir de
+      # FRONTEND_PATH: aqui ele aponta para o código deste PR. Senhas descartáveis,
+      # geradas a cada execução. Sem BRAPI, CVM nem SMTP: os fluxos não dependem deles.
+      - name: Subir banco, backend e front de produção
+        working-directory: backend
+        run: |
+          echo "E2E_ADMIN_SENHA=E2e$(openssl rand -hex 8)" >> "$GITHUB_ENV"
+          source "$GITHUB_ENV"
+          cat > .env <<ENV
+          POSTGRES_DB=investimentos
+          POSTGRES_USER=investimentos
+          POSTGRES_PASSWORD=$(openssl rand -hex 16)
+          JWT_SECRET=$(openssl rand -base64 48)
+          ADMIN_EMAIL=admin@e2e.local
+          ADMIN_SENHA=$E2E_ADMIN_SENHA
+          FRONTEND_PATH=../frontend
+          ENV
+          docker compose up -d --build
+
+      - name: Esperar o nginx e a API
+        run: |
+          for i in $(seq 1 60); do
+            if curl -sf http://localhost:8081/saude > /dev/null \
+              && [ "$(curl -s -o /dev/null -w '%{http_code}' -H 'Accept: application/json' http://localhost:8081/auth/me)" = "401" ]; then
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "o backend não respondeu em 5 minutos"
+          exit 1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Instalar dependências e o Chromium
+        working-directory: frontend
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Fluxos de ponta a ponta
+        working-directory: frontend
+        env:
+          E2E_BASE_URL: http://localhost:8081
+          E2E_ADMIN_EMAIL: admin@e2e.local
+        run: node --test --test-reporter=spec e2e/fluxos.e2e.mjs
+
+      - name: Log dos containers
+        if: failure()
+        working-directory: backend
+        run: |
+          mkdir -p ../frontend/e2e/capturas
+          docker compose logs --no-color > ../frontend/e2e/capturas/containers.log 2>&1 || true
+
+      - name: Publicar capturas e log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-falha
+          path: frontend/e2e/capturas/
