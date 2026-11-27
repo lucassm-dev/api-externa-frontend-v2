@@ -92,6 +92,21 @@ interface BolhaDesenhada {
   detalhe: string;
 }
 
+/**
+ * Bolhas sobrepostas ficam na posição real (mover mentiria sobre participação ou
+ * rentabilidade); só a maior de cada sobreposição escreve o ticker dentro de si,
+ * e as outras seguem na lista e no detalhe por ponteiro ou foco (AC-388).
+ */
+function semRotulosSobrepostos(bolhas: BolhaDesenhada[]): BolhaDesenhada[] {
+  const rotuladas: BolhaDesenhada[] = [];
+  for (const bolha of [...bolhas].sort((uma, outra) => outra.r - uma.r)) {
+    if (!bolha.rotuloVisivel) continue;
+    if (rotuladas.some((outra) => Math.hypot(outra.cx - bolha.cx, outra.cy - bolha.cy) < outra.r + bolha.r)) bolha.rotuloVisivel = false;
+    else rotuladas.push(bolha);
+  }
+  return bolhas;
+}
+
 function desenharBolhas(posicoes: PosicaoNoQuadrante[]): BolhaDesenhada[] {
   const somaMercado = posicoes.reduce((soma, p) => soma + Math.max(p.valorDeMercado, 0), 0);
   const maxParticipacao =
@@ -99,7 +114,7 @@ function desenharBolhas(posicoes: PosicaoNoQuadrante[]): BolhaDesenhada[] {
   const maxRentabilidade = Math.max(...posicoes.map((p) => Math.abs(p.rentabilidade)), 0);
   const maxValor = Math.max(...posicoes.map((p) => Math.max(p.valorDeMercado, 0)), 0);
 
-  return posicoes.map((posicao) => {
+  return semRotulosSobrepostos(posicoes.map((posicao) => {
     const participacao = somaMercado > 0 ? (Math.max(posicao.valorDeMercado, 0) / somaMercado) * 100 : 0;
     const sinal: Sinal = posicao.rentabilidade > 0 ? 'alta' : posicao.rentabilidade < 0 ? 'baixa' : 'estavel';
     const prefixo = posicao.rentabilidade > 0 ? '+' : posicao.rentabilidade < 0 ? '−' : '';
@@ -133,7 +148,7 @@ function desenharBolhas(posicoes: PosicaoNoQuadrante[]): BolhaDesenhada[] {
         `Rentabilidade ${rentabilidadeFormatada}. ` +
         `Valor de mercado ${valorFormatado}.`,
     };
-  });
+  }));
 }
 
 const TICK = 'fill-texto-fraco font-numero tabular-nums';
@@ -261,7 +276,8 @@ export function GraficoQuadrante({ posicoes }: GraficoQuadranteProps) {
               Rentabilidade
             </text>
 
-            {bolhas.map((bolha) => {
+            {/* Da menor para a maior: no SVG quem vem depois cobre, e o rótulo fica na maior (AC-388). */}
+            {[...bolhas].sort((uma, outra) => uma.r - outra.r).map((bolha) => {
               const ativa = bolhaAtiva === bolha.ticker;
               const atenuada = bolhaAtiva !== null && !ativa;
               return (

@@ -56,6 +56,22 @@ nada pareça montado às pressas.
 - **Então** os filtros do extrato ficam dentro de um cartão, e a tabela de usuários ocupa
   a largura da coluna
 
+#### AC-387 — Cartão de gráfico não abre vão quando a linha é mais alta
+
+- **Dado** o cartão Investido × valor de mercado ao lado de um cartão mais alto
+- **Quando** os dois dividem a linha
+- **Então** o título, a escala e a lista ficam juntos no topo do cartão, sem espalhar a
+  altura que sobra entre eles
+
+#### AC-388 — Bolhas sobrepostas no quadrante não cobrem os rótulos umas das outras
+
+- **Dado** ativos cujas bolhas se sobrepõem no quadrante (mesma rentabilidade e participação
+  parecida)
+- **Quando** o quadrante é desenhado
+- **Então** as bolhas ficam na posição real, só a maior de cada sobreposição mostra o
+  ticker dentro dela, e todos os ativos continuam na lista do gráfico e no detalhe por
+  ponteiro ou foco
+
 ## Fora de escopo
 
 - Logos das ações no lugar das iniciais (issue #45, spec própria).

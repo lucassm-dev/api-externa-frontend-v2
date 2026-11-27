@@ -132,11 +132,141 @@
       "ownFingerprint": "f5aa8319c327806d0b3b8af360d159befa115219b8dd489fe2af7c4c8a28e9ab",
       "conflictFingerprint": "5e622d0006a66a86980c2593ea83c66667fbe608384cb0297d7230597085839d",
       "answeredAt": "2026-11-26T22:49:55.026Z"
+    },
+    {
+      "conflictId": "impacto:acesso",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 13 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (estrutura-visual #54)",
+      "fingerprint": "5693de1efc757bf00a53ed1753dadd2e15a18b3756e5e53123f3c0ca993b94e6",
+      "ownFingerprint": "63713a20cb82c0af1f34f06b91962f957f18095a6f8568c2cfb93c0c6ed5de76",
+      "conflictFingerprint": "15347fa95303fbd001272968ae340c0cfd0fe4a74ccba5001da274c2fcccf60d",
+      "answeredAt": "2026-11-27T00:36:11.969Z"
+    },
+    {
+      "conflictId": "impacto:acoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 13 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (estrutura-visual #54)",
+      "fingerprint": "5693de1efc757bf00a53ed1753dadd2e15a18b3756e5e53123f3c0ca993b94e6",
+      "ownFingerprint": "63713a20cb82c0af1f34f06b91962f957f18095a6f8568c2cfb93c0c6ed5de76",
+      "conflictFingerprint": "77bc3f8a1c042e04d4770c1a6e613afbc8b7afb681cee889d57811b0cce91a96",
+      "answeredAt": "2026-11-27T00:36:12.864Z"
+    },
+    {
+      "conflictId": "impacto:administracao",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 13 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (estrutura-visual #54)",
+      "fingerprint": "5693de1efc757bf00a53ed1753dadd2e15a18b3756e5e53123f3c0ca993b94e6",
+      "ownFingerprint": "63713a20cb82c0af1f34f06b91962f957f18095a6f8568c2cfb93c0c6ed5de76",
+      "conflictFingerprint": "b20f24cf11c0c4bf21a9bae1699681e5322f6e8281b1704a1fc5aea675c43f58",
+      "answeredAt": "2026-11-27T00:36:13.441Z"
+    },
+    {
+      "conflictId": "impacto:cabecalho-identidade-acoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 13 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (estrutura-visual #54)",
+      "fingerprint": "5693de1efc757bf00a53ed1753dadd2e15a18b3756e5e53123f3c0ca993b94e6",
+      "ownFingerprint": "63713a20cb82c0af1f34f06b91962f957f18095a6f8568c2cfb93c0c6ed5de76",
+      "conflictFingerprint": "534b33b7dec610a37693ae484bc3253535e543c7b4c53d26957330d960563334",
+      "answeredAt": "2026-11-27T00:36:14.396Z"
+    },
+    {
+      "conflictId": "impacto:carteiras",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 13 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (estrutura-visual #54)",
+      "fingerprint": "5693de1efc757bf00a53ed1753dadd2e15a18b3756e5e53123f3c0ca993b94e6",
+      "ownFingerprint": "63713a20cb82c0af1f34f06b91962f957f18095a6f8568c2cfb93c0c6ed5de76",
+      "conflictFingerprint": "3f1672d1411c472d832dbe0b3b3add9d33486817c71f6481aadf42a0e34ee332",
+      "answeredAt": "2026-11-27T00:36:15.428Z"
+    },
+    {
+      "conflictId": "impacto:conta",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 13 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (estrutura-visual #54)",
+      "fingerprint": "5693de1efc757bf00a53ed1753dadd2e15a18b3756e5e53123f3c0ca993b94e6",
+      "ownFingerprint": "63713a20cb82c0af1f34f06b91962f957f18095a6f8568c2cfb93c0c6ed5de76",
+      "conflictFingerprint": "5ec348a544122514b471a2e1eb51a83c749a92e2458c70ef43c574f00ae7622c",
+      "answeredAt": "2026-11-27T00:36:16.317Z"
+    },
+    {
+      "conflictId": "impacto:corretoras",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 13 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (estrutura-visual #54)",
+      "fingerprint": "5693de1efc757bf00a53ed1753dadd2e15a18b3756e5e53123f3c0ca993b94e6",
+      "ownFingerprint": "63713a20cb82c0af1f34f06b91962f957f18095a6f8568c2cfb93c0c6ed5de76",
+      "conflictFingerprint": "3b3a45a34ba6d0fac2bcb8e5b4f99c0af19112ee604c6cb816b9cca804b68f56",
+      "answeredAt": "2026-11-27T00:36:17.520Z"
+    },
+    {
+      "conflictId": "impacto:filtros-extrato",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 13 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (estrutura-visual #54)",
+      "fingerprint": "5693de1efc757bf00a53ed1753dadd2e15a18b3756e5e53123f3c0ca993b94e6",
+      "ownFingerprint": "63713a20cb82c0af1f34f06b91962f957f18095a6f8568c2cfb93c0c6ed5de76",
+      "conflictFingerprint": "bcf3bb6dd8430f31caa1b9486b9121423437add07ab796bce5eb98535c97eb2d",
+      "answeredAt": "2026-11-27T00:36:18.603Z"
+    },
+    {
+      "conflictId": "impacto:identidade-papel",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 13 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (estrutura-visual #54)",
+      "fingerprint": "5693de1efc757bf00a53ed1753dadd2e15a18b3756e5e53123f3c0ca993b94e6",
+      "ownFingerprint": "63713a20cb82c0af1f34f06b91962f957f18095a6f8568c2cfb93c0c6ed5de76",
+      "conflictFingerprint": "0dc28297d43f8960e7529fffe3abacf47ef999cd351c2b85d8f43b8219f40392",
+      "answeredAt": "2026-11-27T00:36:19.693Z"
+    },
+    {
+      "conflictId": "impacto:migracao-react",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 13 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (estrutura-visual #54)",
+      "fingerprint": "5693de1efc757bf00a53ed1753dadd2e15a18b3756e5e53123f3c0ca993b94e6",
+      "ownFingerprint": "63713a20cb82c0af1f34f06b91962f957f18095a6f8568c2cfb93c0c6ed5de76",
+      "conflictFingerprint": "fe7dcf8c5134838022ab6765faff903421ff66062c3879f5e21ae8e653c38952",
+      "answeredAt": "2026-11-27T00:36:20.852Z"
+    },
+    {
+      "conflictId": "impacto:painel",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 13 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (estrutura-visual #54)",
+      "fingerprint": "5693de1efc757bf00a53ed1753dadd2e15a18b3756e5e53123f3c0ca993b94e6",
+      "ownFingerprint": "63713a20cb82c0af1f34f06b91962f957f18095a6f8568c2cfb93c0c6ed5de76",
+      "conflictFingerprint": "5d3993b0159038345cc2c171c436eeda83346d4cabd262ef0ed5f530d97ddf52",
+      "answeredAt": "2026-11-27T00:36:21.962Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 13 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (estrutura-visual #54)",
+      "fingerprint": "5693de1efc757bf00a53ed1753dadd2e15a18b3756e5e53123f3c0ca993b94e6",
+      "ownFingerprint": "63713a20cb82c0af1f34f06b91962f957f18095a6f8568c2cfb93c0c6ed5de76",
+      "conflictFingerprint": "b69482cafd82ce45f03a567d31504b198cdc03840ab60213b6a8fb0e1c9dc3bf",
+      "answeredAt": "2026-11-27T00:36:22.517Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-visual",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 13 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (estrutura-visual #54)",
+      "fingerprint": "5693de1efc757bf00a53ed1753dadd2e15a18b3756e5e53123f3c0ca993b94e6",
+      "ownFingerprint": "63713a20cb82c0af1f34f06b91962f957f18095a6f8568c2cfb93c0c6ed5de76",
+      "conflictFingerprint": "dd677cf4e4857d1b52a6f0501876080389c7079a92197e3de4c289a736cfabff",
+      "answeredAt": "2026-11-27T00:36:23.326Z"
     }
   ],
   "clientRequest": "",
   "review": {
-    "summary": "Issue #44. Lidas as specs de repaginacao-visual e fundacao-visual (tokens, kit, AC-266, AC-272, AC-303), cabecalho-identidade-acoes (barra do topo), conta (seção Foto, AC-336 a AC-339), filtros-extrato e administracao (lista de usuários). A mudança é de layout: coluna central com --largura-pagina, páginas estreitas com mx-auto, barra do topo alinhada por padding, filtros num cartão, célula w-full na tabela de usuários e um componente de kit para escolher arquivo (o input nativo continua dentro do rótulo). Nenhum comportamento muda e nenhuma regra de spec anterior é contrariada; os 686 testes anteriores passam sem alteração.",
+    "summary": "Issue #54. Lidas as specs de repaginacao-desempenho e desempenho (AC-278 a AC-281: quadrante com bolhas posicionadas por participação e rentabilidade, tamanho pelo valor de mercado, eixos rotulados, mesmos dados em texto, foco e ponteiro). As bolhas continuam na posição e no tamanho reais; só o rótulo escrito dentro da bolha menor some quando há sobreposição, e a ordem de desenho passa a ser da menor para a maior. O cartão Investido × valor de mercado ganha content-start. A lista em texto, o foco e o detalhe por ponteiro não mudam. Nenhuma regra de spec anterior é contrariada; os 127 testes do desempenho passam.",
     "reviewer": "Claude Code (Opus 5.5), sessão de 26/11/2026",
     "conflicts": [
       {
@@ -253,6 +383,10 @@
           "src/features/acoes/cadastro-acao.tsx",
           "src/features/carteiras/criar-carteira.tsx",
           "src/features/corretoras/cadastro-corretora.tsx",
+          "src/features/desempenho/blocos/grafico-investido-mercado.spec.tsx",
+          "src/features/desempenho/blocos/grafico-investido-mercado.tsx",
+          "src/features/desempenho/blocos/grafico-quadrante.spec.tsx",
+          "src/features/desempenho/blocos/grafico-quadrante.tsx",
           "src/layout/casca.tsx",
           "src/styles/tokens.css"
         ],
@@ -289,15 +423,19 @@
         "feature": "repaginacao-visual",
         "summary": "A mudança interfere no domínio da feature repaginacao-visual.",
         "files": [
+          "src/features/desempenho/blocos/grafico-investido-mercado.spec.tsx",
+          "src/features/desempenho/blocos/grafico-investido-mercado.tsx",
+          "src/features/desempenho/blocos/grafico-quadrante.spec.tsx",
+          "src/features/desempenho/blocos/grafico-quadrante.tsx",
           "src/layout/casca.tsx"
         ],
         "domains": [],
         "rule": ".spec/features/repaginacao-visual/spec.md"
       }
     ],
-    "fingerprint": "6d8aa4aa9e30769b98b533e93a6534ad94c606d1d54d3ba108585627d27db6a0",
-    "ownFingerprint": "f5aa8319c327806d0b3b8af360d159befa115219b8dd489fe2af7c4c8a28e9ab",
-    "reviewedAt": "2026-11-26T22:49:30.584Z",
+    "fingerprint": "5693de1efc757bf00a53ed1753dadd2e15a18b3756e5e53123f3c0ca993b94e6",
+    "ownFingerprint": "63713a20cb82c0af1f34f06b91962f957f18095a6f8568c2cfb93c0c6ed5de76",
+    "reviewedAt": "2026-11-27T00:35:11.854Z",
     "documents": [
       ".spec/features/acesso/spec.md",
       ".spec/features/acesso/tasks.md",
@@ -327,6 +465,8 @@
       ".spec/features/fundacao-visual/tasks.md",
       ".spec/features/identidade-papel/spec.md",
       ".spec/features/identidade-papel/tasks.md",
+      ".spec/features/logos-acoes/spec.md",
+      ".spec/features/logos-acoes/tasks.md",
       ".spec/features/migracao-react/prd.md",
       ".spec/features/migracao-react/adr.md",
       ".spec/features/migracao-react/design.md",

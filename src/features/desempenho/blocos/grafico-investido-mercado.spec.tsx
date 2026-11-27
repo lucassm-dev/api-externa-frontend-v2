@@ -97,4 +97,12 @@ describe('Gráfico de investido × valor de mercado', () => {
     expect(elemento.querySelector('[data-sem-investido-mercado]')).not.toBeNull();
     expect(elemento.querySelectorAll('[data-barra-investido]').length).toBe(0);
   });
+
+  it('@spec:AC-387 o conteúdo fica no topo do cartão quando a linha é mais alta', () => {
+    const elemento = montar([posicao('PETR4', 1000, 1500)]);
+    const cartao = elemento.querySelector('section')!;
+
+    // jsdom não calcula layout: a regra é o align-content do cartão-grade, conferida no navegador.
+    expect(cartao.getAttribute('class')).toContain('content-start');
+  });
 });

@@ -1,115 +1,115 @@
 {
   "feature": "repaginacao-visual",
-  "timestamp": "2026-11-26T23:44:18.298Z",
-  "gitRev": "76323c8",
+  "timestamp": "2026-11-27T00:38:48.208Z",
+  "gitRev": "c182fef",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 697,
+  "testsParsed": 699,
   "results": {
     "AC-266": {
       "status": "pass",
-      "testName": "src/components/ui/padrao-unico.spec.ts > Botão único do produto > @spec:AC-266 nenhuma tela usa botão de outra biblioteca # time=6.92ms",
+      "testName": "src/components/ui/padrao-unico.spec.ts > Botão único do produto > @spec:AC-266 nenhuma tela usa botão de outra biblioteca # time=6.21ms",
       "method": "tap"
     },
     "AC-267": {
       "status": "pass",
-      "testName": "src/components/ui/botao.spec.tsx > Botão do produto > @spec:AC-267 cada intenção conhecida marca o botão com aparência própria # time=94.12ms",
+      "testName": "src/components/ui/botao.spec.tsx > Botão do produto > @spec:AC-267 cada intenção conhecida marca o botão com aparência própria # time=85.21ms",
       "method": "tap"
     },
     "AC-268": {
       "status": "pass",
-      "testName": "src/components/ui/botao.spec.tsx > Botão do produto > @spec:AC-268 ocupado se anuncia, mantém o rótulo e não dispara a ação de novo # time=12.14ms",
+      "testName": "src/components/ui/botao.spec.tsx > Botão do produto > @spec:AC-268 ocupado se anuncia, mantém o rótulo e não dispara a ação de novo # time=22.67ms",
       "method": "tap"
     },
     "AC-269": {
       "status": "pass",
-      "testName": "src/components/ui/botao.spec.tsx > Botão do produto > @spec:AC-269 o foco é visível com anel próprio, sem apagar o contorno do sistema # time=48.26ms",
+      "testName": "src/components/ui/botao.spec.tsx > Botão do produto > @spec:AC-269 o foco é visível com anel próprio, sem apagar o contorno do sistema # time=51.53ms",
       "method": "tap"
     },
     "AC-270": {
       "status": "pass",
-      "testName": "src/layout/casca.spec.tsx > Casca responsiva com menu compacto > @spec:AC-270 o documento não impõe largura mínima maior que a tela # time=0.57ms",
+      "testName": "src/layout/casca.spec.tsx > Casca responsiva com menu compacto > @spec:AC-270 o documento não impõe largura mínima maior que a tela # time=0.76ms",
       "method": "tap"
     },
     "AC-271": {
       "status": "pass",
-      "testName": "src/layout/casca.spec.tsx > Casca responsiva com menu compacto > @spec:AC-271 abaixo de 768px as áreas ficam atrás de um botão de menu # time=8.54ms",
+      "testName": "src/layout/casca.spec.tsx > Casca responsiva com menu compacto > @spec:AC-271 abaixo de 768px as áreas ficam atrás de um botão de menu # time=9.27ms",
       "method": "tap"
     },
     "AC-272": {
       "status": "pass",
-      "testName": "src/components/ui/tabela.spec.tsx > Tabela — rolagem contida > @spec:AC-272 mantém a rolagem horizontal dentro do bloco da tabela # time=0.26ms",
+      "testName": "src/components/ui/tabela.spec.tsx > Tabela — rolagem contida > @spec:AC-272 mantém a rolagem horizontal dentro do bloco da tabela # time=0.75ms",
       "method": "tap"
     },
     "AC-273": {
       "status": "pass",
-      "testName": "src/features/desempenho/desempenho.spec.tsx > Tela de desempenho > @spec:AC-273 a grade dos gráficos vira coluna única na tela estreita # time=41.99ms",
+      "testName": "src/features/desempenho/desempenho.spec.tsx > Tela de desempenho > @spec:AC-273 a grade dos gráficos vira coluna única na tela estreita # time=70.62ms",
       "method": "tap"
     },
     "AC-274": {
       "status": "pass",
-      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-274 a faixa vai de ponta a ponta # time=9.03ms",
+      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-274 a faixa vai de ponta a ponta # time=12.33ms",
       "method": "tap"
     },
     "AC-290": {
       "status": "pass",
-      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-290 cada elo entre o conteúdo que rola e a janela tem piso zero # time=16.08ms",
+      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-290 cada elo entre o conteúdo que rola e a janela tem piso zero # time=15.53ms",
       "method": "tap"
     },
     "AC-275": {
       "status": "pass",
-      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-275 a faixa nunca força largura maior que a tela, e o movimento respeita prefers-reduced-motion # time=24.12ms",
+      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-275 a faixa nunca força largura maior que a tela, e o movimento respeita prefers-reduced-motion # time=15.28ms",
       "method": "tap"
     },
     "AC-276": {
       "status": "pass",
-      "testName": "src/features/desempenho/blocos/blocos-do-mapa.spec.ts > Geometria do mapa de blocos > @spec:AC-276 uma posição única ocupa a área inteira # time=2.54ms",
+      "testName": "src/features/desempenho/blocos/blocos-do-mapa.spec.ts > Geometria do mapa de blocos > @spec:AC-276 uma posição única ocupa a área inteira # time=1.58ms",
       "method": "tap"
     },
     "AC-277": {
       "status": "pass",
-      "testName": "src/features/desempenho/blocos/grafico-investido-mercado.spec.tsx > Gráfico de investido × valor de mercado > @spec:AC-277 cada ticker traz duas barras — custo e valor de hoje — na mesma escala # time=46.28ms",
+      "testName": "src/features/desempenho/blocos/grafico-investido-mercado.spec.tsx > Gráfico de investido × valor de mercado > @spec:AC-277 cada ticker traz duas barras — custo e valor de hoje — na mesma escala # time=61.51ms",
       "method": "tap"
     },
     "AC-278": {
       "status": "pass",
-      "testName": "src/features/desempenho/blocos/grafico-quadrante.spec.tsx > Gráfico de quadrante participação × rentabilidade > @spec:AC-278 cada ativo é uma bolha posicionada pela participação no eixo X e pela rentabilidade no eixo Y # time=53.16ms",
+      "testName": "src/features/desempenho/blocos/grafico-quadrante.spec.tsx > Gráfico de quadrante participação × rentabilidade > @spec:AC-278 cada ativo é uma bolha posicionada pela participação no eixo X e pela rentabilidade no eixo Y # time=61.78ms",
       "method": "tap"
     },
     "AC-279": {
       "status": "pass",
-      "testName": "src/features/desempenho/blocos/concentracao-da-carteira.spec.ts > Concentração da carteira > @spec:AC-279 a fatia dos três maiores ativos é a soma deles sobre o total # time=1.10ms",
+      "testName": "src/features/desempenho/blocos/concentracao-da-carteira.spec.ts > Concentração da carteira > @spec:AC-279 a fatia dos três maiores ativos é a soma deles sobre o total # time=3.74ms",
       "method": "tap"
     },
     "AC-280": {
       "status": "pass",
-      "testName": "src/features/desempenho/blocos/grafico-investido-mercado.spec.tsx > Gráfico de investido × valor de mercado > @spec:AC-280 cada linha é focável e o foco revela o mesmo detalhe em texto; Esc volta ao repouso # time=6.78ms",
+      "testName": "src/features/desempenho/blocos/grafico-investido-mercado.spec.tsx > Gráfico de investido × valor de mercado > @spec:AC-280 cada linha é focável e o foco revela o mesmo detalhe em texto; Esc volta ao repouso # time=7.43ms",
       "method": "tap"
     },
     "AC-281": {
       "status": "pass",
-      "testName": "src/features/desempenho/blocos/blocos-do-mapa.spec.ts > Geometria do mapa de blocos > @spec:AC-281 pesos não positivos ou não finitos não viram bloco nem coordenada inválida # time=0.34ms",
+      "testName": "src/features/desempenho/blocos/blocos-do-mapa.spec.ts > Geometria do mapa de blocos > @spec:AC-281 pesos não positivos ou não finitos não viram bloco nem coordenada inválida # time=0.17ms",
       "method": "tap"
     },
     "AC-282": {
       "status": "pass",
-      "testName": "src/styles/tokens.spec.ts > Tokens da fundação visual > @spec:AC-282 o acento de marca entra com contraste aprovado nos dois temas # time=0.52ms",
+      "testName": "src/styles/tokens.spec.ts > Tokens da fundação visual > @spec:AC-282 o acento de marca entra com contraste aprovado nos dois temas # time=0.93ms",
       "method": "tap"
     },
     "AC-289": {
       "status": "pass",
-      "testName": "src/styles/tokens.spec.ts > Tokens da fundação visual > @spec:AC-289 todo token de acento é da família do amarelo, e nenhum é azul # time=1.28ms",
+      "testName": "src/styles/tokens.spec.ts > Tokens da fundação visual > @spec:AC-289 todo token de acento é da família do amarelo, e nenhum é azul # time=0.41ms",
       "method": "tap"
     },
     "AC-283": {
       "status": "pass",
-      "testName": "src/styles/tokens.spec.ts > Tokens da fundação visual > @spec:AC-283 a escala de tipos é declarada em degraus nomeados # time=0.95ms",
+      "testName": "src/styles/tokens.spec.ts > Tokens da fundação visual > @spec:AC-283 a escala de tipos é declarada em degraus nomeados # time=1.15ms",
       "method": "tap"
     },
     "AC-284": {
       "status": "pass",
-      "testName": "src/styles/movimento.spec.ts > Movimento com freio > @spec:AC-284 nenhuma transição ou keyframe anima propriedade de layout # time=6.74ms",
+      "testName": "src/styles/movimento.spec.ts > Movimento com freio > @spec:AC-284 nenhuma transição ou keyframe anima propriedade de layout # time=5.91ms",
       "method": "tap"
     }
   },
