@@ -82,6 +82,86 @@
       "ownFingerprint": "1be1c9b882e851960892373b24040771e1da7660e6f51f9f26baba2fb7449067",
       "conflictFingerprint": "958862da5bd0083f1e9926bfa59f8659fddc23974657dab3b909153c86bd96c5",
       "answeredAt": "2026-11-27T05:08:56.304Z"
+    },
+    {
+      "conflictId": "impacto:carteiras",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62); regravada após trocar o status da ASM-025 de descartada para invalidada, sem mudança de escopo",
+      "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+      "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+      "conflictFingerprint": "29b82ba581398d9dda30f7ea1735b61d5f1616e0d692d0252da8b1255fc4fae9",
+      "answeredAt": "2026-11-27T05:15:55.810Z"
+    },
+    {
+      "conflictId": "impacto:desempenho",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62); regravada após trocar o status da ASM-025 de descartada para invalidada, sem mudança de escopo",
+      "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+      "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+      "conflictFingerprint": "3079cb523ed3a29709a6ced7d192eedcd7f1b959f93c774cb333457fc7764ddd",
+      "answeredAt": "2026-11-27T05:15:56.044Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62); regravada após trocar o status da ASM-025 de descartada para invalidada, sem mudança de escopo",
+      "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+      "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+      "conflictFingerprint": "a4abdafcc2f8d0f7789b2aaadb22ee50c551fff5413e8931b1df573156d99c9d",
+      "answeredAt": "2026-11-27T05:15:56.276Z"
+    },
+    {
+      "conflictId": "impacto:fundacao-visual",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62); regravada após trocar o status da ASM-025 de descartada para invalidada, sem mudança de escopo",
+      "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+      "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+      "conflictFingerprint": "d2a729eaca8b28013e1fa4bd627a20054367a8786ed26c7471469cb538d809a4",
+      "answeredAt": "2026-11-27T05:15:56.517Z"
+    },
+    {
+      "conflictId": "impacto:migracao-react",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62); regravada após trocar o status da ASM-025 de descartada para invalidada, sem mudança de escopo",
+      "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+      "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+      "conflictFingerprint": "0d92707f93f698b9bb93838160bad8e39042e701743abe050cd4b5be6be0fc52",
+      "answeredAt": "2026-11-27T05:15:56.751Z"
+    },
+    {
+      "conflictId": "impacto:operacoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62); regravada após trocar o status da ASM-025 de descartada para invalidada, sem mudança de escopo",
+      "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+      "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+      "conflictFingerprint": "a9bed682e0ca0b278580eb7efde1da14039fdf3ccbb58002c11d7b72f83937bd",
+      "answeredAt": "2026-11-27T05:15:56.986Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62); regravada após trocar o status da ASM-025 de descartada para invalidada, sem mudança de escopo",
+      "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+      "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+      "conflictFingerprint": "0f77ade2b14685c50cc8f367a26bc009a83ed445443da66d563b791dad2629c5",
+      "answeredAt": "2026-11-27T05:15:57.218Z"
+    },
+    {
+      "conflictId": "impacto:visibilidade-da-senha",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 8 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 27/11/2026, pergunta Impacto (moeda-na-carteira #62); regravada após trocar o status da ASM-025 de descartada para invalidada, sem mudança de escopo",
+      "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+      "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+      "conflictFingerprint": "958862da5bd0083f1e9926bfa59f8659fddc23974657dab3b909153c86bd96c5",
+      "answeredAt": "2026-11-27T05:15:57.453Z"
     }
   ],
   "clientRequest": "",
@@ -186,9 +266,9 @@
         "rule": ".spec/features/visibilidade-da-senha/spec.md"
       }
     ],
-    "fingerprint": "e61eba422c2ae80596ff2a61295fde1c10e39e94d683c62135bf1d5848487fe1",
-    "ownFingerprint": "1be1c9b882e851960892373b24040771e1da7660e6f51f9f26baba2fb7449067",
-    "reviewedAt": "2026-11-27T05:08:14.545Z",
+    "fingerprint": "2bc7069719c0546be35a37ca81648d1ecc55dbe48dc501222ccd41846fa908c8",
+    "ownFingerprint": "376036a248891657ef90d27b76e54fa108da054ef89900629743b2e4ff86cc49",
+    "reviewedAt": "2026-11-27T05:15:55.391Z",
     "documents": [
       ".spec/features/acesso/spec.md",
       ".spec/features/acesso/tasks.md",
