@@ -1,0 +1,206 @@
+{
+  "version": 1,
+  "large": false,
+  "domains": [],
+  "decisions": [
+    {
+      "conflictId": "impacto:administracao",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 6 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (situacao-cadastral #56)",
+      "fingerprint": "5fd9138791175e3b0f06fe43d30924496fcbd11c0e33f2d6b3ff38e921572f27",
+      "ownFingerprint": "d7afd6077d5818b215d14699549c1869a44286ec020de19a8e746758583cd731",
+      "conflictFingerprint": "b81b90df8038e24a44d55ce8c416a4d0c9b5f6bf6f83bc9ee3cde9ad962586b0",
+      "answeredAt": "2026-11-27T01:33:03.254Z"
+    },
+    {
+      "conflictId": "impacto:carteiras",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 6 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (situacao-cadastral #56)",
+      "fingerprint": "5fd9138791175e3b0f06fe43d30924496fcbd11c0e33f2d6b3ff38e921572f27",
+      "ownFingerprint": "d7afd6077d5818b215d14699549c1869a44286ec020de19a8e746758583cd731",
+      "conflictFingerprint": "aa556605baf4a25a3675f724d09d01b9de3355f1116eee954a9ea5ec6291047f",
+      "answeredAt": "2026-11-27T01:33:03.408Z"
+    },
+    {
+      "conflictId": "impacto:corretoras",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 6 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (situacao-cadastral #56)",
+      "fingerprint": "5fd9138791175e3b0f06fe43d30924496fcbd11c0e33f2d6b3ff38e921572f27",
+      "ownFingerprint": "d7afd6077d5818b215d14699549c1869a44286ec020de19a8e746758583cd731",
+      "conflictFingerprint": "88482aa1027598ea7d11833c1960bf8288edcc9c6c9dcdc813788227fd8f1a78",
+      "answeredAt": "2026-11-27T01:33:03.552Z"
+    },
+    {
+      "conflictId": "impacto:identidade-papel",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 6 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (situacao-cadastral #56)",
+      "fingerprint": "5fd9138791175e3b0f06fe43d30924496fcbd11c0e33f2d6b3ff38e921572f27",
+      "ownFingerprint": "d7afd6077d5818b215d14699549c1869a44286ec020de19a8e746758583cd731",
+      "conflictFingerprint": "a722dc6ff4272dc45cefeb526f96c66d062bd9c5cc8962188d9c07bb743e9bd0",
+      "answeredAt": "2026-11-27T01:33:03.683Z"
+    },
+    {
+      "conflictId": "impacto:migracao-react",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 6 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (situacao-cadastral #56)",
+      "fingerprint": "5fd9138791175e3b0f06fe43d30924496fcbd11c0e33f2d6b3ff38e921572f27",
+      "ownFingerprint": "d7afd6077d5818b215d14699549c1869a44286ec020de19a8e746758583cd731",
+      "conflictFingerprint": "32462d41bfe863d84be29c23fd1759e4c07bcc2551ff366f63a836d2467a75e0",
+      "answeredAt": "2026-11-27T01:33:03.815Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Prosseguir nos 6 (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 26/11/2026, pergunta Impacto (situacao-cadastral #56)",
+      "fingerprint": "5fd9138791175e3b0f06fe43d30924496fcbd11c0e33f2d6b3ff38e921572f27",
+      "ownFingerprint": "d7afd6077d5818b215d14699549c1869a44286ec020de19a8e746758583cd731",
+      "conflictFingerprint": "11cfd7bd9bd112b1a655a2a2adcd6095f260c7471b87f804499684390c6fd3af",
+      "answeredAt": "2026-11-27T01:33:03.944Z"
+    }
+  ],
+  "clientRequest": "",
+  "review": {
+    "summary": "Issue #56. Lidas as specs de corretoras (AC-084: o detalhe traz os dados cadastrais) e administracao (descontinuar). O detalhe passa a mostrar o nome da situação cadastral no lugar do código da Receita; texto por extenso e código desconhecido continuam como vieram. Nenhuma regra de spec anterior é contrariada.",
+    "reviewer": "Claude Code (Opus 5.5), sessão de 26/11/2026",
+    "conflicts": [
+      {
+        "id": "impacto:administracao",
+        "automatic": true,
+        "feature": "administracao",
+        "summary": "A mudança interfere no domínio da feature administracao.",
+        "files": [
+          "src/features/corretoras/corretoras.model.ts",
+          "src/features/corretoras/detalhe-corretora.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/administracao/spec.md"
+      },
+      {
+        "id": "impacto:carteiras",
+        "automatic": true,
+        "feature": "carteiras",
+        "summary": "A mudança interfere no domínio da feature carteiras.",
+        "files": [
+          "src/features/corretoras/corretoras.model.ts",
+          "src/features/corretoras/detalhe-corretora.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/carteiras/spec.md"
+      },
+      {
+        "id": "impacto:corretoras",
+        "automatic": true,
+        "feature": "corretoras",
+        "summary": "A mudança interfere no domínio da feature corretoras.",
+        "files": [
+          "src/features/corretoras/corretoras.model.ts",
+          "src/features/corretoras/detalhe-corretora.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/corretoras/spec.md"
+      },
+      {
+        "id": "impacto:identidade-papel",
+        "automatic": true,
+        "feature": "identidade-papel",
+        "summary": "A mudança interfere no domínio da feature identidade-papel.",
+        "files": [
+          "src/features/corretoras/detalhe-corretora.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/identidade-papel/spec.md"
+      },
+      {
+        "id": "impacto:migracao-react",
+        "automatic": true,
+        "feature": "migracao-react",
+        "summary": "A mudança interfere no domínio da feature migracao-react.",
+        "files": [
+          "src/features/corretoras/corretoras.model.ts",
+          "src/features/corretoras/detalhe-corretora.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/migracao-react/prd.md"
+      },
+      {
+        "id": "impacto:repaginacao-tabelas",
+        "automatic": true,
+        "feature": "repaginacao-tabelas",
+        "summary": "A mudança interfere no domínio da feature repaginacao-tabelas.",
+        "files": [
+          "src/features/corretoras/corretoras.model.ts",
+          "src/features/corretoras/detalhe-corretora.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/repaginacao-tabelas/spec.md"
+      }
+    ],
+    "fingerprint": "5fd9138791175e3b0f06fe43d30924496fcbd11c0e33f2d6b3ff38e921572f27",
+    "ownFingerprint": "d7afd6077d5818b215d14699549c1869a44286ec020de19a8e746758583cd731",
+    "reviewedAt": "2026-11-27T00:55:15.709Z",
+    "documents": [
+      ".spec/features/acesso/spec.md",
+      ".spec/features/acesso/tasks.md",
+      ".spec/features/acoes/spec.md",
+      ".spec/features/acoes/tasks.md",
+      ".spec/features/administracao/spec.md",
+      ".spec/features/administracao/tasks.md",
+      ".spec/features/cabecalho-identidade-acoes/spec.md",
+      ".spec/features/cabecalho-identidade-acoes/tasks.md",
+      ".spec/features/carteiras/spec.md",
+      ".spec/features/carteiras/tasks.md",
+      ".spec/features/confirmacao-senha-cadastro/spec.md",
+      ".spec/features/confirmacao-senha-cadastro/tasks.md",
+      ".spec/features/conta/spec.md",
+      ".spec/features/conta/tasks.md",
+      ".spec/features/corretoras/spec.md",
+      ".spec/features/corretoras/tasks.md",
+      ".spec/features/desempenho/spec.md",
+      ".spec/features/desempenho/tasks.md",
+      ".spec/features/estrutura-visual/spec.md",
+      ".spec/features/estrutura-visual/tasks.md",
+      ".spec/features/filtros-extrato/spec.md",
+      ".spec/features/filtros-extrato/tasks.md",
+      ".spec/features/fundacao/spec.md",
+      ".spec/features/fundacao/tasks.md",
+      ".spec/features/fundacao-visual/spec.md",
+      ".spec/features/fundacao-visual/tasks.md",
+      ".spec/features/identidade-papel/spec.md",
+      ".spec/features/identidade-papel/tasks.md",
+      ".spec/features/logos-acoes/spec.md",
+      ".spec/features/logos-acoes/tasks.md",
+      ".spec/features/migracao-react/prd.md",
+      ".spec/features/migracao-react/adr.md",
+      ".spec/features/migracao-react/design.md",
+      ".spec/features/migracao-react/spec.md",
+      ".spec/features/migracao-react/tasks.md",
+      ".spec/features/migracao-react/research.md",
+      ".spec/features/operacoes/spec.md",
+      ".spec/features/operacoes/tasks.md",
+      ".spec/features/painel/spec.md",
+      ".spec/features/painel/tasks.md",
+      ".spec/features/repaginacao-acesso/spec.md",
+      ".spec/features/repaginacao-acesso/tasks.md",
+      ".spec/features/repaginacao-desempenho/spec.md",
+      ".spec/features/repaginacao-desempenho/tasks.md",
+      ".spec/features/repaginacao-painel/spec.md",
+      ".spec/features/repaginacao-painel/tasks.md",
+      ".spec/features/repaginacao-tabelas/spec.md",
+      ".spec/features/repaginacao-tabelas/tasks.md",
+      ".spec/features/repaginacao-visual/spec.md",
+      ".spec/features/repaginacao-visual/tasks.md",
+      ".spec/features/situacao-cadastral/spec.md",
+      ".spec/features/situacao-cadastral/tasks.md",
+      ".spec/features/visibilidade-da-senha/spec.md",
+      ".spec/features/visibilidade-da-senha/tasks.md",
+      ".spec/constituicao.md",
+      "onpspec.config.json"
+    ]
+  }
+}

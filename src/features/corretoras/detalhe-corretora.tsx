@@ -12,7 +12,7 @@ import { MensagemFeedback } from '@/core/feedback/mensagem-feedback';
 import { formatarData } from '@/core/formatacao/formatacao';
 import { sessao } from '@/core/sessao/sessao.service';
 import { formatarCnpj } from './cnpj';
-import { Corretora, nomeExibido } from './corretoras.model';
+import { Corretora, nomeExibido, situacaoLegivel } from './corretoras.model';
 import { corretorasService } from './corretoras.service';
 
 type Erro = { texto: string; codigo: string | null };
@@ -125,7 +125,7 @@ export function DetalheCorretora() {
     ? [
         ['Razão social', corretora.razaoSocial],
         ['Nome fantasia', corretora.nomeFantasia],
-        ['Situação cadastral', corretora.situacaoCadastral],
+        ['Situação cadastral', situacaoLegivel(corretora.situacaoCadastral)],
         ['E-mail', corretora.email],
         ['Telefone', corretora.telefone],
         ['CEP', corretora.cep],
