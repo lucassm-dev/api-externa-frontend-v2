@@ -1,7 +1,7 @@
 {
   "feature": "estrutura-visual",
-  "timestamp": "2026-11-27T05:10:05.799Z",
-  "gitRev": "68181bb",
+  "timestamp": "2026-11-27T19:42:02.074Z",
+  "gitRev": "ec93268",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
@@ -9,32 +9,32 @@
   "results": {
     "AC-376": {
       "status": "pass",
-      "testName": "src/layout/estrutura.spec.tsx > Coluna central > @spec:AC-376 o conteúdo fica numa coluna central e a barra do topo alinha com ela # time=119.16ms",
+      "testName": "src/layout/estrutura.spec.tsx > Coluna central > @spec:AC-376 o conteúdo fica numa coluna central e a barra do topo alinha com ela # time=134.32ms",
       "method": "tap"
     },
     "AC-377": {
       "status": "pass",
-      "testName": "src/layout/estrutura.spec.tsx > Coluna central > @spec:AC-377 Minha conta e os formulários ficam no centro da coluna # time=128.20ms",
+      "testName": "src/layout/estrutura.spec.tsx > Coluna central > @spec:AC-377 Minha conta e os formulários ficam no centro da coluna # time=151.15ms",
       "method": "tap"
     },
     "AC-378": {
       "status": "pass",
-      "testName": "src/layout/estrutura.spec.tsx > Telas na língua do kit > @spec:AC-378 escolher foto é um botão do kit com o campo de arquivo dentro e a dica ligada # time=22.86ms",
+      "testName": "src/layout/estrutura.spec.tsx > Telas na língua do kit > @spec:AC-378 escolher foto é um botão do kit com o campo de arquivo dentro e a dica ligada # time=48.26ms",
       "method": "tap"
     },
     "AC-379": {
       "status": "pass",
-      "testName": "src/layout/estrutura.spec.tsx > Telas na língua do kit > @spec:AC-379 filtros do extrato num cartão e tabela de usuários na largura da coluna # time=263.93ms",
+      "testName": "src/layout/estrutura.spec.tsx > Telas na língua do kit > @spec:AC-379 filtros do extrato num cartão e tabela de usuários na largura da coluna # time=97.56ms",
       "method": "tap"
     },
     "AC-387": {
       "status": "pass",
-      "testName": "src/features/desempenho/blocos/grafico-investido-mercado.spec.tsx > Gráfico de investido × valor de mercado > @spec:AC-387 o conteúdo fica no topo do cartão quando a linha é mais alta # time=1.58ms",
+      "testName": "src/features/desempenho/blocos/grafico-investido-mercado.spec.tsx > Gráfico de investido × valor de mercado > @spec:AC-387 o conteúdo fica no topo do cartão quando a linha é mais alta # time=2.91ms",
       "method": "tap"
     },
     "AC-388": {
       "status": "pass",
-      "testName": "src/features/desempenho/blocos/grafico-quadrante.spec.tsx > Gráfico de quadrante participação × rentabilidade > @spec:AC-388 bolhas sobrepostas não cobrem os rótulos: só a maior mostra o ticker, e todas seguem na lista # time=4.43ms",
+      "testName": "src/features/desempenho/blocos/grafico-quadrante.spec.tsx > Gráfico de quadrante participação × rentabilidade > @spec:AC-388 bolhas sobrepostas não cobrem os rótulos: só a maior mostra o ticker, e todas seguem na lista # time=7.99ms",
       "method": "tap"
     }
   },

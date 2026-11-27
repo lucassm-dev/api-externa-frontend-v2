@@ -48,7 +48,7 @@ com que conta e com que permissões estou trabalhando.
 - **Então** a sessão é encerrada, o formulário de login continua na tela com a mensagem
   de erro, e nenhuma área interna abre
 
-### US-087 — Ver só o que o meu papel pode usar
+### ~~US-087~~ — Ver só o que o meu papel pode usar (superado por administracao, AC-348, e relatorios, AC-401)
 
 Como administrador, quero que o menu e as rotas mostrem só as áreas que eu posso usar,
 para que eu não caia em telas que o servidor recusa.
@@ -65,7 +65,7 @@ para que eu não caia em telas que o servidor recusa.
 - **Quando** ele abre direto Painel, Carteiras, Operações ou Desempenho pelo endereço
 - **Então** é levado a Corretoras sem nenhuma requisição dessas áreas sair
 
-#### AC-316 — O investidor continua com todas as áreas
+#### ~~AC-316~~ — O investidor continua com todas as áreas (superado por relatorios, AC-401)
 
 - **Dado** um investidor conectado
 - **Quando** a área interna abre

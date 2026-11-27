@@ -16,5 +16,6 @@ export const AREAS_DO_PRODUTO: AreaDoProduto[] = [
   { rota: '/carteiras', somenteInvestidor: true, rotulo: 'Carteiras' },
   { rota: '/acoes', rotulo: 'Ações' },
   { rota: '/operacoes', somenteInvestidor: true, rotulo: 'Operações' },
+  { rota: '/relatorios', somenteInvestidor: true, rotulo: 'Relatórios' },
   { rota: '/desempenho', somenteInvestidor: true, rotulo: 'Desempenho' },
 ];

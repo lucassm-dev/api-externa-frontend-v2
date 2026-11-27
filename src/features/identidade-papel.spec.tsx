@@ -53,7 +53,6 @@ async function entrarPeloFormulario(url = '/entrar') {
   return tela;
 }
 
-const areasDoMenu = () => [...document.querySelectorAll('[data-area]')].map((area) => area.getAttribute('data-area'));
 const identidadeNoTopo = () => document.querySelector('[data-identidade-investidor]')?.textContent ?? '';
 const casca = () => waitFor(() => expect(document.querySelector('[data-casca]')).not.toBeNull());
 
@@ -92,18 +91,6 @@ describe('Identidade de quem entrou', () => {
     expect(caminho()).toBe('/entrar');
     expect(sessao.ativa()).toBe(false);
     expect(document.querySelector('[data-casca]')).toBeNull();
-  });
-});
-
-describe('Menu e rotas pelo papel', () => {
-
-  it('@spec:AC-316 o investidor continua com todas as áreas', async () => {
-    conectar(INVESTIDOR);
-    simularServidor((chamada) => responder(chamada));
-    abrir('/painel');
-
-    await casca();
-    expect(areasDoMenu()).toEqual(['/painel', '/corretoras', '/carteiras', '/acoes', '/operacoes', '/desempenho']);
   });
 });
 

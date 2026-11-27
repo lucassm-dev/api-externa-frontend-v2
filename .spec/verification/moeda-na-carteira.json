@@ -1,7 +1,7 @@
 {
   "feature": "moeda-na-carteira",
-  "timestamp": "2026-11-27T05:11:24.037Z",
-  "gitRev": "68181bb",
+  "timestamp": "2026-11-27T19:43:31.888Z",
+  "gitRev": "ec93268",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
@@ -9,17 +9,17 @@
   "results": {
     "AC-391": {
       "status": "pass",
-      "testName": "src/features/carteiras/moeda-das-posicoes.spec.tsx > Moeda das posições na carteira > @spec:AC-391 posição em ação americana aparece em dólar # time=91.28ms",
+      "testName": "src/features/carteiras/moeda-das-posicoes.spec.tsx > Moeda das posições na carteira > @spec:AC-391 posição em ação americana aparece em dólar # time=89.18ms",
       "method": "tap"
     },
     "AC-392": {
       "status": "pass",
-      "testName": "src/features/carteiras/moeda-das-posicoes.spec.tsx > Moeda das posições na carteira > @spec:AC-392 posição em ação brasileira continua em real # time=5.68ms",
+      "testName": "src/features/carteiras/moeda-das-posicoes.spec.tsx > Moeda das posições na carteira > @spec:AC-392 posição em ação brasileira continua em real # time=17.86ms",
       "method": "tap"
     },
     "AC-393": {
       "status": "pass",
-      "testName": "src/features/carteiras/moeda-das-posicoes.spec.tsx > Moeda das posições na carteira > @spec:AC-393 sem saber a moeda, o valor aparece sem símbolo # time=16.20ms",
+      "testName": "src/features/carteiras/moeda-das-posicoes.spec.tsx > Moeda das posições na carteira > @spec:AC-393 sem saber a moeda, o valor aparece sem símbolo # time=12.06ms",
       "method": "tap"
     }
   },
