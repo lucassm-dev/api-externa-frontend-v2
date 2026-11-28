@@ -259,8 +259,8 @@ describe('Foto de perfil', () => {
     conectar();
     abrir('/conta');
 
-    await escolher(new File([new Uint8Array(2 * 1024 * 1024 + 1)], 'grande.png', { type: 'image/png' }));
-    await waitFor(() => expect(secao('foto')?.textContent).toContain('no máximo 2 MB'));
+    await escolher(new File([new Uint8Array(10 * 1024 * 1024 + 1)], 'grande.png', { type: 'image/png' }));
+    await waitFor(() => expect(secao('foto')?.textContent).toContain('no máximo 10 MB'));
 
     await escolher(new File(['gif'], 'eu.gif', { type: 'image/gif' }));
     await waitFor(() => expect(secao('foto')?.textContent).toContain('JPEG, PNG ou WebP'));

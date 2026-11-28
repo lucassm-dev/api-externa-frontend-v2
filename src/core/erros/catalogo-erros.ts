@@ -136,7 +136,7 @@ export const CATALOGO_ERROS: Record<string, EntradaCatalogo> = {
     comportamento: 'permanecer-no-formulario',
   },
   'AUT-016': {
-    mensagem: 'A foto pode ter no máximo 2 MB.',
+    mensagem: 'A foto pode ter no máximo 10 MB.',
     comportamento: 'permanecer-no-formulario',
     campoDestacado: 'arquivo',
   },

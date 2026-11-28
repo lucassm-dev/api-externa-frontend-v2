@@ -128,14 +128,14 @@ a minha conta no topo.
 
 #### AC-336 — Enviar uma foto válida a mostra na página e no topo
 
-- **Dado** um arquivo JPEG, PNG ou WebP de até 2 MB
+- **Dado** um arquivo JPEG, PNG ou WebP de até 10 MB
 - **Quando** o usuário o escolhe na seção Foto
 - **Então** sai `PUT /auth/me/foto` em `multipart/form-data` no campo `arquivo`, e a foto
   nova aparece na página e no avatar do topo
 
 #### AC-337 — Arquivo grande demais ou de outro tipo não sai
 
-- **Dado** um arquivo com mais de 2 MB, ou que não seja JPEG, PNG ou WebP
+- **Dado** um arquivo com mais de 10 MB, ou que não seja JPEG, PNG ou WebP
 - **Quando** o usuário o escolhe
 - **Então** a seção diz o limite ou os tipos aceitos e nenhuma requisição sai; se o
   servidor recusar mesmo assim (`AUT-016`, `AUT-017`), a mesma mensagem aparece

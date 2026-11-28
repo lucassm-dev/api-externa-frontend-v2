@@ -10,13 +10,13 @@ export interface DadosPessoais {
   email: string;
 }
 
-export const LIMITE_FOTO_BYTES = 2 * 1024 * 1024;
+export const LIMITE_FOTO_BYTES = 10 * 1024 * 1024;
 export const TIPOS_DE_FOTO = ['image/jpeg', 'image/png', 'image/webp'];
 
 /** Mesmos textos de AUT-016 e AUT-017: recusar antes ou depois de enviar diz a mesma coisa. */
 export function problemaDaFoto(arquivo: File): string | null {
   if (!TIPOS_DE_FOTO.includes(arquivo.type)) return 'Envie a foto em JPEG, PNG ou WebP.';
-  if (arquivo.size > LIMITE_FOTO_BYTES) return 'A foto pode ter no máximo 2 MB.';
+  if (arquivo.size > LIMITE_FOTO_BYTES) return 'A foto pode ter no máximo 10 MB.';
   return null;
 }
 
