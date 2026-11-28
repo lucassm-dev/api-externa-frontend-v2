@@ -1,7 +1,7 @@
 {
   "feature": "resumo-operacao",
-  "timestamp": "2026-11-28T03:08:36.518Z",
-  "gitRev": "f93cee2",
+  "timestamp": "2026-11-28T06:27:36.027Z",
+  "gitRev": "787a412",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
@@ -9,22 +9,22 @@
   "results": {
     "AC-402": {
       "status": "pass",
-      "testName": "src/features/operacoes/operacoes.spec.tsx > Resumo ao vivo da operação > @spec:AC-402 sem carteira e ação, o cartão ao lado diz o que vai aparecer # time=52.24ms",
+      "testName": "src/features/operacoes/operacoes.spec.tsx > Resumo ao vivo da operação > @spec:AC-402 sem carteira e ação, o cartão ao lado diz o que vai aparecer # time=18.48ms",
       "method": "tap"
     },
     "AC-403": {
       "status": "pass",
-      "testName": "src/features/operacoes/operacoes.spec.tsx > Resumo ao vivo da operação > @spec:AC-403 a ação escolhida aparece com logo, nome e cotação com horário # time=44.40ms",
+      "testName": "src/features/operacoes/operacoes.spec.tsx > Resumo ao vivo da operação > @spec:AC-403 a ação escolhida aparece com logo, nome e cotação com horário # time=29.12ms",
       "method": "tap"
     },
     "AC-404": {
       "status": "pass",
-      "testName": "src/features/operacoes/operacoes.spec.tsx > Resumo ao vivo da operação > @spec:AC-404 mostra a posição na carteira; na venda, como disponível; sem posição, diz que não tem # time=46.08ms",
+      "testName": "src/features/operacoes/operacoes.spec.tsx > Resumo ao vivo da operação > @spec:AC-404 mostra a posição na carteira; na venda, como disponível; sem posição, diz que não tem # time=72.18ms",
       "method": "tap"
     },
     "AC-405": {
       "status": "pass",
-      "testName": "src/features/operacoes/operacoes.spec.tsx > Resumo ao vivo da operação > @spec:AC-405 depois de registrar o comprovante ocupa o lugar do resumo; mexer no formulário traz o resumo de volta # time=71.15ms",
+      "testName": "src/features/operacoes/operacoes.spec.tsx > Resumo ao vivo da operação > @spec:AC-405 depois de registrar o comprovante ocupa o lugar do resumo; mexer no formulário traz o resumo de volta # time=62.58ms",
       "method": "tap"
     }
   },

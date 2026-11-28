@@ -1,7 +1,7 @@
 {
   "feature": "situacao-cadastral",
-  "timestamp": "2026-11-28T03:08:49.347Z",
-  "gitRev": "f93cee2",
+  "timestamp": "2026-11-28T06:27:46.861Z",
+  "gitRev": "787a412",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
@@ -9,7 +9,7 @@
   "results": {
     "AC-389": {
       "status": "pass",
-      "testName": "src/features/corretoras/situacao-cadastral.spec.ts > Situação cadastral legível > @spec:AC-389 o código da Receita aparece pelo nome # time=1.61ms",
+      "testName": "src/features/corretoras/situacao-cadastral.spec.ts > Situação cadastral legível > @spec:AC-389 o código da Receita aparece pelo nome # time=1.30ms",
       "method": "tap"
     },
     "AC-390": {

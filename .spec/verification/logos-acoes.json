@@ -1,25 +1,25 @@
 {
   "feature": "logos-acoes",
-  "timestamp": "2026-11-28T03:06:00.329Z",
-  "gitRev": "f93cee2",
+  "timestamp": "2026-11-28T06:25:34.292Z",
+  "gitRev": "787a412",
   "command": "npm test --silent",
   "reporter": "tap",
-  "exitCode": 1,
+  "exitCode": 0,
   "testsParsed": 712,
   "results": {
     "AC-380": {
       "status": "pass",
-      "testName": "src/shared/shared.spec.tsx > Monograma do ativo > @spec:AC-380 o ativo mostra o logo da brapi, decorativo, com o ticker anunciado por fora # time=6.84ms",
+      "testName": "src/shared/shared.spec.tsx > Monograma do ativo > @spec:AC-380 o ativo mostra o logo da brapi, decorativo, com o ticker anunciado por fora # time=6.83ms",
       "method": "tap"
     },
     "AC-381": {
       "status": "pass",
-      "testName": "src/shared/shared.spec.tsx > Monograma do ativo > @spec:AC-381 sem logo, ícone na cor do ativo e nenhuma letra; ticker novo tenta o logo de novo # time=5.79ms",
+      "testName": "src/shared/shared.spec.tsx > Monograma do ativo > @spec:AC-381 sem logo, ícone na cor do ativo e nenhuma letra; ticker novo tenta o logo de novo # time=25.91ms",
       "method": "tap"
     },
     "AC-382": {
       "status": "pass",
-      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-382 o logo que o backend manda aparece antes do símbolo; sem ele, ou se falhar, só o texto # time=18.65ms",
+      "testName": "src/features/painel/blocos/barra-mercado.spec.tsx > Barra de mercado > @spec:AC-382 o logo que o backend manda aparece antes do símbolo; sem ele, ou se falhar, só o texto # time=11.38ms",
       "method": "tap"
     }
   },

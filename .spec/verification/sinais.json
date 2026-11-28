@@ -6269,19 +6269,19 @@
       "codigo": "REVISAO_IMPACTO_PENDENTE",
       "feature": "conta",
       "ref": ".spec/features/conta/governance.json",
-      "ocorrencias": 3,
+      "ocorrencias": 5,
       "primeiraVez": "2026-11-25T03:08:18.604Z",
-      "ultimaVez": "2026-11-25T03:28:07.732Z",
-      "gitRev": "ae7dc19"
+      "ultimaVez": "2026-11-28T06:28:16.152Z",
+      "gitRev": "787a412"
     },
     "DECISAO_CLIENTE_PENDENTE::conta::.spec/features/conta/governance.json": {
       "codigo": "DECISAO_CLIENTE_PENDENTE",
       "feature": "conta",
       "ref": ".spec/features/conta/governance.json",
-      "ocorrencias": 56,
+      "ocorrencias": 88,
       "primeiraVez": "2026-11-25T03:08:18.604Z",
-      "ultimaVez": "2026-11-25T03:28:20.355Z",
-      "gitRev": "ae7dc19"
+      "ultimaVez": "2026-11-28T06:28:16.153Z",
+      "gitRev": "787a412"
     },
     "REF_QUEBRADA::acesso::T-017": {
       "codigo": "REF_QUEBRADA",
