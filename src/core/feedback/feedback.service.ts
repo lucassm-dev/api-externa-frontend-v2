@@ -9,6 +9,8 @@ export interface MensagemDeFeedback {
   bloqueia: boolean;
 }
 
+const DURACAO_MS = 5000;
+
 /** Mesma fila do FeedbackService do Angular; a lista é trocada, nunca mutada. */
 export class FeedbackService {
   private proximoId = 1;
@@ -55,7 +57,11 @@ export class FeedbackService {
   }
 
   private empilhar(nivel: NivelFeedback, texto: string, codigo: string | null): void {
-    this.trocar([...this.fila, { id: this.proximoId++, nivel, texto, codigo, bloqueia: nivel === 'erro' }]);
+    const id = this.proximoId++;
+    const bloqueia = nivel === 'erro';
+    this.trocar([...this.fila, { id, nivel, texto, codigo, bloqueia }]);
+    // Mesma regra da notificação de sucesso (Q-028): o que não bloqueia sai sozinho; erro espera a dispensa (AC-406, AC-407).
+    if (!bloqueia) setTimeout(() => this.descartar(id), DURACAO_MS);
   }
 
   private trocar(fila: MensagemDeFeedback[]): void {

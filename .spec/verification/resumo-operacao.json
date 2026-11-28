@@ -1,30 +1,30 @@
 {
   "feature": "resumo-operacao",
-  "timestamp": "2026-11-27T21:12:22.083Z",
-  "gitRev": "10d5c6b",
+  "timestamp": "2026-11-28T03:08:36.518Z",
+  "gitRev": "f93cee2",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 709,
+  "testsParsed": 712,
   "results": {
     "AC-402": {
       "status": "pass",
-      "testName": "src/features/operacoes/operacoes.spec.tsx > Resumo ao vivo da operação > @spec:AC-402 sem carteira e ação, o cartão ao lado diz o que vai aparecer # time=33.41ms",
+      "testName": "src/features/operacoes/operacoes.spec.tsx > Resumo ao vivo da operação > @spec:AC-402 sem carteira e ação, o cartão ao lado diz o que vai aparecer # time=52.24ms",
       "method": "tap"
     },
     "AC-403": {
       "status": "pass",
-      "testName": "src/features/operacoes/operacoes.spec.tsx > Resumo ao vivo da operação > @spec:AC-403 a ação escolhida aparece com logo, nome e cotação com horário # time=31.54ms",
+      "testName": "src/features/operacoes/operacoes.spec.tsx > Resumo ao vivo da operação > @spec:AC-403 a ação escolhida aparece com logo, nome e cotação com horário # time=44.40ms",
       "method": "tap"
     },
     "AC-404": {
       "status": "pass",
-      "testName": "src/features/operacoes/operacoes.spec.tsx > Resumo ao vivo da operação > @spec:AC-404 mostra a posição na carteira; na venda, como disponível; sem posição, diz que não tem # time=50.48ms",
+      "testName": "src/features/operacoes/operacoes.spec.tsx > Resumo ao vivo da operação > @spec:AC-404 mostra a posição na carteira; na venda, como disponível; sem posição, diz que não tem # time=46.08ms",
       "method": "tap"
     },
     "AC-405": {
       "status": "pass",
-      "testName": "src/features/operacoes/operacoes.spec.tsx > Resumo ao vivo da operação > @spec:AC-405 depois de registrar o comprovante ocupa o lugar do resumo; mexer no formulário traz o resumo de volta # time=85.22ms",
+      "testName": "src/features/operacoes/operacoes.spec.tsx > Resumo ao vivo da operação > @spec:AC-405 depois de registrar o comprovante ocupa o lugar do resumo; mexer no formulário traz o resumo de volta # time=71.15ms",
       "method": "tap"
     }
   },
