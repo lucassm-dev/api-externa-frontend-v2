@@ -1,20 +1,20 @@
 {
   "feature": "filtros-extrato",
-  "timestamp": "2026-11-27T19:46:50.497Z",
-  "gitRev": "ec93268",
+  "timestamp": "2026-11-27T21:09:04.423Z",
+  "gitRev": "10d5c6b",
   "command": "npm test --silent",
   "reporter": "tap",
-  "exitCode": 0,
-  "testsParsed": 704,
+  "exitCode": 1,
+  "testsParsed": 709,
   "results": {
     "AC-341": {
       "status": "pass",
-      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Recortar o extrato > @spec:AC-341 sem filtro, a leitura leva só page e size # time=154.79ms",
+      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Recortar o extrato > @spec:AC-341 sem filtro, a leitura leva só page e size # time=172.96ms",
       "method": "tap"
     },
     "AC-345": {
       "status": "pass",
-      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Recortar o extrato > @spec:AC-345 o link do detalhe da carteira preenche o formulário e não filtra o extrato # time=47.57ms",
+      "testName": "src/features/operacoes/filtros-extrato.spec.tsx > Recortar o extrato > @spec:AC-345 o link do detalhe da carteira preenche o formulário e não filtra o extrato # time=35.77ms",
       "method": "tap"
     }
   },

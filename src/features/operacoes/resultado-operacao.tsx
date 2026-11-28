@@ -39,7 +39,7 @@ export function ResultadoOperacao({ operacao }: { operacao: Operacao }) {
   }
 
   return (
-    <section data-resultado aria-labelledby="titulo-resultado" className="grid max-w-[35rem] gap-4 rounded-grande border border-sucesso-borda bg-superficie p-5 shadow-cartao max-sm:p-4">
+    <section data-resultado aria-labelledby="titulo-resultado" className="grid content-start gap-4 rounded-grande border border-sucesso-borda bg-superficie p-5 shadow-cartao max-sm:p-4">
       <header className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <h2 id="titulo-resultado" data-confirmacao className="m-0 flex items-center gap-2 text-medio font-semibold text-sucesso-texto">
           <CircleCheck aria-hidden="true" focusable="false" className="size-5 flex-none" />

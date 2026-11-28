@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { Botao } from '@/components/ui/botao';
 import { CaixaDeMarcar } from '@/components/ui/caixa-de-marcar';
 import { Campo } from '@/components/ui/campo';
@@ -6,15 +6,15 @@ import { GrupoDeOpcoes } from '@/components/ui/grupo-de-opcoes';
 import { Selecao } from '@/components/ui/selecao';
 import { CATALOGO_ERROS } from '@/core/erros/catalogo-erros';
 import { ErroTraduzido } from '@/core/erros/tradutor-erro';
-import { formatarMoeda, formatarNumero } from '@/core/formatacao/formatacao';
+import { formatarNumero } from '@/core/formatacao/formatacao';
 import { Acao } from '@/features/acoes/acoes.model';
 import { acoesService } from '@/features/acoes/acoes.service';
 import { Carteira } from '@/features/carteiras/carteiras.model';
 import { carteirasService } from '@/features/carteiras/carteiras.service';
-import { ValorComHorario } from '@/shared/valor-com-horario';
 import { AcaoVendavel, acoesVendaveis, disponivelDe, vendaExcedePosicao } from './disponivel-para-venda';
 import { CATALOGO_POR_VARREDURA, NovaOperacao, TIPOS_DE_OPERACAO, TipoOperacao, opcaoDeTipo } from './operacoes.model';
 import { estimarOperacao, precoManualTemCasasDemais } from './preco-da-operacao';
+import { Estimativa, ResumoOperacao } from './resumo-operacao';
 
 export const ID_CAMPO_CARTEIRA = 'operacao-carteira';
 
@@ -34,6 +34,9 @@ interface Props {
   tipoInicial: TipoOperacao;
   enviando: boolean;
   aoRegistrar: (pedido: PedidoDeRegistro) => Promise<DesfechoDoRegistro>;
+  /** Ocupa o lugar do resumo até o investidor mexer de novo no formulário (AC-405). */
+  comprovante?: ReactNode;
+  aoMexer?: () => void;
 }
 
 const numeroOuNulo = (texto: string): number | null => (texto ? Number(texto) : null);
@@ -53,7 +56,7 @@ const numeroOuNulo = (texto: string): number | null => (texto ? Number(texto) : 
  * endpoint de preço para operação, e o backend pode buscar preço novo se o
  * cache tiver vencido (ASM-040).
  */
-export function FormularioOperacao({ carteiraInicial, tipoInicial, enviando, aoRegistrar }: Props) {
+export function FormularioOperacao({ carteiraInicial, tipoInicial, enviando, aoRegistrar, comprovante, aoMexer }: Props) {
   const [tipo, setTipo] = useState<TipoOperacao>(tipoInicial);
   const [carteiraId, setCarteiraId] = useState<number | null>(carteiraInicial);
   const [ticker, setTicker] = useState<string | null>(null);
@@ -122,13 +125,22 @@ export function FormularioOperacao({ carteiraInicial, tipoInicial, enviando, aoR
     return doCatalogo ? { valor: doCatalogo.cotacaoAtual, obtidoEm: doCatalogo.dataHoraCotacao } : null;
   })();
 
-  const moedaDaAcao = catalogo.find((acao) => acao.ticker === ticker)?.moeda ?? 'BRL';
+  const doCatalogo = catalogo.find((acao) => acao.ticker === ticker);
+  const moedaDaAcao = doCatalogo?.moeda ?? 'BRL';
+  const vendavel = vendaveis.find((acao) => acao.ticker === ticker);
+  const acaoEscolhida = ticker ? { ticker, nomeEmpresa: (doCatalogo ?? vendavel)?.nomeEmpresa ?? '' } : null;
+  const posicaoDaAcao =
+    carteiraId === null || carregandoPosicoes
+      ? undefined
+      : vendavel
+        ? { quantidade: vendavel.quantidadeDisponivel, precoMedio: vendavel.precoMedio }
+        : null;
 
   /**
    * Estimativa, nunca promessa. Com preço manual ativo o número é exato, porque
    * é o que o investidor mandou usar; sem ele, sai da última cotação conhecida.
    */
-  const estimativa = precoManualAtivo
+  const estimativa: Estimativa | null = precoManualAtivo
     ? precoManual && quantidade
       ? { precoUnitario: precoManual, valorTotal: precoManual * quantidade, obtidoEm: null }
       : null
@@ -148,6 +160,7 @@ export function FormularioOperacao({ carteiraInicial, tipoInicial, enviando, aoR
    */
   const escolherTipo = (novo: TipoOperacao) => {
     if (novo === tipo) return;
+    aoMexer?.();
     setTipo(novo);
     setTicker(null);
     setQuantidade(null);
@@ -157,6 +170,7 @@ export function FormularioOperacao({ carteiraInicial, tipoInicial, enviando, aoR
   };
 
   const escolherCarteira = (id: number | null) => {
+    aoMexer?.();
     setCarteiraId(id);
     setTicker(null);
     setQuantidade(null);
@@ -222,137 +236,145 @@ export function FormularioOperacao({ carteiraInicial, tipoInicial, enviando, aoR
   ) : null;
 
   return (
-    <form
-      onSubmit={(evento) => void enviar(evento)}
-      noValidate
-      aria-label="Registrar operação"
-      className="grid max-w-[35rem] gap-5 rounded-grande border border-borda bg-superficie p-5 shadow-cartao max-sm:p-4"
-    >
-      <GrupoDeOpcoes
-        data-seletor-tipo
-        legenda="O que você vai registrar"
-        opcoes={TIPOS_DE_OPERACAO}
-        valor={tipo}
-        aoEscolher={escolherTipo}
-      />
-
-      <div className="grid gap-4 sm:grid-cols-2">
-        <Selecao
-          empilhado
-          id={ID_CAMPO_CARTEIRA}
-          rotulo="Carteira"
-          data-campo-carteira
-          value={carteiraId ?? ''}
-          onChange={(evento) => escolherCarteira(evento.target.value ? Number(evento.target.value) : null)}
-        >
-          <option value="">Escolha a carteira</option>
-          {carteiras.map((carteira) => (
-            <option key={carteira.id} value={carteira.id}>
-              {carteira.nome} · {carteira.nomeCorretora}
-            </option>
-          ))}
-        </Selecao>
-
-        <Selecao
-          empilhado
-          rotulo="Ação"
-          data-campo-acao
-          value={ticker ?? ''}
-          onChange={(evento) => setTicker(evento.target.value || null)}
-          dica={
-            ehVenda && carteiraId !== null && !carregandoPosicoes && acoesOferecidas.length === 0 ? (
-              <span data-sem-posicao>Esta carteira não tem nenhuma posição aberta para vender.</span>
-            ) : undefined
-          }
-        >
-          <option value="">Escolha a ação</option>
-          {acoesOferecidas.map((acao) => (
-            <option key={acao.ticker} value={acao.ticker}>
-              {acao.ticker} · {acao.nomeEmpresa}
-            </option>
-          ))}
-        </Selecao>
-      </div>
-
-      <Campo
-        rotulo="Quantidade"
-        type="number"
-        min={1}
-        step={1}
-        inputMode="numeric"
-        data-campo-quantidade
-        value={quantidade ?? ''}
-        onChange={(evento) => setQuantidade(numeroOuNulo(evento.target.value))}
-        dica={disponivel !== null ? <span data-disponivel>Disponível para venda: {formatarNumero(disponivel, 0)} unidades.</span> : undefined}
-        erro={erroNaQuantidade}
-        className="sm:max-w-[calc(50%-0.5rem)]"
-      />
-
-      <div className="grid gap-3 border-t border-borda pt-4">
-        <CaixaDeMarcar
-          rotulo="Informar preço manualmente"
-          data-preco-manual
-          checked={precoManualAtivo}
-          onChange={(evento) => {
-            setPrecoManualAtivo(evento.target.checked);
-            if (!evento.target.checked) setPrecoManual(null);
-            setErroDeCampo(null);
-          }}
-          className="justify-self-start"
+    <div className="grid items-start gap-4 xl:grid-cols-[35rem_minmax(0,1fr)]">
+      <form
+        onSubmit={(evento) => void enviar(evento)}
+        noValidate
+        aria-label="Registrar operação"
+        className="grid max-w-[35rem] gap-5 rounded-grande border border-borda bg-superficie p-5 shadow-cartao max-sm:p-4"
+      >
+        <GrupoDeOpcoes
+          data-seletor-tipo
+          legenda="O que você vai registrar"
+          opcoes={TIPOS_DE_OPERACAO}
+          valor={tipo}
+          aoEscolher={escolherTipo}
         />
-        {precoManualAtivo ? (
-          <Campo
-            rotulo="Preço unitário"
-            type="number"
-            min={0}
-            step={0.01}
-            inputMode="decimal"
-            data-campo-preco
-            value={precoManual ?? ''}
-            onChange={(evento) => setPrecoManual(numeroOuNulo(evento.target.value))}
-            erro={erroNoPreco}
-            className="sm:max-w-[calc(50%-0.5rem)]"
-          />
-        ) : (
-          <p className="m-0 text-apoio text-texto-fraco">Sem preço informado, a operação usa o preço de mercado no momento do registro.</p>
-        )}
-      </div>
 
-      {estimativa && (
-        <div data-estimativa aria-live="polite" className="grid gap-2 rounded border border-borda bg-fundo p-4">
-          <h3 className="m-0 text-rotulo font-medium uppercase tracking-(--entrelinha-rotulo) text-texto-fraco">Estimativa desta operação</h3>
-          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-            {estimativa.obtidoEm ? (
-              <ValorComHorario valor={estimativa.precoUnitario} moeda={moedaDaAcao} obtidoEm={estimativa.obtidoEm} />
-            ) : (
-              <span data-preco-informado className="text-apoio text-texto-fraco">
-                Preço que você informou
-              </span>
-            )}
-            <p className="m-0 flex items-baseline gap-2">
-              <span className="text-apoio text-texto-fraco">Total estimado</span>
-              <strong data-total-estimado className="font-numero text-medio font-semibold tabular-nums">
-                {formatarMoeda(estimativa.valorTotal, moedaDaAcao)}
-              </strong>
-            </p>
-          </div>
-          <p data-ressalva-estimativa className="m-0 max-w-[65ch] text-rotulo text-texto-fraco">
-            {estimativa.obtidoEm
-              ? 'Este é o preço da última cotação conhecida — uma estimativa. O preço efetivamente registrado pode ser outro, e ele aparece na confirmação.'
-              : 'O total usa o preço que você informou.'}
-          </p>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Selecao
+            empilhado
+            id={ID_CAMPO_CARTEIRA}
+            rotulo="Carteira"
+            data-campo-carteira
+            value={carteiraId ?? ''}
+            onChange={(evento) => escolherCarteira(evento.target.value ? Number(evento.target.value) : null)}
+          >
+            <option value="">Escolha a carteira</option>
+            {carteiras.map((carteira) => (
+              <option key={carteira.id} value={carteira.id}>
+                {carteira.nome} · {carteira.nomeCorretora}
+              </option>
+            ))}
+          </Selecao>
+
+          <Selecao
+            empilhado
+            rotulo="Ação"
+            data-campo-acao
+            value={ticker ?? ''}
+            onChange={(evento) => {
+              aoMexer?.();
+              setTicker(evento.target.value || null);
+            }}
+            dica={
+              ehVenda && carteiraId !== null && !carregandoPosicoes && acoesOferecidas.length === 0 ? (
+                <span data-sem-posicao>Esta carteira não tem nenhuma posição aberta para vender.</span>
+              ) : undefined
+            }
+          >
+            <option value="">Escolha a ação</option>
+            {acoesOferecidas.map((acao) => (
+              <option key={acao.ticker} value={acao.ticker}>
+                {acao.ticker} · {acao.nomeEmpresa}
+              </option>
+            ))}
+          </Selecao>
         </div>
-      )}
 
-      {erroDeCampo && erroDeCampo.campo !== 'quantidade' && erroDeCampo.campo !== 'precoUnitario' && (
-        <p data-erro-geral className="m-0 text-apoio font-medium text-erro-texto">
-          {erroDeCampo.mensagem}
-        </p>
-      )}
+        <Campo
+          rotulo="Quantidade"
+          type="number"
+          min={1}
+          step={1}
+          inputMode="numeric"
+          data-campo-quantidade
+          value={quantidade ?? ''}
+          onChange={(evento) => {
+            aoMexer?.();
+            setQuantidade(numeroOuNulo(evento.target.value));
+          }}
+          dica={
+            disponivel !== null ? <span data-disponivel>Disponível para venda: {formatarNumero(disponivel, 0)} unidades.</span> : undefined
+          }
+          erro={erroNaQuantidade}
+          className="sm:max-w-[calc(50%-0.5rem)]"
+        />
 
-      <Botao intencao="primaria" type="submit" data-confirmar disabled={!podeEnviar} ocupado={enviando} className="max-sm:w-full sm:justify-self-start">
-        {enviando ? 'Registrando…' : opcaoDeTipo(tipo).rotuloDoBotao}
-      </Botao>
-    </form>
+        <div className="grid gap-3 border-t border-borda pt-4">
+          <CaixaDeMarcar
+            rotulo="Informar preço manualmente"
+            data-preco-manual
+            checked={precoManualAtivo}
+            onChange={(evento) => {
+              aoMexer?.();
+              setPrecoManualAtivo(evento.target.checked);
+              if (!evento.target.checked) setPrecoManual(null);
+              setErroDeCampo(null);
+            }}
+            className="justify-self-start"
+          />
+          {precoManualAtivo ? (
+            <Campo
+              rotulo="Preço unitário"
+              type="number"
+              min={0}
+              step={0.01}
+              inputMode="decimal"
+              data-campo-preco
+              value={precoManual ?? ''}
+              onChange={(evento) => {
+                aoMexer?.();
+                setPrecoManual(numeroOuNulo(evento.target.value));
+              }}
+              erro={erroNoPreco}
+              className="sm:max-w-[calc(50%-0.5rem)]"
+            />
+          ) : (
+            <p className="m-0 text-apoio text-texto-fraco">
+              Sem preço informado, a operação usa o preço de mercado no momento do registro.
+            </p>
+          )}
+        </div>
+
+        {erroDeCampo && erroDeCampo.campo !== 'quantidade' && erroDeCampo.campo !== 'precoUnitario' && (
+          <p data-erro-geral className="m-0 text-apoio font-medium text-erro-texto">
+            {erroDeCampo.mensagem}
+          </p>
+        )}
+
+        <Botao
+          intencao="primaria"
+          type="submit"
+          data-confirmar
+          disabled={!podeEnviar}
+          ocupado={enviando}
+          className="max-sm:w-full sm:justify-self-start"
+        >
+          {enviando ? 'Registrando…' : opcaoDeTipo(tipo).rotuloDoBotao}
+        </Botao>
+      </form>
+      {comprovante || (
+        <ResumoOperacao
+          ehVenda={ehVenda}
+          acao={acaoEscolhida}
+          moeda={moedaDaAcao}
+          cotacao={cotacao}
+          posicao={posicaoDaAcao}
+          carteiraEscolhida={carteiraId !== null}
+          estimativa={estimativa}
+        />
+      )}
+    </div>
   );
 }

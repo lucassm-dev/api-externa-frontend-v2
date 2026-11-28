@@ -1,65 +1,65 @@
 {
   "feature": "identidade-papel",
-  "timestamp": "2026-11-27T19:46:37.803Z",
-  "gitRev": "ec93268",
+  "timestamp": "2026-11-27T21:09:41.971Z",
+  "gitRev": "10d5c6b",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
-  "testsParsed": 704,
+  "testsParsed": 709,
   "results": {
     "AC-311": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Identidade de quem entrou > @spec:AC-311 depois do login o topo mostra o nome e o papel vindos de \"quem sou eu\" # time=403.47ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Identidade de quem entrou > @spec:AC-311 depois do login o topo mostra o nome e o papel vindos de \"quem sou eu\" # time=396.08ms",
       "method": "tap"
     },
     "AC-312": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Identidade de quem entrou > @spec:AC-312 administrador sem nome aparece pelo e-mail, com o papel Administrador # time=130.72ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Identidade de quem entrou > @spec:AC-312 administrador sem nome aparece pelo e-mail, com o papel Administrador # time=166.57ms",
       "method": "tap"
     },
     "AC-313": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Identidade de quem entrou > @spec:AC-313 se \"quem sou eu\" falha, a sessão é encerrada e o login continua na tela # time=34.63ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Identidade de quem entrou > @spec:AC-313 se \"quem sou eu\" falha, a sessão é encerrada e o login continua na tela # time=50.45ms",
       "method": "tap"
     },
     "AC-317": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Corretora pelo papel > @spec:AC-317 investidor não vê cadastrar nem remover, e /corretoras/nova volta à lista # time=160.85ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Corretora pelo papel > @spec:AC-317 investidor não vê cadastrar nem remover, e /corretoras/nova volta à lista # time=139.36ms",
       "method": "tap"
     },
     "AC-318": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Corretora pelo papel > @spec:AC-318 administrador cadastra e remove corretora # time=108.07ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Corretora pelo papel > @spec:AC-318 administrador cadastra e remove corretora # time=109.99ms",
       "method": "tap"
     },
     "AC-319": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Ação entra pela pesquisa > @spec:AC-319 incluir pesquisa o ticker no mercado escolhido e abre a ação # time=68.32ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Ação entra pela pesquisa > @spec:AC-319 incluir pesquisa o ticker no mercado escolhido e abre a ação # time=46.56ms",
       "method": "tap"
     },
     "AC-320": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Ação entra pela pesquisa > @spec:AC-320 o formulário abre sem consultar carteiras # time=9.84ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Ação entra pela pesquisa > @spec:AC-320 o formulário abre sem consultar carteiras # time=49.53ms",
       "method": "tap"
     },
     "AC-321": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Ação entra pela pesquisa > @spec:AC-321 o detalhe da ação não oferece remover # time=23.00ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Ação entra pela pesquisa > @spec:AC-321 o detalhe da ação não oferece remover # time=17.16ms",
       "method": "tap"
     },
     "AC-322": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Recusas novas do servidor > @spec:AC-322 conta bloqueada no login é dita no formulário e nenhuma sessão começa # time=53.52ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Recusas novas do servidor > @spec:AC-322 conta bloqueada no login é dita no formulário e nenhuma sessão começa # time=56.17ms",
       "method": "tap"
     },
     "AC-323": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Recusas novas do servidor > @spec:AC-323 conta bloqueada durante o uso encerra a sessão e o login diz o motivo # time=16.95ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Recusas novas do servidor > @spec:AC-323 conta bloqueada durante o uso encerra a sessão e o login diz o motivo # time=14.31ms",
       "method": "tap"
     },
     "AC-324": {
       "status": "pass",
-      "testName": "src/features/identidade-papel.spec.tsx > Recusas novas do servidor > @spec:AC-324 os códigos novos do contrato têm texto próprio e os extintos saem do catálogo # time=0.58ms",
+      "testName": "src/features/identidade-papel.spec.tsx > Recusas novas do servidor > @spec:AC-324 os códigos novos do contrato têm texto próprio e os extintos saem do catálogo # time=0.64ms",
       "method": "tap"
     }
   },

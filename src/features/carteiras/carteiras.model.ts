@@ -39,7 +39,7 @@ export interface NovaCarteira {
   nome: string;
 }
 
-/** Uma linha de `GET /carteiras/{id}/posicoes`. Valores em real (ASM-025). */
+/** Uma linha de `GET /carteiras/{id}/posicoes`. Valores na moeda da ação (ASM-025 invalidada, ASM-101). */
 export interface Posicao {
   id: number;
   ticker: string;
