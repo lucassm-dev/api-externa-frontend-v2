@@ -10,7 +10,7 @@ const PRIMITIVAS_DE_BOTAO = new Set([
   'src/components/ui/botao.tsx',
   'src/components/ui/botao-icone.tsx',
   'src/shared/visibilidade-senha.tsx',
-  'src/core/feedback/notificacao.tsx',
+  'src/core/feedback/conteudo-notificacao.tsx',
 ]);
 
 const TELAS = globSync('src/**/*.tsx')

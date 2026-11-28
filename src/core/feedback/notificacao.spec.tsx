@@ -1,7 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { isValidElement, type ReactElement } from 'react';
 import { toast } from 'sonner';
-import { ConteudoNotificacao, notificacao } from './notificacao';
+import { ConteudoNotificacao } from './conteudo-notificacao';
+import { notificacao } from './notificacao';
 
 vi.mock('sonner', () => ({ toast: { custom: vi.fn(), dismiss: vi.fn() } }));
 
