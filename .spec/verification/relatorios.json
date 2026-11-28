@@ -1,7 +1,7 @@
 {
   "feature": "relatorios",
-  "timestamp": "2026-11-28T03:07:15.147Z",
-  "gitRev": "f93cee2",
+  "timestamp": "2026-11-28T06:26:29.397Z",
+  "gitRev": "787a412",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
@@ -9,42 +9,42 @@
   "results": {
     "AC-394": {
       "status": "pass",
-      "testName": "src/features/relatorios/relatorios.spec.tsx > Relatórios do investidor > @spec:AC-394 o investidor vê Relatórios no menu; o ADMIN não, e o endereço o leva aos usuários # time=195.43ms",
+      "testName": "src/features/relatorios/relatorios.spec.tsx > Relatórios do investidor > @spec:AC-394 o investidor vê Relatórios no menu; o ADMIN não, e o endereço o leva aos usuários # time=190.17ms",
       "method": "tap"
     },
     "AC-395": {
       "status": "pass",
-      "testName": "src/features/relatorios/relatorios.spec.tsx > Relatórios do investidor > @spec:AC-395 os filtros vão ao servidor, se combinam, moram no endereço e o resultado explica que só vendas entram # time=146.36ms",
+      "testName": "src/features/relatorios/relatorios.spec.tsx > Relatórios do investidor > @spec:AC-395 os filtros vão ao servidor, se combinam, moram no endereço e o resultado explica que só vendas entram # time=117.03ms",
       "method": "tap"
     },
     "AC-396": {
       "status": "pass",
-      "testName": "src/features/relatorios/relatorios.spec.tsx > Relatórios do investidor > @spec:AC-396 data final antes da inicial não sai; OPE-006 do servidor diz o mesmo no campo # time=92.37ms",
+      "testName": "src/features/relatorios/relatorios.spec.tsx > Relatórios do investidor > @spec:AC-396 data final antes da inicial não sai; OPE-006 do servidor diz o mesmo no campo # time=114.89ms",
       "method": "tap"
     },
     "AC-397": {
       "status": "pass",
-      "testName": "src/features/relatorios/relatorios.spec.tsx > Relatórios do investidor > @spec:AC-397 os totais somam todas as páginas do recorte, em real # time=44.66ms",
+      "testName": "src/features/relatorios/relatorios.spec.tsx > Relatórios do investidor > @spec:AC-397 os totais somam todas as páginas do recorte, em real # time=29.35ms",
       "method": "tap"
     },
     "AC-398": {
       "status": "pass",
-      "testName": "src/features/relatorios/relatorios.spec.tsx > Relatórios do investidor > @spec:AC-398 a venda em dólar entra convertida pela taxa dela # time=50.13ms",
+      "testName": "src/features/relatorios/relatorios.spec.tsx > Relatórios do investidor > @spec:AC-398 a venda em dólar entra convertida pela taxa dela # time=47.41ms",
       "method": "tap"
     },
     "AC-399": {
       "status": "pass",
-      "testName": "src/features/relatorios/relatorios.spec.tsx > Relatórios do investidor > @spec:AC-399 a tabela do recorte não oferece editar nem excluir; sem operações, estado vazio com Limpar filtros # time=106.87ms",
+      "testName": "src/features/relatorios/relatorios.spec.tsx > Relatórios do investidor > @spec:AC-399 a tabela do recorte não oferece editar nem excluir; sem operações, estado vazio com Limpar filtros # time=103.47ms",
       "method": "tap"
     },
     "AC-400": {
       "status": "pass",
-      "testName": "src/features/relatorios/relatorios.spec.tsx > Relatórios do investidor > @spec:AC-400 Operações não tem barra de filtros e leva aos Relatórios # time=56.18ms",
+      "testName": "src/features/relatorios/relatorios.spec.tsx > Relatórios do investidor > @spec:AC-400 Operações não tem barra de filtros e leva aos Relatórios # time=37.83ms",
       "method": "tap"
     },
     "AC-401": {
       "status": "pass",
-      "testName": "src/layout/casca.spec.tsx > Navegação do shell > @spec:AC-401 a barra do investidor leva às sete áreas, em ordem # time=12.98ms",
+      "testName": "src/layout/casca.spec.tsx > Navegação do shell > @spec:AC-401 a barra do investidor leva às sete áreas, em ordem # time=8.23ms",
       "method": "tap"
     }
   },

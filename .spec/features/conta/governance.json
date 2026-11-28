@@ -312,12 +312,182 @@
       "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
       "conflictFingerprint": "1b12f29c661f8a900caa9d7f73b989416f961a3269365cf492fc70c49ee0dec6",
       "answeredAt": "2026-11-26T23:25:43.349Z"
+    },
+    {
+      "conflictId": "impacto:acesso",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "86d72535cafe95332bd9e798af7a00d7c62d7742dfc78eb545ef7751c4858bc7",
+      "answeredAt": "2026-11-28T19:32:20.617Z"
+    },
+    {
+      "conflictId": "impacto:acoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "936df01b2558a01aa5372d1e6002acb43029bbfc6bea0e0608e09b25c8f86d74",
+      "answeredAt": "2026-11-28T19:32:21.179Z"
+    },
+    {
+      "conflictId": "impacto:administracao",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "b481e8f70efc9e5b3a1a7dbf0e88333aa6f08ea362b0b0be09dc569d9371ec24",
+      "answeredAt": "2026-11-28T19:32:21.650Z"
+    },
+    {
+      "conflictId": "impacto:cabecalho-identidade-acoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "80f9b88e522d35d6e7649da77c61e652053188db8525ee89b0278fbcc6e224ef",
+      "answeredAt": "2026-11-28T19:32:22.169Z"
+    },
+    {
+      "conflictId": "impacto:confirmacao-senha-cadastro",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "27f432fba898f326af9ecd0a35e7e2b778d3f521167ba378651fa368e6cf4594",
+      "answeredAt": "2026-11-28T19:32:22.683Z"
+    },
+    {
+      "conflictId": "impacto:desempenho",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "78205e89f2197c243cffdc9b4c75d3f7b0a4c0ecc3d8668454447e829344bf3f",
+      "answeredAt": "2026-11-28T19:32:23.160Z"
+    },
+    {
+      "conflictId": "impacto:estrutura-visual",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "2009c800fcafcc7c3193f01aa2fce98de2e8afe8e5241e79a8cd51d81469014e",
+      "answeredAt": "2026-11-28T19:32:23.618Z"
+    },
+    {
+      "conflictId": "impacto:fundacao",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "7865094cb5868d8e48f17ab02a743a18878a3d3f634f2f975e0d7bda925fa373",
+      "answeredAt": "2026-11-28T19:32:24.109Z"
+    },
+    {
+      "conflictId": "impacto:identidade-papel",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "20cacf4ea0134df5882aab611dcbc380a32f43a61ee5e938a78c80788ec3d1b5",
+      "answeredAt": "2026-11-28T19:32:24.622Z"
+    },
+    {
+      "conflictId": "impacto:migracao-react",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "bf24209963601b0f77c1ec11d68d3feb7b03bed2951656438e767dfc333789eb",
+      "answeredAt": "2026-11-28T19:32:25.129Z"
+    },
+    {
+      "conflictId": "impacto:operacoes",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "f20723efd4addb63ab4f9691195040004e645fed3146e378042411f55609ed38",
+      "answeredAt": "2026-11-28T19:32:25.640Z"
+    },
+    {
+      "conflictId": "impacto:painel",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "96adf8b2b15a15c8f02124acb525c73bdcfd83f69cbe646e004a9ecb76df0bf9",
+      "answeredAt": "2026-11-28T19:32:26.133Z"
+    },
+    {
+      "conflictId": "impacto:relatorios",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "fb91164447af677d21b0049a3881742011cb604090550113889d7d4f16cb8646",
+      "answeredAt": "2026-11-28T19:32:26.633Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-acesso",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "50b19ec971eb6a662b5a75d8ea3f9a20fccc35b76b69911f52a4e005e471eb82",
+      "answeredAt": "2026-11-28T19:32:27.151Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-tabelas",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "a1d0e5cfdc7f4de76ecbb91897f7beacf11bc3c4a15d27802f77cd8fb5e1fb59",
+      "answeredAt": "2026-11-28T19:32:27.633Z"
+    },
+    {
+      "conflictId": "impacto:repaginacao-visual",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "117e57f7360adaf6288e8b3a08bab8caf861549b579ff52f355ba0e536bfa56e",
+      "answeredAt": "2026-11-28T19:32:28.096Z"
+    },
+    {
+      "conflictId": "impacto:visibilidade-da-senha",
+      "choice": "prosseguir",
+      "answer": "Prosseguir em todos (Recommended)",
+      "source": "AskUserQuestion, sessão Claude Code de 28/11/2026 (foto de perfil 10 MB)",
+      "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+      "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+      "conflictFingerprint": "1b12f29c661f8a900caa9d7f73b989416f961a3269365cf492fc70c49ee0dec6",
+      "answeredAt": "2026-11-28T19:32:28.634Z"
     }
   ],
   "clientRequest": "",
   "review": {
-    "summary": "Issue #48. Lidas as specs de conta (US-091 a US-095, fora de escopo que dizia que excluir a conta não era oferecido), acesso (login: mensagens de retorno) e identidade-papel (ADMIN sem investidor). Minha conta ganha 'Dados pessoais' e 'Excluir minha conta', só para o investidor; o login ganha o aviso de conta excluída, no mesmo padrão de contaCriada e senhaRedefinida. O item de fora de escopo da conta foi atualizado por decisão do Lucas (Q-054). Nenhuma regra de spec anterior é contrariada.",
-    "reviewer": "Claude Code (Opus 5.5), sessão de 26/11/2026",
+    "summary": "Mudança restrita à foto de perfil da feature conta: AC-336 e AC-337 passam de 2 MB para 10 MB, acompanhando o backend (ADR-017 e spec-25 atualizados no PR par do api-externa-backend-v1). O nginx ganhou client_max_body_size 11m só no location da API, porque o padrão de 1 MB devolvia 413 antes da API. Lidas as specs das demais features (acesso, acoes, administracao, cabecalho-identidade-acoes, confirmacao-senha-cadastro, desempenho, estrutura-visual, fundacao, identidade-papel, migracao-react, operacoes, painel, repaginacao-*, visibilidade-da-senha): nenhuma define limite de upload nem depende do tamanho da foto; o aumento do corpo aceito pelo nginx não muda nenhuma outra rota, porque as demais trafegam JSON pequeno. Validação de tipo (JPEG/PNG/WebP) inalterada. Sem conflito semântico; impactos detectados pelo motor seguem para decisão do cliente.",
+    "reviewer": "Claude Code (Opus 5.5), sessão de 28/11/2026",
     "conflicts": [
       {
         "id": "impacto:acesso",
@@ -483,6 +653,17 @@
         "rule": ".spec/features/painel/spec.md"
       },
       {
+        "id": "impacto:relatorios",
+        "automatic": true,
+        "feature": "relatorios",
+        "summary": "A mudança interfere no domínio da feature relatorios.",
+        "files": [
+          "src/rotas.tsx"
+        ],
+        "domains": [],
+        "rule": ".spec/features/relatorios/spec.md"
+      },
+      {
         "id": "impacto:repaginacao-acesso",
         "automatic": true,
         "feature": "repaginacao-acesso",
@@ -534,9 +715,9 @@
         "rule": ".spec/features/visibilidade-da-senha/spec.md"
       }
     ],
-    "fingerprint": "75f2b168a27546af4f58972838ec96592fe8757e642d67f76d61585dc316d0db",
-    "ownFingerprint": "04dfd94be3cb411d557f382c952b6acccc0e2f18d1c4e4c92356368391034e8c",
-    "reviewedAt": "2026-11-26T23:11:59.757Z",
+    "fingerprint": "c4b1e400c288d96a27ced6b2c67ceb2332f18ecea934a2fe833275ee93880fd7",
+    "ownFingerprint": "d0a58632b1d363148fc8e28031d231aeddb93cb67b0a5835f4d199aee84e0f75",
+    "reviewedAt": "2026-11-28T06:28:50.867Z",
     "documents": [
       ".spec/features/acesso/spec.md",
       ".spec/features/acesso/tasks.md",
@@ -556,6 +737,8 @@
       ".spec/features/corretoras/tasks.md",
       ".spec/features/desempenho/spec.md",
       ".spec/features/desempenho/tasks.md",
+      ".spec/features/duracao-mensagens/spec.md",
+      ".spec/features/duracao-mensagens/tasks.md",
       ".spec/features/estrutura-visual/spec.md",
       ".spec/features/estrutura-visual/tasks.md",
       ".spec/features/filtros-extrato/spec.md",
@@ -574,10 +757,14 @@
       ".spec/features/migracao-react/spec.md",
       ".spec/features/migracao-react/tasks.md",
       ".spec/features/migracao-react/research.md",
+      ".spec/features/moeda-na-carteira/spec.md",
+      ".spec/features/moeda-na-carteira/tasks.md",
       ".spec/features/operacoes/spec.md",
       ".spec/features/operacoes/tasks.md",
       ".spec/features/painel/spec.md",
       ".spec/features/painel/tasks.md",
+      ".spec/features/relatorios/spec.md",
+      ".spec/features/relatorios/tasks.md",
       ".spec/features/repaginacao-acesso/spec.md",
       ".spec/features/repaginacao-acesso/tasks.md",
       ".spec/features/repaginacao-desempenho/spec.md",
@@ -588,6 +775,10 @@
       ".spec/features/repaginacao-tabelas/tasks.md",
       ".spec/features/repaginacao-visual/spec.md",
       ".spec/features/repaginacao-visual/tasks.md",
+      ".spec/features/resumo-operacao/spec.md",
+      ".spec/features/resumo-operacao/tasks.md",
+      ".spec/features/situacao-cadastral/spec.md",
+      ".spec/features/situacao-cadastral/tasks.md",
       ".spec/features/visibilidade-da-senha/spec.md",
       ".spec/features/visibilidade-da-senha/tasks.md",
       ".spec/constituicao.md",

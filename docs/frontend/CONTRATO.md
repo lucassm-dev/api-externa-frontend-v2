@@ -77,7 +77,7 @@ ADMIN não tem investidor: em `/auth/me`, `nome` vem `null`.
 - `POST /auth/email/confirmar` (`codigo`) → 204. Recarregue `/auth/me`.
 
 **Foto de perfil**
-- `PUT /auth/me/foto` em `multipart/form-data`, campo `arquivo`. Até 2 MB (422 `AUT-016`); JPEG, PNG ou WebP, detectado pelo conteúdo (422 `AUT-017`).
+- `PUT /auth/me/foto` em `multipart/form-data`, campo `arquivo`. Até 10 MB (422 `AUT-016`); JPEG, PNG ou WebP, detectado pelo conteúdo (422 `AUT-017`).
 - `fotoUrl` em `/auth/me` vem `"/auth/me/foto"` quando há foto e `null` quando não há.
 - `GET /auth/me/foto` exige o token: um `<img src>` direto não funciona. Busque como blob com o header e use `URL.createObjectURL`. Sem foto: 404.
 

@@ -262,7 +262,7 @@ function SecaoFoto() {
             <EscolhaDeArquivo
               rotulo={temFoto ? 'Trocar foto' : 'Escolher foto'}
               accept={TIPOS_DE_FOTO.join(',')}
-              dica="JPEG, PNG ou WebP, até 2 MB"
+              dica="JPEG, PNG ou WebP, até 10 MB"
               erro={problema}
               disabled={ocupado}
               onChange={escolher}

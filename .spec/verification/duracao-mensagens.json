@@ -1,7 +1,7 @@
 {
   "feature": "duracao-mensagens",
-  "timestamp": "2026-11-28T03:04:45.973Z",
-  "gitRev": "f93cee2",
+  "timestamp": "2026-11-28T06:24:23.723Z",
+  "gitRev": "787a412",
   "command": "npm test --silent",
   "reporter": "tap",
   "exitCode": 0,
@@ -9,17 +9,17 @@
   "results": {
     "AC-406": {
       "status": "pass",
-      "testName": "src/core/feedback/painel-feedback.spec.tsx > Duração das mensagens do painel > @spec:AC-406 informação e aviso saem sozinhos em 5 segundos # time=32.80ms",
+      "testName": "src/core/feedback/painel-feedback.spec.tsx > Duração das mensagens do painel > @spec:AC-406 informação e aviso saem sozinhos em 5 segundos # time=65.82ms",
       "method": "tap"
     },
     "AC-407": {
       "status": "pass",
-      "testName": "src/core/feedback/painel-feedback.spec.tsx > Duração das mensagens do painel > @spec:AC-407 erro continua no painel depois de 5 segundos # time=2.94ms",
+      "testName": "src/core/feedback/painel-feedback.spec.tsx > Duração das mensagens do painel > @spec:AC-407 erro continua no painel depois de 5 segundos # time=9.34ms",
       "method": "tap"
     },
     "AC-408": {
       "status": "pass",
-      "testName": "src/core/feedback/painel-feedback.spec.tsx > Duração das mensagens do painel > @spec:AC-408 o botão Dispensar mensagem tira a mensagem na hora # time=6.90ms",
+      "testName": "src/core/feedback/painel-feedback.spec.tsx > Duração das mensagens do painel > @spec:AC-408 o botão Dispensar mensagem tira a mensagem na hora # time=16.74ms",
       "method": "tap"
     }
   },
